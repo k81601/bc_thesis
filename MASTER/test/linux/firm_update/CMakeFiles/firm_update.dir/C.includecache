@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/jakub/src/git/SOEM/test/linux/firm_update/firm_update.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+sys/time.h
+-
+unistd.h
+-
+ethercat.h
+/home/jakub/src/git/SOEM/test/linux/firm_update/ethercat.h
+
