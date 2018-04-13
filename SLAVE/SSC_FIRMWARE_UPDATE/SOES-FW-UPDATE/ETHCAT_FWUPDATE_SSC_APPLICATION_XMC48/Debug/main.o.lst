@@ -1,0 +1,1873 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "main.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.XMC_SCU_RESET_ClearDeviceResetReason,"ax",%progbits
+  20              	 .align 2
+  21              	 .thumb
+  22              	 .thumb_func
+  24              	XMC_SCU_RESET_ClearDeviceResetReason:
+  25              	.LFB162:
+  26              	 .file 1 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc_scu.h"
+   1:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+   2:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @file xmc_scu.h
+   3:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @date 2016-03-09
+   4:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+   5:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @cond
+   6:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+   7:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMClib v2.1.8 - XMC Peripheral Driver Library 
+   8:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+   9:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Copyright (c) 2015-2016, Infineon Technologies AG
+  10:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * All rights reserved.                        
+  11:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                                             
+  12:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * following conditions are met:   
+  14:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                                                                              
+  15:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * disclaimer.                        
+  17:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 
+  18:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 
+  21:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * products derived from this software without specific prior written permission.                  
+  23:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                                                                              
+  24:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                                                                              
+  32:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+  35:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  36:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Change History
+  37:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * --------------
+  38:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  39:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-02-20:
+  40:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Initial <br>
+  41:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  42:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-05-20:
+  43:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Documentation improved <br>
+  44:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - XMC_ASSERT() hanging issues have fixed for XMC4 devices. <br>
+  45:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  46:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-06-20:
+  47:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Removed version macros and declaration of GetDriverVersion API
+  48:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Removed STATIC_INLINE property for the below APIs and declared as void
+  49:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *       XMC_SCU_INTERRUPT_EnableEvent, XMC_SCU_INTERRUPT_DisableEvent,
+  50:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *       XMC_SCU_INTERRUPT_TriggerEvent, XMC_SCU_INTERUPT_GetEventStatus,
+  51:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *       XMC_SCU_INTERUPT_ClearEventStatus
+  52:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  53:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-11-30:
+  54:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Documentation improved <br>
+  55:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *      
+  56:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 2016-03-09:
+  57:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Optimization of write only registers
+  58:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *      
+  59:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @endcond 
+  60:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  61:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+  62:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #ifndef XMC_SCU_H
+  63:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #define XMC_SCU_H
+  64:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  
+  65:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+  66:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * HEADER FILES
+  67:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+  68:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #include <xmc_common.h>
+  69:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+  70:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+  71:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @addtogroup XMClib XMC Peripheral Library
+  72:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @{
+  73:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+  74:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  
+  75:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+  76:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @addtogroup SCU
+  77:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @brief System Control Unit(SCU) driver for XMC microcontroller family.
+  78:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  79:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * System control unit is the SoC power, reset and a clock manager with additional responsibility o
+  80:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * providing system stability protection and other auxiliary functions.<br>
+  81:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * SCU provides the following features,
+  82:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Power control
+  83:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4 
+  84:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Hibernate control 
+  85:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+  86:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Reset control
+  87:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Clock control
+  88:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Miscellaneous control(boot mode, system interrupts etc.)<br><br>
+  89:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  90:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The SCU driver is divided in to clock control logic, reset control logic, system interrupt contr
+  91:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+  92:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * , hibernate control logic, trap control logic, parity control logic 
+  93:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+  94:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * and miscellaneous control logic.<br>
+  95:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  96:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Clock driver features:
+  97:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows clock configuration using the structure XMC_SCU_CLOCK_CONFIG_t and API XMC_SCU_CLOCK_I
+  98:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+  99:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides structure XMC_SCU_CLOCK_SYSPLL_CONFIG_t for configuring the system PLL
+ 100:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of clock source for system PLL, XMC_SCU_CLOCK_GetSystemPllClockSource()
+ 101:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for configuring different module clock frequencies XMC_SCU_CLOCK_SetWdtClockDiv
+ 102:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of clock source for external output, XMC_SCU_CLOCK_SetExternalOutputClockSou
+ 103:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for enabling external high power oscillator and ultra low power oscillator, XMC
+ 104:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for getting various clock frequencies XMC_SCU_CLOCK_GetPeripheralClockFrequency
+ 105:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  XMC_SCU_CLOCK_GetCpuClockFrequency(), XMC_SCU_CLOCK_GetSystemClockFrequency()<br>
+ 106:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 107:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC1
+ 108:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of peripheral clock frequency, XMC_SCU_CLOCK_SetFastPeripheralClockSource()
+ 109:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides API to get the peripheral clock frequency, XMC_SCU_CLOCK_GetFastPeripheralClockFrequ
+ 110:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 111:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 112:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Reset driver features:
+ 113:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+ 114:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to handle peripheral reset XMC_SCU_RESET_AssertPeripheralReset(), XMC_SCU_RESET_Deasse
+ 115:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuration of NMI generation for selected events, XMC_SCU_INTERRUPT_EnableNmiReques
+ 116:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 117:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC1
+ 118:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to trigger device reset XMC_SCU_RESET_AssertMasterReset()
+ 119:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to configure multiple sources for reset, XMC_SCU_RESET_EnableResetRequest()
+ 120:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif <br>
+ 121:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 122:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Interrupt driver features:
+ 123:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for enabling/ disabling interrupt event generation XMC_SCU_INTERRUPT_EnableEven
+ 124:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  XMC_SCU_INTERRUPT_DisableEvent()
+ 125:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides API for registering callback function for events XMC_SCU_INTERRUPT_SetEventHandler()
+ 126:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 127:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+ 128:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Hibernate driver features:
+ 129:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuration of hibernate domain XMC_SCU_HIB_EnableHibernateDomain(), XMC_SCU_HIB_Dis
+ 130:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of standby clock source, XMC_SCU_HIB_SetStandbyClockSource()
+ 131:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of RTC clock source, XMC_SCU_HIB_SetRtcClockSource()
+ 132:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides API for enabling slow internal clock used for backup clock, XMC_SCU_HIB_EnableIntern
+ 133:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 134:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Trap driver features:
+ 135:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows handling of trap XMC_SCU_TRAP_Enable(), XMC_SCU_TRAP_GetStatus(), XMC_SCU_TRAP_Trigger
+ 136:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 137:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Parity driver features:
+ 138:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Parity error generated by on-chip RAM can be monitored, XMC_SCU_PARITY_Enable(), XMC_SCU_PARI
+ 139:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuration of trap generation on detection of parity error, XMC_SCU_PARITY_EnableTr
+ 140:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 141:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Power driver features:
+ 142:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to power the USB module XMC_SCU_POWER_EnableUsb(), XMC_SCU_POWER_DisableUsb()
+ 143:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 144:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 145:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Miscellaneous features:
+ 146:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to trigger multiple capture compare unit(CCU) channels to be started together XMC_SCU_
+ 147:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+ 148:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of out of range comparator (ORC) XMC_SCU_EnableOutOfRangeComparator()
+ 149:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of die temperature sensor XMC_SCU_EnableTemperatureSensor(), XMC_SCU_Ca
+ 150:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of device boot mode XMC_SCU_SetBootMode()<br>
+ 151:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 152:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC1
+ 153:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of die temperature sensor XMC_SCU_StartTempMeasurement(), XMC_SCU_SetRa
+ 154:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuring supply monitor unit using the structure XMC_SCU_SUPPLYMONITOR_t and API XM
+ 155:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows handling of protected bits XMC_SCU_LockProtectedBits(), XMC_SCU_UnlockProtectedBits()<
+ 156:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 157:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @{
+ 158:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 159:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  
+ 160:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 161:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * MACROS
+ 162:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 163:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 164:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 165:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * ENUMS
+ 166:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 167:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 168:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *  Defines the status of SCU API execution, used to verify the SCU related API calls.
+ 169:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 170:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** typedef enum XMC_SCU_STATUS 
+ 171:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 172:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   XMC_SCU_STATUS_OK   = 0UL, /**< SCU related operation successfully completed.*/
+ 173:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   XMC_SCU_STATUS_ERROR,      /**< SCU related operation failed. When API cannot fulfill request, th
+ 174:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   XMC_SCU_STATUS_BUSY,       /**< Cannot execute the SCU related operation request because
+ 175:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****                                   another operation is in progress. \a XMC_SCU_STATUS_BUSY is retur
+ 176:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****                                   processing another request. */
+ 177:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** } XMC_SCU_STATUS_t;
+ 178:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 179:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 180:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 181:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * DATA TYPES
+ 182:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 183:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 184:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 185:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Function pointer type used for registering callback functions on SCU event occurrence.
+ 186:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 187:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** typedef void (*XMC_SCU_INTERRUPT_EVENT_HANDLER_t)(void);
+ 188:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 189:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 190:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * DEVICE EXTENSIONS
+ 191:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 192:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 193:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #if (UC_FAMILY == XMC1)
+ 194:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #include <xmc1_scu.h>
+ 195:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #elif (UC_FAMILY == XMC4)
+ 196:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #include <xmc4_scu.h>
+ 197:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #else
+ 198:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #error "Unspecified chipset"
+ 199:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #endif
+ 200:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 201:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 202:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * API Prototypes
+ 203:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 204:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 205:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #ifdef __cplusplus
+ 206:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** extern "C" {
+ 207:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #endif
+ 208:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 209:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 210:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 211:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 212:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param trigger    CCU slices to be triggered synchronously via software. The value is a bitmask 
+ 213:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                    in the register CCUCON. <br>
+ 214:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                    \b Range: Use type @ref XMC_SCU_CCU_TRIGGER_t for bitmask of individual CCU s
+ 215:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                    combined using \a OR operation.
+ 216:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 217:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 218:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 219:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 220:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Generates active edge(low to high) trigger for multiple CCU units at the same time.\n\n
+ 221:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Before executing this API, all the required CCU timers should configure external start.
+ 222:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The edge of the start signal should be selected as active edge.
+ 223:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The input signal for the CCU slice should be selected as SCU input.
+ 224:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The above mentioned configurations can be made using the CCU LLD API XMC_CCU4_SLICE_StartConfig(
+ 225:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * CCU timer slice should be started using XMC_CCU4_SLICE_StartTimer() before triggering 
+ 226:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * the timer using this API.<BR>
+ 227:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 228:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_CCU4_SLICE_StartConfig(), XMC_CCU4_SLICE_SetInput(), XMC_SCU_SetCcuTriggerLow()\n\n\n
+ 229:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 230:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE void XMC_SCU_SetCcuTriggerHigh(const uint32_t trigger)
+ 231:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 232:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   SCU_GENERAL->CCUCON |= (uint32_t)trigger;
+ 233:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** }
+ 234:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 235:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 236:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 237:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param trigger  CCU slices to be triggered synchronously via software. The value is a bitmask of
+ 238:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                    in the register CCUCON. <br>
+ 239:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                    \b Range: Use type @ref XMC_SCU_CCU_TRIGGER_t for bitmask of individual CCU s
+ 240:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                    combined using \a OR operation.
+ 241:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 242:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 243:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 244:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 245:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Generates passive edge(high to low) trigger for multiple CCU units at the same time.\n\n
+ 246:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Before executing this API, all the required CCU timers should configure external start.
+ 247:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The edge of the start signal should be selected as passive edge.
+ 248:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The input signal for the CCU slice should be selected as SCU input.
+ 249:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The above mentioned configurations can be made using the CCU LLD API XMC_CCU4_SLICE_StartConfig(
+ 250:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * CCU timer slice should be started using XMC_CCU4_SLICE_StartTimer() before triggering 
+ 251:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * the timer using this API.<BR>
+ 252:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 253:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_CCU4_SLICE_StartConfig(), XMC_CCU4_SLICE_SetInput(), XMC_SCU_SetCcuTriggerHigh()\n\n\n
+ 254:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 255:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE void XMC_SCU_SetCcuTriggerLow(const uint32_t trigger)
+ 256:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 257:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   SCU_GENERAL->CCUCON &= (uint32_t)~trigger;
+ 258:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** }
+ 259:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 260:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 261:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 262:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param config Pointer to structure holding the clock prescaler values and divider values for 
+ 263:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                configuring clock generators and clock tree.\n
+ 264:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                \b Range: Configure the members of structure @ref XMC_SCU_CLOCK_CONFIG_t for vari
+ 265:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                parameters of clock setup.
+ 266:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 267:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 268:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 269:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 270:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Initializes clock generators and clock tree.\n\n
+ 271:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC1
+ 272:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Peripheral clock and system clock are configured based on the input configuration \a config.
+ 273:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The system clock frequency is tuned by configuring the FDIV and IDIV values of CLKCR register.
+ 274:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The values of FDIV and IDIV can be provided as part of input configuration.
+ 275:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The PCLK divider determines the ratio of peripheral clock to the system clock. 
+ 276:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The source of RTC clock is set based on the input configuration. 
+ 277:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \a SystemCoreClock variable will be updated with the value of
+ 278:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * system clock frequency. Access to protected bit fields are handled internally.
+ 279:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
+ 280:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC4
+ 281:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Enables the high precision oscillator(fOHP) input and configures the system and peripheral clock
+ 282:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Based on the system clock source selected in \a config, either fPLL or fOFI will be chosen as sy
+ 283:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Based on PLL mode(normal or prescaler mode) used, PLL ramps up in steps to achieve target freque
+ 284:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The clock dividers for CPU, CCU and peripheral clocks will be set based on the input configurati
+ 285:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The \a SystemCoreClock variable is set with the value of system clock frequency.
+ 286:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
+ 287:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 288:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_GetPeripheralClockFrequency(), XMC_SCU_CLOCK_GetCpuClockFrequency() \n\n\n
+ 289:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 290:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_CLOCK_Init(const XMC_SCU_CLOCK_CONFIG_t *const config);
+ 291:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 292:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 293:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 294:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event  Bit mask of the event to enable. \b Range: Use type @ref XMC_SCU_INTERRUPT_EVENT_t
+ 295:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
+ 296:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 297:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 298:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 299:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 300:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Enables the generation of interrupt for the input events.\n\n
+ 301:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The events are enabled by setting the respective bit fields in the SRMSK register. \n
+ 302:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Note: User should separately enable the NVIC node responsible for handling the SCU interrupt.
+ 303:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The interrupt will be generated when the respective event occurs.
+ 304:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 305:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * NVIC_EnableIRQ(), XMC_SCU_INTERRUPT_DisableEvent()\n\n\n
+ 306:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 307:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_EnableEvent(const XMC_SCU_INTERRUPT_EVENT_t event);
+ 308:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 309:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 310:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 311:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 312:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event  Bit mask of the event to disable. \b Range: Use type @ref XMC_SCU_INTERRUPT_EVENT_
+ 313:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
+ 314:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 315:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 316:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 317:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 318:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Disables generation of interrupt on occurrence of the input event.\n\n
+ 319:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The events are disabled by resetting the respective bit fields in the SRMSK register. \n
+ 320:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 321:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * NVIC_DisableIRQ(), XMC_SCU_INTERRUPT_EnableEvent()\n\n\n
+ 322:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 323:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_DisableEvent(const XMC_SCU_INTERRUPT_EVENT_t event);
+ 324:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 325:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 326:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 327:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event Bit mask of the event to be triggered. \b Range: Use type @ref XMC_SCU_INTERRUPT_EV
+ 328:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
+ 329:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 330:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 331:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 332:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 333:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Triggers the event as if the hardware raised it.\n\n
+ 334:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Event will be triggered by setting the respective bitfield in the SRSET register.\n
+ 335:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Note: User should enable the NVIC node that handles the respective event for interrupt generatio
+ 336:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 337:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * NVIC_EnableIRQ(), XMC_SCU_INTERUPT_GetEventStatus(), XMC_SCU_INTERRUPT_ClearEventStatus() \n\n\n
+ 338:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 339:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_TriggerEvent(const XMC_SCU_INTERRUPT_EVENT_t  event);
+ 340:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 341:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 342:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return uint32_t  Status of the SCU events.
+ 343:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 344:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 345:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the status of all SCU events.\n\n
+ 346:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The status is read from the SRRAW register. To check the status of a particular 
+ 347:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * event, the returned value should be masked with the bit mask of the event. The bitmask
+ 348:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * of events can be obtained using the type @ref XMC_SCU_INTERRUPT_EVENT_t. Multiple events'
+ 349:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * status can be checked by combining the bit masks using \a OR operation. 
+ 350:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * After detecting the event, the event status should be cleared using software to detect the event
+ 351:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 352:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_INTERRUPT_ClearEventStatus(), XMC_SCU_INTERRUPT_TriggerEvent(), XMC_SCU_INTERRUPT_SetEve
+ 353:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 354:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** XMC_SCU_INTERRUPT_EVENT_t XMC_SCU_INTERUPT_GetEventStatus(void);
+ 355:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 356:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 357:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 358:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event  Bit mask of the events to clear. \b Range: Use type @ref XMC_SCU_INTERRUPT_EVENT_t
+ 359:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
+ 360:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 361:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 362:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 363:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 364:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Clears the event status bit in SRRAW register.\n\n
+ 365:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The events are cleared by writing value 1 to their bit positions in the SRCLR register.
+ 366:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The API can be used when polling method is used. After detecting the event, the event status
+ 367:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * should be cleared using software to detect the event again.
+ 368:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 369:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 370:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_INTERUPT_GetEventStatus(), XMC_SCU_INTERRUPT_TriggerEvent() \n\n\n
+ 371:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 372:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_ClearEventStatus(const XMC_SCU_INTERRUPT_EVENT_t event);
+ 373:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 374:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 375:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 376:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return uint32_t  Status representing the reason for device reset.
+ 377:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 378:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 379:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the value representing the reason for device reset.\n\n
+ 380:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The return value is an encoded word, which can indicate multiple reasons for the last reset. Eac
+ 381:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * returned word is representative of a last reset cause. The returned value should be appropriatel
+ 382:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * the cause of reset. 
+ 383:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The cause of the last reset gets automatically stored in 
+ 384:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * the \a SCU_RSTSTAT register. The reset status shall be reset after each
+ 385:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * startup in order to ensure consistent source indication after the next reset.
+ 386:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \b Range: The type @ref XMC_SCU_RESET_REASON_t can be used to get the bit masks of the reset cau
+ 387:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 388:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 389:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_RESET_ClearDeviceResetReason() \n\n\n
+ 390:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 391:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE uint32_t XMC_SCU_RESET_GetDeviceResetReason(void)
+ 392:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 393:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   return ((SCU_RESET->RSTSTAT) & SCU_RESET_RSTSTAT_RSTSTAT_Msk);
+ 394:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** }
+ 395:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 396:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None 
+ 397:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 398:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 399:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Clears the reset reason bits in the reset status register. \n\n
+ 400:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Clearing of the reset status information in the \a SCU_RSTSTAT register via register bit \a RSTC
+ 401:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * recommended to ensure a clear indication of the cause of next reset.
+ 402:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 403:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 404:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_RESET_GetDeviceResetReason() \n\n\n
+ 405:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 406:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE void XMC_SCU_RESET_ClearDeviceResetReason(void)
+ 407:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** {
+  27              	 .loc 1 407 0
+  28              	 .cfi_startproc
+  29              	 
+  30              	 
+  31              	 
+  32 0000 80B4     	 push {r7}
+  33              	.LCFI0:
+  34              	 .cfi_def_cfa_offset 4
+  35              	 .cfi_offset 7,-4
+  36 0002 00AF     	 add r7,sp,#0
+  37              	.LCFI1:
+  38              	 .cfi_def_cfa_register 7
+ 408:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   /* Clear RSTSTAT.RSTSTAT bitfield */
+ 409:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   SCU_RESET->RSTCLR = (uint32_t)SCU_RESET_RSTCLR_RSCLR_Msk;
+  39              	 .loc 1 409 0
+  40 0004 034B     	 ldr r3,.L2
+  41 0006 0122     	 movs r2,#1
+  42 0008 9A60     	 str r2,[r3,#8]
+ 410:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** }
+  43              	 .loc 1 410 0
+  44 000a BD46     	 mov sp,r7
+  45              	.LCFI2:
+  46              	 .cfi_def_cfa_register 13
+  47              	 
+  48 000c 5DF8047B 	 ldr r7,[sp],#4
+  49              	.LCFI3:
+  50              	 .cfi_restore 7
+  51              	 .cfi_def_cfa_offset 0
+  52 0010 7047     	 bx lr
+  53              	.L3:
+  54 0012 00BF     	 .align 2
+  55              	.L2:
+  56 0014 00440050 	 .word 1342194688
+  57              	 .cfi_endproc
+  58              	.LFE162:
+  60              	 .section .text.XMC_GPIO_SetOutputLevel,"ax",%progbits
+  61              	 .align 2
+  62              	 .thumb
+  63              	 .thumb_func
+  65              	XMC_GPIO_SetOutputLevel:
+  66              	.LFB166:
+  67              	 .file 2 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc_gpio.h"
+   1:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+   2:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @file xmc_gpio.h
+   3:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @date 2015-06-20
+   4:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+   5:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @cond
+   6:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   *************************************************************************************************
+   7:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMClib v2.1.8 - XMC Peripheral Driver Library 
+   8:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+   9:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Copyright (c) 2015-2016, Infineon Technologies AG
+  10:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * All rights reserved.                        
+  11:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                             
+  12:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * following conditions are met:   
+  14:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                                                              
+  15:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * disclaimer.                        
+  17:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * 
+  18:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * 
+  21:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * products derived from this software without specific prior written permission.                  
+  23:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                                                              
+  24:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *                                                                              
+  32:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+  35:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  36:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Change History
+  37:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * --------------
+  38:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  39:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * 2015-02-20:
+  40:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Initial draft<br>
+  41:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Documentation improved <br>
+  42:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *      
+  43:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * 2015-06-20:
+  44:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Removed version macros and declaration of GetDriverVersion API
+  45:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  46:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @endcond
+  47:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  48:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  49:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  50:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #ifndef XMC_GPIO_H
+  51:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_H
+  52:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  53:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+  54:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * HEADER FILES
+  55:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+  56:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  57:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc_common.h"
+  58:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  59:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+  60:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @addtogroup XMClib XMC Peripheral Library
+  61:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @{
+  62:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  63:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  64:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+  65:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @addtogroup GPIO
+  66:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @brief General Purpose Input Output (GPIO) driver for the XMC microcontroller family.
+  67:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  68:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * GPIO driver provide a generic and very flexible software interface for all standard digital I/O 
+  69:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Each port slice has individual interfaces for the operation as General Purpose I/O and it furthe
+  70:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * connectivity to the on-chip periphery and the control for the pad characteristics. 
+  71:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  72:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * The driver is divided into Input and Output mode.
+  73:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  74:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Input mode features:
+  75:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Configuration structure XMC_GPIO_CONFIG_t and initialization function XMC_GPIO_Init()
+  76:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of weak pull-up or pull-down device. Configuration structure XMC_GPIO_MO
+  77:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC1
+  78:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of input hysteresis. XMC_GPIO_SetInputHysteresis()
+  79:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+  80:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  81:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * 
+  82:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Output mode features:
+  83:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of push pull/open drain and Alternate output. Configuration structure XM
+  84:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC4
+  85:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of pad driver strength. Configuration structure XMC_GPIO_OUTPUT_STRENGTH
+  86:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+  87:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  88:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of initial output level. Configuration structure XMC_GPIO_OUTPUT_LEVEL_t
+  89:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  90:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *@{
+  91:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  92:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  
+  93:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+  94:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * MACROS
+  95:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+  96:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  97:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Pos PORT0_IOCR0_PC0_Pos
+  98:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Msk PORT0_IOCR0_PC0_Msk
+  99:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 100:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Size 				(8U)
+ 101:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 											
+ 102:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 103:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_CHECK_OUTPUT_LEVEL(level) ((level == XMC_GPIO_OUTPUT_LEVEL_LOW) || \
+ 104:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****                                             (level == XMC_GPIO_OUTPUT_LEVEL_HIGH))
+ 105:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****                                             
+ 106:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_CHECK_HWCTRL(hwctrl) ((hwctrl == XMC_GPIO_HWCTRL_DISABLED) || \
+ 107:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****                                        (hwctrl == XMC_GPIO_HWCTRL_PERIPHERAL1) || \
+ 108:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****                                        (hwctrl == XMC_GPIO_HWCTRL_PERIPHERAL2))                    
+ 109:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****                                             
+ 110:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 111:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * ENUMS
+ 112:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 113:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 114:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 115:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 116:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Defines output level of a pin. Use type \a XMC_GPIO_OUTPUT_LEVEL_t for this enum.
+ 117:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 118:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** typedef enum XMC_GPIO_OUTPUT_LEVEL
+ 119:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 120:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_OUTPUT_LEVEL_LOW  = 0x10000U, /**<  Reset bit */
+ 121:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_OUTPUT_LEVEL_HIGH = 0x1U, 	/**< Set bit  */
+ 122:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** } XMC_GPIO_OUTPUT_LEVEL_t;
+ 123:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 124:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 125:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Defines direct hardware control characteristics of the pin . Use type \a XMC_GPIO_HWCTRL_t for t
+ 126:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 127:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** typedef enum XMC_GPIO_HWCTRL
+ 128:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 129:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_DISABLED     = 0x0U, /**<  Software control only */
+ 130:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_PERIPHERAL1  = 0x1U, /**<  HWI0/HWO0 control path can override the software confi
+ 131:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_PERIPHERAL2  = 0x2U  /**<  HWI1/HWO1 control path can override the software confi
+ 132:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** } XMC_GPIO_HWCTRL_t;
+ 133:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 134:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 135:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * DEVICE FAMILY EXTENSIONS
+ 136:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 137:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 138:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  #if UC_FAMILY == XMC1
+ 139:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc1_gpio.h"
+ 140:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #elif UC_FAMILY == XMC4
+ 141:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc4_gpio.h"
+ 142:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #else
+ 143:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #error "xmc_gpio.h: family device not supported"
+ 144:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #endif
+ 145:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 146:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 147:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * API PROTOTYPES
+ 148:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 149:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 150:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #ifdef __cplusplus
+ 151:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** extern "C" {
+ 152:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** #endif
+ 153:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 154:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 155:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 156:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	  Constant pointer pointing to GPIO port, to access port registers like Pn_OUT,Pn_O
+ 157:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	  Port pin number.
+ 158:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  config GPIO configuration data structure. Refer data structure @ref XMC_GPIO_CONFIG_t fo
+ 159:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 160:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 161:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 162:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 163:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC1
+ 164:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Initializes input / output mode settings like, pull up / pull down devices,hysteresis, push pull
+ 165:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Also configures alternate function outputs and clears hardware port control for a selected \a po
+ 166:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \a config provides selected I/O settings. It configures hardware registers Pn_IOCR,Pn_OUT, Pn_OM
+ 167:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+ 168:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC4
+ 169:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Initializes input / output mode settings like, pull up / pull down devices,push pull /open drain
+ 170:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Also configures alternate function outputs and clears hardware port control for selected \a port
+ 171:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * It configures hardware registers Pn_IOCR,Pn_OUT,Pn_OMR,Pn_PDISC and Pn_PDR.\n
+ 172:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+ 173:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 174:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 175:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *  None
+ 176:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 177:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 178:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * This API is called in definition of DAVE_init by code generation and therefore should not be exp
+ 179:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * for the normal operation. Use other APIs only after DAVE_init is called successfully (returns DA
+ 180:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 181:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 182:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 183:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 184:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  
+ 185:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** void XMC_GPIO_Init(XMC_GPIO_PORT_t *const port, const uint8_t pin, const XMC_GPIO_CONFIG_t *const c
+ 186:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  
+ 187:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 188:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 189:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	Constant pointer pointing to GPIO port, to access hardware register Pn_IOCR.
+ 190:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	Port pin number.
+ 191:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  mode input / output functionality selection. Refer @ref XMC_GPIO_MODE_t for valid values
+ 192:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 193:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 194:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 195:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 196:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Sets digital input and output driver functionality and characteristics of a GPIO port pin. It co
+ 197:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * registers Pn_IOCR. \a mode is initially configured during initialization in XMC_GPIO_Init(). Cal
+ 198:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * the port direction functionality as needed later in the program.
+ 199:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 200:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 201:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *  None
+ 202:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 203:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 204:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 205:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** void XMC_GPIO_SetMode(XMC_GPIO_PORT_t *const port, const uint8_t pin, const XMC_GPIO_MODE_t mode);
+ 206:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 207:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 208:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 209:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 210:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	 Constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 211:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	 Port pin number.
+ 212:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  level output level selection. Refer @ref XMC_GPIO_OUTPUT_LEVEL_t for valid values.
+ 213:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 214:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 215:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 216:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 217:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Set port pin output level to high or low.It configures hardware registers Pn_OMR.\a level is ini
+ 218:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * configured during initialization in XMC_GPIO_Init(). Call this API to alter output level as need
+ 219:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 220:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 221:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *  XMC_GPIO_SetOutputHigh(), XMC_GPIO_SetOutputLow().
+ 222:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 223:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 224:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().
+ 225:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 226:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 227:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 228:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 229:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputLevel(XMC_GPIO_PORT_t *const port, const uint8_t pin, const 
+ 230:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** {
+  68              	 .loc 2 230 0
+  69              	 .cfi_startproc
+  70              	 
+  71              	 
+  72              	 
+  73 0000 80B4     	 push {r7}
+  74              	.LCFI4:
+  75              	 .cfi_def_cfa_offset 4
+  76              	 .cfi_offset 7,-4
+  77 0002 85B0     	 sub sp,sp,#20
+  78              	.LCFI5:
+  79              	 .cfi_def_cfa_offset 24
+  80 0004 00AF     	 add r7,sp,#0
+  81              	.LCFI6:
+  82              	 .cfi_def_cfa_register 7
+  83 0006 F860     	 str r0,[r7,#12]
+  84 0008 0B46     	 mov r3,r1
+  85 000a 7A60     	 str r2,[r7,#4]
+  86 000c FB72     	 strb r3,[r7,#11]
+ 231:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLevel: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 232:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLevel: Invalid output level", XMC_GPIO_CHECK_OUTPUT_LEVEL(level));
+ 233:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   
+ 234:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = (uint32_t)level << pin;
+  87              	 .loc 2 234 0
+  88 000e FB7A     	 ldrb r3,[r7,#11]
+  89 0010 7A68     	 ldr r2,[r7,#4]
+  90 0012 9A40     	 lsls r2,r2,r3
+  91 0014 FB68     	 ldr r3,[r7,#12]
+  92 0016 5A60     	 str r2,[r3,#4]
+ 235:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** }
+  93              	 .loc 2 235 0
+  94 0018 1437     	 adds r7,r7,#20
+  95              	.LCFI7:
+  96              	 .cfi_def_cfa_offset 4
+  97 001a BD46     	 mov sp,r7
+  98              	.LCFI8:
+  99              	 .cfi_def_cfa_register 13
+ 100              	 
+ 101 001c 5DF8047B 	 ldr r7,[sp],#4
+ 102              	.LCFI9:
+ 103              	 .cfi_restore 7
+ 104              	 .cfi_def_cfa_offset 0
+ 105 0020 7047     	 bx lr
+ 106              	 .cfi_endproc
+ 107              	.LFE166:
+ 109 0022 00BF     	 .section .text.XMC_GPIO_SetOutputHigh,"ax",%progbits
+ 110              	 .align 2
+ 111              	 .thumb
+ 112              	 .thumb_func
+ 114              	XMC_GPIO_SetOutputHigh:
+ 115              	.LFB167:
+ 236:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 237:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 238:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 239:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 240:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	Port pin number.
+ 241:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 242:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 243:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 244:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 245:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *  Sets port pin output to high. It configures hardware registers Pn_OMR.
+ 246:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 247:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *  \par<b>Related APIs:</b><BR>
+ 248:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *  XMC_GPIO_SetOutputLow()
+ 249:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 250:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 251:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().\n
+ 252:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Register Pn_OMR is virtual and does not contain any flip-flop. A read action delivers the value 
+ 253:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 254:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 255:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 256:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputHigh(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 257:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 116              	 .loc 2 257 0
+ 117              	 .cfi_startproc
+ 118              	 
+ 119              	 
+ 120              	 
+ 121 0000 80B4     	 push {r7}
+ 122              	.LCFI10:
+ 123              	 .cfi_def_cfa_offset 4
+ 124              	 .cfi_offset 7,-4
+ 125 0002 83B0     	 sub sp,sp,#12
+ 126              	.LCFI11:
+ 127              	 .cfi_def_cfa_offset 16
+ 128 0004 00AF     	 add r7,sp,#0
+ 129              	.LCFI12:
+ 130              	 .cfi_def_cfa_register 7
+ 131 0006 7860     	 str r0,[r7,#4]
+ 132 0008 0B46     	 mov r3,r1
+ 133 000a FB70     	 strb r3,[r7,#3]
+ 258:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputHigh: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 259:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 260:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = (uint32_t)0x1U << pin;
+ 134              	 .loc 2 260 0
+ 135 000c FB78     	 ldrb r3,[r7,#3]
+ 136 000e 0122     	 movs r2,#1
+ 137 0010 9A40     	 lsls r2,r2,r3
+ 138 0012 7B68     	 ldr r3,[r7,#4]
+ 139 0014 5A60     	 str r2,[r3,#4]
+ 261:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 140              	 .loc 2 261 0
+ 141 0016 0C37     	 adds r7,r7,#12
+ 142              	.LCFI13:
+ 143              	 .cfi_def_cfa_offset 4
+ 144 0018 BD46     	 mov sp,r7
+ 145              	.LCFI14:
+ 146              	 .cfi_def_cfa_register 13
+ 147              	 
+ 148 001a 5DF8047B 	 ldr r7,[sp],#4
+ 149              	.LCFI15:
+ 150              	 .cfi_restore 7
+ 151              	 .cfi_def_cfa_offset 0
+ 152 001e 7047     	 bx lr
+ 153              	 .cfi_endproc
+ 154              	.LFE167:
+ 156              	 .section .text.XMC_GPIO_GetInput,"ax",%progbits
+ 157              	 .align 2
+ 158              	 .thumb
+ 159              	 .thumb_func
+ 161              	XMC_GPIO_GetInput:
+ 162              	.LFB170:
+ 262:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 263:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 264:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 265:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 266:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	port pin number.
+ 267:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 268:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return  None
+ 269:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 270:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Description:</b><br>
+ 271:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Sets port pin output to low. It configures hardware registers Pn_OMR.\n
+ 272:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 273:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>>
+ 274:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMC_GPIO_SetOutputHigh()
+ 275:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 276:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Note:</b><br>
+ 277:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().
+ 278:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Register Pn_OMR is virtual and does not contain any flip-flop. A read action delivers the value 
+ 279:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 280:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 281:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 282:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputLow(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 283:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 284:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLow: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 285:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 286:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = 0x10000U << pin;
+ 287:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 288:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 289:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 290:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 291:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param port constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 292:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param pin  port pin number.
+ 293:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 294:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 295:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 296:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 297:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Configures port pin output to Toggle. It configures hardware registers Pn_OMR.
+ 298:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 299:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 300:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMC_GPIO_SetOutputHigh(), XMC_GPIO_SetOutputLow().
+ 301:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 302:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 303:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode(). Regis
+ 304:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * and does not contain any flip-flop. A read action delivers the value of 0.
+ 305:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 306:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 307:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 308:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_ToggleOutput(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 309:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 310:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_ToggleOutput: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 311:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 312:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = 0x10001U << pin;
+ 313:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 314:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 315:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 316:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 317:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param port constant pointer pointing to GPIO port, to access hardware register Pn_IN.
+ 318:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param pin  Port pin number.
+ 319:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 320:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return uint32_t pin logic level status.
+ 321:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 322:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Description:</b><br>
+ 323:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Reads the Pn_IN register and returns the current logical value at the GPIO pin.
+ 324:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 325:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 326:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * None
+ 327:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 328:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 329:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to input mode using XMC_GPIO_SetMode().
+ 330:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 331:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 332:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 333:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE uint32_t XMC_GPIO_GetInput(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 334:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 163              	 .loc 2 334 0
+ 164              	 .cfi_startproc
+ 165              	 
+ 166              	 
+ 167              	 
+ 168 0000 80B4     	 push {r7}
+ 169              	.LCFI16:
+ 170              	 .cfi_def_cfa_offset 4
+ 171              	 .cfi_offset 7,-4
+ 172 0002 83B0     	 sub sp,sp,#12
+ 173              	.LCFI17:
+ 174              	 .cfi_def_cfa_offset 16
+ 175 0004 00AF     	 add r7,sp,#0
+ 176              	.LCFI18:
+ 177              	 .cfi_def_cfa_register 7
+ 178 0006 7860     	 str r0,[r7,#4]
+ 179 0008 0B46     	 mov r3,r1
+ 180 000a FB70     	 strb r3,[r7,#3]
+ 335:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_GetInput: Invalid port", XMC_GPIO_CHECK_PORT(port));
+ 336:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 337:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   return (((port->IN) >> pin) & 0x1U);
+ 181              	 .loc 2 337 0
+ 182 000c 7B68     	 ldr r3,[r7,#4]
+ 183 000e 5A6A     	 ldr r2,[r3,#36]
+ 184 0010 FB78     	 ldrb r3,[r7,#3]
+ 185 0012 22FA03F3 	 lsr r3,r2,r3
+ 186 0016 03F00103 	 and r3,r3,#1
+ 338:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 187              	 .loc 2 338 0
+ 188 001a 1846     	 mov r0,r3
+ 189 001c 0C37     	 adds r7,r7,#12
+ 190              	.LCFI19:
+ 191              	 .cfi_def_cfa_offset 4
+ 192 001e BD46     	 mov sp,r7
+ 193              	.LCFI20:
+ 194              	 .cfi_def_cfa_register 13
+ 195              	 
+ 196 0020 5DF8047B 	 ldr r7,[sp],#4
+ 197              	.LCFI21:
+ 198              	 .cfi_restore 7
+ 199              	 .cfi_def_cfa_offset 0
+ 200 0024 7047     	 bx lr
+ 201              	 .cfi_endproc
+ 202              	.LFE170:
+ 204 0026 00BF     	 .section .text.XMC_GPIO_EnableDigitalInput,"ax",%progbits
+ 205              	 .align 2
+ 206              	 .thumb
+ 207              	 .thumb_func
+ 209              	XMC_GPIO_EnableDigitalInput:
+ 210              	.LFB173:
+ 339:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 340:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 341:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param port constant pointer pointing to GPIO port, to access hardware register Pn_PPS.
+ 342:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param pin  port pin number.
+ 343:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 344:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 345:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 346:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 347:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Enables pin power save mode and configures Pn_PPS register.This configuration is useful when the
+ 348:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Deep Sleep mode.Port pin enabled with power save mode option are set to a defined state and the 
+ 349:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * as well as the output driver stage are switched off. By default port pin does not react to power
+ 350:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 351:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 352:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMC_GPIO_DisablePowerSaveMode()
+ 353:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 354:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * <b>Note:</b><br>
+ 355:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Do not enable the Pin Power Save function for pins configured for Hardware Control (Pn_HWSEL.HWx
+ 356:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * may result in an undefined behavior of the pin when the device enters the Deep Sleep state.
+ 357:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 358:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 359:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 360:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 361:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_EnablePowerSaveMode(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 362:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 363:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_EnablePowerSaveMode: Invalid port", XMC_GPIO_CHECK_PORT(port));
+ 364:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 365:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   port->PPS |= (uint32_t)0x1U << pin;
+ 366:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 367:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 368:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 369:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 370:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 371:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param port	constant pointer pointing to GPIO port, to access hardware register Pn_PPS.
+ 372:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param pin	port pin number.
+ 373:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 374:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 375:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 376:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 377:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Disables pin power save mode and configures Pn_PPS register.This configuration is useful when th
+ 378:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Deep Sleep mode. This configuration enables input Schmitt-Trigger and output driver stage(if pin
+ 379:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * save mode previously). By default port \a pin does not react to power save mode request.
+ 380:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 381:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 382:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *  XMC_GPIO_EnablePowerSaveMode()
+ 383:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 384:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Note:</b><br>
+ 385:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Do not enable the Pin Power Save function for pins configured for Hardware Control (Pn_HWSEL.HWx
+ 386:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * may result in an undefined behavior of the pin when the device enters the Deep Sleep state.
+ 387:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 388:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 389:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 390:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_DisablePowerSaveMode(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 391:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 392:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_DisablePowerSaveMode: Invalid port", XMC_GPIO_CHECK_PORT(port));
+ 393:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 394:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   port->PPS &= ~(uint32_t)((uint32_t)0x1U << pin);
+ 395:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 396:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 397:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 398:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 399:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param port	 constant pointer pointing to GPIO port, to access hardware register Pn_HWSEL.
+ 400:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param pin	 port pin number.
+ 401:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param hwctrl direct hardware control selection. Refer @ref XMC_GPIO_HWCTRL_t for valid values.
+ 402:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 403:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 404:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 405:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 406:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Selects direct hard ware control and configures Pn_HWSEL register.This configuration is useful f
+ 407:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * overlaid with peripheral functions for which the connected peripheral needs hardware control.
+ 408:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 409:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 410:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *  None
+ 411:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 412:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Note:</b><br>
+ 413:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Do not enable the Pin Power Save function for pins configured for Hardware Control (Pn_HWSEL.HWx
+ 414:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Doing so may result in an undefined behavior of the pin when the device enters the Deep Sleep st
+ 415:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 416:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 417:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 418:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** void XMC_GPIO_SetHardwareControl(XMC_GPIO_PORT_t *const port, const uint8_t pin, const XMC_GPIO_HWC
+ 419:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 420:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 421:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 422:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param port	constant pointer pointing to GPIO port, to access hardware register Pn_PDISC.
+ 423:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param pin	port pin number.
+ 424:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 425:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 426:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 427:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 428:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *  None
+ 429:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 430:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 431:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * Enable digital input path for analog pins and configures Pn_PDISC register.This configuration is
+ 432:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  * analog port pins.
+ 433:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 434:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 435:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_EnableDigitalInput(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 436:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 211              	 .loc 2 436 0
+ 212              	 .cfi_startproc
+ 213              	 
+ 214              	 
+ 215              	 
+ 216 0000 80B4     	 push {r7}
+ 217              	.LCFI22:
+ 218              	 .cfi_def_cfa_offset 4
+ 219              	 .cfi_offset 7,-4
+ 220 0002 83B0     	 sub sp,sp,#12
+ 221              	.LCFI23:
+ 222              	 .cfi_def_cfa_offset 16
+ 223 0004 00AF     	 add r7,sp,#0
+ 224              	.LCFI24:
+ 225              	 .cfi_def_cfa_register 7
+ 226 0006 7860     	 str r0,[r7,#4]
+ 227 0008 0B46     	 mov r3,r1
+ 228 000a FB70     	 strb r3,[r7,#3]
+ 437:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_EnableDigitalInput: Invalid analog port", XMC_GPIO_CHECK_ANALOG_PORT(port));
+ 438:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   
+ 439:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h ****   port->PDISC &= ~(uint32_t)((uint32_t)0x1U << pin);
+ 229              	 .loc 2 439 0
+ 230 000c 7B68     	 ldr r3,[r7,#4]
+ 231 000e 1A6E     	 ldr r2,[r3,#96]
+ 232 0010 FB78     	 ldrb r3,[r7,#3]
+ 233 0012 0121     	 movs r1,#1
+ 234 0014 01FA03F3 	 lsl r3,r1,r3
+ 235 0018 DB43     	 mvns r3,r3
+ 236 001a 1A40     	 ands r2,r2,r3
+ 237 001c 7B68     	 ldr r3,[r7,#4]
+ 238 001e 1A66     	 str r2,[r3,#96]
+ 440:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 239              	 .loc 2 440 0
+ 240 0020 0C37     	 adds r7,r7,#12
+ 241              	.LCFI25:
+ 242              	 .cfi_def_cfa_offset 4
+ 243 0022 BD46     	 mov sp,r7
+ 244              	.LCFI26:
+ 245              	 .cfi_def_cfa_register 13
+ 246              	 
+ 247 0024 5DF8047B 	 ldr r7,[sp],#4
+ 248              	.LCFI27:
+ 249              	 .cfi_restore 7
+ 250              	 .cfi_def_cfa_offset 0
+ 251 0028 7047     	 bx lr
+ 252              	 .cfi_endproc
+ 253              	.LFE173:
+ 255 002a 00BF     	 .section .text.Init_ECAT_Adapt_LED,"ax",%progbits
+ 256              	 .align 2
+ 257              	 .global Init_ECAT_Adapt_LED
+ 258              	 .thumb
+ 259              	 .thumb_func
+ 261              	Init_ECAT_Adapt_LED:
+ 262              	.LFB325:
+ 263              	 .file 3 "../main.c"
+   1:../main.c     **** /******************************************************************************
+   2:../main.c     **** * Software License Agreement
+   3:../main.c     **** *
+   4:../main.c     **** * Copyright (c) 2016, Infineon Technologies AG
+   5:../main.c     **** * All rights reserved.
+   6:../main.c     **** *
+   7:../main.c     **** * Redistribution and use in source and binary forms, with or without
+   8:../main.c     **** * modification, are permitted provided that the following conditions are met:
+   9:../main.c     **** *
+  10:../main.c     **** * Redistributions of source code must retain the above copyright notice,
+  11:../main.c     **** * this list of conditions and the following disclaimer.
+  12:../main.c     **** *
+  13:../main.c     **** * Redistributions in binary form must reproduce the above copyright notice,
+  14:../main.c     **** * this list of conditions and the following disclaimer in the documentation
+  15:../main.c     **** * and/or other materials provided with the distribution.
+  16:../main.c     **** *
+  17:../main.c     **** * Neither the name of the copyright holders nor the names of its contributors
+  18:../main.c     **** * may be used to endorse or promote products derived from this software
+  19:../main.c     **** * without specific prior written permission
+  20:../main.c     **** 
+  21:../main.c     **** * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:../main.c     **** * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:../main.c     **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:../main.c     **** * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+  25:../main.c     **** * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:../main.c     **** * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:../main.c     **** * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:../main.c     **** * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:../main.c     **** * CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:../main.c     **** * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:../main.c     **** * POSSIBILITY OF SUCH DAMAGE.
+  32:../main.c     **** *
+  33:../main.c     **** * To improve the quality of the software, users are encouraged to share
+  34:../main.c     **** * modifications, enhancements or bug fixes with Infineon Technologies AG
+  35:../main.c     **** * (dave@infineon.com).
+  36:../main.c     **** *
+  37:../main.c     **** *****************************************************************************/
+  38:../main.c     **** 
+  39:../main.c     **** /****************************************************************
+  40:../main.c     **** * HEADER FILES
+  41:../main.c     **** ***************************************************************/
+  42:../main.c     **** #include <DAVE.h>               //Declarations from DAVE Code Generation (includes SFR declaration)
+  43:../main.c     **** #include "SSC/Src/XMC_ESCObjects.h"
+  44:../main.c     **** #include "flashprog.h"
+  45:../main.c     **** #include "firmwareupdate_SSC.h"
+  46:../main.c     **** 
+  47:../main.c     **** /****************************************************************
+  48:../main.c     **** * MACROS AND DEFINES
+  49:../main.c     **** ***************************************************************/
+  50:../main.c     **** #define P_LED1 P1_14
+  51:../main.c     **** #define P_LED2 P0_14
+  52:../main.c     **** #define P_LED3 P3_14
+  53:../main.c     **** #define P_LED4 P0_15
+  54:../main.c     **** #define P_LED5 P1_2
+  55:../main.c     **** #define P_LED6 P3_13
+  56:../main.c     **** #define P_LED7 P5_3
+  57:../main.c     **** #define P_LED8 P3_11
+  58:../main.c     **** #define MAP2LEVEL(x) ((x==0)?XMC_GPIO_OUTPUT_LEVEL_HIGH:XMC_GPIO_OUTPUT_LEVEL_LOW)
+  59:../main.c     **** 
+  60:../main.c     **** /****************************************************************
+  61:../main.c     **** * LOCAL DATA
+  62:../main.c     **** ***************************************************************/
+  63:../main.c     **** 
+  64:../main.c     **** /****************************************************************
+  65:../main.c     **** * API PROTOTYPES
+  66:../main.c     **** ***************************************************************/
+  67:../main.c     **** 
+  68:../main.c     **** /****************************************************************
+  69:../main.c     **** * API IMPLEMENTATION
+  70:../main.c     **** ***************************************************************/
+  71:../main.c     **** 
+  72:../main.c     **** /**
+  73:../main.c     ****  * @brief Init_ECAT_Adapt_LED
+  74:../main.c     ****  *
+  75:../main.c     ****  * Initializes the 8 LEDs available on the shield of XMC4800 Relax EtherCAT Kit
+  76:../main.c     ****  * to output push pull.
+  77:../main.c     ****  *
+  78:../main.c     ****  * @input :  none
+  79:../main.c     ****  *
+  80:../main.c     ****  * @output : none
+  81:../main.c     ****  *
+  82:../main.c     ****  * @return : none
+  83:../main.c     ****  *
+  84:../main.c     ****  */
+  85:../main.c     **** void Init_ECAT_Adapt_LED ()
+  86:../main.c     **** {
+ 264              	 .loc 3 86 0
+ 265              	 .cfi_startproc
+ 266              	 
+ 267              	 
+ 268 0000 80B5     	 push {r7,lr}
+ 269              	.LCFI28:
+ 270              	 .cfi_def_cfa_offset 8
+ 271              	 .cfi_offset 7,-8
+ 272              	 .cfi_offset 14,-4
+ 273 0002 00AF     	 add r7,sp,#0
+ 274              	.LCFI29:
+ 275              	 .cfi_def_cfa_register 7
+  87:../main.c     ****   /* Set mode of all LED ports to push-pull and output level to low*/
+  88:../main.c     ****   XMC_GPIO_SetMode(P_LED1, XMC_GPIO_MODE_OUTPUT_PUSH_PULL);
+ 276              	 .loc 3 88 0
+ 277 0004 2448     	 ldr r0,.L10
+ 278 0006 0E21     	 movs r1,#14
+ 279 0008 8022     	 movs r2,#128
+ 280 000a FFF7FEFF 	 bl XMC_GPIO_SetMode
+  89:../main.c     ****   XMC_GPIO_SetOutputHigh(P_LED1);
+ 281              	 .loc 3 89 0
+ 282 000e 2248     	 ldr r0,.L10
+ 283 0010 0E21     	 movs r1,#14
+ 284 0012 FFF7FEFF 	 bl XMC_GPIO_SetOutputHigh
+  90:../main.c     ****   XMC_GPIO_SetMode(P_LED2, XMC_GPIO_MODE_OUTPUT_PUSH_PULL);
+ 285              	 .loc 3 90 0
+ 286 0016 2148     	 ldr r0,.L10+4
+ 287 0018 0E21     	 movs r1,#14
+ 288 001a 8022     	 movs r2,#128
+ 289 001c FFF7FEFF 	 bl XMC_GPIO_SetMode
+  91:../main.c     ****   XMC_GPIO_SetOutputHigh(P_LED2);
+ 290              	 .loc 3 91 0
+ 291 0020 1E48     	 ldr r0,.L10+4
+ 292 0022 0E21     	 movs r1,#14
+ 293 0024 FFF7FEFF 	 bl XMC_GPIO_SetOutputHigh
+  92:../main.c     ****   XMC_GPIO_SetMode(P_LED3, XMC_GPIO_MODE_OUTPUT_PUSH_PULL);
+ 294              	 .loc 3 92 0
+ 295 0028 1D48     	 ldr r0,.L10+8
+ 296 002a 0E21     	 movs r1,#14
+ 297 002c 8022     	 movs r2,#128
+ 298 002e FFF7FEFF 	 bl XMC_GPIO_SetMode
+  93:../main.c     ****   XMC_GPIO_SetOutputHigh(P_LED3);
+ 299              	 .loc 3 93 0
+ 300 0032 1B48     	 ldr r0,.L10+8
+ 301 0034 0E21     	 movs r1,#14
+ 302 0036 FFF7FEFF 	 bl XMC_GPIO_SetOutputHigh
+  94:../main.c     ****   XMC_GPIO_SetMode(P_LED4, XMC_GPIO_MODE_OUTPUT_PUSH_PULL);
+ 303              	 .loc 3 94 0
+ 304 003a 1848     	 ldr r0,.L10+4
+ 305 003c 0F21     	 movs r1,#15
+ 306 003e 8022     	 movs r2,#128
+ 307 0040 FFF7FEFF 	 bl XMC_GPIO_SetMode
+  95:../main.c     ****   XMC_GPIO_SetOutputHigh(P_LED4);
+ 308              	 .loc 3 95 0
+ 309 0044 1548     	 ldr r0,.L10+4
+ 310 0046 0F21     	 movs r1,#15
+ 311 0048 FFF7FEFF 	 bl XMC_GPIO_SetOutputHigh
+  96:../main.c     ****   XMC_GPIO_SetMode(P_LED5, XMC_GPIO_MODE_OUTPUT_PUSH_PULL);
+ 312              	 .loc 3 96 0
+ 313 004c 1248     	 ldr r0,.L10
+ 314 004e 0221     	 movs r1,#2
+ 315 0050 8022     	 movs r2,#128
+ 316 0052 FFF7FEFF 	 bl XMC_GPIO_SetMode
+  97:../main.c     ****   XMC_GPIO_SetOutputHigh(P_LED5);
+ 317              	 .loc 3 97 0
+ 318 0056 1048     	 ldr r0,.L10
+ 319 0058 0221     	 movs r1,#2
+ 320 005a FFF7FEFF 	 bl XMC_GPIO_SetOutputHigh
+  98:../main.c     ****   XMC_GPIO_SetMode(P_LED6, XMC_GPIO_MODE_OUTPUT_PUSH_PULL);
+ 321              	 .loc 3 98 0
+ 322 005e 1048     	 ldr r0,.L10+8
+ 323 0060 0D21     	 movs r1,#13
+ 324 0062 8022     	 movs r2,#128
+ 325 0064 FFF7FEFF 	 bl XMC_GPIO_SetMode
+  99:../main.c     ****   XMC_GPIO_SetOutputHigh(P_LED6);
+ 326              	 .loc 3 99 0
+ 327 0068 0D48     	 ldr r0,.L10+8
+ 328 006a 0D21     	 movs r1,#13
+ 329 006c FFF7FEFF 	 bl XMC_GPIO_SetOutputHigh
+ 100:../main.c     ****   XMC_GPIO_SetMode(P_LED7, XMC_GPIO_MODE_OUTPUT_PUSH_PULL);
+ 330              	 .loc 3 100 0
+ 331 0070 0C48     	 ldr r0,.L10+12
+ 332 0072 0321     	 movs r1,#3
+ 333 0074 8022     	 movs r2,#128
+ 334 0076 FFF7FEFF 	 bl XMC_GPIO_SetMode
+ 101:../main.c     ****   XMC_GPIO_SetOutputHigh(P_LED7);
+ 335              	 .loc 3 101 0
+ 336 007a 0A48     	 ldr r0,.L10+12
+ 337 007c 0321     	 movs r1,#3
+ 338 007e FFF7FEFF 	 bl XMC_GPIO_SetOutputHigh
+ 102:../main.c     ****   XMC_GPIO_SetMode(P_LED8, XMC_GPIO_MODE_OUTPUT_PUSH_PULL);
+ 339              	 .loc 3 102 0
+ 340 0082 0748     	 ldr r0,.L10+8
+ 341 0084 0B21     	 movs r1,#11
+ 342 0086 8022     	 movs r2,#128
+ 343 0088 FFF7FEFF 	 bl XMC_GPIO_SetMode
+ 103:../main.c     ****   XMC_GPIO_SetOutputHigh(P_LED8);
+ 344              	 .loc 3 103 0
+ 345 008c 0448     	 ldr r0,.L10+8
+ 346 008e 0B21     	 movs r1,#11
+ 347 0090 FFF7FEFF 	 bl XMC_GPIO_SetOutputHigh
+ 104:../main.c     **** }
+ 348              	 .loc 3 104 0
+ 349 0094 80BD     	 pop {r7,pc}
+ 350              	.L11:
+ 351 0096 00BF     	 .align 2
+ 352              	.L10:
+ 353 0098 00810248 	 .word 1208123648
+ 354 009c 00800248 	 .word 1208123392
+ 355 00a0 00830248 	 .word 1208124160
+ 356 00a4 00850248 	 .word 1208124672
+ 357              	 .cfi_endproc
+ 358              	.LFE325:
+ 360              	 .section .text.Init_Relax_Button,"ax",%progbits
+ 361              	 .align 2
+ 362              	 .global Init_Relax_Button
+ 363              	 .thumb
+ 364              	 .thumb_func
+ 366              	Init_Relax_Button:
+ 367              	.LFB326:
+ 105:../main.c     **** 
+ 106:../main.c     **** /**
+ 107:../main.c     ****  * @brief Init_Relax_Button
+ 108:../main.c     ****  *
+ 109:../main.c     ****  * Initializes the 8 two BUTTON inputs available on XMC4800 Relax EtherCAT Kit
+ 110:../main.c     ****  * to input.
+ 111:../main.c     ****  *
+ 112:../main.c     ****  * @input :  none
+ 113:../main.c     ****  *
+ 114:../main.c     ****  * @output : none
+ 115:../main.c     ****  *
+ 116:../main.c     ****  * @return : none
+ 117:../main.c     ****  *
+ 118:../main.c     ****  */
+ 119:../main.c     **** void Init_Relax_Button ()
+ 120:../main.c     **** {
+ 368              	 .loc 3 120 0
+ 369              	 .cfi_startproc
+ 370              	 
+ 371              	 
+ 372 0000 80B5     	 push {r7,lr}
+ 373              	.LCFI30:
+ 374              	 .cfi_def_cfa_offset 8
+ 375              	 .cfi_offset 7,-8
+ 376              	 .cfi_offset 14,-4
+ 377 0002 00AF     	 add r7,sp,#0
+ 378              	.LCFI31:
+ 379              	 .cfi_def_cfa_register 7
+ 121:../main.c     ****   /* INITIALIZE BUTTON1 ON PORT 5.13 FOR INPUT */
+ 122:../main.c     ****   /* Set mode to input tristate */
+ 123:../main.c     ****   XMC_GPIO_SetMode(P15_13, XMC_GPIO_MODE_INPUT_TRISTATE);
+ 380              	 .loc 3 123 0
+ 381 0004 0948     	 ldr r0,.L13
+ 382 0006 0D21     	 movs r1,#13
+ 383 0008 0022     	 movs r2,#0
+ 384 000a FFF7FEFF 	 bl XMC_GPIO_SetMode
+ 124:../main.c     ****   /* Enable digital input. Only needed because P15.13 is an analog port */
+ 125:../main.c     ****   XMC_GPIO_EnableDigitalInput(P15_13);
+ 385              	 .loc 3 125 0
+ 386 000e 0748     	 ldr r0,.L13
+ 387 0010 0D21     	 movs r1,#13
+ 388 0012 FFF7FEFF 	 bl XMC_GPIO_EnableDigitalInput
+ 126:../main.c     **** 
+ 127:../main.c     ****   /* INITIALIZE BUTTON2 ON PORT 5.12 FOR INPUT */
+ 128:../main.c     ****   /* Set mode to input tristate */
+ 129:../main.c     ****   XMC_GPIO_SetMode(P15_12, XMC_GPIO_MODE_INPUT_TRISTATE);
+ 389              	 .loc 3 129 0
+ 390 0016 0548     	 ldr r0,.L13
+ 391 0018 0C21     	 movs r1,#12
+ 392 001a 0022     	 movs r2,#0
+ 393 001c FFF7FEFF 	 bl XMC_GPIO_SetMode
+ 130:../main.c     ****   /* Enable digital input. Only needed because P15.12 is an analog port */
+ 131:../main.c     ****   XMC_GPIO_EnableDigitalInput(P15_12);
+ 394              	 .loc 3 131 0
+ 395 0020 0248     	 ldr r0,.L13
+ 396 0022 0C21     	 movs r1,#12
+ 397 0024 FFF7FEFF 	 bl XMC_GPIO_EnableDigitalInput
+ 132:../main.c     **** }
+ 398              	 .loc 3 132 0
+ 399 0028 80BD     	 pop {r7,pc}
+ 400              	.L14:
+ 401 002a 00BF     	 .align 2
+ 402              	.L13:
+ 403 002c 008F0248 	 .word 1208127232
+ 404              	 .cfi_endproc
+ 405              	.LFE326:
+ 407              	 .section .text.process_app,"ax",%progbits
+ 408              	 .align 2
+ 409              	 .global process_app
+ 410              	 .thumb
+ 411              	 .thumb_func
+ 413              	process_app:
+ 414              	.LFB327:
+ 133:../main.c     **** 
+ 134:../main.c     **** /**
+ 135:../main.c     ****  * @brief process_app
+ 136:../main.c     ****  *
+ 137:../main.c     ****  * Callback called from SSC stack to process I/Os.
+ 138:../main.c     ****  *
+ 139:../main.c     ****  * @input :  OUT_GENERIC: pointer to output structure (host->slave)
+ 140:../main.c     ****  *
+ 141:../main.c     ****  * @output : IN_GENERIC : pointer to input structure (slave->host)
+ 142:../main.c     ****  *
+ 143:../main.c     ****  * @return : none
+ 144:../main.c     ****  *
+ 145:../main.c     ****  */
+ 146:../main.c     **** 
+ 147:../main.c     **** 
+ 148:../main.c     **** void process_app(TOBJ7000 *OUT_GENERIC, TOBJ6000 *IN_GENERIC)
+ 149:../main.c     **** {
+ 415              	 .loc 3 149 0
+ 416              	 .cfi_startproc
+ 417              	 
+ 418              	 
+ 419 0000 80B5     	 push {r7,lr}
+ 420              	.LCFI32:
+ 421              	 .cfi_def_cfa_offset 8
+ 422              	 .cfi_offset 7,-8
+ 423              	 .cfi_offset 14,-4
+ 424 0002 82B0     	 sub sp,sp,#8
+ 425              	.LCFI33:
+ 426              	 .cfi_def_cfa_offset 16
+ 427 0004 00AF     	 add r7,sp,#0
+ 428              	.LCFI34:
+ 429              	 .cfi_def_cfa_register 7
+ 430 0006 7860     	 str r0,[r7,#4]
+ 431 0008 3960     	 str r1,[r7]
+ 150:../main.c     ****   /* Check if INIT state is entered, after firmware update was started
+ 151:../main.c     ****    * If yes, trigger system on reset to start bootloader
+ 152:../main.c     ****    */
+ 153:../main.c     ****   if (FWUPDATE_GetDownloadFinished()==1)
+ 432              	 .loc 3 153 0
+ 433 000a FFF7FEFF 	 bl FWUPDATE_GetDownloadFinished
+ 434 000e 0346     	 mov r3,r0
+ 435 0010 012B     	 cmp r3,#1
+ 436 0012 09D1     	 bne .L16
+ 154:../main.c     ****   {
+ 155:../main.c     ****     /* Restart in normal bootmode */
+ 156:../main.c     ****     /* Clear the reset cause field for proper reset detection of the ssw */
+ 157:../main.c     **** 	XMC_SCU_RESET_ClearDeviceResetReason();
+ 437              	 .loc 3 157 0
+ 438 0014 FFF7FEFF 	 bl XMC_SCU_RESET_ClearDeviceResetReason
+ 158:../main.c     ****     /* Set normal boot mode */
+ 159:../main.c     ****     XMC_SCU_SetBootMode(XMC_SCU_BOOTMODE_NORMAL);
+ 439              	 .loc 3 159 0
+ 440 0018 0020     	 movs r0,#0
+ 441 001a FFF7FEFF 	 bl XMC_SCU_SetBootMode
+ 160:../main.c     ****     /* Trigger power on reset */
+ 161:../main.c     ****     PPB->AIRCR = 1 << PPB_AIRCR_SYSRESETREQ_Pos |0x5FA<<PPB_AIRCR_VECTKEY_Pos | 0x1 << PPB_AIRCR_PR
+ 442              	 .loc 3 161 0
+ 443 001e 4FF0E023 	 mov r3,#-536813568
+ 444 0022 554A     	 ldr r2,.L37
+ 445 0024 C3F80C2D 	 str r2,[r3,#3340]
+ 446              	.L16:
+ 162:../main.c     ****   }
+ 163:../main.c     **** 
+ 164:../main.c     ****   /* OUTPUT PROCESSING */
+ 165:../main.c     ****   /* Check bitfield set by master OUT_GEN_Bit1..8 and set LEDs accordingly */
+ 166:../main.c     ****   XMC_GPIO_SetOutputLevel(P_LED1, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit1));
+ 447              	 .loc 3 166 0
+ 448 0028 7B68     	 ldr r3,[r7,#4]
+ 449 002a 9B7A     	 ldrb r3,[r3,#10]
+ 450 002c 03F00103 	 and r3,r3,#1
+ 451 0030 DBB2     	 uxtb r3,r3
+ 452 0032 002B     	 cmp r3,#0
+ 453 0034 01D1     	 bne .L17
+ 454              	 .loc 3 166 0 is_stmt 0 discriminator 1
+ 455 0036 0123     	 movs r3,#1
+ 456 0038 01E0     	 b .L18
+ 457              	.L17:
+ 458              	 .loc 3 166 0 discriminator 2
+ 459 003a 4FF48033 	 mov r3,#65536
+ 460              	.L18:
+ 461              	 .loc 3 166 0 discriminator 4
+ 462 003e 4F48     	 ldr r0,.L37+4
+ 463 0040 0E21     	 movs r1,#14
+ 464 0042 1A46     	 mov r2,r3
+ 465 0044 FFF7FEFF 	 bl XMC_GPIO_SetOutputLevel
+ 167:../main.c     ****   XMC_GPIO_SetOutputLevel(P_LED2, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit2));
+ 466              	 .loc 3 167 0 is_stmt 1 discriminator 4
+ 467 0048 7B68     	 ldr r3,[r7,#4]
+ 468 004a 9B7A     	 ldrb r3,[r3,#10]
+ 469 004c 03F00203 	 and r3,r3,#2
+ 470 0050 DBB2     	 uxtb r3,r3
+ 471 0052 002B     	 cmp r3,#0
+ 472 0054 01D1     	 bne .L19
+ 473              	 .loc 3 167 0 is_stmt 0 discriminator 1
+ 474 0056 0123     	 movs r3,#1
+ 475 0058 01E0     	 b .L20
+ 476              	.L19:
+ 477              	 .loc 3 167 0 discriminator 2
+ 478 005a 4FF48033 	 mov r3,#65536
+ 479              	.L20:
+ 480              	 .loc 3 167 0 discriminator 4
+ 481 005e 4848     	 ldr r0,.L37+8
+ 482 0060 0E21     	 movs r1,#14
+ 483 0062 1A46     	 mov r2,r3
+ 484 0064 FFF7FEFF 	 bl XMC_GPIO_SetOutputLevel
+ 168:../main.c     ****   XMC_GPIO_SetOutputLevel(P_LED3, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit3));
+ 485              	 .loc 3 168 0 is_stmt 1 discriminator 4
+ 486 0068 7B68     	 ldr r3,[r7,#4]
+ 487 006a 9B7A     	 ldrb r3,[r3,#10]
+ 488 006c 03F00403 	 and r3,r3,#4
+ 489 0070 DBB2     	 uxtb r3,r3
+ 490 0072 002B     	 cmp r3,#0
+ 491 0074 01D1     	 bne .L21
+ 492              	 .loc 3 168 0 is_stmt 0 discriminator 1
+ 493 0076 0123     	 movs r3,#1
+ 494 0078 01E0     	 b .L22
+ 495              	.L21:
+ 496              	 .loc 3 168 0 discriminator 2
+ 497 007a 4FF48033 	 mov r3,#65536
+ 498              	.L22:
+ 499              	 .loc 3 168 0 discriminator 4
+ 500 007e 4148     	 ldr r0,.L37+12
+ 501 0080 0E21     	 movs r1,#14
+ 502 0082 1A46     	 mov r2,r3
+ 503 0084 FFF7FEFF 	 bl XMC_GPIO_SetOutputLevel
+ 169:../main.c     ****   XMC_GPIO_SetOutputLevel(P_LED4, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit4));
+ 504              	 .loc 3 169 0 is_stmt 1 discriminator 4
+ 505 0088 7B68     	 ldr r3,[r7,#4]
+ 506 008a 9B7A     	 ldrb r3,[r3,#10]
+ 507 008c 03F00803 	 and r3,r3,#8
+ 508 0090 DBB2     	 uxtb r3,r3
+ 509 0092 002B     	 cmp r3,#0
+ 510 0094 01D1     	 bne .L23
+ 511              	 .loc 3 169 0 is_stmt 0 discriminator 1
+ 512 0096 0123     	 movs r3,#1
+ 513 0098 01E0     	 b .L24
+ 514              	.L23:
+ 515              	 .loc 3 169 0 discriminator 2
+ 516 009a 4FF48033 	 mov r3,#65536
+ 517              	.L24:
+ 518              	 .loc 3 169 0 discriminator 4
+ 519 009e 3848     	 ldr r0,.L37+8
+ 520 00a0 0F21     	 movs r1,#15
+ 521 00a2 1A46     	 mov r2,r3
+ 522 00a4 FFF7FEFF 	 bl XMC_GPIO_SetOutputLevel
+ 170:../main.c     ****   XMC_GPIO_SetOutputLevel(P_LED5, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit5));
+ 523              	 .loc 3 170 0 is_stmt 1 discriminator 4
+ 524 00a8 7B68     	 ldr r3,[r7,#4]
+ 525 00aa 9B7A     	 ldrb r3,[r3,#10]
+ 526 00ac 03F01003 	 and r3,r3,#16
+ 527 00b0 DBB2     	 uxtb r3,r3
+ 528 00b2 002B     	 cmp r3,#0
+ 529 00b4 01D1     	 bne .L25
+ 530              	 .loc 3 170 0 is_stmt 0 discriminator 1
+ 531 00b6 0123     	 movs r3,#1
+ 532 00b8 01E0     	 b .L26
+ 533              	.L25:
+ 534              	 .loc 3 170 0 discriminator 2
+ 535 00ba 4FF48033 	 mov r3,#65536
+ 536              	.L26:
+ 537              	 .loc 3 170 0 discriminator 4
+ 538 00be 2F48     	 ldr r0,.L37+4
+ 539 00c0 0221     	 movs r1,#2
+ 540 00c2 1A46     	 mov r2,r3
+ 541 00c4 FFF7FEFF 	 bl XMC_GPIO_SetOutputLevel
+ 171:../main.c     ****   XMC_GPIO_SetOutputLevel(P_LED6, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit6));
+ 542              	 .loc 3 171 0 is_stmt 1 discriminator 4
+ 543 00c8 7B68     	 ldr r3,[r7,#4]
+ 544 00ca 9B7A     	 ldrb r3,[r3,#10]
+ 545 00cc 03F02003 	 and r3,r3,#32
+ 546 00d0 DBB2     	 uxtb r3,r3
+ 547 00d2 002B     	 cmp r3,#0
+ 548 00d4 01D1     	 bne .L27
+ 549              	 .loc 3 171 0 is_stmt 0 discriminator 1
+ 550 00d6 0123     	 movs r3,#1
+ 551 00d8 01E0     	 b .L28
+ 552              	.L27:
+ 553              	 .loc 3 171 0 discriminator 2
+ 554 00da 4FF48033 	 mov r3,#65536
+ 555              	.L28:
+ 556              	 .loc 3 171 0 discriminator 4
+ 557 00de 2948     	 ldr r0,.L37+12
+ 558 00e0 0D21     	 movs r1,#13
+ 559 00e2 1A46     	 mov r2,r3
+ 560 00e4 FFF7FEFF 	 bl XMC_GPIO_SetOutputLevel
+ 172:../main.c     ****   XMC_GPIO_SetOutputLevel(P_LED7, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit7));
+ 561              	 .loc 3 172 0 is_stmt 1 discriminator 4
+ 562 00e8 7B68     	 ldr r3,[r7,#4]
+ 563 00ea 9B7A     	 ldrb r3,[r3,#10]
+ 564 00ec 03F04003 	 and r3,r3,#64
+ 565 00f0 DBB2     	 uxtb r3,r3
+ 566 00f2 002B     	 cmp r3,#0
+ 567 00f4 01D1     	 bne .L29
+ 568              	 .loc 3 172 0 is_stmt 0 discriminator 1
+ 569 00f6 0123     	 movs r3,#1
+ 570 00f8 01E0     	 b .L30
+ 571              	.L29:
+ 572              	 .loc 3 172 0 discriminator 2
+ 573 00fa 4FF48033 	 mov r3,#65536
+ 574              	.L30:
+ 575              	 .loc 3 172 0 discriminator 4
+ 576 00fe 2248     	 ldr r0,.L37+16
+ 577 0100 0321     	 movs r1,#3
+ 578 0102 1A46     	 mov r2,r3
+ 579 0104 FFF7FEFF 	 bl XMC_GPIO_SetOutputLevel
+ 173:../main.c     ****   XMC_GPIO_SetOutputLevel(P_LED8, MAP2LEVEL(OUT_GENERIC->OUT_GEN_Bit8));
+ 580              	 .loc 3 173 0 is_stmt 1 discriminator 4
+ 581 0108 7B68     	 ldr r3,[r7,#4]
+ 582 010a 9B7A     	 ldrb r3,[r3,#10]
+ 583 010c 23F07F03 	 bic r3,r3,#127
+ 584 0110 DBB2     	 uxtb r3,r3
+ 585 0112 002B     	 cmp r3,#0
+ 586 0114 01D1     	 bne .L31
+ 587              	 .loc 3 173 0 is_stmt 0 discriminator 1
+ 588 0116 0123     	 movs r3,#1
+ 589 0118 01E0     	 b .L32
+ 590              	.L31:
+ 591              	 .loc 3 173 0 discriminator 2
+ 592 011a 4FF48033 	 mov r3,#65536
+ 593              	.L32:
+ 594              	 .loc 3 173 0 discriminator 4
+ 595 011e 1948     	 ldr r0,.L37+12
+ 596 0120 0B21     	 movs r1,#11
+ 597 0122 1A46     	 mov r2,r3
+ 598 0124 FFF7FEFF 	 bl XMC_GPIO_SetOutputLevel
+ 174:../main.c     **** 
+ 175:../main.c     ****   /* INPUT PROCESSING */
+ 176:../main.c     ****   /*Check Button 1 and set IN_GEN_Bit1 which is sent to master accordingly*/
+ 177:../main.c     ****   if (XMC_GPIO_GetInput(P15_13))
+ 599              	 .loc 3 177 0 is_stmt 1 discriminator 4
+ 600 0128 1848     	 ldr r0,.L37+20
+ 601 012a 0D21     	 movs r1,#13
+ 602 012c FFF7FEFF 	 bl XMC_GPIO_GetInput
+ 603 0130 0346     	 mov r3,r0
+ 604 0132 002B     	 cmp r3,#0
+ 605 0134 05D0     	 beq .L33
+ 178:../main.c     ****     IN_GENERIC->IN_GEN_Bit1 = 1;
+ 606              	 .loc 3 178 0
+ 607 0136 3A68     	 ldr r2,[r7]
+ 608 0138 937A     	 ldrb r3,[r2,#10]
+ 609 013a 43F00103 	 orr r3,r3,#1
+ 610 013e 9372     	 strb r3,[r2,#10]
+ 611 0140 04E0     	 b .L34
+ 612              	.L33:
+ 179:../main.c     ****   else
+ 180:../main.c     ****     IN_GENERIC->IN_GEN_Bit1 = 0;
+ 613              	 .loc 3 180 0
+ 614 0142 3A68     	 ldr r2,[r7]
+ 615 0144 937A     	 ldrb r3,[r2,#10]
+ 616 0146 6FF30003 	 bfc r3,#0,#1
+ 617 014a 9372     	 strb r3,[r2,#10]
+ 618              	.L34:
+ 181:../main.c     **** 
+ 182:../main.c     ****   /*Check Button 2 and set IN_GEN_Bit2 which is sent to master accordingly*/
+ 183:../main.c     ****   if (XMC_GPIO_GetInput(P15_12))
+ 619              	 .loc 3 183 0
+ 620 014c 0F48     	 ldr r0,.L37+20
+ 621 014e 0C21     	 movs r1,#12
+ 622 0150 FFF7FEFF 	 bl XMC_GPIO_GetInput
+ 623 0154 0346     	 mov r3,r0
+ 624 0156 002B     	 cmp r3,#0
+ 625 0158 05D0     	 beq .L35
+ 184:../main.c     ****     IN_GENERIC->IN_GEN_Bit2 = 1;
+ 626              	 .loc 3 184 0
+ 627 015a 3A68     	 ldr r2,[r7]
+ 628 015c 937A     	 ldrb r3,[r2,#10]
+ 629 015e 43F00203 	 orr r3,r3,#2
+ 630 0162 9372     	 strb r3,[r2,#10]
+ 631 0164 04E0     	 b .L15
+ 632              	.L35:
+ 185:../main.c     ****   else
+ 186:../main.c     ****     IN_GENERIC->IN_GEN_Bit2 = 0;
+ 633              	 .loc 3 186 0
+ 634 0166 3A68     	 ldr r2,[r7]
+ 635 0168 937A     	 ldrb r3,[r2,#10]
+ 636 016a 6FF34103 	 bfc r3,#1,#1
+ 637 016e 9372     	 strb r3,[r2,#10]
+ 638              	.L15:
+ 187:../main.c     **** }
+ 639              	 .loc 3 187 0
+ 640 0170 0837     	 adds r7,r7,#8
+ 641              	.LCFI35:
+ 642              	 .cfi_def_cfa_offset 8
+ 643 0172 BD46     	 mov sp,r7
+ 644              	.LCFI36:
+ 645              	 .cfi_def_cfa_register 13
+ 646              	 
+ 647 0174 80BD     	 pop {r7,pc}
+ 648              	.L38:
+ 649 0176 00BF     	 .align 2
+ 650              	.L37:
+ 651 0178 0401FA05 	 .word 100270340
+ 652 017c 00810248 	 .word 1208123648
+ 653 0180 00800248 	 .word 1208123392
+ 654 0184 00830248 	 .word 1208124160
+ 655 0188 00850248 	 .word 1208124672
+ 656 018c 008F0248 	 .word 1208127232
+ 657              	 .cfi_endproc
+ 658              	.LFE327:
+ 660              	 .section .text.main,"ax",%progbits
+ 661              	 .align 2
+ 662              	 .global main
+ 663              	 .thumb
+ 664              	 .thumb_func
+ 666              	main:
+ 667              	.LFB328:
+ 188:../main.c     **** 
+ 189:../main.c     **** /**
+ 190:../main.c     ****  * @brief main
+ 191:../main.c     ****  *
+ 192:../main.c     ****  * Initializes all the consumed Apps & Creates and process SSC stack
+ 193:../main.c     ****  *
+ 194:../main.c     ****  * */
+ 195:../main.c     **** int main(void)
+ 196:../main.c     **** {
+ 668              	 .loc 3 196 0
+ 669              	 .cfi_startproc
+ 670              	 
+ 671              	 
+ 672 0000 80B5     	 push {r7,lr}
+ 673              	.LCFI37:
+ 674              	 .cfi_def_cfa_offset 8
+ 675              	 .cfi_offset 7,-8
+ 676              	 .cfi_offset 14,-4
+ 677 0002 00AF     	 add r7,sp,#0
+ 678              	.LCFI38:
+ 679              	 .cfi_def_cfa_register 7
+ 197:../main.c     ****   /*Initialize DAVE */
+ 198:../main.c     ****   if(DAVE_Init() == DAVE_STATUS_FAILURE)
+ 680              	 .loc 3 198 0
+ 681 0004 FFF7FEFF 	 bl DAVE_Init
+ 682 0008 0346     	 mov r3,r0
+ 683 000a 012B     	 cmp r3,#1
+ 684 000c 00D1     	 bne .L40
+ 685              	.L41:
+ 199:../main.c     ****   {
+ 200:../main.c     ****     /* Placeholder for error handler code.*/
+ 201:../main.c     ****     XMC_DEBUG(("DAVE APPs initialization failed\n"));
+ 202:../main.c     ****     while(1U)
+ 203:../main.c     ****     {
+ 204:../main.c     ****       /* do nothing */
+ 205:../main.c     ****     }
+ 686              	 .loc 3 205 0 discriminator 1
+ 687 000e FEE7     	 b .L41
+ 688              	.L40:
+ 206:../main.c     ****   }
+ 207:../main.c     **** 
+ 208:../main.c     ****   /* Initialize the ports which drive LEDs on EtherCat shield*/
+ 209:../main.c     ****   Init_ECAT_Adapt_LED ();
+ 689              	 .loc 3 209 0
+ 690 0010 FFF7FEFF 	 bl Init_ECAT_Adapt_LED
+ 210:../main.c     ****   /* Initialize buttons on XMC4800 */
+ 211:../main.c     ****   Init_Relax_Button();
+ 691              	 .loc 3 211 0
+ 692 0014 FFF7FEFF 	 bl Init_Relax_Button
+ 693              	.L42:
+ 212:../main.c     **** 
+ 213:../main.c     ****   /* Placeholder for user application code. The while loop below can be replaced with user applicat
+ 214:../main.c     ****   for( ;; )
+ 215:../main.c     ****   {
+ 216:../main.c     ****     MainLoop();
+ 694              	 .loc 3 216 0 discriminator 1
+ 695 0018 FFF7FEFF 	 bl MainLoop
+ 217:../main.c     ****   }
+ 696              	 .loc 3 217 0 discriminator 1
+ 697 001c FCE7     	 b .L42
+ 698              	 .cfi_endproc
+ 699              	.LFE328:
+ 701 001e 00BF     	 .section .text.ERU1_0_IRQHandler,"ax",%progbits
+ 702              	 .align 2
+ 703              	 .global ERU1_0_IRQHandler
+ 704              	 .thumb
+ 705              	 .thumb_func
+ 707              	ERU1_0_IRQHandler:
+ 708              	.LFB329:
+ 218:../main.c     **** }
+ 219:../main.c     **** 
+ 220:../main.c     **** /**
+ 221:../main.c     **** 
+ 222:../main.c     ****  * @brief SYNC0IRQHandler() - EtherCAT Interrupt Routine for SYNC0
+ 223:../main.c     ****  *
+ 224:../main.c     ****  * <b>Details of function</b><br>
+ 225:../main.c     ****  * This routine is handling the SYNC0 Interrupts and need to call the SSC Stack
+ 226:../main.c     ****  */
+ 227:../main.c     **** void SYNC0IRQHandler (void)
+ 228:../main.c     **** {
+ 709              	 .loc 3 228 0
+ 710              	 .cfi_startproc
+ 711              	 
+ 712              	 
+ 713 0000 80B5     	 push {r7,lr}
+ 714              	.LCFI39:
+ 715              	 .cfi_def_cfa_offset 8
+ 716              	 .cfi_offset 7,-8
+ 717              	 .cfi_offset 14,-4
+ 718 0002 00AF     	 add r7,sp,#0
+ 719              	.LCFI40:
+ 720              	 .cfi_def_cfa_register 7
+ 229:../main.c     **** 	Sync0_Isr();
+ 721              	 .loc 3 229 0
+ 722 0004 FFF7FEFF 	 bl Sync0_Isr
+ 230:../main.c     **** }
+ 723              	 .loc 3 230 0
+ 724 0008 80BD     	 pop {r7,pc}
+ 725              	 .cfi_endproc
+ 726              	.LFE329:
+ 728 000a 00BF     	 .section .text.ERU1_3_IRQHandler,"ax",%progbits
+ 729              	 .align 2
+ 730              	 .global ERU1_3_IRQHandler
+ 731              	 .thumb
+ 732              	 .thumb_func
+ 734              	ERU1_3_IRQHandler:
+ 735              	.LFB330:
+ 231:../main.c     **** 
+ 232:../main.c     **** /**
+ 233:../main.c     **** 
+ 234:../main.c     ****  * @brief SYNC1IRQHandler() - EtherCAT Interrupt Routine for SYNC1
+ 235:../main.c     ****  *
+ 236:../main.c     ****  * <b>Details of function</b><br>
+ 237:../main.c     ****  * This routine is handling the SYNC1 Interrupts and need to call the SSC Stack
+ 238:../main.c     ****  */
+ 239:../main.c     **** void SYNC1IRQHandler (void)
+ 240:../main.c     **** {
+ 736              	 .loc 3 240 0
+ 737              	 .cfi_startproc
+ 738              	 
+ 739              	 
+ 740 0000 80B5     	 push {r7,lr}
+ 741              	.LCFI41:
+ 742              	 .cfi_def_cfa_offset 8
+ 743              	 .cfi_offset 7,-8
+ 744              	 .cfi_offset 14,-4
+ 745 0002 00AF     	 add r7,sp,#0
+ 746              	.LCFI42:
+ 747              	 .cfi_def_cfa_register 7
+ 241:../main.c     **** 	Sync1_Isr();
+ 748              	 .loc 3 241 0
+ 749 0004 FFF7FEFF 	 bl Sync1_Isr
+ 242:../main.c     **** }
+ 750              	 .loc 3 242 0
+ 751 0008 80BD     	 pop {r7,pc}
+ 752              	 .cfi_endproc
+ 753              	.LFE330:
+ 755 000a 00BF     	 .text
+ 756              	.Letext0:
+ 757              	 .file 4 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 758              	 .file 5 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 759              	 .file 6 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include/XMC4800.h"
+ 760              	 .file 7 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc4_scu.h"
+ 761              	 .file 8 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 762              	 .file 9 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/DAVE.h"
+ 763              	 .file 10 "../SSC/Src/XMC_ESCObjects.h"
+ 764              	 .file 11 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Include/core_cm4.h"
+ 765              	 .file 12 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include/system_XMC4800.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+    {standard input}:20     .text.XMC_SCU_RESET_ClearDeviceResetReason:00000000 $t
+    {standard input}:24     .text.XMC_SCU_RESET_ClearDeviceResetReason:00000000 XMC_SCU_RESET_ClearDeviceResetReason
+    {standard input}:56     .text.XMC_SCU_RESET_ClearDeviceResetReason:00000014 $d
+    {standard input}:61     .text.XMC_GPIO_SetOutputLevel:00000000 $t
+    {standard input}:65     .text.XMC_GPIO_SetOutputLevel:00000000 XMC_GPIO_SetOutputLevel
+    {standard input}:110    .text.XMC_GPIO_SetOutputHigh:00000000 $t
+    {standard input}:114    .text.XMC_GPIO_SetOutputHigh:00000000 XMC_GPIO_SetOutputHigh
+    {standard input}:157    .text.XMC_GPIO_GetInput:00000000 $t
+    {standard input}:161    .text.XMC_GPIO_GetInput:00000000 XMC_GPIO_GetInput
+    {standard input}:205    .text.XMC_GPIO_EnableDigitalInput:00000000 $t
+    {standard input}:209    .text.XMC_GPIO_EnableDigitalInput:00000000 XMC_GPIO_EnableDigitalInput
+    {standard input}:256    .text.Init_ECAT_Adapt_LED:00000000 $t
+    {standard input}:261    .text.Init_ECAT_Adapt_LED:00000000 Init_ECAT_Adapt_LED
+    {standard input}:353    .text.Init_ECAT_Adapt_LED:00000098 $d
+    {standard input}:361    .text.Init_Relax_Button:00000000 $t
+    {standard input}:366    .text.Init_Relax_Button:00000000 Init_Relax_Button
+    {standard input}:403    .text.Init_Relax_Button:0000002c $d
+    {standard input}:408    .text.process_app:00000000 $t
+    {standard input}:413    .text.process_app:00000000 process_app
+    {standard input}:651    .text.process_app:00000178 $d
+    {standard input}:661    .text.main:00000000 $t
+    {standard input}:666    .text.main:00000000 main
+    {standard input}:702    .text.ERU1_0_IRQHandler:00000000 $t
+    {standard input}:707    .text.ERU1_0_IRQHandler:00000000 ERU1_0_IRQHandler
+    {standard input}:729    .text.ERU1_3_IRQHandler:00000000 $t
+    {standard input}:734    .text.ERU1_3_IRQHandler:00000000 ERU1_3_IRQHandler
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+XMC_GPIO_SetMode
+FWUPDATE_GetDownloadFinished
+XMC_SCU_SetBootMode
+DAVE_Init
+MainLoop
+Sync0_Isr
+Sync1_Isr

@@ -1,0 +1,1170 @@
+!SESSION 2018-04-03 22:47:41.070 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-04-03 22:48:35.979
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-04-03 22:48:35.982
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY SOLVER 1 0 2018-04-03 22:48:39.074
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-04-03 22:48:39.210
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-04-03 22:48:39.211
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-04-03 22:48:39.442
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-04-03 22:48:40.407
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:48:40.631
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-03 22:48:40.823
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-03 22:48:42.294
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-03 22:48:42.326
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-03 22:48:44.786
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-03 22:48:56.873
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-03 22:49:13.577
+!MESSAGE Resource '/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48' is not open.
+
+!ENTRY Import 1 0 2018-04-03 22:49:13.704
+!MESSAGE USER_ACTION : Time taken for importing project: ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48 into workspace is : 4882 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-03 22:49:14.481
+!MESSAGE Resource '/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48' is not open.
+
+!ENTRY APPSTORE 1 0 2018-04-03 22:49:15.482
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 899 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:49:15.494
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 7 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:49:16.151
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-03 22:49:19.581
+!MESSAGE Time Taken By De-Serialization  : 1933 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-03 22:49:19.606
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:49:19.929
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 3779 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:49:19.971
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 36 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:49:19.997
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 25 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:49:20.006
+!MESSAGE USER_ACTION : Time taken for updating views is: 7 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:49:22.716
+!MESSAGE USER_ACTION : Time taken for rendering views is: 2709 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:49:23.704
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 8217 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-03 22:51:05.901
+!MESSAGE Resource '/ETHCAT_FWUPDATE_BOOTLOADER_XMC48' is not open.
+
+!ENTRY Import 1 0 2018-04-03 22:51:05.923
+!MESSAGE USER_ACTION : Time taken for importing project: ETHCAT_FWUPDATE_BOOTLOADER_XMC48 into workspace is : 3731 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-03 22:51:07.529
+!MESSAGE Resource '/ETHCAT_FWUPDATE_BOOTLOADER_XMC48' is not open.
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-03 22:51:07.576
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-03 22:51:07.970
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-03 22:51:08.502
+!MESSAGE Time Taken By Serialization  : 529 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-03 22:51:09.239
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:51:09.379
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 671 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:51:09.850
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_BOOTLOADER_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-03 22:51:10.140
+!MESSAGE Time Taken By De-Serialization  : 272 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-03 22:51:10.141
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:51:10.141
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 292 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:51:10.142
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:51:10.941
+!MESSAGE USER_ACTION : Time taken for rendering views is: 797 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 22:51:11.116
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 2408 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-03 23:46:43.852
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-03 23:46:43.855
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-03 23:46:43.944
+!MESSAGE Time Taken By Serialization  : 86 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-03 23:46:47.695
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_BOOTLOADER_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 23:46:47.697
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 49 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 23:46:47.848
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-03 23:46:49.536
+!MESSAGE Time Taken By De-Serialization  : 1476 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-03 23:46:49.540
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 23:46:49.754
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 1907 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 23:46:49.771
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 16 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 23:46:49.773
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 23:46:49.774
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 23:46:50.587
+!MESSAGE USER_ACTION : Time taken for rendering views is: 812 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-03 23:46:50.870
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 3221 msec 
+
+!ENTRY APP_CONFIGURATOR 1 0 2018-04-05 19:58:56.609
+!MESSAGE USER_ACTION : Time taken for opening editor is: 1101 msec 
+
+!ENTRY CODEGEN 1 0 2018-04-05 19:59:13.842
+!MESSAGE Code generation started...
+
+!ENTRY CODEGEN 1 0 2018-04-05 19:59:17.386
+!MESSAGE Code generation completed...
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:18:24.050
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:18:24.156
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-05 21:18:24.479
+!MESSAGE Time Taken By Serialization  : 321 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:18:32.202
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:18:32.261
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 581 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:18:32.443
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_BOOTLOADER_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-05 21:18:32.908
+!MESSAGE Time Taken By De-Serialization  : 412 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:18:32.910
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:18:32.912
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 470 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:18:32.917
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:18:33.504
+!MESSAGE USER_ACTION : Time taken for rendering views is: 585 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:18:33.656
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 1975 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:32:39.054
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:32:39.057
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-05 21:32:39.092
+!MESSAGE Time Taken By Serialization  : 32 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:32:41.880
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_BOOTLOADER_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:32:41.881
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 38 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:32:41.990
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-05 21:32:43.060
+!MESSAGE Time Taken By De-Serialization  : 944 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:32:43.065
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:32:43.255
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 1265 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:32:43.276
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 19 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:32:43.277
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 1 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:32:43.278
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:32:43.862
+!MESSAGE USER_ACTION : Time taken for rendering views is: 584 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:32:44.075
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 2232 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:33:00.149
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:33:00.207
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-05 21:33:00.514
+!MESSAGE Time Taken By Serialization  : 304 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:33:00.957
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:00.977
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 247 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:01.118
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_BOOTLOADER_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-05 21:33:01.184
+!MESSAGE Time Taken By De-Serialization  : 60 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:33:01.187
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:01.189
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 72 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:01.191
+!MESSAGE USER_ACTION : Time taken for updating views is: 1 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:01.373
+!MESSAGE USER_ACTION : Time taken for rendering views is: 182 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:01.465
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 735 msec 
+
+!ENTRY CODEGEN 1 0 2018-04-05 21:33:08.345
+!MESSAGE mgr.getAppsForCodeGen() API is returning empty list
+
+!ENTRY org.eclipse.ui 4 4 2018-04-05 21:33:39.929
+!MESSAGE Conflicting handlers for org.eclipse.debug.ui.commands.DebugLast: {ActionDelegateHandlerProxy(null,com.dave.activeproject.ui.actions.ActiveProjDebugLastAction)} vs {ActionDelegateHandlerProxy(null,org.eclipse.debug.internal.ui.actions.DebugLastAction)}
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:33:55.742
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:33:55.744
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-05 21:33:55.774
+!MESSAGE Time Taken By Serialization  : 28 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:33:55.863
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_BOOTLOADER_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:55.863
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 1 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:56.038
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-05 21:33:56.948
+!MESSAGE Time Taken By De-Serialization  : 787 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:33:56.952
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:57.107
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 1070 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:57.120
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 11 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:57.121
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 1 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:57.122
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:57.401
+!MESSAGE USER_ACTION : Time taken for rendering views is: 279 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:33:58.123
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 2261 msec 
+
+!ENTRY CODEGEN 1 0 2018-04-05 21:34:04.877
+!MESSAGE Code generation started...
+
+!ENTRY CODEGEN 1 0 2018-04-05 21:34:07.031
+!MESSAGE Code generation completed...
+
+!ENTRY CODEGEN 1 0 2018-04-05 21:36:13.226
+!MESSAGE Code generation started...
+
+!ENTRY CODEGEN 1 0 2018-04-05 21:36:15.397
+!MESSAGE Code generation completed...
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:38:53.223
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:38:53.270
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-05 21:38:53.462
+!MESSAGE Time Taken By Serialization  : 192 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-05 21:38:53.581
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-05 21:38:53.603
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 31 msec 
+
+!ENTRY SOLVER 1 0 2018-04-05 21:38:53.604
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-04-05 21:38:53.961
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+
+!ENTRY org.eclipse.e4.ui.workbench.swt 4 2 2018-04-05 21:38:54.646
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.e4.ui.workbench.swt".
+!STACK 0
+org.eclipse.e4.core.di.InjectionException: org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:62)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:888)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.disposed(InjectorImpl.java:390)
+	at org.eclipse.e4.core.internal.di.Requestor.disposed(Requestor.java:143)
+	at org.eclipse.e4.core.internal.contexts.ContextObjectSupplier$ContextInjectionListener.update(ContextObjectSupplier.java:76)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:107)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.handleInvalid(TrackableComputationExt.java:70)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.dispose(EclipseContext.java:175)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.clearContext(PartRenderingEngine.java:974)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeRemoveGui(PartRenderingEngine.java:954)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$3(PartRenderingEngine.java:862)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$8.run(PartRenderingEngine.java:857)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.removeGui(PartRenderingEngine.java:841)
+	at org.eclipse.ui.internal.WorkbenchWindow.hardClose(WorkbenchWindow.java:1937)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1560)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$15(WorkbenchWindow.java:1527)
+	at org.eclipse.ui.internal.WorkbenchWindow$10.run(WorkbenchWindow.java:1592)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1589)
+	at org.eclipse.ui.internal.Workbench$14.run(Workbench.java:1155)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1137)
+	at org.eclipse.ui.internal.Workbench.access$21(Workbench.java:1079)
+	at org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1410)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1407)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1380)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1556)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$15(WorkbenchWindow.java:1527)
+	at org.eclipse.ui.internal.WorkbenchWindow$10.run(WorkbenchWindow.java:1592)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1589)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1603)
+	at org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:521)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$11.shellClosed(WBWRenderer.java:563)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:98)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4353)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1061)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1085)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1070)
+	at org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:308)
+	at org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1696)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4612)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1626)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2075)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5023)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4705)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1626)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2075)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5036)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1032)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:148)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:636)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:579)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at com.ifx.davex.product.DaveApplication.start(DaveApplication.java:140)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+Caused by: org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4441)
+	at org.eclipse.swt.SWT.error(SWT.java:4356)
+	at org.eclipse.swt.SWT.error(SWT.java:4327)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:476)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:348)
+	at org.eclipse.swt.widgets.Shell.getSize(Shell.java:1092)
+	at org.eclipse.ui.internal.quickaccess.SearchField.storeDialog(SearchField.java:580)
+	at org.eclipse.ui.internal.quickaccess.SearchField.dispose(SearchField.java:557)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
+	... 80 more
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2018-04-05 21:38:54.650
+!MESSAGE Exception occurred while unrendering: org.eclipse.e4.ui.model.application.ui.basic.impl.TrimmedWindowImpl@47148f3f (elementId: IDEWindow, tags: [topLevel, shellMaximized], contributorURI: platform:/plugin/org.eclipse.ui.workbench) (widget: null, renderer: null, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (label: %trimmedwindow.label.eclipseSDK, iconURI: null, tooltip: null, context: null, variables: [], x: 39, y: -17, width: 1024, height: 768)
+!STACK 0
+org.eclipse.e4.core.di.InjectionException: org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:62)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:888)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.disposed(InjectorImpl.java:390)
+	at org.eclipse.e4.core.internal.di.Requestor.disposed(Requestor.java:143)
+	at org.eclipse.e4.core.internal.contexts.ContextObjectSupplier$ContextInjectionListener.update(ContextObjectSupplier.java:76)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:107)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.handleInvalid(TrackableComputationExt.java:70)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.dispose(EclipseContext.java:175)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.clearContext(PartRenderingEngine.java:974)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeRemoveGui(PartRenderingEngine.java:954)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$3(PartRenderingEngine.java:862)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$8.run(PartRenderingEngine.java:857)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.removeGui(PartRenderingEngine.java:841)
+	at org.eclipse.ui.internal.WorkbenchWindow.hardClose(WorkbenchWindow.java:1937)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1560)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$15(WorkbenchWindow.java:1527)
+	at org.eclipse.ui.internal.WorkbenchWindow$10.run(WorkbenchWindow.java:1592)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1589)
+	at org.eclipse.ui.internal.Workbench$14.run(Workbench.java:1155)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1137)
+	at org.eclipse.ui.internal.Workbench.access$21(Workbench.java:1079)
+	at org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1410)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1407)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1380)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1556)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$15(WorkbenchWindow.java:1527)
+	at org.eclipse.ui.internal.WorkbenchWindow$10.run(WorkbenchWindow.java:1592)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1589)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1603)
+	at org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:521)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$11.shellClosed(WBWRenderer.java:563)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:98)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4353)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1061)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1085)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1070)
+	at org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:308)
+	at org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1696)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4612)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1626)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2075)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5023)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4705)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1626)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2075)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5036)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1032)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:148)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:636)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:579)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at com.ifx.davex.product.DaveApplication.start(DaveApplication.java:140)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+Caused by: org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4441)
+	at org.eclipse.swt.SWT.error(SWT.java:4356)
+	at org.eclipse.swt.SWT.error(SWT.java:4327)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:476)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:348)
+	at org.eclipse.swt.widgets.Shell.getSize(Shell.java:1092)
+	at org.eclipse.ui.internal.quickaccess.SearchField.storeDialog(SearchField.java:580)
+	at org.eclipse.ui.internal.quickaccess.SearchField.dispose(SearchField.java:557)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
+	... 80 more
+!SESSION 2018-04-08 13:08:19.448 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-04-08 13:08:32.575
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-04-08 13:08:32.580
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-04-08 13:08:37.080
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-04-08 13:08:39.146
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-04-08 13:08:39.271
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-04-08 13:08:39.271
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-04-08 13:08:39.521
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-04-08 13:08:40.162
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 641 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-08 13:08:40.521
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 15 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-08 13:08:40.928
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-08 13:08:43.099
+!MESSAGE Time Taken By De-Serialization  : 1375 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-08 13:08:43.115
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-08 13:08:43.412
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 2484 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-08 13:08:43.443
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 31 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-08 13:08:43.474
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 31 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-08 13:08:43.474
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-08 13:08:45.506
+!MESSAGE USER_ACTION : Time taken for rendering views is: 2032 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-08 13:08:45.943
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 5422 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-08 13:08:46.631
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-08 13:08:46.725
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-08 13:08:53.553
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-08 13:09:13.715
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-08 13:09:52.658
+!MESSAGE SocketTimeoutException:Read timed out
+:http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1/XMC45/DAC_EXAMPLE_XMC45.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-08 13:09:52.658
+!MESSAGE ConnectionException:
+:http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1/XMC45/DAC_EXAMPLE_XMC45.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-08 13:09:53.143
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-08 13:09:54.612
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-08 15:24:55.786
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-08 15:24:55.880
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-08 15:24:56.677
+!MESSAGE Time Taken By Serialization  : 781 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-08 15:24:57.255
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-08 15:24:57.443
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 641 msec 
+
+!ENTRY SOLVER 1 0 2018-04-08 15:24:57.443
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-04-08 15:24:57.740
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+
+!ENTRY SOLVER 1 0 2018-04-08 15:25:04.787
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-04-10 20:31:03.752 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-04-10 20:31:21.817
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-04-10 20:31:21.823
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-04-10 20:31:25.755
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-04-10 20:31:27.477
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-04-10 20:31:27.607
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-04-10 20:31:27.607
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-04-10 20:31:28.008
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-04-10 20:31:28.584
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 573 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-10 20:31:28.787
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 7 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-10 20:31:29.337
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-10 20:31:31.690
+!MESSAGE Time Taken By De-Serialization  : 1478 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-10 20:31:31.702
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-10 20:31:31.975
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 2644 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-10 20:31:32.010
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 30 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-10 20:31:32.033
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 23 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-10 20:31:32.035
+!MESSAGE USER_ACTION : Time taken for updating views is: 1 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-10 20:31:34.086
+!MESSAGE USER_ACTION : Time taken for rendering views is: 2050 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-10 20:31:34.525
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 5746 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-10 20:31:35.572
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-10 20:31:35.682
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-10 20:31:37.321
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-10 20:31:40.178
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-10 20:31:44.346
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-10 20:31:54.188
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-10 21:16:38.743
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-10 21:16:38.880
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-10 21:16:39.782
+!MESSAGE Time Taken By Serialization  : 896 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-10 21:16:40.554
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-10 21:16:40.775
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 881 msec 
+
+!ENTRY SOLVER 1 0 2018-04-10 21:16:40.777
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-04-10 21:16:41.098
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-04-11 16:41:27.671 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-04-11 16:41:39.135
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-04-11 16:41:39.135
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-04-11 16:41:43.760
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-04-11 16:41:46.640
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-04-11 16:41:46.875
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-04-11 16:41:46.875
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-04-11 16:41:47.356
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-04-11 16:41:48.465
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 1109 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-11 16:41:48.809
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 16 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-11 16:41:49.441
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-11 16:41:52.514
+!MESSAGE Time Taken By De-Serialization  : 1905 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-11 16:41:52.530
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-11 16:41:52.842
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 3402 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-11 16:41:52.905
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 63 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-11 16:41:52.952
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 47 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-11 16:41:52.952
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-11 16:41:55.250
+!MESSAGE USER_ACTION : Time taken for rendering views is: 2298 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-11 16:41:56.000
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 7207 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-11 16:41:58.400
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-11 16:41:58.618
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-11 16:41:59.868
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-11 16:42:01.368
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-11 16:42:05.049
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-11 16:42:19.947
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-11 16:42:22.197
+!MESSAGE No repository found at http://download.eclipse.org/eclipse/updates/4.4.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-11 16:42:24.354
+!MESSAGE No repository found at http://download.eclipse.org/modeling/emf/emf/updates/releases.
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-12 11:38:00.160
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-12 11:38:00.253
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-12 11:38:00.519
+!MESSAGE Time Taken By Serialization  : 266 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-12 11:38:00.863
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 11:38:00.972
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 375 msec 
+
+!ENTRY SOLVER 1 0 2018-04-12 11:38:00.972
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-04-12 11:38:01.269
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-04-12 11:53:19.418 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-04-12 11:53:36.479
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-04-12 11:53:36.495
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-04-12 11:53:43.792
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-04-12 11:53:46.308
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-04-12 11:53:46.542
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-04-12 11:53:46.542
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-04-12 11:53:49.839
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-04-12 11:53:50.542
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 687 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 11:53:51.058
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 16 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 11:53:51.870
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-12 11:53:54.886
+!MESSAGE Time Taken By De-Serialization  : 1938 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-12 11:53:54.902
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 11:53:55.527
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 3657 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 11:53:55.573
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 31 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 11:53:55.605
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 32 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 11:53:55.605
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 11:53:58.511
+!MESSAGE USER_ACTION : Time taken for rendering views is: 2906 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 11:53:59.152
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 8110 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 11:54:01.073
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-12 11:54:01.152
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-12 11:54:03.527
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-12 11:54:04.792
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-12 11:54:13.546
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-12 11:54:35.961
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2018-04-12 11:54:45.618
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.eclipse.org/eclipse/updates/4.4/R-4.4.2-201502041700.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:692)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:151)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:129)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:73)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-12 11:54:45.633
+!MESSAGE No repository found at http://download.eclipse.org/eclipse/updates/4.4/R-4.4.2-201502041700.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1002 2018-04-12 11:54:45.633
+!MESSAGE Unable to read repository at http://download.eclipse.org/eclipse/updates/4.4.
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.eclipse.org/eclipse/updates/4.4/R-4.4.2-201502041700.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:692)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:151)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:129)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:73)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-12 11:54:45.633
+!MESSAGE No repository found at http://download.eclipse.org/eclipse/updates/4.4/R-4.4.2-201502041700.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2018-04-12 11:55:11.448
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.eclipse.org/modeling/emf/emf/updates/2.8.x/xcore/R201209170741/.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:692)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:151)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:129)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:73)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-12 11:55:11.448
+!MESSAGE No repository found at http://download.eclipse.org/modeling/emf/emf/updates/2.8.x/xcore/R201209170741/.
+!SESSION 2018-04-12 12:09:28.438 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-04-12 12:09:39.997
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-04-12 12:09:40.012
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-04-12 12:09:45.330
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-04-12 12:09:47.439
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-04-12 12:09:47.658
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-04-12 12:09:47.658
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-04-12 12:09:48.017
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-04-12 12:09:48.705
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 688 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 12:09:48.970
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 12:09:49.580
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-12 12:09:52.111
+!MESSAGE Time Taken By De-Serialization  : 1563 ms :: C:\Workspaces\SOES-FW-UPDATE\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-12 12:09:52.111
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 12:09:52.408
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 2828 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 12:09:52.455
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 32 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 12:09:52.470
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 15 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 12:09:52.486
+!MESSAGE USER_ACTION : Time taken for updating views is: 16 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 12:09:54.377
+!MESSAGE USER_ACTION : Time taken for rendering views is: 1891 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 12:09:54.845
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 5875 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-12 12:09:55.439
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-12 12:09:55.580
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-12 12:09:56.798
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-12 12:09:57.095
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-12 12:09:58.642
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-04-12 12:10:11.814
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.

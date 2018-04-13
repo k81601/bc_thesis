@@ -1,0 +1,31 @@
+00:55:12 **** Build of configuration Debug for project soes ****
+"\"C:\\DAVEv4-64Bit\\DAVE-4.3.2\\eclipse\\ARM-GCC-49\\bin\\make\"" --output-sync -j4 all 
+'Building file: ../soes/esc_eep.c'
+'Invoking: ARM-GCC C Compiler'
+"C:/DAVEv4-64Bit/DAVE-4.3.2/eclipse/ARM-GCC-49/bin/arm-none-eabi-gcc" -MMD -MT "soes/esc_eep.o" -DXMC4800_F144x2048 -I"C:/Workspaces/SOES-SAMPLE/soes/soes/include/sys/gcc" -I"C:/Workspaces/SOES-SAMPLE/soes" -O0 -ffunction-sections -fdata-sections -Wall -std=gnu99 -mfloat-abi=softfp -Wa,-adhlns="soes/esc_eep.o.lst" -pipe -c -fmessage-length=0 -MMD -MP -MF"soes/esc_eep.d" -MT"soes/esc_eep.d soes/esc_eep.o" -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mthumb -g -gdwarf-2 -o "soes/esc_eep.o" "../soes/esc_eep.c" 
+'Finished building: ../soes/esc_eep.c'
+
+'Building file: ../soes/esc_foe.c'
+'Invoking: ARM-GCC C Compiler'
+"C:/DAVEv4-64Bit/DAVE-4.3.2/eclipse/ARM-GCC-49/bin/arm-none-eabi-gcc" -MMD -MT "soes/esc_foe.o" -DXMC4800_F144x2048 -I"C:/Workspaces/SOES-SAMPLE/soes/soes/include/sys/gcc" -I"C:/Workspaces/SOES-SAMPLE/soes" -O0 -ffunction-sections -fdata-sections -Wall -std=gnu99 -mfloat-abi=softfp -Wa,-adhlns="soes/esc_foe.o.lst" -pipe -c -fmessage-length=0 -MMD -MP -MF"soes/esc_foe.d" -MT"soes/esc_foe.d soes/esc_foe.o" -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mthumb -g -gdwarf-2 -o "soes/esc_foe.o" "../soes/esc_foe.c" 
+'Finished building: ../soes/esc_foe.c'
+
+'Building file: ../soes/esc_coe.c'
+'Invoking: ARM-GCC C Compiler'
+"C:/DAVEv4-64Bit/DAVE-4.3.2/eclipse/ARM-GCC-49/bin/arm-none-eabi-gcc" -MMD -MT "soes/esc_coe.o" -DXMC4800_F144x2048 -I"C:/Workspaces/SOES-SAMPLE/soes/soes/include/sys/gcc" -I"C:/Workspaces/SOES-SAMPLE/soes" -O0 -ffunction-sections -fdata-sections -Wall -std=gnu99 -mfloat-abi=softfp -Wa,-adhlns="soes/esc_coe.o.lst" -pipe -c -fmessage-length=0 -MMD -MP -MF"soes/esc_coe.d" -MT"soes/esc_coe.d soes/esc_coe.o" -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mthumb -g -gdwarf-2 -o "soes/esc_coe.o" "../soes/esc_coe.c" 
+'Finished building: ../soes/esc_coe.c'
+
+'Building file: ../soes/esc.c'
+'Invoking: ARM-GCC C Compiler'
+"C:/DAVEv4-64Bit/DAVE-4.3.2/eclipse/ARM-GCC-49/bin/arm-none-eabi-gcc" -MMD -MT "soes/esc.o" -DXMC4800_F144x2048 -I"C:/Workspaces/SOES-SAMPLE/soes/soes/include/sys/gcc" -I"C:/Workspaces/SOES-SAMPLE/soes" -O0 -ffunction-sections -fdata-sections -Wall -std=gnu99 -mfloat-abi=softfp -Wa,-adhlns="soes/esc.o.lst" -pipe -c -fmessage-length=0 -MMD -MP -MF"soes/esc.d" -MT"soes/esc.d soes/esc.o" -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mthumb -g -gdwarf-2 -o "soes/esc.o" "../soes/esc.c" 
+'Finished building: ../soes/esc.c'
+
+'Building target: libsoes.a'
+C:/DAVEv4-64Bit/DAVE-4.3.2/eclipse/ARM-GCC-49/bin/arm-none-eabi-ar: creating libsoes.a
+'Invoking: ARM-GCC Archiver'
+"C:/DAVEv4-64Bit/DAVE-4.3.2/eclipse/ARM-GCC-49/bin/arm-none-eabi-ar" -r "libsoes.a" "@objects.rsp"
+'Finished building target: libsoes.a'
+
+
+00:55:13 Build Finished (took 997ms)
+

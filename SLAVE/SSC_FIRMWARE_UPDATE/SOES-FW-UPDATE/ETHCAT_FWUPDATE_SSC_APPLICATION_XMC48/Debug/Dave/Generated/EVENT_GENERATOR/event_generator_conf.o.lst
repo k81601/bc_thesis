@@ -1,0 +1,73 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "event_generator_conf.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .global EG_SYNC1_OGU_Config
+  20              	 .section .rodata.EG_SYNC1_OGU_Config,"a",%progbits
+  21              	 .align 2
+  24              	EG_SYNC1_OGU_Config:
+  25 0000 10       	 .byte 16
+  26 0001 00       	 .byte 0
+  27 0002 0000     	 .space 2
+  28              	 .global EG_SYNC1
+  29              	 .section .data.EG_SYNC1,"aw",%progbits
+  30              	 .align 2
+  33              	EG_SYNC1:
+  34 0000 00400440 	 .word 1074020352
+  35 0004 00000000 	 .word EG_SYNC1_OGU_Config
+  36 0008 00000000 	 .word 0
+  37 000c 03       	 .byte 3
+  38 000d 00       	 .byte 0
+  39 000e 0000     	 .space 2
+  40              	 .global EG_SYNC0_OGU_Config
+  41              	 .section .rodata.EG_SYNC0_OGU_Config,"a",%progbits
+  42              	 .align 2
+  45              	EG_SYNC0_OGU_Config:
+  46 0000 10       	 .byte 16
+  47 0001 00       	 .byte 0
+  48 0002 0000     	 .space 2
+  49              	 .global EG_SYNC0
+  50              	 .section .data.EG_SYNC0,"aw",%progbits
+  51              	 .align 2
+  54              	EG_SYNC0:
+  55 0000 00400440 	 .word 1074020352
+  56 0004 00000000 	 .word EG_SYNC0_OGU_Config
+  57 0008 00000000 	 .word 0
+  58 000c 00       	 .byte 0
+  59 000d 00       	 .byte 0
+  60 000e 0000     	 .space 2
+  61              	 .text
+  62              	.Letext0:
+  63              	 .file 1 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+  64              	 .file 2 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+  65              	 .file 3 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc_eru.h"
+  66              	 .file 4 "../Dave/Generated/EVENT_GENERATOR/event_generator.h"
+  67              	 .file 5 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Include/core_cm4.h"
+  68              	 .file 6 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include/system_XMC4800.h"
+  69              	 .file 7 "../Dave/Generated/EVENT_GENERATOR/event_generator_conf.c"
+DEFINED SYMBOLS
+                            *ABS*:00000000 event_generator_conf.c
+    {standard input}:24     .rodata.EG_SYNC1_OGU_Config:00000000 EG_SYNC1_OGU_Config
+    {standard input}:21     .rodata.EG_SYNC1_OGU_Config:00000000 $d
+    {standard input}:33     .data.EG_SYNC1:00000000 EG_SYNC1
+    {standard input}:30     .data.EG_SYNC1:00000000 $d
+    {standard input}:45     .rodata.EG_SYNC0_OGU_Config:00000000 EG_SYNC0_OGU_Config
+    {standard input}:42     .rodata.EG_SYNC0_OGU_Config:00000000 $d
+    {standard input}:54     .data.EG_SYNC0:00000000 EG_SYNC0
+    {standard input}:51     .data.EG_SYNC0:00000000 $d
+
+NO UNDEFINED SYMBOLS

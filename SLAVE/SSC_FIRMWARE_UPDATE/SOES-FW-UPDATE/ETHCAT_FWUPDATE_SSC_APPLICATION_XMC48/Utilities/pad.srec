@@ -1,0 +1,13 @@
+# srec_cat command file to add the CRC32 
+# use srec_cat @add_crc.srec
+
+# First create CRC checksum
+firmware.bin
+-binary                                   # input format
+-fill 0x00
+-within firmware.bin -binary
+-range-padding 4
+
+# produce the output file, specify it in the Startup tab of debug settings in use file 
+-o firmware_padded.bin -binary
+

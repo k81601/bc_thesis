@@ -1,0 +1,2016 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "system_XMC4800.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .global SystemCoreClock
+  20              	 .section .no_init,"aw",%progbits
+  21              	 .align 2
+  24              	SystemCoreClock:
+  25 0000 00000000 	 .space 4
+  26              	 .global g_chipid
+  27              	 .align 2
+  30              	g_chipid:
+  31 0004 00000000 	 .space 16
+  31      00000000 
+  31      00000000 
+  31      00000000 
+  32              	 .section .text.delay,"ax",%progbits
+  33              	 .align 2
+  34              	 .thumb
+  35              	 .thumb_func
+  37              	delay:
+  38              	.LFB123:
+  39              	 .file 1 "../Startup/system_XMC4800.c"
+   1:../Startup/system_XMC4800.c **** /**************************************************************************************************
+   2:../Startup/system_XMC4800.c ****  * @file     system_XMC4800.c
+   3:../Startup/system_XMC4800.c ****  * @brief    CMSIS Cortex-M4 Device Peripheral Access Layer Header File for the Infineon XMC4800 De
+   4:../Startup/system_XMC4800.c ****  * @version  V1.0.2
+   5:../Startup/system_XMC4800.c ****  * @date     01. Jun 2016
+   6:../Startup/system_XMC4800.c ****  *
+   7:../Startup/system_XMC4800.c ****  * @cond
+   8:../Startup/system_XMC4800.c ****  **************************************************************************************************
+   9:../Startup/system_XMC4800.c ****  * Copyright (c) 2015-2016, Infineon Technologies AG
+  10:../Startup/system_XMC4800.c ****  * All rights reserved.
+  11:../Startup/system_XMC4800.c ****  *
+  12:../Startup/system_XMC4800.c ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:../Startup/system_XMC4800.c ****  * following conditions are met:
+  14:../Startup/system_XMC4800.c ****  *
+  15:../Startup/system_XMC4800.c ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:../Startup/system_XMC4800.c ****  * disclaimer.
+  17:../Startup/system_XMC4800.c ****  *
+  18:../Startup/system_XMC4800.c ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:../Startup/system_XMC4800.c ****  * disclaimer in the documentation and/or other materials provided with the distribution.
+  20:../Startup/system_XMC4800.c ****  *
+  21:../Startup/system_XMC4800.c ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:../Startup/system_XMC4800.c ****  * products derived from this software without specific prior written permission.
+  23:../Startup/system_XMC4800.c ****  *
+  24:../Startup/system_XMC4800.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:../Startup/system_XMC4800.c ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:../Startup/system_XMC4800.c ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:../Startup/system_XMC4800.c ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:../Startup/system_XMC4800.c ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:../Startup/system_XMC4800.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:../Startup/system_XMC4800.c ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  31:../Startup/system_XMC4800.c ****  *
+  32:../Startup/system_XMC4800.c ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:../Startup/system_XMC4800.c ****  * Infineon Technologies AG dave@infineon.com).
+  34:../Startup/system_XMC4800.c ****  **************************************************************************************************
+  35:../Startup/system_XMC4800.c ****  *
+  36:../Startup/system_XMC4800.c ****  ********************** Version History ***************************************
+  37:../Startup/system_XMC4800.c ****  * V1.0.0, 22. May 2015, Initial version
+  38:../Startup/system_XMC4800.c ****  * V1.0.1, 26. Jan 2016, Disable trap generation from clock unit
+  39:../Startup/system_XMC4800.c ****  * V1.0.2, 01. Jun 2016, Fix masking of OSCHPCTRL value
+  40:../Startup/system_XMC4800.c ****  ******************************************************************************
+  41:../Startup/system_XMC4800.c **** * @endcond
+  42:../Startup/system_XMC4800.c **** */
+  43:../Startup/system_XMC4800.c **** 
+  44:../Startup/system_XMC4800.c **** /*******************************************************************************
+  45:../Startup/system_XMC4800.c ****  * Default clock initialization
+  46:../Startup/system_XMC4800.c ****  * fPLL = 288MHz => fSYS = 144MHz => fCPU = 144MHz
+  47:../Startup/system_XMC4800.c ****  *                                => fPB  = 144MHz
+  48:../Startup/system_XMC4800.c ****  *                                => fCCU = 144MHz
+  49:../Startup/system_XMC4800.c ****  *                                => fETH = 72MHz
+  50:../Startup/system_XMC4800.c ****  *               => fUSB = 48MHz
+  51:../Startup/system_XMC4800.c ****  *               => fEBU = 72MHz
+  52:../Startup/system_XMC4800.c ****  *
+  53:../Startup/system_XMC4800.c ****  * fUSBPLL = 200MHz => fECAT = 100MHz
+  54:../Startup/system_XMC4800.c ****  *
+  55:../Startup/system_XMC4800.c ****  * fOFI = 24MHz => fWDT = 24MHz
+  56:../Startup/system_XMC4800.c ****  *******************************************************************************/
+  57:../Startup/system_XMC4800.c **** 
+  58:../Startup/system_XMC4800.c **** /*******************************************************************************
+  59:../Startup/system_XMC4800.c ****  * HEADER FILES
+  60:../Startup/system_XMC4800.c ****  *******************************************************************************/
+  61:../Startup/system_XMC4800.c **** #include <string.h>
+  62:../Startup/system_XMC4800.c **** 
+  63:../Startup/system_XMC4800.c **** #include <XMC4800.h>
+  64:../Startup/system_XMC4800.c **** #include "system_XMC4800.h"
+  65:../Startup/system_XMC4800.c **** 
+  66:../Startup/system_XMC4800.c **** /*******************************************************************************
+  67:../Startup/system_XMC4800.c ****  * MACROS
+  68:../Startup/system_XMC4800.c ****  *******************************************************************************/
+  69:../Startup/system_XMC4800.c **** 
+  70:../Startup/system_XMC4800.c **** #define CHIPID_LOC ((uint8_t *)0x20000000UL)
+  71:../Startup/system_XMC4800.c **** 
+  72:../Startup/system_XMC4800.c **** /* Define WEAK attribute */
+  73:../Startup/system_XMC4800.c **** #if !defined(__WEAK)
+  74:../Startup/system_XMC4800.c **** #if defined ( __CC_ARM )
+  75:../Startup/system_XMC4800.c **** #define __WEAK __attribute__ ((weak))
+  76:../Startup/system_XMC4800.c **** #elif defined ( __ICCARM__ )
+  77:../Startup/system_XMC4800.c **** #define __WEAK __weak
+  78:../Startup/system_XMC4800.c **** #elif defined ( __GNUC__ )
+  79:../Startup/system_XMC4800.c **** #define __WEAK __attribute__ ((weak))
+  80:../Startup/system_XMC4800.c **** #elif defined ( __TASKING__ )
+  81:../Startup/system_XMC4800.c **** #define __WEAK __attribute__ ((weak))
+  82:../Startup/system_XMC4800.c **** #endif
+  83:../Startup/system_XMC4800.c **** #endif
+  84:../Startup/system_XMC4800.c **** 
+  85:../Startup/system_XMC4800.c **** #define PMU_FLASH_WS          (0x4U)
+  86:../Startup/system_XMC4800.c **** 
+  87:../Startup/system_XMC4800.c **** #define FOSCREF               (2500000U)
+  88:../Startup/system_XMC4800.c **** 
+  89:../Startup/system_XMC4800.c **** #define DELAY_CNT_50US_50MHZ  (2500UL)
+  90:../Startup/system_XMC4800.c **** #define DELAY_CNT_150US_50MHZ (7500UL)
+  91:../Startup/system_XMC4800.c **** #define DELAY_CNT_50US_48MHZ  (2400UL)
+  92:../Startup/system_XMC4800.c **** #define DELAY_CNT_50US_72MHZ  (3600UL)
+  93:../Startup/system_XMC4800.c **** #define DELAY_CNT_50US_96MHZ  (4800UL)
+  94:../Startup/system_XMC4800.c **** #define DELAY_CNT_50US_120MHZ (6000UL)
+  95:../Startup/system_XMC4800.c **** #define DELAY_CNT_50US_144MHZ (7200UL)
+  96:../Startup/system_XMC4800.c **** 
+  97:../Startup/system_XMC4800.c **** #define SCU_PLL_PLLSTAT_OSC_USABLE  (SCU_PLL_PLLSTAT_PLLHV_Msk | \
+  98:../Startup/system_XMC4800.c ****                                      SCU_PLL_PLLSTAT_PLLLV_Msk | \
+  99:../Startup/system_XMC4800.c ****                                      SCU_PLL_PLLSTAT_PLLSP_Msk)
+ 100:../Startup/system_XMC4800.c **** 
+ 101:../Startup/system_XMC4800.c **** /*
+ 102:../Startup/system_XMC4800.c **** //-------- <<< Use Configuration Wizard in Context Menu >>> ------------------
+ 103:../Startup/system_XMC4800.c **** */
+ 104:../Startup/system_XMC4800.c **** 
+ 105:../Startup/system_XMC4800.c **** /*
+ 106:../Startup/system_XMC4800.c **** // <h> Clock configuration
+ 107:../Startup/system_XMC4800.c **** */
+ 108:../Startup/system_XMC4800.c **** 
+ 109:../Startup/system_XMC4800.c **** /*
+ 110:../Startup/system_XMC4800.c **** //    <o> External crystal frequency [Hz]
+ 111:../Startup/system_XMC4800.c **** //       <8000000=> 8MHz
+ 112:../Startup/system_XMC4800.c **** //       <12000000=> 12MHz
+ 113:../Startup/system_XMC4800.c **** //       <16000000=> 16MHz
+ 114:../Startup/system_XMC4800.c **** //    <i> Defines external crystal frequency
+ 115:../Startup/system_XMC4800.c **** //    <i> Default: 8MHz
+ 116:../Startup/system_XMC4800.c **** */
+ 117:../Startup/system_XMC4800.c **** #define OSCHP_FREQUENCY (12000000U)
+ 118:../Startup/system_XMC4800.c **** 
+ 119:../Startup/system_XMC4800.c **** /* USB PLL settings, fUSBPLL = 200MHz */
+ 120:../Startup/system_XMC4800.c **** /* Note: Implicit divider of 2, fUSBPLLVCO = 400MHz */
+ 121:../Startup/system_XMC4800.c **** #if OSCHP_FREQUENCY == 8000000U
+ 122:../Startup/system_XMC4800.c **** #define USB_PDIV (1U)
+ 123:../Startup/system_XMC4800.c **** #define USB_NDIV (99U)
+ 124:../Startup/system_XMC4800.c **** 
+ 125:../Startup/system_XMC4800.c **** #elif OSCHP_FREQUENCY == 12000000U
+ 126:../Startup/system_XMC4800.c **** #define USB_PDIV (2U)
+ 127:../Startup/system_XMC4800.c **** #define USB_NDIV (99U)
+ 128:../Startup/system_XMC4800.c **** 
+ 129:../Startup/system_XMC4800.c **** #elif OSCHP_FREQUENCY == 16000000U
+ 130:../Startup/system_XMC4800.c **** #define USB_PDIV (3U)
+ 131:../Startup/system_XMC4800.c **** #define USB_NDIV (99U)
+ 132:../Startup/system_XMC4800.c **** 
+ 133:../Startup/system_XMC4800.c **** #else
+ 134:../Startup/system_XMC4800.c **** #error "External crystal frequency not supported"
+ 135:../Startup/system_XMC4800.c **** 
+ 136:../Startup/system_XMC4800.c **** #endif
+ 137:../Startup/system_XMC4800.c **** 
+ 138:../Startup/system_XMC4800.c **** /*
+ 139:../Startup/system_XMC4800.c **** //    <o> Backup clock calibration mode
+ 140:../Startup/system_XMC4800.c **** //       <0=> Factory calibration
+ 141:../Startup/system_XMC4800.c **** //       <1=> Automatic calibration
+ 142:../Startup/system_XMC4800.c **** //    <i> Default: Automatic calibration
+ 143:../Startup/system_XMC4800.c **** */
+ 144:../Startup/system_XMC4800.c **** #define FOFI_CALIBRATION_MODE 1
+ 145:../Startup/system_XMC4800.c **** #define FOFI_CALIBRATION_MODE_FACTORY 0
+ 146:../Startup/system_XMC4800.c **** #define FOFI_CALIBRATION_MODE_AUTOMATIC 1
+ 147:../Startup/system_XMC4800.c **** 
+ 148:../Startup/system_XMC4800.c **** /*
+ 149:../Startup/system_XMC4800.c **** //    <o> Standby clock (fSTDBY) source selection
+ 150:../Startup/system_XMC4800.c **** //       <0=> Internal slow oscillator (32768Hz)
+ 151:../Startup/system_XMC4800.c **** //       <1=> External crystal (32768Hz)
+ 152:../Startup/system_XMC4800.c **** //    <i> Default: Internal slow oscillator (32768Hz)
+ 153:../Startup/system_XMC4800.c **** */
+ 154:../Startup/system_XMC4800.c **** #define STDBY_CLOCK_SRC 0
+ 155:../Startup/system_XMC4800.c **** #define STDBY_CLOCK_SRC_OSI 0
+ 156:../Startup/system_XMC4800.c **** #define STDBY_CLOCK_SRC_OSCULP 1
+ 157:../Startup/system_XMC4800.c **** 
+ 158:../Startup/system_XMC4800.c **** /*
+ 159:../Startup/system_XMC4800.c **** //    <o> PLL clock source selection
+ 160:../Startup/system_XMC4800.c **** //       <0=> External crystal
+ 161:../Startup/system_XMC4800.c **** //       <1=> Internal fast oscillator
+ 162:../Startup/system_XMC4800.c **** //    <i> Default: External crystal
+ 163:../Startup/system_XMC4800.c **** */
+ 164:../Startup/system_XMC4800.c **** #define PLL_CLOCK_SRC 0
+ 165:../Startup/system_XMC4800.c **** #define PLL_CLOCK_SRC_EXT_XTAL 0
+ 166:../Startup/system_XMC4800.c **** #define PLL_CLOCK_SRC_OFI 1
+ 167:../Startup/system_XMC4800.c **** 
+ 168:../Startup/system_XMC4800.c **** /* PLL settings, fPLL = 288MHz */
+ 169:../Startup/system_XMC4800.c **** #if PLL_CLOCK_SRC == PLL_CLOCK_SRC_EXT_XTAL
+ 170:../Startup/system_XMC4800.c **** #if OSCHP_FREQUENCY == 8000000U
+ 171:../Startup/system_XMC4800.c **** #define PLL_PDIV (1U)
+ 172:../Startup/system_XMC4800.c **** #define PLL_NDIV (71U)
+ 173:../Startup/system_XMC4800.c **** #define PLL_K2DIV (0U)
+ 174:../Startup/system_XMC4800.c **** 
+ 175:../Startup/system_XMC4800.c **** #elif OSCHP_FREQUENCY == 12000000U
+ 176:../Startup/system_XMC4800.c **** #define PLL_PDIV (1U)
+ 177:../Startup/system_XMC4800.c **** #define PLL_NDIV (47U)
+ 178:../Startup/system_XMC4800.c **** #define PLL_K2DIV (0U)
+ 179:../Startup/system_XMC4800.c **** 
+ 180:../Startup/system_XMC4800.c **** #elif OSCHP_FREQUENCY == 16000000U
+ 181:../Startup/system_XMC4800.c **** #define PLL_PDIV (1U)
+ 182:../Startup/system_XMC4800.c **** #define PLL_NDIV (35U)
+ 183:../Startup/system_XMC4800.c **** #define PLL_K2DIV (0U)
+ 184:../Startup/system_XMC4800.c **** 
+ 185:../Startup/system_XMC4800.c **** #else
+ 186:../Startup/system_XMC4800.c **** #error "External crystal frequency not supported"
+ 187:../Startup/system_XMC4800.c **** 
+ 188:../Startup/system_XMC4800.c **** #endif
+ 189:../Startup/system_XMC4800.c **** 
+ 190:../Startup/system_XMC4800.c **** #define VCO ((OSCHP_FREQUENCY / (PLL_PDIV + 1UL)) * (PLL_NDIV + 1UL))
+ 191:../Startup/system_XMC4800.c **** 
+ 192:../Startup/system_XMC4800.c **** #else /* PLL_CLOCK_SRC == PLL_CLOCK_SRC_EXT_XTAL */
+ 193:../Startup/system_XMC4800.c **** #define PLL_PDIV (1U)
+ 194:../Startup/system_XMC4800.c **** #define PLL_NDIV (23U)
+ 195:../Startup/system_XMC4800.c **** #define PLL_K2DIV (0U)
+ 196:../Startup/system_XMC4800.c **** 
+ 197:../Startup/system_XMC4800.c **** #define VCO ((OFI_FREQUENCY / (PLL_PDIV + 1UL)) * (PLL_NDIV + 1UL))
+ 198:../Startup/system_XMC4800.c **** 
+ 199:../Startup/system_XMC4800.c **** #endif /* PLL_CLOCK_SRC == PLL_CLOCK_SRC_OFI */
+ 200:../Startup/system_XMC4800.c **** 
+ 201:../Startup/system_XMC4800.c **** #define PLL_K2DIV_24MHZ  ((VCO / OFI_FREQUENCY) - 1UL)
+ 202:../Startup/system_XMC4800.c **** #define PLL_K2DIV_48MHZ  ((VCO / 48000000U) - 1UL)
+ 203:../Startup/system_XMC4800.c **** #define PLL_K2DIV_72MHZ  ((VCO / 72000000U) - 1UL)
+ 204:../Startup/system_XMC4800.c **** #define PLL_K2DIV_96MHZ  ((VCO / 96000000U) - 1UL)
+ 205:../Startup/system_XMC4800.c **** #define PLL_K2DIV_120MHZ ((VCO / 120000000U) - 1UL)
+ 206:../Startup/system_XMC4800.c **** 
+ 207:../Startup/system_XMC4800.c **** #define SCU_CLK_CLKCLR_ENABLE_USBCLK SCU_CLK_CLKCLR_USBCDI_Msk
+ 208:../Startup/system_XMC4800.c **** #define SCU_CLK_CLKCLR_ENABLE_MMCCLK SCU_CLK_CLKCLR_MMCCDI_Msk
+ 209:../Startup/system_XMC4800.c **** #define SCU_CLK_CLKCLR_ENABLE_ETHCLK SCU_CLK_CLKCLR_ETH0CDI_Msk
+ 210:../Startup/system_XMC4800.c **** #define SCU_CLK_CLKCLR_ENABLE_EBUCLK SCU_CLK_CLKCLR_EBUCDI_Msk
+ 211:../Startup/system_XMC4800.c **** #define SCU_CLK_CLKCLR_ENABLE_CCUCLK SCU_CLK_CLKCLR_CCUCDI_Msk
+ 212:../Startup/system_XMC4800.c **** 
+ 213:../Startup/system_XMC4800.c **** #define SCU_CLK_SYSCLKCR_SYSSEL_OFI      (0U << SCU_CLK_SYSCLKCR_SYSSEL_Pos)
+ 214:../Startup/system_XMC4800.c **** #define SCU_CLK_SYSCLKCR_SYSSEL_PLL      (1U << SCU_CLK_SYSCLKCR_SYSSEL_Pos)
+ 215:../Startup/system_XMC4800.c **** 
+ 216:../Startup/system_XMC4800.c **** #define SCU_CLK_USBCLKCR_USBSEL_USBPLL   (0U << SCU_CLK_USBCLKCR_USBSEL_Pos)
+ 217:../Startup/system_XMC4800.c **** #define SCU_CLK_USBCLKCR_USBSEL_PLL      (1U << SCU_CLK_USBCLKCR_USBSEL_Pos)
+ 218:../Startup/system_XMC4800.c **** 
+ 219:../Startup/system_XMC4800.c **** #define SCU_CLK_ECATCLKCR_ECATSEL_USBPLL (0U << SCU_CLK_ECATCLKCR_ECATSEL_Pos)
+ 220:../Startup/system_XMC4800.c **** #define SCU_CLK_ECATCLKCR_ECATSEL_PLL    (1U << SCU_CLK_ECATCLKCR_ECATSEL_Pos)
+ 221:../Startup/system_XMC4800.c **** 
+ 222:../Startup/system_XMC4800.c **** #define SCU_CLK_WDTCLKCR_WDTSEL_OFI      (0U << SCU_CLK_WDTCLKCR_WDTSEL_Pos)
+ 223:../Startup/system_XMC4800.c **** #define SCU_CLK_WDTCLKCR_WDTSEL_STANDBY  (1U << SCU_CLK_WDTCLKCR_WDTSEL_Pos)
+ 224:../Startup/system_XMC4800.c **** #define SCU_CLK_WDTCLKCR_WDTSEL_PLL      (2U << SCU_CLK_WDTCLKCR_WDTSEL_Pos)
+ 225:../Startup/system_XMC4800.c **** 
+ 226:../Startup/system_XMC4800.c **** #define SCU_CLK_EXTCLKCR_ECKSEL_SYS      (0U << SCU_CLK_EXTCLKCR_ECKSEL_Pos)
+ 227:../Startup/system_XMC4800.c **** #define SCU_CLK_EXTCLKCR_ECKSEL_USBPLL   (2U << SCU_CLK_EXTCLKCR_ECKSEL_Pos)
+ 228:../Startup/system_XMC4800.c **** #define SCU_CLK_EXTCLKCR_ECKSEL_PLL      (3U << SCU_CLK_EXTCLKCR_ECKSEL_Pos)
+ 229:../Startup/system_XMC4800.c **** 
+ 230:../Startup/system_XMC4800.c **** #define EXTCLK_PIN_P0_8  (1)
+ 231:../Startup/system_XMC4800.c **** #define EXTCLK_PIN_P1_15 (2)
+ 232:../Startup/system_XMC4800.c **** 
+ 233:../Startup/system_XMC4800.c **** /*
+ 234:../Startup/system_XMC4800.c **** //    <h> Clock tree
+ 235:../Startup/system_XMC4800.c **** //        <o1.16> System clock source selection
+ 236:../Startup/system_XMC4800.c **** //                      <0=> fOFI
+ 237:../Startup/system_XMC4800.c **** //                      <1=> fPLL
+ 238:../Startup/system_XMC4800.c **** //                      <i> Default: fPLL
+ 239:../Startup/system_XMC4800.c **** //        <o1.0..7> System clock divider <1-256><#-1>
+ 240:../Startup/system_XMC4800.c **** //                      <i> Default: 2
+ 241:../Startup/system_XMC4800.c **** //        <o2.0> CPU clock divider
+ 242:../Startup/system_XMC4800.c **** //                      <0=> fCPU = fSYS
+ 243:../Startup/system_XMC4800.c **** //                      <1=> fCPU = fSYS / 2
+ 244:../Startup/system_XMC4800.c **** //                      <i> Default: fCPU = fSYS
+ 245:../Startup/system_XMC4800.c **** //        <o3.0>  Peripheral clock divider
+ 246:../Startup/system_XMC4800.c **** //                      <0=> fPB = fCPU
+ 247:../Startup/system_XMC4800.c **** //                      <1=> fPB = fCPU / 2
+ 248:../Startup/system_XMC4800.c **** //                      <i> Default: fPB = fCPU
+ 249:../Startup/system_XMC4800.c **** //        <o4.0>  CCU clock divider
+ 250:../Startup/system_XMC4800.c **** //                      <0=> fCCU = fCPU
+ 251:../Startup/system_XMC4800.c **** //                      <1=> fCCU = fCPU / 2
+ 252:../Startup/system_XMC4800.c **** //                      <i> Default: fCCU = fCPU
+ 253:../Startup/system_XMC4800.c **** //        <e.5> Enable WDT clock
+ 254:../Startup/system_XMC4800.c **** //             <o5.16..17> WDT clock source <0=> fOFI
+ 255:../Startup/system_XMC4800.c **** //                                          <1=> fSTDBY
+ 256:../Startup/system_XMC4800.c **** //                                          <2=> fPLL
+ 257:../Startup/system_XMC4800.c **** //                      <i> Default: fOFI
+ 258:../Startup/system_XMC4800.c **** //             <o5.0..7> WDT clock divider <1-256><#-1>
+ 259:../Startup/system_XMC4800.c **** //                      <i> Default: 1
+ 260:../Startup/system_XMC4800.c **** //        </e>
+ 261:../Startup/system_XMC4800.c **** //        <e.3> Enable EBU clock
+ 262:../Startup/system_XMC4800.c **** //             <o6.0..5>  EBU clock divider  <1-64><#-1>
+ 263:../Startup/system_XMC4800.c **** //             <i> Default: 4
+ 264:../Startup/system_XMC4800.c **** //        </e>
+ 265:../Startup/system_XMC4800.c **** //        <e.2> Enable ETH clock
+ 266:../Startup/system_XMC4800.c **** //        </e>
+ 267:../Startup/system_XMC4800.c **** //        <e.1> Enable MMC clock
+ 268:../Startup/system_XMC4800.c **** //        </e>
+ 269:../Startup/system_XMC4800.c **** //        <e.0> Enable USB clock
+ 270:../Startup/system_XMC4800.c **** //             <o7.16> USB clock source <0=> fUSBPLL
+ 271:../Startup/system_XMC4800.c **** //                                      <1=> fPLL
+ 272:../Startup/system_XMC4800.c **** //             <i> Default: fPLL
+ 273:../Startup/system_XMC4800.c **** //             <o7.0..2> USB clock source divider <1-8><#-1>
+ 274:../Startup/system_XMC4800.c **** //             <i> Default: 6
+ 275:../Startup/system_XMC4800.c **** //        </e>
+ 276:../Startup/system_XMC4800.c **** //        <o8.16..17> ECAT clock source <0=> fUSBPLL
+ 277:../Startup/system_XMC4800.c **** //                                      <1=> fPLL
+ 278:../Startup/system_XMC4800.c **** //             <i> Default: fUSBPLL
+ 279:../Startup/system_XMC4800.c **** //        <o8.0..1> ECAT clock divider <1-4><#-1>
+ 280:../Startup/system_XMC4800.c **** //             <i> Default: 2
+ 281:../Startup/system_XMC4800.c **** //        <e9> Enable external clock
+ 282:../Startup/system_XMC4800.c **** //             <o9.0..1> External Clock Source Selection
+ 283:../Startup/system_XMC4800.c **** //                  <0=> fSYS
+ 284:../Startup/system_XMC4800.c **** //                  <2=> fUSB
+ 285:../Startup/system_XMC4800.c **** //                  <3=> fPLL
+ 286:../Startup/system_XMC4800.c **** //                  <i> Default: fPLL
+ 287:../Startup/system_XMC4800.c **** //             <o9.16..24> External Clock divider <1-512><#-1>
+ 288:../Startup/system_XMC4800.c **** //                  <i> Default: 288
+ 289:../Startup/system_XMC4800.c **** //                  <i> Only valid for USB PLL and PLL clocks
+ 290:../Startup/system_XMC4800.c **** //             <o10.0> External Clock Pin Selection
+ 291:../Startup/system_XMC4800.c **** //                  <0=> Disabled
+ 292:../Startup/system_XMC4800.c **** //                  <1=> P0.8
+ 293:../Startup/system_XMC4800.c **** //                  <2=> P1.15
+ 294:../Startup/system_XMC4800.c **** //                  <i> Default: Disabled
+ 295:../Startup/system_XMC4800.c **** //        </e>
+ 296:../Startup/system_XMC4800.c **** //    </h>
+ 297:../Startup/system_XMC4800.c **** */
+ 298:../Startup/system_XMC4800.c **** #define __CLKSET    (0x00000000UL)
+ 299:../Startup/system_XMC4800.c **** #define __SYSCLKCR  (0x00010001UL)
+ 300:../Startup/system_XMC4800.c **** #define __CPUCLKCR  (0x00000000UL)
+ 301:../Startup/system_XMC4800.c **** #define __PBCLKCR   (0x00000000UL)
+ 302:../Startup/system_XMC4800.c **** #define __CCUCLKCR  (0x00000000UL)
+ 303:../Startup/system_XMC4800.c **** #define __WDTCLKCR  (0x00000000UL)
+ 304:../Startup/system_XMC4800.c **** #define __EBUCLKCR  (0x00000003UL)
+ 305:../Startup/system_XMC4800.c **** #define __USBCLKCR  (0x00010005UL)
+ 306:../Startup/system_XMC4800.c **** #define __ECATCLKCR (0x00000001UL)
+ 307:../Startup/system_XMC4800.c **** 
+ 308:../Startup/system_XMC4800.c **** #define __EXTCLKCR (0x01200003UL)
+ 309:../Startup/system_XMC4800.c **** #define __EXTCLKPIN (0U)
+ 310:../Startup/system_XMC4800.c **** 
+ 311:../Startup/system_XMC4800.c **** /*
+ 312:../Startup/system_XMC4800.c **** // </h>
+ 313:../Startup/system_XMC4800.c **** */
+ 314:../Startup/system_XMC4800.c **** 
+ 315:../Startup/system_XMC4800.c **** /*
+ 316:../Startup/system_XMC4800.c **** //-------- <<< end of configuration section >>> ------------------
+ 317:../Startup/system_XMC4800.c **** */
+ 318:../Startup/system_XMC4800.c **** 
+ 319:../Startup/system_XMC4800.c **** #define ENABLE_PLL \
+ 320:../Startup/system_XMC4800.c ****     (((__SYSCLKCR & SCU_CLK_SYSCLKCR_SYSSEL_Msk) == SCU_CLK_SYSCLKCR_SYSSEL_PLL) || \
+ 321:../Startup/system_XMC4800.c ****      ((__ECATCLKCR & SCU_CLK_ECATCLKCR_ECATSEL_Msk) == SCU_CLK_ECATCLKCR_ECATSEL_PLL) || \
+ 322:../Startup/system_XMC4800.c ****      ((__CLKSET & SCU_CLK_CLKSET_EBUCEN_Msk) != 0) || \
+ 323:../Startup/system_XMC4800.c ****      (((__CLKSET & SCU_CLK_CLKSET_USBCEN_Msk) != 0) && ((__USBCLKCR & SCU_CLK_USBCLKCR_USBSEL_Msk) 
+ 324:../Startup/system_XMC4800.c ****      (((__CLKSET & SCU_CLK_CLKSET_WDTCEN_Msk) != 0) && ((__WDTCLKCR & SCU_CLK_WDTCLKCR_WDTSEL_Msk) 
+ 325:../Startup/system_XMC4800.c **** 
+ 326:../Startup/system_XMC4800.c **** #define ENABLE_USBPLL \
+ 327:../Startup/system_XMC4800.c ****     (((__ECATCLKCR & SCU_CLK_ECATCLKCR_ECATSEL_Msk) == SCU_CLK_ECATCLKCR_ECATSEL_USBPLL) || \
+ 328:../Startup/system_XMC4800.c ****      (((__CLKSET & SCU_CLK_CLKSET_USBCEN_Msk) != 0) && ((__USBCLKCR & SCU_CLK_USBCLKCR_USBSEL_Msk) 
+ 329:../Startup/system_XMC4800.c **** 
+ 330:../Startup/system_XMC4800.c **** /*******************************************************************************
+ 331:../Startup/system_XMC4800.c ****  * GLOBAL VARIABLES
+ 332:../Startup/system_XMC4800.c ****  *******************************************************************************/
+ 333:../Startup/system_XMC4800.c **** #if defined ( __CC_ARM )
+ 334:../Startup/system_XMC4800.c **** #if defined(XMC4800_E196x2048) || defined(XMC4800_F144x2048) || defined(XMC4800_F100x2048)
+ 335:../Startup/system_XMC4800.c **** uint32_t SystemCoreClock __attribute__((at(0x2003FFC0)));
+ 336:../Startup/system_XMC4800.c **** uint8_t g_chipid[16] __attribute__((at(0x2003FFC4)));
+ 337:../Startup/system_XMC4800.c **** #elif defined(XMC4800_E196x1536) || defined(XMC4800_F144x1536) || defined(XMC4800_F100x1536)
+ 338:../Startup/system_XMC4800.c **** uint32_t SystemCoreClock __attribute__((at(0x2002CFC0)));
+ 339:../Startup/system_XMC4800.c **** uint8_t g_chipid[16] __attribute__((at(0x2002CFC4)));
+ 340:../Startup/system_XMC4800.c **** #elif defined(XMC4800_E196x1024) || defined(XMC4800_F144x1024) || defined(XMC4800_F100x1024)
+ 341:../Startup/system_XMC4800.c **** uint32_t SystemCoreClock __attribute__((at(0x2001FFC0)));
+ 342:../Startup/system_XMC4800.c **** uint8_t g_chipid[16] __attribute__((at(0x2001FFC4)));
+ 343:../Startup/system_XMC4800.c **** #else
+ 344:../Startup/system_XMC4800.c **** #error "system_XMC4800.c: device not supported" 
+ 345:../Startup/system_XMC4800.c **** #endif    
+ 346:../Startup/system_XMC4800.c **** #elif defined ( __ICCARM__ )
+ 347:../Startup/system_XMC4800.c **** #if defined(XMC4800_E196x2048) || defined(XMC4800_F144x2048) || defined(XMC4800_F100x2048) || \
+ 348:../Startup/system_XMC4800.c ****     defined(XMC4800_E196x1536) || defined(XMC4800_F144x1536) || defined(XMC4800_F100x1536) || \
+ 349:../Startup/system_XMC4800.c ****     defined(XMC4800_E196x1024) || defined(XMC4800_F144x1024) || defined(XMC4800_F100x1024)
+ 350:../Startup/system_XMC4800.c **** __no_init uint32_t SystemCoreClock;
+ 351:../Startup/system_XMC4800.c **** __no_init uint8_t g_chipid[16];
+ 352:../Startup/system_XMC4800.c **** #else
+ 353:../Startup/system_XMC4800.c **** #error "system_XMC4800.c: device not supported" 
+ 354:../Startup/system_XMC4800.c **** #endif    
+ 355:../Startup/system_XMC4800.c **** #elif defined ( __GNUC__ )
+ 356:../Startup/system_XMC4800.c **** #if defined(XMC4800_E196x2048) || defined(XMC4800_F144x2048) || defined(XMC4800_F100x2048) || \
+ 357:../Startup/system_XMC4800.c ****     defined(XMC4800_E196x1536) || defined(XMC4800_F144x1536) || defined(XMC4800_F100x1536) || \
+ 358:../Startup/system_XMC4800.c ****     defined(XMC4800_E196x1024) || defined(XMC4800_F144x1024) || defined(XMC4800_F100x1024)
+ 359:../Startup/system_XMC4800.c **** uint32_t SystemCoreClock __attribute__((section(".no_init")));
+ 360:../Startup/system_XMC4800.c **** uint8_t g_chipid[16] __attribute__((section(".no_init")));
+ 361:../Startup/system_XMC4800.c **** #else
+ 362:../Startup/system_XMC4800.c **** #error "system_XMC4800.c: device not supported" 
+ 363:../Startup/system_XMC4800.c **** #endif    
+ 364:../Startup/system_XMC4800.c **** #elif defined ( __TASKING__ )
+ 365:../Startup/system_XMC4800.c **** #if defined(XMC4800_E196x2048) || defined(XMC4800_F144x2048) || defined(XMC4800_F100x2048)
+ 366:../Startup/system_XMC4800.c **** uint32_t SystemCoreClock __at( 0x2003FFC0 );
+ 367:../Startup/system_XMC4800.c **** uint8_t g_chipid[16] __at( 0x2003FFC4 );
+ 368:../Startup/system_XMC4800.c **** #elif defined(XMC4800_E196x1536) || defined(XMC4800_F144x1536) || defined(XMC4800_F100x1536)
+ 369:../Startup/system_XMC4800.c **** uint32_t SystemCoreClock __at( 0x2002CFC0 );
+ 370:../Startup/system_XMC4800.c **** uint8_t g_chipid[16] __at( 0x2002CFC4 );
+ 371:../Startup/system_XMC4800.c **** #elif defined(XMC4800_E196x1024) || defined(XMC4800_F144x1024) || defined(XMC4800_F100x1024)
+ 372:../Startup/system_XMC4800.c **** uint32_t SystemCoreClock __at( 0x2001FFC0 );
+ 373:../Startup/system_XMC4800.c **** uint8_t g_chipid[16] __at( 0x2001FFC4 );
+ 374:../Startup/system_XMC4800.c **** #else
+ 375:../Startup/system_XMC4800.c **** #error "system_XMC4800.c: device not supported" 
+ 376:../Startup/system_XMC4800.c **** #endif    
+ 377:../Startup/system_XMC4800.c **** #else
+ 378:../Startup/system_XMC4800.c **** #error "system_XMC4800.c: compiler not supported" 
+ 379:../Startup/system_XMC4800.c **** #endif    
+ 380:../Startup/system_XMC4800.c **** 
+ 381:../Startup/system_XMC4800.c **** extern uint32_t __Vectors;
+ 382:../Startup/system_XMC4800.c **** 
+ 383:../Startup/system_XMC4800.c **** /*******************************************************************************
+ 384:../Startup/system_XMC4800.c ****  * LOCAL FUNCTIONS
+ 385:../Startup/system_XMC4800.c ****  *******************************************************************************/
+ 386:../Startup/system_XMC4800.c **** static void delay(uint32_t cycles)
+ 387:../Startup/system_XMC4800.c **** {
+  40              	 .loc 1 387 0
+  41              	 .cfi_startproc
+  42              	 
+  43              	 
+  44              	 
+  45 0000 80B4     	 push {r7}
+  46              	.LCFI0:
+  47              	 .cfi_def_cfa_offset 4
+  48              	 .cfi_offset 7,-4
+  49 0002 85B0     	 sub sp,sp,#20
+  50              	.LCFI1:
+  51              	 .cfi_def_cfa_offset 24
+  52 0004 00AF     	 add r7,sp,#0
+  53              	.LCFI2:
+  54              	 .cfi_def_cfa_register 7
+  55 0006 7860     	 str r0,[r7,#4]
+ 388:../Startup/system_XMC4800.c ****   volatile uint32_t i;
+ 389:../Startup/system_XMC4800.c **** 
+ 390:../Startup/system_XMC4800.c ****   for(i = 0UL; i < cycles ;++i)
+  56              	 .loc 1 390 0
+  57 0008 0023     	 movs r3,#0
+  58 000a FB60     	 str r3,[r7,#12]
+  59 000c 03E0     	 b .L2
+  60              	.L3:
+  61              	.LBB10:
+  62              	.LBB11:
+  63              	 .file 2 "C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include/cmsis_gcc.h"
+   1:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**************************************************************************//**
+   2:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  * @file     cmsis_gcc.h
+   3:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  * @brief    CMSIS Cortex-M Core Function/Instruction Header File
+   4:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  * @version  V4.30
+   5:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  * @date     20. October 2015
+   6:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  ******************************************************************************/
+   7:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /* Copyright (c) 2009 - 2015 ARM LIMITED
+   8:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+   9:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    All rights reserved.
+  10:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    Redistribution and use in source and binary forms, with or without
+  11:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    modification, are permitted provided that the following conditions are met:
+  12:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    - Redistributions of source code must retain the above copyright
+  13:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****      notice, this list of conditions and the following disclaimer.
+  14:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    - Redistributions in binary form must reproduce the above copyright
+  15:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****      notice, this list of conditions and the following disclaimer in the
+  16:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****      documentation and/or other materials provided with the distribution.
+  17:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    - Neither the name of ARM nor the names of its contributors may be used
+  18:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****      to endorse or promote products derived from this software without
+  19:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****      specific prior written permission.
+  20:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    *
+  21:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    ARE DISCLAIMED. IN NO EVENT SHALL COPYRIGHT HOLDERS AND CONTRIBUTORS BE
+  25:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    POSSIBILITY OF SUCH DAMAGE.
+  32:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    ---------------------------------------------------------------------------*/
+  33:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  34:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  35:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #ifndef __CMSIS_GCC_H
+  36:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __CMSIS_GCC_H
+  37:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  38:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /* ignore some GCC warnings */
+  39:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #if defined ( __GNUC__ )
+  40:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #pragma GCC diagnostic push
+  41:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wsign-conversion"
+  42:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wconversion"
+  43:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #pragma GCC diagnostic ignored "-Wunused-parameter"
+  44:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+  45:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  46:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  47:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /* ###########################  Core Function Access  ########################### */
+  48:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /** \ingroup  CMSIS_Core_FunctionInterface
+  49:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****     \defgroup CMSIS_Core_RegAccFunctions CMSIS Core Register Access Functions
+  50:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   @{
+  51:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+  52:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  53:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+  54:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Enable IRQ Interrupts
+  55:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Enables IRQ interrupts by clearing the I-bit in the CPSR.
+  56:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****            Can only be executed in Privileged modes.
+  57:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+  58:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __enable_irq(void)
+  59:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+  60:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("cpsie i" : : : "memory");
+  61:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+  62:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  63:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  64:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+  65:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Disable IRQ Interrupts
+  66:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Disables IRQ interrupts by setting the I-bit in the CPSR.
+  67:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   Can only be executed in Privileged modes.
+  68:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+  69:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __disable_irq(void)
+  70:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+  71:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("cpsid i" : : : "memory");
+  72:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+  73:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  74:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  75:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+  76:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Control Register
+  77:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the content of the Control Register.
+  78:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               Control Register value
+  79:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+  80:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_CONTROL(void)
+  81:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+  82:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+  83:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  84:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, control" : "=r" (result) );
+  85:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+  86:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+  87:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  88:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  89:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+  90:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Control Register
+  91:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Writes the given value to the Control Register.
+  92:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    control  Control Register value to set
+  93:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+  94:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_CONTROL(uint32_t control)
+  95:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+  96:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR control, %0" : : "r" (control) : "memory");
+  97:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+  98:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+  99:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 100:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 101:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get IPSR Register
+ 102:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the content of the IPSR Register.
+ 103:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               IPSR Register value
+ 104:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 105:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_IPSR(void)
+ 106:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 107:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 108:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 109:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, ipsr" : "=r" (result) );
+ 110:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 111:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 112:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 113:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 114:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 115:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get APSR Register
+ 116:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the content of the APSR Register.
+ 117:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               APSR Register value
+ 118:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 119:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_APSR(void)
+ 120:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 121:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 122:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 123:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, apsr" : "=r" (result) );
+ 124:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 125:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 126:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 127:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 128:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 129:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get xPSR Register
+ 130:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the content of the xPSR Register.
+ 131:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 132:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****     \return               xPSR Register value
+ 133:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 134:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_xPSR(void)
+ 135:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 136:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 137:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 138:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, xpsr" : "=r" (result) );
+ 139:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 140:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 141:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 142:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 143:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 144:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Process Stack Pointer
+ 145:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the Process Stack Pointer (PSP).
+ 146:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               PSP Register value
+ 147:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 148:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_PSP(void)
+ 149:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 150:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   register uint32_t result;
+ 151:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 152:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, psp\n"  : "=r" (result) );
+ 153:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 154:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 155:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 156:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 157:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 158:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Process Stack Pointer
+ 159:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Process Stack Pointer (PSP).
+ 160:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    topOfProcStack  Process Stack Pointer value to set
+ 161:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 162:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_PSP(uint32_t topOfProcStack)
+ 163:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 164:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR psp, %0\n" : : "r" (topOfProcStack) : "sp");
+ 165:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 166:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 167:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 168:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 169:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Main Stack Pointer
+ 170:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the Main Stack Pointer (MSP).
+ 171:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               MSP Register value
+ 172:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 173:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_MSP(void)
+ 174:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 175:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   register uint32_t result;
+ 176:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 177:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, msp\n" : "=r" (result) );
+ 178:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 179:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 180:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 181:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 182:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 183:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Main Stack Pointer
+ 184:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Main Stack Pointer (MSP).
+ 185:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 186:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****     \param [in]    topOfMainStack  Main Stack Pointer value to set
+ 187:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 188:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_MSP(uint32_t topOfMainStack)
+ 189:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 190:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR msp, %0\n" : : "r" (topOfMainStack) : "sp");
+ 191:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 192:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 193:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 194:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 195:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Priority Mask
+ 196:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current state of the priority mask bit from the Priority Mask Register.
+ 197:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               Priority Mask value
+ 198:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 199:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_PRIMASK(void)
+ 200:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 201:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 202:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 203:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, primask" : "=r" (result) );
+ 204:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 205:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 206:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 207:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 208:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 209:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Priority Mask
+ 210:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Priority Mask Register.
+ 211:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    priMask  Priority Mask
+ 212:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 213:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_PRIMASK(uint32_t priMask)
+ 214:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 215:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR primask, %0" : : "r" (priMask) : "memory");
+ 216:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 217:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 218:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 219:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #if       (__CORTEX_M >= 0x03U)
+ 220:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 221:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 222:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Enable FIQ
+ 223:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Enables FIQ interrupts by clearing the F-bit in the CPSR.
+ 224:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 225:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 226:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __enable_fault_irq(void)
+ 227:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 228:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("cpsie f" : : : "memory");
+ 229:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 230:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 231:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 232:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 233:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Disable FIQ
+ 234:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Disables FIQ interrupts by setting the F-bit in the CPSR.
+ 235:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****            Can only be executed in Privileged modes.
+ 236:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 237:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __disable_fault_irq(void)
+ 238:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 239:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("cpsid f" : : : "memory");
+ 240:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 241:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 242:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 243:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 244:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Base Priority
+ 245:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the Base Priority register.
+ 246:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               Base Priority register value
+ 247:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 248:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_BASEPRI(void)
+ 249:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 250:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 251:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 252:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, basepri" : "=r" (result) );
+ 253:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 254:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 255:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 256:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 257:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 258:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Base Priority
+ 259:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Base Priority register.
+ 260:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    basePri  Base Priority value to set
+ 261:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 262:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_BASEPRI(uint32_t value)
+ 263:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 264:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR basepri, %0" : : "r" (value) : "memory");
+ 265:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 266:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 267:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 268:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 269:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Base Priority with condition
+ 270:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Base Priority register only if BASEPRI masking is disable
+ 271:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****            or the new value increases the BASEPRI priority level.
+ 272:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    basePri  Base Priority value to set
+ 273:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 274:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_BASEPRI_MAX(uint32_t value)
+ 275:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 276:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR basepri_max, %0" : : "r" (value) : "memory");
+ 277:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 278:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 279:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 280:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 281:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get Fault Mask
+ 282:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the Fault Mask register.
+ 283:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               Fault Mask register value
+ 284:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 285:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_FAULTMASK(void)
+ 286:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 287:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 288:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 289:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MRS %0, faultmask" : "=r" (result) );
+ 290:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 291:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 292:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 293:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 294:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 295:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set Fault Mask
+ 296:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Fault Mask register.
+ 297:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    faultMask  Fault Mask value to set
+ 298:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 299:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_FAULTMASK(uint32_t faultMask)
+ 300:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 301:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("MSR faultmask, %0" : : "r" (faultMask) : "memory");
+ 302:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 303:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 304:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif /* (__CORTEX_M >= 0x03U) */
+ 305:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 306:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 307:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #if       (__CORTEX_M == 0x04U) || (__CORTEX_M == 0x07U)
+ 308:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 309:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 310:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Get FPSCR
+ 311:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Returns the current value of the Floating Point Status/Control register.
+ 312:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \return               Floating Point Status/Control register value
+ 313:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 314:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE uint32_t __get_FPSCR(void)
+ 315:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 316:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (__FPU_PRESENT == 1U) && (__FPU_USED == 1U)
+ 317:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   uint32_t result;
+ 318:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 319:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   /* Empty asm statement works as a scheduling barrier */
+ 320:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("");
+ 321:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("VMRS %0, fpscr" : "=r" (result) );
+ 322:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("");
+ 323:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   return(result);
+ 324:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 325:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****    return(0);
+ 326:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 327:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 328:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 329:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 330:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 331:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Set FPSCR
+ 332:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Assigns the given value to the Floating Point Status/Control register.
+ 333:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \param [in]    fpscr  Floating Point Status/Control value to set
+ 334:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 335:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__( ( always_inline ) ) __STATIC_INLINE void __set_FPSCR(uint32_t fpscr)
+ 336:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 337:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #if (__FPU_PRESENT == 1U) && (__FPU_USED == 1U)
+ 338:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   /* Empty asm statement works as a scheduling barrier */
+ 339:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("");
+ 340:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("VMSR fpscr, %0" : : "r" (fpscr) : "vfpcc");
+ 341:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("");
+ 342:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 343:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 344:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 345:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif /* (__CORTEX_M == 0x04U) || (__CORTEX_M == 0x07U) */
+ 346:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 347:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 348:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 349:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /*@} end of CMSIS_Core_RegAccFunctions */
+ 350:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 351:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 352:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /* ##########################  Core Instruction Access  ######################### */
+ 353:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /** \defgroup CMSIS_Core_InstructionInterface CMSIS Core Instruction Interface
+ 354:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   Access to dedicated instructions
+ 355:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   @{
+ 356:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** */
+ 357:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 358:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /* Define macros for porting to both thumb1 and thumb2.
+ 359:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  * For thumb1, use low register (r0-r7), specified by constraint "l"
+ 360:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  * Otherwise, use general registers, specified by constraint "r" */
+ 361:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #if defined (__thumb__) && !defined (__thumb2__)
+ 362:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __CMSIS_GCC_OUT_REG(r) "=l" (r)
+ 363:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __CMSIS_GCC_USE_REG(r) "l" (r)
+ 364:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #else
+ 365:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __CMSIS_GCC_OUT_REG(r) "=r" (r)
+ 366:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #define __CMSIS_GCC_USE_REG(r) "r" (r)
+ 367:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** #endif
+ 368:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 369:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 370:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   No Operation
+ 371:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details No Operation does nothing. This instruction can be used for code alignment purposes.
+ 372:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 373:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__((always_inline)) __STATIC_INLINE void __NOP(void)
+ 374:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 375:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("nop");
+  64              	 .loc 2 375 0 discriminator 3
+  65              	
+  66 000e 00BF     	 nop
+  67              	
+  68              	 .thumb
+  69              	.LBE11:
+  70              	.LBE10:
+  71              	 .loc 1 390 0 discriminator 3
+  72 0010 FB68     	 ldr r3,[r7,#12]
+  73 0012 0133     	 adds r3,r3,#1
+  74 0014 FB60     	 str r3,[r7,#12]
+  75              	.L2:
+  76              	 .loc 1 390 0 is_stmt 0 discriminator 1
+  77 0016 FA68     	 ldr r2,[r7,#12]
+  78 0018 7B68     	 ldr r3,[r7,#4]
+  79 001a 9A42     	 cmp r2,r3
+  80 001c F7D3     	 bcc .L3
+ 391:../Startup/system_XMC4800.c ****   {
+ 392:../Startup/system_XMC4800.c ****     __NOP();
+ 393:../Startup/system_XMC4800.c ****   }
+ 394:../Startup/system_XMC4800.c **** }
+  81              	 .loc 1 394 0 is_stmt 1
+  82 001e 1437     	 adds r7,r7,#20
+  83              	.LCFI3:
+  84              	 .cfi_def_cfa_offset 4
+  85 0020 BD46     	 mov sp,r7
+  86              	.LCFI4:
+  87              	 .cfi_def_cfa_register 13
+  88              	 
+  89 0022 5DF8047B 	 ldr r7,[sp],#4
+  90              	.LCFI5:
+  91              	 .cfi_restore 7
+  92              	 .cfi_def_cfa_offset 0
+  93 0026 7047     	 bx lr
+  94              	 .cfi_endproc
+  95              	.LFE123:
+  97              	 .section .text.SystemInit,"ax",%progbits
+  98              	 .align 2
+  99              	 .weak SystemInit
+ 100              	 .thumb
+ 101              	 .thumb_func
+ 103              	SystemInit:
+ 104              	.LFB124:
+ 395:../Startup/system_XMC4800.c **** 
+ 396:../Startup/system_XMC4800.c **** /*******************************************************************************
+ 397:../Startup/system_XMC4800.c ****  * API IMPLEMENTATION
+ 398:../Startup/system_XMC4800.c ****  *******************************************************************************/
+ 399:../Startup/system_XMC4800.c **** 
+ 400:../Startup/system_XMC4800.c **** __WEAK void SystemInit(void)
+ 401:../Startup/system_XMC4800.c **** {
+ 105              	 .loc 1 401 0
+ 106              	 .cfi_startproc
+ 107              	 
+ 108              	 
+ 109 0000 98B5     	 push {r3,r4,r7,lr}
+ 110              	.LCFI6:
+ 111              	 .cfi_def_cfa_offset 16
+ 112              	 .cfi_offset 3,-16
+ 113              	 .cfi_offset 4,-12
+ 114              	 .cfi_offset 7,-8
+ 115              	 .cfi_offset 14,-4
+ 116 0002 00AF     	 add r7,sp,#0
+ 117              	.LCFI7:
+ 118              	 .cfi_def_cfa_register 7
+ 402:../Startup/system_XMC4800.c ****   memcpy(g_chipid, CHIPID_LOC, 16);
+ 119              	 .loc 1 402 0
+ 120 0004 054A     	 ldr r2,.L5
+ 121 0006 4FF00053 	 mov r3,#536870912
+ 122 000a 1446     	 mov r4,r2
+ 123 000c 0FCB     	 ldmia r3,{r0,r1,r2,r3}
+ 124 000e 84E80F00 	 stmia r4,{r0,r1,r2,r3}
+ 403:../Startup/system_XMC4800.c **** 
+ 404:../Startup/system_XMC4800.c ****   SystemCoreSetup();
+ 125              	 .loc 1 404 0
+ 126 0012 FFF7FEFF 	 bl SystemCoreSetup
+ 405:../Startup/system_XMC4800.c ****   SystemCoreClockSetup();
+ 127              	 .loc 1 405 0
+ 128 0016 FFF7FEFF 	 bl SystemCoreClockSetup
+ 406:../Startup/system_XMC4800.c **** }
+ 129              	 .loc 1 406 0
+ 130 001a 98BD     	 pop {r3,r4,r7,pc}
+ 131              	.L6:
+ 132              	 .align 2
+ 133              	.L5:
+ 134 001c 00000000 	 .word g_chipid
+ 135              	 .cfi_endproc
+ 136              	.LFE124:
+ 138              	 .section .text.SystemCoreSetup,"ax",%progbits
+ 139              	 .align 2
+ 140              	 .weak SystemCoreSetup
+ 141              	 .thumb
+ 142              	 .thumb_func
+ 144              	SystemCoreSetup:
+ 145              	.LFB125:
+ 407:../Startup/system_XMC4800.c **** 
+ 408:../Startup/system_XMC4800.c **** __WEAK void SystemCoreSetup(void)
+ 409:../Startup/system_XMC4800.c **** {
+ 146              	 .loc 1 409 0
+ 147              	 .cfi_startproc
+ 148              	 
+ 149              	 
+ 150              	 
+ 151 0000 80B4     	 push {r7}
+ 152              	.LCFI8:
+ 153              	 .cfi_def_cfa_offset 4
+ 154              	 .cfi_offset 7,-4
+ 155 0002 83B0     	 sub sp,sp,#12
+ 156              	.LCFI9:
+ 157              	 .cfi_def_cfa_offset 16
+ 158 0004 00AF     	 add r7,sp,#0
+ 159              	.LCFI10:
+ 160              	 .cfi_def_cfa_register 7
+ 161              	.LBB12:
+ 162              	.LBB13:
+  71:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 163              	 .loc 2 71 0
+ 164              	
+ 165 0006 72B6     	 cpsid i
+ 166              	
+ 167              	 .thumb
+ 168              	.LBE13:
+ 169              	.LBE12:
+ 410:../Startup/system_XMC4800.c ****   uint32_t temp;
+ 411:../Startup/system_XMC4800.c **** 
+ 412:../Startup/system_XMC4800.c ****   /* relocate vector table */
+ 413:../Startup/system_XMC4800.c ****   __disable_irq();
+ 414:../Startup/system_XMC4800.c ****   SCB->VTOR = (uint32_t)(&__Vectors);
+ 170              	 .loc 1 414 0
+ 171 0008 164B     	 ldr r3,.L8
+ 172 000a 174A     	 ldr r2,.L8+4
+ 173 000c 9A60     	 str r2,[r3,#8]
+ 174              	.LBB14:
+ 175              	.LBB15:
+ 376:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 377:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 378:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 379:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 380:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Wait For Interrupt
+ 381:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Wait For Interrupt is a hint instruction that suspends execution until one of a number o
+ 382:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 383:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__((always_inline)) __STATIC_INLINE void __WFI(void)
+ 384:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 385:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("wfi");
+ 386:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 387:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 388:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 389:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 390:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Wait For Event
+ 391:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Wait For Event is a hint instruction that permits the processor to enter
+ 392:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****     a low-power state until one of a number of events occurs.
+ 393:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 394:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__((always_inline)) __STATIC_INLINE void __WFE(void)
+ 395:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 396:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("wfe");
+ 397:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 398:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 399:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 400:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 401:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Send Event
+ 402:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Send Event is a hint instruction. It causes an event to be signaled to the CPU.
+ 403:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 404:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__((always_inline)) __STATIC_INLINE void __SEV(void)
+ 405:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 406:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("sev");
+ 407:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 408:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 409:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 410:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 411:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Instruction Synchronization Barrier
+ 412:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Instruction Synchronization Barrier flushes the pipeline in the processor,
+ 413:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****            so that all instructions following the ISB are fetched from cache or memory,
+ 414:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****            after the instruction has been completed.
+ 415:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 416:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__((always_inline)) __STATIC_INLINE void __ISB(void)
+ 417:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 418:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("isb 0xF":::"memory");
+ 419:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 420:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 421:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** 
+ 422:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** /**
+ 423:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \brief   Data Synchronization Barrier
+ 424:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   \details Acts as a special kind of Data Memory Barrier.
+ 425:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****            It completes when all explicit memory accesses before this instruction complete.
+ 426:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****  */
+ 427:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** __attribute__((always_inline)) __STATIC_INLINE void __DSB(void)
+ 428:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** {
+ 429:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h ****   __ASM volatile ("dsb 0xF":::"memory");
+ 176              	 .loc 2 429 0
+ 177              	
+ 178 000e BFF34F8F 	 dsb 0xF
+ 179              	
+ 180              	 .thumb
+ 181              	.LBE15:
+ 182              	.LBE14:
+ 183              	.LBB16:
+ 184              	.LBB17:
+  60:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include\cmsis_gcc.h **** }
+ 185              	 .loc 2 60 0
+ 186              	
+ 187 0012 62B6     	 cpsie i
+ 188              	
+ 189              	 .thumb
+ 190              	.LBE17:
+ 191              	.LBE16:
+ 415:../Startup/system_XMC4800.c ****   __DSB();
+ 416:../Startup/system_XMC4800.c ****   __enable_irq();
+ 417:../Startup/system_XMC4800.c **** 
+ 418:../Startup/system_XMC4800.c **** #if ((__FPU_PRESENT == 1) && (__FPU_USED == 1))
+ 419:../Startup/system_XMC4800.c ****   SCB->CPACR |= ((3UL << 10*2) |                 /* set CP10 Full Access */
+ 192              	 .loc 1 419 0
+ 193 0014 134A     	 ldr r2,.L8
+ 194 0016 134B     	 ldr r3,.L8
+ 195 0018 D3F88830 	 ldr r3,[r3,#136]
+ 196 001c 43F47003 	 orr r3,r3,#15728640
+ 197 0020 C2F88830 	 str r3,[r2,#136]
+ 420:../Startup/system_XMC4800.c ****                  (3UL << 11*2)  );               /* set CP11 Full Access */
+ 421:../Startup/system_XMC4800.c **** #endif
+ 422:../Startup/system_XMC4800.c **** 
+ 423:../Startup/system_XMC4800.c ****   /* Enable unaligned memory access - SCB_CCR.UNALIGN_TRP = 0 */
+ 424:../Startup/system_XMC4800.c ****   SCB->CCR &= ~(SCB_CCR_UNALIGN_TRP_Msk);
+ 198              	 .loc 1 424 0
+ 199 0024 0F4A     	 ldr r2,.L8
+ 200 0026 0F4B     	 ldr r3,.L8
+ 201 0028 5B69     	 ldr r3,[r3,#20]
+ 202 002a 23F00803 	 bic r3,r3,#8
+ 203 002e 5361     	 str r3,[r2,#20]
+ 425:../Startup/system_XMC4800.c **** 
+ 426:../Startup/system_XMC4800.c ****   temp = FLASH0->FCON;
+ 204              	 .loc 1 426 0
+ 205 0030 0E4B     	 ldr r3,.L8+8
+ 206 0032 03F58053 	 add r3,r3,#4096
+ 207 0036 1433     	 adds r3,r3,#20
+ 208 0038 1B68     	 ldr r3,[r3]
+ 209 003a 7B60     	 str r3,[r7,#4]
+ 427:../Startup/system_XMC4800.c ****   temp &= ~FLASH_FCON_WSPFLASH_Msk;
+ 210              	 .loc 1 427 0
+ 211 003c 7B68     	 ldr r3,[r7,#4]
+ 212 003e 23F00F03 	 bic r3,r3,#15
+ 213 0042 7B60     	 str r3,[r7,#4]
+ 428:../Startup/system_XMC4800.c ****   temp |= PMU_FLASH_WS;
+ 214              	 .loc 1 428 0
+ 215 0044 7B68     	 ldr r3,[r7,#4]
+ 216 0046 43F00403 	 orr r3,r3,#4
+ 217 004a 7B60     	 str r3,[r7,#4]
+ 429:../Startup/system_XMC4800.c ****   FLASH0->FCON = temp;
+ 218              	 .loc 1 429 0
+ 219 004c 074B     	 ldr r3,.L8+8
+ 220 004e 03F58053 	 add r3,r3,#4096
+ 221 0052 1433     	 adds r3,r3,#20
+ 222 0054 7A68     	 ldr r2,[r7,#4]
+ 223 0056 1A60     	 str r2,[r3]
+ 430:../Startup/system_XMC4800.c **** }
+ 224              	 .loc 1 430 0
+ 225 0058 0C37     	 adds r7,r7,#12
+ 226              	.LCFI11:
+ 227              	 .cfi_def_cfa_offset 4
+ 228 005a BD46     	 mov sp,r7
+ 229              	.LCFI12:
+ 230              	 .cfi_def_cfa_register 13
+ 231              	 
+ 232 005c 5DF8047B 	 ldr r7,[sp],#4
+ 233              	.LCFI13:
+ 234              	 .cfi_restore 7
+ 235              	 .cfi_def_cfa_offset 0
+ 236 0060 7047     	 bx lr
+ 237              	.L9:
+ 238 0062 00BF     	 .align 2
+ 239              	.L8:
+ 240 0064 00ED00E0 	 .word -536810240
+ 241 0068 00000000 	 .word __Vectors
+ 242 006c 00100058 	 .word 1476399104
+ 243              	 .cfi_endproc
+ 244              	.LFE125:
+ 246              	 .section .text.SystemCoreClockSetup,"ax",%progbits
+ 247              	 .align 2
+ 248              	 .weak SystemCoreClockSetup
+ 249              	 .thumb
+ 250              	 .thumb_func
+ 252              	SystemCoreClockSetup:
+ 253              	.LFB126:
+ 431:../Startup/system_XMC4800.c **** 
+ 432:../Startup/system_XMC4800.c **** __WEAK void SystemCoreClockSetup(void)
+ 433:../Startup/system_XMC4800.c **** {
+ 254              	 .loc 1 433 0
+ 255              	 .cfi_startproc
+ 256              	 
+ 257              	 
+ 258 0000 80B5     	 push {r7,lr}
+ 259              	.LCFI14:
+ 260              	 .cfi_def_cfa_offset 8
+ 261              	 .cfi_offset 7,-8
+ 262              	 .cfi_offset 14,-4
+ 263 0002 00AF     	 add r7,sp,#0
+ 264              	.LCFI15:
+ 265              	 .cfi_def_cfa_register 7
+ 434:../Startup/system_XMC4800.c **** #if FOFI_CALIBRATION_MODE == FOFI_CALIBRATION_MODE_FACTORY
+ 435:../Startup/system_XMC4800.c ****   /* Enable factory calibration */
+ 436:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON0 |= SCU_PLL_PLLCON0_FOTR_Msk;
+ 437:../Startup/system_XMC4800.c **** #else
+ 438:../Startup/system_XMC4800.c ****   /* Automatic calibration uses the fSTDBY */
+ 439:../Startup/system_XMC4800.c **** 
+ 440:../Startup/system_XMC4800.c ****   /* Enable HIB domain */
+ 441:../Startup/system_XMC4800.c ****   /* Power up HIB domain if and only if it is currently powered down */
+ 442:../Startup/system_XMC4800.c ****   if((SCU_POWER->PWRSTAT & SCU_POWER_PWRSTAT_HIBEN_Msk) == 0)
+ 266              	 .loc 1 442 0
+ 267 0004 A44B     	 ldr r3,.L22
+ 268 0006 1B68     	 ldr r3,[r3]
+ 269 0008 03F00103 	 and r3,r3,#1
+ 270 000c 002B     	 cmp r3,#0
+ 271 000e 0CD1     	 bne .L11
+ 443:../Startup/system_XMC4800.c ****   {
+ 444:../Startup/system_XMC4800.c ****     SCU_POWER->PWRSET |= SCU_POWER_PWRSET_HIB_Msk;
+ 272              	 .loc 1 444 0
+ 273 0010 A14A     	 ldr r2,.L22
+ 274 0012 A14B     	 ldr r3,.L22
+ 275 0014 5B68     	 ldr r3,[r3,#4]
+ 276 0016 43F00103 	 orr r3,r3,#1
+ 277 001a 5360     	 str r3,[r2,#4]
+ 445:../Startup/system_XMC4800.c **** 
+ 446:../Startup/system_XMC4800.c ****     while((SCU_POWER->PWRSTAT & SCU_POWER_PWRSTAT_HIBEN_Msk) == 0)
+ 278              	 .loc 1 446 0
+ 279 001c 00BF     	 nop
+ 280              	.L12:
+ 281              	 .loc 1 446 0 is_stmt 0 discriminator 1
+ 282 001e 9E4B     	 ldr r3,.L22
+ 283 0020 1B68     	 ldr r3,[r3]
+ 284 0022 03F00103 	 and r3,r3,#1
+ 285 0026 002B     	 cmp r3,#0
+ 286 0028 F9D0     	 beq .L12
+ 287              	.L11:
+ 447:../Startup/system_XMC4800.c ****     {
+ 448:../Startup/system_XMC4800.c ****       /* wait until HIB domain is enabled */
+ 449:../Startup/system_XMC4800.c ****     }
+ 450:../Startup/system_XMC4800.c ****   }
+ 451:../Startup/system_XMC4800.c **** 
+ 452:../Startup/system_XMC4800.c ****   /* Remove the reset only if HIB domain were in a state of reset */
+ 453:../Startup/system_XMC4800.c ****   if((SCU_RESET->RSTSTAT) & SCU_RESET_RSTSTAT_HIBRS_Msk)
+ 288              	 .loc 1 453 0 is_stmt 1
+ 289 002a 9C4B     	 ldr r3,.L22+4
+ 290 002c 1B68     	 ldr r3,[r3]
+ 291 002e 03F40073 	 and r3,r3,#512
+ 292 0032 002B     	 cmp r3,#0
+ 293 0034 09D0     	 beq .L13
+ 454:../Startup/system_XMC4800.c ****   {
+ 455:../Startup/system_XMC4800.c ****     SCU_RESET->RSTCLR |= SCU_RESET_RSTCLR_HIBRS_Msk;
+ 294              	 .loc 1 455 0
+ 295 0036 994A     	 ldr r2,.L22+4
+ 296 0038 984B     	 ldr r3,.L22+4
+ 297 003a 9B68     	 ldr r3,[r3,#8]
+ 298 003c 43F40073 	 orr r3,r3,#512
+ 299 0040 9360     	 str r3,[r2,#8]
+ 456:../Startup/system_XMC4800.c ****     delay(DELAY_CNT_150US_50MHZ);
+ 300              	 .loc 1 456 0
+ 301 0042 41F64C50 	 movw r0,#7500
+ 302 0046 FFF7FEFF 	 bl delay
+ 303              	.L13:
+ 457:../Startup/system_XMC4800.c ****   }
+ 458:../Startup/system_XMC4800.c **** 
+ 459:../Startup/system_XMC4800.c **** #if STDBY_CLOCK_SRC == STDBY_CLOCK_SRC_OSCULP
+ 460:../Startup/system_XMC4800.c ****   /* Enable OSC_ULP */
+ 461:../Startup/system_XMC4800.c ****   if ((SCU_HIBERNATE->OSCULCTRL & SCU_HIBERNATE_OSCULCTRL_MODE_Msk) != 0UL)
+ 462:../Startup/system_XMC4800.c ****   {
+ 463:../Startup/system_XMC4800.c ****     /*enable OSC_ULP*/
+ 464:../Startup/system_XMC4800.c ****     while (SCU_GENERAL->MIRRSTS & SCU_GENERAL_MIRRSTS_OSCULCTRL_Msk)
+ 465:../Startup/system_XMC4800.c ****     {
+ 466:../Startup/system_XMC4800.c ****       /* check SCU_MIRRSTS to ensure that no transfer over serial interface is pending */
+ 467:../Startup/system_XMC4800.c ****     }
+ 468:../Startup/system_XMC4800.c ****     SCU_HIBERNATE->OSCULCTRL &= ~SCU_HIBERNATE_OSCULCTRL_MODE_Msk;
+ 469:../Startup/system_XMC4800.c **** 
+ 470:../Startup/system_XMC4800.c ****     /* Check if the clock is OK using OSCULP Oscillator Watchdog*/
+ 471:../Startup/system_XMC4800.c ****     while (SCU_GENERAL->MIRRSTS & SCU_GENERAL_MIRRSTS_HDCR_Msk)
+ 472:../Startup/system_XMC4800.c ****     {
+ 473:../Startup/system_XMC4800.c ****       /* check SCU_MIRRSTS to ensure that no transfer over serial interface is pending */
+ 474:../Startup/system_XMC4800.c ****     }
+ 475:../Startup/system_XMC4800.c ****     SCU_HIBERNATE->HDCR |= SCU_HIBERNATE_HDCR_ULPWDGEN_Msk;
+ 476:../Startup/system_XMC4800.c **** 
+ 477:../Startup/system_XMC4800.c ****     /* wait till clock is stable */
+ 478:../Startup/system_XMC4800.c ****     do
+ 479:../Startup/system_XMC4800.c ****     {
+ 480:../Startup/system_XMC4800.c ****       while (SCU_GENERAL->MIRRSTS & SCU_GENERAL_MIRRSTS_HDCLR_Msk)
+ 481:../Startup/system_XMC4800.c ****       {
+ 482:../Startup/system_XMC4800.c ****         /* check SCU_MIRRSTS to ensure that no transfer over serial interface is pending */
+ 483:../Startup/system_XMC4800.c ****       }
+ 484:../Startup/system_XMC4800.c ****       SCU_HIBERNATE->HDCLR |= SCU_HIBERNATE_HDCLR_ULPWDG_Msk;
+ 485:../Startup/system_XMC4800.c **** 
+ 486:../Startup/system_XMC4800.c ****       delay(DELAY_CNT_50US_50MHZ);
+ 487:../Startup/system_XMC4800.c **** 
+ 488:../Startup/system_XMC4800.c ****     } while ((SCU_HIBERNATE->HDSTAT & SCU_HIBERNATE_HDSTAT_ULPWDG_Msk) != 0UL);
+ 489:../Startup/system_XMC4800.c **** 
+ 490:../Startup/system_XMC4800.c ****   }
+ 491:../Startup/system_XMC4800.c **** 
+ 492:../Startup/system_XMC4800.c ****   /* now OSC_ULP is running and can be used*/
+ 493:../Startup/system_XMC4800.c ****   /* Select OSC_ULP as the clock source for RTC and STDBY*/
+ 494:../Startup/system_XMC4800.c ****   while (SCU_GENERAL->MIRRSTS & SCU_GENERAL_MIRRSTS_HDCR_Msk)
+ 495:../Startup/system_XMC4800.c ****   {
+ 496:../Startup/system_XMC4800.c ****     /* check SCU_MIRRSTS to ensure that no transfer over serial interface is pending */
+ 497:../Startup/system_XMC4800.c ****   }
+ 498:../Startup/system_XMC4800.c ****   SCU_HIBERNATE->HDCR |= SCU_HIBERNATE_HDCR_RCS_Msk | SCU_HIBERNATE_HDCR_STDBYSEL_Msk;
+ 499:../Startup/system_XMC4800.c **** #endif /* STDBY_CLOCK_SRC == STDBY_CLOCK_SRC_OSCULP */
+ 500:../Startup/system_XMC4800.c **** 
+ 501:../Startup/system_XMC4800.c ****   /* Enable automatic calibration of internal fast oscillator */
+ 502:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON0 |= SCU_PLL_PLLCON0_AOTREN_Msk;
+ 304              	 .loc 1 502 0
+ 305 004a 954A     	 ldr r2,.L22+8
+ 306 004c 944B     	 ldr r3,.L22+8
+ 307 004e 5B68     	 ldr r3,[r3,#4]
+ 308 0050 43F40023 	 orr r3,r3,#524288
+ 309 0054 5360     	 str r3,[r2,#4]
+ 503:../Startup/system_XMC4800.c **** #endif /* FOFI_CALIBRATION_MODE == FOFI_CALIBRATION_MODE_AUTOMATIC */
+ 504:../Startup/system_XMC4800.c **** 
+ 505:../Startup/system_XMC4800.c ****   delay(DELAY_CNT_50US_50MHZ);
+ 310              	 .loc 1 505 0
+ 311 0056 40F6C410 	 movw r0,#2500
+ 312 005a FFF7FEFF 	 bl delay
+ 506:../Startup/system_XMC4800.c **** 
+ 507:../Startup/system_XMC4800.c **** #if ENABLE_PLL
+ 508:../Startup/system_XMC4800.c **** 
+ 509:../Startup/system_XMC4800.c ****   /* enable PLL */
+ 510:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON0 &= ~(SCU_PLL_PLLCON0_VCOPWD_Msk | SCU_PLL_PLLCON0_PLLPWD_Msk);
+ 313              	 .loc 1 510 0
+ 314 005e 904A     	 ldr r2,.L22+8
+ 315 0060 8F4B     	 ldr r3,.L22+8
+ 316 0062 5B68     	 ldr r3,[r3,#4]
+ 317 0064 23F48033 	 bic r3,r3,#65536
+ 318 0068 23F00203 	 bic r3,r3,#2
+ 319 006c 5360     	 str r3,[r2,#4]
+ 511:../Startup/system_XMC4800.c **** 
+ 512:../Startup/system_XMC4800.c **** #if PLL_CLOCK_SRC != PLL_CLOCK_SRC_OFI
+ 513:../Startup/system_XMC4800.c ****   /* enable OSC_HP */
+ 514:../Startup/system_XMC4800.c ****   if ((SCU_OSC->OSCHPCTRL & SCU_OSC_OSCHPCTRL_MODE_Msk) != 0U)
+ 320              	 .loc 1 514 0
+ 321 006e 8D4B     	 ldr r3,.L22+12
+ 322 0070 5B68     	 ldr r3,[r3,#4]
+ 323 0072 03F03003 	 and r3,r3,#48
+ 324 0076 002B     	 cmp r3,#0
+ 325 0078 29D0     	 beq .L14
+ 515:../Startup/system_XMC4800.c ****   {
+ 516:../Startup/system_XMC4800.c ****     SCU_OSC->OSCHPCTRL &= ~(SCU_OSC_OSCHPCTRL_MODE_Msk | SCU_OSC_OSCHPCTRL_OSCVAL_Msk);
+ 326              	 .loc 1 516 0
+ 327 007a 8A4A     	 ldr r2,.L22+12
+ 328 007c 894B     	 ldr r3,.L22+12
+ 329 007e 5B68     	 ldr r3,[r3,#4]
+ 330 0080 23F47023 	 bic r3,r3,#983040
+ 331 0084 23F03003 	 bic r3,r3,#48
+ 332 0088 5360     	 str r3,[r2,#4]
+ 517:../Startup/system_XMC4800.c ****     SCU_OSC->OSCHPCTRL |= ((OSCHP_GetFrequency() / FOSCREF) - 1UL) << SCU_OSC_OSCHPCTRL_OSCVAL_Pos;
+ 333              	 .loc 1 517 0
+ 334 008a FFF7FEFF 	 bl OSCHP_GetFrequency
+ 335 008e 0246     	 mov r2,r0
+ 336 0090 854B     	 ldr r3,.L22+16
+ 337 0092 A3FB0223 	 umull r2,r3,r3,r2
+ 338 0096 1B0D     	 lsrs r3,r3,#20
+ 339 0098 013B     	 subs r3,r3,#1
+ 340 009a 1B04     	 lsls r3,r3,#16
+ 341 009c 8149     	 ldr r1,.L22+12
+ 342 009e 814A     	 ldr r2,.L22+12
+ 343 00a0 5268     	 ldr r2,[r2,#4]
+ 344 00a2 1343     	 orrs r3,r3,r2
+ 345 00a4 4B60     	 str r3,[r1,#4]
+ 518:../Startup/system_XMC4800.c **** 
+ 519:../Startup/system_XMC4800.c ****     /* select OSC_HP clock as PLL input */
+ 520:../Startup/system_XMC4800.c ****     SCU_PLL->PLLCON2 &= ~SCU_PLL_PLLCON2_PINSEL_Msk;
+ 346              	 .loc 1 520 0
+ 347 00a6 7E4A     	 ldr r2,.L22+8
+ 348 00a8 7D4B     	 ldr r3,.L22+8
+ 349 00aa DB68     	 ldr r3,[r3,#12]
+ 350 00ac 23F00103 	 bic r3,r3,#1
+ 351 00b0 D360     	 str r3,[r2,#12]
+ 521:../Startup/system_XMC4800.c **** 
+ 522:../Startup/system_XMC4800.c ****     /* restart OSC Watchdog */
+ 523:../Startup/system_XMC4800.c ****     SCU_PLL->PLLCON0 &= ~SCU_PLL_PLLCON0_OSCRES_Msk;
+ 352              	 .loc 1 523 0
+ 353 00b2 7B4A     	 ldr r2,.L22+8
+ 354 00b4 7A4B     	 ldr r3,.L22+8
+ 355 00b6 5B68     	 ldr r3,[r3,#4]
+ 356 00b8 23F40033 	 bic r3,r3,#131072
+ 357 00bc 5360     	 str r3,[r2,#4]
+ 524:../Startup/system_XMC4800.c **** 
+ 525:../Startup/system_XMC4800.c ****     while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_OSC_USABLE) != SCU_PLL_PLLSTAT_OSC_USABLE)
+ 358              	 .loc 1 525 0
+ 359 00be 00BF     	 nop
+ 360              	.L15:
+ 361              	 .loc 1 525 0 is_stmt 0 discriminator 1
+ 362 00c0 774B     	 ldr r3,.L22+8
+ 363 00c2 1B68     	 ldr r3,[r3]
+ 364 00c4 03F46073 	 and r3,r3,#896
+ 365 00c8 B3F5607F 	 cmp r3,#896
+ 366 00cc F8D1     	 bne .L15
+ 367              	.L14:
+ 526:../Startup/system_XMC4800.c ****     {
+ 527:../Startup/system_XMC4800.c ****       /* wait till OSC_HP output frequency is usable */
+ 528:../Startup/system_XMC4800.c ****     }
+ 529:../Startup/system_XMC4800.c ****   }
+ 530:../Startup/system_XMC4800.c **** #else /* PLL_CLOCK_SRC != PLL_CLOCK_SRC_OFI */
+ 531:../Startup/system_XMC4800.c **** 
+ 532:../Startup/system_XMC4800.c ****   /* select backup clock as PLL input */
+ 533:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON2 |= SCU_PLL_PLLCON2_PINSEL_Msk;
+ 534:../Startup/system_XMC4800.c **** #endif
+ 535:../Startup/system_XMC4800.c **** 
+ 536:../Startup/system_XMC4800.c ****   /* Go to bypass the Main PLL */
+ 537:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON0 |= SCU_PLL_PLLCON0_VCOBYP_Msk;
+ 368              	 .loc 1 537 0 is_stmt 1
+ 369 00ce 744A     	 ldr r2,.L22+8
+ 370 00d0 734B     	 ldr r3,.L22+8
+ 371 00d2 5B68     	 ldr r3,[r3,#4]
+ 372 00d4 43F00103 	 orr r3,r3,#1
+ 373 00d8 5360     	 str r3,[r2,#4]
+ 538:../Startup/system_XMC4800.c **** 
+ 539:../Startup/system_XMC4800.c ****   /* disconnect Oscillator from PLL */
+ 540:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON0 |= SCU_PLL_PLLCON0_FINDIS_Msk;
+ 374              	 .loc 1 540 0
+ 375 00da 714A     	 ldr r2,.L22+8
+ 376 00dc 704B     	 ldr r3,.L22+8
+ 377 00de 5B68     	 ldr r3,[r3,#4]
+ 378 00e0 43F01003 	 orr r3,r3,#16
+ 379 00e4 5360     	 str r3,[r2,#4]
+ 541:../Startup/system_XMC4800.c **** 
+ 542:../Startup/system_XMC4800.c ****   /* Setup divider settings for main PLL */
+ 543:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON1 = ((PLL_NDIV << SCU_PLL_PLLCON1_NDIV_Pos) |
+ 380              	 .loc 1 543 0
+ 381 00e6 6E4B     	 ldr r3,.L22+8
+ 382 00e8 704A     	 ldr r2,.L22+20
+ 383 00ea 9A60     	 str r2,[r3,#8]
+ 544:../Startup/system_XMC4800.c ****                       (PLL_K2DIV_24MHZ << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 545:../Startup/system_XMC4800.c ****                       (PLL_PDIV << SCU_PLL_PLLCON1_PDIV_Pos));
+ 546:../Startup/system_XMC4800.c **** 
+ 547:../Startup/system_XMC4800.c ****   /* Set OSCDISCDIS */
+ 548:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON0 |= SCU_PLL_PLLCON0_OSCDISCDIS_Msk;
+ 384              	 .loc 1 548 0
+ 385 00ec 6C4A     	 ldr r2,.L22+8
+ 386 00ee 6C4B     	 ldr r3,.L22+8
+ 387 00f0 5B68     	 ldr r3,[r3,#4]
+ 388 00f2 43F04003 	 orr r3,r3,#64
+ 389 00f6 5360     	 str r3,[r2,#4]
+ 549:../Startup/system_XMC4800.c **** 
+ 550:../Startup/system_XMC4800.c ****   /* connect Oscillator to PLL */
+ 551:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON0 &= ~SCU_PLL_PLLCON0_FINDIS_Msk;
+ 390              	 .loc 1 551 0
+ 391 00f8 694A     	 ldr r2,.L22+8
+ 392 00fa 694B     	 ldr r3,.L22+8
+ 393 00fc 5B68     	 ldr r3,[r3,#4]
+ 394 00fe 23F01003 	 bic r3,r3,#16
+ 395 0102 5360     	 str r3,[r2,#4]
+ 552:../Startup/system_XMC4800.c **** 
+ 553:../Startup/system_XMC4800.c ****   /* restart PLL Lock detection */
+ 554:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON0 |= SCU_PLL_PLLCON0_RESLD_Msk;
+ 396              	 .loc 1 554 0
+ 397 0104 664A     	 ldr r2,.L22+8
+ 398 0106 664B     	 ldr r3,.L22+8
+ 399 0108 5B68     	 ldr r3,[r3,#4]
+ 400 010a 43F48023 	 orr r3,r3,#262144
+ 401 010e 5360     	 str r3,[r2,#4]
+ 555:../Startup/system_XMC4800.c **** 
+ 556:../Startup/system_XMC4800.c ****   while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_VCOLOCK_Msk) == 0U)
+ 402              	 .loc 1 556 0
+ 403 0110 00BF     	 nop
+ 404              	.L16:
+ 405              	 .loc 1 556 0 is_stmt 0 discriminator 1
+ 406 0112 634B     	 ldr r3,.L22+8
+ 407 0114 1B68     	 ldr r3,[r3]
+ 408 0116 03F00403 	 and r3,r3,#4
+ 409 011a 002B     	 cmp r3,#0
+ 410 011c F9D0     	 beq .L16
+ 557:../Startup/system_XMC4800.c ****   {
+ 558:../Startup/system_XMC4800.c ****     /* wait for PLL Lock at 24MHz*/
+ 559:../Startup/system_XMC4800.c ****   }
+ 560:../Startup/system_XMC4800.c **** 
+ 561:../Startup/system_XMC4800.c ****   /* Disable bypass- put PLL clock back */
+ 562:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON0 &= ~SCU_PLL_PLLCON0_VCOBYP_Msk;
+ 411              	 .loc 1 562 0 is_stmt 1
+ 412 011e 604A     	 ldr r2,.L22+8
+ 413 0120 5F4B     	 ldr r3,.L22+8
+ 414 0122 5B68     	 ldr r3,[r3,#4]
+ 415 0124 23F00103 	 bic r3,r3,#1
+ 416 0128 5360     	 str r3,[r2,#4]
+ 563:../Startup/system_XMC4800.c ****   while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_VCOBYST_Msk) != 0U)
+ 417              	 .loc 1 563 0
+ 418 012a 00BF     	 nop
+ 419              	.L17:
+ 420              	 .loc 1 563 0 is_stmt 0 discriminator 1
+ 421 012c 5C4B     	 ldr r3,.L22+8
+ 422 012e 1B68     	 ldr r3,[r3]
+ 423 0130 03F00103 	 and r3,r3,#1
+ 424 0134 002B     	 cmp r3,#0
+ 425 0136 F9D1     	 bne .L17
+ 564:../Startup/system_XMC4800.c ****   {
+ 565:../Startup/system_XMC4800.c ****     /* wait for normal mode */
+ 566:../Startup/system_XMC4800.c ****   }
+ 567:../Startup/system_XMC4800.c **** 
+ 568:../Startup/system_XMC4800.c **** #endif /* ENABLE_PLL */
+ 569:../Startup/system_XMC4800.c **** 
+ 570:../Startup/system_XMC4800.c ****   /* Before scaling to final frequency we need to setup the clock dividers */
+ 571:../Startup/system_XMC4800.c ****   SCU_CLK->SYSCLKCR = __SYSCLKCR;
+ 426              	 .loc 1 571 0 is_stmt 1
+ 427 0138 5D4B     	 ldr r3,.L22+24
+ 428 013a 4FF00112 	 mov r2,#65537
+ 429 013e DA60     	 str r2,[r3,#12]
+ 572:../Startup/system_XMC4800.c ****   SCU_CLK->PBCLKCR = __PBCLKCR;
+ 430              	 .loc 1 572 0
+ 431 0140 5B4B     	 ldr r3,.L22+24
+ 432 0142 0022     	 movs r2,#0
+ 433 0144 5A61     	 str r2,[r3,#20]
+ 573:../Startup/system_XMC4800.c ****   SCU_CLK->CPUCLKCR = __CPUCLKCR;
+ 434              	 .loc 1 573 0
+ 435 0146 5A4B     	 ldr r3,.L22+24
+ 436 0148 0022     	 movs r2,#0
+ 437 014a 1A61     	 str r2,[r3,#16]
+ 574:../Startup/system_XMC4800.c ****   SCU_CLK->CCUCLKCR = __CCUCLKCR;
+ 438              	 .loc 1 574 0
+ 439 014c 584B     	 ldr r3,.L22+24
+ 440 014e 0022     	 movs r2,#0
+ 441 0150 1A62     	 str r2,[r3,#32]
+ 575:../Startup/system_XMC4800.c ****   SCU_CLK->WDTCLKCR = __WDTCLKCR;
+ 442              	 .loc 1 575 0
+ 443 0152 574B     	 ldr r3,.L22+24
+ 444 0154 0022     	 movs r2,#0
+ 445 0156 5A62     	 str r2,[r3,#36]
+ 576:../Startup/system_XMC4800.c ****   SCU_CLK->EBUCLKCR = __EBUCLKCR;
+ 446              	 .loc 1 576 0
+ 447 0158 554B     	 ldr r3,.L22+24
+ 448 015a 0322     	 movs r2,#3
+ 449 015c DA61     	 str r2,[r3,#28]
+ 577:../Startup/system_XMC4800.c ****   SCU_CLK->USBCLKCR = __USBCLKCR;
+ 450              	 .loc 1 577 0
+ 451 015e 544B     	 ldr r3,.L22+24
+ 452 0160 544A     	 ldr r2,.L22+28
+ 453 0162 9A61     	 str r2,[r3,#24]
+ 578:../Startup/system_XMC4800.c ****   SCU_CLK->ECATCLKCR = __ECATCLKCR;
+ 454              	 .loc 1 578 0
+ 455 0164 524B     	 ldr r3,.L22+24
+ 456 0166 0122     	 movs r2,#1
+ 457 0168 9A63     	 str r2,[r3,#56]
+ 579:../Startup/system_XMC4800.c ****   SCU_CLK->EXTCLKCR = __EXTCLKCR;
+ 458              	 .loc 1 579 0
+ 459 016a 514B     	 ldr r3,.L22+24
+ 460 016c 524A     	 ldr r2,.L22+32
+ 461 016e 9A62     	 str r2,[r3,#40]
+ 580:../Startup/system_XMC4800.c **** 
+ 581:../Startup/system_XMC4800.c **** #if ENABLE_PLL
+ 582:../Startup/system_XMC4800.c ****   /* PLL frequency stepping...*/
+ 583:../Startup/system_XMC4800.c ****   /* Reset OSCDISCDIS */
+ 584:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON0 &= ~SCU_PLL_PLLCON0_OSCDISCDIS_Msk;
+ 462              	 .loc 1 584 0
+ 463 0170 4B4A     	 ldr r2,.L22+8
+ 464 0172 4B4B     	 ldr r3,.L22+8
+ 465 0174 5B68     	 ldr r3,[r3,#4]
+ 466 0176 23F04003 	 bic r3,r3,#64
+ 467 017a 5360     	 str r3,[r2,#4]
+ 585:../Startup/system_XMC4800.c **** 
+ 586:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON1 = ((PLL_NDIV << SCU_PLL_PLLCON1_NDIV_Pos) |
+ 468              	 .loc 1 586 0
+ 469 017c 484B     	 ldr r3,.L22+8
+ 470 017e 4F4A     	 ldr r2,.L22+36
+ 471 0180 9A60     	 str r2,[r3,#8]
+ 587:../Startup/system_XMC4800.c **** 	                  (PLL_K2DIV_48MHZ << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 588:../Startup/system_XMC4800.c **** 	                  (PLL_PDIV << SCU_PLL_PLLCON1_PDIV_Pos));
+ 589:../Startup/system_XMC4800.c **** 
+ 590:../Startup/system_XMC4800.c ****   delay(DELAY_CNT_50US_48MHZ);
+ 472              	 .loc 1 590 0
+ 473 0182 4FF41660 	 mov r0,#2400
+ 474 0186 FFF7FEFF 	 bl delay
+ 591:../Startup/system_XMC4800.c **** 
+ 592:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON1 = ((PLL_NDIV << SCU_PLL_PLLCON1_NDIV_Pos) |
+ 475              	 .loc 1 592 0
+ 476 018a 454B     	 ldr r3,.L22+8
+ 477 018c 4C4A     	 ldr r2,.L22+40
+ 478 018e 9A60     	 str r2,[r3,#8]
+ 593:../Startup/system_XMC4800.c **** 	                  (PLL_K2DIV_72MHZ << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 594:../Startup/system_XMC4800.c **** 	                  (PLL_PDIV << SCU_PLL_PLLCON1_PDIV_Pos));
+ 595:../Startup/system_XMC4800.c **** 
+ 596:../Startup/system_XMC4800.c ****   delay(DELAY_CNT_50US_72MHZ);
+ 479              	 .loc 1 596 0
+ 480 0190 4FF46160 	 mov r0,#3600
+ 481 0194 FFF7FEFF 	 bl delay
+ 597:../Startup/system_XMC4800.c **** 
+ 598:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON1 = ((PLL_NDIV << SCU_PLL_PLLCON1_NDIV_Pos) |
+ 482              	 .loc 1 598 0
+ 483 0198 414B     	 ldr r3,.L22+8
+ 484 019a 4A4A     	 ldr r2,.L22+44
+ 485 019c 9A60     	 str r2,[r3,#8]
+ 599:../Startup/system_XMC4800.c **** 	                  (PLL_K2DIV_96MHZ << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 600:../Startup/system_XMC4800.c **** 	                  (PLL_PDIV << SCU_PLL_PLLCON1_PDIV_Pos));
+ 601:../Startup/system_XMC4800.c **** 
+ 602:../Startup/system_XMC4800.c ****   delay(DELAY_CNT_50US_96MHZ);
+ 486              	 .loc 1 602 0
+ 487 019e 4FF49650 	 mov r0,#4800
+ 488 01a2 FFF7FEFF 	 bl delay
+ 603:../Startup/system_XMC4800.c **** 
+ 604:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON1 = ((PLL_NDIV << SCU_PLL_PLLCON1_NDIV_Pos) |
+ 489              	 .loc 1 604 0
+ 490 01a6 3E4B     	 ldr r3,.L22+8
+ 491 01a8 474A     	 ldr r2,.L22+48
+ 492 01aa 9A60     	 str r2,[r3,#8]
+ 605:../Startup/system_XMC4800.c **** 	                  (PLL_K2DIV_120MHZ << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 606:../Startup/system_XMC4800.c **** 	                  (PLL_PDIV << SCU_PLL_PLLCON1_PDIV_Pos));
+ 607:../Startup/system_XMC4800.c **** 
+ 608:../Startup/system_XMC4800.c ****   delay(DELAY_CNT_50US_120MHZ);
+ 493              	 .loc 1 608 0
+ 494 01ac 41F27070 	 movw r0,#6000
+ 495 01b0 FFF7FEFF 	 bl delay
+ 609:../Startup/system_XMC4800.c **** 
+ 610:../Startup/system_XMC4800.c ****   SCU_PLL->PLLCON1 = ((PLL_NDIV << SCU_PLL_PLLCON1_NDIV_Pos) |
+ 496              	 .loc 1 610 0
+ 497 01b4 3A4B     	 ldr r3,.L22+8
+ 498 01b6 454A     	 ldr r2,.L22+52
+ 499 01b8 9A60     	 str r2,[r3,#8]
+ 611:../Startup/system_XMC4800.c **** 	                  (PLL_K2DIV << SCU_PLL_PLLCON1_K2DIV_Pos) |
+ 612:../Startup/system_XMC4800.c **** 	                  (PLL_PDIV << SCU_PLL_PLLCON1_PDIV_Pos));
+ 613:../Startup/system_XMC4800.c **** 
+ 614:../Startup/system_XMC4800.c ****   delay(DELAY_CNT_50US_144MHZ);
+ 500              	 .loc 1 614 0
+ 501 01ba 4FF4E150 	 mov r0,#7200
+ 502 01be FFF7FEFF 	 bl delay
+ 615:../Startup/system_XMC4800.c **** 
+ 616:../Startup/system_XMC4800.c **** #endif /* ENABLE_PLL */
+ 617:../Startup/system_XMC4800.c **** 
+ 618:../Startup/system_XMC4800.c **** #if ENABLE_USBPLL
+ 619:../Startup/system_XMC4800.c ****   /* enable USB PLL first */
+ 620:../Startup/system_XMC4800.c ****   SCU_PLL->USBPLLCON &= ~(SCU_PLL_USBPLLCON_VCOPWD_Msk | SCU_PLL_USBPLLCON_PLLPWD_Msk);
+ 503              	 .loc 1 620 0
+ 504 01c2 374A     	 ldr r2,.L22+8
+ 505 01c4 364B     	 ldr r3,.L22+8
+ 506 01c6 5B69     	 ldr r3,[r3,#20]
+ 507 01c8 23F48033 	 bic r3,r3,#65536
+ 508 01cc 23F00203 	 bic r3,r3,#2
+ 509 01d0 5361     	 str r3,[r2,#20]
+ 621:../Startup/system_XMC4800.c **** 
+ 622:../Startup/system_XMC4800.c ****   /* USB PLL uses as clock input the OSC_HP */
+ 623:../Startup/system_XMC4800.c ****   /* check and if not already running enable OSC_HP */
+ 624:../Startup/system_XMC4800.c ****   if ((SCU_OSC->OSCHPCTRL & SCU_OSC_OSCHPCTRL_MODE_Msk) != 0U)
+ 510              	 .loc 1 624 0
+ 511 01d2 344B     	 ldr r3,.L22+12
+ 512 01d4 5B68     	 ldr r3,[r3,#4]
+ 513 01d6 03F03003 	 and r3,r3,#48
+ 514 01da 002B     	 cmp r3,#0
+ 515 01dc 31D0     	 beq .L18
+ 625:../Startup/system_XMC4800.c ****   {
+ 626:../Startup/system_XMC4800.c ****     /* check if Main PLL is switched on for OSC WDG*/
+ 627:../Startup/system_XMC4800.c ****     if ((SCU_PLL->PLLCON0 &(SCU_PLL_PLLCON0_VCOPWD_Msk | SCU_PLL_PLLCON0_PLLPWD_Msk)) != 0UL)
+ 516              	 .loc 1 627 0
+ 517 01de 304B     	 ldr r3,.L22+8
+ 518 01e0 5A68     	 ldr r2,[r3,#4]
+ 519 01e2 3B4B     	 ldr r3,.L22+56
+ 520 01e4 1340     	 ands r3,r3,r2
+ 521 01e6 002B     	 cmp r3,#0
+ 522 01e8 07D0     	 beq .L19
+ 628:../Startup/system_XMC4800.c ****     {
+ 629:../Startup/system_XMC4800.c ****       /* enable PLL first */
+ 630:../Startup/system_XMC4800.c ****       SCU_PLL->PLLCON0 &= ~(SCU_PLL_PLLCON0_VCOPWD_Msk | SCU_PLL_PLLCON0_PLLPWD_Msk);
+ 523              	 .loc 1 630 0
+ 524 01ea 2D4A     	 ldr r2,.L22+8
+ 525 01ec 2C4B     	 ldr r3,.L22+8
+ 526 01ee 5B68     	 ldr r3,[r3,#4]
+ 527 01f0 23F48033 	 bic r3,r3,#65536
+ 528 01f4 23F00203 	 bic r3,r3,#2
+ 529 01f8 5360     	 str r3,[r2,#4]
+ 530              	.L19:
+ 631:../Startup/system_XMC4800.c ****     }
+ 632:../Startup/system_XMC4800.c **** 
+ 633:../Startup/system_XMC4800.c ****     SCU_OSC->OSCHPCTRL &= ~(SCU_OSC_OSCHPCTRL_MODE_Msk | SCU_OSC_OSCHPCTRL_OSCVAL_Msk);
+ 531              	 .loc 1 633 0
+ 532 01fa 2A4A     	 ldr r2,.L22+12
+ 533 01fc 294B     	 ldr r3,.L22+12
+ 534 01fe 5B68     	 ldr r3,[r3,#4]
+ 535 0200 23F47023 	 bic r3,r3,#983040
+ 536 0204 23F03003 	 bic r3,r3,#48
+ 537 0208 5360     	 str r3,[r2,#4]
+ 634:../Startup/system_XMC4800.c ****     SCU_OSC->OSCHPCTRL |= ((OSCHP_GetFrequency() / FOSCREF) - 1UL) << SCU_OSC_OSCHPCTRL_OSCVAL_Pos;
+ 538              	 .loc 1 634 0
+ 539 020a FFF7FEFF 	 bl OSCHP_GetFrequency
+ 540 020e 0246     	 mov r2,r0
+ 541 0210 254B     	 ldr r3,.L22+16
+ 542 0212 A3FB0223 	 umull r2,r3,r3,r2
+ 543 0216 1B0D     	 lsrs r3,r3,#20
+ 544 0218 013B     	 subs r3,r3,#1
+ 545 021a 1B04     	 lsls r3,r3,#16
+ 546 021c 2149     	 ldr r1,.L22+12
+ 547 021e 214A     	 ldr r2,.L22+12
+ 548 0220 5268     	 ldr r2,[r2,#4]
+ 549 0222 1343     	 orrs r3,r3,r2
+ 550 0224 4B60     	 str r3,[r1,#4]
+ 635:../Startup/system_XMC4800.c **** 
+ 636:../Startup/system_XMC4800.c ****     /* restart OSC Watchdog */
+ 637:../Startup/system_XMC4800.c ****     SCU_PLL->PLLCON0 &= ~SCU_PLL_PLLCON0_OSCRES_Msk;
+ 551              	 .loc 1 637 0
+ 552 0226 1E4A     	 ldr r2,.L22+8
+ 553 0228 1D4B     	 ldr r3,.L22+8
+ 554 022a 5B68     	 ldr r3,[r3,#4]
+ 555 022c 23F40033 	 bic r3,r3,#131072
+ 556 0230 5360     	 str r3,[r2,#4]
+ 638:../Startup/system_XMC4800.c **** 
+ 639:../Startup/system_XMC4800.c ****     while ((SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_OSC_USABLE) != SCU_PLL_PLLSTAT_OSC_USABLE)
+ 557              	 .loc 1 639 0
+ 558 0232 00BF     	 nop
+ 559              	.L20:
+ 560              	 .loc 1 639 0 is_stmt 0 discriminator 1
+ 561 0234 1A4B     	 ldr r3,.L22+8
+ 562 0236 1B68     	 ldr r3,[r3]
+ 563 0238 03F46073 	 and r3,r3,#896
+ 564 023c B3F5607F 	 cmp r3,#896
+ 565 0240 F8D1     	 bne .L20
+ 566              	.L18:
+ 640:../Startup/system_XMC4800.c ****     {
+ 641:../Startup/system_XMC4800.c ****       /* wait till OSC_HP output frequency is usable */
+ 642:../Startup/system_XMC4800.c ****     }
+ 643:../Startup/system_XMC4800.c ****   }
+ 644:../Startup/system_XMC4800.c **** 
+ 645:../Startup/system_XMC4800.c ****   /* Setup USB PLL */
+ 646:../Startup/system_XMC4800.c ****   /* Go to bypass the USB PLL */
+ 647:../Startup/system_XMC4800.c ****   SCU_PLL->USBPLLCON |= SCU_PLL_USBPLLCON_VCOBYP_Msk;
+ 567              	 .loc 1 647 0 is_stmt 1
+ 568 0242 174A     	 ldr r2,.L22+8
+ 569 0244 164B     	 ldr r3,.L22+8
+ 570 0246 5B69     	 ldr r3,[r3,#20]
+ 571 0248 43F00103 	 orr r3,r3,#1
+ 572 024c 5361     	 str r3,[r2,#20]
+ 648:../Startup/system_XMC4800.c **** 
+ 649:../Startup/system_XMC4800.c ****   /* disconnect Oscillator from USB PLL */
+ 650:../Startup/system_XMC4800.c ****   SCU_PLL->USBPLLCON |= SCU_PLL_USBPLLCON_FINDIS_Msk;
+ 573              	 .loc 1 650 0
+ 574 024e 144A     	 ldr r2,.L22+8
+ 575 0250 134B     	 ldr r3,.L22+8
+ 576 0252 5B69     	 ldr r3,[r3,#20]
+ 577 0254 43F01003 	 orr r3,r3,#16
+ 578 0258 5361     	 str r3,[r2,#20]
+ 651:../Startup/system_XMC4800.c **** 
+ 652:../Startup/system_XMC4800.c ****   /* Setup Divider settings for USB PLL */
+ 653:../Startup/system_XMC4800.c ****   SCU_PLL->USBPLLCON = ((USB_NDIV << SCU_PLL_USBPLLCON_NDIV_Pos) |
+ 579              	 .loc 1 653 0
+ 580 025a 114B     	 ldr r3,.L22+8
+ 581 025c 1D4A     	 ldr r2,.L22+60
+ 582 025e 5A61     	 str r2,[r3,#20]
+ 654:../Startup/system_XMC4800.c ****                         (USB_PDIV << SCU_PLL_USBPLLCON_PDIV_Pos));
+ 655:../Startup/system_XMC4800.c **** 
+ 656:../Startup/system_XMC4800.c ****   /* Set OSCDISCDIS */
+ 657:../Startup/system_XMC4800.c ****   SCU_PLL->USBPLLCON |= SCU_PLL_USBPLLCON_OSCDISCDIS_Msk;
+ 583              	 .loc 1 657 0
+ 584 0260 0F4A     	 ldr r2,.L22+8
+ 585 0262 0F4B     	 ldr r3,.L22+8
+ 586 0264 5B69     	 ldr r3,[r3,#20]
+ 587 0266 43F04003 	 orr r3,r3,#64
+ 588 026a 5361     	 str r3,[r2,#20]
+ 658:../Startup/system_XMC4800.c **** 
+ 659:../Startup/system_XMC4800.c ****   /* connect Oscillator to USB PLL */
+ 660:../Startup/system_XMC4800.c ****   SCU_PLL->USBPLLCON &= ~SCU_PLL_USBPLLCON_FINDIS_Msk;
+ 589              	 .loc 1 660 0
+ 590 026c 0C4A     	 ldr r2,.L22+8
+ 591 026e 0C4B     	 ldr r3,.L22+8
+ 592 0270 5B69     	 ldr r3,[r3,#20]
+ 593 0272 23F01003 	 bic r3,r3,#16
+ 594 0276 5361     	 str r3,[r2,#20]
+ 661:../Startup/system_XMC4800.c **** 
+ 662:../Startup/system_XMC4800.c ****   /* restart PLL Lock detection */
+ 663:../Startup/system_XMC4800.c ****   SCU_PLL->USBPLLCON |= SCU_PLL_USBPLLCON_RESLD_Msk;
+ 595              	 .loc 1 663 0
+ 596 0278 094A     	 ldr r2,.L22+8
+ 597 027a 094B     	 ldr r3,.L22+8
+ 598 027c 5B69     	 ldr r3,[r3,#20]
+ 599 027e 43F48023 	 orr r3,r3,#262144
+ 600 0282 5361     	 str r3,[r2,#20]
+ 664:../Startup/system_XMC4800.c **** 
+ 665:../Startup/system_XMC4800.c ****   while ((SCU_PLL->USBPLLSTAT & SCU_PLL_USBPLLSTAT_VCOLOCK_Msk) == 0U)
+ 601              	 .loc 1 665 0
+ 602 0284 00BF     	 nop
+ 603              	.L21:
+ 604              	 .loc 1 665 0 is_stmt 0 discriminator 1
+ 605 0286 064B     	 ldr r3,.L22+8
+ 606 0288 1B69     	 ldr r3,[r3,#16]
+ 607 028a 03F00403 	 and r3,r3,#4
+ 608 028e 002B     	 cmp r3,#0
+ 609 0290 F9D0     	 beq .L21
+ 666:../Startup/system_XMC4800.c ****   {
+ 667:../Startup/system_XMC4800.c ****     /* wait for PLL Lock */
+ 668:../Startup/system_XMC4800.c ****   }
+ 669:../Startup/system_XMC4800.c **** #endif
+ 670:../Startup/system_XMC4800.c **** 
+ 671:../Startup/system_XMC4800.c ****   /* Enable selected clocks */
+ 672:../Startup/system_XMC4800.c ****   SCU_CLK->CLKSET = __CLKSET;
+ 610              	 .loc 1 672 0 is_stmt 1
+ 611 0292 074B     	 ldr r3,.L22+24
+ 612 0294 0022     	 movs r2,#0
+ 613 0296 1FE0     	 b .L23
+ 614              	.L24:
+ 615              	 .align 2
+ 616              	.L22:
+ 617 0298 00420050 	 .word 1342194176
+ 618 029c 00440050 	 .word 1342194688
+ 619 02a0 10470050 	 .word 1342195472
+ 620 02a4 00470050 	 .word 1342195456
+ 621 02a8 6BCA5F6B 	 .word 1801439851
+ 622 02ac 002F0B01 	 .word 17510144
+ 623 02b0 00460050 	 .word 1342195200
+ 624 02b4 05000100 	 .word 65541
+ 625 02b8 03002001 	 .word 18874371
+ 626 02bc 002F0501 	 .word 17116928
+ 627 02c0 002F0301 	 .word 16985856
+ 628 02c4 002F0201 	 .word 16920320
+ 629 02c8 002F0101 	 .word 16854784
+ 630 02cc 002F0001 	 .word 16789248
+ 631 02d0 02000100 	 .word 65538
+ 632 02d4 00630002 	 .word 33579776
+ 633              	.L23:
+ 634 02d8 5A60     	 str r2,[r3,#4]
+ 673:../Startup/system_XMC4800.c **** 
+ 674:../Startup/system_XMC4800.c **** #if __EXTCLKPIN != 0
+ 675:../Startup/system_XMC4800.c **** #if __EXTCLKPIN == EXTCLK_PIN_P1_15
+ 676:../Startup/system_XMC4800.c ****   /* P1.15 */
+ 677:../Startup/system_XMC4800.c ****   PORT1->PDR1 &= ~PORT1_PDR1_PD15_Msk;
+ 678:../Startup/system_XMC4800.c ****   PORT1->IOCR12 = (PORT1->IOCR12 & ~PORT0_IOCR12_PC15_Msk) | (0x11U << PORT0_IOCR12_PC15_Pos);
+ 679:../Startup/system_XMC4800.c **** #else
+ 680:../Startup/system_XMC4800.c ****   /* P0.8 */
+ 681:../Startup/system_XMC4800.c ****   PORT0->HWSEL &= ~PORT0_HWSEL_HW8_Msk;
+ 682:../Startup/system_XMC4800.c ****   PORT0->PDR1 &= ~PORT0_PDR1_PD8_Msk;
+ 683:../Startup/system_XMC4800.c ****   PORT0->IOCR8 = (PORT0->IOCR8 & ~PORT0_IOCR8_PC8_Msk) | (0x11U << PORT0_IOCR8_PC8_Pos);
+ 684:../Startup/system_XMC4800.c **** #endif
+ 685:../Startup/system_XMC4800.c **** #endif  /* ENABLE_EXTCLK == 1  */
+ 686:../Startup/system_XMC4800.c **** 
+ 687:../Startup/system_XMC4800.c ****   SystemCoreClockUpdate();
+ 635              	 .loc 1 687 0
+ 636 02da FFF7FEFF 	 bl SystemCoreClockUpdate
+ 688:../Startup/system_XMC4800.c **** }
+ 637              	 .loc 1 688 0
+ 638 02de 80BD     	 pop {r7,pc}
+ 639              	 .cfi_endproc
+ 640              	.LFE126:
+ 642              	 .section .text.SystemCoreClockUpdate,"ax",%progbits
+ 643              	 .align 2
+ 644              	 .weak SystemCoreClockUpdate
+ 645              	 .thumb
+ 646              	 .thumb_func
+ 648              	SystemCoreClockUpdate:
+ 649              	.LFB127:
+ 689:../Startup/system_XMC4800.c **** 
+ 690:../Startup/system_XMC4800.c **** __WEAK void SystemCoreClockUpdate(void)
+ 691:../Startup/system_XMC4800.c **** {
+ 650              	 .loc 1 691 0
+ 651              	 .cfi_startproc
+ 652              	 
+ 653              	 
+ 654 0000 80B5     	 push {r7,lr}
+ 655              	.LCFI16:
+ 656              	 .cfi_def_cfa_offset 8
+ 657              	 .cfi_offset 7,-8
+ 658              	 .cfi_offset 14,-4
+ 659 0002 84B0     	 sub sp,sp,#16
+ 660              	.LCFI17:
+ 661              	 .cfi_def_cfa_offset 24
+ 662 0004 00AF     	 add r7,sp,#0
+ 663              	.LCFI18:
+ 664              	 .cfi_def_cfa_register 7
+ 692:../Startup/system_XMC4800.c ****   uint32_t pdiv;
+ 693:../Startup/system_XMC4800.c ****   uint32_t ndiv;
+ 694:../Startup/system_XMC4800.c ****   uint32_t kdiv;
+ 695:../Startup/system_XMC4800.c ****   uint32_t temp;
+ 696:../Startup/system_XMC4800.c **** 
+ 697:../Startup/system_XMC4800.c ****   if (SCU_CLK->SYSCLKCR & SCU_CLK_SYSCLKCR_SYSSEL_Msk)
+ 665              	 .loc 1 697 0
+ 666 0006 2F4B     	 ldr r3,.L32
+ 667 0008 DB68     	 ldr r3,[r3,#12]
+ 668 000a 03F48033 	 and r3,r3,#65536
+ 669 000e 002B     	 cmp r3,#0
+ 670 0010 3ED0     	 beq .L26
+ 698:../Startup/system_XMC4800.c ****   {
+ 699:../Startup/system_XMC4800.c ****     /* fPLL is clock source for fSYS */
+ 700:../Startup/system_XMC4800.c ****     if(SCU_PLL->PLLCON2 & SCU_PLL_PLLCON2_PINSEL_Msk)
+ 671              	 .loc 1 700 0
+ 672 0012 2D4B     	 ldr r3,.L32+4
+ 673 0014 DB68     	 ldr r3,[r3,#12]
+ 674 0016 03F00103 	 and r3,r3,#1
+ 675 001a 002B     	 cmp r3,#0
+ 676 001c 02D0     	 beq .L27
+ 701:../Startup/system_XMC4800.c ****     {
+ 702:../Startup/system_XMC4800.c ****       /* PLL input clock is the backup clock (fOFI) */
+ 703:../Startup/system_XMC4800.c ****       temp = OFI_FREQUENCY;
+ 677              	 .loc 1 703 0
+ 678 001e 2B4B     	 ldr r3,.L32+8
+ 679 0020 FB60     	 str r3,[r7,#12]
+ 680 0022 02E0     	 b .L28
+ 681              	.L27:
+ 704:../Startup/system_XMC4800.c ****     }
+ 705:../Startup/system_XMC4800.c ****     else
+ 706:../Startup/system_XMC4800.c ****     {
+ 707:../Startup/system_XMC4800.c ****       /* PLL input clock is the high performance osicllator (fOSCHP) */
+ 708:../Startup/system_XMC4800.c ****       temp = OSCHP_GetFrequency();
+ 682              	 .loc 1 708 0
+ 683 0024 FFF7FEFF 	 bl OSCHP_GetFrequency
+ 684 0028 F860     	 str r0,[r7,#12]
+ 685              	.L28:
+ 709:../Startup/system_XMC4800.c ****     }
+ 710:../Startup/system_XMC4800.c **** 
+ 711:../Startup/system_XMC4800.c ****     /* check if PLL is locked */
+ 712:../Startup/system_XMC4800.c ****     if (SCU_PLL->PLLSTAT & SCU_PLL_PLLSTAT_VCOLOCK_Msk)
+ 686              	 .loc 1 712 0
+ 687 002a 274B     	 ldr r3,.L32+4
+ 688 002c 1B68     	 ldr r3,[r3]
+ 689 002e 03F00403 	 and r3,r3,#4
+ 690 0032 002B     	 cmp r3,#0
+ 691 0034 20D0     	 beq .L29
+ 713:../Startup/system_XMC4800.c ****     {
+ 714:../Startup/system_XMC4800.c ****       /* PLL normal mode */
+ 715:../Startup/system_XMC4800.c ****       /* read back divider settings */
+ 716:../Startup/system_XMC4800.c ****       pdiv = ((SCU_PLL->PLLCON1 & SCU_PLL_PLLCON1_PDIV_Msk) >> SCU_PLL_PLLCON1_PDIV_Pos) + 1;
+ 692              	 .loc 1 716 0
+ 693 0036 244B     	 ldr r3,.L32+4
+ 694 0038 9B68     	 ldr r3,[r3,#8]
+ 695 003a 03F07063 	 and r3,r3,#251658240
+ 696 003e 1B0E     	 lsrs r3,r3,#24
+ 697 0040 0133     	 adds r3,r3,#1
+ 698 0042 BB60     	 str r3,[r7,#8]
+ 717:../Startup/system_XMC4800.c ****       ndiv = ((SCU_PLL->PLLCON1 & SCU_PLL_PLLCON1_NDIV_Msk) >> SCU_PLL_PLLCON1_NDIV_Pos) + 1;
+ 699              	 .loc 1 717 0
+ 700 0044 204B     	 ldr r3,.L32+4
+ 701 0046 9B68     	 ldr r3,[r3,#8]
+ 702 0048 03F4FE43 	 and r3,r3,#32512
+ 703 004c 1B0A     	 lsrs r3,r3,#8
+ 704 004e 0133     	 adds r3,r3,#1
+ 705 0050 7B60     	 str r3,[r7,#4]
+ 718:../Startup/system_XMC4800.c ****       kdiv = ((SCU_PLL->PLLCON1 & SCU_PLL_PLLCON1_K2DIV_Msk) >> SCU_PLL_PLLCON1_K2DIV_Pos) + 1;
+ 706              	 .loc 1 718 0
+ 707 0052 1D4B     	 ldr r3,.L32+4
+ 708 0054 9B68     	 ldr r3,[r3,#8]
+ 709 0056 03F4FE03 	 and r3,r3,#8323072
+ 710 005a 1B0C     	 lsrs r3,r3,#16
+ 711 005c 0133     	 adds r3,r3,#1
+ 712 005e 3B60     	 str r3,[r7]
+ 719:../Startup/system_XMC4800.c **** 
+ 720:../Startup/system_XMC4800.c ****       temp = (temp / (pdiv * kdiv)) * ndiv;
+ 713              	 .loc 1 720 0
+ 714 0060 BB68     	 ldr r3,[r7,#8]
+ 715 0062 3A68     	 ldr r2,[r7]
+ 716 0064 02FB03F3 	 mul r3,r2,r3
+ 717 0068 FA68     	 ldr r2,[r7,#12]
+ 718 006a B2FBF3F3 	 udiv r3,r2,r3
+ 719 006e 7A68     	 ldr r2,[r7,#4]
+ 720 0070 02FB03F3 	 mul r3,r2,r3
+ 721 0074 FB60     	 str r3,[r7,#12]
+ 722 0076 0DE0     	 b .L31
+ 723              	.L29:
+ 721:../Startup/system_XMC4800.c ****     }
+ 722:../Startup/system_XMC4800.c ****     else
+ 723:../Startup/system_XMC4800.c ****     {
+ 724:../Startup/system_XMC4800.c ****       /* PLL prescalar mode */
+ 725:../Startup/system_XMC4800.c ****       /* read back divider settings */
+ 726:../Startup/system_XMC4800.c ****       kdiv  = ((SCU_PLL->PLLCON1 & SCU_PLL_PLLCON1_K1DIV_Msk) >> SCU_PLL_PLLCON1_K1DIV_Pos) + 1;
+ 724              	 .loc 1 726 0
+ 725 0078 134B     	 ldr r3,.L32+4
+ 726 007a 9B68     	 ldr r3,[r3,#8]
+ 727 007c 03F07F03 	 and r3,r3,#127
+ 728 0080 0133     	 adds r3,r3,#1
+ 729 0082 3B60     	 str r3,[r7]
+ 727:../Startup/system_XMC4800.c **** 
+ 728:../Startup/system_XMC4800.c ****       temp = (temp / kdiv);
+ 730              	 .loc 1 728 0
+ 731 0084 FA68     	 ldr r2,[r7,#12]
+ 732 0086 3B68     	 ldr r3,[r7]
+ 733 0088 B2FBF3F3 	 udiv r3,r2,r3
+ 734 008c FB60     	 str r3,[r7,#12]
+ 735 008e 01E0     	 b .L31
+ 736              	.L26:
+ 729:../Startup/system_XMC4800.c ****     }
+ 730:../Startup/system_XMC4800.c ****   }
+ 731:../Startup/system_XMC4800.c ****   else
+ 732:../Startup/system_XMC4800.c ****   {
+ 733:../Startup/system_XMC4800.c ****     /* fOFI is clock source for fSYS */
+ 734:../Startup/system_XMC4800.c ****     temp = OFI_FREQUENCY;
+ 737              	 .loc 1 734 0
+ 738 0090 0E4B     	 ldr r3,.L32+8
+ 739 0092 FB60     	 str r3,[r7,#12]
+ 740              	.L31:
+ 735:../Startup/system_XMC4800.c ****   }
+ 736:../Startup/system_XMC4800.c **** 
+ 737:../Startup/system_XMC4800.c ****   temp = temp / ((SCU_CLK->SYSCLKCR & SCU_CLK_SYSCLKCR_SYSDIV_Msk) + 1);
+ 741              	 .loc 1 737 0
+ 742 0094 0B4B     	 ldr r3,.L32
+ 743 0096 DB68     	 ldr r3,[r3,#12]
+ 744 0098 DBB2     	 uxtb r3,r3
+ 745 009a 0133     	 adds r3,r3,#1
+ 746 009c FA68     	 ldr r2,[r7,#12]
+ 747 009e B2FBF3F3 	 udiv r3,r2,r3
+ 748 00a2 FB60     	 str r3,[r7,#12]
+ 738:../Startup/system_XMC4800.c ****   temp = temp / ((SCU_CLK->CPUCLKCR & SCU_CLK_CPUCLKCR_CPUDIV_Msk) + 1);
+ 749              	 .loc 1 738 0
+ 750 00a4 074B     	 ldr r3,.L32
+ 751 00a6 1B69     	 ldr r3,[r3,#16]
+ 752 00a8 03F00103 	 and r3,r3,#1
+ 753 00ac 0133     	 adds r3,r3,#1
+ 754 00ae FA68     	 ldr r2,[r7,#12]
+ 755 00b0 B2FBF3F3 	 udiv r3,r2,r3
+ 756 00b4 FB60     	 str r3,[r7,#12]
+ 739:../Startup/system_XMC4800.c **** 
+ 740:../Startup/system_XMC4800.c ****   SystemCoreClock = temp;
+ 757              	 .loc 1 740 0
+ 758 00b6 064A     	 ldr r2,.L32+12
+ 759 00b8 FB68     	 ldr r3,[r7,#12]
+ 760 00ba 1360     	 str r3,[r2]
+ 741:../Startup/system_XMC4800.c **** }
+ 761              	 .loc 1 741 0
+ 762 00bc 1037     	 adds r7,r7,#16
+ 763              	.LCFI19:
+ 764              	 .cfi_def_cfa_offset 8
+ 765 00be BD46     	 mov sp,r7
+ 766              	.LCFI20:
+ 767              	 .cfi_def_cfa_register 13
+ 768              	 
+ 769 00c0 80BD     	 pop {r7,pc}
+ 770              	.L33:
+ 771 00c2 00BF     	 .align 2
+ 772              	.L32:
+ 773 00c4 00460050 	 .word 1342195200
+ 774 00c8 10470050 	 .word 1342195472
+ 775 00cc 00366E01 	 .word 24000000
+ 776 00d0 00000000 	 .word SystemCoreClock
+ 777              	 .cfi_endproc
+ 778              	.LFE127:
+ 780              	 .section .text.OSCHP_GetFrequency,"ax",%progbits
+ 781              	 .align 2
+ 782              	 .weak OSCHP_GetFrequency
+ 783              	 .thumb
+ 784              	 .thumb_func
+ 786              	OSCHP_GetFrequency:
+ 787              	.LFB128:
+ 742:../Startup/system_XMC4800.c **** 
+ 743:../Startup/system_XMC4800.c **** __WEAK uint32_t OSCHP_GetFrequency(void)
+ 744:../Startup/system_XMC4800.c **** {
+ 788              	 .loc 1 744 0
+ 789              	 .cfi_startproc
+ 790              	 
+ 791              	 
+ 792              	 
+ 793 0000 80B4     	 push {r7}
+ 794              	.LCFI21:
+ 795              	 .cfi_def_cfa_offset 4
+ 796              	 .cfi_offset 7,-4
+ 797 0002 00AF     	 add r7,sp,#0
+ 798              	.LCFI22:
+ 799              	 .cfi_def_cfa_register 7
+ 745:../Startup/system_XMC4800.c ****   return OSCHP_FREQUENCY;
+ 800              	 .loc 1 745 0
+ 801 0004 024B     	 ldr r3,.L36
+ 746:../Startup/system_XMC4800.c **** }
+ 802              	 .loc 1 746 0
+ 803 0006 1846     	 mov r0,r3
+ 804 0008 BD46     	 mov sp,r7
+ 805              	.LCFI23:
+ 806              	 .cfi_def_cfa_register 13
+ 807              	 
+ 808 000a 5DF8047B 	 ldr r7,[sp],#4
+ 809              	.LCFI24:
+ 810              	 .cfi_restore 7
+ 811              	 .cfi_def_cfa_offset 0
+ 812 000e 7047     	 bx lr
+ 813              	.L37:
+ 814              	 .align 2
+ 815              	.L36:
+ 816 0010 001BB700 	 .word 12000000
+ 817              	 .cfi_endproc
+ 818              	.LFE128:
+ 820              	 .text
+ 821              	.Letext0:
+ 822              	 .file 3 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 823              	 .file 4 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 824              	 .file 5 "C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include/core_cm4.h"
+ 825              	 .file 6 "C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Infineon/XMC4800_series/Include/XMC4800.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 system_XMC4800.c
+    {standard input}:24     .no_init:00000000 SystemCoreClock
+    {standard input}:21     .no_init:00000000 $d
+    {standard input}:30     .no_init:00000004 g_chipid
+    {standard input}:33     .text.delay:00000000 $t
+    {standard input}:37     .text.delay:00000000 delay
+    {standard input}:98     .text.SystemInit:00000000 $t
+    {standard input}:103    .text.SystemInit:00000000 SystemInit
+    {standard input}:144    .text.SystemCoreSetup:00000000 SystemCoreSetup
+    {standard input}:252    .text.SystemCoreClockSetup:00000000 SystemCoreClockSetup
+    {standard input}:134    .text.SystemInit:0000001c $d
+    {standard input}:139    .text.SystemCoreSetup:00000000 $t
+    {standard input}:240    .text.SystemCoreSetup:00000064 $d
+    {standard input}:247    .text.SystemCoreClockSetup:00000000 $t
+    {standard input}:786    .text.OSCHP_GetFrequency:00000000 OSCHP_GetFrequency
+    {standard input}:617    .text.SystemCoreClockSetup:00000298 $d
+    {standard input}:634    .text.SystemCoreClockSetup:000002d8 $t
+    {standard input}:648    .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
+    {standard input}:643    .text.SystemCoreClockUpdate:00000000 $t
+    {standard input}:773    .text.SystemCoreClockUpdate:000000c4 $d
+    {standard input}:781    .text.OSCHP_GetFrequency:00000000 $t
+    {standard input}:816    .text.OSCHP_GetFrequency:00000010 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+__Vectors

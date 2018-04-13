@@ -1,0 +1,318 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "DAVE.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.DAVE_Init,"ax",%progbits
+  20              	 .align 2
+  21              	 .global DAVE_Init
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	DAVE_Init:
+  26              	.LFB325:
+  27              	 .file 1 "../Dave/Generated/DAVE.c"
+   1:../Dave/Generated/DAVE.c **** 
+   2:../Dave/Generated/DAVE.c **** /**
+   3:../Dave/Generated/DAVE.c ****  * @cond
+   4:../Dave/Generated/DAVE.c ****  **************************************************************************************************
+   5:../Dave/Generated/DAVE.c ****  *
+   6:../Dave/Generated/DAVE.c ****  * Copyright (c) 2015, Infineon Technologies AG
+   7:../Dave/Generated/DAVE.c ****  * All rights reserved.
+   8:../Dave/Generated/DAVE.c ****  *
+   9:../Dave/Generated/DAVE.c ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  10:../Dave/Generated/DAVE.c ****  * following conditions are met:
+  11:../Dave/Generated/DAVE.c ****  *
+  12:../Dave/Generated/DAVE.c ****  *   Redistributions of source code must retain the above copyright notice, this list of conditions
+  13:../Dave/Generated/DAVE.c ****  *   disclaimer.
+  14:../Dave/Generated/DAVE.c ****  *
+  15:../Dave/Generated/DAVE.c ****  *   Redistributions in binary form must reproduce the above copyright notice, this list of conditi
+  16:../Dave/Generated/DAVE.c ****  *   following disclaimer in the documentation and/or other materials provided with the distributio
+  17:../Dave/Generated/DAVE.c ****  *
+  18:../Dave/Generated/DAVE.c ****  *   Neither the name of the copyright holders nor the names of its contributors may be used to end
+  19:../Dave/Generated/DAVE.c ****  *   products derived from this software without specific prior written permission.
+  20:../Dave/Generated/DAVE.c ****  *
+  21:../Dave/Generated/DAVE.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  22:../Dave/Generated/DAVE.c ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  23:../Dave/Generated/DAVE.c ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  24:../Dave/Generated/DAVE.c ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  25:../Dave/Generated/DAVE.c ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  26:../Dave/Generated/DAVE.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  27:../Dave/Generated/DAVE.c ****  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  28:../Dave/Generated/DAVE.c ****  *
+  29:../Dave/Generated/DAVE.c ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  30:../Dave/Generated/DAVE.c ****  * with Infineon Technologies AG (dave@infineon.com).
+  31:../Dave/Generated/DAVE.c ****  **************************************************************************************************
+  32:../Dave/Generated/DAVE.c ****  *
+  33:../Dave/Generated/DAVE.c ****  * Change History
+  34:../Dave/Generated/DAVE.c ****  * --------------
+  35:../Dave/Generated/DAVE.c ****  *
+  36:../Dave/Generated/DAVE.c ****  * 2014-06-16:
+  37:../Dave/Generated/DAVE.c ****  *     - Initial version<br>
+  38:../Dave/Generated/DAVE.c ****  * 2015-08-28:
+  39:../Dave/Generated/DAVE.c ****  *     - Added CLOCK_XMC1_Init conditionally
+  40:../Dave/Generated/DAVE.c ****  *
+  41:../Dave/Generated/DAVE.c ****  * @endcond
+  42:../Dave/Generated/DAVE.c ****  *
+  43:../Dave/Generated/DAVE.c ****  */
+  44:../Dave/Generated/DAVE.c **** 
+  45:../Dave/Generated/DAVE.c **** /**************************************************************************************************
+  46:../Dave/Generated/DAVE.c ****  * HEADER FILES
+  47:../Dave/Generated/DAVE.c ****  **************************************************************************************************
+  48:../Dave/Generated/DAVE.c **** #include "DAVE.h"
+  49:../Dave/Generated/DAVE.c **** 
+  50:../Dave/Generated/DAVE.c **** /**************************************************************************************************
+  51:../Dave/Generated/DAVE.c ****  * API IMPLEMENTATION
+  52:../Dave/Generated/DAVE.c ****  **************************************************************************************************
+  53:../Dave/Generated/DAVE.c **** 
+  54:../Dave/Generated/DAVE.c **** /*******************************************************************************
+  55:../Dave/Generated/DAVE.c ****  * @brief This function initializes the APPs Init Functions.
+  56:../Dave/Generated/DAVE.c ****  *
+  57:../Dave/Generated/DAVE.c ****  * @param[in]  None
+  58:../Dave/Generated/DAVE.c ****  *
+  59:../Dave/Generated/DAVE.c ****  * @return  DAVE_STATUS_t <BR>
+  60:../Dave/Generated/DAVE.c ****  ******************************************************************************/
+  61:../Dave/Generated/DAVE.c **** DAVE_STATUS_t DAVE_Init(void)
+  62:../Dave/Generated/DAVE.c **** {
+  28              	 .loc 1 62 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32 0000 80B5     	 push {r7,lr}
+  33              	.LCFI0:
+  34              	 .cfi_def_cfa_offset 8
+  35              	 .cfi_offset 7,-8
+  36              	 .cfi_offset 14,-4
+  37 0002 82B0     	 sub sp,sp,#8
+  38              	.LCFI1:
+  39              	 .cfi_def_cfa_offset 16
+  40 0004 00AF     	 add r7,sp,#0
+  41              	.LCFI2:
+  42              	 .cfi_def_cfa_register 7
+  63:../Dave/Generated/DAVE.c ****   DAVE_STATUS_t init_status;
+  64:../Dave/Generated/DAVE.c ****   
+  65:../Dave/Generated/DAVE.c ****   init_status = DAVE_STATUS_SUCCESS;
+  43              	 .loc 1 65 0
+  44 0006 0023     	 movs r3,#0
+  45 0008 FB71     	 strb r3,[r7,#7]
+  66:../Dave/Generated/DAVE.c ****      /** @Initialization of APPs Init Functions */
+  67:../Dave/Generated/DAVE.c ****      init_status = (DAVE_STATUS_t)CLOCK_XMC4_Init(&CLOCK_XMC4_0);
+  46              	 .loc 1 67 0
+  47 000a 2548     	 ldr r0,.L11
+  48 000c FFF7FEFF 	 bl CLOCK_XMC4_Init
+  49 0010 0346     	 mov r3,r0
+  50 0012 FB71     	 strb r3,[r7,#7]
+  68:../Dave/Generated/DAVE.c **** 
+  69:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
+  51              	 .loc 1 69 0
+  52 0014 FB79     	 ldrb r3,[r7,#7]
+  53 0016 002B     	 cmp r3,#0
+  54 0018 04D1     	 bne .L2
+  70:../Dave/Generated/DAVE.c ****   {
+  71:../Dave/Generated/DAVE.c **** 	 /**  Initialization of ECAT_SSC APP instance ECAT_SSC_0 */
+  72:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)ECAT_SSC_Init(&ECAT_SSC_0); 
+  55              	 .loc 1 72 0
+  56 001a 2248     	 ldr r0,.L11+4
+  57 001c FFF7FEFF 	 bl ECAT_SSC_Init
+  58 0020 0346     	 mov r3,r0
+  59 0022 FB71     	 strb r3,[r7,#7]
+  60              	.L2:
+  73:../Dave/Generated/DAVE.c ****    } 
+  74:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
+  61              	 .loc 1 74 0
+  62 0024 FB79     	 ldrb r3,[r7,#7]
+  63 0026 002B     	 cmp r3,#0
+  64 0028 04D1     	 bne .L3
+  75:../Dave/Generated/DAVE.c ****   {
+  76:../Dave/Generated/DAVE.c **** 	 /**  Initialization of INTERRUPT APP instance INT_SYNC1 */
+  77:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&INT_SYNC1); 
+  65              	 .loc 1 77 0
+  66 002a 1F48     	 ldr r0,.L11+8
+  67 002c FFF7FEFF 	 bl INTERRUPT_Init
+  68 0030 0346     	 mov r3,r0
+  69 0032 FB71     	 strb r3,[r7,#7]
+  70              	.L3:
+  78:../Dave/Generated/DAVE.c ****    } 
+  79:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
+  71              	 .loc 1 79 0
+  72 0034 FB79     	 ldrb r3,[r7,#7]
+  73 0036 002B     	 cmp r3,#0
+  74 0038 04D1     	 bne .L4
+  80:../Dave/Generated/DAVE.c ****   {
+  81:../Dave/Generated/DAVE.c **** 	 /**  Initialization of INTERRUPT APP instance INT_SYNC0 */
+  82:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&INT_SYNC0); 
+  75              	 .loc 1 82 0
+  76 003a 1C48     	 ldr r0,.L11+12
+  77 003c FFF7FEFF 	 bl INTERRUPT_Init
+  78 0040 0346     	 mov r3,r0
+  79 0042 FB71     	 strb r3,[r7,#7]
+  80              	.L4:
+  83:../Dave/Generated/DAVE.c ****    } 
+  84:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
+  81              	 .loc 1 84 0
+  82 0044 FB79     	 ldrb r3,[r7,#7]
+  83 0046 002B     	 cmp r3,#0
+  84 0048 04D1     	 bne .L5
+  85:../Dave/Generated/DAVE.c ****   {
+  86:../Dave/Generated/DAVE.c **** 	 /**  Initialization of EVENT_DETECTOR APP instance ED_SYNC1 */
+  87:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)EVENT_DETECTOR_Init(&ED_SYNC1); 
+  85              	 .loc 1 87 0
+  86 004a 1948     	 ldr r0,.L11+16
+  87 004c FFF7FEFF 	 bl EVENT_DETECTOR_Init
+  88 0050 0346     	 mov r3,r0
+  89 0052 FB71     	 strb r3,[r7,#7]
+  90              	.L5:
+  88:../Dave/Generated/DAVE.c ****    } 
+  89:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
+  91              	 .loc 1 89 0
+  92 0054 FB79     	 ldrb r3,[r7,#7]
+  93 0056 002B     	 cmp r3,#0
+  94 0058 04D1     	 bne .L6
+  90:../Dave/Generated/DAVE.c ****   {
+  91:../Dave/Generated/DAVE.c **** 	 /**  Initialization of PWM_CCU8 APP instance PWM_CCU8_0 */
+  92:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)PWM_CCU8_Init(&PWM_CCU8_0); 
+  95              	 .loc 1 92 0
+  96 005a 1648     	 ldr r0,.L11+20
+  97 005c FFF7FEFF 	 bl PWM_CCU8_Init
+  98 0060 0346     	 mov r3,r0
+  99 0062 FB71     	 strb r3,[r7,#7]
+ 100              	.L6:
+  93:../Dave/Generated/DAVE.c ****    } 
+  94:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
+ 101              	 .loc 1 94 0
+ 102 0064 FB79     	 ldrb r3,[r7,#7]
+ 103 0066 002B     	 cmp r3,#0
+ 104 0068 04D1     	 bne .L7
+  95:../Dave/Generated/DAVE.c ****   {
+  96:../Dave/Generated/DAVE.c **** 	 /**  Initialization of EVENT_GENERATOR APP instance EG_SYNC1 */
+  97:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)EVENT_GENERATOR_Init(&EG_SYNC1); 
+ 105              	 .loc 1 97 0
+ 106 006a 1348     	 ldr r0,.L11+24
+ 107 006c FFF7FEFF 	 bl EVENT_GENERATOR_Init
+ 108 0070 0346     	 mov r3,r0
+ 109 0072 FB71     	 strb r3,[r7,#7]
+ 110              	.L7:
+  98:../Dave/Generated/DAVE.c ****    } 
+  99:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
+ 111              	 .loc 1 99 0
+ 112 0074 FB79     	 ldrb r3,[r7,#7]
+ 113 0076 002B     	 cmp r3,#0
+ 114 0078 04D1     	 bne .L8
+ 100:../Dave/Generated/DAVE.c ****   {
+ 101:../Dave/Generated/DAVE.c **** 	 /**  Initialization of EVENT_GENERATOR APP instance EG_SYNC0 */
+ 102:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)EVENT_GENERATOR_Init(&EG_SYNC0); 
+ 115              	 .loc 1 102 0
+ 116 007a 1048     	 ldr r0,.L11+28
+ 117 007c FFF7FEFF 	 bl EVENT_GENERATOR_Init
+ 118 0080 0346     	 mov r3,r0
+ 119 0082 FB71     	 strb r3,[r7,#7]
+ 120              	.L8:
+ 103:../Dave/Generated/DAVE.c ****    } 
+ 104:../Dave/Generated/DAVE.c ****   if (init_status == DAVE_STATUS_SUCCESS)
+ 121              	 .loc 1 104 0
+ 122 0084 FB79     	 ldrb r3,[r7,#7]
+ 123 0086 002B     	 cmp r3,#0
+ 124 0088 04D1     	 bne .L9
+ 105:../Dave/Generated/DAVE.c ****   {
+ 106:../Dave/Generated/DAVE.c **** 	 /**  Initialization of EVENT_DETECTOR APP instance ED_SYNC0 */
+ 107:../Dave/Generated/DAVE.c **** 	 init_status = (DAVE_STATUS_t)EVENT_DETECTOR_Init(&ED_SYNC0); 
+ 125              	 .loc 1 107 0
+ 126 008a 0D48     	 ldr r0,.L11+32
+ 127 008c FFF7FEFF 	 bl EVENT_DETECTOR_Init
+ 128 0090 0346     	 mov r3,r0
+ 129 0092 FB71     	 strb r3,[r7,#7]
+ 130              	.L9:
+ 108:../Dave/Generated/DAVE.c ****    }  
+ 109:../Dave/Generated/DAVE.c ****   return init_status;
+ 131              	 .loc 1 109 0
+ 132 0094 FB79     	 ldrb r3,[r7,#7]
+ 110:../Dave/Generated/DAVE.c **** } /**  End of function DAVE_Init */
+ 133              	 .loc 1 110 0
+ 134 0096 1846     	 mov r0,r3
+ 135 0098 0837     	 adds r7,r7,#8
+ 136              	.LCFI3:
+ 137              	 .cfi_def_cfa_offset 8
+ 138 009a BD46     	 mov sp,r7
+ 139              	.LCFI4:
+ 140              	 .cfi_def_cfa_register 13
+ 141              	 
+ 142 009c 80BD     	 pop {r7,pc}
+ 143              	.L12:
+ 144 009e 00BF     	 .align 2
+ 145              	.L11:
+ 146 00a0 00000000 	 .word CLOCK_XMC4_0
+ 147 00a4 00000000 	 .word ECAT_SSC_0
+ 148 00a8 00000000 	 .word INT_SYNC1
+ 149 00ac 00000000 	 .word INT_SYNC0
+ 150 00b0 00000000 	 .word ED_SYNC1
+ 151 00b4 00000000 	 .word PWM_CCU8_0
+ 152 00b8 00000000 	 .word EG_SYNC1
+ 153 00bc 00000000 	 .word EG_SYNC0
+ 154 00c0 00000000 	 .word ED_SYNC0
+ 155              	 .cfi_endproc
+ 156              	.LFE325:
+ 158              	 .text
+ 159              	.Letext0:
+ 160              	 .file 2 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 161              	 .file 3 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 162              	 .file 4 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include/XMC4800.h"
+ 163              	 .file 5 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc4_scu.h"
+ 164              	 .file 6 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc_gpio.h"
+ 165              	 .file 7 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 166              	 .file 8 "../Dave/Generated/CLOCK_XMC4/clock_xmc4.h"
+ 167              	 .file 9 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc_ccu4.h"
+ 168              	 .file 10 "../Dave/Generated/GLOBAL_CCU4/global_ccu4.h"
+ 169              	 .file 11 "../Dave/Generated/TIMER/timer.h"
+ 170              	 .file 12 "../Dave/Generated/INTERRUPT/interrupt.h"
+ 171              	 .file 13 "../Dave/Generated/E_EEPROM_XMC4/e_eeprom_xmc4.h"
+ 172              	 .file 14 "../Dave/Generated/ECAT_SSC/ecat_ssc.h"
+ 173              	 .file 15 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc_eru.h"
+ 174              	 .file 16 "../Dave/Generated/EVENT_DETECTOR/event_detector.h"
+ 175              	 .file 17 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc_ccu8.h"
+ 176              	 .file 18 "../Dave/Generated/GLOBAL_CCU8/global_ccu8.h"
+ 177              	 .file 19 "../Dave/Generated/PWM_CCU8/pwm_ccu8.h"
+ 178              	 .file 20 "../Dave/Generated/EVENT_GENERATOR/event_generator.h"
+ 179              	 .file 21 "../Dave/Generated/DAVE.h"
+ 180              	 .file 22 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Include/core_cm4.h"
+ 181              	 .file 23 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include/system_XMC4800.h"
+ 182              	 .file 24 "../Dave/Generated/CLOCK_XMC4/clock_xmc4_extern.h"
+ 183              	 .file 25 "../Dave/Generated/INTERRUPT/interrupt_extern.h"
+ 184              	 .file 26 "../Dave/Generated/ECAT_SSC/ecat_ssc_extern.h"
+ 185              	 .file 27 "../Dave/Generated/EVENT_DETECTOR/event_detector_extern.h"
+ 186              	 .file 28 "../Dave/Generated/PWM_CCU8/pwm_ccu8_extern.h"
+ 187              	 .file 29 "../Dave/Generated/EVENT_GENERATOR/event_generator_extern.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 DAVE.c
+    {standard input}:20     .text.DAVE_Init:00000000 $t
+    {standard input}:25     .text.DAVE_Init:00000000 DAVE_Init
+    {standard input}:146    .text.DAVE_Init:000000a0 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+CLOCK_XMC4_Init
+ECAT_SSC_Init
+INTERRUPT_Init
+EVENT_DETECTOR_Init
+PWM_CCU8_Init
+EVENT_GENERATOR_Init
+CLOCK_XMC4_0
+ECAT_SSC_0
+INT_SYNC1
+INT_SYNC0
+ED_SYNC1
+PWM_CCU8_0
+EG_SYNC1
+EG_SYNC0
+ED_SYNC0

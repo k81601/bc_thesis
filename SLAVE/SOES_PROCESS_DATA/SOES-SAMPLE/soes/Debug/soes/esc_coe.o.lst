@@ -1,0 +1,4556 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "esc_coe.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.SDO_findsubindex,"ax",%progbits
+  20              	 .align 2
+  21              	 .global SDO_findsubindex
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	SDO_findsubindex:
+  26              	.LFB0:
+  27              	 .file 1 "../soes/esc_coe.c"
+   1:../soes/esc_coe.c **** /*
+   2:../soes/esc_coe.c ****  * Licensed under the GNU General Public License version 2 with exceptions. See
+   3:../soes/esc_coe.c ****  * LICENSE file in the project root for full license information
+   4:../soes/esc_coe.c ****  */
+   5:../soes/esc_coe.c **** 
+   6:../soes/esc_coe.c ****  /** \file
+   7:../soes/esc_coe.c ****  * \brief
+   8:../soes/esc_coe.c ****  * CAN over EtherCAT (CoE) module.
+   9:../soes/esc_coe.c ****  *
+  10:../soes/esc_coe.c ****  * SDO read / write and SDO service functions
+  11:../soes/esc_coe.c ****  */
+  12:../soes/esc_coe.c **** 
+  13:../soes/esc_coe.c **** #include <stddef.h>
+  14:../soes/esc_coe.c **** #include <string.h>
+  15:../soes/esc_coe.c **** #include <cc.h>
+  16:../soes/esc_coe.c **** #include "esc.h"
+  17:../soes/esc_coe.c **** #include "esc_coe.h"
+  18:../soes/esc_coe.c **** 
+  19:../soes/esc_coe.c **** #define BITS2BYTES(b) ((b + 7) >> 3)
+  20:../soes/esc_coe.c **** 
+  21:../soes/esc_coe.c **** /** Search for an object sub-index.
+  22:../soes/esc_coe.c ****  *
+  23:../soes/esc_coe.c ****  * @param[in] nidx   = local array index of object we want to find sub-index to
+  24:../soes/esc_coe.c ****  * @param[in] subindex   = value on sub-index of object we want to locate
+  25:../soes/esc_coe.c ****  * @return local array index if we succeed, -1 if we didn't find the index.
+  26:../soes/esc_coe.c ****  */
+  27:../soes/esc_coe.c **** int16_t SDO_findsubindex (int16_t nidx, uint8_t subindex)
+  28:../soes/esc_coe.c **** {
+  28              	 .loc 1 28 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32              	 
+  33 0000 80B4     	 push {r7}
+  34              	.LCFI0:
+  35              	 .cfi_def_cfa_offset 4
+  36              	 .cfi_offset 7,-4
+  37 0002 87B0     	 sub sp,sp,#28
+  38              	.LCFI1:
+  39              	 .cfi_def_cfa_offset 32
+  40 0004 00AF     	 add r7,sp,#0
+  41              	.LCFI2:
+  42              	 .cfi_def_cfa_register 7
+  43 0006 0346     	 mov r3,r0
+  44 0008 0A46     	 mov r2,r1
+  45 000a FB80     	 strh r3,[r7,#6]
+  46 000c 1346     	 mov r3,r2
+  47 000e 7B71     	 strb r3,[r7,#5]
+  29:../soes/esc_coe.c ****    const _objd *objd;
+  30:../soes/esc_coe.c ****    int16_t n = 0;
+  48              	 .loc 1 30 0
+  49 0010 0023     	 movs r3,#0
+  50 0012 FB82     	 strh r3,[r7,#22]
+  31:../soes/esc_coe.c ****    uint8_t maxsub;
+  32:../soes/esc_coe.c ****    objd = SDOobjects[nidx].objdesc;
+  51              	 .loc 1 32 0
+  52 0014 B7F90620 	 ldrsh r2,[r7,#6]
+  53 0018 2349     	 ldr r1,.L7
+  54 001a 1346     	 mov r3,r2
+  55 001c DB00     	 lsls r3,r3,#3
+  56 001e 9B1A     	 subs r3,r3,r2
+  57 0020 5B00     	 lsls r3,r3,#1
+  58 0022 0B44     	 add r3,r3,r1
+  59 0024 0833     	 adds r3,r3,#8
+  60 0026 D3F80230 	 ldr r3,[r3,#2]
+  61 002a 3B61     	 str r3,[r7,#16]
+  33:../soes/esc_coe.c ****    maxsub = SDOobjects[nidx].maxsub;
+  62              	 .loc 1 33 0
+  63 002c B7F90620 	 ldrsh r2,[r7,#6]
+  64 0030 1D49     	 ldr r1,.L7
+  65 0032 1346     	 mov r3,r2
+  66 0034 DB00     	 lsls r3,r3,#3
+  67 0036 9B1A     	 subs r3,r3,r2
+  68 0038 5B00     	 lsls r3,r3,#1
+  69 003a 0B44     	 add r3,r3,r1
+  70 003c 1B79     	 ldrb r3,[r3,#4]
+  71 003e FB73     	 strb r3,[r7,#15]
+  34:../soes/esc_coe.c ****    while (((objd + n)->subindex < subindex) && (n < maxsub))
+  72              	 .loc 1 34 0
+  73 0040 04E0     	 b .L2
+  74              	.L4:
+  35:../soes/esc_coe.c ****    {
+  36:../soes/esc_coe.c ****       n++;
+  75              	 .loc 1 36 0
+  76 0042 FB8A     	 ldrh r3,[r7,#22]
+  77 0044 9BB2     	 uxth r3,r3
+  78 0046 0133     	 adds r3,r3,#1
+  79 0048 9BB2     	 uxth r3,r3
+  80 004a FB82     	 strh r3,[r7,#22]
+  81              	.L2:
+  34:../soes/esc_coe.c ****    while (((objd + n)->subindex < subindex) && (n < maxsub))
+  82              	 .loc 1 34 0
+  83 004c B7F91620 	 ldrsh r2,[r7,#22]
+  84 0050 1346     	 mov r3,r2
+  85 0052 9B00     	 lsls r3,r3,#2
+  86 0054 1344     	 add r3,r3,r2
+  87 0056 9B00     	 lsls r3,r3,#2
+  88 0058 1A46     	 mov r2,r3
+  89 005a 3B69     	 ldr r3,[r7,#16]
+  90 005c 1344     	 add r3,r3,r2
+  91 005e 1B88     	 ldrh r3,[r3]
+  92 0060 9AB2     	 uxth r2,r3
+  93 0062 7B79     	 ldrb r3,[r7,#5]
+  94 0064 9BB2     	 uxth r3,r3
+  95 0066 9A42     	 cmp r2,r3
+  96 0068 04D2     	 bcs .L3
+  34:../soes/esc_coe.c ****    while (((objd + n)->subindex < subindex) && (n < maxsub))
+  97              	 .loc 1 34 0 is_stmt 0 discriminator 1
+  98 006a B7F91620 	 ldrsh r2,[r7,#22]
+  99 006e FB7B     	 ldrb r3,[r7,#15]
+ 100 0070 9A42     	 cmp r2,r3
+ 101 0072 E6DB     	 blt .L4
+ 102              	.L3:
+  37:../soes/esc_coe.c ****    }
+  38:../soes/esc_coe.c ****    if ((objd + n)->subindex != subindex)
+ 103              	 .loc 1 38 0 is_stmt 1
+ 104 0074 B7F91620 	 ldrsh r2,[r7,#22]
+ 105 0078 1346     	 mov r3,r2
+ 106 007a 9B00     	 lsls r3,r3,#2
+ 107 007c 1344     	 add r3,r3,r2
+ 108 007e 9B00     	 lsls r3,r3,#2
+ 109 0080 1A46     	 mov r2,r3
+ 110 0082 3B69     	 ldr r3,[r7,#16]
+ 111 0084 1344     	 add r3,r3,r2
+ 112 0086 1B88     	 ldrh r3,[r3]
+ 113 0088 9AB2     	 uxth r2,r3
+ 114 008a 7B79     	 ldrb r3,[r7,#5]
+ 115 008c 9BB2     	 uxth r3,r3
+ 116 008e 9A42     	 cmp r2,r3
+ 117 0090 02D0     	 beq .L5
+  39:../soes/esc_coe.c ****    {
+  40:../soes/esc_coe.c ****       return -1;
+ 118              	 .loc 1 40 0
+ 119 0092 4FF6FF73 	 movw r3,#65535
+ 120 0096 00E0     	 b .L6
+ 121              	.L5:
+  41:../soes/esc_coe.c ****    }
+  42:../soes/esc_coe.c ****    return n;
+ 122              	 .loc 1 42 0
+ 123 0098 FB8A     	 ldrh r3,[r7,#22]
+ 124              	.L6:
+ 125 009a 1BB2     	 sxth r3,r3
+  43:../soes/esc_coe.c **** }
+ 126              	 .loc 1 43 0
+ 127 009c 1846     	 mov r0,r3
+ 128 009e 1C37     	 adds r7,r7,#28
+ 129              	.LCFI3:
+ 130              	 .cfi_def_cfa_offset 4
+ 131 00a0 BD46     	 mov sp,r7
+ 132              	.LCFI4:
+ 133              	 .cfi_def_cfa_register 13
+ 134              	 
+ 135 00a2 5DF8047B 	 ldr r7,[sp],#4
+ 136              	.LCFI5:
+ 137              	 .cfi_restore 7
+ 138              	 .cfi_def_cfa_offset 0
+ 139 00a6 7047     	 bx lr
+ 140              	.L8:
+ 141              	 .align 2
+ 142              	.L7:
+ 143 00a8 00000000 	 .word SDOobjects
+ 144              	 .cfi_endproc
+ 145              	.LFE0:
+ 147              	 .section .text.SDO_findobject,"ax",%progbits
+ 148              	 .align 2
+ 149              	 .global SDO_findobject
+ 150              	 .thumb
+ 151              	 .thumb_func
+ 153              	SDO_findobject:
+ 154              	.LFB1:
+  44:../soes/esc_coe.c **** 
+  45:../soes/esc_coe.c **** /** Search for an object index matching the wanted value in the Object List.
+  46:../soes/esc_coe.c ****  *
+  47:../soes/esc_coe.c ****  * @param[in] index   = value on index of object we want to locate
+  48:../soes/esc_coe.c ****  * @return local array index if we succeed, -1 if we didn't find the index.
+  49:../soes/esc_coe.c ****  */
+  50:../soes/esc_coe.c **** int32_t SDO_findobject (uint16_t index)
+  51:../soes/esc_coe.c **** {
+ 155              	 .loc 1 51 0
+ 156              	 .cfi_startproc
+ 157              	 
+ 158              	 
+ 159              	 
+ 160 0000 80B4     	 push {r7}
+ 161              	.LCFI6:
+ 162              	 .cfi_def_cfa_offset 4
+ 163              	 .cfi_offset 7,-4
+ 164 0002 85B0     	 sub sp,sp,#20
+ 165              	.LCFI7:
+ 166              	 .cfi_def_cfa_offset 24
+ 167 0004 00AF     	 add r7,sp,#0
+ 168              	.LCFI8:
+ 169              	 .cfi_def_cfa_register 7
+ 170 0006 0346     	 mov r3,r0
+ 171 0008 FB80     	 strh r3,[r7,#6]
+  52:../soes/esc_coe.c ****    int32_t n = 0;
+ 172              	 .loc 1 52 0
+ 173 000a 0023     	 movs r3,#0
+ 174 000c FB60     	 str r3,[r7,#12]
+  53:../soes/esc_coe.c ****    while (SDOobjects[n].index < index)
+ 175              	 .loc 1 53 0
+ 176 000e 02E0     	 b .L10
+ 177              	.L11:
+  54:../soes/esc_coe.c ****    {
+  55:../soes/esc_coe.c ****       n++;
+ 178              	 .loc 1 55 0
+ 179 0010 FB68     	 ldr r3,[r7,#12]
+ 180 0012 0133     	 adds r3,r3,#1
+ 181 0014 FB60     	 str r3,[r7,#12]
+ 182              	.L10:
+  53:../soes/esc_coe.c ****    while (SDOobjects[n].index < index)
+ 183              	 .loc 1 53 0
+ 184 0016 1149     	 ldr r1,.L14
+ 185 0018 FA68     	 ldr r2,[r7,#12]
+ 186 001a 1346     	 mov r3,r2
+ 187 001c DB00     	 lsls r3,r3,#3
+ 188 001e 9B1A     	 subs r3,r3,r2
+ 189 0020 5B00     	 lsls r3,r3,#1
+ 190 0022 0B44     	 add r3,r3,r1
+ 191 0024 1B88     	 ldrh r3,[r3]
+ 192 0026 9BB2     	 uxth r3,r3
+ 193 0028 FA88     	 ldrh r2,[r7,#6]
+ 194 002a 9A42     	 cmp r2,r3
+ 195 002c F0D8     	 bhi .L11
+  56:../soes/esc_coe.c ****    }
+  57:../soes/esc_coe.c ****    if (SDOobjects[n].index != index)
+ 196              	 .loc 1 57 0
+ 197 002e 0B49     	 ldr r1,.L14
+ 198 0030 FA68     	 ldr r2,[r7,#12]
+ 199 0032 1346     	 mov r3,r2
+ 200 0034 DB00     	 lsls r3,r3,#3
+ 201 0036 9B1A     	 subs r3,r3,r2
+ 202 0038 5B00     	 lsls r3,r3,#1
+ 203 003a 0B44     	 add r3,r3,r1
+ 204 003c 1B88     	 ldrh r3,[r3]
+ 205 003e 9BB2     	 uxth r3,r3
+ 206 0040 FA88     	 ldrh r2,[r7,#6]
+ 207 0042 9A42     	 cmp r2,r3
+ 208 0044 02D0     	 beq .L12
+  58:../soes/esc_coe.c ****    {
+  59:../soes/esc_coe.c ****       return -1;
+ 209              	 .loc 1 59 0
+ 210 0046 4FF0FF33 	 mov r3,#-1
+ 211 004a 00E0     	 b .L13
+ 212              	.L12:
+  60:../soes/esc_coe.c ****    }
+  61:../soes/esc_coe.c ****    return n;
+ 213              	 .loc 1 61 0
+ 214 004c FB68     	 ldr r3,[r7,#12]
+ 215              	.L13:
+  62:../soes/esc_coe.c **** }
+ 216              	 .loc 1 62 0
+ 217 004e 1846     	 mov r0,r3
+ 218 0050 1437     	 adds r7,r7,#20
+ 219              	.LCFI9:
+ 220              	 .cfi_def_cfa_offset 4
+ 221 0052 BD46     	 mov sp,r7
+ 222              	.LCFI10:
+ 223              	 .cfi_def_cfa_register 13
+ 224              	 
+ 225 0054 5DF8047B 	 ldr r7,[sp],#4
+ 226              	.LCFI11:
+ 227              	 .cfi_restore 7
+ 228              	 .cfi_def_cfa_offset 0
+ 229 0058 7047     	 bx lr
+ 230              	.L15:
+ 231 005a 00BF     	 .align 2
+ 232              	.L14:
+ 233 005c 00000000 	 .word SDOobjects
+ 234              	 .cfi_endproc
+ 235              	.LFE1:
+ 237              	 .section .text.COE_getSyncMgrPara,"ax",%progbits
+ 238              	 .align 2
+ 239              	 .global COE_getSyncMgrPara
+ 240              	 .thumb
+ 241              	 .thumb_func
+ 243              	COE_getSyncMgrPara:
+ 244              	.LFB2:
+  63:../soes/esc_coe.c **** 
+  64:../soes/esc_coe.c **** /** Get the value for requested SDO 0x1C32 or 0x1C33 sub index
+  65:../soes/esc_coe.c ****  *
+  66:../soes/esc_coe.c ****  * @param[in] index    = value on index of object we want to locate
+  67:../soes/esc_coe.c ****  * @param[in] subindex = value on subindex of object we want to locate
+  68:../soes/esc_coe.c ****  * @param[out] buf     = buf to copy value to
+  69:../soes/esc_coe.c ****  * @param[in] datatype = EtherCAT datatype of buf
+  70:../soes/esc_coe.c ****  * @return 1 if value was found, else 0.
+  71:../soes/esc_coe.c ****  */
+  72:../soes/esc_coe.c **** int COE_getSyncMgrPara (uint16_t index, uint8_t subindex, void * buf, uint16_t datatype)
+  73:../soes/esc_coe.c **** {
+ 245              	 .loc 1 73 0
+ 246              	 .cfi_startproc
+ 247              	 
+ 248              	 
+ 249 0000 80B5     	 push {r7,lr}
+ 250              	.LCFI12:
+ 251              	 .cfi_def_cfa_offset 8
+ 252              	 .cfi_offset 7,-8
+ 253              	 .cfi_offset 14,-4
+ 254 0002 88B0     	 sub sp,sp,#32
+ 255              	.LCFI13:
+ 256              	 .cfi_def_cfa_offset 40
+ 257 0004 00AF     	 add r7,sp,#0
+ 258              	.LCFI14:
+ 259              	 .cfi_def_cfa_register 7
+ 260 0006 BA60     	 str r2,[r7,#8]
+ 261 0008 1A46     	 mov r2,r3
+ 262 000a 0346     	 mov r3,r0
+ 263 000c FB81     	 strh r3,[r7,#14]
+ 264 000e 0B46     	 mov r3,r1
+ 265 0010 7B73     	 strb r3,[r7,#13]
+ 266 0012 1346     	 mov r3,r2
+ 267 0014 FB80     	 strh r3,[r7,#6]
+  74:../soes/esc_coe.c ****    int result = 0;
+ 268              	 .loc 1 74 0
+ 269 0016 0023     	 movs r3,#0
+ 270 0018 FB61     	 str r3,[r7,#28]
+  75:../soes/esc_coe.c ****    int32_t nidx;
+  76:../soes/esc_coe.c ****    int32_t snidx;
+  77:../soes/esc_coe.c ****    const _objd *objd;
+  78:../soes/esc_coe.c **** 
+  79:../soes/esc_coe.c ****    nidx = SDO_findobject(index);
+ 271              	 .loc 1 79 0
+ 272 001a FB89     	 ldrh r3,[r7,#14]
+ 273 001c 1846     	 mov r0,r3
+ 274 001e FFF7FEFF 	 bl SDO_findobject
+ 275 0022 B861     	 str r0,[r7,#24]
+  80:../soes/esc_coe.c **** 
+  81:../soes/esc_coe.c ****    if(nidx < 0)
+ 276              	 .loc 1 81 0
+ 277 0024 BB69     	 ldr r3,[r7,#24]
+ 278 0026 002B     	 cmp r3,#0
+ 279 0028 01DA     	 bge .L17
+  82:../soes/esc_coe.c ****    {
+  83:../soes/esc_coe.c ****       return result;
+ 280              	 .loc 1 83 0
+ 281 002a FB69     	 ldr r3,[r7,#28]
+ 282 002c B9E0     	 b .L18
+ 283              	.L17:
+  84:../soes/esc_coe.c ****    }
+  85:../soes/esc_coe.c ****    else if((index != 0x1c32) && (index != 0x1c33) && (index != 0x10F1))
+ 284              	 .loc 1 85 0
+ 285 002e FB89     	 ldrh r3,[r7,#14]
+ 286 0030 41F63242 	 movw r2,#7218
+ 287 0034 9342     	 cmp r3,r2
+ 288 0036 0BD0     	 beq .L19
+ 289              	 .loc 1 85 0 is_stmt 0 discriminator 1
+ 290 0038 FB89     	 ldrh r3,[r7,#14]
+ 291 003a 41F63342 	 movw r2,#7219
+ 292 003e 9342     	 cmp r3,r2
+ 293 0040 06D0     	 beq .L19
+ 294              	 .loc 1 85 0 discriminator 2
+ 295 0042 FB89     	 ldrh r3,[r7,#14]
+ 296 0044 41F2F102 	 movw r2,#4337
+ 297 0048 9342     	 cmp r3,r2
+ 298 004a 01D0     	 beq .L19
+  86:../soes/esc_coe.c ****    {
+  87:../soes/esc_coe.c ****       return result;
+ 299              	 .loc 1 87 0 is_stmt 1
+ 300 004c FB69     	 ldr r3,[r7,#28]
+ 301 004e A8E0     	 b .L18
+ 302              	.L19:
+  88:../soes/esc_coe.c ****    }
+  89:../soes/esc_coe.c **** 
+  90:../soes/esc_coe.c ****    snidx = SDO_findsubindex(nidx, subindex);
+ 303              	 .loc 1 90 0
+ 304 0050 BB69     	 ldr r3,[r7,#24]
+ 305 0052 9BB2     	 uxth r3,r3
+ 306 0054 1AB2     	 sxth r2,r3
+ 307 0056 7B7B     	 ldrb r3,[r7,#13]
+ 308 0058 1046     	 mov r0,r2
+ 309 005a 1946     	 mov r1,r3
+ 310 005c FFF7FEFF 	 bl SDO_findsubindex
+ 311 0060 0346     	 mov r3,r0
+ 312 0062 7B61     	 str r3,[r7,#20]
+  91:../soes/esc_coe.c **** 
+  92:../soes/esc_coe.c ****    if(snidx >= 0)
+ 313              	 .loc 1 92 0
+ 314 0064 7B69     	 ldr r3,[r7,#20]
+ 315 0066 002B     	 cmp r3,#0
+ 316 0068 C0F29A80 	 blt .L20
+  93:../soes/esc_coe.c ****    {
+  94:../soes/esc_coe.c ****       objd = SDOobjects[nidx].objdesc;
+ 317              	 .loc 1 94 0
+ 318 006c 4F49     	 ldr r1,.L24
+ 319 006e BA69     	 ldr r2,[r7,#24]
+ 320 0070 1346     	 mov r3,r2
+ 321 0072 DB00     	 lsls r3,r3,#3
+ 322 0074 9B1A     	 subs r3,r3,r2
+ 323 0076 5B00     	 lsls r3,r3,#1
+ 324 0078 0B44     	 add r3,r3,r1
+ 325 007a 0833     	 adds r3,r3,#8
+ 326 007c D3F80230 	 ldr r3,[r3,#2]
+ 327 0080 3B61     	 str r3,[r7,#16]
+  95:../soes/esc_coe.c **** 
+  96:../soes/esc_coe.c ****       if((objd[snidx].data != NULL) &&
+ 328              	 .loc 1 96 0
+ 329 0082 7A69     	 ldr r2,[r7,#20]
+ 330 0084 1346     	 mov r3,r2
+ 331 0086 9B00     	 lsls r3,r3,#2
+ 332 0088 1344     	 add r3,r3,r2
+ 333 008a 9B00     	 lsls r3,r3,#2
+ 334 008c 1A46     	 mov r2,r3
+ 335 008e 3B69     	 ldr r3,[r7,#16]
+ 336 0090 1344     	 add r3,r3,r2
+ 337 0092 1B69     	 ldr r3,[r3,#16]
+ 338 0094 002B     	 cmp r3,#0
+ 339 0096 28D0     	 beq .L21
+  97:../soes/esc_coe.c ****          (objd[snidx].datatype == datatype))
+ 340              	 .loc 1 97 0 discriminator 1
+ 341 0098 7A69     	 ldr r2,[r7,#20]
+ 342 009a 1346     	 mov r3,r2
+ 343 009c 9B00     	 lsls r3,r3,#2
+ 344 009e 1344     	 add r3,r3,r2
+ 345 00a0 9B00     	 lsls r3,r3,#2
+ 346 00a2 1A46     	 mov r2,r3
+ 347 00a4 3B69     	 ldr r3,[r7,#16]
+ 348 00a6 1344     	 add r3,r3,r2
+ 349 00a8 5B88     	 ldrh r3,[r3,#2]
+ 350 00aa 9BB2     	 uxth r3,r3
+  96:../soes/esc_coe.c ****          (objd[snidx].datatype == datatype))
+ 351              	 .loc 1 96 0 discriminator 1
+ 352 00ac FA88     	 ldrh r2,[r7,#6]
+ 353 00ae 9A42     	 cmp r2,r3
+ 354 00b0 1BD1     	 bne .L21
+  98:../soes/esc_coe.c ****       {
+  99:../soes/esc_coe.c ****          memcpy(buf, objd[snidx].data, objd[snidx].bitlength / 8 );
+ 355              	 .loc 1 99 0
+ 356 00b2 7A69     	 ldr r2,[r7,#20]
+ 357 00b4 1346     	 mov r3,r2
+ 358 00b6 9B00     	 lsls r3,r3,#2
+ 359 00b8 1344     	 add r3,r3,r2
+ 360 00ba 9B00     	 lsls r3,r3,#2
+ 361 00bc 1A46     	 mov r2,r3
+ 362 00be 3B69     	 ldr r3,[r7,#16]
+ 363 00c0 1344     	 add r3,r3,r2
+ 364 00c2 1969     	 ldr r1,[r3,#16]
+ 365 00c4 7A69     	 ldr r2,[r7,#20]
+ 366 00c6 1346     	 mov r3,r2
+ 367 00c8 9B00     	 lsls r3,r3,#2
+ 368 00ca 1344     	 add r3,r3,r2
+ 369 00cc 9B00     	 lsls r3,r3,#2
+ 370 00ce 1A46     	 mov r2,r3
+ 371 00d0 3B69     	 ldr r3,[r7,#16]
+ 372 00d2 1344     	 add r3,r3,r2
+ 373 00d4 9B88     	 ldrh r3,[r3,#4]
+ 374 00d6 9BB2     	 uxth r3,r3
+ 375 00d8 DB08     	 lsrs r3,r3,#3
+ 376 00da 9BB2     	 uxth r3,r3
+ 377 00dc B868     	 ldr r0,[r7,#8]
+ 378 00de 1A46     	 mov r2,r3
+ 379 00e0 FFF7FEFF 	 bl memcpy
+ 100:../soes/esc_coe.c ****          result = 1;
+ 380              	 .loc 1 100 0
+ 381 00e4 0123     	 movs r3,#1
+ 382 00e6 FB61     	 str r3,[r7,#28]
+ 383 00e8 5AE0     	 b .L20
+ 384              	.L21:
+ 101:../soes/esc_coe.c ****       }
+ 102:../soes/esc_coe.c ****       else
+ 103:../soes/esc_coe.c ****       {
+ 104:../soes/esc_coe.c ****          if((datatype == DTYPE_UNSIGNED32) &&
+ 385              	 .loc 1 104 0
+ 386 00ea FB88     	 ldrh r3,[r7,#6]
+ 387 00ec 072B     	 cmp r3,#7
+ 388 00ee 1AD1     	 bne .L22
+ 105:../soes/esc_coe.c ****             (objd[snidx].datatype == datatype))
+ 389              	 .loc 1 105 0 discriminator 1
+ 390 00f0 7A69     	 ldr r2,[r7,#20]
+ 391 00f2 1346     	 mov r3,r2
+ 392 00f4 9B00     	 lsls r3,r3,#2
+ 393 00f6 1344     	 add r3,r3,r2
+ 394 00f8 9B00     	 lsls r3,r3,#2
+ 395 00fa 1A46     	 mov r2,r3
+ 396 00fc 3B69     	 ldr r3,[r7,#16]
+ 397 00fe 1344     	 add r3,r3,r2
+ 398 0100 5B88     	 ldrh r3,[r3,#2]
+ 399 0102 9BB2     	 uxth r3,r3
+ 104:../soes/esc_coe.c ****             (objd[snidx].datatype == datatype))
+ 400              	 .loc 1 104 0 discriminator 1
+ 401 0104 FA88     	 ldrh r2,[r7,#6]
+ 402 0106 9A42     	 cmp r2,r3
+ 403 0108 0DD1     	 bne .L22
+ 106:../soes/esc_coe.c ****          {
+ 107:../soes/esc_coe.c ****             *(uint32_t *)buf = objd[snidx].value;
+ 404              	 .loc 1 107 0
+ 405 010a 7A69     	 ldr r2,[r7,#20]
+ 406 010c 1346     	 mov r3,r2
+ 407 010e 9B00     	 lsls r3,r3,#2
+ 408 0110 1344     	 add r3,r3,r2
+ 409 0112 9B00     	 lsls r3,r3,#2
+ 410 0114 1A46     	 mov r2,r3
+ 411 0116 3B69     	 ldr r3,[r7,#16]
+ 412 0118 1344     	 add r3,r3,r2
+ 413 011a DA68     	 ldr r2,[r3,#12]
+ 414 011c BB68     	 ldr r3,[r7,#8]
+ 415 011e 1A60     	 str r2,[r3]
+ 108:../soes/esc_coe.c ****             result = 1;
+ 416              	 .loc 1 108 0
+ 417 0120 0123     	 movs r3,#1
+ 418 0122 FB61     	 str r3,[r7,#28]
+ 419 0124 3CE0     	 b .L20
+ 420              	.L22:
+ 109:../soes/esc_coe.c ****          }
+ 110:../soes/esc_coe.c ****          else if((datatype == DTYPE_UNSIGNED16) &&
+ 421              	 .loc 1 110 0
+ 422 0126 FB88     	 ldrh r3,[r7,#6]
+ 423 0128 062B     	 cmp r3,#6
+ 424 012a 1BD1     	 bne .L23
+ 111:../soes/esc_coe.c ****                  (objd[snidx].datatype == datatype))
+ 425              	 .loc 1 111 0 discriminator 1
+ 426 012c 7A69     	 ldr r2,[r7,#20]
+ 427 012e 1346     	 mov r3,r2
+ 428 0130 9B00     	 lsls r3,r3,#2
+ 429 0132 1344     	 add r3,r3,r2
+ 430 0134 9B00     	 lsls r3,r3,#2
+ 431 0136 1A46     	 mov r2,r3
+ 432 0138 3B69     	 ldr r3,[r7,#16]
+ 433 013a 1344     	 add r3,r3,r2
+ 434 013c 5B88     	 ldrh r3,[r3,#2]
+ 435 013e 9BB2     	 uxth r3,r3
+ 110:../soes/esc_coe.c ****                  (objd[snidx].datatype == datatype))
+ 436              	 .loc 1 110 0 discriminator 1
+ 437 0140 FA88     	 ldrh r2,[r7,#6]
+ 438 0142 9A42     	 cmp r2,r3
+ 439 0144 0ED1     	 bne .L23
+ 112:../soes/esc_coe.c ****          {
+ 113:../soes/esc_coe.c ****             *(uint16_t *)buf = (uint16_t)objd[snidx].value;
+ 440              	 .loc 1 113 0
+ 441 0146 7A69     	 ldr r2,[r7,#20]
+ 442 0148 1346     	 mov r3,r2
+ 443 014a 9B00     	 lsls r3,r3,#2
+ 444 014c 1344     	 add r3,r3,r2
+ 445 014e 9B00     	 lsls r3,r3,#2
+ 446 0150 1A46     	 mov r2,r3
+ 447 0152 3B69     	 ldr r3,[r7,#16]
+ 448 0154 1344     	 add r3,r3,r2
+ 449 0156 DB68     	 ldr r3,[r3,#12]
+ 450 0158 9AB2     	 uxth r2,r3
+ 451 015a BB68     	 ldr r3,[r7,#8]
+ 452 015c 1A80     	 strh r2,[r3]
+ 114:../soes/esc_coe.c ****             result = 1;
+ 453              	 .loc 1 114 0
+ 454 015e 0123     	 movs r3,#1
+ 455 0160 FB61     	 str r3,[r7,#28]
+ 456 0162 1DE0     	 b .L20
+ 457              	.L23:
+ 115:../soes/esc_coe.c **** 
+ 116:../soes/esc_coe.c ****          }
+ 117:../soes/esc_coe.c ****          else if((datatype == DTYPE_UNSIGNED8) &&
+ 458              	 .loc 1 117 0
+ 459 0164 FB88     	 ldrh r3,[r7,#6]
+ 460 0166 052B     	 cmp r3,#5
+ 461 0168 1AD1     	 bne .L20
+ 118:../soes/esc_coe.c ****                  (objd[snidx].datatype == datatype))
+ 462              	 .loc 1 118 0 discriminator 1
+ 463 016a 7A69     	 ldr r2,[r7,#20]
+ 464 016c 1346     	 mov r3,r2
+ 465 016e 9B00     	 lsls r3,r3,#2
+ 466 0170 1344     	 add r3,r3,r2
+ 467 0172 9B00     	 lsls r3,r3,#2
+ 468 0174 1A46     	 mov r2,r3
+ 469 0176 3B69     	 ldr r3,[r7,#16]
+ 470 0178 1344     	 add r3,r3,r2
+ 471 017a 5B88     	 ldrh r3,[r3,#2]
+ 472 017c 9BB2     	 uxth r3,r3
+ 117:../soes/esc_coe.c ****                  (objd[snidx].datatype == datatype))
+ 473              	 .loc 1 117 0 discriminator 1
+ 474 017e FA88     	 ldrh r2,[r7,#6]
+ 475 0180 9A42     	 cmp r2,r3
+ 476 0182 0DD1     	 bne .L20
+ 119:../soes/esc_coe.c ****          {
+ 120:../soes/esc_coe.c ****             *(uint8_t *)buf = (uint8_t)objd[snidx].value;
+ 477              	 .loc 1 120 0
+ 478 0184 7A69     	 ldr r2,[r7,#20]
+ 479 0186 1346     	 mov r3,r2
+ 480 0188 9B00     	 lsls r3,r3,#2
+ 481 018a 1344     	 add r3,r3,r2
+ 482 018c 9B00     	 lsls r3,r3,#2
+ 483 018e 1A46     	 mov r2,r3
+ 484 0190 3B69     	 ldr r3,[r7,#16]
+ 485 0192 1344     	 add r3,r3,r2
+ 486 0194 DB68     	 ldr r3,[r3,#12]
+ 487 0196 DAB2     	 uxtb r2,r3
+ 488 0198 BB68     	 ldr r3,[r7,#8]
+ 489 019a 1A70     	 strb r2,[r3]
+ 121:../soes/esc_coe.c ****             result = 1;
+ 490              	 .loc 1 121 0
+ 491 019c 0123     	 movs r3,#1
+ 492 019e FB61     	 str r3,[r7,#28]
+ 493              	.L20:
+ 122:../soes/esc_coe.c ****          }
+ 123:../soes/esc_coe.c ****       }
+ 124:../soes/esc_coe.c ****    }
+ 125:../soes/esc_coe.c **** 
+ 126:../soes/esc_coe.c ****    return result;
+ 494              	 .loc 1 126 0
+ 495 01a0 FB69     	 ldr r3,[r7,#28]
+ 496              	.L18:
+ 127:../soes/esc_coe.c **** }
+ 497              	 .loc 1 127 0
+ 498 01a2 1846     	 mov r0,r3
+ 499 01a4 2037     	 adds r7,r7,#32
+ 500              	.LCFI15:
+ 501              	 .cfi_def_cfa_offset 8
+ 502 01a6 BD46     	 mov sp,r7
+ 503              	.LCFI16:
+ 504              	 .cfi_def_cfa_register 13
+ 505              	 
+ 506 01a8 80BD     	 pop {r7,pc}
+ 507              	.L25:
+ 508 01aa 00BF     	 .align 2
+ 509              	.L24:
+ 510 01ac 00000000 	 .word SDOobjects
+ 511              	 .cfi_endproc
+ 512              	.LFE2:
+ 514              	 .section .text.COE_initDefaultSyncMgrPara,"ax",%progbits
+ 515              	 .align 2
+ 516              	 .global COE_initDefaultSyncMgrPara
+ 517              	 .thumb
+ 518              	 .thumb_func
+ 520              	COE_initDefaultSyncMgrPara:
+ 521              	.LFB3:
+ 128:../soes/esc_coe.c **** 
+ 129:../soes/esc_coe.c **** /** Init default values for SDO Sync Objects
+ 130:../soes/esc_coe.c ****  *
+ 131:../soes/esc_coe.c ****  */
+ 132:../soes/esc_coe.c **** void COE_initDefaultSyncMgrPara (void)
+ 133:../soes/esc_coe.c **** {
+ 522              	 .loc 1 133 0
+ 523              	 .cfi_startproc
+ 524              	 
+ 525              	 
+ 526 0000 80B5     	 push {r7,lr}
+ 527              	.LCFI17:
+ 528              	 .cfi_def_cfa_offset 8
+ 529              	 .cfi_offset 7,-8
+ 530              	 .cfi_offset 14,-4
+ 531 0002 84B0     	 sub sp,sp,#16
+ 532              	.LCFI18:
+ 533              	 .cfi_def_cfa_offset 24
+ 534 0004 00AF     	 add r7,sp,#0
+ 535              	.LCFI19:
+ 536              	 .cfi_def_cfa_register 7
+ 134:../soes/esc_coe.c ****    uint32_t i,j;
+ 135:../soes/esc_coe.c ****    const _objd *objd;
+ 136:../soes/esc_coe.c ****    int32_t n = 0;
+ 537              	 .loc 1 136 0
+ 538 0006 0023     	 movs r3,#0
+ 539 0008 7B60     	 str r3,[r7,#4]
+ 137:../soes/esc_coe.c **** 
+ 138:../soes/esc_coe.c ****    /* 1C3x */
+ 139:../soes/esc_coe.c ****    for(i = 0x1C32; i <= 0x1C33; i ++)
+ 540              	 .loc 1 139 0
+ 541 000a 41F63243 	 movw r3,#7218
+ 542 000e FB60     	 str r3,[r7,#12]
+ 543 0010 5DE0     	 b .L27
+ 544              	.L34:
+ 140:../soes/esc_coe.c ****    {
+ 141:../soes/esc_coe.c ****       /* Look if index is present */
+ 142:../soes/esc_coe.c ****       n = SDO_findobject(i);
+ 545              	 .loc 1 142 0
+ 546 0012 FB68     	 ldr r3,[r7,#12]
+ 547 0014 9BB2     	 uxth r3,r3
+ 548 0016 1846     	 mov r0,r3
+ 549 0018 FFF7FEFF 	 bl SDO_findobject
+ 550 001c 7860     	 str r0,[r7,#4]
+ 143:../soes/esc_coe.c ****       if(n < 0)
+ 551              	 .loc 1 143 0
+ 552 001e 7B68     	 ldr r3,[r7,#4]
+ 553 0020 002B     	 cmp r3,#0
+ 554 0022 00DA     	 bge .L28
+ 144:../soes/esc_coe.c ****       {
+ 145:../soes/esc_coe.c ****          continue;
+ 555              	 .loc 1 145 0
+ 556 0024 50E0     	 b .L29
+ 557              	.L28:
+ 146:../soes/esc_coe.c ****       }
+ 147:../soes/esc_coe.c **** 
+ 148:../soes/esc_coe.c ****       /* Load default values */
+ 149:../soes/esc_coe.c ****       objd = SDOobjects[n].objdesc;
+ 558              	 .loc 1 149 0
+ 559 0026 4C49     	 ldr r1,.L39
+ 560 0028 7A68     	 ldr r2,[r7,#4]
+ 561 002a 1346     	 mov r3,r2
+ 562 002c DB00     	 lsls r3,r3,#3
+ 563 002e 9B1A     	 subs r3,r3,r2
+ 564 0030 5B00     	 lsls r3,r3,#1
+ 565 0032 0B44     	 add r3,r3,r1
+ 566 0034 0833     	 adds r3,r3,#8
+ 567 0036 D3F80230 	 ldr r3,[r3,#2]
+ 568 003a 3B60     	 str r3,[r7]
+ 150:../soes/esc_coe.c ****       for(j = 1; j <= SDOobjects[n].maxsub; j++ )
+ 569              	 .loc 1 150 0
+ 570 003c 0123     	 movs r3,#1
+ 571 003e BB60     	 str r3,[r7,#8]
+ 572 0040 36E0     	 b .L30
+ 573              	.L33:
+ 151:../soes/esc_coe.c ****       {
+ 152:../soes/esc_coe.c ****          if(objd[j].data != NULL)
+ 574              	 .loc 1 152 0
+ 575 0042 BA68     	 ldr r2,[r7,#8]
+ 576 0044 1346     	 mov r3,r2
+ 577 0046 9B00     	 lsls r3,r3,#2
+ 578 0048 1344     	 add r3,r3,r2
+ 579 004a 9B00     	 lsls r3,r3,#2
+ 580 004c 1A46     	 mov r2,r3
+ 581 004e 3B68     	 ldr r3,[r7]
+ 582 0050 1344     	 add r3,r3,r2
+ 583 0052 1B69     	 ldr r3,[r3,#16]
+ 584 0054 002B     	 cmp r3,#0
+ 585 0056 12D0     	 beq .L31
+ 153:../soes/esc_coe.c ****          {
+ 154:../soes/esc_coe.c ****             *(uint32_t *)objd[j].data = objd[j].value;
+ 586              	 .loc 1 154 0
+ 587 0058 BA68     	 ldr r2,[r7,#8]
+ 588 005a 1346     	 mov r3,r2
+ 589 005c 9B00     	 lsls r3,r3,#2
+ 590 005e 1344     	 add r3,r3,r2
+ 591 0060 9B00     	 lsls r3,r3,#2
+ 592 0062 1A46     	 mov r2,r3
+ 593 0064 3B68     	 ldr r3,[r7]
+ 594 0066 1344     	 add r3,r3,r2
+ 595 0068 1969     	 ldr r1,[r3,#16]
+ 596 006a BA68     	 ldr r2,[r7,#8]
+ 597 006c 1346     	 mov r3,r2
+ 598 006e 9B00     	 lsls r3,r3,#2
+ 599 0070 1344     	 add r3,r3,r2
+ 600 0072 9B00     	 lsls r3,r3,#2
+ 601 0074 1A46     	 mov r2,r3
+ 602 0076 3B68     	 ldr r3,[r7]
+ 603 0078 1344     	 add r3,r3,r2
+ 604 007a DB68     	 ldr r3,[r3,#12]
+ 605 007c 0B60     	 str r3,[r1]
+ 606              	.L31:
+ 155:../soes/esc_coe.c ****          }
+ 156:../soes/esc_coe.c ****          if(objd[j].subindex >= SDOobjects[n].maxsub)
+ 607              	 .loc 1 156 0
+ 608 007e BA68     	 ldr r2,[r7,#8]
+ 609 0080 1346     	 mov r3,r2
+ 610 0082 9B00     	 lsls r3,r3,#2
+ 611 0084 1344     	 add r3,r3,r2
+ 612 0086 9B00     	 lsls r3,r3,#2
+ 613 0088 1A46     	 mov r2,r3
+ 614 008a 3B68     	 ldr r3,[r7]
+ 615 008c 1344     	 add r3,r3,r2
+ 616 008e 1B88     	 ldrh r3,[r3]
+ 617 0090 99B2     	 uxth r1,r3
+ 618 0092 3148     	 ldr r0,.L39
+ 619 0094 7A68     	 ldr r2,[r7,#4]
+ 620 0096 1346     	 mov r3,r2
+ 621 0098 DB00     	 lsls r3,r3,#3
+ 622 009a 9B1A     	 subs r3,r3,r2
+ 623 009c 5B00     	 lsls r3,r3,#1
+ 624 009e 0344     	 add r3,r3,r0
+ 625 00a0 1B79     	 ldrb r3,[r3,#4]
+ 626 00a2 9BB2     	 uxth r3,r3
+ 627 00a4 9942     	 cmp r1,r3
+ 628 00a6 00D3     	 bcc .L32
+ 157:../soes/esc_coe.c ****          {
+ 158:../soes/esc_coe.c ****             break;
+ 629              	 .loc 1 158 0
+ 630 00a8 0EE0     	 b .L29
+ 631              	.L32:
+ 150:../soes/esc_coe.c ****       {
+ 632              	 .loc 1 150 0 discriminator 2
+ 633 00aa BB68     	 ldr r3,[r7,#8]
+ 634 00ac 0133     	 adds r3,r3,#1
+ 635 00ae BB60     	 str r3,[r7,#8]
+ 636              	.L30:
+ 150:../soes/esc_coe.c ****       {
+ 637              	 .loc 1 150 0 is_stmt 0 discriminator 1
+ 638 00b0 2949     	 ldr r1,.L39
+ 639 00b2 7A68     	 ldr r2,[r7,#4]
+ 640 00b4 1346     	 mov r3,r2
+ 641 00b6 DB00     	 lsls r3,r3,#3
+ 642 00b8 9B1A     	 subs r3,r3,r2
+ 643 00ba 5B00     	 lsls r3,r3,#1
+ 644 00bc 0B44     	 add r3,r3,r1
+ 645 00be 1B79     	 ldrb r3,[r3,#4]
+ 646 00c0 1A46     	 mov r2,r3
+ 647 00c2 BB68     	 ldr r3,[r7,#8]
+ 648 00c4 9A42     	 cmp r2,r3
+ 649 00c6 BCD2     	 bcs .L33
+ 650              	.L29:
+ 139:../soes/esc_coe.c ****    {
+ 651              	 .loc 1 139 0 is_stmt 1 discriminator 2
+ 652 00c8 FB68     	 ldr r3,[r7,#12]
+ 653 00ca 0133     	 adds r3,r3,#1
+ 654 00cc FB60     	 str r3,[r7,#12]
+ 655              	.L27:
+ 139:../soes/esc_coe.c ****    {
+ 656              	 .loc 1 139 0 is_stmt 0 discriminator 1
+ 657 00ce FB68     	 ldr r3,[r7,#12]
+ 658 00d0 41F63342 	 movw r2,#7219
+ 659 00d4 9342     	 cmp r3,r2
+ 660 00d6 9CD9     	 bls .L34
+ 159:../soes/esc_coe.c ****          }
+ 160:../soes/esc_coe.c ****       }
+ 161:../soes/esc_coe.c ****    }
+ 162:../soes/esc_coe.c **** 
+ 163:../soes/esc_coe.c ****    /* Look if index is present */
+ 164:../soes/esc_coe.c ****    n = SDO_findobject(0x10F1);
+ 661              	 .loc 1 164 0 is_stmt 1
+ 662 00d8 41F2F100 	 movw r0,#4337
+ 663 00dc FFF7FEFF 	 bl SDO_findobject
+ 664 00e0 7860     	 str r0,[r7,#4]
+ 165:../soes/esc_coe.c ****    if(n >= 0)
+ 665              	 .loc 1 165 0
+ 666 00e2 7B68     	 ldr r3,[r7,#4]
+ 667 00e4 002B     	 cmp r3,#0
+ 668 00e6 33DB     	 blt .L26
+ 166:../soes/esc_coe.c ****    {
+ 167:../soes/esc_coe.c ****       /* Load default values */
+ 168:../soes/esc_coe.c ****       objd = SDOobjects[n].objdesc;
+ 669              	 .loc 1 168 0
+ 670 00e8 1B49     	 ldr r1,.L39
+ 671 00ea 7A68     	 ldr r2,[r7,#4]
+ 672 00ec 1346     	 mov r3,r2
+ 673 00ee DB00     	 lsls r3,r3,#3
+ 674 00f0 9B1A     	 subs r3,r3,r2
+ 675 00f2 5B00     	 lsls r3,r3,#1
+ 676 00f4 0B44     	 add r3,r3,r1
+ 677 00f6 0833     	 adds r3,r3,#8
+ 678 00f8 D3F80230 	 ldr r3,[r3,#2]
+ 679 00fc 3B60     	 str r3,[r7]
+ 169:../soes/esc_coe.c ****       for(j = 1; j <= objd[0].value; j++ )
+ 680              	 .loc 1 169 0
+ 681 00fe 0123     	 movs r3,#1
+ 682 0100 BB60     	 str r3,[r7,#8]
+ 683 0102 20E0     	 b .L36
+ 684              	.L38:
+ 170:../soes/esc_coe.c ****       {
+ 171:../soes/esc_coe.c ****          if(objd[j].data != NULL)
+ 685              	 .loc 1 171 0
+ 686 0104 BA68     	 ldr r2,[r7,#8]
+ 687 0106 1346     	 mov r3,r2
+ 688 0108 9B00     	 lsls r3,r3,#2
+ 689 010a 1344     	 add r3,r3,r2
+ 690 010c 9B00     	 lsls r3,r3,#2
+ 691 010e 1A46     	 mov r2,r3
+ 692 0110 3B68     	 ldr r3,[r7]
+ 693 0112 1344     	 add r3,r3,r2
+ 694 0114 1B69     	 ldr r3,[r3,#16]
+ 695 0116 002B     	 cmp r3,#0
+ 696 0118 12D0     	 beq .L37
+ 172:../soes/esc_coe.c ****          {
+ 173:../soes/esc_coe.c ****             *(uint32_t *)objd[j].data = objd[j].value;
+ 697              	 .loc 1 173 0
+ 698 011a BA68     	 ldr r2,[r7,#8]
+ 699 011c 1346     	 mov r3,r2
+ 700 011e 9B00     	 lsls r3,r3,#2
+ 701 0120 1344     	 add r3,r3,r2
+ 702 0122 9B00     	 lsls r3,r3,#2
+ 703 0124 1A46     	 mov r2,r3
+ 704 0126 3B68     	 ldr r3,[r7]
+ 705 0128 1344     	 add r3,r3,r2
+ 706 012a 1969     	 ldr r1,[r3,#16]
+ 707 012c BA68     	 ldr r2,[r7,#8]
+ 708 012e 1346     	 mov r3,r2
+ 709 0130 9B00     	 lsls r3,r3,#2
+ 710 0132 1344     	 add r3,r3,r2
+ 711 0134 9B00     	 lsls r3,r3,#2
+ 712 0136 1A46     	 mov r2,r3
+ 713 0138 3B68     	 ldr r3,[r7]
+ 714 013a 1344     	 add r3,r3,r2
+ 715 013c DB68     	 ldr r3,[r3,#12]
+ 716 013e 0B60     	 str r3,[r1]
+ 717              	.L37:
+ 169:../soes/esc_coe.c ****       {
+ 718              	 .loc 1 169 0 discriminator 2
+ 719 0140 BB68     	 ldr r3,[r7,#8]
+ 720 0142 0133     	 adds r3,r3,#1
+ 721 0144 BB60     	 str r3,[r7,#8]
+ 722              	.L36:
+ 169:../soes/esc_coe.c ****       {
+ 723              	 .loc 1 169 0 is_stmt 0 discriminator 1
+ 724 0146 3B68     	 ldr r3,[r7]
+ 725 0148 DA68     	 ldr r2,[r3,#12]
+ 726 014a BB68     	 ldr r3,[r7,#8]
+ 727 014c 9A42     	 cmp r2,r3
+ 728 014e D9D2     	 bcs .L38
+ 729              	.L26:
+ 174:../soes/esc_coe.c ****          }
+ 175:../soes/esc_coe.c ****       }
+ 176:../soes/esc_coe.c **** 
+ 177:../soes/esc_coe.c ****    }
+ 178:../soes/esc_coe.c **** }
+ 730              	 .loc 1 178 0 is_stmt 1
+ 731 0150 1037     	 adds r7,r7,#16
+ 732              	.LCFI20:
+ 733              	 .cfi_def_cfa_offset 8
+ 734 0152 BD46     	 mov sp,r7
+ 735              	.LCFI21:
+ 736              	 .cfi_def_cfa_register 13
+ 737              	 
+ 738 0154 80BD     	 pop {r7,pc}
+ 739              	.L40:
+ 740 0156 00BF     	 .align 2
+ 741              	.L39:
+ 742 0158 00000000 	 .word SDOobjects
+ 743              	 .cfi_endproc
+ 744              	.LFE3:
+ 746              	 .section .text.sizeOfPDO,"ax",%progbits
+ 747              	 .align 2
+ 748              	 .global sizeOfPDO
+ 749              	 .thumb
+ 750              	 .thumb_func
+ 752              	sizeOfPDO:
+ 753              	.LFB4:
+ 179:../soes/esc_coe.c **** 
+ 180:../soes/esc_coe.c **** /** Calculate the size in Bytes of RxPDO or TxPDOs by adding the objects
+ 181:../soes/esc_coe.c ****  * in SyncManager
+ 182:../soes/esc_coe.c ****  * SDO 1C1x.
+ 183:../soes/esc_coe.c ****  *
+ 184:../soes/esc_coe.c ****  * @return size of RxPDO or TxPDOs in Bytes.
+ 185:../soes/esc_coe.c ****  */
+ 186:../soes/esc_coe.c **** uint16_t sizeOfPDO (uint16_t index)
+ 187:../soes/esc_coe.c **** {
+ 754              	 .loc 1 187 0
+ 755              	 .cfi_startproc
+ 756              	 
+ 757              	 
+ 758 0000 80B5     	 push {r7,lr}
+ 759              	.LCFI22:
+ 760              	 .cfi_def_cfa_offset 8
+ 761              	 .cfi_offset 7,-8
+ 762              	 .cfi_offset 14,-4
+ 763 0002 88B0     	 sub sp,sp,#32
+ 764              	.LCFI23:
+ 765              	 .cfi_def_cfa_offset 40
+ 766 0004 00AF     	 add r7,sp,#0
+ 767              	.LCFI24:
+ 768              	 .cfi_def_cfa_register 7
+ 769 0006 0346     	 mov r3,r0
+ 770 0008 FB80     	 strh r3,[r7,#6]
+ 188:../soes/esc_coe.c ****    uint16_t size = 0, hobj, l, si, c, sic;
+ 771              	 .loc 1 188 0
+ 772 000a 0023     	 movs r3,#0
+ 773 000c FB83     	 strh r3,[r7,#30]
+ 189:../soes/esc_coe.c ****    int16_t nidx;
+ 190:../soes/esc_coe.c ****    const _objd *objd;
+ 191:../soes/esc_coe.c ****    const _objd *objd1c1x;
+ 192:../soes/esc_coe.c **** 
+ 193:../soes/esc_coe.c ****    nidx = SDO_findobject (index);
+ 774              	 .loc 1 193 0
+ 775 000e FB88     	 ldrh r3,[r7,#6]
+ 776 0010 1846     	 mov r0,r3
+ 777 0012 FFF7FEFF 	 bl SDO_findobject
+ 778 0016 0346     	 mov r3,r0
+ 779 0018 BB82     	 strh r3,[r7,#20]
+ 194:../soes/esc_coe.c **** 
+ 195:../soes/esc_coe.c ****    if(nidx < 0)
+ 780              	 .loc 1 195 0
+ 781 001a B7F91430 	 ldrsh r3,[r7,#20]
+ 782 001e 002B     	 cmp r3,#0
+ 783 0020 01DA     	 bge .L42
+ 196:../soes/esc_coe.c ****    {
+ 197:../soes/esc_coe.c ****       return size;
+ 784              	 .loc 1 197 0
+ 785 0022 FB8B     	 ldrh r3,[r7,#30]
+ 786 0024 8BE0     	 b .L43
+ 787              	.L42:
+ 198:../soes/esc_coe.c ****    }
+ 199:../soes/esc_coe.c ****    else if((index != RX_PDO_OBJIDX) && (index != TX_PDO_OBJIDX))
+ 788              	 .loc 1 199 0
+ 789 0026 FB88     	 ldrh r3,[r7,#6]
+ 790 0028 41F61242 	 movw r2,#7186
+ 791 002c 9342     	 cmp r3,r2
+ 792 002e 06D0     	 beq .L44
+ 793              	 .loc 1 199 0 is_stmt 0 discriminator 1
+ 794 0030 FB88     	 ldrh r3,[r7,#6]
+ 795 0032 41F61342 	 movw r2,#7187
+ 796 0036 9342     	 cmp r3,r2
+ 797 0038 01D0     	 beq .L44
+ 200:../soes/esc_coe.c ****    {
+ 201:../soes/esc_coe.c ****       return size;
+ 798              	 .loc 1 201 0 is_stmt 1
+ 799 003a FB8B     	 ldrh r3,[r7,#30]
+ 800 003c 7FE0     	 b .L43
+ 801              	.L44:
+ 202:../soes/esc_coe.c ****    }
+ 203:../soes/esc_coe.c **** 
+ 204:../soes/esc_coe.c ****    objd1c1x = objd = SDOobjects[nidx].objdesc;
+ 802              	 .loc 1 204 0
+ 803 003e B7F91420 	 ldrsh r2,[r7,#20]
+ 804 0042 4149     	 ldr r1,.L55
+ 805 0044 1346     	 mov r3,r2
+ 806 0046 DB00     	 lsls r3,r3,#3
+ 807 0048 9B1A     	 subs r3,r3,r2
+ 808 004a 5B00     	 lsls r3,r3,#1
+ 809 004c 0B44     	 add r3,r3,r1
+ 810 004e 0833     	 adds r3,r3,#8
+ 811 0050 D3F80230 	 ldr r3,[r3,#2]
+ 812 0054 3B61     	 str r3,[r7,#16]
+ 813 0056 3B69     	 ldr r3,[r7,#16]
+ 814 0058 FB60     	 str r3,[r7,#12]
+ 205:../soes/esc_coe.c **** 
+ 206:../soes/esc_coe.c ****    if (objd1c1x[0].data)
+ 815              	 .loc 1 206 0
+ 816 005a FB68     	 ldr r3,[r7,#12]
+ 817 005c 1B69     	 ldr r3,[r3,#16]
+ 818 005e 002B     	 cmp r3,#0
+ 819 0060 04D0     	 beq .L45
+ 207:../soes/esc_coe.c ****    {
+ 208:../soes/esc_coe.c ****       si = *((uint8_t *) objd1c1x[0].data);
+ 820              	 .loc 1 208 0
+ 821 0062 FB68     	 ldr r3,[r7,#12]
+ 822 0064 1B69     	 ldr r3,[r3,#16]
+ 823 0066 1B78     	 ldrb r3,[r3]
+ 824 0068 7B83     	 strh r3,[r7,#26]
+ 825 006a 03E0     	 b .L46
+ 826              	.L45:
+ 209:../soes/esc_coe.c ****    }
+ 210:../soes/esc_coe.c ****    else
+ 211:../soes/esc_coe.c ****    {
+ 212:../soes/esc_coe.c ****       si = (uint8_t) objd1c1x[0].value;
+ 827              	 .loc 1 212 0
+ 828 006c FB68     	 ldr r3,[r7,#12]
+ 829 006e DB68     	 ldr r3,[r3,#12]
+ 830 0070 DBB2     	 uxtb r3,r3
+ 831 0072 7B83     	 strh r3,[r7,#26]
+ 832              	.L46:
+ 213:../soes/esc_coe.c ****    }
+ 214:../soes/esc_coe.c ****    if (si)
+ 833              	 .loc 1 214 0
+ 834 0074 7B8B     	 ldrh r3,[r7,#26]
+ 835 0076 002B     	 cmp r3,#0
+ 836 0078 5DD0     	 beq .L47
+ 215:../soes/esc_coe.c ****    {
+ 216:../soes/esc_coe.c ****       for (sic = 1; sic <= si; sic++)
+ 837              	 .loc 1 216 0
+ 838 007a 0123     	 movs r3,#1
+ 839 007c FB82     	 strh r3,[r7,#22]
+ 840 007e 56E0     	 b .L48
+ 841              	.L54:
+ 217:../soes/esc_coe.c ****       {
+ 218:../soes/esc_coe.c ****          if (objd1c1x[sic].data)
+ 842              	 .loc 1 218 0
+ 843 0080 FA8A     	 ldrh r2,[r7,#22]
+ 844 0082 1346     	 mov r3,r2
+ 845 0084 9B00     	 lsls r3,r3,#2
+ 846 0086 1344     	 add r3,r3,r2
+ 847 0088 9B00     	 lsls r3,r3,#2
+ 848 008a 1A46     	 mov r2,r3
+ 849 008c FB68     	 ldr r3,[r7,#12]
+ 850 008e 1344     	 add r3,r3,r2
+ 851 0090 1B69     	 ldr r3,[r3,#16]
+ 852 0092 002B     	 cmp r3,#0
+ 853 0094 0BD0     	 beq .L49
+ 219:../soes/esc_coe.c ****          {
+ 220:../soes/esc_coe.c ****             hobj = *((uint16_t *) objd1c1x[sic].data);
+ 854              	 .loc 1 220 0
+ 855 0096 FA8A     	 ldrh r2,[r7,#22]
+ 856 0098 1346     	 mov r3,r2
+ 857 009a 9B00     	 lsls r3,r3,#2
+ 858 009c 1344     	 add r3,r3,r2
+ 859 009e 9B00     	 lsls r3,r3,#2
+ 860 00a0 1A46     	 mov r2,r3
+ 861 00a2 FB68     	 ldr r3,[r7,#12]
+ 862 00a4 1344     	 add r3,r3,r2
+ 863 00a6 1B69     	 ldr r3,[r3,#16]
+ 864 00a8 1B88     	 ldrh r3,[r3]
+ 865 00aa BB83     	 strh r3,[r7,#28]
+ 866 00ac 09E0     	 b .L50
+ 867              	.L49:
+ 221:../soes/esc_coe.c ****             hobj = htoes(hobj);
+ 222:../soes/esc_coe.c ****          }
+ 223:../soes/esc_coe.c ****          else
+ 224:../soes/esc_coe.c ****          {
+ 225:../soes/esc_coe.c ****             hobj = (uint16_t) objd1c1x[sic].value;
+ 868              	 .loc 1 225 0
+ 869 00ae FA8A     	 ldrh r2,[r7,#22]
+ 870 00b0 1346     	 mov r3,r2
+ 871 00b2 9B00     	 lsls r3,r3,#2
+ 872 00b4 1344     	 add r3,r3,r2
+ 873 00b6 9B00     	 lsls r3,r3,#2
+ 874 00b8 1A46     	 mov r2,r3
+ 875 00ba FB68     	 ldr r3,[r7,#12]
+ 876 00bc 1344     	 add r3,r3,r2
+ 877 00be DB68     	 ldr r3,[r3,#12]
+ 878 00c0 BB83     	 strh r3,[r7,#28]
+ 879              	.L50:
+ 226:../soes/esc_coe.c ****          }
+ 227:../soes/esc_coe.c ****          nidx = SDO_findobject (hobj);
+ 880              	 .loc 1 227 0
+ 881 00c2 BB8B     	 ldrh r3,[r7,#28]
+ 882 00c4 1846     	 mov r0,r3
+ 883 00c6 FFF7FEFF 	 bl SDO_findobject
+ 884 00ca 0346     	 mov r3,r0
+ 885 00cc BB82     	 strh r3,[r7,#20]
+ 228:../soes/esc_coe.c ****          if (nidx > 0)
+ 886              	 .loc 1 228 0
+ 887 00ce B7F91430 	 ldrsh r3,[r7,#20]
+ 888 00d2 002B     	 cmp r3,#0
+ 889 00d4 28DD     	 ble .L51
+ 229:../soes/esc_coe.c ****          {
+ 230:../soes/esc_coe.c ****             objd = SDOobjects[nidx].objdesc;
+ 890              	 .loc 1 230 0
+ 891 00d6 B7F91420 	 ldrsh r2,[r7,#20]
+ 892 00da 1B49     	 ldr r1,.L55
+ 893 00dc 1346     	 mov r3,r2
+ 894 00de DB00     	 lsls r3,r3,#3
+ 895 00e0 9B1A     	 subs r3,r3,r2
+ 896 00e2 5B00     	 lsls r3,r3,#1
+ 897 00e4 0B44     	 add r3,r3,r1
+ 898 00e6 0833     	 adds r3,r3,#8
+ 899 00e8 D3F80230 	 ldr r3,[r3,#2]
+ 900 00ec 3B61     	 str r3,[r7,#16]
+ 231:../soes/esc_coe.c ****             l = (uint8_t) objd->value;
+ 901              	 .loc 1 231 0
+ 902 00ee 3B69     	 ldr r3,[r7,#16]
+ 903 00f0 DB68     	 ldr r3,[r3,#12]
+ 904 00f2 DBB2     	 uxtb r3,r3
+ 905 00f4 7B81     	 strh r3,[r7,#10]
+ 232:../soes/esc_coe.c ****             for (c = 1; c <= l; c++)
+ 906              	 .loc 1 232 0
+ 907 00f6 0123     	 movs r3,#1
+ 908 00f8 3B83     	 strh r3,[r7,#24]
+ 909 00fa 11E0     	 b .L52
+ 910              	.L53:
+ 233:../soes/esc_coe.c ****             {
+ 234:../soes/esc_coe.c ****                size += ((objd + c)->value & 0xff);
+ 911              	 .loc 1 234 0 discriminator 3
+ 912 00fc 3A8B     	 ldrh r2,[r7,#24]
+ 913 00fe 1346     	 mov r3,r2
+ 914 0100 9B00     	 lsls r3,r3,#2
+ 915 0102 1344     	 add r3,r3,r2
+ 916 0104 9B00     	 lsls r3,r3,#2
+ 917 0106 1A46     	 mov r2,r3
+ 918 0108 3B69     	 ldr r3,[r7,#16]
+ 919 010a 1344     	 add r3,r3,r2
+ 920 010c DB68     	 ldr r3,[r3,#12]
+ 921 010e 9BB2     	 uxth r3,r3
+ 922 0110 DBB2     	 uxtb r3,r3
+ 923 0112 9AB2     	 uxth r2,r3
+ 924 0114 FB8B     	 ldrh r3,[r7,#30]
+ 925 0116 1344     	 add r3,r3,r2
+ 926 0118 FB83     	 strh r3,[r7,#30]
+ 232:../soes/esc_coe.c ****             for (c = 1; c <= l; c++)
+ 927              	 .loc 1 232 0 discriminator 3
+ 928 011a 3B8B     	 ldrh r3,[r7,#24]
+ 929 011c 0133     	 adds r3,r3,#1
+ 930 011e 3B83     	 strh r3,[r7,#24]
+ 931              	.L52:
+ 232:../soes/esc_coe.c ****             for (c = 1; c <= l; c++)
+ 932              	 .loc 1 232 0 is_stmt 0 discriminator 1
+ 933 0120 3A8B     	 ldrh r2,[r7,#24]
+ 934 0122 7B89     	 ldrh r3,[r7,#10]
+ 935 0124 9A42     	 cmp r2,r3
+ 936 0126 E9D9     	 bls .L53
+ 937              	.L51:
+ 216:../soes/esc_coe.c ****       {
+ 938              	 .loc 1 216 0 is_stmt 1 discriminator 2
+ 939 0128 FB8A     	 ldrh r3,[r7,#22]
+ 940 012a 0133     	 adds r3,r3,#1
+ 941 012c FB82     	 strh r3,[r7,#22]
+ 942              	.L48:
+ 216:../soes/esc_coe.c ****       {
+ 943              	 .loc 1 216 0 is_stmt 0 discriminator 1
+ 944 012e FA8A     	 ldrh r2,[r7,#22]
+ 945 0130 7B8B     	 ldrh r3,[r7,#26]
+ 946 0132 9A42     	 cmp r2,r3
+ 947 0134 A4D9     	 bls .L54
+ 948              	.L47:
+ 235:../soes/esc_coe.c ****             }
+ 236:../soes/esc_coe.c ****          }
+ 237:../soes/esc_coe.c ****       }
+ 238:../soes/esc_coe.c ****    }
+ 239:../soes/esc_coe.c ****    return BITS2BYTES (size);
+ 949              	 .loc 1 239 0 is_stmt 1
+ 950 0136 FB8B     	 ldrh r3,[r7,#30]
+ 951 0138 0733     	 adds r3,r3,#7
+ 952 013a DB10     	 asrs r3,r3,#3
+ 953 013c 9BB2     	 uxth r3,r3
+ 954              	.L43:
+ 240:../soes/esc_coe.c **** }
+ 955              	 .loc 1 240 0
+ 956 013e 1846     	 mov r0,r3
+ 957 0140 2037     	 adds r7,r7,#32
+ 958              	.LCFI25:
+ 959              	 .cfi_def_cfa_offset 8
+ 960 0142 BD46     	 mov sp,r7
+ 961              	.LCFI26:
+ 962              	 .cfi_def_cfa_register 13
+ 963              	 
+ 964 0144 80BD     	 pop {r7,pc}
+ 965              	.L56:
+ 966 0146 00BF     	 .align 2
+ 967              	.L55:
+ 968 0148 00000000 	 .word SDOobjects
+ 969              	 .cfi_endproc
+ 970              	.LFE4:
+ 972              	 .section .text.copy2mbx,"ax",%progbits
+ 973              	 .align 2
+ 974              	 .global copy2mbx
+ 975              	 .thumb
+ 976              	 .thumb_func
+ 978              	copy2mbx:
+ 979              	.LFB5:
+ 241:../soes/esc_coe.c **** 
+ 242:../soes/esc_coe.c **** /** Copy to mailbox.
+ 243:../soes/esc_coe.c ****  *
+ 244:../soes/esc_coe.c ****  * @param[in] source = pointer to source
+ 245:../soes/esc_coe.c ****  * @param[in] dest   = pointer to destination
+ 246:../soes/esc_coe.c ****  * @param[in] size   = Size to copy
+ 247:../soes/esc_coe.c ****  */
+ 248:../soes/esc_coe.c **** void copy2mbx (void *source, void *dest, uint16_t size)
+ 249:../soes/esc_coe.c **** {
+ 980              	 .loc 1 249 0
+ 981              	 .cfi_startproc
+ 982              	 
+ 983              	 
+ 984 0000 80B5     	 push {r7,lr}
+ 985              	.LCFI27:
+ 986              	 .cfi_def_cfa_offset 8
+ 987              	 .cfi_offset 7,-8
+ 988              	 .cfi_offset 14,-4
+ 989 0002 84B0     	 sub sp,sp,#16
+ 990              	.LCFI28:
+ 991              	 .cfi_def_cfa_offset 24
+ 992 0004 00AF     	 add r7,sp,#0
+ 993              	.LCFI29:
+ 994              	 .cfi_def_cfa_register 7
+ 995 0006 F860     	 str r0,[r7,#12]
+ 996 0008 B960     	 str r1,[r7,#8]
+ 997 000a 1346     	 mov r3,r2
+ 998 000c FB80     	 strh r3,[r7,#6]
+ 250:../soes/esc_coe.c ****    memcpy (dest, source, size);
+ 999              	 .loc 1 250 0
+ 1000 000e FB88     	 ldrh r3,[r7,#6]
+ 1001 0010 B868     	 ldr r0,[r7,#8]
+ 1002 0012 F968     	 ldr r1,[r7,#12]
+ 1003 0014 1A46     	 mov r2,r3
+ 1004 0016 FFF7FEFF 	 bl memcpy
+ 251:../soes/esc_coe.c **** }
+ 1005              	 .loc 1 251 0
+ 1006 001a 1037     	 adds r7,r7,#16
+ 1007              	.LCFI30:
+ 1008              	 .cfi_def_cfa_offset 8
+ 1009 001c BD46     	 mov sp,r7
+ 1010              	.LCFI31:
+ 1011              	 .cfi_def_cfa_register 13
+ 1012              	 
+ 1013 001e 80BD     	 pop {r7,pc}
+ 1014              	 .cfi_endproc
+ 1015              	.LFE5:
+ 1017              	 .section .text.SDO_abort,"ax",%progbits
+ 1018              	 .align 2
+ 1019              	 .global SDO_abort
+ 1020              	 .thumb
+ 1021              	 .thumb_func
+ 1023              	SDO_abort:
+ 1024              	.LFB6:
+ 252:../soes/esc_coe.c **** 
+ 253:../soes/esc_coe.c **** /** Function for sending an SDO Abort reply.
+ 254:../soes/esc_coe.c ****  *
+ 255:../soes/esc_coe.c ****  * @param[in] index      = index of object causing abort reply
+ 256:../soes/esc_coe.c ****  * @param[in] sub-index  = sub-index of object causing abort reply
+ 257:../soes/esc_coe.c ****  * @param[in] abortcode  = abort code to send in reply
+ 258:../soes/esc_coe.c ****  */
+ 259:../soes/esc_coe.c **** void SDO_abort (uint16_t index, uint8_t subindex, uint32_t abortcode)
+ 260:../soes/esc_coe.c **** {
+ 1025              	 .loc 1 260 0
+ 1026              	 .cfi_startproc
+ 1027              	 
+ 1028              	 
+ 1029 0000 80B5     	 push {r7,lr}
+ 1030              	.LCFI32:
+ 1031              	 .cfi_def_cfa_offset 8
+ 1032              	 .cfi_offset 7,-8
+ 1033              	 .cfi_offset 14,-4
+ 1034 0002 84B0     	 sub sp,sp,#16
+ 1035              	.LCFI33:
+ 1036              	 .cfi_def_cfa_offset 24
+ 1037 0004 00AF     	 add r7,sp,#0
+ 1038              	.LCFI34:
+ 1039              	 .cfi_def_cfa_register 7
+ 1040 0006 0346     	 mov r3,r0
+ 1041 0008 3A60     	 str r2,[r7]
+ 1042 000a FB80     	 strh r3,[r7,#6]
+ 1043 000c 0B46     	 mov r3,r1
+ 1044 000e 7B71     	 strb r3,[r7,#5]
+ 261:../soes/esc_coe.c ****    uint8_t MBXout;
+ 262:../soes/esc_coe.c ****    _COEsdo *coeres;
+ 263:../soes/esc_coe.c ****    MBXout = ESC_claimbuffer ();
+ 1045              	 .loc 1 263 0
+ 1046 0010 FFF7FEFF 	 bl ESC_claimbuffer
+ 1047 0014 0346     	 mov r3,r0
+ 1048 0016 FB73     	 strb r3,[r7,#15]
+ 264:../soes/esc_coe.c ****    if (MBXout)
+ 1049              	 .loc 1 264 0
+ 1050 0018 FB7B     	 ldrb r3,[r7,#15]
+ 1051 001a 002B     	 cmp r3,#0
+ 1052 001c 2DD0     	 beq .L58
+ 265:../soes/esc_coe.c ****    {
+ 266:../soes/esc_coe.c ****       coeres = (_COEsdo *) &MBX[MBXout * ESC_MBXSIZE];
+ 1053              	 .loc 1 266 0
+ 1054 001e FB7B     	 ldrb r3,[r7,#15]
+ 1055 0020 174A     	 ldr r2,.L60
+ 1056 0022 D2F86D20 	 ldr r2,[r2,#109]
+ 1057 0026 02FB03F3 	 mul r3,r2,r3
+ 1058 002a 164A     	 ldr r2,.L60+4
+ 1059 002c 1344     	 add r3,r3,r2
+ 1060 002e BB60     	 str r3,[r7,#8]
+ 267:../soes/esc_coe.c ****       coeres->mbxheader.length = htoes (COE_DEFAULTLENGTH);
+ 1061              	 .loc 1 267 0
+ 1062 0030 BB68     	 ldr r3,[r7,#8]
+ 1063 0032 0022     	 movs r2,#0
+ 1064 0034 42F00A02 	 orr r2,r2,#10
+ 1065 0038 1A70     	 strb r2,[r3]
+ 1066 003a 0022     	 movs r2,#0
+ 1067 003c 5A70     	 strb r2,[r3,#1]
+ 268:../soes/esc_coe.c ****       coeres->mbxheader.mbxtype = MBXCOE;
+ 1068              	 .loc 1 268 0
+ 1069 003e BA68     	 ldr r2,[r7,#8]
+ 1070 0040 5379     	 ldrb r3,[r2,#5]
+ 1071 0042 0321     	 movs r1,#3
+ 1072 0044 61F30303 	 bfi r3,r1,#0,#4
+ 1073 0048 5371     	 strb r3,[r2,#5]
+ 269:../soes/esc_coe.c ****       coeres->coeheader.numberservice =
+ 1074              	 .loc 1 269 0
+ 1075 004a BB68     	 ldr r3,[r7,#8]
+ 1076 004c 0022     	 movs r2,#0
+ 1077 004e 9A71     	 strb r2,[r3,#6]
+ 1078 0050 0022     	 movs r2,#0
+ 1079 0052 42F02002 	 orr r2,r2,#32
+ 1080 0056 DA71     	 strb r2,[r3,#7]
+ 270:../soes/esc_coe.c ****          htoes ((0 & 0x01f) | (COE_SDOREQUEST << 12));
+ 271:../soes/esc_coe.c ****       coeres->index = htoes (index);
+ 1081              	 .loc 1 271 0
+ 1082 0058 BB68     	 ldr r3,[r7,#8]
+ 1083 005a FA88     	 ldrh r2,[r7,#6]
+ 1084 005c A3F80920 	 strh r2,[r3,#9]
+ 272:../soes/esc_coe.c ****       coeres->subindex = subindex;
+ 1085              	 .loc 1 272 0
+ 1086 0060 BB68     	 ldr r3,[r7,#8]
+ 1087 0062 7A79     	 ldrb r2,[r7,#5]
+ 1088 0064 DA72     	 strb r2,[r3,#11]
+ 273:../soes/esc_coe.c ****       coeres->command = COE_COMMAND_SDOABORT;
+ 1089              	 .loc 1 273 0
+ 1090 0066 BB68     	 ldr r3,[r7,#8]
+ 1091 0068 8022     	 movs r2,#128
+ 1092 006a 1A72     	 strb r2,[r3,#8]
+ 274:../soes/esc_coe.c ****       coeres->size = htoel (abortcode);
+ 1093              	 .loc 1 274 0
+ 1094 006c BB68     	 ldr r3,[r7,#8]
+ 1095 006e 3A68     	 ldr r2,[r7]
+ 1096 0070 DA60     	 str r2,[r3,#12]
+ 275:../soes/esc_coe.c ****       MBXcontrol[MBXout].state = MBXstate_outreq;
+ 1097              	 .loc 1 275 0
+ 1098 0072 FB7B     	 ldrb r3,[r7,#15]
+ 1099 0074 044A     	 ldr r2,.L60+8
+ 1100 0076 0321     	 movs r1,#3
+ 1101 0078 D154     	 strb r1,[r2,r3]
+ 1102              	.L58:
+ 276:../soes/esc_coe.c ****    }
+ 277:../soes/esc_coe.c **** }
+ 1103              	 .loc 1 277 0
+ 1104 007a 1037     	 adds r7,r7,#16
+ 1105              	.LCFI35:
+ 1106              	 .cfi_def_cfa_offset 8
+ 1107 007c BD46     	 mov sp,r7
+ 1108              	.LCFI36:
+ 1109              	 .cfi_def_cfa_register 13
+ 1110              	 
+ 1111 007e 80BD     	 pop {r7,pc}
+ 1112              	.L61:
+ 1113              	 .align 2
+ 1114              	.L60:
+ 1115 0080 00000000 	 .word ESCvar
+ 1116 0084 00000000 	 .word MBX
+ 1117 0088 00000000 	 .word MBXcontrol
+ 1118              	 .cfi_endproc
+ 1119              	.LFE6:
+ 1121              	 .section .text.SDO_upload,"ax",%progbits
+ 1122              	 .align 2
+ 1123              	 .global SDO_upload
+ 1124              	 .thumb
+ 1125              	 .thumb_func
+ 1127              	SDO_upload:
+ 1128              	.LFB7:
+ 278:../soes/esc_coe.c **** 
+ 279:../soes/esc_coe.c **** /** Function for responding on requested SDO Upload, sending the content
+ 280:../soes/esc_coe.c ****  *  requested in a free Mailbox buffer. Depending of size of data expedited,
+ 281:../soes/esc_coe.c ****  *  normal or segmented transfer is used. On error an SDO Abort will be sent.
+ 282:../soes/esc_coe.c ****  */
+ 283:../soes/esc_coe.c **** void SDO_upload (void)
+ 284:../soes/esc_coe.c **** {
+ 1129              	 .loc 1 284 0
+ 1130              	 .cfi_startproc
+ 1131              	 
+ 1132              	 
+ 1133 0000 80B5     	 push {r7,lr}
+ 1134              	.LCFI37:
+ 1135              	 .cfi_def_cfa_offset 8
+ 1136              	 .cfi_offset 7,-8
+ 1137              	 .cfi_offset 14,-4
+ 1138 0002 88B0     	 sub sp,sp,#32
+ 1139              	.LCFI38:
+ 1140              	 .cfi_def_cfa_offset 40
+ 1141 0004 00AF     	 add r7,sp,#0
+ 1142              	.LCFI39:
+ 1143              	 .cfi_def_cfa_register 7
+ 285:../soes/esc_coe.c ****    _COEsdo *coesdo, *coeres;
+ 286:../soes/esc_coe.c ****    uint16_t index;
+ 287:../soes/esc_coe.c ****    uint8_t subindex;
+ 288:../soes/esc_coe.c ****    int16_t nidx, nsub;
+ 289:../soes/esc_coe.c ****    uint8_t MBXout;
+ 290:../soes/esc_coe.c ****    uint32_t size;
+ 291:../soes/esc_coe.c ****    uint8_t dss;
+ 292:../soes/esc_coe.c ****    const _objd *objd;
+ 293:../soes/esc_coe.c ****    coesdo = (_COEsdo *) &MBX[0];
+ 1144              	 .loc 1 293 0
+ 1145 0006 914B     	 ldr r3,.L77
+ 1146 0008 7B61     	 str r3,[r7,#20]
+ 294:../soes/esc_coe.c ****    index = etohs (coesdo->index);
+ 1147              	 .loc 1 294 0
+ 1148 000a 7B69     	 ldr r3,[r7,#20]
+ 1149 000c 5A7A     	 ldrb r2,[r3,#9]
+ 1150 000e 9B7A     	 ldrb r3,[r3,#10]
+ 1151 0010 1B02     	 lsls r3,r3,#8
+ 1152 0012 1343     	 orrs r3,r3,r2
+ 1153 0014 7B82     	 strh r3,[r7,#18]
+ 295:../soes/esc_coe.c ****    subindex = coesdo->subindex;
+ 1154              	 .loc 1 295 0
+ 1155 0016 7B69     	 ldr r3,[r7,#20]
+ 1156 0018 DB7A     	 ldrb r3,[r3,#11]
+ 1157 001a 7B74     	 strb r3,[r7,#17]
+ 296:../soes/esc_coe.c ****    nidx = SDO_findobject (index);
+ 1158              	 .loc 1 296 0
+ 1159 001c 7B8A     	 ldrh r3,[r7,#18]
+ 1160 001e 1846     	 mov r0,r3
+ 1161 0020 FFF7FEFF 	 bl SDO_findobject
+ 1162 0024 0346     	 mov r3,r0
+ 1163 0026 FB81     	 strh r3,[r7,#14]
+ 297:../soes/esc_coe.c ****    if (nidx >= 0)
+ 1164              	 .loc 1 297 0
+ 1165 0028 B7F90E30 	 ldrsh r3,[r7,#14]
+ 1166 002c 002B     	 cmp r3,#0
+ 1167 002e C0F2FC80 	 blt .L63
+ 298:../soes/esc_coe.c ****    {
+ 299:../soes/esc_coe.c ****       nsub = SDO_findsubindex (nidx, subindex);
+ 1168              	 .loc 1 299 0
+ 1169 0032 B7F90E20 	 ldrsh r2,[r7,#14]
+ 1170 0036 7B7C     	 ldrb r3,[r7,#17]
+ 1171 0038 1046     	 mov r0,r2
+ 1172 003a 1946     	 mov r1,r3
+ 1173 003c FFF7FEFF 	 bl SDO_findsubindex
+ 1174 0040 0346     	 mov r3,r0
+ 1175 0042 BB81     	 strh r3,[r7,#12]
+ 300:../soes/esc_coe.c ****       if (nsub >= 0)
+ 1176              	 .loc 1 300 0
+ 1177 0044 B7F90C30 	 ldrsh r3,[r7,#12]
+ 1178 0048 002B     	 cmp r3,#0
+ 1179 004a C0F2E680 	 blt .L64
+ 301:../soes/esc_coe.c ****       {
+ 302:../soes/esc_coe.c ****          objd = SDOobjects[nidx].objdesc;
+ 1180              	 .loc 1 302 0
+ 1181 004e B7F90E20 	 ldrsh r2,[r7,#14]
+ 1182 0052 7F49     	 ldr r1,.L77+4
+ 1183 0054 1346     	 mov r3,r2
+ 1184 0056 DB00     	 lsls r3,r3,#3
+ 1185 0058 9B1A     	 subs r3,r3,r2
+ 1186 005a 5B00     	 lsls r3,r3,#1
+ 1187 005c 0B44     	 add r3,r3,r1
+ 1188 005e 0833     	 adds r3,r3,#8
+ 1189 0060 D3F80230 	 ldr r3,[r3,#2]
+ 1190 0064 BB60     	 str r3,[r7,#8]
+ 303:../soes/esc_coe.c ****          MBXout = ESC_claimbuffer ();
+ 1191              	 .loc 1 303 0
+ 1192 0066 FFF7FEFF 	 bl ESC_claimbuffer
+ 1193 006a 0346     	 mov r3,r0
+ 1194 006c FB71     	 strb r3,[r7,#7]
+ 304:../soes/esc_coe.c ****          if (MBXout)
+ 1195              	 .loc 1 304 0
+ 1196 006e FB79     	 ldrb r3,[r7,#7]
+ 1197 0070 002B     	 cmp r3,#0
+ 1198 0072 00F0E180 	 beq .L76
+ 305:../soes/esc_coe.c ****          {
+ 306:../soes/esc_coe.c ****             coeres = (_COEsdo *) &MBX[MBXout * ESC_MBXSIZE];
+ 1199              	 .loc 1 306 0
+ 1200 0076 FB79     	 ldrb r3,[r7,#7]
+ 1201 0078 764A     	 ldr r2,.L77+8
+ 1202 007a D2F86D20 	 ldr r2,[r2,#109]
+ 1203 007e 02FB03F3 	 mul r3,r2,r3
+ 1204 0082 724A     	 ldr r2,.L77
+ 1205 0084 1344     	 add r3,r3,r2
+ 1206 0086 3B60     	 str r3,[r7]
+ 307:../soes/esc_coe.c ****             coeres->mbxheader.length = htoes (COE_DEFAULTLENGTH);
+ 1207              	 .loc 1 307 0
+ 1208 0088 3B68     	 ldr r3,[r7]
+ 1209 008a 0022     	 movs r2,#0
+ 1210 008c 42F00A02 	 orr r2,r2,#10
+ 1211 0090 1A70     	 strb r2,[r3]
+ 1212 0092 0022     	 movs r2,#0
+ 1213 0094 5A70     	 strb r2,[r3,#1]
+ 308:../soes/esc_coe.c ****             coeres->mbxheader.mbxtype = MBXCOE;
+ 1214              	 .loc 1 308 0
+ 1215 0096 3A68     	 ldr r2,[r7]
+ 1216 0098 5379     	 ldrb r3,[r2,#5]
+ 1217 009a 0321     	 movs r1,#3
+ 1218 009c 61F30303 	 bfi r3,r1,#0,#4
+ 1219 00a0 5371     	 strb r3,[r2,#5]
+ 309:../soes/esc_coe.c ****             coeres->coeheader.numberservice =
+ 1220              	 .loc 1 309 0
+ 1221 00a2 3B68     	 ldr r3,[r7]
+ 1222 00a4 0022     	 movs r2,#0
+ 1223 00a6 9A71     	 strb r2,[r3,#6]
+ 1224 00a8 0022     	 movs r2,#0
+ 1225 00aa 42F03002 	 orr r2,r2,#48
+ 1226 00ae DA71     	 strb r2,[r3,#7]
+ 310:../soes/esc_coe.c ****                htoes ((0 & 0x01f) | (COE_SDORESPONSE << 12));
+ 311:../soes/esc_coe.c ****             size = (objd + nsub)->bitlength;
+ 1227              	 .loc 1 311 0
+ 1228 00b0 B7F90C20 	 ldrsh r2,[r7,#12]
+ 1229 00b4 1346     	 mov r3,r2
+ 1230 00b6 9B00     	 lsls r3,r3,#2
+ 1231 00b8 1344     	 add r3,r3,r2
+ 1232 00ba 9B00     	 lsls r3,r3,#2
+ 1233 00bc 1A46     	 mov r2,r3
+ 1234 00be BB68     	 ldr r3,[r7,#8]
+ 1235 00c0 1344     	 add r3,r3,r2
+ 1236 00c2 9B88     	 ldrh r3,[r3,#4]
+ 1237 00c4 9BB2     	 uxth r3,r3
+ 1238 00c6 FB61     	 str r3,[r7,#28]
+ 312:../soes/esc_coe.c ****             /* expedited bits used calculation */
+ 313:../soes/esc_coe.c ****             dss = 0x0c;
+ 1239              	 .loc 1 313 0
+ 1240 00c8 0C23     	 movs r3,#12
+ 1241 00ca FB76     	 strb r3,[r7,#27]
+ 314:../soes/esc_coe.c ****             if (size > 8)
+ 1242              	 .loc 1 314 0
+ 1243 00cc FB69     	 ldr r3,[r7,#28]
+ 1244 00ce 082B     	 cmp r3,#8
+ 1245 00d0 01D9     	 bls .L66
+ 315:../soes/esc_coe.c ****             {
+ 316:../soes/esc_coe.c ****                dss = 0x08;
+ 1246              	 .loc 1 316 0
+ 1247 00d2 0823     	 movs r3,#8
+ 1248 00d4 FB76     	 strb r3,[r7,#27]
+ 1249              	.L66:
+ 317:../soes/esc_coe.c ****             }
+ 318:../soes/esc_coe.c ****             if (size > 16)
+ 1250              	 .loc 1 318 0
+ 1251 00d6 FB69     	 ldr r3,[r7,#28]
+ 1252 00d8 102B     	 cmp r3,#16
+ 1253 00da 01D9     	 bls .L67
+ 319:../soes/esc_coe.c ****             {
+ 320:../soes/esc_coe.c ****                dss = 0x04;
+ 1254              	 .loc 1 320 0
+ 1255 00dc 0423     	 movs r3,#4
+ 1256 00de FB76     	 strb r3,[r7,#27]
+ 1257              	.L67:
+ 321:../soes/esc_coe.c ****             }
+ 322:../soes/esc_coe.c ****             if (size > 24)
+ 1258              	 .loc 1 322 0
+ 1259 00e0 FB69     	 ldr r3,[r7,#28]
+ 1260 00e2 182B     	 cmp r3,#24
+ 1261 00e4 01D9     	 bls .L68
+ 323:../soes/esc_coe.c ****             {
+ 324:../soes/esc_coe.c ****                dss = 0x00;
+ 1262              	 .loc 1 324 0
+ 1263 00e6 0023     	 movs r3,#0
+ 1264 00e8 FB76     	 strb r3,[r7,#27]
+ 1265              	.L68:
+ 325:../soes/esc_coe.c ****             }
+ 326:../soes/esc_coe.c ****             coeres->index = htoes (index);
+ 1266              	 .loc 1 326 0
+ 1267 00ea 3B68     	 ldr r3,[r7]
+ 1268 00ec 7A8A     	 ldrh r2,[r7,#18]
+ 1269 00ee A3F80920 	 strh r2,[r3,#9]
+ 327:../soes/esc_coe.c ****             coeres->subindex = subindex;
+ 1270              	 .loc 1 327 0
+ 1271 00f2 3B68     	 ldr r3,[r7]
+ 1272 00f4 7A7C     	 ldrb r2,[r7,#17]
+ 1273 00f6 DA72     	 strb r2,[r3,#11]
+ 328:../soes/esc_coe.c ****             if (size <= 32)
+ 1274              	 .loc 1 328 0
+ 1275 00f8 FB69     	 ldr r3,[r7,#28]
+ 1276 00fa 202B     	 cmp r3,#32
+ 1277 00fc 36D8     	 bhi .L69
+ 329:../soes/esc_coe.c ****             {
+ 330:../soes/esc_coe.c ****                /* expedited response i.e. length<=4 bytes */
+ 331:../soes/esc_coe.c ****                coeres->command = COE_COMMAND_UPLOADRESPONSE +
+ 1278              	 .loc 1 331 0
+ 1279 00fe FB7E     	 ldrb r3,[r7,#27]
+ 1280 0100 4333     	 adds r3,r3,#67
+ 1281 0102 DAB2     	 uxtb r2,r3
+ 1282 0104 3B68     	 ldr r3,[r7]
+ 1283 0106 1A72     	 strb r2,[r3,#8]
+ 332:../soes/esc_coe.c ****                   COE_SIZE_INDICATOR + COE_EXPEDITED_INDICATOR + dss;
+ 333:../soes/esc_coe.c ****                if ((objd + nsub)->data == NULL)
+ 1284              	 .loc 1 333 0
+ 1285 0108 B7F90C20 	 ldrsh r2,[r7,#12]
+ 1286 010c 1346     	 mov r3,r2
+ 1287 010e 9B00     	 lsls r3,r3,#2
+ 1288 0110 1344     	 add r3,r3,r2
+ 1289 0112 9B00     	 lsls r3,r3,#2
+ 1290 0114 1A46     	 mov r2,r3
+ 1291 0116 BB68     	 ldr r3,[r7,#8]
+ 1292 0118 1344     	 add r3,r3,r2
+ 1293 011a 1B69     	 ldr r3,[r3,#16]
+ 1294 011c 002B     	 cmp r3,#0
+ 1295 011e 0CD1     	 bne .L70
+ 334:../soes/esc_coe.c ****                {
+ 335:../soes/esc_coe.c ****                   /* use constant value */
+ 336:../soes/esc_coe.c ****                   coeres->size = htoel ((objd + nsub)->value);
+ 1296              	 .loc 1 336 0
+ 1297 0120 B7F90C20 	 ldrsh r2,[r7,#12]
+ 1298 0124 1346     	 mov r3,r2
+ 1299 0126 9B00     	 lsls r3,r3,#2
+ 1300 0128 1344     	 add r3,r3,r2
+ 1301 012a 9B00     	 lsls r3,r3,#2
+ 1302 012c 1A46     	 mov r2,r3
+ 1303 012e BB68     	 ldr r3,[r7,#8]
+ 1304 0130 1344     	 add r3,r3,r2
+ 1305 0132 DA68     	 ldr r2,[r3,#12]
+ 1306 0134 3B68     	 ldr r3,[r7]
+ 1307 0136 DA60     	 str r2,[r3,#12]
+ 1308 0138 6AE0     	 b .L72
+ 1309              	.L70:
+ 337:../soes/esc_coe.c ****                }
+ 338:../soes/esc_coe.c ****                else
+ 339:../soes/esc_coe.c ****                {
+ 340:../soes/esc_coe.c ****                   /* convert bits to bytes */
+ 341:../soes/esc_coe.c ****                   size = (size + 7) >> 3;
+ 1310              	 .loc 1 341 0
+ 1311 013a FB69     	 ldr r3,[r7,#28]
+ 1312 013c 0733     	 adds r3,r3,#7
+ 1313 013e DB08     	 lsrs r3,r3,#3
+ 1314 0140 FB61     	 str r3,[r7,#28]
+ 342:../soes/esc_coe.c ****                   /* use dynamic data */
+ 343:../soes/esc_coe.c ****                   copy2mbx ((objd + nsub)->data, &(coeres->size), size);
+ 1315              	 .loc 1 343 0
+ 1316 0142 B7F90C20 	 ldrsh r2,[r7,#12]
+ 1317 0146 1346     	 mov r3,r2
+ 1318 0148 9B00     	 lsls r3,r3,#2
+ 1319 014a 1344     	 add r3,r3,r2
+ 1320 014c 9B00     	 lsls r3,r3,#2
+ 1321 014e 1A46     	 mov r2,r3
+ 1322 0150 BB68     	 ldr r3,[r7,#8]
+ 1323 0152 1344     	 add r3,r3,r2
+ 1324 0154 1969     	 ldr r1,[r3,#16]
+ 1325 0156 3B68     	 ldr r3,[r7]
+ 1326 0158 03F10C02 	 add r2,r3,#12
+ 1327 015c FB69     	 ldr r3,[r7,#28]
+ 1328 015e 9BB2     	 uxth r3,r3
+ 1329 0160 0846     	 mov r0,r1
+ 1330 0162 1146     	 mov r1,r2
+ 1331 0164 1A46     	 mov r2,r3
+ 1332 0166 FFF7FEFF 	 bl copy2mbx
+ 1333 016a 51E0     	 b .L72
+ 1334              	.L69:
+ 344:../soes/esc_coe.c ****                }
+ 345:../soes/esc_coe.c ****             }
+ 346:../soes/esc_coe.c ****             else
+ 347:../soes/esc_coe.c ****             {
+ 348:../soes/esc_coe.c ****                /* normal response i.e. length>4 bytes */
+ 349:../soes/esc_coe.c ****                coeres->command = COE_COMMAND_UPLOADRESPONSE +
+ 1335              	 .loc 1 349 0
+ 1336 016c 3B68     	 ldr r3,[r7]
+ 1337 016e 4122     	 movs r2,#65
+ 1338 0170 1A72     	 strb r2,[r3,#8]
+ 350:../soes/esc_coe.c ****                   COE_SIZE_INDICATOR;
+ 351:../soes/esc_coe.c ****                /* convert bits to bytes */
+ 352:../soes/esc_coe.c ****                size = (size + 7) >> 3;
+ 1339              	 .loc 1 352 0
+ 1340 0172 FB69     	 ldr r3,[r7,#28]
+ 1341 0174 0733     	 adds r3,r3,#7
+ 1342 0176 DB08     	 lsrs r3,r3,#3
+ 1343 0178 FB61     	 str r3,[r7,#28]
+ 353:../soes/esc_coe.c ****                coeres->size = htoel (size);
+ 1344              	 .loc 1 353 0
+ 1345 017a 3B68     	 ldr r3,[r7]
+ 1346 017c FA69     	 ldr r2,[r7,#28]
+ 1347 017e DA60     	 str r2,[r3,#12]
+ 354:../soes/esc_coe.c ****                if ((size + COE_HEADERSIZE) > ESC_MBXDSIZE)
+ 1348              	 .loc 1 354 0
+ 1349 0180 FB69     	 ldr r3,[r7,#28]
+ 1350 0182 03F10A02 	 add r2,r3,#10
+ 1351 0186 334B     	 ldr r3,.L77+8
+ 1352 0188 D3F86D30 	 ldr r3,[r3,#109]
+ 1353 018c 063B     	 subs r3,r3,#6
+ 1354 018e 9A42     	 cmp r2,r3
+ 1355 0190 20D9     	 bls .L73
+ 355:../soes/esc_coe.c ****                {
+ 356:../soes/esc_coe.c ****                   /* segmented transfer needed */
+ 357:../soes/esc_coe.c ****                   /* set total size in bytes */
+ 358:../soes/esc_coe.c ****                   ESCvar.frags = size;
+ 1356              	 .loc 1 358 0
+ 1357 0192 FB69     	 ldr r3,[r7,#28]
+ 1358 0194 9AB2     	 uxth r2,r3
+ 1359 0196 2F4B     	 ldr r3,.L77+8
+ 1360 0198 A3F89C20 	 strh r2,[r3,#156]
+ 359:../soes/esc_coe.c ****                   /* limit to mailbox size */
+ 360:../soes/esc_coe.c ****                   size = ESC_MBXDSIZE - COE_HEADERSIZE;
+ 1361              	 .loc 1 360 0
+ 1362 019c 2D4B     	 ldr r3,.L77+8
+ 1363 019e D3F86D30 	 ldr r3,[r3,#109]
+ 1364 01a2 103B     	 subs r3,r3,#16
+ 1365 01a4 FB61     	 str r3,[r7,#28]
+ 361:../soes/esc_coe.c ****                   /* number of bytes done */
+ 362:../soes/esc_coe.c ****                   ESCvar.fragsleft = size;
+ 1366              	 .loc 1 362 0
+ 1367 01a6 FB69     	 ldr r3,[r7,#28]
+ 1368 01a8 9AB2     	 uxth r2,r3
+ 1369 01aa 2A4B     	 ldr r3,.L77+8
+ 1370 01ac A3F89E20 	 strh r2,[r3,#158]
+ 363:../soes/esc_coe.c ****                   /* signal segmented transfer */
+ 364:../soes/esc_coe.c ****                   ESCvar.segmented = MBXSEU;
+ 1371              	 .loc 1 364 0
+ 1372 01b0 284B     	 ldr r3,.L77+8
+ 1373 01b2 4022     	 movs r2,#64
+ 1374 01b4 83F89520 	 strb r2,[r3,#149]
+ 365:../soes/esc_coe.c ****                   ESCvar.data = (objd + nsub)->data;
+ 1375              	 .loc 1 365 0
+ 1376 01b8 B7F90C20 	 ldrsh r2,[r7,#12]
+ 1377 01bc 1346     	 mov r3,r2
+ 1378 01be 9B00     	 lsls r3,r3,#2
+ 1379 01c0 1344     	 add r3,r3,r2
+ 1380 01c2 9B00     	 lsls r3,r3,#2
+ 1381 01c4 1A46     	 mov r2,r3
+ 1382 01c6 BB68     	 ldr r3,[r7,#8]
+ 1383 01c8 1344     	 add r3,r3,r2
+ 1384 01ca 1B69     	 ldr r3,[r3,#16]
+ 1385 01cc 214A     	 ldr r2,.L77+8
+ 1386 01ce C2F89630 	 str r3,[r2,#150]
+ 1387 01d2 03E0     	 b .L74
+ 1388              	.L73:
+ 366:../soes/esc_coe.c ****                }
+ 367:../soes/esc_coe.c ****                else
+ 368:../soes/esc_coe.c ****                {
+ 369:../soes/esc_coe.c ****                   ESCvar.segmented = 0;
+ 1389              	 .loc 1 369 0
+ 1390 01d4 1F4B     	 ldr r3,.L77+8
+ 1391 01d6 0022     	 movs r2,#0
+ 1392 01d8 83F89520 	 strb r2,[r3,#149]
+ 1393              	.L74:
+ 370:../soes/esc_coe.c ****                }
+ 371:../soes/esc_coe.c ****                coeres->mbxheader.length = htoes (COE_HEADERSIZE + size);
+ 1394              	 .loc 1 371 0
+ 1395 01dc FB69     	 ldr r3,[r7,#28]
+ 1396 01de 9BB2     	 uxth r3,r3
+ 1397 01e0 0A33     	 adds r3,r3,#10
+ 1398 01e2 9AB2     	 uxth r2,r3
+ 1399 01e4 3B68     	 ldr r3,[r7]
+ 1400 01e6 1A80     	 strh r2,[r3]
+ 372:../soes/esc_coe.c ****                /* use dynamic data */
+ 373:../soes/esc_coe.c ****                copy2mbx ((objd + nsub)->data, (&(coeres->size)) + 1, size);
+ 1401              	 .loc 1 373 0
+ 1402 01e8 B7F90C20 	 ldrsh r2,[r7,#12]
+ 1403 01ec 1346     	 mov r3,r2
+ 1404 01ee 9B00     	 lsls r3,r3,#2
+ 1405 01f0 1344     	 add r3,r3,r2
+ 1406 01f2 9B00     	 lsls r3,r3,#2
+ 1407 01f4 1A46     	 mov r2,r3
+ 1408 01f6 BB68     	 ldr r3,[r7,#8]
+ 1409 01f8 1344     	 add r3,r3,r2
+ 1410 01fa 1969     	 ldr r1,[r3,#16]
+ 1411 01fc 3B68     	 ldr r3,[r7]
+ 1412 01fe 0C33     	 adds r3,r3,#12
+ 1413 0200 1A1D     	 adds r2,r3,#4
+ 1414 0202 FB69     	 ldr r3,[r7,#28]
+ 1415 0204 9BB2     	 uxth r3,r3
+ 1416 0206 0846     	 mov r0,r1
+ 1417 0208 1146     	 mov r1,r2
+ 1418 020a 1A46     	 mov r2,r3
+ 1419 020c FFF7FEFF 	 bl copy2mbx
+ 1420              	.L72:
+ 374:../soes/esc_coe.c ****             }
+ 375:../soes/esc_coe.c ****             MBXcontrol[MBXout].state = MBXstate_outreq;
+ 1421              	 .loc 1 375 0
+ 1422 0210 FB79     	 ldrb r3,[r7,#7]
+ 1423 0212 114A     	 ldr r2,.L77+12
+ 1424 0214 0321     	 movs r1,#3
+ 1425 0216 D154     	 strb r1,[r2,r3]
+ 1426 0218 0EE0     	 b .L76
+ 1427              	.L64:
+ 376:../soes/esc_coe.c ****          }
+ 377:../soes/esc_coe.c ****       }
+ 378:../soes/esc_coe.c ****       else
+ 379:../soes/esc_coe.c ****       {
+ 380:../soes/esc_coe.c ****          SDO_abort (index, subindex, ABORT_NOSUBINDEX);
+ 1428              	 .loc 1 380 0
+ 1429 021a 7A8A     	 ldrh r2,[r7,#18]
+ 1430 021c 7B7C     	 ldrb r3,[r7,#17]
+ 1431 021e 1046     	 mov r0,r2
+ 1432 0220 1946     	 mov r1,r3
+ 1433 0222 0E4A     	 ldr r2,.L77+16
+ 1434 0224 FFF7FEFF 	 bl SDO_abort
+ 1435 0228 06E0     	 b .L76
+ 1436              	.L63:
+ 381:../soes/esc_coe.c ****       }
+ 382:../soes/esc_coe.c ****    }
+ 383:../soes/esc_coe.c ****    else
+ 384:../soes/esc_coe.c ****    {
+ 385:../soes/esc_coe.c ****       SDO_abort (index, subindex, ABORT_NOOBJECT);
+ 1437              	 .loc 1 385 0
+ 1438 022a 7A8A     	 ldrh r2,[r7,#18]
+ 1439 022c 7B7C     	 ldrb r3,[r7,#17]
+ 1440 022e 1046     	 mov r0,r2
+ 1441 0230 1946     	 mov r1,r3
+ 1442 0232 0B4A     	 ldr r2,.L77+20
+ 1443 0234 FFF7FEFF 	 bl SDO_abort
+ 1444              	.L76:
+ 386:../soes/esc_coe.c ****    }
+ 387:../soes/esc_coe.c ****    MBXcontrol[0].state = MBXstate_idle;
+ 1445              	 .loc 1 387 0
+ 1446 0238 074B     	 ldr r3,.L77+12
+ 1447 023a 0022     	 movs r2,#0
+ 1448 023c 1A70     	 strb r2,[r3]
+ 388:../soes/esc_coe.c ****    ESCvar.xoe = 0;
+ 1449              	 .loc 1 388 0
+ 1450 023e 054B     	 ldr r3,.L77+8
+ 1451 0240 0022     	 movs r2,#0
+ 1452 0242 83F89220 	 strb r2,[r3,#146]
+ 389:../soes/esc_coe.c **** }
+ 1453              	 .loc 1 389 0
+ 1454 0246 2037     	 adds r7,r7,#32
+ 1455              	.LCFI40:
+ 1456              	 .cfi_def_cfa_offset 8
+ 1457 0248 BD46     	 mov sp,r7
+ 1458              	.LCFI41:
+ 1459              	 .cfi_def_cfa_register 13
+ 1460              	 
+ 1461 024a 80BD     	 pop {r7,pc}
+ 1462              	.L78:
+ 1463              	 .align 2
+ 1464              	.L77:
+ 1465 024c 00000000 	 .word MBX
+ 1466 0250 00000000 	 .word SDOobjects
+ 1467 0254 00000000 	 .word ESCvar
+ 1468 0258 00000000 	 .word MBXcontrol
+ 1469 025c 11000906 	 .word 101253137
+ 1470 0260 00000206 	 .word 100794368
+ 1471              	 .cfi_endproc
+ 1472              	.LFE7:
+ 1474              	 .section .text.SDO_uploadsegment,"ax",%progbits
+ 1475              	 .align 2
+ 1476              	 .global SDO_uploadsegment
+ 1477              	 .thumb
+ 1478              	 .thumb_func
+ 1480              	SDO_uploadsegment:
+ 1481              	.LFB8:
+ 390:../soes/esc_coe.c **** 
+ 391:../soes/esc_coe.c **** /** Function for handling the following SDO Upload if previous SDOUpload
+ 392:../soes/esc_coe.c ****  * response was flagged it needed to be segmented.
+ 393:../soes/esc_coe.c ****  *
+ 394:../soes/esc_coe.c ****  */
+ 395:../soes/esc_coe.c **** void SDO_uploadsegment (void)
+ 396:../soes/esc_coe.c **** {
+ 1482              	 .loc 1 396 0
+ 1483              	 .cfi_startproc
+ 1484              	 
+ 1485              	 
+ 1486 0000 80B5     	 push {r7,lr}
+ 1487              	.LCFI42:
+ 1488              	 .cfi_def_cfa_offset 8
+ 1489              	 .cfi_offset 7,-8
+ 1490              	 .cfi_offset 14,-4
+ 1491 0002 86B0     	 sub sp,sp,#24
+ 1492              	.LCFI43:
+ 1493              	 .cfi_def_cfa_offset 32
+ 1494 0004 00AF     	 add r7,sp,#0
+ 1495              	.LCFI44:
+ 1496              	 .cfi_def_cfa_register 7
+ 397:../soes/esc_coe.c ****    _COEsdo *coesdo, *coeres;
+ 398:../soes/esc_coe.c ****    uint8_t MBXout;
+ 399:../soes/esc_coe.c ****    uint32_t size, offset;
+ 400:../soes/esc_coe.c ****    coesdo = (_COEsdo *) &MBX[0];
+ 1497              	 .loc 1 400 0
+ 1498 0006 544B     	 ldr r3,.L84
+ 1499 0008 3B61     	 str r3,[r7,#16]
+ 401:../soes/esc_coe.c ****    MBXout = ESC_claimbuffer ();
+ 1500              	 .loc 1 401 0
+ 1501 000a FFF7FEFF 	 bl ESC_claimbuffer
+ 1502 000e 0346     	 mov r3,r0
+ 1503 0010 FB73     	 strb r3,[r7,#15]
+ 402:../soes/esc_coe.c ****    if (MBXout)
+ 1504              	 .loc 1 402 0
+ 1505 0012 FB7B     	 ldrb r3,[r7,#15]
+ 1506 0014 002B     	 cmp r3,#0
+ 1507 0016 00F09580 	 beq .L80
+ 403:../soes/esc_coe.c ****    {
+ 404:../soes/esc_coe.c ****       coeres = (_COEsdo *) &MBX[MBXout * ESC_MBXSIZE];
+ 1508              	 .loc 1 404 0
+ 1509 001a FB7B     	 ldrb r3,[r7,#15]
+ 1510 001c 4F4A     	 ldr r2,.L84+4
+ 1511 001e D2F86D20 	 ldr r2,[r2,#109]
+ 1512 0022 02FB03F3 	 mul r3,r2,r3
+ 1513 0026 4C4A     	 ldr r2,.L84
+ 1514 0028 1344     	 add r3,r3,r2
+ 1515 002a BB60     	 str r3,[r7,#8]
+ 405:../soes/esc_coe.c ****       offset = ESCvar.fragsleft;
+ 1516              	 .loc 1 405 0
+ 1517 002c 4B4B     	 ldr r3,.L84+4
+ 1518 002e B3F89E30 	 ldrh r3,[r3,#158]
+ 1519 0032 9BB2     	 uxth r3,r3
+ 1520 0034 7B60     	 str r3,[r7,#4]
+ 406:../soes/esc_coe.c ****       size = ESCvar.frags - ESCvar.fragsleft;
+ 1521              	 .loc 1 406 0
+ 1522 0036 494B     	 ldr r3,.L84+4
+ 1523 0038 B3F89C30 	 ldrh r3,[r3,#156]
+ 1524 003c 9BB2     	 uxth r3,r3
+ 1525 003e 1A46     	 mov r2,r3
+ 1526 0040 464B     	 ldr r3,.L84+4
+ 1527 0042 B3F89E30 	 ldrh r3,[r3,#158]
+ 1528 0046 9BB2     	 uxth r3,r3
+ 1529 0048 D31A     	 subs r3,r2,r3
+ 1530 004a 7B61     	 str r3,[r7,#20]
+ 407:../soes/esc_coe.c ****       coeres->mbxheader.mbxtype = MBXCOE;
+ 1531              	 .loc 1 407 0
+ 1532 004c BA68     	 ldr r2,[r7,#8]
+ 1533 004e 5379     	 ldrb r3,[r2,#5]
+ 1534 0050 0321     	 movs r1,#3
+ 1535 0052 61F30303 	 bfi r3,r1,#0,#4
+ 1536 0056 5371     	 strb r3,[r2,#5]
+ 408:../soes/esc_coe.c ****       coeres->coeheader.numberservice =
+ 1537              	 .loc 1 408 0
+ 1538 0058 BB68     	 ldr r3,[r7,#8]
+ 1539 005a 0022     	 movs r2,#0
+ 1540 005c 9A71     	 strb r2,[r3,#6]
+ 1541 005e 0022     	 movs r2,#0
+ 1542 0060 42F03002 	 orr r2,r2,#48
+ 1543 0064 DA71     	 strb r2,[r3,#7]
+ 409:../soes/esc_coe.c ****          htoes ((0 & 0x01f) | (COE_SDORESPONSE << 12));
+ 410:../soes/esc_coe.c ****       coeres->command = COE_COMMAND_UPLOADSEGMENT + (coesdo->command & COE_TOGGLEBIT);  // copy tog
+ 1544              	 .loc 1 410 0
+ 1545 0066 3B69     	 ldr r3,[r7,#16]
+ 1546 0068 1B7A     	 ldrb r3,[r3,#8]
+ 1547 006a 03F01003 	 and r3,r3,#16
+ 1548 006e DAB2     	 uxtb r2,r3
+ 1549 0070 BB68     	 ldr r3,[r7,#8]
+ 1550 0072 1A72     	 strb r2,[r3,#8]
+ 411:../soes/esc_coe.c ****       if ((size + COE_SEGMENTHEADERSIZE) > ESC_MBXDSIZE)
+ 1551              	 .loc 1 411 0
+ 1552 0074 7B69     	 ldr r3,[r7,#20]
+ 1553 0076 DA1C     	 adds r2,r3,#3
+ 1554 0078 384B     	 ldr r3,.L84+4
+ 1555 007a D3F86D30 	 ldr r3,[r3,#109]
+ 1556 007e 063B     	 subs r3,r3,#6
+ 1557 0080 9A42     	 cmp r2,r3
+ 1558 0082 16D9     	 bls .L81
+ 412:../soes/esc_coe.c ****       {
+ 413:../soes/esc_coe.c ****          /* more segmented transfer needed */
+ 414:../soes/esc_coe.c ****          /* limit to mailbox size */
+ 415:../soes/esc_coe.c ****          size = ESC_MBXDSIZE - COE_SEGMENTHEADERSIZE;
+ 1559              	 .loc 1 415 0
+ 1560 0084 354B     	 ldr r3,.L84+4
+ 1561 0086 D3F86D30 	 ldr r3,[r3,#109]
+ 1562 008a 093B     	 subs r3,r3,#9
+ 1563 008c 7B61     	 str r3,[r7,#20]
+ 416:../soes/esc_coe.c ****          /* number of bytes done */
+ 417:../soes/esc_coe.c ****          ESCvar.fragsleft += size;
+ 1564              	 .loc 1 417 0
+ 1565 008e 334B     	 ldr r3,.L84+4
+ 1566 0090 B3F89E30 	 ldrh r3,[r3,#158]
+ 1567 0094 9AB2     	 uxth r2,r3
+ 1568 0096 7B69     	 ldr r3,[r7,#20]
+ 1569 0098 9BB2     	 uxth r3,r3
+ 1570 009a 1344     	 add r3,r3,r2
+ 1571 009c 9AB2     	 uxth r2,r3
+ 1572 009e 2F4B     	 ldr r3,.L84+4
+ 1573 00a0 A3F89E20 	 strh r2,[r3,#158]
+ 418:../soes/esc_coe.c ****          coeres->mbxheader.length = htoes (COE_SEGMENTHEADERSIZE + size);
+ 1574              	 .loc 1 418 0
+ 1575 00a4 7B69     	 ldr r3,[r7,#20]
+ 1576 00a6 9BB2     	 uxth r3,r3
+ 1577 00a8 0333     	 adds r3,r3,#3
+ 1578 00aa 9AB2     	 uxth r2,r3
+ 1579 00ac BB68     	 ldr r3,[r7,#8]
+ 1580 00ae 1A80     	 strh r2,[r3]
+ 1581 00b0 35E0     	 b .L82
+ 1582              	.L81:
+ 419:../soes/esc_coe.c ****       }
+ 420:../soes/esc_coe.c ****       else
+ 421:../soes/esc_coe.c ****       {
+ 422:../soes/esc_coe.c ****          /* last segment */
+ 423:../soes/esc_coe.c ****          ESCvar.segmented = 0;
+ 1583              	 .loc 1 423 0
+ 1584 00b2 2A4B     	 ldr r3,.L84+4
+ 1585 00b4 0022     	 movs r2,#0
+ 1586 00b6 83F89520 	 strb r2,[r3,#149]
+ 424:../soes/esc_coe.c ****          ESCvar.frags = 0;
+ 1587              	 .loc 1 424 0
+ 1588 00ba 284B     	 ldr r3,.L84+4
+ 1589 00bc 0022     	 movs r2,#0
+ 1590 00be 83F89C20 	 strb r2,[r3,#156]
+ 1591 00c2 0022     	 movs r2,#0
+ 1592 00c4 83F89D20 	 strb r2,[r3,#157]
+ 425:../soes/esc_coe.c ****          ESCvar.fragsleft = 0;
+ 1593              	 .loc 1 425 0
+ 1594 00c8 244B     	 ldr r3,.L84+4
+ 1595 00ca 0022     	 movs r2,#0
+ 1596 00cc 83F89E20 	 strb r2,[r3,#158]
+ 1597 00d0 0022     	 movs r2,#0
+ 1598 00d2 83F89F20 	 strb r2,[r3,#159]
+ 426:../soes/esc_coe.c ****          coeres->command += COE_COMMAND_LASTSEGMENTBIT;
+ 1599              	 .loc 1 426 0
+ 1600 00d6 BB68     	 ldr r3,[r7,#8]
+ 1601 00d8 1B7A     	 ldrb r3,[r3,#8]
+ 1602 00da 0133     	 adds r3,r3,#1
+ 1603 00dc DAB2     	 uxtb r2,r3
+ 1604 00de BB68     	 ldr r3,[r7,#8]
+ 1605 00e0 1A72     	 strb r2,[r3,#8]
+ 427:../soes/esc_coe.c ****          if (size >= 7)
+ 1606              	 .loc 1 427 0
+ 1607 00e2 7B69     	 ldr r3,[r7,#20]
+ 1608 00e4 062B     	 cmp r3,#6
+ 1609 00e6 06D9     	 bls .L83
+ 428:../soes/esc_coe.c ****          {
+ 429:../soes/esc_coe.c ****             coeres->mbxheader.length = htoes (COE_SEGMENTHEADERSIZE + size);
+ 1610              	 .loc 1 429 0
+ 1611 00e8 7B69     	 ldr r3,[r7,#20]
+ 1612 00ea 9BB2     	 uxth r3,r3
+ 1613 00ec 0333     	 adds r3,r3,#3
+ 1614 00ee 9AB2     	 uxth r2,r3
+ 1615 00f0 BB68     	 ldr r3,[r7,#8]
+ 1616 00f2 1A80     	 strh r2,[r3]
+ 1617 00f4 13E0     	 b .L82
+ 1618              	.L83:
+ 430:../soes/esc_coe.c ****          }
+ 431:../soes/esc_coe.c ****          else
+ 432:../soes/esc_coe.c ****          {
+ 433:../soes/esc_coe.c ****             coeres->command += (7 - size) << 1;
+ 1619              	 .loc 1 433 0
+ 1620 00f6 BB68     	 ldr r3,[r7,#8]
+ 1621 00f8 1A7A     	 ldrb r2,[r3,#8]
+ 1622 00fa 7B69     	 ldr r3,[r7,#20]
+ 1623 00fc DBB2     	 uxtb r3,r3
+ 1624 00fe C3F10703 	 rsb r3,r3,#7
+ 1625 0102 DBB2     	 uxtb r3,r3
+ 1626 0104 5B00     	 lsls r3,r3,#1
+ 1627 0106 DBB2     	 uxtb r3,r3
+ 1628 0108 1344     	 add r3,r3,r2
+ 1629 010a DAB2     	 uxtb r2,r3
+ 1630 010c BB68     	 ldr r3,[r7,#8]
+ 1631 010e 1A72     	 strb r2,[r3,#8]
+ 434:../soes/esc_coe.c ****             coeres->mbxheader.length = htoes (COE_DEFAULTLENGTH);
+ 1632              	 .loc 1 434 0
+ 1633 0110 BB68     	 ldr r3,[r7,#8]
+ 1634 0112 0022     	 movs r2,#0
+ 1635 0114 42F00A02 	 orr r2,r2,#10
+ 1636 0118 1A70     	 strb r2,[r3]
+ 1637 011a 0022     	 movs r2,#0
+ 1638 011c 5A70     	 strb r2,[r3,#1]
+ 1639              	.L82:
+ 435:../soes/esc_coe.c ****          }
+ 436:../soes/esc_coe.c ****       }
+ 437:../soes/esc_coe.c ****       copy2mbx ((uint8_t *) ESCvar.data + offset, (&(coeres->command)) + 1, size);        //copy to
+ 1640              	 .loc 1 437 0
+ 1641 011e 0F4B     	 ldr r3,.L84+4
+ 1642 0120 D3F89620 	 ldr r2,[r3,#150]
+ 1643 0124 7B68     	 ldr r3,[r7,#4]
+ 1644 0126 D118     	 adds r1,r2,r3
+ 1645 0128 BB68     	 ldr r3,[r7,#8]
+ 1646 012a 0833     	 adds r3,r3,#8
+ 1647 012c 5A1C     	 adds r2,r3,#1
+ 1648 012e 7B69     	 ldr r3,[r7,#20]
+ 1649 0130 9BB2     	 uxth r3,r3
+ 1650 0132 0846     	 mov r0,r1
+ 1651 0134 1146     	 mov r1,r2
+ 1652 0136 1A46     	 mov r2,r3
+ 1653 0138 FFF7FEFF 	 bl copy2mbx
+ 438:../soes/esc_coe.c **** 
+ 439:../soes/esc_coe.c ****       MBXcontrol[MBXout].state = MBXstate_outreq;
+ 1654              	 .loc 1 439 0
+ 1655 013c FB7B     	 ldrb r3,[r7,#15]
+ 1656 013e 084A     	 ldr r2,.L84+8
+ 1657 0140 0321     	 movs r1,#3
+ 1658 0142 D154     	 strb r1,[r2,r3]
+ 1659              	.L80:
+ 440:../soes/esc_coe.c ****    }
+ 441:../soes/esc_coe.c ****    MBXcontrol[0].state = MBXstate_idle;
+ 1660              	 .loc 1 441 0
+ 1661 0144 064B     	 ldr r3,.L84+8
+ 1662 0146 0022     	 movs r2,#0
+ 1663 0148 1A70     	 strb r2,[r3]
+ 442:../soes/esc_coe.c ****    ESCvar.xoe = 0;
+ 1664              	 .loc 1 442 0
+ 1665 014a 044B     	 ldr r3,.L84+4
+ 1666 014c 0022     	 movs r2,#0
+ 1667 014e 83F89220 	 strb r2,[r3,#146]
+ 443:../soes/esc_coe.c **** }
+ 1668              	 .loc 1 443 0
+ 1669 0152 1837     	 adds r7,r7,#24
+ 1670              	.LCFI45:
+ 1671              	 .cfi_def_cfa_offset 8
+ 1672 0154 BD46     	 mov sp,r7
+ 1673              	.LCFI46:
+ 1674              	 .cfi_def_cfa_register 13
+ 1675              	 
+ 1676 0156 80BD     	 pop {r7,pc}
+ 1677              	.L85:
+ 1678              	 .align 2
+ 1679              	.L84:
+ 1680 0158 00000000 	 .word MBX
+ 1681 015c 00000000 	 .word ESCvar
+ 1682 0160 00000000 	 .word MBXcontrol
+ 1683              	 .cfi_endproc
+ 1684              	.LFE8:
+ 1686              	 .section .text.SDO_download,"ax",%progbits
+ 1687              	 .align 2
+ 1688              	 .global SDO_download
+ 1689              	 .thumb
+ 1690              	 .thumb_func
+ 1692              	SDO_download:
+ 1693              	.LFB9:
+ 444:../soes/esc_coe.c **** 
+ 445:../soes/esc_coe.c **** 
+ 446:../soes/esc_coe.c **** /** Function for handling incoming requested SDO Download, validating the
+ 447:../soes/esc_coe.c ****  * request and sending an response. On error an SDO Abort will be sent.
+ 448:../soes/esc_coe.c ****  */
+ 449:../soes/esc_coe.c **** void SDO_download (void)
+ 450:../soes/esc_coe.c **** {
+ 1694              	 .loc 1 450 0
+ 1695              	 .cfi_startproc
+ 1696              	 
+ 1697              	 
+ 1698 0000 80B5     	 push {r7,lr}
+ 1699              	.LCFI47:
+ 1700              	 .cfi_def_cfa_offset 8
+ 1701              	 .cfi_offset 7,-8
+ 1702              	 .cfi_offset 14,-4
+ 1703 0002 88B0     	 sub sp,sp,#32
+ 1704              	.LCFI48:
+ 1705              	 .cfi_def_cfa_offset 40
+ 1706 0004 00AF     	 add r7,sp,#0
+ 1707              	.LCFI49:
+ 1708              	 .cfi_def_cfa_register 7
+ 451:../soes/esc_coe.c ****    _COEsdo *coesdo, *coeres;
+ 452:../soes/esc_coe.c ****    uint16_t index;
+ 453:../soes/esc_coe.c ****    uint8_t subindex;
+ 454:../soes/esc_coe.c ****    int16_t nidx, nsub;
+ 455:../soes/esc_coe.c ****    uint8_t MBXout;
+ 456:../soes/esc_coe.c ****    uint16_t size, actsize;
+ 457:../soes/esc_coe.c ****    const _objd *objd;
+ 458:../soes/esc_coe.c ****    uint32_t *mbxdata;
+ 459:../soes/esc_coe.c ****    coesdo = (_COEsdo *) &MBX[0];
+ 1709              	 .loc 1 459 0
+ 1710 0006 8D4B     	 ldr r3,.L101
+ 1711 0008 7B61     	 str r3,[r7,#20]
+ 460:../soes/esc_coe.c ****    index = etohs (coesdo->index);
+ 1712              	 .loc 1 460 0
+ 1713 000a 7B69     	 ldr r3,[r7,#20]
+ 1714 000c 5A7A     	 ldrb r2,[r3,#9]
+ 1715 000e 9B7A     	 ldrb r3,[r3,#10]
+ 1716 0010 1B02     	 lsls r3,r3,#8
+ 1717 0012 1343     	 orrs r3,r3,r2
+ 1718 0014 7B82     	 strh r3,[r7,#18]
+ 461:../soes/esc_coe.c ****    subindex = coesdo->subindex;
+ 1719              	 .loc 1 461 0
+ 1720 0016 7B69     	 ldr r3,[r7,#20]
+ 1721 0018 DB7A     	 ldrb r3,[r3,#11]
+ 1722 001a 7B74     	 strb r3,[r7,#17]
+ 462:../soes/esc_coe.c ****    nidx = SDO_findobject (index);
+ 1723              	 .loc 1 462 0
+ 1724 001c 7B8A     	 ldrh r3,[r7,#18]
+ 1725 001e 1846     	 mov r0,r3
+ 1726 0020 FFF7FEFF 	 bl SDO_findobject
+ 1727 0024 0346     	 mov r3,r0
+ 1728 0026 FB81     	 strh r3,[r7,#14]
+ 463:../soes/esc_coe.c ****    if (nidx >= 0)
+ 1729              	 .loc 1 463 0
+ 1730 0028 B7F90E30 	 ldrsh r3,[r7,#14]
+ 1731 002c 002B     	 cmp r3,#0
+ 1732 002e C0F2F480 	 blt .L87
+ 464:../soes/esc_coe.c ****    {
+ 465:../soes/esc_coe.c ****       nsub = SDO_findsubindex (nidx, subindex);
+ 1733              	 .loc 1 465 0
+ 1734 0032 B7F90E20 	 ldrsh r2,[r7,#14]
+ 1735 0036 7B7C     	 ldrb r3,[r7,#17]
+ 1736 0038 1046     	 mov r0,r2
+ 1737 003a 1946     	 mov r1,r3
+ 1738 003c FFF7FEFF 	 bl SDO_findsubindex
+ 1739 0040 0346     	 mov r3,r0
+ 1740 0042 BB81     	 strh r3,[r7,#12]
+ 466:../soes/esc_coe.c ****       if (nsub >= 0)
+ 1741              	 .loc 1 466 0
+ 1742 0044 B7F90C30 	 ldrsh r3,[r7,#12]
+ 1743 0048 002B     	 cmp r3,#0
+ 1744 004a C0F2DE80 	 blt .L88
+ 467:../soes/esc_coe.c ****       {
+ 468:../soes/esc_coe.c ****          objd = SDOobjects[nidx].objdesc;
+ 1745              	 .loc 1 468 0
+ 1746 004e B7F90E20 	 ldrsh r2,[r7,#14]
+ 1747 0052 7B49     	 ldr r1,.L101+4
+ 1748 0054 1346     	 mov r3,r2
+ 1749 0056 DB00     	 lsls r3,r3,#3
+ 1750 0058 9B1A     	 subs r3,r3,r2
+ 1751 005a 5B00     	 lsls r3,r3,#1
+ 1752 005c 0B44     	 add r3,r3,r1
+ 1753 005e 0833     	 adds r3,r3,#8
+ 1754 0060 D3F80230 	 ldr r3,[r3,#2]
+ 1755 0064 BB60     	 str r3,[r7,#8]
+ 469:../soes/esc_coe.c ****          if (((objd + nsub)->access == ATYPE_RW) ||
+ 1756              	 .loc 1 469 0
+ 1757 0066 B7F90C20 	 ldrsh r2,[r7,#12]
+ 1758 006a 1346     	 mov r3,r2
+ 1759 006c 9B00     	 lsls r3,r3,#2
+ 1760 006e 1344     	 add r3,r3,r2
+ 1761 0070 9B00     	 lsls r3,r3,#2
+ 1762 0072 1A46     	 mov r2,r3
+ 1763 0074 BB68     	 ldr r3,[r7,#8]
+ 1764 0076 1344     	 add r3,r3,r2
+ 1765 0078 DB88     	 ldrh r3,[r3,#6]
+ 1766 007a 9BB2     	 uxth r3,r3
+ 1767 007c 3F2B     	 cmp r3,#63
+ 1768 007e 16D0     	 beq .L89
+ 470:../soes/esc_coe.c ****              (((objd + nsub)->access == ATYPE_RWpre)
+ 1769              	 .loc 1 470 0 discriminator 1
+ 1770 0080 B7F90C20 	 ldrsh r2,[r7,#12]
+ 1771 0084 1346     	 mov r3,r2
+ 1772 0086 9B00     	 lsls r3,r3,#2
+ 1773 0088 1344     	 add r3,r3,r2
+ 1774 008a 9B00     	 lsls r3,r3,#2
+ 1775 008c 1A46     	 mov r2,r3
+ 1776 008e BB68     	 ldr r3,[r7,#8]
+ 1777 0090 1344     	 add r3,r3,r2
+ 1778 0092 DB88     	 ldrh r3,[r3,#6]
+ 1779 0094 9BB2     	 uxth r3,r3
+ 469:../soes/esc_coe.c ****          if (((objd + nsub)->access == ATYPE_RW) ||
+ 1780              	 .loc 1 469 0 discriminator 1
+ 1781 0096 0F2B     	 cmp r3,#15
+ 1782 0098 40F09980 	 bne .L90
+ 471:../soes/esc_coe.c ****               && ((ESCvar.ALstatus & 0x0f) == ESCpreop)))
+ 1783              	 .loc 1 471 0
+ 1784 009c 694B     	 ldr r3,.L101+8
+ 1785 009e B3F88430 	 ldrh r3,[r3,#132]
+ 1786 00a2 9BB2     	 uxth r3,r3
+ 1787 00a4 03F00F03 	 and r3,r3,#15
+ 1788 00a8 022B     	 cmp r3,#2
+ 1789 00aa 40F09080 	 bne .L90
+ 1790              	.L89:
+ 472:../soes/esc_coe.c ****          {
+ 473:../soes/esc_coe.c ****             /* expedited? */
+ 474:../soes/esc_coe.c ****             if (coesdo->command & COE_EXPEDITED_INDICATOR)
+ 1791              	 .loc 1 474 0
+ 1792 00ae 7B69     	 ldr r3,[r7,#20]
+ 1793 00b0 1B7A     	 ldrb r3,[r3,#8]
+ 1794 00b2 03F00203 	 and r3,r3,#2
+ 1795 00b6 002B     	 cmp r3,#0
+ 1796 00b8 0CD0     	 beq .L91
+ 475:../soes/esc_coe.c ****             {
+ 476:../soes/esc_coe.c ****                size = 4 - ((coesdo->command & 0x0c) >> 2);
+ 1797              	 .loc 1 476 0
+ 1798 00ba 7B69     	 ldr r3,[r7,#20]
+ 1799 00bc 1B7A     	 ldrb r3,[r3,#8]
+ 1800 00be 03F00C03 	 and r3,r3,#12
+ 1801 00c2 9B10     	 asrs r3,r3,#2
+ 1802 00c4 9BB2     	 uxth r3,r3
+ 1803 00c6 C3F10403 	 rsb r3,r3,#4
+ 1804 00ca FB83     	 strh r3,[r7,#30]
+ 477:../soes/esc_coe.c ****                mbxdata = &(coesdo->size);
+ 1805              	 .loc 1 477 0
+ 1806 00cc 7B69     	 ldr r3,[r7,#20]
+ 1807 00ce 0C33     	 adds r3,r3,#12
+ 1808 00d0 BB61     	 str r3,[r7,#24]
+ 1809 00d2 06E0     	 b .L92
+ 1810              	.L91:
+ 478:../soes/esc_coe.c ****             }
+ 479:../soes/esc_coe.c ****             else
+ 480:../soes/esc_coe.c ****             {
+ 481:../soes/esc_coe.c ****                /* normal upload */
+ 482:../soes/esc_coe.c ****                size = (etohl (coesdo->size) & 0xffff);
+ 1811              	 .loc 1 482 0
+ 1812 00d4 7B69     	 ldr r3,[r7,#20]
+ 1813 00d6 DB68     	 ldr r3,[r3,#12]
+ 1814 00d8 FB83     	 strh r3,[r7,#30]
+ 483:../soes/esc_coe.c ****                mbxdata = (&(coesdo->size)) + 1;
+ 1815              	 .loc 1 483 0
+ 1816 00da 7B69     	 ldr r3,[r7,#20]
+ 1817 00dc 0C33     	 adds r3,r3,#12
+ 1818 00de 0433     	 adds r3,r3,#4
+ 1819 00e0 BB61     	 str r3,[r7,#24]
+ 1820              	.L92:
+ 484:../soes/esc_coe.c ****             }
+ 485:../soes/esc_coe.c ****             actsize = ((objd + nsub)->bitlength + 7) >> 3;
+ 1821              	 .loc 1 485 0
+ 1822 00e2 B7F90C20 	 ldrsh r2,[r7,#12]
+ 1823 00e6 1346     	 mov r3,r2
+ 1824 00e8 9B00     	 lsls r3,r3,#2
+ 1825 00ea 1344     	 add r3,r3,r2
+ 1826 00ec 9B00     	 lsls r3,r3,#2
+ 1827 00ee 1A46     	 mov r2,r3
+ 1828 00f0 BB68     	 ldr r3,[r7,#8]
+ 1829 00f2 1344     	 add r3,r3,r2
+ 1830 00f4 9B88     	 ldrh r3,[r3,#4]
+ 1831 00f6 9BB2     	 uxth r3,r3
+ 1832 00f8 0733     	 adds r3,r3,#7
+ 1833 00fa DB10     	 asrs r3,r3,#3
+ 1834 00fc FB80     	 strh r3,[r7,#6]
+ 486:../soes/esc_coe.c ****             if (actsize == size)
+ 1835              	 .loc 1 486 0
+ 1836 00fe FA88     	 ldrh r2,[r7,#6]
+ 1837 0100 FB8B     	 ldrh r3,[r7,#30]
+ 1838 0102 9A42     	 cmp r2,r3
+ 1839 0104 5AD1     	 bne .L93
+ 487:../soes/esc_coe.c ****             {
+ 488:../soes/esc_coe.c ****                if (ESC_pre_objecthandler (index, subindex))
+ 1840              	 .loc 1 488 0
+ 1841 0106 7A8A     	 ldrh r2,[r7,#18]
+ 1842 0108 7B7C     	 ldrb r3,[r7,#17]
+ 1843 010a 1046     	 mov r0,r2
+ 1844 010c 1946     	 mov r1,r3
+ 1845 010e FFF7FEFF 	 bl ESC_pre_objecthandler
+ 1846 0112 0346     	 mov r3,r0
+ 1847 0114 002B     	 cmp r3,#0
+ 1848 0116 59D0     	 beq .L96
+ 489:../soes/esc_coe.c ****                {
+ 490:../soes/esc_coe.c ****                   copy2mbx (mbxdata, (objd + nsub)->data, size);
+ 1849              	 .loc 1 490 0
+ 1850 0118 B7F90C20 	 ldrsh r2,[r7,#12]
+ 1851 011c 1346     	 mov r3,r2
+ 1852 011e 9B00     	 lsls r3,r3,#2
+ 1853 0120 1344     	 add r3,r3,r2
+ 1854 0122 9B00     	 lsls r3,r3,#2
+ 1855 0124 1A46     	 mov r2,r3
+ 1856 0126 BB68     	 ldr r3,[r7,#8]
+ 1857 0128 1344     	 add r3,r3,r2
+ 1858 012a 1A69     	 ldr r2,[r3,#16]
+ 1859 012c FB8B     	 ldrh r3,[r7,#30]
+ 1860 012e B869     	 ldr r0,[r7,#24]
+ 1861 0130 1146     	 mov r1,r2
+ 1862 0132 1A46     	 mov r2,r3
+ 1863 0134 FFF7FEFF 	 bl copy2mbx
+ 491:../soes/esc_coe.c ****                   MBXout = ESC_claimbuffer ();
+ 1864              	 .loc 1 491 0
+ 1865 0138 FFF7FEFF 	 bl ESC_claimbuffer
+ 1866 013c 0346     	 mov r3,r0
+ 1867 013e 7B71     	 strb r3,[r7,#5]
+ 492:../soes/esc_coe.c ****                   if (MBXout)
+ 1868              	 .loc 1 492 0
+ 1869 0140 7B79     	 ldrb r3,[r7,#5]
+ 1870 0142 002B     	 cmp r3,#0
+ 1871 0144 33D0     	 beq .L95
+ 493:../soes/esc_coe.c ****                   {
+ 494:../soes/esc_coe.c ****                      coeres = (_COEsdo *) &MBX[MBXout * ESC_MBXSIZE];
+ 1872              	 .loc 1 494 0
+ 1873 0146 7B79     	 ldrb r3,[r7,#5]
+ 1874 0148 3E4A     	 ldr r2,.L101+8
+ 1875 014a D2F86D20 	 ldr r2,[r2,#109]
+ 1876 014e 02FB03F3 	 mul r3,r2,r3
+ 1877 0152 3A4A     	 ldr r2,.L101
+ 1878 0154 1344     	 add r3,r3,r2
+ 1879 0156 3B60     	 str r3,[r7]
+ 495:../soes/esc_coe.c ****                      coeres->mbxheader.length = htoes (COE_DEFAULTLENGTH);
+ 1880              	 .loc 1 495 0
+ 1881 0158 3B68     	 ldr r3,[r7]
+ 1882 015a 0022     	 movs r2,#0
+ 1883 015c 42F00A02 	 orr r2,r2,#10
+ 1884 0160 1A70     	 strb r2,[r3]
+ 1885 0162 0022     	 movs r2,#0
+ 1886 0164 5A70     	 strb r2,[r3,#1]
+ 496:../soes/esc_coe.c ****                      coeres->mbxheader.mbxtype = MBXCOE;
+ 1887              	 .loc 1 496 0
+ 1888 0166 3A68     	 ldr r2,[r7]
+ 1889 0168 5379     	 ldrb r3,[r2,#5]
+ 1890 016a 0321     	 movs r1,#3
+ 1891 016c 61F30303 	 bfi r3,r1,#0,#4
+ 1892 0170 5371     	 strb r3,[r2,#5]
+ 497:../soes/esc_coe.c ****                      coeres->coeheader.numberservice =
+ 1893              	 .loc 1 497 0
+ 1894 0172 3B68     	 ldr r3,[r7]
+ 1895 0174 0022     	 movs r2,#0
+ 1896 0176 9A71     	 strb r2,[r3,#6]
+ 1897 0178 0022     	 movs r2,#0
+ 1898 017a 42F03002 	 orr r2,r2,#48
+ 1899 017e DA71     	 strb r2,[r3,#7]
+ 498:../soes/esc_coe.c ****                         htoes ((0 & 0x01f) | (COE_SDORESPONSE << 12));
+ 499:../soes/esc_coe.c ****                      coeres->index = htoes (index);
+ 1900              	 .loc 1 499 0
+ 1901 0180 3B68     	 ldr r3,[r7]
+ 1902 0182 7A8A     	 ldrh r2,[r7,#18]
+ 1903 0184 A3F80920 	 strh r2,[r3,#9]
+ 500:../soes/esc_coe.c ****                      coeres->subindex = subindex;
+ 1904              	 .loc 1 500 0
+ 1905 0188 3B68     	 ldr r3,[r7]
+ 1906 018a 7A7C     	 ldrb r2,[r7,#17]
+ 1907 018c DA72     	 strb r2,[r3,#11]
+ 501:../soes/esc_coe.c ****                      coeres->command = COE_COMMAND_DOWNLOADRESPONSE;
+ 1908              	 .loc 1 501 0
+ 1909 018e 3B68     	 ldr r3,[r7]
+ 1910 0190 6022     	 movs r2,#96
+ 1911 0192 1A72     	 strb r2,[r3,#8]
+ 502:../soes/esc_coe.c ****                      coeres->size = htoel (0);
+ 1912              	 .loc 1 502 0
+ 1913 0194 3B68     	 ldr r3,[r7]
+ 1914 0196 0022     	 movs r2,#0
+ 1915 0198 1A73     	 strb r2,[r3,#12]
+ 1916 019a 0022     	 movs r2,#0
+ 1917 019c 5A73     	 strb r2,[r3,#13]
+ 1918 019e 0022     	 movs r2,#0
+ 1919 01a0 9A73     	 strb r2,[r3,#14]
+ 1920 01a2 0022     	 movs r2,#0
+ 1921 01a4 DA73     	 strb r2,[r3,#15]
+ 503:../soes/esc_coe.c ****                      MBXcontrol[MBXout].state = MBXstate_outreq;
+ 1922              	 .loc 1 503 0
+ 1923 01a6 7B79     	 ldrb r3,[r7,#5]
+ 1924 01a8 274A     	 ldr r2,.L101+12
+ 1925 01aa 0321     	 movs r1,#3
+ 1926 01ac D154     	 strb r1,[r2,r3]
+ 1927              	.L95:
+ 504:../soes/esc_coe.c ****                   }
+ 505:../soes/esc_coe.c ****                  /* external object write handler */
+ 506:../soes/esc_coe.c ****                  ESC_objecthandler (index, subindex);
+ 1928              	 .loc 1 506 0
+ 1929 01ae 7A8A     	 ldrh r2,[r7,#18]
+ 1930 01b0 7B7C     	 ldrb r3,[r7,#17]
+ 1931 01b2 1046     	 mov r0,r2
+ 1932 01b4 1946     	 mov r1,r3
+ 1933 01b6 FFF7FEFF 	 bl ESC_objecthandler
+ 486:../soes/esc_coe.c ****             {
+ 1934              	 .loc 1 486 0
+ 1935 01ba 25E0     	 b .L97
+ 1936              	.L93:
+ 507:../soes/esc_coe.c ****                }
+ 508:../soes/esc_coe.c ****             }
+ 509:../soes/esc_coe.c ****             else
+ 510:../soes/esc_coe.c ****             {
+ 511:../soes/esc_coe.c ****                SDO_abort (index, subindex, ABORT_TYPEMISMATCH);
+ 1937              	 .loc 1 511 0
+ 1938 01bc 7A8A     	 ldrh r2,[r7,#18]
+ 1939 01be 7B7C     	 ldrb r3,[r7,#17]
+ 1940 01c0 1046     	 mov r0,r2
+ 1941 01c2 1946     	 mov r1,r3
+ 1942 01c4 214A     	 ldr r2,.L101+16
+ 1943 01c6 FFF7FEFF 	 bl SDO_abort
+ 486:../soes/esc_coe.c ****             {
+ 1944              	 .loc 1 486 0
+ 1945 01ca 1DE0     	 b .L97
+ 1946              	.L96:
+ 486:../soes/esc_coe.c ****             {
+ 1947              	 .loc 1 486 0 is_stmt 0 discriminator 1
+ 1948 01cc 1CE0     	 b .L97
+ 1949              	.L90:
+ 512:../soes/esc_coe.c ****             }
+ 513:../soes/esc_coe.c ****          }
+ 514:../soes/esc_coe.c ****          else
+ 515:../soes/esc_coe.c ****          {
+ 516:../soes/esc_coe.c ****             if ((objd + nsub)->access == ATYPE_RWpre)
+ 1950              	 .loc 1 516 0 is_stmt 1
+ 1951 01ce B7F90C20 	 ldrsh r2,[r7,#12]
+ 1952 01d2 1346     	 mov r3,r2
+ 1953 01d4 9B00     	 lsls r3,r3,#2
+ 1954 01d6 1344     	 add r3,r3,r2
+ 1955 01d8 9B00     	 lsls r3,r3,#2
+ 1956 01da 1A46     	 mov r2,r3
+ 1957 01dc BB68     	 ldr r3,[r7,#8]
+ 1958 01de 1344     	 add r3,r3,r2
+ 1959 01e0 DB88     	 ldrh r3,[r3,#6]
+ 1960 01e2 9BB2     	 uxth r3,r3
+ 1961 01e4 0F2B     	 cmp r3,#15
+ 1962 01e6 07D1     	 bne .L98
+ 517:../soes/esc_coe.c ****             {
+ 518:../soes/esc_coe.c ****                SDO_abort (index, subindex, ABORT_NOTINTHISSTATE);
+ 1963              	 .loc 1 518 0
+ 1964 01e8 7A8A     	 ldrh r2,[r7,#18]
+ 1965 01ea 7B7C     	 ldrb r3,[r7,#17]
+ 1966 01ec 1046     	 mov r0,r2
+ 1967 01ee 1946     	 mov r1,r3
+ 1968 01f0 174A     	 ldr r2,.L101+20
+ 1969 01f2 FFF7FEFF 	 bl SDO_abort
+ 1970 01f6 17E0     	 b .L100
+ 1971              	.L98:
+ 519:../soes/esc_coe.c ****             }
+ 520:../soes/esc_coe.c ****             else
+ 521:../soes/esc_coe.c ****             {
+ 522:../soes/esc_coe.c ****                SDO_abort (index, subindex, ABORT_READONLY);
+ 1972              	 .loc 1 522 0
+ 1973 01f8 7A8A     	 ldrh r2,[r7,#18]
+ 1974 01fa 7B7C     	 ldrb r3,[r7,#17]
+ 1975 01fc 1046     	 mov r0,r2
+ 1976 01fe 1946     	 mov r1,r3
+ 1977 0200 144A     	 ldr r2,.L101+24
+ 1978 0202 FFF7FEFF 	 bl SDO_abort
+ 1979 0206 0FE0     	 b .L100
+ 1980              	.L97:
+ 1981 0208 0EE0     	 b .L100
+ 1982              	.L88:
+ 523:../soes/esc_coe.c ****             }
+ 524:../soes/esc_coe.c ****          }
+ 525:../soes/esc_coe.c ****       }
+ 526:../soes/esc_coe.c ****       else
+ 527:../soes/esc_coe.c ****       {
+ 528:../soes/esc_coe.c ****          SDO_abort (index, subindex, ABORT_NOSUBINDEX);
+ 1983              	 .loc 1 528 0
+ 1984 020a 7A8A     	 ldrh r2,[r7,#18]
+ 1985 020c 7B7C     	 ldrb r3,[r7,#17]
+ 1986 020e 1046     	 mov r0,r2
+ 1987 0210 1946     	 mov r1,r3
+ 1988 0212 114A     	 ldr r2,.L101+28
+ 1989 0214 FFF7FEFF 	 bl SDO_abort
+ 1990 0218 06E0     	 b .L100
+ 1991              	.L87:
+ 529:../soes/esc_coe.c ****       }
+ 530:../soes/esc_coe.c ****    }
+ 531:../soes/esc_coe.c ****    else
+ 532:../soes/esc_coe.c ****    {
+ 533:../soes/esc_coe.c ****       SDO_abort (index, subindex, ABORT_NOOBJECT);
+ 1992              	 .loc 1 533 0
+ 1993 021a 7A8A     	 ldrh r2,[r7,#18]
+ 1994 021c 7B7C     	 ldrb r3,[r7,#17]
+ 1995 021e 1046     	 mov r0,r2
+ 1996 0220 1946     	 mov r1,r3
+ 1997 0222 0E4A     	 ldr r2,.L101+32
+ 1998 0224 FFF7FEFF 	 bl SDO_abort
+ 1999              	.L100:
+ 534:../soes/esc_coe.c ****    }
+ 535:../soes/esc_coe.c ****    MBXcontrol[0].state = MBXstate_idle;
+ 2000              	 .loc 1 535 0
+ 2001 0228 074B     	 ldr r3,.L101+12
+ 2002 022a 0022     	 movs r2,#0
+ 2003 022c 1A70     	 strb r2,[r3]
+ 536:../soes/esc_coe.c ****    ESCvar.xoe = 0;
+ 2004              	 .loc 1 536 0
+ 2005 022e 054B     	 ldr r3,.L101+8
+ 2006 0230 0022     	 movs r2,#0
+ 2007 0232 83F89220 	 strb r2,[r3,#146]
+ 537:../soes/esc_coe.c **** }
+ 2008              	 .loc 1 537 0
+ 2009 0236 2037     	 adds r7,r7,#32
+ 2010              	.LCFI50:
+ 2011              	 .cfi_def_cfa_offset 8
+ 2012 0238 BD46     	 mov sp,r7
+ 2013              	.LCFI51:
+ 2014              	 .cfi_def_cfa_register 13
+ 2015              	 
+ 2016 023a 80BD     	 pop {r7,pc}
+ 2017              	.L102:
+ 2018              	 .align 2
+ 2019              	.L101:
+ 2020 023c 00000000 	 .word MBX
+ 2021 0240 00000000 	 .word SDOobjects
+ 2022 0244 00000000 	 .word ESCvar
+ 2023 0248 00000000 	 .word MBXcontrol
+ 2024 024c 10000706 	 .word 101122064
+ 2025 0250 22000008 	 .word 134217762
+ 2026 0254 02000106 	 .word 100728834
+ 2027 0258 11000906 	 .word 101253137
+ 2028 025c 00000206 	 .word 100794368
+ 2029              	 .cfi_endproc
+ 2030              	.LFE9:
+ 2032              	 .section .text.SDO_infoerror,"ax",%progbits
+ 2033              	 .align 2
+ 2034              	 .global SDO_infoerror
+ 2035              	 .thumb
+ 2036              	 .thumb_func
+ 2038              	SDO_infoerror:
+ 2039              	.LFB10:
+ 538:../soes/esc_coe.c **** 
+ 539:../soes/esc_coe.c **** /** Function for sending an SDO Info Error reply.
+ 540:../soes/esc_coe.c ****  *
+ 541:../soes/esc_coe.c ****  * @param[in] abortcode  = = abort code to send in reply
+ 542:../soes/esc_coe.c ****  */
+ 543:../soes/esc_coe.c **** void SDO_infoerror (uint32_t abortcode)
+ 544:../soes/esc_coe.c **** {
+ 2040              	 .loc 1 544 0
+ 2041              	 .cfi_startproc
+ 2042              	 
+ 2043              	 
+ 2044 0000 80B5     	 push {r7,lr}
+ 2045              	.LCFI52:
+ 2046              	 .cfi_def_cfa_offset 8
+ 2047              	 .cfi_offset 7,-8
+ 2048              	 .cfi_offset 14,-4
+ 2049 0002 84B0     	 sub sp,sp,#16
+ 2050              	.LCFI53:
+ 2051              	 .cfi_def_cfa_offset 24
+ 2052 0004 00AF     	 add r7,sp,#0
+ 2053              	.LCFI54:
+ 2054              	 .cfi_def_cfa_register 7
+ 2055 0006 7860     	 str r0,[r7,#4]
+ 545:../soes/esc_coe.c ****    uint8_t MBXout;
+ 546:../soes/esc_coe.c ****    _COEobjdesc *coeres;
+ 547:../soes/esc_coe.c ****    MBXout = ESC_claimbuffer ();
+ 2056              	 .loc 1 547 0
+ 2057 0008 FFF7FEFF 	 bl ESC_claimbuffer
+ 2058 000c 0346     	 mov r3,r0
+ 2059 000e FB73     	 strb r3,[r7,#15]
+ 548:../soes/esc_coe.c ****    if (MBXout)
+ 2060              	 .loc 1 548 0
+ 2061 0010 FB7B     	 ldrb r3,[r7,#15]
+ 2062 0012 002B     	 cmp r3,#0
+ 2063 0014 3ED0     	 beq .L103
+ 549:../soes/esc_coe.c ****    {
+ 550:../soes/esc_coe.c ****       coeres = (_COEobjdesc *) &MBX[MBXout * ESC_MBXSIZE];
+ 2064              	 .loc 1 550 0
+ 2065 0016 FB7B     	 ldrb r3,[r7,#15]
+ 2066 0018 204A     	 ldr r2,.L105
+ 2067 001a D2F86D20 	 ldr r2,[r2,#109]
+ 2068 001e 02FB03F3 	 mul r3,r2,r3
+ 2069 0022 1F4A     	 ldr r2,.L105+4
+ 2070 0024 1344     	 add r3,r3,r2
+ 2071 0026 BB60     	 str r3,[r7,#8]
+ 551:../soes/esc_coe.c ****       coeres->mbxheader.length = htoes ((uint16_t) 0x0a);
+ 2072              	 .loc 1 551 0
+ 2073 0028 BB68     	 ldr r3,[r7,#8]
+ 2074 002a 0022     	 movs r2,#0
+ 2075 002c 42F00A02 	 orr r2,r2,#10
+ 2076 0030 1A70     	 strb r2,[r3]
+ 2077 0032 0022     	 movs r2,#0
+ 2078 0034 5A70     	 strb r2,[r3,#1]
+ 552:../soes/esc_coe.c ****       coeres->mbxheader.mbxtype = MBXCOE;
+ 2079              	 .loc 1 552 0
+ 2080 0036 BA68     	 ldr r2,[r7,#8]
+ 2081 0038 5379     	 ldrb r3,[r2,#5]
+ 2082 003a 0321     	 movs r1,#3
+ 2083 003c 61F30303 	 bfi r3,r1,#0,#4
+ 2084 0040 5371     	 strb r3,[r2,#5]
+ 553:../soes/esc_coe.c ****       coeres->coeheader.numberservice =
+ 2085              	 .loc 1 553 0
+ 2086 0042 BB68     	 ldr r3,[r7,#8]
+ 2087 0044 0022     	 movs r2,#0
+ 2088 0046 9A71     	 strb r2,[r3,#6]
+ 2089 0048 0022     	 movs r2,#0
+ 2090 004a 62F07F02 	 orn r2,r2,#127
+ 2091 004e DA71     	 strb r2,[r3,#7]
+ 554:../soes/esc_coe.c ****          htoes ((0 & 0x01f) | (COE_SDOINFORMATION << 12));
+ 555:../soes/esc_coe.c ****       /* SDO info error request */
+ 556:../soes/esc_coe.c ****       coeres->infoheader.opcode = COE_INFOERROR;
+ 2092              	 .loc 1 556 0
+ 2093 0050 BA68     	 ldr r2,[r7,#8]
+ 2094 0052 137A     	 ldrb r3,[r2,#8]
+ 2095 0054 0721     	 movs r1,#7
+ 2096 0056 61F30603 	 bfi r3,r1,#0,#7
+ 2097 005a 1372     	 strb r3,[r2,#8]
+ 557:../soes/esc_coe.c ****       coeres->infoheader.incomplete = 0;
+ 2098              	 .loc 1 557 0
+ 2099 005c BA68     	 ldr r2,[r7,#8]
+ 2100 005e 137A     	 ldrb r3,[r2,#8]
+ 2101 0060 6FF3C713 	 bfc r3,#7,#1
+ 2102 0064 1372     	 strb r3,[r2,#8]
+ 558:../soes/esc_coe.c ****       coeres->infoheader.reserved = 0x00;
+ 2103              	 .loc 1 558 0
+ 2104 0066 BB68     	 ldr r3,[r7,#8]
+ 2105 0068 0022     	 movs r2,#0
+ 2106 006a 5A72     	 strb r2,[r3,#9]
+ 559:../soes/esc_coe.c ****       coeres->infoheader.fragmentsleft = 0;
+ 2107              	 .loc 1 559 0
+ 2108 006c BB68     	 ldr r3,[r7,#8]
+ 2109 006e 0022     	 movs r2,#0
+ 2110 0070 9A72     	 strb r2,[r3,#10]
+ 2111 0072 0022     	 movs r2,#0
+ 2112 0074 DA72     	 strb r2,[r3,#11]
+ 560:../soes/esc_coe.c ****       coeres->index = htoel (abortcode);
+ 2113              	 .loc 1 560 0
+ 2114 0076 7B68     	 ldr r3,[r7,#4]
+ 2115 0078 9AB2     	 uxth r2,r3
+ 2116 007a BB68     	 ldr r3,[r7,#8]
+ 2117 007c 9A81     	 strh r2,[r3,#12]
+ 561:../soes/esc_coe.c ****       MBXcontrol[MBXout].state = MBXstate_outreq;
+ 2118              	 .loc 1 561 0
+ 2119 007e FB7B     	 ldrb r3,[r7,#15]
+ 2120 0080 084A     	 ldr r2,.L105+8
+ 2121 0082 0321     	 movs r1,#3
+ 2122 0084 D154     	 strb r1,[r2,r3]
+ 562:../soes/esc_coe.c ****       MBXcontrol[0].state = MBXstate_idle;
+ 2123              	 .loc 1 562 0
+ 2124 0086 074B     	 ldr r3,.L105+8
+ 2125 0088 0022     	 movs r2,#0
+ 2126 008a 1A70     	 strb r2,[r3]
+ 563:../soes/esc_coe.c ****       ESCvar.xoe = 0;
+ 2127              	 .loc 1 563 0
+ 2128 008c 034B     	 ldr r3,.L105
+ 2129 008e 0022     	 movs r2,#0
+ 2130 0090 83F89220 	 strb r2,[r3,#146]
+ 2131              	.L103:
+ 564:../soes/esc_coe.c ****    }
+ 565:../soes/esc_coe.c **** }
+ 2132              	 .loc 1 565 0
+ 2133 0094 1037     	 adds r7,r7,#16
+ 2134              	.LCFI55:
+ 2135              	 .cfi_def_cfa_offset 8
+ 2136 0096 BD46     	 mov sp,r7
+ 2137              	.LCFI56:
+ 2138              	 .cfi_def_cfa_register 13
+ 2139              	 
+ 2140 0098 80BD     	 pop {r7,pc}
+ 2141              	.L106:
+ 2142 009a 00BF     	 .align 2
+ 2143              	.L105:
+ 2144 009c 00000000 	 .word ESCvar
+ 2145 00a0 00000000 	 .word MBX
+ 2146 00a4 00000000 	 .word MBXcontrol
+ 2147              	 .cfi_endproc
+ 2148              	.LFE10:
+ 2150              	 .section .text.SDO_getodlist,"ax",%progbits
+ 2151              	 .align 2
+ 2152              	 .global SDO_getodlist
+ 2153              	 .thumb
+ 2154              	 .thumb_func
+ 2156              	SDO_getodlist:
+ 2157              	.LFB11:
+ 566:../soes/esc_coe.c **** 
+ 567:../soes/esc_coe.c **** #define ODLISTSIZE  ((ESC_MBX1_sml - ESC_MBXHSIZE - sizeof(_COEh) - sizeof(_INFOh) - 2) & 0xfffe)
+ 568:../soes/esc_coe.c **** 
+ 569:../soes/esc_coe.c **** /** Function for handling incoming requested SDO Get OD List, validating the
+ 570:../soes/esc_coe.c ****  * request and sending an response. On error an SDO Info Error will be sent.
+ 571:../soes/esc_coe.c ****  */
+ 572:../soes/esc_coe.c **** void SDO_getodlist (void)
+ 573:../soes/esc_coe.c **** {
+ 2158              	 .loc 1 573 0
+ 2159              	 .cfi_startproc
+ 2160              	 
+ 2161              	 
+ 2162 0000 80B5     	 push {r7,lr}
+ 2163              	.LCFI57:
+ 2164              	 .cfi_def_cfa_offset 8
+ 2165              	 .cfi_offset 7,-8
+ 2166              	 .cfi_offset 14,-4
+ 2167 0002 86B0     	 sub sp,sp,#24
+ 2168              	.LCFI58:
+ 2169              	 .cfi_def_cfa_offset 32
+ 2170 0004 00AF     	 add r7,sp,#0
+ 2171              	.LCFI59:
+ 2172              	 .cfi_def_cfa_register 7
+ 574:../soes/esc_coe.c ****    uint16_t frags;
+ 575:../soes/esc_coe.c ****    uint8_t MBXout = 0;
+ 2173              	 .loc 1 575 0
+ 2174 0006 0023     	 movs r3,#0
+ 2175 0008 FB75     	 strb r3,[r7,#23]
+ 576:../soes/esc_coe.c ****    uint16_t entries = 0;
+ 2176              	 .loc 1 576 0
+ 2177 000a 0023     	 movs r3,#0
+ 2178 000c BB82     	 strh r3,[r7,#20]
+ 577:../soes/esc_coe.c ****    uint16_t i, n;
+ 578:../soes/esc_coe.c ****    uint16_t *p;
+ 579:../soes/esc_coe.c ****    _COEobjdesc *coel, *coer;
+ 580:../soes/esc_coe.c **** 
+ 581:../soes/esc_coe.c ****    while (SDOobjects[entries].index != 0xffff)
+ 2179              	 .loc 1 581 0
+ 2180 000e 02E0     	 b .L108
+ 2181              	.L109:
+ 582:../soes/esc_coe.c ****    {
+ 583:../soes/esc_coe.c ****       entries++;
+ 2182              	 .loc 1 583 0
+ 2183 0010 BB8A     	 ldrh r3,[r7,#20]
+ 2184 0012 0133     	 adds r3,r3,#1
+ 2185 0014 BB82     	 strh r3,[r7,#20]
+ 2186              	.L108:
+ 581:../soes/esc_coe.c ****    {
+ 2187              	 .loc 1 581 0
+ 2188 0016 BA8A     	 ldrh r2,[r7,#20]
+ 2189 0018 8B49     	 ldr r1,.L119
+ 2190 001a 1346     	 mov r3,r2
+ 2191 001c DB00     	 lsls r3,r3,#3
+ 2192 001e 9B1A     	 subs r3,r3,r2
+ 2193 0020 5B00     	 lsls r3,r3,#1
+ 2194 0022 0B44     	 add r3,r3,r1
+ 2195 0024 1B88     	 ldrh r3,[r3]
+ 2196 0026 9BB2     	 uxth r3,r3
+ 2197 0028 4FF6FF72 	 movw r2,#65535
+ 2198 002c 9342     	 cmp r3,r2
+ 2199 002e EFD1     	 bne .L109
+ 584:../soes/esc_coe.c ****    }
+ 585:../soes/esc_coe.c ****    ESCvar.entries = entries;
+ 2200              	 .loc 1 585 0
+ 2201 0030 864B     	 ldr r3,.L119+4
+ 2202 0032 BA8A     	 ldrh r2,[r7,#20]
+ 2203 0034 A3F89A20 	 strh r2,[r3,#154]
+ 586:../soes/esc_coe.c ****    frags = ((entries << 1) + ODLISTSIZE - 1);
+ 2204              	 .loc 1 586 0
+ 2205 0038 BB8A     	 ldrh r3,[r7,#20]
+ 2206 003a 5B00     	 lsls r3,r3,#1
+ 2207 003c 9AB2     	 uxth r2,r3
+ 2208 003e 834B     	 ldr r3,.L119+4
+ 2209 0040 D3F87530 	 ldr r3,[r3,#117]
+ 2210 0044 5B88     	 ldrh r3,[r3,#2]
+ 2211 0046 0E3B     	 subs r3,r3,#14
+ 2212 0048 9BB2     	 uxth r3,r3
+ 2213 004a 23F00103 	 bic r3,r3,#1
+ 2214 004e 9BB2     	 uxth r3,r3
+ 2215 0050 1344     	 add r3,r3,r2
+ 2216 0052 9BB2     	 uxth r3,r3
+ 2217 0054 013B     	 subs r3,r3,#1
+ 2218 0056 7B81     	 strh r3,[r7,#10]
+ 587:../soes/esc_coe.c ****    frags /= ODLISTSIZE;
+ 2219              	 .loc 1 587 0
+ 2220 0058 7A89     	 ldrh r2,[r7,#10]
+ 2221 005a 7C4B     	 ldr r3,.L119+4
+ 2222 005c D3F87530 	 ldr r3,[r3,#117]
+ 2223 0060 5B88     	 ldrh r3,[r3,#2]
+ 2224 0062 A3F10E01 	 sub r1,r3,#14
+ 2225 0066 4FF6FE73 	 movw r3,#65534
+ 2226 006a 0B40     	 ands r3,r3,r1
+ 2227 006c B2FBF3F3 	 udiv r3,r2,r3
+ 2228 0070 7B81     	 strh r3,[r7,#10]
+ 588:../soes/esc_coe.c ****    coer = (_COEobjdesc *) &MBX[0];
+ 2229              	 .loc 1 588 0
+ 2230 0072 774B     	 ldr r3,.L119+8
+ 2231 0074 7B60     	 str r3,[r7,#4]
+ 589:../soes/esc_coe.c ****    /* check for unsupported opcodes */
+ 590:../soes/esc_coe.c ****    if (etohs (coer->index) > 0x01)
+ 2232              	 .loc 1 590 0
+ 2233 0076 7B68     	 ldr r3,[r7,#4]
+ 2234 0078 9B89     	 ldrh r3,[r3,#12]
+ 2235 007a 9BB2     	 uxth r3,r3
+ 2236 007c 012B     	 cmp r3,#1
+ 2237 007e 03D9     	 bls .L110
+ 591:../soes/esc_coe.c ****    {
+ 592:../soes/esc_coe.c ****       SDO_infoerror (ABORT_UNSUPPORTED);
+ 2238              	 .loc 1 592 0
+ 2239 0080 7448     	 ldr r0,.L119+12
+ 2240 0082 FFF7FEFF 	 bl SDO_infoerror
+ 2241 0086 03E0     	 b .L111
+ 2242              	.L110:
+ 593:../soes/esc_coe.c ****    }
+ 594:../soes/esc_coe.c ****    else
+ 595:../soes/esc_coe.c ****    {
+ 596:../soes/esc_coe.c ****       MBXout = ESC_claimbuffer ();
+ 2243              	 .loc 1 596 0
+ 2244 0088 FFF7FEFF 	 bl ESC_claimbuffer
+ 2245 008c 0346     	 mov r3,r0
+ 2246 008e FB75     	 strb r3,[r7,#23]
+ 2247              	.L111:
+ 597:../soes/esc_coe.c ****    }
+ 598:../soes/esc_coe.c ****    if (MBXout)
+ 2248              	 .loc 1 598 0
+ 2249 0090 FB7D     	 ldrb r3,[r7,#23]
+ 2250 0092 002B     	 cmp r3,#0
+ 2251 0094 00F0D480 	 beq .L107
+ 599:../soes/esc_coe.c ****    {
+ 600:../soes/esc_coe.c ****       coel = (_COEobjdesc *) &MBX[MBXout * ESC_MBXSIZE];
+ 2252              	 .loc 1 600 0
+ 2253 0098 FB7D     	 ldrb r3,[r7,#23]
+ 2254 009a 6C4A     	 ldr r2,.L119+4
+ 2255 009c D2F86D20 	 ldr r2,[r2,#109]
+ 2256 00a0 02FB03F3 	 mul r3,r2,r3
+ 2257 00a4 6A4A     	 ldr r2,.L119+8
+ 2258 00a6 1344     	 add r3,r3,r2
+ 2259 00a8 3B60     	 str r3,[r7]
+ 601:../soes/esc_coe.c ****       coel->mbxheader.mbxtype = MBXCOE;
+ 2260              	 .loc 1 601 0
+ 2261 00aa 3A68     	 ldr r2,[r7]
+ 2262 00ac 5379     	 ldrb r3,[r2,#5]
+ 2263 00ae 0321     	 movs r1,#3
+ 2264 00b0 61F30303 	 bfi r3,r1,#0,#4
+ 2265 00b4 5371     	 strb r3,[r2,#5]
+ 602:../soes/esc_coe.c ****       coel->coeheader.numberservice =
+ 2266              	 .loc 1 602 0
+ 2267 00b6 3B68     	 ldr r3,[r7]
+ 2268 00b8 0022     	 movs r2,#0
+ 2269 00ba 9A71     	 strb r2,[r3,#6]
+ 2270 00bc 0022     	 movs r2,#0
+ 2271 00be 62F07F02 	 orn r2,r2,#127
+ 2272 00c2 DA71     	 strb r2,[r3,#7]
+ 603:../soes/esc_coe.c ****          htoes ((0 & 0x01f) | (COE_SDOINFORMATION << 12));
+ 604:../soes/esc_coe.c ****       coel->infoheader.opcode = COE_GETODLISTRESPONSE;
+ 2273              	 .loc 1 604 0
+ 2274 00c4 3A68     	 ldr r2,[r7]
+ 2275 00c6 137A     	 ldrb r3,[r2,#8]
+ 2276 00c8 0221     	 movs r1,#2
+ 2277 00ca 61F30603 	 bfi r3,r1,#0,#7
+ 2278 00ce 1372     	 strb r3,[r2,#8]
+ 605:../soes/esc_coe.c ****       /* number of objects request */
+ 606:../soes/esc_coe.c ****       if (etohs (coer->index) == 0x00)
+ 2279              	 .loc 1 606 0
+ 2280 00d0 7B68     	 ldr r3,[r7,#4]
+ 2281 00d2 9B89     	 ldrh r3,[r3,#12]
+ 2282 00d4 9BB2     	 uxth r3,r3
+ 2283 00d6 002B     	 cmp r3,#0
+ 2284 00d8 47D1     	 bne .L113
+ 607:../soes/esc_coe.c ****       {
+ 608:../soes/esc_coe.c ****          coel->index = htoes ((uint16_t) 0x00);
+ 2285              	 .loc 1 608 0
+ 2286 00da 3B68     	 ldr r3,[r7]
+ 2287 00dc 0022     	 movs r2,#0
+ 2288 00de 1A73     	 strb r2,[r3,#12]
+ 2289 00e0 0022     	 movs r2,#0
+ 2290 00e2 5A73     	 strb r2,[r3,#13]
+ 609:../soes/esc_coe.c ****          coel->infoheader.incomplete = 0;
+ 2291              	 .loc 1 609 0
+ 2292 00e4 3A68     	 ldr r2,[r7]
+ 2293 00e6 137A     	 ldrb r3,[r2,#8]
+ 2294 00e8 6FF3C713 	 bfc r3,#7,#1
+ 2295 00ec 1372     	 strb r3,[r2,#8]
+ 610:../soes/esc_coe.c ****          coel->infoheader.reserved = 0x00;
+ 2296              	 .loc 1 610 0
+ 2297 00ee 3B68     	 ldr r3,[r7]
+ 2298 00f0 0022     	 movs r2,#0
+ 2299 00f2 5A72     	 strb r2,[r3,#9]
+ 611:../soes/esc_coe.c ****          coel->infoheader.fragmentsleft = htoes ((uint16_t) 0);
+ 2300              	 .loc 1 611 0
+ 2301 00f4 3B68     	 ldr r3,[r7]
+ 2302 00f6 0022     	 movs r2,#0
+ 2303 00f8 9A72     	 strb r2,[r3,#10]
+ 2304 00fa 0022     	 movs r2,#0
+ 2305 00fc DA72     	 strb r2,[r3,#11]
+ 612:../soes/esc_coe.c ****          MBXcontrol[0].state = MBXstate_idle;
+ 2306              	 .loc 1 612 0
+ 2307 00fe 564B     	 ldr r3,.L119+16
+ 2308 0100 0022     	 movs r2,#0
+ 2309 0102 1A70     	 strb r2,[r3]
+ 613:../soes/esc_coe.c ****          ESCvar.xoe = 0;
+ 2310              	 .loc 1 613 0
+ 2311 0104 514B     	 ldr r3,.L119+4
+ 2312 0106 0022     	 movs r2,#0
+ 2313 0108 83F89220 	 strb r2,[r3,#146]
+ 614:../soes/esc_coe.c ****          ESCvar.frags = frags;
+ 2314              	 .loc 1 614 0
+ 2315 010c 4F4B     	 ldr r3,.L119+4
+ 2316 010e 7A89     	 ldrh r2,[r7,#10]
+ 2317 0110 A3F89C20 	 strh r2,[r3,#156]
+ 615:../soes/esc_coe.c ****          ESCvar.fragsleft = frags - 1;
+ 2318              	 .loc 1 615 0
+ 2319 0114 7B89     	 ldrh r3,[r7,#10]
+ 2320 0116 013B     	 subs r3,r3,#1
+ 2321 0118 9AB2     	 uxth r2,r3
+ 2322 011a 4C4B     	 ldr r3,.L119+4
+ 2323 011c A3F89E20 	 strh r2,[r3,#158]
+ 616:../soes/esc_coe.c ****          p = &(coel->datatype);
+ 2324              	 .loc 1 616 0
+ 2325 0120 3B68     	 ldr r3,[r7]
+ 2326 0122 0E33     	 adds r3,r3,#14
+ 2327 0124 FB60     	 str r3,[r7,#12]
+ 617:../soes/esc_coe.c ****          *p = htoes (entries);
+ 2328              	 .loc 1 617 0
+ 2329 0126 FB68     	 ldr r3,[r7,#12]
+ 2330 0128 BA8A     	 ldrh r2,[r7,#20]
+ 2331 012a 1A80     	 strh r2,[r3]
+ 618:../soes/esc_coe.c ****          p++;
+ 2332              	 .loc 1 618 0
+ 2333 012c FB68     	 ldr r3,[r7,#12]
+ 2334 012e 0233     	 adds r3,r3,#2
+ 2335 0130 FB60     	 str r3,[r7,#12]
+ 619:../soes/esc_coe.c ****          *p = 0;
+ 2336              	 .loc 1 619 0
+ 2337 0132 FB68     	 ldr r3,[r7,#12]
+ 2338 0134 0022     	 movs r2,#0
+ 2339 0136 1A80     	 strh r2,[r3]
+ 620:../soes/esc_coe.c ****          p++;
+ 2340              	 .loc 1 620 0
+ 2341 0138 FB68     	 ldr r3,[r7,#12]
+ 2342 013a 0233     	 adds r3,r3,#2
+ 2343 013c FB60     	 str r3,[r7,#12]
+ 621:../soes/esc_coe.c ****          *p = 0;
+ 2344              	 .loc 1 621 0
+ 2345 013e FB68     	 ldr r3,[r7,#12]
+ 2346 0140 0022     	 movs r2,#0
+ 2347 0142 1A80     	 strh r2,[r3]
+ 622:../soes/esc_coe.c ****          p++;
+ 2348              	 .loc 1 622 0
+ 2349 0144 FB68     	 ldr r3,[r7,#12]
+ 2350 0146 0233     	 adds r3,r3,#2
+ 2351 0148 FB60     	 str r3,[r7,#12]
+ 623:../soes/esc_coe.c ****          *p = 0;
+ 2352              	 .loc 1 623 0
+ 2353 014a FB68     	 ldr r3,[r7,#12]
+ 2354 014c 0022     	 movs r2,#0
+ 2355 014e 1A80     	 strh r2,[r3]
+ 624:../soes/esc_coe.c ****          p++;
+ 2356              	 .loc 1 624 0
+ 2357 0150 FB68     	 ldr r3,[r7,#12]
+ 2358 0152 0233     	 adds r3,r3,#2
+ 2359 0154 FB60     	 str r3,[r7,#12]
+ 625:../soes/esc_coe.c ****          *p = 0;
+ 2360              	 .loc 1 625 0
+ 2361 0156 FB68     	 ldr r3,[r7,#12]
+ 2362 0158 0022     	 movs r2,#0
+ 2363 015a 1A80     	 strh r2,[r3]
+ 626:../soes/esc_coe.c ****          coel->mbxheader.length = htoes (0x08 + (5 << 1));
+ 2364              	 .loc 1 626 0
+ 2365 015c 3B68     	 ldr r3,[r7]
+ 2366 015e 0022     	 movs r2,#0
+ 2367 0160 42F01202 	 orr r2,r2,#18
+ 2368 0164 1A70     	 strb r2,[r3]
+ 2369 0166 0022     	 movs r2,#0
+ 2370 0168 5A70     	 strb r2,[r3,#1]
+ 2371              	.L113:
+ 627:../soes/esc_coe.c ****       }
+ 628:../soes/esc_coe.c ****       /* only return all objects */
+ 629:../soes/esc_coe.c ****       if (etohs (coer->index) == 0x01)
+ 2372              	 .loc 1 629 0
+ 2373 016a 7B68     	 ldr r3,[r7,#4]
+ 2374 016c 9B89     	 ldrh r3,[r3,#12]
+ 2375 016e 9BB2     	 uxth r3,r3
+ 2376 0170 012B     	 cmp r3,#1
+ 2377 0172 61D1     	 bne .L114
+ 630:../soes/esc_coe.c ****       {
+ 631:../soes/esc_coe.c ****          if (frags > 1)
+ 2378              	 .loc 1 631 0
+ 2379 0174 7B89     	 ldrh r3,[r7,#10]
+ 2380 0176 012B     	 cmp r3,#1
+ 2381 0178 14D9     	 bls .L115
+ 632:../soes/esc_coe.c ****          {
+ 633:../soes/esc_coe.c ****             coel->infoheader.incomplete = 1;
+ 2382              	 .loc 1 633 0
+ 2383 017a 3A68     	 ldr r2,[r7]
+ 2384 017c 137A     	 ldrb r3,[r2,#8]
+ 2385 017e 43F08003 	 orr r3,r3,#128
+ 2386 0182 1372     	 strb r3,[r2,#8]
+ 634:../soes/esc_coe.c ****             ESCvar.xoe = MBXCOE + MBXODL;
+ 2387              	 .loc 1 634 0
+ 2388 0184 314B     	 ldr r3,.L119+4
+ 2389 0186 1322     	 movs r2,#19
+ 2390 0188 83F89220 	 strb r2,[r3,#146]
+ 635:../soes/esc_coe.c ****             n = ODLISTSIZE >> 1;
+ 2391              	 .loc 1 635 0
+ 2392 018c 2F4B     	 ldr r3,.L119+4
+ 2393 018e D3F87530 	 ldr r3,[r3,#117]
+ 2394 0192 5B88     	 ldrh r3,[r3,#2]
+ 2395 0194 A3F10E02 	 sub r2,r3,#14
+ 2396 0198 4FF6FE73 	 movw r3,#65534
+ 2397 019c 1340     	 ands r3,r3,r2
+ 2398 019e 5B08     	 lsrs r3,r3,#1
+ 2399 01a0 3B82     	 strh r3,[r7,#16]
+ 2400 01a2 0DE0     	 b .L116
+ 2401              	.L115:
+ 636:../soes/esc_coe.c ****          }
+ 637:../soes/esc_coe.c ****          else
+ 638:../soes/esc_coe.c ****          {
+ 639:../soes/esc_coe.c ****             coel->infoheader.incomplete = 0;
+ 2402              	 .loc 1 639 0
+ 2403 01a4 3A68     	 ldr r2,[r7]
+ 2404 01a6 137A     	 ldrb r3,[r2,#8]
+ 2405 01a8 6FF3C713 	 bfc r3,#7,#1
+ 2406 01ac 1372     	 strb r3,[r2,#8]
+ 640:../soes/esc_coe.c ****             MBXcontrol[0].state = MBXstate_idle;
+ 2407              	 .loc 1 640 0
+ 2408 01ae 2A4B     	 ldr r3,.L119+16
+ 2409 01b0 0022     	 movs r2,#0
+ 2410 01b2 1A70     	 strb r2,[r3]
+ 641:../soes/esc_coe.c ****             ESCvar.xoe = 0;
+ 2411              	 .loc 1 641 0
+ 2412 01b4 254B     	 ldr r3,.L119+4
+ 2413 01b6 0022     	 movs r2,#0
+ 2414 01b8 83F89220 	 strb r2,[r3,#146]
+ 642:../soes/esc_coe.c ****             n = entries;
+ 2415              	 .loc 1 642 0
+ 2416 01bc BB8A     	 ldrh r3,[r7,#20]
+ 2417 01be 3B82     	 strh r3,[r7,#16]
+ 2418              	.L116:
+ 643:../soes/esc_coe.c ****          }
+ 644:../soes/esc_coe.c ****          coel->infoheader.reserved = 0x00;
+ 2419              	 .loc 1 644 0
+ 2420 01c0 3B68     	 ldr r3,[r7]
+ 2421 01c2 0022     	 movs r2,#0
+ 2422 01c4 5A72     	 strb r2,[r3,#9]
+ 645:../soes/esc_coe.c ****          ESCvar.frags = frags;
+ 2423              	 .loc 1 645 0
+ 2424 01c6 214B     	 ldr r3,.L119+4
+ 2425 01c8 7A89     	 ldrh r2,[r7,#10]
+ 2426 01ca A3F89C20 	 strh r2,[r3,#156]
+ 646:../soes/esc_coe.c ****          ESCvar.fragsleft = frags - 1;
+ 2427              	 .loc 1 646 0
+ 2428 01ce 7B89     	 ldrh r3,[r7,#10]
+ 2429 01d0 013B     	 subs r3,r3,#1
+ 2430 01d2 9AB2     	 uxth r2,r3
+ 2431 01d4 1D4B     	 ldr r3,.L119+4
+ 2432 01d6 A3F89E20 	 strh r2,[r3,#158]
+ 647:../soes/esc_coe.c ****          coel->infoheader.fragmentsleft = htoes (ESCvar.fragsleft);
+ 2433              	 .loc 1 647 0
+ 2434 01da 1C4B     	 ldr r3,.L119+4
+ 2435 01dc B3F89E30 	 ldrh r3,[r3,#158]
+ 2436 01e0 9AB2     	 uxth r2,r3
+ 2437 01e2 3B68     	 ldr r3,[r7]
+ 2438 01e4 5A81     	 strh r2,[r3,#10]
+ 648:../soes/esc_coe.c ****          coel->index = htoes ((uint16_t) 0x01);
+ 2439              	 .loc 1 648 0
+ 2440 01e6 3B68     	 ldr r3,[r7]
+ 2441 01e8 0022     	 movs r2,#0
+ 2442 01ea 42F00102 	 orr r2,r2,#1
+ 2443 01ee 1A73     	 strb r2,[r3,#12]
+ 2444 01f0 0022     	 movs r2,#0
+ 2445 01f2 5A73     	 strb r2,[r3,#13]
+ 649:../soes/esc_coe.c **** 
+ 650:../soes/esc_coe.c ****          p = &(coel->datatype);
+ 2446              	 .loc 1 650 0
+ 2447 01f4 3B68     	 ldr r3,[r7]
+ 2448 01f6 0E33     	 adds r3,r3,#14
+ 2449 01f8 FB60     	 str r3,[r7,#12]
+ 651:../soes/esc_coe.c ****          for (i = 0; i < n; i++)
+ 2450              	 .loc 1 651 0
+ 2451 01fa 0023     	 movs r3,#0
+ 2452 01fc 7B82     	 strh r3,[r7,#18]
+ 2453 01fe 10E0     	 b .L117
+ 2454              	.L118:
+ 652:../soes/esc_coe.c ****          {
+ 653:../soes/esc_coe.c ****             *p = htoes (SDOobjects[i].index);
+ 2455              	 .loc 1 653 0 discriminator 3
+ 2456 0200 7A8A     	 ldrh r2,[r7,#18]
+ 2457 0202 1149     	 ldr r1,.L119
+ 2458 0204 1346     	 mov r3,r2
+ 2459 0206 DB00     	 lsls r3,r3,#3
+ 2460 0208 9B1A     	 subs r3,r3,r2
+ 2461 020a 5B00     	 lsls r3,r3,#1
+ 2462 020c 0B44     	 add r3,r3,r1
+ 2463 020e 1B88     	 ldrh r3,[r3]
+ 2464 0210 9AB2     	 uxth r2,r3
+ 2465 0212 FB68     	 ldr r3,[r7,#12]
+ 2466 0214 1A80     	 strh r2,[r3]
+ 654:../soes/esc_coe.c ****             p++;
+ 2467              	 .loc 1 654 0 discriminator 3
+ 2468 0216 FB68     	 ldr r3,[r7,#12]
+ 2469 0218 0233     	 adds r3,r3,#2
+ 2470 021a FB60     	 str r3,[r7,#12]
+ 651:../soes/esc_coe.c ****          for (i = 0; i < n; i++)
+ 2471              	 .loc 1 651 0 discriminator 3
+ 2472 021c 7B8A     	 ldrh r3,[r7,#18]
+ 2473 021e 0133     	 adds r3,r3,#1
+ 2474 0220 7B82     	 strh r3,[r7,#18]
+ 2475              	.L117:
+ 651:../soes/esc_coe.c ****          for (i = 0; i < n; i++)
+ 2476              	 .loc 1 651 0 is_stmt 0 discriminator 1
+ 2477 0222 7A8A     	 ldrh r2,[r7,#18]
+ 2478 0224 3B8A     	 ldrh r3,[r7,#16]
+ 2479 0226 9A42     	 cmp r2,r3
+ 2480 0228 EAD3     	 bcc .L118
+ 655:../soes/esc_coe.c ****          }
+ 656:../soes/esc_coe.c **** 
+ 657:../soes/esc_coe.c ****          coel->mbxheader.length = htoes (0x08 + (n << 1));
+ 2481              	 .loc 1 657 0 is_stmt 1
+ 2482 022a 3B8A     	 ldrh r3,[r7,#16]
+ 2483 022c 5B00     	 lsls r3,r3,#1
+ 2484 022e 9BB2     	 uxth r3,r3
+ 2485 0230 0833     	 adds r3,r3,#8
+ 2486 0232 9AB2     	 uxth r2,r3
+ 2487 0234 3B68     	 ldr r3,[r7]
+ 2488 0236 1A80     	 strh r2,[r3]
+ 2489              	.L114:
+ 658:../soes/esc_coe.c ****       }
+ 659:../soes/esc_coe.c ****       MBXcontrol[MBXout].state = MBXstate_outreq;
+ 2490              	 .loc 1 659 0
+ 2491 0238 FB7D     	 ldrb r3,[r7,#23]
+ 2492 023a 074A     	 ldr r2,.L119+16
+ 2493 023c 0321     	 movs r1,#3
+ 2494 023e D154     	 strb r1,[r2,r3]
+ 2495              	.L107:
+ 660:../soes/esc_coe.c ****    }
+ 661:../soes/esc_coe.c **** }
+ 2496              	 .loc 1 661 0
+ 2497 0240 1837     	 adds r7,r7,#24
+ 2498              	.LCFI60:
+ 2499              	 .cfi_def_cfa_offset 8
+ 2500 0242 BD46     	 mov sp,r7
+ 2501              	.LCFI61:
+ 2502              	 .cfi_def_cfa_register 13
+ 2503              	 
+ 2504 0244 80BD     	 pop {r7,pc}
+ 2505              	.L120:
+ 2506 0246 00BF     	 .align 2
+ 2507              	.L119:
+ 2508 0248 00000000 	 .word SDOobjects
+ 2509 024c 00000000 	 .word ESCvar
+ 2510 0250 00000000 	 .word MBX
+ 2511 0254 00000106 	 .word 100728832
+ 2512 0258 00000000 	 .word MBXcontrol
+ 2513              	 .cfi_endproc
+ 2514              	.LFE11:
+ 2516              	 .section .text.SDO_getodlistcont,"ax",%progbits
+ 2517              	 .align 2
+ 2518              	 .global SDO_getodlistcont
+ 2519              	 .thumb
+ 2520              	 .thumb_func
+ 2522              	SDO_getodlistcont:
+ 2523              	.LFB12:
+ 662:../soes/esc_coe.c **** /** Function for continuing sending left overs from previous requested
+ 663:../soes/esc_coe.c ****  * SDO Get OD List, validating the request and sending an response.
+ 664:../soes/esc_coe.c ****  *
+ 665:../soes/esc_coe.c ****  */
+ 666:../soes/esc_coe.c **** void SDO_getodlistcont (void)
+ 667:../soes/esc_coe.c **** {
+ 2524              	 .loc 1 667 0
+ 2525              	 .cfi_startproc
+ 2526              	 
+ 2527              	 
+ 2528 0000 80B5     	 push {r7,lr}
+ 2529              	.LCFI62:
+ 2530              	 .cfi_def_cfa_offset 8
+ 2531              	 .cfi_offset 7,-8
+ 2532              	 .cfi_offset 14,-4
+ 2533 0002 86B0     	 sub sp,sp,#24
+ 2534              	.LCFI63:
+ 2535              	 .cfi_def_cfa_offset 32
+ 2536 0004 00AF     	 add r7,sp,#0
+ 2537              	.LCFI64:
+ 2538              	 .cfi_def_cfa_register 7
+ 668:../soes/esc_coe.c ****    uint8_t MBXout;
+ 669:../soes/esc_coe.c ****    uint16_t i, n, s;
+ 670:../soes/esc_coe.c ****    uint16_t *p;
+ 671:../soes/esc_coe.c ****    _COEobjdesc *coel;
+ 672:../soes/esc_coe.c **** 
+ 673:../soes/esc_coe.c ****    MBXout = ESC_claimbuffer ();
+ 2539              	 .loc 1 673 0
+ 2540 0006 FFF7FEFF 	 bl ESC_claimbuffer
+ 2541 000a 0346     	 mov r3,r0
+ 2542 000c FB73     	 strb r3,[r7,#15]
+ 674:../soes/esc_coe.c ****    if (MBXout)
+ 2543              	 .loc 1 674 0
+ 2544 000e FB7B     	 ldrb r3,[r7,#15]
+ 2545 0010 002B     	 cmp r3,#0
+ 2546 0012 00F09E80 	 beq .L121
+ 675:../soes/esc_coe.c ****    {
+ 676:../soes/esc_coe.c ****       coel = (_COEobjdesc *) &MBX[MBXout * ESC_MBXSIZE];
+ 2547              	 .loc 1 676 0
+ 2548 0016 FB7B     	 ldrb r3,[r7,#15]
+ 2549 0018 4F4A     	 ldr r2,.L127
+ 2550 001a D2F86D20 	 ldr r2,[r2,#109]
+ 2551 001e 02FB03F3 	 mul r3,r2,r3
+ 2552 0022 4E4A     	 ldr r2,.L127+4
+ 2553 0024 1344     	 add r3,r3,r2
+ 2554 0026 BB60     	 str r3,[r7,#8]
+ 677:../soes/esc_coe.c ****       coel->mbxheader.mbxtype = MBXCOE;
+ 2555              	 .loc 1 677 0
+ 2556 0028 BA68     	 ldr r2,[r7,#8]
+ 2557 002a 5379     	 ldrb r3,[r2,#5]
+ 2558 002c 0321     	 movs r1,#3
+ 2559 002e 61F30303 	 bfi r3,r1,#0,#4
+ 2560 0032 5371     	 strb r3,[r2,#5]
+ 678:../soes/esc_coe.c ****       coel->coeheader.numberservice =
+ 2561              	 .loc 1 678 0
+ 2562 0034 BB68     	 ldr r3,[r7,#8]
+ 2563 0036 0022     	 movs r2,#0
+ 2564 0038 9A71     	 strb r2,[r3,#6]
+ 2565 003a 0022     	 movs r2,#0
+ 2566 003c 62F07F02 	 orn r2,r2,#127
+ 2567 0040 DA71     	 strb r2,[r3,#7]
+ 679:../soes/esc_coe.c ****          htoes ((0 & 0x01f) | (COE_SDOINFORMATION << 12));
+ 680:../soes/esc_coe.c ****       coel->infoheader.opcode = COE_GETODLISTRESPONSE;
+ 2568              	 .loc 1 680 0
+ 2569 0042 BA68     	 ldr r2,[r7,#8]
+ 2570 0044 137A     	 ldrb r3,[r2,#8]
+ 2571 0046 0221     	 movs r1,#2
+ 2572 0048 61F30603 	 bfi r3,r1,#0,#7
+ 2573 004c 1372     	 strb r3,[r2,#8]
+ 681:../soes/esc_coe.c ****       s = (ESCvar.frags - ESCvar.fragsleft) * (ODLISTSIZE >> 1);
+ 2574              	 .loc 1 681 0
+ 2575 004e 424B     	 ldr r3,.L127
+ 2576 0050 B3F89C30 	 ldrh r3,[r3,#156]
+ 2577 0054 9BB2     	 uxth r3,r3
+ 2578 0056 1A46     	 mov r2,r3
+ 2579 0058 3F4B     	 ldr r3,.L127
+ 2580 005a B3F89E30 	 ldrh r3,[r3,#158]
+ 2581 005e 9BB2     	 uxth r3,r3
+ 2582 0060 D31A     	 subs r3,r2,r3
+ 2583 0062 9AB2     	 uxth r2,r3
+ 2584 0064 3C4B     	 ldr r3,.L127
+ 2585 0066 D3F87530 	 ldr r3,[r3,#117]
+ 2586 006a 5B88     	 ldrh r3,[r3,#2]
+ 2587 006c A3F10E01 	 sub r1,r3,#14
+ 2588 0070 4FF6FE73 	 movw r3,#65534
+ 2589 0074 0B40     	 ands r3,r3,r1
+ 2590 0076 5B08     	 lsrs r3,r3,#1
+ 2591 0078 9BB2     	 uxth r3,r3
+ 2592 007a 12FB03F3 	 smulbb r3,r2,r3
+ 2593 007e FB80     	 strh r3,[r7,#6]
+ 682:../soes/esc_coe.c ****       if (ESCvar.fragsleft > 1)
+ 2594              	 .loc 1 682 0
+ 2595 0080 354B     	 ldr r3,.L127
+ 2596 0082 B3F89E30 	 ldrh r3,[r3,#158]
+ 2597 0086 9BB2     	 uxth r3,r3
+ 2598 0088 012B     	 cmp r3,#1
+ 2599 008a 13D9     	 bls .L123
+ 683:../soes/esc_coe.c ****       {
+ 684:../soes/esc_coe.c ****          coel->infoheader.incomplete = 1;
+ 2600              	 .loc 1 684 0
+ 2601 008c BA68     	 ldr r2,[r7,#8]
+ 2602 008e 137A     	 ldrb r3,[r2,#8]
+ 2603 0090 43F08003 	 orr r3,r3,#128
+ 2604 0094 1372     	 strb r3,[r2,#8]
+ 685:../soes/esc_coe.c ****          n = s + (ODLISTSIZE >> 1);
+ 2605              	 .loc 1 685 0
+ 2606 0096 304B     	 ldr r3,.L127
+ 2607 0098 D3F87530 	 ldr r3,[r3,#117]
+ 2608 009c 5B88     	 ldrh r3,[r3,#2]
+ 2609 009e A3F10E02 	 sub r2,r3,#14
+ 2610 00a2 4FF6FE73 	 movw r3,#65534
+ 2611 00a6 1340     	 ands r3,r3,r2
+ 2612 00a8 5B08     	 lsrs r3,r3,#1
+ 2613 00aa 9AB2     	 uxth r2,r3
+ 2614 00ac FB88     	 ldrh r3,[r7,#6]
+ 2615 00ae 1344     	 add r3,r3,r2
+ 2616 00b0 BB82     	 strh r3,[r7,#20]
+ 2617 00b2 13E0     	 b .L124
+ 2618              	.L123:
+ 686:../soes/esc_coe.c ****       }
+ 687:../soes/esc_coe.c ****       else
+ 688:../soes/esc_coe.c ****       {
+ 689:../soes/esc_coe.c ****          coel->infoheader.incomplete = 0;
+ 2619              	 .loc 1 689 0
+ 2620 00b4 BA68     	 ldr r2,[r7,#8]
+ 2621 00b6 137A     	 ldrb r3,[r2,#8]
+ 2622 00b8 6FF3C713 	 bfc r3,#7,#1
+ 2623 00bc 1372     	 strb r3,[r2,#8]
+ 690:../soes/esc_coe.c ****          MBXcontrol[0].state = MBXstate_idle;
+ 2624              	 .loc 1 690 0
+ 2625 00be 284B     	 ldr r3,.L127+8
+ 2626 00c0 0022     	 movs r2,#0
+ 2627 00c2 1A70     	 strb r2,[r3]
+ 691:../soes/esc_coe.c ****          ESCvar.xoe = 0;
+ 2628              	 .loc 1 691 0
+ 2629 00c4 244B     	 ldr r3,.L127
+ 2630 00c6 0022     	 movs r2,#0
+ 2631 00c8 83F89220 	 strb r2,[r3,#146]
+ 692:../soes/esc_coe.c ****          n = ESCvar.entries;
+ 2632              	 .loc 1 692 0
+ 2633 00cc 224B     	 ldr r3,.L127
+ 2634 00ce 93F89A20 	 ldrb r2,[r3,#154]
+ 2635 00d2 93F89B30 	 ldrb r3,[r3,#155]
+ 2636 00d6 1B02     	 lsls r3,r3,#8
+ 2637 00d8 1343     	 orrs r3,r3,r2
+ 2638 00da BB82     	 strh r3,[r7,#20]
+ 2639              	.L124:
+ 693:../soes/esc_coe.c ****       }
+ 694:../soes/esc_coe.c ****       coel->infoheader.reserved = 0x00;
+ 2640              	 .loc 1 694 0
+ 2641 00dc BB68     	 ldr r3,[r7,#8]
+ 2642 00de 0022     	 movs r2,#0
+ 2643 00e0 5A72     	 strb r2,[r3,#9]
+ 695:../soes/esc_coe.c ****       ESCvar.fragsleft--;
+ 2644              	 .loc 1 695 0
+ 2645 00e2 1D4B     	 ldr r3,.L127
+ 2646 00e4 B3F89E30 	 ldrh r3,[r3,#158]
+ 2647 00e8 9BB2     	 uxth r3,r3
+ 2648 00ea 013B     	 subs r3,r3,#1
+ 2649 00ec 9AB2     	 uxth r2,r3
+ 2650 00ee 1A4B     	 ldr r3,.L127
+ 2651 00f0 A3F89E20 	 strh r2,[r3,#158]
+ 696:../soes/esc_coe.c ****       coel->infoheader.fragmentsleft = htoes (ESCvar.fragsleft);
+ 2652              	 .loc 1 696 0
+ 2653 00f4 184B     	 ldr r3,.L127
+ 2654 00f6 B3F89E30 	 ldrh r3,[r3,#158]
+ 2655 00fa 9AB2     	 uxth r2,r3
+ 2656 00fc BB68     	 ldr r3,[r7,#8]
+ 2657 00fe 5A81     	 strh r2,[r3,#10]
+ 697:../soes/esc_coe.c ****       /* pointer 2 bytes back to exclude index */
+ 698:../soes/esc_coe.c ****       p = &(coel->index);
+ 2658              	 .loc 1 698 0
+ 2659 0100 BB68     	 ldr r3,[r7,#8]
+ 2660 0102 0C33     	 adds r3,r3,#12
+ 2661 0104 3B61     	 str r3,[r7,#16]
+ 699:../soes/esc_coe.c ****       for (i = s; i < n; i++)
+ 2662              	 .loc 1 699 0
+ 2663 0106 FB88     	 ldrh r3,[r7,#6]
+ 2664 0108 FB82     	 strh r3,[r7,#22]
+ 2665 010a 10E0     	 b .L125
+ 2666              	.L126:
+ 700:../soes/esc_coe.c ****       {
+ 701:../soes/esc_coe.c ****          *p = htoes (SDOobjects[i].index);
+ 2667              	 .loc 1 701 0 discriminator 3
+ 2668 010c FA8A     	 ldrh r2,[r7,#22]
+ 2669 010e 1549     	 ldr r1,.L127+12
+ 2670 0110 1346     	 mov r3,r2
+ 2671 0112 DB00     	 lsls r3,r3,#3
+ 2672 0114 9B1A     	 subs r3,r3,r2
+ 2673 0116 5B00     	 lsls r3,r3,#1
+ 2674 0118 0B44     	 add r3,r3,r1
+ 2675 011a 1B88     	 ldrh r3,[r3]
+ 2676 011c 9AB2     	 uxth r2,r3
+ 2677 011e 3B69     	 ldr r3,[r7,#16]
+ 2678 0120 1A80     	 strh r2,[r3]
+ 702:../soes/esc_coe.c ****          p++;
+ 2679              	 .loc 1 702 0 discriminator 3
+ 2680 0122 3B69     	 ldr r3,[r7,#16]
+ 2681 0124 0233     	 adds r3,r3,#2
+ 2682 0126 3B61     	 str r3,[r7,#16]
+ 699:../soes/esc_coe.c ****       for (i = s; i < n; i++)
+ 2683              	 .loc 1 699 0 discriminator 3
+ 2684 0128 FB8A     	 ldrh r3,[r7,#22]
+ 2685 012a 0133     	 adds r3,r3,#1
+ 2686 012c FB82     	 strh r3,[r7,#22]
+ 2687              	.L125:
+ 699:../soes/esc_coe.c ****       for (i = s; i < n; i++)
+ 2688              	 .loc 1 699 0 is_stmt 0 discriminator 1
+ 2689 012e FA8A     	 ldrh r2,[r7,#22]
+ 2690 0130 BB8A     	 ldrh r3,[r7,#20]
+ 2691 0132 9A42     	 cmp r2,r3
+ 2692 0134 EAD3     	 bcc .L126
+ 703:../soes/esc_coe.c ****       }
+ 704:../soes/esc_coe.c ****       coel->mbxheader.length = htoes (0x06 + ((n - s) << 1));
+ 2693              	 .loc 1 704 0 is_stmt 1
+ 2694 0136 BA8A     	 ldrh r2,[r7,#20]
+ 2695 0138 FB88     	 ldrh r3,[r7,#6]
+ 2696 013a D31A     	 subs r3,r2,r3
+ 2697 013c 9BB2     	 uxth r3,r3
+ 2698 013e 5B00     	 lsls r3,r3,#1
+ 2699 0140 9BB2     	 uxth r3,r3
+ 2700 0142 0633     	 adds r3,r3,#6
+ 2701 0144 9AB2     	 uxth r2,r3
+ 2702 0146 BB68     	 ldr r3,[r7,#8]
+ 2703 0148 1A80     	 strh r2,[r3]
+ 705:../soes/esc_coe.c ****       MBXcontrol[MBXout].state = MBXstate_outreq;
+ 2704              	 .loc 1 705 0
+ 2705 014a FB7B     	 ldrb r3,[r7,#15]
+ 2706 014c 044A     	 ldr r2,.L127+8
+ 2707 014e 0321     	 movs r1,#3
+ 2708 0150 D154     	 strb r1,[r2,r3]
+ 2709              	.L121:
+ 706:../soes/esc_coe.c ****    }
+ 707:../soes/esc_coe.c **** }
+ 2710              	 .loc 1 707 0
+ 2711 0152 1837     	 adds r7,r7,#24
+ 2712              	.LCFI65:
+ 2713              	 .cfi_def_cfa_offset 8
+ 2714 0154 BD46     	 mov sp,r7
+ 2715              	.LCFI66:
+ 2716              	 .cfi_def_cfa_register 13
+ 2717              	 
+ 2718 0156 80BD     	 pop {r7,pc}
+ 2719              	.L128:
+ 2720              	 .align 2
+ 2721              	.L127:
+ 2722 0158 00000000 	 .word ESCvar
+ 2723 015c 00000000 	 .word MBX
+ 2724 0160 00000000 	 .word MBXcontrol
+ 2725 0164 00000000 	 .word SDOobjects
+ 2726              	 .cfi_endproc
+ 2727              	.LFE12:
+ 2729              	 .section .text.SDO_getod,"ax",%progbits
+ 2730              	 .align 2
+ 2731              	 .global SDO_getod
+ 2732              	 .thumb
+ 2733              	 .thumb_func
+ 2735              	SDO_getod:
+ 2736              	.LFB13:
+ 708:../soes/esc_coe.c **** 
+ 709:../soes/esc_coe.c **** /** Function for handling incoming requested SDO Get Object Description,
+ 710:../soes/esc_coe.c ****  * validating the request and sending an response. On error an
+ 711:../soes/esc_coe.c ****  * SDO Info Error will be sent.
+ 712:../soes/esc_coe.c ****  */
+ 713:../soes/esc_coe.c **** void SDO_getod (void)
+ 714:../soes/esc_coe.c **** {
+ 2737              	 .loc 1 714 0
+ 2738              	 .cfi_startproc
+ 2739              	 
+ 2740              	 
+ 2741 0000 80B5     	 push {r7,lr}
+ 2742              	.LCFI67:
+ 2743              	 .cfi_def_cfa_offset 8
+ 2744              	 .cfi_offset 7,-8
+ 2745              	 .cfi_offset 14,-4
+ 2746 0002 8AB0     	 sub sp,sp,#40
+ 2747              	.LCFI68:
+ 2748              	 .cfi_def_cfa_offset 48
+ 2749 0004 00AF     	 add r7,sp,#0
+ 2750              	.LCFI69:
+ 2751              	 .cfi_def_cfa_register 7
+ 715:../soes/esc_coe.c ****    uint8_t MBXout;
+ 716:../soes/esc_coe.c ****    uint16_t index;
+ 717:../soes/esc_coe.c ****    int32_t nidx;
+ 718:../soes/esc_coe.c ****    uint8_t *d;
+ 719:../soes/esc_coe.c ****    const uint8_t *s;
+ 720:../soes/esc_coe.c ****    uint8_t n = 0;
+ 2752              	 .loc 1 720 0
+ 2753 0006 0023     	 movs r3,#0
+ 2754 0008 FB77     	 strb r3,[r7,#31]
+ 721:../soes/esc_coe.c ****    _COEobjdesc *coer, *coel;
+ 722:../soes/esc_coe.c ****    coer = (_COEobjdesc *) &MBX[0];
+ 2755              	 .loc 1 722 0
+ 2756 000a 674B     	 ldr r3,.L138
+ 2757 000c BB61     	 str r3,[r7,#24]
+ 723:../soes/esc_coe.c ****    index = etohs (coer->index);
+ 2758              	 .loc 1 723 0
+ 2759 000e BB69     	 ldr r3,[r7,#24]
+ 2760 0010 1A7B     	 ldrb r2,[r3,#12]
+ 2761 0012 5B7B     	 ldrb r3,[r3,#13]
+ 2762 0014 1B02     	 lsls r3,r3,#8
+ 2763 0016 1343     	 orrs r3,r3,r2
+ 2764 0018 FB82     	 strh r3,[r7,#22]
+ 724:../soes/esc_coe.c ****    nidx = SDO_findobject (index);
+ 2765              	 .loc 1 724 0
+ 2766 001a FB8A     	 ldrh r3,[r7,#22]
+ 2767 001c 1846     	 mov r0,r3
+ 2768 001e FFF7FEFF 	 bl SDO_findobject
+ 2769 0022 3861     	 str r0,[r7,#16]
+ 725:../soes/esc_coe.c ****    if (nidx >= 0)
+ 2770              	 .loc 1 725 0
+ 2771 0024 3B69     	 ldr r3,[r7,#16]
+ 2772 0026 002B     	 cmp r3,#0
+ 2773 0028 C0F2B780 	 blt .L130
+ 726:../soes/esc_coe.c ****    {
+ 727:../soes/esc_coe.c ****       MBXout = ESC_claimbuffer ();
+ 2774              	 .loc 1 727 0
+ 2775 002c FFF7FEFF 	 bl ESC_claimbuffer
+ 2776 0030 0346     	 mov r3,r0
+ 2777 0032 FB73     	 strb r3,[r7,#15]
+ 728:../soes/esc_coe.c ****       if (MBXout)
+ 2778              	 .loc 1 728 0
+ 2779 0034 FB7B     	 ldrb r3,[r7,#15]
+ 2780 0036 002B     	 cmp r3,#0
+ 2781 0038 00F0B280 	 beq .L129
+ 729:../soes/esc_coe.c ****       {
+ 730:../soes/esc_coe.c ****          coel = (_COEobjdesc *) &MBX[MBXout * ESC_MBXSIZE];
+ 2782              	 .loc 1 730 0
+ 2783 003c FB7B     	 ldrb r3,[r7,#15]
+ 2784 003e 5B4A     	 ldr r2,.L138+4
+ 2785 0040 D2F86D20 	 ldr r2,[r2,#109]
+ 2786 0044 02FB03F3 	 mul r3,r2,r3
+ 2787 0048 574A     	 ldr r2,.L138
+ 2788 004a 1344     	 add r3,r3,r2
+ 2789 004c BB60     	 str r3,[r7,#8]
+ 731:../soes/esc_coe.c ****          coel->mbxheader.mbxtype = MBXCOE;
+ 2790              	 .loc 1 731 0
+ 2791 004e BA68     	 ldr r2,[r7,#8]
+ 2792 0050 5379     	 ldrb r3,[r2,#5]
+ 2793 0052 0321     	 movs r1,#3
+ 2794 0054 61F30303 	 bfi r3,r1,#0,#4
+ 2795 0058 5371     	 strb r3,[r2,#5]
+ 732:../soes/esc_coe.c ****          coel->coeheader.numberservice =
+ 2796              	 .loc 1 732 0
+ 2797 005a BB68     	 ldr r3,[r7,#8]
+ 2798 005c 0022     	 movs r2,#0
+ 2799 005e 9A71     	 strb r2,[r3,#6]
+ 2800 0060 0022     	 movs r2,#0
+ 2801 0062 62F07F02 	 orn r2,r2,#127
+ 2802 0066 DA71     	 strb r2,[r3,#7]
+ 733:../soes/esc_coe.c ****             htoes ((0 & 0x01f) | (COE_SDOINFORMATION << 12));
+ 734:../soes/esc_coe.c ****          coel->infoheader.opcode = COE_GETODRESPONSE;
+ 2803              	 .loc 1 734 0
+ 2804 0068 BA68     	 ldr r2,[r7,#8]
+ 2805 006a 137A     	 ldrb r3,[r2,#8]
+ 2806 006c 0421     	 movs r1,#4
+ 2807 006e 61F30603 	 bfi r3,r1,#0,#7
+ 2808 0072 1372     	 strb r3,[r2,#8]
+ 735:../soes/esc_coe.c ****          coel->infoheader.incomplete = 0;
+ 2809              	 .loc 1 735 0
+ 2810 0074 BA68     	 ldr r2,[r7,#8]
+ 2811 0076 137A     	 ldrb r3,[r2,#8]
+ 2812 0078 6FF3C713 	 bfc r3,#7,#1
+ 2813 007c 1372     	 strb r3,[r2,#8]
+ 736:../soes/esc_coe.c ****          coel->infoheader.reserved = 0x00;
+ 2814              	 .loc 1 736 0
+ 2815 007e BB68     	 ldr r3,[r7,#8]
+ 2816 0080 0022     	 movs r2,#0
+ 2817 0082 5A72     	 strb r2,[r3,#9]
+ 737:../soes/esc_coe.c ****          coel->infoheader.fragmentsleft = htoes (0);
+ 2818              	 .loc 1 737 0
+ 2819 0084 BB68     	 ldr r3,[r7,#8]
+ 2820 0086 0022     	 movs r2,#0
+ 2821 0088 9A72     	 strb r2,[r3,#10]
+ 2822 008a 0022     	 movs r2,#0
+ 2823 008c DA72     	 strb r2,[r3,#11]
+ 738:../soes/esc_coe.c ****          coel->index = htoes (index);
+ 2824              	 .loc 1 738 0
+ 2825 008e BB68     	 ldr r3,[r7,#8]
+ 2826 0090 FA8A     	 ldrh r2,[r7,#22]
+ 2827 0092 9A81     	 strh r2,[r3,#12]
+ 739:../soes/esc_coe.c ****          if (SDOobjects[nidx].objtype == OTYPE_VAR)
+ 2828              	 .loc 1 739 0
+ 2829 0094 4649     	 ldr r1,.L138+8
+ 2830 0096 3A69     	 ldr r2,[r7,#16]
+ 2831 0098 1346     	 mov r3,r2
+ 2832 009a DB00     	 lsls r3,r3,#3
+ 2833 009c 9B1A     	 subs r3,r3,r2
+ 2834 009e 5B00     	 lsls r3,r3,#1
+ 2835 00a0 0B44     	 add r3,r3,r1
+ 2836 00a2 5B88     	 ldrh r3,[r3,#2]
+ 2837 00a4 9BB2     	 uxth r3,r3
+ 2838 00a6 072B     	 cmp r3,#7
+ 2839 00a8 20D1     	 bne .L132
+ 2840              	.LBB2:
+ 740:../soes/esc_coe.c ****          {
+ 741:../soes/esc_coe.c ****             int32_t nsub = SDO_findsubindex (nidx, 0);
+ 2841              	 .loc 1 741 0
+ 2842 00aa 3B69     	 ldr r3,[r7,#16]
+ 2843 00ac 9BB2     	 uxth r3,r3
+ 2844 00ae 1BB2     	 sxth r3,r3
+ 2845 00b0 1846     	 mov r0,r3
+ 2846 00b2 0021     	 movs r1,#0
+ 2847 00b4 FFF7FEFF 	 bl SDO_findsubindex
+ 2848 00b8 0346     	 mov r3,r0
+ 2849 00ba 7B60     	 str r3,[r7,#4]
+ 742:../soes/esc_coe.c ****             const _objd *objd = SDOobjects[nidx].objdesc;
+ 2850              	 .loc 1 742 0
+ 2851 00bc 3C49     	 ldr r1,.L138+8
+ 2852 00be 3A69     	 ldr r2,[r7,#16]
+ 2853 00c0 1346     	 mov r3,r2
+ 2854 00c2 DB00     	 lsls r3,r3,#3
+ 2855 00c4 9B1A     	 subs r3,r3,r2
+ 2856 00c6 5B00     	 lsls r3,r3,#1
+ 2857 00c8 0B44     	 add r3,r3,r1
+ 2858 00ca 0833     	 adds r3,r3,#8
+ 2859 00cc D3F80230 	 ldr r3,[r3,#2]
+ 2860 00d0 3B60     	 str r3,[r7]
+ 743:../soes/esc_coe.c ****             coel->datatype = htoes ((objd + nsub)->datatype);
+ 2861              	 .loc 1 743 0
+ 2862 00d2 7A68     	 ldr r2,[r7,#4]
+ 2863 00d4 1346     	 mov r3,r2
+ 2864 00d6 9B00     	 lsls r3,r3,#2
+ 2865 00d8 1344     	 add r3,r3,r2
+ 2866 00da 9B00     	 lsls r3,r3,#2
+ 2867 00dc 1A46     	 mov r2,r3
+ 2868 00de 3B68     	 ldr r3,[r7]
+ 2869 00e0 1344     	 add r3,r3,r2
+ 2870 00e2 5B88     	 ldrh r3,[r3,#2]
+ 2871 00e4 9AB2     	 uxth r2,r3
+ 2872 00e6 BB68     	 ldr r3,[r7,#8]
+ 2873 00e8 DA81     	 strh r2,[r3,#14]
+ 2874              	.LBE2:
+ 2875 00ea 04E0     	 b .L133
+ 2876              	.L132:
+ 744:../soes/esc_coe.c ****          }
+ 745:../soes/esc_coe.c ****          else
+ 746:../soes/esc_coe.c ****          {
+ 747:../soes/esc_coe.c ****             coel->datatype = htoes (0);
+ 2877              	 .loc 1 747 0
+ 2878 00ec BB68     	 ldr r3,[r7,#8]
+ 2879 00ee 0022     	 movs r2,#0
+ 2880 00f0 9A73     	 strb r2,[r3,#14]
+ 2881 00f2 0022     	 movs r2,#0
+ 2882 00f4 DA73     	 strb r2,[r3,#15]
+ 2883              	.L133:
+ 748:../soes/esc_coe.c ****          }
+ 749:../soes/esc_coe.c ****          coel->maxsub = SDOobjects[nidx].maxsub;
+ 2884              	 .loc 1 749 0
+ 2885 00f6 2E49     	 ldr r1,.L138+8
+ 2886 00f8 3A69     	 ldr r2,[r7,#16]
+ 2887 00fa 1346     	 mov r3,r2
+ 2888 00fc DB00     	 lsls r3,r3,#3
+ 2889 00fe 9B1A     	 subs r3,r3,r2
+ 2890 0100 5B00     	 lsls r3,r3,#1
+ 2891 0102 0B44     	 add r3,r3,r1
+ 2892 0104 1A79     	 ldrb r2,[r3,#4]
+ 2893 0106 BB68     	 ldr r3,[r7,#8]
+ 2894 0108 1A74     	 strb r2,[r3,#16]
+ 750:../soes/esc_coe.c ****          coel->objectcode = SDOobjects[nidx].objtype;
+ 2895              	 .loc 1 750 0
+ 2896 010a 2949     	 ldr r1,.L138+8
+ 2897 010c 3A69     	 ldr r2,[r7,#16]
+ 2898 010e 1346     	 mov r3,r2
+ 2899 0110 DB00     	 lsls r3,r3,#3
+ 2900 0112 9B1A     	 subs r3,r3,r2
+ 2901 0114 5B00     	 lsls r3,r3,#1
+ 2902 0116 0B44     	 add r3,r3,r1
+ 2903 0118 5B88     	 ldrh r3,[r3,#2]
+ 2904 011a 9BB2     	 uxth r3,r3
+ 2905 011c DAB2     	 uxtb r2,r3
+ 2906 011e BB68     	 ldr r3,[r7,#8]
+ 2907 0120 5A74     	 strb r2,[r3,#17]
+ 751:../soes/esc_coe.c ****          s = (uint8_t *) SDOobjects[nidx].name;
+ 2908              	 .loc 1 751 0
+ 2909 0122 2349     	 ldr r1,.L138+8
+ 2910 0124 3A69     	 ldr r2,[r7,#16]
+ 2911 0126 1346     	 mov r3,r2
+ 2912 0128 DB00     	 lsls r3,r3,#3
+ 2913 012a 9B1A     	 subs r3,r3,r2
+ 2914 012c 5B00     	 lsls r3,r3,#1
+ 2915 012e 0B44     	 add r3,r3,r1
+ 2916 0130 D3F80630 	 ldr r3,[r3,#6]
+ 2917 0134 3B62     	 str r3,[r7,#32]
+ 752:../soes/esc_coe.c ****          d = (uint8_t *) &(coel->name);
+ 2918              	 .loc 1 752 0
+ 2919 0136 BB68     	 ldr r3,[r7,#8]
+ 2920 0138 1233     	 adds r3,r3,#18
+ 2921 013a 7B62     	 str r3,[r7,#36]
+ 753:../soes/esc_coe.c ****          while (*s && (n < (ESC_MBXDSIZE - 0x0c)))
+ 2922              	 .loc 1 753 0
+ 2923 013c 0CE0     	 b .L134
+ 2924              	.L136:
+ 754:../soes/esc_coe.c ****          {
+ 755:../soes/esc_coe.c ****             *d = *s;
+ 2925              	 .loc 1 755 0
+ 2926 013e 3B6A     	 ldr r3,[r7,#32]
+ 2927 0140 1A78     	 ldrb r2,[r3]
+ 2928 0142 7B6A     	 ldr r3,[r7,#36]
+ 2929 0144 1A70     	 strb r2,[r3]
+ 756:../soes/esc_coe.c ****             n++;
+ 2930              	 .loc 1 756 0
+ 2931 0146 FB7F     	 ldrb r3,[r7,#31]
+ 2932 0148 0133     	 adds r3,r3,#1
+ 2933 014a FB77     	 strb r3,[r7,#31]
+ 757:../soes/esc_coe.c ****             s++;
+ 2934              	 .loc 1 757 0
+ 2935 014c 3B6A     	 ldr r3,[r7,#32]
+ 2936 014e 0133     	 adds r3,r3,#1
+ 2937 0150 3B62     	 str r3,[r7,#32]
+ 758:../soes/esc_coe.c ****             d++;
+ 2938              	 .loc 1 758 0
+ 2939 0152 7B6A     	 ldr r3,[r7,#36]
+ 2940 0154 0133     	 adds r3,r3,#1
+ 2941 0156 7B62     	 str r3,[r7,#36]
+ 2942              	.L134:
+ 753:../soes/esc_coe.c ****          {
+ 2943              	 .loc 1 753 0
+ 2944 0158 3B6A     	 ldr r3,[r7,#32]
+ 2945 015a 1B78     	 ldrb r3,[r3]
+ 2946 015c 002B     	 cmp r3,#0
+ 2947 015e 06D0     	 beq .L135
+ 753:../soes/esc_coe.c ****          {
+ 2948              	 .loc 1 753 0 is_stmt 0 discriminator 1
+ 2949 0160 FA7F     	 ldrb r2,[r7,#31]
+ 2950 0162 124B     	 ldr r3,.L138+4
+ 2951 0164 D3F86D30 	 ldr r3,[r3,#109]
+ 2952 0168 123B     	 subs r3,r3,#18
+ 2953 016a 9A42     	 cmp r2,r3
+ 2954 016c E7D3     	 bcc .L136
+ 2955              	.L135:
+ 759:../soes/esc_coe.c ****          }
+ 760:../soes/esc_coe.c ****          *d = *s;
+ 2956              	 .loc 1 760 0 is_stmt 1
+ 2957 016e 3B6A     	 ldr r3,[r7,#32]
+ 2958 0170 1A78     	 ldrb r2,[r3]
+ 2959 0172 7B6A     	 ldr r3,[r7,#36]
+ 2960 0174 1A70     	 strb r2,[r3]
+ 761:../soes/esc_coe.c ****          coel->mbxheader.length = htoes ((uint16_t) 0x0c + n);
+ 2961              	 .loc 1 761 0
+ 2962 0176 FB7F     	 ldrb r3,[r7,#31]
+ 2963 0178 9BB2     	 uxth r3,r3
+ 2964 017a 0C33     	 adds r3,r3,#12
+ 2965 017c 9AB2     	 uxth r2,r3
+ 2966 017e BB68     	 ldr r3,[r7,#8]
+ 2967 0180 1A80     	 strh r2,[r3]
+ 762:../soes/esc_coe.c ****          MBXcontrol[MBXout].state = MBXstate_outreq;
+ 2968              	 .loc 1 762 0
+ 2969 0182 FB7B     	 ldrb r3,[r7,#15]
+ 2970 0184 0B4A     	 ldr r2,.L138+12
+ 2971 0186 0321     	 movs r1,#3
+ 2972 0188 D154     	 strb r1,[r2,r3]
+ 763:../soes/esc_coe.c ****          MBXcontrol[0].state = MBXstate_idle;
+ 2973              	 .loc 1 763 0
+ 2974 018a 0A4B     	 ldr r3,.L138+12
+ 2975 018c 0022     	 movs r2,#0
+ 2976 018e 1A70     	 strb r2,[r3]
+ 764:../soes/esc_coe.c ****          ESCvar.xoe = 0;
+ 2977              	 .loc 1 764 0
+ 2978 0190 064B     	 ldr r3,.L138+4
+ 2979 0192 0022     	 movs r2,#0
+ 2980 0194 83F89220 	 strb r2,[r3,#146]
+ 2981 0198 02E0     	 b .L129
+ 2982              	.L130:
+ 765:../soes/esc_coe.c ****       }
+ 766:../soes/esc_coe.c ****    }
+ 767:../soes/esc_coe.c ****    else
+ 768:../soes/esc_coe.c ****    {
+ 769:../soes/esc_coe.c ****       SDO_infoerror (ABORT_NOOBJECT);
+ 2983              	 .loc 1 769 0
+ 2984 019a 0748     	 ldr r0,.L138+16
+ 2985 019c FFF7FEFF 	 bl SDO_infoerror
+ 2986              	.L129:
+ 770:../soes/esc_coe.c ****    }
+ 771:../soes/esc_coe.c **** }
+ 2987              	 .loc 1 771 0
+ 2988 01a0 2837     	 adds r7,r7,#40
+ 2989              	.LCFI70:
+ 2990              	 .cfi_def_cfa_offset 8
+ 2991 01a2 BD46     	 mov sp,r7
+ 2992              	.LCFI71:
+ 2993              	 .cfi_def_cfa_register 13
+ 2994              	 
+ 2995 01a4 80BD     	 pop {r7,pc}
+ 2996              	.L139:
+ 2997 01a6 00BF     	 .align 2
+ 2998              	.L138:
+ 2999 01a8 00000000 	 .word MBX
+ 3000 01ac 00000000 	 .word ESCvar
+ 3001 01b0 00000000 	 .word SDOobjects
+ 3002 01b4 00000000 	 .word MBXcontrol
+ 3003 01b8 00000206 	 .word 100794368
+ 3004              	 .cfi_endproc
+ 3005              	.LFE13:
+ 3007              	 .section .text.SDO_geted,"ax",%progbits
+ 3008              	 .align 2
+ 3009              	 .global SDO_geted
+ 3010              	 .thumb
+ 3011              	 .thumb_func
+ 3013              	SDO_geted:
+ 3014              	.LFB14:
+ 772:../soes/esc_coe.c **** 
+ 773:../soes/esc_coe.c **** /** Function for handling incoming requested SDO Get Entry Description,
+ 774:../soes/esc_coe.c ****  * validating the request and sending an response. On error an
+ 775:../soes/esc_coe.c ****  * SDO Info Error will be sent.
+ 776:../soes/esc_coe.c ****  */
+ 777:../soes/esc_coe.c **** void SDO_geted (void)
+ 778:../soes/esc_coe.c **** {
+ 3015              	 .loc 1 778 0
+ 3016              	 .cfi_startproc
+ 3017              	 
+ 3018              	 
+ 3019 0000 80B5     	 push {r7,lr}
+ 3020              	.LCFI72:
+ 3021              	 .cfi_def_cfa_offset 8
+ 3022              	 .cfi_offset 7,-8
+ 3023              	 .cfi_offset 14,-4
+ 3024 0002 8AB0     	 sub sp,sp,#40
+ 3025              	.LCFI73:
+ 3026              	 .cfi_def_cfa_offset 48
+ 3027 0004 00AF     	 add r7,sp,#0
+ 3028              	.LCFI74:
+ 3029              	 .cfi_def_cfa_register 7
+ 779:../soes/esc_coe.c ****    uint8_t MBXout;
+ 780:../soes/esc_coe.c ****    uint16_t index;
+ 781:../soes/esc_coe.c ****    int32_t nidx, nsub;
+ 782:../soes/esc_coe.c ****    uint8_t subindex;
+ 783:../soes/esc_coe.c ****    uint8_t *d;
+ 784:../soes/esc_coe.c ****    const uint8_t *s;
+ 785:../soes/esc_coe.c ****    const _objd *objd;
+ 786:../soes/esc_coe.c ****    uint8_t n = 0;
+ 3030              	 .loc 1 786 0
+ 3031 0006 0023     	 movs r3,#0
+ 3032 0008 FB77     	 strb r3,[r7,#31]
+ 787:../soes/esc_coe.c ****    _COEentdesc *coer, *coel;
+ 788:../soes/esc_coe.c ****    coer = (_COEentdesc *) &MBX[0];
+ 3033              	 .loc 1 788 0
+ 3034 000a 684B     	 ldr r3,.L149
+ 3035 000c BB61     	 str r3,[r7,#24]
+ 789:../soes/esc_coe.c ****    index = etohs (coer->index);
+ 3036              	 .loc 1 789 0
+ 3037 000e BB69     	 ldr r3,[r7,#24]
+ 3038 0010 1A7B     	 ldrb r2,[r3,#12]
+ 3039 0012 5B7B     	 ldrb r3,[r3,#13]
+ 3040 0014 1B02     	 lsls r3,r3,#8
+ 3041 0016 1343     	 orrs r3,r3,r2
+ 3042 0018 FB82     	 strh r3,[r7,#22]
+ 790:../soes/esc_coe.c ****    subindex = coer->subindex;
+ 3043              	 .loc 1 790 0
+ 3044 001a BB69     	 ldr r3,[r7,#24]
+ 3045 001c 9B7B     	 ldrb r3,[r3,#14]
+ 3046 001e 7B75     	 strb r3,[r7,#21]
+ 791:../soes/esc_coe.c ****    nidx = SDO_findobject (index);
+ 3047              	 .loc 1 791 0
+ 3048 0020 FB8A     	 ldrh r3,[r7,#22]
+ 3049 0022 1846     	 mov r0,r3
+ 3050 0024 FFF7FEFF 	 bl SDO_findobject
+ 3051 0028 3861     	 str r0,[r7,#16]
+ 792:../soes/esc_coe.c ****    if (nidx >= 0)
+ 3052              	 .loc 1 792 0
+ 3053 002a 3B69     	 ldr r3,[r7,#16]
+ 3054 002c 002B     	 cmp r3,#0
+ 3055 002e C0F2B780 	 blt .L141
+ 793:../soes/esc_coe.c ****    {
+ 794:../soes/esc_coe.c ****       nsub = SDO_findsubindex (nidx, subindex);
+ 3056              	 .loc 1 794 0
+ 3057 0032 3B69     	 ldr r3,[r7,#16]
+ 3058 0034 9BB2     	 uxth r3,r3
+ 3059 0036 1AB2     	 sxth r2,r3
+ 3060 0038 7B7D     	 ldrb r3,[r7,#21]
+ 3061 003a 1046     	 mov r0,r2
+ 3062 003c 1946     	 mov r1,r3
+ 3063 003e FFF7FEFF 	 bl SDO_findsubindex
+ 3064 0042 0346     	 mov r3,r0
+ 3065 0044 FB60     	 str r3,[r7,#12]
+ 795:../soes/esc_coe.c ****       if (nsub >= 0)
+ 3066              	 .loc 1 795 0
+ 3067 0046 FB68     	 ldr r3,[r7,#12]
+ 3068 0048 002B     	 cmp r3,#0
+ 3069 004a C0F2A580 	 blt .L142
+ 796:../soes/esc_coe.c ****       {
+ 797:../soes/esc_coe.c ****          objd = SDOobjects[nidx].objdesc;
+ 3070              	 .loc 1 797 0
+ 3071 004e 5849     	 ldr r1,.L149+4
+ 3072 0050 3A69     	 ldr r2,[r7,#16]
+ 3073 0052 1346     	 mov r3,r2
+ 3074 0054 DB00     	 lsls r3,r3,#3
+ 3075 0056 9B1A     	 subs r3,r3,r2
+ 3076 0058 5B00     	 lsls r3,r3,#1
+ 3077 005a 0B44     	 add r3,r3,r1
+ 3078 005c 0833     	 adds r3,r3,#8
+ 3079 005e D3F80230 	 ldr r3,[r3,#2]
+ 3080 0062 BB60     	 str r3,[r7,#8]
+ 798:../soes/esc_coe.c ****          MBXout = ESC_claimbuffer ();
+ 3081              	 .loc 1 798 0
+ 3082 0064 FFF7FEFF 	 bl ESC_claimbuffer
+ 3083 0068 0346     	 mov r3,r0
+ 3084 006a FB71     	 strb r3,[r7,#7]
+ 799:../soes/esc_coe.c ****          if (MBXout)
+ 3085              	 .loc 1 799 0
+ 3086 006c FB79     	 ldrb r3,[r7,#7]
+ 3087 006e 002B     	 cmp r3,#0
+ 3088 0070 00F09980 	 beq .L140
+ 800:../soes/esc_coe.c ****          {
+ 801:../soes/esc_coe.c ****             coel = (_COEentdesc *) &MBX[MBXout * ESC_MBXSIZE];
+ 3089              	 .loc 1 801 0
+ 3090 0074 FB79     	 ldrb r3,[r7,#7]
+ 3091 0076 4F4A     	 ldr r2,.L149+8
+ 3092 0078 D2F86D20 	 ldr r2,[r2,#109]
+ 3093 007c 02FB03F3 	 mul r3,r2,r3
+ 3094 0080 4A4A     	 ldr r2,.L149
+ 3095 0082 1344     	 add r3,r3,r2
+ 3096 0084 3B60     	 str r3,[r7]
+ 802:../soes/esc_coe.c ****             coel->mbxheader.mbxtype = MBXCOE;
+ 3097              	 .loc 1 802 0
+ 3098 0086 3A68     	 ldr r2,[r7]
+ 3099 0088 5379     	 ldrb r3,[r2,#5]
+ 3100 008a 0321     	 movs r1,#3
+ 3101 008c 61F30303 	 bfi r3,r1,#0,#4
+ 3102 0090 5371     	 strb r3,[r2,#5]
+ 803:../soes/esc_coe.c ****             coel->coeheader.numberservice =
+ 3103              	 .loc 1 803 0
+ 3104 0092 3B68     	 ldr r3,[r7]
+ 3105 0094 0022     	 movs r2,#0
+ 3106 0096 9A71     	 strb r2,[r3,#6]
+ 3107 0098 0022     	 movs r2,#0
+ 3108 009a 62F07F02 	 orn r2,r2,#127
+ 3109 009e DA71     	 strb r2,[r3,#7]
+ 804:../soes/esc_coe.c ****                htoes ((0 & 0x01f) | (COE_SDOINFORMATION << 12));
+ 805:../soes/esc_coe.c ****             coel->infoheader.opcode = COE_ENTRYDESCRIPTIONRESPONSE;
+ 3110              	 .loc 1 805 0
+ 3111 00a0 3A68     	 ldr r2,[r7]
+ 3112 00a2 137A     	 ldrb r3,[r2,#8]
+ 3113 00a4 0621     	 movs r1,#6
+ 3114 00a6 61F30603 	 bfi r3,r1,#0,#7
+ 3115 00aa 1372     	 strb r3,[r2,#8]
+ 806:../soes/esc_coe.c ****             coel->infoheader.incomplete = 0;
+ 3116              	 .loc 1 806 0
+ 3117 00ac 3A68     	 ldr r2,[r7]
+ 3118 00ae 137A     	 ldrb r3,[r2,#8]
+ 3119 00b0 6FF3C713 	 bfc r3,#7,#1
+ 3120 00b4 1372     	 strb r3,[r2,#8]
+ 807:../soes/esc_coe.c ****             coel->infoheader.reserved = 0x00;
+ 3121              	 .loc 1 807 0
+ 3122 00b6 3B68     	 ldr r3,[r7]
+ 3123 00b8 0022     	 movs r2,#0
+ 3124 00ba 5A72     	 strb r2,[r3,#9]
+ 808:../soes/esc_coe.c ****             coel->infoheader.fragmentsleft = htoes ((uint16_t) 0);
+ 3125              	 .loc 1 808 0
+ 3126 00bc 3B68     	 ldr r3,[r7]
+ 3127 00be 0022     	 movs r2,#0
+ 3128 00c0 9A72     	 strb r2,[r3,#10]
+ 3129 00c2 0022     	 movs r2,#0
+ 3130 00c4 DA72     	 strb r2,[r3,#11]
+ 809:../soes/esc_coe.c ****             coel->index = htoes (index);
+ 3131              	 .loc 1 809 0
+ 3132 00c6 3B68     	 ldr r3,[r7]
+ 3133 00c8 FA8A     	 ldrh r2,[r7,#22]
+ 3134 00ca 9A81     	 strh r2,[r3,#12]
+ 810:../soes/esc_coe.c ****             coel->subindex = subindex;
+ 3135              	 .loc 1 810 0
+ 3136 00cc 3B68     	 ldr r3,[r7]
+ 3137 00ce 7A7D     	 ldrb r2,[r7,#21]
+ 3138 00d0 9A73     	 strb r2,[r3,#14]
+ 811:../soes/esc_coe.c ****             coel->valueinfo = COE_VALUEINFO_ACCESS +
+ 3139              	 .loc 1 811 0
+ 3140 00d2 3B68     	 ldr r3,[r7]
+ 3141 00d4 0722     	 movs r2,#7
+ 3142 00d6 DA73     	 strb r2,[r3,#15]
+ 812:../soes/esc_coe.c ****                COE_VALUEINFO_OBJECT + COE_VALUEINFO_MAPPABLE;
+ 813:../soes/esc_coe.c ****             coel->datatype = htoes ((objd + nsub)->datatype);
+ 3143              	 .loc 1 813 0
+ 3144 00d8 FA68     	 ldr r2,[r7,#12]
+ 3145 00da 1346     	 mov r3,r2
+ 3146 00dc 9B00     	 lsls r3,r3,#2
+ 3147 00de 1344     	 add r3,r3,r2
+ 3148 00e0 9B00     	 lsls r3,r3,#2
+ 3149 00e2 1A46     	 mov r2,r3
+ 3150 00e4 BB68     	 ldr r3,[r7,#8]
+ 3151 00e6 1344     	 add r3,r3,r2
+ 3152 00e8 5B88     	 ldrh r3,[r3,#2]
+ 3153 00ea 9AB2     	 uxth r2,r3
+ 3154 00ec 3B68     	 ldr r3,[r7]
+ 3155 00ee 1A82     	 strh r2,[r3,#16]
+ 814:../soes/esc_coe.c ****             coel->bitlength = htoes ((objd + nsub)->bitlength);
+ 3156              	 .loc 1 814 0
+ 3157 00f0 FA68     	 ldr r2,[r7,#12]
+ 3158 00f2 1346     	 mov r3,r2
+ 3159 00f4 9B00     	 lsls r3,r3,#2
+ 3160 00f6 1344     	 add r3,r3,r2
+ 3161 00f8 9B00     	 lsls r3,r3,#2
+ 3162 00fa 1A46     	 mov r2,r3
+ 3163 00fc BB68     	 ldr r3,[r7,#8]
+ 3164 00fe 1344     	 add r3,r3,r2
+ 3165 0100 9B88     	 ldrh r3,[r3,#4]
+ 3166 0102 9AB2     	 uxth r2,r3
+ 3167 0104 3B68     	 ldr r3,[r7]
+ 3168 0106 5A82     	 strh r2,[r3,#18]
+ 815:../soes/esc_coe.c ****             coel->access = htoes ((objd + nsub)->access);
+ 3169              	 .loc 1 815 0
+ 3170 0108 FA68     	 ldr r2,[r7,#12]
+ 3171 010a 1346     	 mov r3,r2
+ 3172 010c 9B00     	 lsls r3,r3,#2
+ 3173 010e 1344     	 add r3,r3,r2
+ 3174 0110 9B00     	 lsls r3,r3,#2
+ 3175 0112 1A46     	 mov r2,r3
+ 3176 0114 BB68     	 ldr r3,[r7,#8]
+ 3177 0116 1344     	 add r3,r3,r2
+ 3178 0118 DB88     	 ldrh r3,[r3,#6]
+ 3179 011a 9AB2     	 uxth r2,r3
+ 3180 011c 3B68     	 ldr r3,[r7]
+ 3181 011e 9A82     	 strh r2,[r3,#20]
+ 816:../soes/esc_coe.c ****             s = (uint8_t *) (objd + nsub)->name;
+ 3182              	 .loc 1 816 0
+ 3183 0120 FA68     	 ldr r2,[r7,#12]
+ 3184 0122 1346     	 mov r3,r2
+ 3185 0124 9B00     	 lsls r3,r3,#2
+ 3186 0126 1344     	 add r3,r3,r2
+ 3187 0128 9B00     	 lsls r3,r3,#2
+ 3188 012a 1A46     	 mov r2,r3
+ 3189 012c BB68     	 ldr r3,[r7,#8]
+ 3190 012e 1344     	 add r3,r3,r2
+ 3191 0130 9B68     	 ldr r3,[r3,#8]
+ 3192 0132 3B62     	 str r3,[r7,#32]
+ 817:../soes/esc_coe.c ****             d = (uint8_t *) &(coel->name);
+ 3193              	 .loc 1 817 0
+ 3194 0134 3B68     	 ldr r3,[r7]
+ 3195 0136 1633     	 adds r3,r3,#22
+ 3196 0138 7B62     	 str r3,[r7,#36]
+ 818:../soes/esc_coe.c ****             while (*s && (n < (ESC_MBXDSIZE - 0x10)))
+ 3197              	 .loc 1 818 0
+ 3198 013a 0CE0     	 b .L144
+ 3199              	.L146:
+ 819:../soes/esc_coe.c ****             {
+ 820:../soes/esc_coe.c ****                *d = *s;
+ 3200              	 .loc 1 820 0
+ 3201 013c 3B6A     	 ldr r3,[r7,#32]
+ 3202 013e 1A78     	 ldrb r2,[r3]
+ 3203 0140 7B6A     	 ldr r3,[r7,#36]
+ 3204 0142 1A70     	 strb r2,[r3]
+ 821:../soes/esc_coe.c ****                n++;
+ 3205              	 .loc 1 821 0
+ 3206 0144 FB7F     	 ldrb r3,[r7,#31]
+ 3207 0146 0133     	 adds r3,r3,#1
+ 3208 0148 FB77     	 strb r3,[r7,#31]
+ 822:../soes/esc_coe.c ****                s++;
+ 3209              	 .loc 1 822 0
+ 3210 014a 3B6A     	 ldr r3,[r7,#32]
+ 3211 014c 0133     	 adds r3,r3,#1
+ 3212 014e 3B62     	 str r3,[r7,#32]
+ 823:../soes/esc_coe.c ****                d++;
+ 3213              	 .loc 1 823 0
+ 3214 0150 7B6A     	 ldr r3,[r7,#36]
+ 3215 0152 0133     	 adds r3,r3,#1
+ 3216 0154 7B62     	 str r3,[r7,#36]
+ 3217              	.L144:
+ 818:../soes/esc_coe.c ****             {
+ 3218              	 .loc 1 818 0
+ 3219 0156 3B6A     	 ldr r3,[r7,#32]
+ 3220 0158 1B78     	 ldrb r3,[r3]
+ 3221 015a 002B     	 cmp r3,#0
+ 3222 015c 06D0     	 beq .L145
+ 818:../soes/esc_coe.c ****             {
+ 3223              	 .loc 1 818 0 is_stmt 0 discriminator 1
+ 3224 015e FA7F     	 ldrb r2,[r7,#31]
+ 3225 0160 144B     	 ldr r3,.L149+8
+ 3226 0162 D3F86D30 	 ldr r3,[r3,#109]
+ 3227 0166 163B     	 subs r3,r3,#22
+ 3228 0168 9A42     	 cmp r2,r3
+ 3229 016a E7D3     	 bcc .L146
+ 3230              	.L145:
+ 824:../soes/esc_coe.c ****             }
+ 825:../soes/esc_coe.c ****             *d = *s;
+ 3231              	 .loc 1 825 0 is_stmt 1
+ 3232 016c 3B6A     	 ldr r3,[r7,#32]
+ 3233 016e 1A78     	 ldrb r2,[r3]
+ 3234 0170 7B6A     	 ldr r3,[r7,#36]
+ 3235 0172 1A70     	 strb r2,[r3]
+ 826:../soes/esc_coe.c ****             coel->mbxheader.length = htoes ((uint16_t) 0x10 + n);
+ 3236              	 .loc 1 826 0
+ 3237 0174 FB7F     	 ldrb r3,[r7,#31]
+ 3238 0176 9BB2     	 uxth r3,r3
+ 3239 0178 1033     	 adds r3,r3,#16
+ 3240 017a 9AB2     	 uxth r2,r3
+ 3241 017c 3B68     	 ldr r3,[r7]
+ 3242 017e 1A80     	 strh r2,[r3]
+ 827:../soes/esc_coe.c ****             MBXcontrol[MBXout].state = MBXstate_outreq;
+ 3243              	 .loc 1 827 0
+ 3244 0180 FB79     	 ldrb r3,[r7,#7]
+ 3245 0182 0D4A     	 ldr r2,.L149+12
+ 3246 0184 0321     	 movs r1,#3
+ 3247 0186 D154     	 strb r1,[r2,r3]
+ 828:../soes/esc_coe.c ****             MBXcontrol[0].state = MBXstate_idle;
+ 3248              	 .loc 1 828 0
+ 3249 0188 0B4B     	 ldr r3,.L149+12
+ 3250 018a 0022     	 movs r2,#0
+ 3251 018c 1A70     	 strb r2,[r3]
+ 829:../soes/esc_coe.c ****             ESCvar.xoe = 0;
+ 3252              	 .loc 1 829 0
+ 3253 018e 094B     	 ldr r3,.L149+8
+ 3254 0190 0022     	 movs r2,#0
+ 3255 0192 83F89220 	 strb r2,[r3,#146]
+ 3256 0196 06E0     	 b .L140
+ 3257              	.L142:
+ 830:../soes/esc_coe.c ****          }
+ 831:../soes/esc_coe.c ****       }
+ 832:../soes/esc_coe.c ****       else
+ 833:../soes/esc_coe.c ****       {
+ 834:../soes/esc_coe.c ****          SDO_infoerror (ABORT_NOSUBINDEX);
+ 3258              	 .loc 1 834 0
+ 3259 0198 0848     	 ldr r0,.L149+16
+ 3260 019a FFF7FEFF 	 bl SDO_infoerror
+ 3261 019e 02E0     	 b .L140
+ 3262              	.L141:
+ 835:../soes/esc_coe.c ****       }
+ 836:../soes/esc_coe.c ****    }
+ 837:../soes/esc_coe.c ****    else
+ 838:../soes/esc_coe.c ****    {
+ 839:../soes/esc_coe.c ****       SDO_infoerror (ABORT_NOOBJECT);
+ 3263              	 .loc 1 839 0
+ 3264 01a0 0748     	 ldr r0,.L149+20
+ 3265 01a2 FFF7FEFF 	 bl SDO_infoerror
+ 3266              	.L140:
+ 840:../soes/esc_coe.c ****    }
+ 841:../soes/esc_coe.c **** }
+ 3267              	 .loc 1 841 0
+ 3268 01a6 2837     	 adds r7,r7,#40
+ 3269              	.LCFI75:
+ 3270              	 .cfi_def_cfa_offset 8
+ 3271 01a8 BD46     	 mov sp,r7
+ 3272              	.LCFI76:
+ 3273              	 .cfi_def_cfa_register 13
+ 3274              	 
+ 3275 01aa 80BD     	 pop {r7,pc}
+ 3276              	.L150:
+ 3277              	 .align 2
+ 3278              	.L149:
+ 3279 01ac 00000000 	 .word MBX
+ 3280 01b0 00000000 	 .word SDOobjects
+ 3281 01b4 00000000 	 .word ESCvar
+ 3282 01b8 00000000 	 .word MBXcontrol
+ 3283 01bc 11000906 	 .word 101253137
+ 3284 01c0 00000206 	 .word 100794368
+ 3285              	 .cfi_endproc
+ 3286              	.LFE14:
+ 3288              	 .section .text.ESC_coeprocess,"ax",%progbits
+ 3289              	 .align 2
+ 3290              	 .global ESC_coeprocess
+ 3291              	 .thumb
+ 3292              	 .thumb_func
+ 3294              	ESC_coeprocess:
+ 3295              	.LFB15:
+ 842:../soes/esc_coe.c **** 
+ 843:../soes/esc_coe.c **** /** Main CoE function checking the status on current mailbox buffers carrying
+ 844:../soes/esc_coe.c ****  * data, distributing the mailboxes to appropriate CoE functions.
+ 845:../soes/esc_coe.c ****  * On Error an MBX_error or SDO Abort will be sent depending on error cause.
+ 846:../soes/esc_coe.c ****  */
+ 847:../soes/esc_coe.c **** void ESC_coeprocess (void)
+ 848:../soes/esc_coe.c **** {
+ 3296              	 .loc 1 848 0
+ 3297              	 .cfi_startproc
+ 3298              	 
+ 3299              	 
+ 3300 0000 80B5     	 push {r7,lr}
+ 3301              	.LCFI77:
+ 3302              	 .cfi_def_cfa_offset 8
+ 3303              	 .cfi_offset 7,-8
+ 3304              	 .cfi_offset 14,-4
+ 3305 0002 84B0     	 sub sp,sp,#16
+ 3306              	.LCFI78:
+ 3307              	 .cfi_def_cfa_offset 24
+ 3308 0004 00AF     	 add r7,sp,#0
+ 3309              	.LCFI79:
+ 3310              	 .cfi_def_cfa_register 7
+ 849:../soes/esc_coe.c ****    _MBXh *mbh;
+ 850:../soes/esc_coe.c ****    _COEsdo *coesdo;
+ 851:../soes/esc_coe.c ****    _COEobjdesc *coeobjdesc;
+ 852:../soes/esc_coe.c ****    uint8_t service;
+ 853:../soes/esc_coe.c ****    if (ESCvar.MBXrun == 0)
+ 3311              	 .loc 1 853 0
+ 3312 0006 5C4B     	 ldr r3,.L165
+ 3313 0008 93F86C30 	 ldrb r3,[r3,#108]
+ 3314 000c 002B     	 cmp r3,#0
+ 3315 000e 00D1     	 bne .L152
+ 854:../soes/esc_coe.c ****    {
+ 855:../soes/esc_coe.c ****       return;
+ 3316              	 .loc 1 855 0
+ 3317 0010 AEE0     	 b .L151
+ 3318              	.L152:
+ 856:../soes/esc_coe.c ****    }
+ 857:../soes/esc_coe.c ****    if (!ESCvar.xoe && (MBXcontrol[0].state == MBXstate_inclaim))
+ 3319              	 .loc 1 857 0
+ 3320 0012 594B     	 ldr r3,.L165
+ 3321 0014 93F89230 	 ldrb r3,[r3,#146]
+ 3322 0018 002B     	 cmp r3,#0
+ 3323 001a 19D1     	 bne .L154
+ 3324              	 .loc 1 857 0 is_stmt 0 discriminator 1
+ 3325 001c 574B     	 ldr r3,.L165+4
+ 3326 001e 1B78     	 ldrb r3,[r3]
+ 3327 0020 012B     	 cmp r3,#1
+ 3328 0022 15D1     	 bne .L154
+ 858:../soes/esc_coe.c ****    {
+ 859:../soes/esc_coe.c ****       mbh = (_MBXh *) &MBX[0];
+ 3329              	 .loc 1 859 0 is_stmt 1
+ 3330 0024 564B     	 ldr r3,.L165+8
+ 3331 0026 FB60     	 str r3,[r7,#12]
+ 860:../soes/esc_coe.c ****       if (mbh->mbxtype == MBXCOE)
+ 3332              	 .loc 1 860 0
+ 3333 0028 FB68     	 ldr r3,[r7,#12]
+ 3334 002a 5B79     	 ldrb r3,[r3,#5]
+ 3335 002c 03F00F03 	 and r3,r3,#15
+ 3336 0030 DBB2     	 uxtb r3,r3
+ 3337 0032 032B     	 cmp r3,#3
+ 3338 0034 0CD1     	 bne .L154
+ 861:../soes/esc_coe.c ****       {
+ 862:../soes/esc_coe.c ****          if (etohs (mbh->length) < COE_MINIMUM_LENGTH)
+ 3339              	 .loc 1 862 0
+ 3340 0036 FB68     	 ldr r3,[r7,#12]
+ 3341 0038 1B88     	 ldrh r3,[r3]
+ 3342 003a 9BB2     	 uxth r3,r3
+ 3343 003c 072B     	 cmp r3,#7
+ 3344 003e 03D8     	 bhi .L155
+ 863:../soes/esc_coe.c ****          {
+ 864:../soes/esc_coe.c ****             MBX_error (MBXERR_INVALIDSIZE);
+ 3345              	 .loc 1 864 0
+ 3346 0040 0820     	 movs r0,#8
+ 3347 0042 FFF7FEFF 	 bl MBX_error
+ 3348 0046 03E0     	 b .L154
+ 3349              	.L155:
+ 865:../soes/esc_coe.c ****          }
+ 866:../soes/esc_coe.c ****          else
+ 867:../soes/esc_coe.c ****          {
+ 868:../soes/esc_coe.c ****             ESCvar.xoe = MBXCOE;
+ 3350              	 .loc 1 868 0
+ 3351 0048 4B4B     	 ldr r3,.L165
+ 3352 004a 0322     	 movs r2,#3
+ 3353 004c 83F89220 	 strb r2,[r3,#146]
+ 3354              	.L154:
+ 869:../soes/esc_coe.c ****          }
+ 870:../soes/esc_coe.c ****       }
+ 871:../soes/esc_coe.c ****    }
+ 872:../soes/esc_coe.c ****    if ((ESCvar.xoe == (MBXCOE + MBXODL)) && (!ESCvar.mbxoutpost))
+ 3355              	 .loc 1 872 0
+ 3356 0050 494B     	 ldr r3,.L165
+ 3357 0052 93F89230 	 ldrb r3,[r3,#146]
+ 3358 0056 132B     	 cmp r3,#19
+ 3359 0058 06D1     	 bne .L156
+ 3360              	 .loc 1 872 0 is_stmt 0 discriminator 1
+ 3361 005a 474B     	 ldr r3,.L165
+ 3362 005c 93F89030 	 ldrb r3,[r3,#144]
+ 3363 0060 002B     	 cmp r3,#0
+ 3364 0062 01D1     	 bne .L156
+ 873:../soes/esc_coe.c ****    {
+ 874:../soes/esc_coe.c ****       /* continue get OD list */
+ 875:../soes/esc_coe.c ****       SDO_getodlistcont ();
+ 3365              	 .loc 1 875 0 is_stmt 1
+ 3366 0064 FFF7FEFF 	 bl SDO_getodlistcont
+ 3367              	.L156:
+ 876:../soes/esc_coe.c ****    }
+ 877:../soes/esc_coe.c ****    if (ESCvar.xoe == MBXCOE)
+ 3368              	 .loc 1 877 0
+ 3369 0068 434B     	 ldr r3,.L165
+ 3370 006a 93F89230 	 ldrb r3,[r3,#146]
+ 3371 006e 032B     	 cmp r3,#3
+ 3372 0070 7ED1     	 bne .L151
+ 878:../soes/esc_coe.c ****    {
+ 879:../soes/esc_coe.c ****       coesdo = (_COEsdo *) &MBX[0];
+ 3373              	 .loc 1 879 0
+ 3374 0072 434B     	 ldr r3,.L165+8
+ 3375 0074 BB60     	 str r3,[r7,#8]
+ 880:../soes/esc_coe.c ****       coeobjdesc = (_COEobjdesc *) &MBX[0];
+ 3376              	 .loc 1 880 0
+ 3377 0076 424B     	 ldr r3,.L165+8
+ 3378 0078 7B60     	 str r3,[r7,#4]
+ 881:../soes/esc_coe.c ****       service = etohs (coesdo->coeheader.numberservice) >> 12;
+ 3379              	 .loc 1 881 0
+ 3380 007a BB68     	 ldr r3,[r7,#8]
+ 3381 007c DB88     	 ldrh r3,[r3,#6]
+ 3382 007e 9BB2     	 uxth r3,r3
+ 3383 0080 1B0B     	 lsrs r3,r3,#12
+ 3384 0082 9BB2     	 uxth r3,r3
+ 3385 0084 FB70     	 strb r3,[r7,#3]
+ 882:../soes/esc_coe.c ****       /* initiate SDO upload request */
+ 883:../soes/esc_coe.c ****       if ((service == COE_SDOREQUEST)
+ 3386              	 .loc 1 883 0
+ 3387 0086 FB78     	 ldrb r3,[r7,#3]
+ 3388 0088 022B     	 cmp r3,#2
+ 3389 008a 0AD1     	 bne .L157
+ 884:../soes/esc_coe.c ****           && (coesdo->command == COE_COMMAND_UPLOADREQUEST)
+ 3390              	 .loc 1 884 0
+ 3391 008c BB68     	 ldr r3,[r7,#8]
+ 3392 008e 1B7A     	 ldrb r3,[r3,#8]
+ 3393 0090 402B     	 cmp r3,#64
+ 3394 0092 06D1     	 bne .L157
+ 885:../soes/esc_coe.c ****           && (etohs (coesdo->mbxheader.length) == 0x0a))
+ 3395              	 .loc 1 885 0
+ 3396 0094 BB68     	 ldr r3,[r7,#8]
+ 3397 0096 1B88     	 ldrh r3,[r3]
+ 3398 0098 9BB2     	 uxth r3,r3
+ 3399 009a 0A2B     	 cmp r3,#10
+ 3400 009c 01D1     	 bne .L157
+ 886:../soes/esc_coe.c ****       {
+ 887:../soes/esc_coe.c ****          SDO_upload ();
+ 3401              	 .loc 1 887 0
+ 3402 009e FFF7FEFF 	 bl SDO_upload
+ 3403              	.L157:
+ 888:../soes/esc_coe.c ****       }
+ 889:../soes/esc_coe.c ****       /* SDO upload segment request */
+ 890:../soes/esc_coe.c ****       if ((service == COE_SDOREQUEST)
+ 3404              	 .loc 1 890 0
+ 3405 00a2 FB78     	 ldrb r3,[r7,#3]
+ 3406 00a4 022B     	 cmp r3,#2
+ 3407 00a6 12D1     	 bne .L158
+ 891:../soes/esc_coe.c ****           && ((coesdo->command & 0xef) == COE_COMMAND_UPLOADSEGREQ)
+ 3408              	 .loc 1 891 0
+ 3409 00a8 BB68     	 ldr r3,[r7,#8]
+ 3410 00aa 1B7A     	 ldrb r3,[r3,#8]
+ 3411 00ac 03F0EF03 	 and r3,r3,#239
+ 3412 00b0 602B     	 cmp r3,#96
+ 3413 00b2 0CD1     	 bne .L158
+ 892:../soes/esc_coe.c ****           && (etohs (coesdo->mbxheader.length) == 0x0a)
+ 3414              	 .loc 1 892 0
+ 3415 00b4 BB68     	 ldr r3,[r7,#8]
+ 3416 00b6 1B88     	 ldrh r3,[r3]
+ 3417 00b8 9BB2     	 uxth r3,r3
+ 3418 00ba 0A2B     	 cmp r3,#10
+ 3419 00bc 07D1     	 bne .L158
+ 893:../soes/esc_coe.c ****           && (ESCvar.segmented == MBXSEU))
+ 3420              	 .loc 1 893 0
+ 3421 00be 2E4B     	 ldr r3,.L165
+ 3422 00c0 93F89530 	 ldrb r3,[r3,#149]
+ 3423 00c4 402B     	 cmp r3,#64
+ 3424 00c6 02D1     	 bne .L158
+ 894:../soes/esc_coe.c ****       {
+ 895:../soes/esc_coe.c ****          SDO_uploadsegment ();
+ 3425              	 .loc 1 895 0
+ 3426 00c8 FFF7FEFF 	 bl SDO_uploadsegment
+ 3427 00cc 50E0     	 b .L151
+ 3428              	.L158:
+ 896:../soes/esc_coe.c ****       }
+ 897:../soes/esc_coe.c ****       /* initiate SDO download request */
+ 898:../soes/esc_coe.c ****       else
+ 899:../soes/esc_coe.c ****       {
+ 900:../soes/esc_coe.c ****          if ((service == COE_SDOREQUEST) && ((coesdo->command & 0xf1) == 0x21))
+ 3429              	 .loc 1 900 0
+ 3430 00ce FB78     	 ldrb r3,[r7,#3]
+ 3431 00d0 022B     	 cmp r3,#2
+ 3432 00d2 08D1     	 bne .L159
+ 3433              	 .loc 1 900 0 is_stmt 0 discriminator 1
+ 3434 00d4 BB68     	 ldr r3,[r7,#8]
+ 3435 00d6 1B7A     	 ldrb r3,[r3,#8]
+ 3436 00d8 03F0F103 	 and r3,r3,#241
+ 3437 00dc 212B     	 cmp r3,#33
+ 3438 00de 02D1     	 bne .L159
+ 901:../soes/esc_coe.c ****          {
+ 902:../soes/esc_coe.c ****             SDO_download ();
+ 3439              	 .loc 1 902 0 is_stmt 1
+ 3440 00e0 FFF7FEFF 	 bl SDO_download
+ 3441 00e4 44E0     	 b .L151
+ 3442              	.L159:
+ 903:../soes/esc_coe.c ****          }
+ 904:../soes/esc_coe.c ****          /* initiate SDO get OD list */
+ 905:../soes/esc_coe.c ****          else
+ 906:../soes/esc_coe.c ****          {
+ 907:../soes/esc_coe.c ****             if ((service == COE_SDOINFORMATION)
+ 3443              	 .loc 1 907 0
+ 3444 00e6 FB78     	 ldrb r3,[r7,#3]
+ 3445 00e8 082B     	 cmp r3,#8
+ 3446 00ea 09D1     	 bne .L160
+ 908:../soes/esc_coe.c ****                 && (coeobjdesc->infoheader.opcode == 0x01))
+ 3447              	 .loc 1 908 0
+ 3448 00ec 7B68     	 ldr r3,[r7,#4]
+ 3449 00ee 1B7A     	 ldrb r3,[r3,#8]
+ 3450 00f0 03F07F03 	 and r3,r3,#127
+ 3451 00f4 DBB2     	 uxtb r3,r3
+ 3452 00f6 012B     	 cmp r3,#1
+ 3453 00f8 02D1     	 bne .L160
+ 909:../soes/esc_coe.c ****             {
+ 910:../soes/esc_coe.c ****                SDO_getodlist ();
+ 3454              	 .loc 1 910 0
+ 3455 00fa FFF7FEFF 	 bl SDO_getodlist
+ 3456 00fe 37E0     	 b .L151
+ 3457              	.L160:
+ 911:../soes/esc_coe.c ****             }
+ 912:../soes/esc_coe.c ****             /* initiate SDO get OD */
+ 913:../soes/esc_coe.c ****             else
+ 914:../soes/esc_coe.c ****             {
+ 915:../soes/esc_coe.c ****                if ((service == COE_SDOINFORMATION)
+ 3458              	 .loc 1 915 0
+ 3459 0100 FB78     	 ldrb r3,[r7,#3]
+ 3460 0102 082B     	 cmp r3,#8
+ 3461 0104 09D1     	 bne .L161
+ 916:../soes/esc_coe.c ****                    && (coeobjdesc->infoheader.opcode == 0x03))
+ 3462              	 .loc 1 916 0
+ 3463 0106 7B68     	 ldr r3,[r7,#4]
+ 3464 0108 1B7A     	 ldrb r3,[r3,#8]
+ 3465 010a 03F07F03 	 and r3,r3,#127
+ 3466 010e DBB2     	 uxtb r3,r3
+ 3467 0110 032B     	 cmp r3,#3
+ 3468 0112 02D1     	 bne .L161
+ 917:../soes/esc_coe.c ****                {
+ 918:../soes/esc_coe.c ****                   SDO_getod ();
+ 3469              	 .loc 1 918 0
+ 3470 0114 FFF7FEFF 	 bl SDO_getod
+ 3471 0118 2AE0     	 b .L151
+ 3472              	.L161:
+ 919:../soes/esc_coe.c ****                }
+ 920:../soes/esc_coe.c ****                /* initiate SDO get ED */
+ 921:../soes/esc_coe.c ****                else
+ 922:../soes/esc_coe.c ****                {
+ 923:../soes/esc_coe.c ****                   if ((service == COE_SDOINFORMATION)
+ 3473              	 .loc 1 923 0
+ 3474 011a FB78     	 ldrb r3,[r7,#3]
+ 3475 011c 082B     	 cmp r3,#8
+ 3476 011e 09D1     	 bne .L162
+ 924:../soes/esc_coe.c ****                       && (coeobjdesc->infoheader.opcode == 0x05))
+ 3477              	 .loc 1 924 0
+ 3478 0120 7B68     	 ldr r3,[r7,#4]
+ 3479 0122 1B7A     	 ldrb r3,[r3,#8]
+ 3480 0124 03F07F03 	 and r3,r3,#127
+ 3481 0128 DBB2     	 uxtb r3,r3
+ 3482 012a 052B     	 cmp r3,#5
+ 3483 012c 02D1     	 bne .L162
+ 925:../soes/esc_coe.c ****                   {
+ 926:../soes/esc_coe.c ****                      SDO_geted ();
+ 3484              	 .loc 1 926 0
+ 3485 012e FFF7FEFF 	 bl SDO_geted
+ 3486 0132 1DE0     	 b .L151
+ 3487              	.L162:
+ 927:../soes/esc_coe.c ****                   }
+ 928:../soes/esc_coe.c ****                   else
+ 929:../soes/esc_coe.c ****                   {
+ 930:../soes/esc_coe.c ****                      /* COE not recognised above */
+ 931:../soes/esc_coe.c ****                      if (ESCvar.xoe == MBXCOE)
+ 3488              	 .loc 1 931 0
+ 3489 0134 104B     	 ldr r3,.L165
+ 3490 0136 93F89230 	 ldrb r3,[r3,#146]
+ 3491 013a 032B     	 cmp r3,#3
+ 3492 013c 18D1     	 bne .L151
+ 932:../soes/esc_coe.c ****                      {
+ 933:../soes/esc_coe.c ****                         if (service == 0)
+ 3493              	 .loc 1 933 0
+ 3494 013e FB78     	 ldrb r3,[r7,#3]
+ 3495 0140 002B     	 cmp r3,#0
+ 3496 0142 03D1     	 bne .L163
+ 934:../soes/esc_coe.c ****                         {
+ 935:../soes/esc_coe.c ****                            MBX_error (MBXERR_INVALIDHEADER);
+ 3497              	 .loc 1 935 0
+ 3498 0144 0520     	 movs r0,#5
+ 3499 0146 FFF7FEFF 	 bl MBX_error
+ 3500 014a 0AE0     	 b .L164
+ 3501              	.L163:
+ 936:../soes/esc_coe.c ****                         }
+ 937:../soes/esc_coe.c ****                         else
+ 938:../soes/esc_coe.c ****                         {
+ 939:../soes/esc_coe.c ****                            SDO_abort (etohs (coesdo->index), coesdo->subindex, ABORT_UNSUPPORTED);
+ 3502              	 .loc 1 939 0
+ 3503 014c BB68     	 ldr r3,[r7,#8]
+ 3504 014e B3F80930 	 ldrh r3,[r3,#9]
+ 3505 0152 9AB2     	 uxth r2,r3
+ 3506 0154 BB68     	 ldr r3,[r7,#8]
+ 3507 0156 DB7A     	 ldrb r3,[r3,#11]
+ 3508 0158 1046     	 mov r0,r2
+ 3509 015a 1946     	 mov r1,r3
+ 3510 015c 094A     	 ldr r2,.L165+12
+ 3511 015e FFF7FEFF 	 bl SDO_abort
+ 3512              	.L164:
+ 940:../soes/esc_coe.c ****                         }
+ 941:../soes/esc_coe.c ****                         MBXcontrol[0].state = MBXstate_idle;
+ 3513              	 .loc 1 941 0
+ 3514 0162 064B     	 ldr r3,.L165+4
+ 3515 0164 0022     	 movs r2,#0
+ 3516 0166 1A70     	 strb r2,[r3]
+ 942:../soes/esc_coe.c ****                         ESCvar.xoe = 0;
+ 3517              	 .loc 1 942 0
+ 3518 0168 034B     	 ldr r3,.L165
+ 3519 016a 0022     	 movs r2,#0
+ 3520 016c 83F89220 	 strb r2,[r3,#146]
+ 3521              	.L151:
+ 943:../soes/esc_coe.c ****                      }
+ 944:../soes/esc_coe.c ****                   }
+ 945:../soes/esc_coe.c ****                }
+ 946:../soes/esc_coe.c ****             }
+ 947:../soes/esc_coe.c ****          }
+ 948:../soes/esc_coe.c ****       }
+ 949:../soes/esc_coe.c ****    }
+ 950:../soes/esc_coe.c **** }
+ 3522              	 .loc 1 950 0
+ 3523 0170 1037     	 adds r7,r7,#16
+ 3524              	.LCFI80:
+ 3525              	 .cfi_def_cfa_offset 8
+ 3526 0172 BD46     	 mov sp,r7
+ 3527              	.LCFI81:
+ 3528              	 .cfi_def_cfa_register 13
+ 3529              	 
+ 3530 0174 80BD     	 pop {r7,pc}
+ 3531              	.L166:
+ 3532 0176 00BF     	 .align 2
+ 3533              	.L165:
+ 3534 0178 00000000 	 .word ESCvar
+ 3535 017c 00000000 	 .word MBXcontrol
+ 3536 0180 00000000 	 .word MBX
+ 3537 0184 00000106 	 .word 100728832
+ 3538              	 .cfi_endproc
+ 3539              	.LFE15:
+ 3541              	 .text
+ 3542              	.Letext0:
+ 3543              	 .file 2 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\lib\\gcc\\arm-none-eabi\\4.9.3\\include\\stddef.h"
+ 3544              	 .file 3 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 3545              	 .file 4 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 3546              	 .file 5 "../soes/esc.h"
+ 3547              	 .file 6 "../soes/esc_coe.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 esc_coe.c
+    {standard input}:20     .text.SDO_findsubindex:00000000 $t
+    {standard input}:25     .text.SDO_findsubindex:00000000 SDO_findsubindex
+    {standard input}:143    .text.SDO_findsubindex:000000a8 $d
+    {standard input}:148    .text.SDO_findobject:00000000 $t
+    {standard input}:153    .text.SDO_findobject:00000000 SDO_findobject
+    {standard input}:233    .text.SDO_findobject:0000005c $d
+    {standard input}:238    .text.COE_getSyncMgrPara:00000000 $t
+    {standard input}:243    .text.COE_getSyncMgrPara:00000000 COE_getSyncMgrPara
+    {standard input}:510    .text.COE_getSyncMgrPara:000001ac $d
+    {standard input}:515    .text.COE_initDefaultSyncMgrPara:00000000 $t
+    {standard input}:520    .text.COE_initDefaultSyncMgrPara:00000000 COE_initDefaultSyncMgrPara
+    {standard input}:742    .text.COE_initDefaultSyncMgrPara:00000158 $d
+    {standard input}:747    .text.sizeOfPDO:00000000 $t
+    {standard input}:752    .text.sizeOfPDO:00000000 sizeOfPDO
+    {standard input}:968    .text.sizeOfPDO:00000148 $d
+    {standard input}:973    .text.copy2mbx:00000000 $t
+    {standard input}:978    .text.copy2mbx:00000000 copy2mbx
+    {standard input}:1018   .text.SDO_abort:00000000 $t
+    {standard input}:1023   .text.SDO_abort:00000000 SDO_abort
+    {standard input}:1115   .text.SDO_abort:00000080 $d
+    {standard input}:1122   .text.SDO_upload:00000000 $t
+    {standard input}:1127   .text.SDO_upload:00000000 SDO_upload
+    {standard input}:1465   .text.SDO_upload:0000024c $d
+    {standard input}:1475   .text.SDO_uploadsegment:00000000 $t
+    {standard input}:1480   .text.SDO_uploadsegment:00000000 SDO_uploadsegment
+    {standard input}:1680   .text.SDO_uploadsegment:00000158 $d
+    {standard input}:1687   .text.SDO_download:00000000 $t
+    {standard input}:1692   .text.SDO_download:00000000 SDO_download
+    {standard input}:2020   .text.SDO_download:0000023c $d
+    {standard input}:2033   .text.SDO_infoerror:00000000 $t
+    {standard input}:2038   .text.SDO_infoerror:00000000 SDO_infoerror
+    {standard input}:2144   .text.SDO_infoerror:0000009c $d
+    {standard input}:2151   .text.SDO_getodlist:00000000 $t
+    {standard input}:2156   .text.SDO_getodlist:00000000 SDO_getodlist
+    {standard input}:2508   .text.SDO_getodlist:00000248 $d
+    {standard input}:2517   .text.SDO_getodlistcont:00000000 $t
+    {standard input}:2522   .text.SDO_getodlistcont:00000000 SDO_getodlistcont
+    {standard input}:2722   .text.SDO_getodlistcont:00000158 $d
+    {standard input}:2730   .text.SDO_getod:00000000 $t
+    {standard input}:2735   .text.SDO_getod:00000000 SDO_getod
+    {standard input}:2999   .text.SDO_getod:000001a8 $d
+    {standard input}:3008   .text.SDO_geted:00000000 $t
+    {standard input}:3013   .text.SDO_geted:00000000 SDO_geted
+    {standard input}:3279   .text.SDO_geted:000001ac $d
+    {standard input}:3289   .text.ESC_coeprocess:00000000 $t
+    {standard input}:3294   .text.ESC_coeprocess:00000000 ESC_coeprocess
+    {standard input}:3534   .text.ESC_coeprocess:00000178 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+SDOobjects
+memcpy
+ESC_claimbuffer
+ESCvar
+MBX
+MBXcontrol
+ESC_pre_objecthandler
+ESC_objecthandler
+MBX_error

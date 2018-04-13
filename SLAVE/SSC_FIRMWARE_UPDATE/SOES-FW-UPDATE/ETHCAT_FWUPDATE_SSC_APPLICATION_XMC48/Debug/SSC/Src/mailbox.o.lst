@@ -1,0 +1,3267 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "mailbox.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.HW_EscRead,"ax",%progbits
+  20              	 .align 2
+  21              	 .thumb
+  22              	 .thumb_func
+  24              	HW_EscRead:
+  25              	.LFB162:
+  26              	 .file 1 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC/xmc_eschw.h"
+   1:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**
+   2:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @file xmc_eschw.h
+   3:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @date 2015-02-05
+   4:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+   5:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * NOTE:
+   6:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * This file is copied by DAVE. Any manual modification done to this file will be lost when the cod
+   7:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+   8:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @cond
+   9:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  **************************************************************************************************
+  10:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * ECAT_SSC v4.0.6 - ECAT_SSC APP initializes the XMC ESC and sets up the interface for Beckhoff Et
+  11:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  12:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * Copyright (c) 2016, Infineon Technologies AG
+  13:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * All rights reserved.
+  14:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  15:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  16:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * following conditions are met:
+  17:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  18:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *   Redistributions of source code must retain the above copyright notice, this list of conditions
+  19:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *   disclaimer.
+  20:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  21:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *   Redistributions in binary form must reproduce the above copyright notice, this list of conditi
+  22:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *   disclaimer in the documentation and/or other materials provided with the distribution.
+  23:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  24:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *   Neither the name of the copyright holders nor the names of its contributors may be used to end
+  25:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *   products derived from this software without specific prior written permission.
+  26:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  27:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  28:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  29:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  30:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  31:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  32:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  33:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  34:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  35:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  36:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * with Infineon Technologies AG (dave@infineon.com).
+  37:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  **************************************************************************************************
+  38:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  39:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * Change History
+  40:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * --------------
+  41:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  42:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * 2016-02-05:
+  43:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *     - Initial version
+  44:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  45:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @endcond
+  46:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  47:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  */
+  48:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  49:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #ifndef XMC_ESCHW_H
+  50:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define XMC_ESCHW_H
+  51:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  52:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**************************************************************************************************
+  53:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * HEADER FILES
+  54:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  **************************************************************************************************
+  55:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #include "SSC/Src/esc.h"
+  56:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #include "xmc_ecat.h"
+  57:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #include "../E_EEPROM_XMC4/e_eeprom_xmc4.h"
+  58:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  59:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  /*************************************************************************************************
+  60:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****   * MACROS
+  61:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****   *************************************************************************************************
+  62:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  63:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define ECAT_TIMER_INC_P_MS (1U) /**< Timer increment value */
+  64:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  65:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define pEsc ((uint8_t *)ECAT0)  /**< EtherCAT module address */
+  66:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  67:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** extern uint8_t aEepromData[];
+  68:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  69:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**************************************************************************************************
+  70:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * API Prototypes
+  71:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  **************************************************************************************************
+  72:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  73:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #ifdef __cplusplus
+  74:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** extern "C" {
+  75:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #endif
+  76:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  77:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**
+  78:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @ingroup ECAT_SSC_apidoc
+  79:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @{
+  80:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  */
+  81:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  82:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscReadDWord(DWordValue, Address)     ((DWordValue) = (UINT32)(((volatile UINT32 *)pEsc)
+  83:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  84:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscReadDWordIsr(DWordValue, Address)  HW_EscReadDWord(DWordValue, Address)              
+  85:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  86:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscReadWord(WordValue, Address)       ((WordValue) = (((volatile UINT16 *)pEsc)[((Addres
+  87:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  88:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscReadWordIsr(WordValue, Address)    HW_EscReadWord(WordValue, Address)                
+  89:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  90:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscReadByte(ByteValue, Address)       ((ByteValue) = (((volatile UINT8 *)pEsc)[(Address)
+  91:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  92:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscReadByteIsr(ByteValue, Address)    HW_EscReadByte(ByteValue, Address)                
+  93:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  94:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscWriteDWord(DWordValue, Address)    ((((volatile UINT32 *)pEsc)[(Address>>2)]) = (DWor
+  95:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  96:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscWriteDWordIsr(DWordValue, Address) HW_EscWriteWord(DWordValue, Address)              
+  97:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  98:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscWriteWord(WordValue, Address)      ((((volatile UINT16 *)pEsc)[((Address)>>1)]) = (Wo
+  99:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 100:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscWriteWordIsr(WordValue, Address)   HW_EscWriteWord(WordValue, Address)               
+ 101:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 102:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscWriteByte(ByteValue, Address)      ((((volatile UINT8 *)pEsc)[(Address)]) = (ByteValu
+ 103:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 104:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscWriteByteIsr(ByteValue, Address)   HW_EscWriteByte(ByteValue, Address)               
+ 105:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 106:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**
+ 107:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @brief 16Bit ESC read access
+ 108:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 109:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param pData Pointer to local destination buffer.
+ 110:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Address EtherCAT Slave Controller address. Specifies the offset within the ESC memory are
+ 111:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Len Access size in Bytes
+ 112:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 113:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @return None
+ 114:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * <BR>
+ 115:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 116:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * \par<b>Description:</b><br>
+ 117:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * Reads from the EtherCAT Slave Controller. This function is used to access ESC registers and the 
+ 118:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 119:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  */
+ 120:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** __STATIC_INLINE void HW_EscRead(MEM_ADDR *pData, UINT16 Address, UINT16 Len)
+ 121:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** {
+  27              	 .loc 1 121 0
+  28              	 .cfi_startproc
+  29              	 
+  30              	 
+  31 0000 80B5     	 push {r7,lr}
+  32              	.LCFI0:
+  33              	 .cfi_def_cfa_offset 8
+  34              	 .cfi_offset 7,-8
+  35              	 .cfi_offset 14,-4
+  36 0002 82B0     	 sub sp,sp,#8
+  37              	.LCFI1:
+  38              	 .cfi_def_cfa_offset 16
+  39 0004 00AF     	 add r7,sp,#0
+  40              	.LCFI2:
+  41              	 .cfi_def_cfa_register 7
+  42 0006 7860     	 str r0,[r7,#4]
+  43 0008 0B46     	 mov r3,r1
+  44 000a 7B80     	 strh r3,[r7,#2]
+  45 000c 1346     	 mov r3,r2
+  46 000e 3B80     	 strh r3,[r7]
+ 122:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****   memcpy(pData, &pEsc[Address], Len);
+  47              	 .loc 1 122 0
+  48 0010 7B88     	 ldrh r3,[r7,#2]
+  49 0012 03F1A843 	 add r3,r3,#1409286144
+  50 0016 03F58033 	 add r3,r3,#65536
+  51 001a 3A88     	 ldrh r2,[r7]
+  52 001c 7868     	 ldr r0,[r7,#4]
+  53 001e 1946     	 mov r1,r3
+  54 0020 FFF7FEFF 	 bl memcpy
+ 123:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** }
+  55              	 .loc 1 123 0
+  56 0024 0837     	 adds r7,r7,#8
+  57              	.LCFI3:
+  58              	 .cfi_def_cfa_offset 8
+  59 0026 BD46     	 mov sp,r7
+  60              	.LCFI4:
+  61              	 .cfi_def_cfa_register 13
+  62              	 
+  63 0028 80BD     	 pop {r7,pc}
+  64              	 .cfi_endproc
+  65              	.LFE162:
+  67 002a 00BF     	 .section .text.HW_EscReadMbxMem,"ax",%progbits
+  68              	 .align 2
+  69              	 .thumb
+  70              	 .thumb_func
+  72              	HW_EscReadMbxMem:
+  73              	.LFB164:
+ 124:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 125:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**
+ 126:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @brief Interrupt specific 16Bit ESC read access
+ 127:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 128:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param pData Pointer to local destination buffer.
+ 129:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Address EtherCAT Slave Controller address. Specifies the offset within the ESC memory are
+ 130:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Len Access size in Bytes
+ 131:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 132:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @return None
+ 133:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * <BR>
+ 134:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 135:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * \par<b>Description:</b><br>
+ 136:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * Reads from the EtherCAT Slave Controller. This function is used to access ESC registers and the 
+ 137:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 138:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  */
+ 139:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** __STATIC_INLINE void HW_EscReadIsr(MEM_ADDR *pData, UINT16 Address, UINT16 Len)
+ 140:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** {
+ 141:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****   HW_EscRead(pData, Address, Len);
+ 142:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** }
+ 143:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 144:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**
+ 145:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @brief Reads data from the ESC and copies to slave mailbox memory.
+ 146:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 147:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param pData Pointer to local destination buffer.
+ 148:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Address EtherCAT Slave Controller address. Specifies the offset within the ESC memory are
+ 149:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Len Access size in Bytes
+ 150:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 151:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @return None
+ 152:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * <BR>
+ 153:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 154:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * \par<b>Description:</b><br>
+ 155:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * Reads data from the ESC and copies to slave mailbox memory. If the local mailbox memory is also 
+ 156:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * application memory this function is equal to HW_EscRead.
+ 157:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 158:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  */
+ 159:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** __STATIC_INLINE void HW_EscReadMbxMem(MEM_ADDR *pData, UINT16 Address, UINT16 Len)
+ 160:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** {
+  74              	 .loc 1 160 0
+  75              	 .cfi_startproc
+  76              	 
+  77              	 
+  78 0000 80B5     	 push {r7,lr}
+  79              	.LCFI5:
+  80              	 .cfi_def_cfa_offset 8
+  81              	 .cfi_offset 7,-8
+  82              	 .cfi_offset 14,-4
+  83 0002 82B0     	 sub sp,sp,#8
+  84              	.LCFI6:
+  85              	 .cfi_def_cfa_offset 16
+  86 0004 00AF     	 add r7,sp,#0
+  87              	.LCFI7:
+  88              	 .cfi_def_cfa_register 7
+  89 0006 7860     	 str r0,[r7,#4]
+  90 0008 0B46     	 mov r3,r1
+  91 000a 7B80     	 strh r3,[r7,#2]
+  92 000c 1346     	 mov r3,r2
+  93 000e 3B80     	 strh r3,[r7]
+ 161:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****   HW_EscRead(pData, Address, Len);
+  94              	 .loc 1 161 0
+  95 0010 7A88     	 ldrh r2,[r7,#2]
+  96 0012 3B88     	 ldrh r3,[r7]
+  97 0014 7868     	 ldr r0,[r7,#4]
+  98 0016 1146     	 mov r1,r2
+  99 0018 1A46     	 mov r2,r3
+ 100 001a FFF7FEFF 	 bl HW_EscRead
+ 162:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** }
+ 101              	 .loc 1 162 0
+ 102 001e 0837     	 adds r7,r7,#8
+ 103              	.LCFI8:
+ 104              	 .cfi_def_cfa_offset 8
+ 105 0020 BD46     	 mov sp,r7
+ 106              	.LCFI9:
+ 107              	 .cfi_def_cfa_register 13
+ 108              	 
+ 109 0022 80BD     	 pop {r7,pc}
+ 110              	 .cfi_endproc
+ 111              	.LFE164:
+ 113              	 .section .text.HW_EscWrite,"ax",%progbits
+ 114              	 .align 2
+ 115              	 .thumb
+ 116              	 .thumb_func
+ 118              	HW_EscWrite:
+ 119              	.LFB165:
+ 163:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 164:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**
+ 165:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @brief 16Bit ESC write access
+ 166:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 167:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param pData Pointer to local source buffer.
+ 168:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Address EtherCAT Slave Controller address. Specifies the offset within the ESC memory are
+ 169:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Len Access size in Bytes
+ 170:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 171:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @return None
+ 172:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * <BR>
+ 173:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 174:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * \par<b>Description:</b><br>
+ 175:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * Writes from the EtherCAT Slave Controller. This function is used to access ESC registers and the
+ 176:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 177:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  */
+ 178:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** __STATIC_INLINE void HW_EscWrite(MEM_ADDR *pData, UINT16 Address, UINT16 Len)
+ 179:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** {
+ 120              	 .loc 1 179 0
+ 121              	 .cfi_startproc
+ 122              	 
+ 123              	 
+ 124 0000 80B5     	 push {r7,lr}
+ 125              	.LCFI10:
+ 126              	 .cfi_def_cfa_offset 8
+ 127              	 .cfi_offset 7,-8
+ 128              	 .cfi_offset 14,-4
+ 129 0002 82B0     	 sub sp,sp,#8
+ 130              	.LCFI11:
+ 131              	 .cfi_def_cfa_offset 16
+ 132 0004 00AF     	 add r7,sp,#0
+ 133              	.LCFI12:
+ 134              	 .cfi_def_cfa_register 7
+ 135 0006 7860     	 str r0,[r7,#4]
+ 136 0008 0B46     	 mov r3,r1
+ 137 000a 7B80     	 strh r3,[r7,#2]
+ 138 000c 1346     	 mov r3,r2
+ 139 000e 3B80     	 strh r3,[r7]
+ 180:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****   memcpy(&pEsc[Address], pData, Len);
+ 140              	 .loc 1 180 0
+ 141 0010 7B88     	 ldrh r3,[r7,#2]
+ 142 0012 03F1A843 	 add r3,r3,#1409286144
+ 143 0016 03F58033 	 add r3,r3,#65536
+ 144 001a 3A88     	 ldrh r2,[r7]
+ 145 001c 1846     	 mov r0,r3
+ 146 001e 7968     	 ldr r1,[r7,#4]
+ 147 0020 FFF7FEFF 	 bl memcpy
+ 181:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** }
+ 148              	 .loc 1 181 0
+ 149 0024 0837     	 adds r7,r7,#8
+ 150              	.LCFI13:
+ 151              	 .cfi_def_cfa_offset 8
+ 152 0026 BD46     	 mov sp,r7
+ 153              	.LCFI14:
+ 154              	 .cfi_def_cfa_register 13
+ 155              	 
+ 156 0028 80BD     	 pop {r7,pc}
+ 157              	 .cfi_endproc
+ 158              	.LFE165:
+ 160 002a 00BF     	 .section .text.HW_EscWriteMbxMem,"ax",%progbits
+ 161              	 .align 2
+ 162              	 .thumb
+ 163              	 .thumb_func
+ 165              	HW_EscWriteMbxMem:
+ 166              	.LFB167:
+ 182:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 183:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**
+ 184:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @brief Interrupt specific 16Bit ESC write access
+ 185:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 186:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param pData Pointer to local source buffer.
+ 187:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Address EtherCAT Slave Controller address. Specifies the offset within the ESC memory are
+ 188:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Len Access size in Bytes
+ 189:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 190:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @return None
+ 191:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * <BR>
+ 192:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 193:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * \par<b>Description:</b><br>
+ 194:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * Writes from the EtherCAT Slave Controller. This function is used to access ESC registers and the
+ 195:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 196:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  */
+ 197:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** __STATIC_INLINE void HW_EscWriteIsr(MEM_ADDR *pData, UINT16 Address, UINT16 Len)
+ 198:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** {
+ 199:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****   HW_EscWrite(pData, Address, Len);
+ 200:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** }
+ 201:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 202:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**
+ 203:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @brief Writes data from the slave mailbox memory to ESC memory.
+ 204:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 205:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param pData Pointer to local source mailbox buffer.
+ 206:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Address EtherCAT Slave Controller address. Specifies the offset within the ESC memory are
+ 207:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Len Access size in Bytes
+ 208:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 209:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @return None
+ 210:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * <BR>
+ 211:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 212:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * \par<b>Description:</b><br>
+ 213:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * Writes data from the slave mailbox memory to ESC memory. If the local mailbox memory is also loc
+ 214:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * application memory this function is equal to HW_EscWrite.
+ 215:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 216:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  */
+ 217:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** __STATIC_INLINE void HW_EscWriteMbxMem(MEM_ADDR *pData, UINT16 Address, UINT16 Len)
+ 218:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** {
+ 167              	 .loc 1 218 0
+ 168              	 .cfi_startproc
+ 169              	 
+ 170              	 
+ 171 0000 80B5     	 push {r7,lr}
+ 172              	.LCFI15:
+ 173              	 .cfi_def_cfa_offset 8
+ 174              	 .cfi_offset 7,-8
+ 175              	 .cfi_offset 14,-4
+ 176 0002 82B0     	 sub sp,sp,#8
+ 177              	.LCFI16:
+ 178              	 .cfi_def_cfa_offset 16
+ 179 0004 00AF     	 add r7,sp,#0
+ 180              	.LCFI17:
+ 181              	 .cfi_def_cfa_register 7
+ 182 0006 7860     	 str r0,[r7,#4]
+ 183 0008 0B46     	 mov r3,r1
+ 184 000a 7B80     	 strh r3,[r7,#2]
+ 185 000c 1346     	 mov r3,r2
+ 186 000e 3B80     	 strh r3,[r7]
+ 219:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****   HW_EscWrite(pData, Address, Len);
+ 187              	 .loc 1 219 0
+ 188 0010 7A88     	 ldrh r2,[r7,#2]
+ 189 0012 3B88     	 ldrh r3,[r7]
+ 190 0014 7868     	 ldr r0,[r7,#4]
+ 191 0016 1146     	 mov r1,r2
+ 192 0018 1A46     	 mov r2,r3
+ 193 001a FFF7FEFF 	 bl HW_EscWrite
+ 220:C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** }
+ 194              	 .loc 1 220 0
+ 195 001e 0837     	 adds r7,r7,#8
+ 196              	.LCFI18:
+ 197              	 .cfi_def_cfa_offset 8
+ 198 0020 BD46     	 mov sp,r7
+ 199              	.LCFI19:
+ 200              	 .cfi_def_cfa_register 13
+ 201              	 
+ 202 0022 80BD     	 pop {r7,pc}
+ 203              	 .cfi_endproc
+ 204              	.LFE167:
+ 206              	 .comm bReceiveMbxIsLocked,1,1
+ 207              	 .comm bSendMbxIsFull,1,1
+ 208              	 .comm bMbxRunning,1,1
+ 209              	 .comm bMbxRepeatToggle,1,1
+ 210              	 .comm u16SendMbxSize,2,2
+ 211              	 .comm u16ReceiveMbxSize,2,2
+ 212              	 .comm u16EscAddrReceiveMbx,2,2
+ 213              	 .comm u16EscAddrSendMbx,2,2
+ 214              	 .comm u8MbxWriteCounter,1,1
+ 215              	 .comm u8MbxReadCounter,1,1
+ 216              	 .comm asMbx,512,4
+ 217              	 .comm u8MailboxSendReqStored,1,1
+ 218              	 .comm psWriteMbx,4,4
+ 219              	 .comm psReadMbx,4,4
+ 220              	 .comm psRepeatMbx,4,4
+ 221              	 .comm psStoreMbx,4,4
+ 222              	 .comm sMbxSendQueue,52,4
+ 223              	 .comm sMbxReceiveQueue,52,4
+ 224              	 .comm bNoMbxMemoryAvailable,1,1
+ 225              	 .section .text.PutInMbxQueue,"ax",%progbits
+ 226              	 .align 2
+ 227              	 .global PutInMbxQueue
+ 228              	 .thumb
+ 229              	 .thumb_func
+ 231              	PutInMbxQueue:
+ 232              	.LFB172:
+ 233              	 .file 2 "../SSC/Src/mailbox.c"
+   1:../SSC/Src/mailbox.c **** /**
+   2:../SSC/Src/mailbox.c **** \addtogroup Mailbox Mailbox Functions
+   3:../SSC/Src/mailbox.c **** @{
+   4:../SSC/Src/mailbox.c **** */
+   5:../SSC/Src/mailbox.c **** 
+   6:../SSC/Src/mailbox.c **** /**
+   7:../SSC/Src/mailbox.c **** \file    mailbox.c
+   8:../SSC/Src/mailbox.c **** \author EthercatSSC@beckhoff.com
+   9:../SSC/Src/mailbox.c **** \brief Implementation
+  10:../SSC/Src/mailbox.c **** 
+  11:../SSC/Src/mailbox.c **** <br>Description of the mailbox buffer handling (MAILBOX_QUEUE = 0):<br>
+  12:../SSC/Src/mailbox.c **** There are two mailbox buffer for sending and receiving mailbox services.<br>
+  13:../SSC/Src/mailbox.c **** Normal operation:<br>
+  14:../SSC/Src/mailbox.c **** When starting the mailbox handler psWriteMbx contains mailbox buffer 1,<br>
+  15:../SSC/Src/mailbox.c **** psReadMbx, psRepeatMbx and psStoreMbx are 0.<br>
+  16:../SSC/Src/mailbox.c **** In this state a repeat request would be ignored because there was no service sent yet.<br>
+  17:../SSC/Src/mailbox.c **** When the first mailbox service is sent (in MBX_CopyToSendMailbox), psWriteMbx gets mailbox buffer 2
+  18:../SSC/Src/mailbox.c **** and psReadMbx gets the sent mailbox buffer 1, psRepeatMbx and psStoreMbx are still 0.<br>
+  19:../SSC/Src/mailbox.c **** When the first mailbox service was read from the master, the sent mailbox buffer 1 is stored<br>
+  20:../SSC/Src/mailbox.c **** in psRepeatMbx (in MBX_MailboxReadInd).<br>
+  21:../SSC/Src/mailbox.c **** After that psReadMbx gets always the actual sent mailbox buffer, psWriteMbx is set to 0 (another<br
+  22:../SSC/Src/mailbox.c **** received mailbox service from the master will not be handled until the sent mailbox service was rea
+  23:../SSC/Src/mailbox.c **** and MBX_MailboxReadInd was called).<br>
+  24:../SSC/Src/mailbox.c **** When the mailbox service is read, psWriteMbx gets the Buffer of psRepeatMbx and psRepeatMbx gets th
+  25:../SSC/Src/mailbox.c **** buffer of psReadMbx.<br>
+  26:../SSC/Src/mailbox.c **** Repeat Request from the master:<br>
+  27:../SSC/Src/mailbox.c **** When a Repeat from the master is requested (MBX_MailboxRepeatReq), there are three different possib
+  28:../SSC/Src/mailbox.c **** 1. no mailbox service was sent since the mailbox handler was started (psRepeatMbx = 0): nothing to 
+  29:../SSC/Src/mailbox.c **** 2. the acknowledge of the last sent mailbox service was received (in MBX_MailboxReadInd) (bSendMbxI
+  30:../SSC/Src/mailbox.c **** the last sent mailbox service (psRepeatMbx) will be sent again (in MBX_CopyToSendMailbox) and store
+  31:../SSC/Src/mailbox.c **** psRepeatMbx will be set to 0<br>
+  32:../SSC/Src/mailbox.c **** 3. the acknowledge of the last sent mailbox service was not received (psReadMbx and psRepeatMbx con
+  33:../SSC/Src/mailbox.c **** psReadMbx is still in the mailbox (because MBX_MailboxReadInd is not called yet, bSendMbxIsFull = 1
+  34:../SSC/Src/mailbox.c **** psReadMbx will be deleted in the mailbox (call of DisableSyncManChannel and EnableSyncManChannel) a
+  35:../SSC/Src/mailbox.c **** stored in psStoreMbx, psRepeatMbx will be sent again (in MBX_CopyToSendMailbox) and stored in psRea
+  36:../SSC/Src/mailbox.c **** psRepeatMbx will be set to 0.<br>
+  37:../SSC/Src/mailbox.c **** When the repeated mailbox service was sent (call of MBX_MailboxReadInd), psReadMbx will be stored i
+  38:../SSC/Src/mailbox.c **** and psStoreMbx will be sent (in MBX_CopyToSendMailbox) and stored in psReadMbx, psStoreMbx will be 
+  39:../SSC/Src/mailbox.c **** 
+  40:../SSC/Src/mailbox.c **** <br>Description of the mailbox buffer handling (MAILBOX_QUEUE = 1):<br>
+  41:../SSC/Src/mailbox.c **** There are two mailbox buffer for sending and receiving mailbox services.<br>
+  42:../SSC/Src/mailbox.c **** Normal operation (psWriteMbx is only used for local storage):<br>
+  43:../SSC/Src/mailbox.c **** When starting the mailbox handler psReadMbx, psRepeatMbx and psStoreMbx are 0.<br>
+  44:../SSC/Src/mailbox.c **** In this state a repeat request would be ignored because there was no service sent yet.<br>
+  45:../SSC/Src/mailbox.c **** When a mailbox service is received from the master (in MBX_CheckAndCopyMailbox) a mailbox buffer<br
+  46:../SSC/Src/mailbox.c **** will be get with APPL_AllocMailboxBuffer and the corresponding protocol service function will<br>
+  47:../SSC/Src/mailbox.c **** be called (in MBX_WriteMailboxInd). This buffer shall be used for the protocol service response.<br
+  48:../SSC/Src/mailbox.c **** When the first mailbox service is sent (in MBX_CopyToSendMailbox), psReadMbx gets the sent mailbox 
+  49:../SSC/Src/mailbox.c **** psRepeatMbx and psStoreMbx are still 0.<br>
+  50:../SSC/Src/mailbox.c **** When the first mailbox service was read from the master, the sent mailbox buffer (psReadMbx) is sto
+  51:../SSC/Src/mailbox.c **** in psRepeatMbx (in MBX_MailboxReadInd).<br>
+  52:../SSC/Src/mailbox.c **** After that psReadMbx gets always the actual sent mailbox buffer (in MBX_CopyToSendMailbox)<br>
+  53:../SSC/Src/mailbox.c **** When the mailbox service is read, psRepeatMbx is returned (with APPL_FreeMailboxBuffer) and psRepea
+  54:../SSC/Src/mailbox.c **** buffer of psReadMbx.<br>
+  55:../SSC/Src/mailbox.c **** Repeat Request from the master:<br>
+  56:../SSC/Src/mailbox.c **** When a Repeat from the master is requested (MBX_MailboxRepeatReq), there are three different possib
+  57:../SSC/Src/mailbox.c **** 1. no mailbox service was sent since the mailbox handler was started (psRepeatMbx = 0): nothing to 
+  58:../SSC/Src/mailbox.c **** 2. the acknowledge of the last sent mailbox service was received (in MBX_MailboxReadInd) (bSendMbxI
+  59:../SSC/Src/mailbox.c **** the last sent mailbox service (psRepeatMbx) will be sent again (in MBX_CopyToSendMailbox) and store
+  60:../SSC/Src/mailbox.c **** psRepeatMbx will be set to 0<br>
+  61:../SSC/Src/mailbox.c **** 3. the acknowledge of the last sent mailbox service was not received (psReadMbx and psRepeatMbx con
+  62:../SSC/Src/mailbox.c **** psReadMbx is still in the mailbox (because MBX_MailboxReadInd is not called yet, bSendMbxIsFull = 1
+  63:../SSC/Src/mailbox.c **** psReadMbx will be deleted in the mailbox (call of DisableSyncManChannel and EnableSyncManChannel) a
+  64:../SSC/Src/mailbox.c **** stored in psStoreMbx, psRepeatMbx will be sent again (in MBX_CopyToSendMailbox) and stored in psRea
+  65:../SSC/Src/mailbox.c **** psRepeatMbx will be set to 0.<br>
+  66:../SSC/Src/mailbox.c **** When the repeated mailbox service was sent (call of MBX_MailboxReadInd), psReadMbx will be stored i
+  67:../SSC/Src/mailbox.c **** and psStoreMbx will be sent (in MBX_CopyToSendMailbox) and stored in psReadMbx, psStoreMbx will be 
+  68:../SSC/Src/mailbox.c **** 
+  69:../SSC/Src/mailbox.c **** \version 5.11
+  70:../SSC/Src/mailbox.c **** 
+  71:../SSC/Src/mailbox.c **** <br>Changes to version V5.10:<br>
+  72:../SSC/Src/mailbox.c **** V5.11 ECAT10: change PROTO handling to prevent compiler errors<br>
+  73:../SSC/Src/mailbox.c **** V5.11 ECAT7: add missing big endian swapping<br>
+  74:../SSC/Src/mailbox.c **** V5.11 HW1: "move hardware independent functions ""HW_DisableSyncManChannel()"", ""HW_EnableSyncManC
+  75:../SSC/Src/mailbox.c **** V5.11 MBX2: "check in IP if enough dynamic memory is available to handle mailbox communication, if 
+  76:../SSC/Src/mailbox.c **** V5.11 MBX3: set application triggered emergency and EoE data to pending if no mailbox queue is supp
+  77:../SSC/Src/mailbox.c **** V5.11 TEST4: add new mailbox test behaviour (the master mailbox cnt shall be incremented by 1 and t
+  78:../SSC/Src/mailbox.c **** <br>Changes to version V5.01:<br>
+  79:../SSC/Src/mailbox.c **** V5.10 EOE3: Change local send frame pending indication variable to a global variable (it need to be
+  80:../SSC/Src/mailbox.c **** V5.10 ESC6: Update SyncManager register size (only for 8Bit ESC access)<br>
+  81:../SSC/Src/mailbox.c **** V5.10 MBX2: Allocate only memory for current configured mailbox size (max supported size was alloca
+  82:../SSC/Src/mailbox.c **** <br>Changes to version V5.0:<br>
+  83:../SSC/Src/mailbox.c **** V5.01 ESC2: Add missed value swapping<br>
+  84:../SSC/Src/mailbox.c **** V5.01 MBX2: Return an error if length specified in mailbnox header is too large.<br>
+  85:../SSC/Src/mailbox.c **** <br>Changes to version V4.40:<br>
+  86:../SSC/Src/mailbox.c **** V5.0 ECAT3: Global dummy variables used for dummy ESC operations.<br>
+  87:../SSC/Src/mailbox.c **** V5.0 ESC1: ESC 32Bit Access added.<br>
+  88:../SSC/Src/mailbox.c **** V5.0 MBX2: Prevent double swapping (MBX repeat service) of MBX length field.<br>
+  89:../SSC/Src/mailbox.c **** V5.0 MBX4: Unlock SM buffer based on SM state.<br>
+  90:../SSC/Src/mailbox.c **** <br>Changes to version V4.11:<br>
+  91:../SSC/Src/mailbox.c **** V4.40 MBX8: Handle pending mailbox data even if mailbox queue is enabled<br>
+  92:../SSC/Src/mailbox.c **** V4.40 MBX7: Reset SyncManger 1 Repeat Acknowledge bit if local variable is reset<br>
+  93:../SSC/Src/mailbox.c **** V4.40 EMCY2: Send queued emergency messages<br>
+  94:../SSC/Src/mailbox.c **** V4.40 BOOT2: Support only FoE in Bootstrap state<br>
+  95:../SSC/Src/mailbox.c **** V4.40 MBX5: Prevent multiple free buffer<br>
+  96:../SSC/Src/mailbox.c **** V4.40 MBX6: change return value if no mailbox buffer is available<br>
+  97:../SSC/Src/mailbox.c **** <br>Changes to version V4.08:<br>
+  98:../SSC/Src/mailbox.c **** V4.11 MBX 1: free some dynamic memory to avoid memory leaks in the mailbox queue<br>
+  99:../SSC/Src/mailbox.c **** <br>Changes to version V4.07:<br>
+ 100:../SSC/Src/mailbox.c **** V4.10 MBX 1: check Mailbox message buffer and print emergency messages<br>
+ 101:../SSC/Src/mailbox.c ****                during state change Init -> PreOP<br>
+ 102:../SSC/Src/mailbox.c **** <br>Changes to version V4.07:<br>
+ 103:../SSC/Src/mailbox.c **** V4.08 MBX 1: The mailbox queue was added (switch MAILBOX_QUEUE), if the<br>
+ 104:../SSC/Src/mailbox.c ****              mailbox should be handled in the ESC-Interrupt Service Routine<br>
+ 105:../SSC/Src/mailbox.c ****              the defines ENTER_MBX_CRITICAL and LEAVE_MBX_CRITICAL could be used<br>
+ 106:../SSC/Src/mailbox.c ****              to disable the interrupts or change the priority<br>
+ 107:../SSC/Src/mailbox.c **** V4.08 AOE 1:    AoE was added<br>
+ 108:../SSC/Src/mailbox.c **** <br>Changes to version V4.06:<br>
+ 109:../SSC/Src/mailbox.c **** V4.07 ECAT 1: The sources for SPI and MCI were merged (in ecat_def.h<br>
+ 110:../SSC/Src/mailbox.c ****                    set the switch MCI_HW to 1 when using the MCI,<br>
+ 111:../SSC/Src/mailbox.c ****                    set the switch SPI_HW to 1 when using the SPI
+ 112:../SSC/Src/mailbox.c **** */
+ 113:../SSC/Src/mailbox.c **** 
+ 114:../SSC/Src/mailbox.c **** 
+ 115:../SSC/Src/mailbox.c **** /*---------------------------------------------------------------------------------------
+ 116:../SSC/Src/mailbox.c **** ------
+ 117:../SSC/Src/mailbox.c **** ------    Includes
+ 118:../SSC/Src/mailbox.c **** ------
+ 119:../SSC/Src/mailbox.c **** ---------------------------------------------------------------------------------------*/
+ 120:../SSC/Src/mailbox.c **** 
+ 121:../SSC/Src/mailbox.c **** #include "ecat_def.h"
+ 122:../SSC/Src/mailbox.c **** 
+ 123:../SSC/Src/mailbox.c **** 
+ 124:../SSC/Src/mailbox.c **** #include "ecatslv.h"
+ 125:../SSC/Src/mailbox.c **** 
+ 126:../SSC/Src/mailbox.c **** 
+ 127:../SSC/Src/mailbox.c **** #define    _MAILBOX_    1
+ 128:../SSC/Src/mailbox.c **** #include "mailbox.h"
+ 129:../SSC/Src/mailbox.c **** #undef _MAILBOX_
+ 130:../SSC/Src/mailbox.c **** /* ECATCHANGE_START(V5.11) ECAT10*/
+ 131:../SSC/Src/mailbox.c **** /*remove definition of _MAILBOX_ (#ifdef is used in mailbox.h)*/
+ 132:../SSC/Src/mailbox.c **** /* ECATCHANGE_END(V5.11) ECAT10*/
+ 133:../SSC/Src/mailbox.c **** 
+ 134:../SSC/Src/mailbox.c **** #include "ecatcoe.h"
+ 135:../SSC/Src/mailbox.c **** #include "ecatfoe.h"
+ 136:../SSC/Src/mailbox.c **** 
+ 137:../SSC/Src/mailbox.c **** /*--------------------------------------------------------------------------------------
+ 138:../SSC/Src/mailbox.c **** ------
+ 139:../SSC/Src/mailbox.c **** ------    internal Types and Defines
+ 140:../SSC/Src/mailbox.c **** ------
+ 141:../SSC/Src/mailbox.c **** --------------------------------------------------------------------------------------*/
+ 142:../SSC/Src/mailbox.c **** 
+ 143:../SSC/Src/mailbox.c **** /*--------------------------------------------------------------------------------------
+ 144:../SSC/Src/mailbox.c **** ------
+ 145:../SSC/Src/mailbox.c **** ------    internal Variables
+ 146:../SSC/Src/mailbox.c **** ------
+ 147:../SSC/Src/mailbox.c **** --------------------------------------------------------------------------------------*/
+ 148:../SSC/Src/mailbox.c **** /*variables are declared in ecatslv.c*/
+ 149:../SSC/Src/mailbox.c ****     extern VARVOLATILE UINT8 u8dummy;
+ 150:../SSC/Src/mailbox.c **** 
+ 151:../SSC/Src/mailbox.c **** /* ECATCHANGE_START(V5.11) MBX2*/
+ 152:../SSC/Src/mailbox.c ****     BOOL bNoMbxMemoryAvailable; /**< \brief Indicates if enough dynamic memory is available to hand
+ 153:../SSC/Src/mailbox.c **** /* ECATCHANGE_END(V5.11) MBX2*/
+ 154:../SSC/Src/mailbox.c **** /*--------------------------------------------------------------------------------------
+ 155:../SSC/Src/mailbox.c **** ------
+ 156:../SSC/Src/mailbox.c **** ------    internal functions
+ 157:../SSC/Src/mailbox.c **** ------
+ 158:../SSC/Src/mailbox.c **** --------------------------------------------------------------------------------------*/
+ 159:../SSC/Src/mailbox.c **** 
+ 160:../SSC/Src/mailbox.c **** /*---------------------------------------------------------------------------------------
+ 161:../SSC/Src/mailbox.c **** ------
+ 162:../SSC/Src/mailbox.c **** ------    functions
+ 163:../SSC/Src/mailbox.c **** ------
+ 164:../SSC/Src/mailbox.c **** ---------------------------------------------------------------------------------------*/
+ 165:../SSC/Src/mailbox.c **** 
+ 166:../SSC/Src/mailbox.c **** 
+ 167:../SSC/Src/mailbox.c **** ///////////////////////////////////////////////////////////////////////////////////////////
+ 168:../SSC/Src/mailbox.c **** //
+ 169:../SSC/Src/mailbox.c **** //    PutInMbxQueue
+ 170:../SSC/Src/mailbox.c **** //
+ 171:../SSC/Src/mailbox.c **** 
+ 172:../SSC/Src/mailbox.c **** UINT8 PutInMbxQueue(TMBX MBXMEM * pMbx, TMBXQUEUE MBXMEM * pQueue)
+ 173:../SSC/Src/mailbox.c **** {
+ 234              	 .loc 2 173 0
+ 235              	 .cfi_startproc
+ 236              	 
+ 237              	 
+ 238              	 
+ 239 0000 80B4     	 push {r7}
+ 240              	.LCFI20:
+ 241              	 .cfi_def_cfa_offset 4
+ 242              	 .cfi_offset 7,-4
+ 243 0002 85B0     	 sub sp,sp,#20
+ 244              	.LCFI21:
+ 245              	 .cfi_def_cfa_offset 24
+ 246 0004 00AF     	 add r7,sp,#0
+ 247              	.LCFI22:
+ 248              	 .cfi_def_cfa_register 7
+ 249 0006 7860     	 str r0,[r7,#4]
+ 250 0008 3960     	 str r1,[r7]
+ 174:../SSC/Src/mailbox.c ****     UINT16 lastInQueue;
+ 175:../SSC/Src/mailbox.c ****     ENTER_MBX_CRITICAL;
+ 176:../SSC/Src/mailbox.c **** 
+ 177:../SSC/Src/mailbox.c **** 
+ 178:../SSC/Src/mailbox.c ****     lastInQueue = pQueue->lastInQueue+1;
+ 251              	 .loc 2 178 0
+ 252 000a 3B68     	 ldr r3,[r7]
+ 253 000c 5B88     	 ldrh r3,[r3,#2]
+ 254 000e 0133     	 adds r3,r3,#1
+ 255 0010 FB81     	 strh r3,[r7,#14]
+ 179:../SSC/Src/mailbox.c ****     if (lastInQueue == pQueue->maxQueueSize)
+ 256              	 .loc 2 179 0
+ 257 0012 3B68     	 ldr r3,[r7]
+ 258 0014 9B88     	 ldrh r3,[r3,#4]
+ 259 0016 FA89     	 ldrh r2,[r7,#14]
+ 260 0018 9A42     	 cmp r2,r3
+ 261 001a 01D1     	 bne .L6
+ 180:../SSC/Src/mailbox.c ****     {
+ 181:../SSC/Src/mailbox.c ****         // Umbruch der Queue
+ 182:../SSC/Src/mailbox.c ****         lastInQueue = 0;
+ 262              	 .loc 2 182 0
+ 263 001c 0023     	 movs r3,#0
+ 264 001e FB81     	 strh r3,[r7,#14]
+ 265              	.L6:
+ 183:../SSC/Src/mailbox.c ****     }
+ 184:../SSC/Src/mailbox.c **** 
+ 185:../SSC/Src/mailbox.c ****     if (pQueue->firstInQueue == lastInQueue)
+ 266              	 .loc 2 185 0
+ 267 0020 3B68     	 ldr r3,[r7]
+ 268 0022 1B88     	 ldrh r3,[r3]
+ 269 0024 FA89     	 ldrh r2,[r7,#14]
+ 270 0026 9A42     	 cmp r2,r3
+ 271 0028 01D1     	 bne .L7
+ 186:../SSC/Src/mailbox.c ****     {
+ 187:../SSC/Src/mailbox.c ****         // Ueberlauf der Queue -> letztes Element wieder herausnehmen
+ 188:../SSC/Src/mailbox.c ****         LEAVE_MBX_CRITICAL;
+ 189:../SSC/Src/mailbox.c ****         return MBXERR_NOMOREMEMORY;
+ 272              	 .loc 2 189 0
+ 273 002a 0723     	 movs r3,#7
+ 274 002c 0BE0     	 b .L8
+ 275              	.L7:
+ 190:../SSC/Src/mailbox.c ****     }
+ 191:../SSC/Src/mailbox.c **** 
+ 192:../SSC/Src/mailbox.c ****     pQueue->queue[pQueue->lastInQueue] = pMbx;
+ 276              	 .loc 2 192 0
+ 277 002e 3B68     	 ldr r3,[r7]
+ 278 0030 5B88     	 ldrh r3,[r3,#2]
+ 279 0032 1A46     	 mov r2,r3
+ 280 0034 3B68     	 ldr r3,[r7]
+ 281 0036 0232     	 adds r2,r2,#2
+ 282 0038 7968     	 ldr r1,[r7,#4]
+ 283 003a 43F82210 	 str r1,[r3,r2,lsl#2]
+ 193:../SSC/Src/mailbox.c ****     pQueue->lastInQueue = lastInQueue;
+ 284              	 .loc 2 193 0
+ 285 003e 3B68     	 ldr r3,[r7]
+ 286 0040 FA89     	 ldrh r2,[r7,#14]
+ 287 0042 5A80     	 strh r2,[r3,#2]
+ 194:../SSC/Src/mailbox.c **** 
+ 195:../SSC/Src/mailbox.c ****     LEAVE_MBX_CRITICAL;
+ 196:../SSC/Src/mailbox.c **** 
+ 197:../SSC/Src/mailbox.c ****     return 0;
+ 288              	 .loc 2 197 0
+ 289 0044 0023     	 movs r3,#0
+ 290              	.L8:
+ 198:../SSC/Src/mailbox.c **** }
+ 291              	 .loc 2 198 0
+ 292 0046 1846     	 mov r0,r3
+ 293 0048 1437     	 adds r7,r7,#20
+ 294              	.LCFI23:
+ 295              	 .cfi_def_cfa_offset 4
+ 296 004a BD46     	 mov sp,r7
+ 297              	.LCFI24:
+ 298              	 .cfi_def_cfa_register 13
+ 299              	 
+ 300 004c 5DF8047B 	 ldr r7,[sp],#4
+ 301              	.LCFI25:
+ 302              	 .cfi_restore 7
+ 303              	 .cfi_def_cfa_offset 0
+ 304 0050 7047     	 bx lr
+ 305              	 .cfi_endproc
+ 306              	.LFE172:
+ 308 0052 00BF     	 .section .text.GetOutOfMbxQueue,"ax",%progbits
+ 309              	 .align 2
+ 310              	 .global GetOutOfMbxQueue
+ 311              	 .thumb
+ 312              	 .thumb_func
+ 314              	GetOutOfMbxQueue:
+ 315              	.LFB173:
+ 199:../SSC/Src/mailbox.c **** 
+ 200:../SSC/Src/mailbox.c **** ///////////////////////////////////////////////////////////////////////////////////////////
+ 201:../SSC/Src/mailbox.c **** //
+ 202:../SSC/Src/mailbox.c **** //    GetOutOfMbxQueue
+ 203:../SSC/Src/mailbox.c **** //
+ 204:../SSC/Src/mailbox.c **** 
+ 205:../SSC/Src/mailbox.c **** TMBX MBXMEM * GetOutOfMbxQueue(TMBXQUEUE MBXMEM * pQueue)
+ 206:../SSC/Src/mailbox.c **** {
+ 316              	 .loc 2 206 0
+ 317              	 .cfi_startproc
+ 318              	 
+ 319              	 
+ 320              	 
+ 321 0000 80B4     	 push {r7}
+ 322              	.LCFI26:
+ 323              	 .cfi_def_cfa_offset 4
+ 324              	 .cfi_offset 7,-4
+ 325 0002 85B0     	 sub sp,sp,#20
+ 326              	.LCFI27:
+ 327              	 .cfi_def_cfa_offset 24
+ 328 0004 00AF     	 add r7,sp,#0
+ 329              	.LCFI28:
+ 330              	 .cfi_def_cfa_register 7
+ 331 0006 7860     	 str r0,[r7,#4]
+ 207:../SSC/Src/mailbox.c ****     TMBX MBXMEM * pMbx;
+ 208:../SSC/Src/mailbox.c ****     ENTER_MBX_CRITICAL;
+ 209:../SSC/Src/mailbox.c **** 
+ 210:../SSC/Src/mailbox.c ****     if (pQueue->firstInQueue != pQueue->lastInQueue)
+ 332              	 .loc 2 210 0
+ 333 0008 7B68     	 ldr r3,[r7,#4]
+ 334 000a 1A88     	 ldrh r2,[r3]
+ 335 000c 7B68     	 ldr r3,[r7,#4]
+ 336 000e 5B88     	 ldrh r3,[r3,#2]
+ 337 0010 9A42     	 cmp r2,r3
+ 338 0012 19D0     	 beq .L10
+ 339              	.LBB2:
+ 211:../SSC/Src/mailbox.c ****     {
+ 212:../SSC/Src/mailbox.c ****         // Queue ist nicht leer
+ 213:../SSC/Src/mailbox.c ****         UINT16 firstInQueue = pQueue->firstInQueue;
+ 340              	 .loc 2 213 0
+ 341 0014 7B68     	 ldr r3,[r7,#4]
+ 342 0016 1B88     	 ldrh r3,[r3]
+ 343 0018 7B81     	 strh r3,[r7,#10]
+ 214:../SSC/Src/mailbox.c ****         pMbx = pQueue->queue[firstInQueue];
+ 344              	 .loc 2 214 0
+ 345 001a 7A89     	 ldrh r2,[r7,#10]
+ 346 001c 7B68     	 ldr r3,[r7,#4]
+ 347 001e 0232     	 adds r2,r2,#2
+ 348 0020 53F82230 	 ldr r3,[r3,r2,lsl#2]
+ 349 0024 FB60     	 str r3,[r7,#12]
+ 215:../SSC/Src/mailbox.c ****         firstInQueue++;
+ 350              	 .loc 2 215 0
+ 351 0026 7B89     	 ldrh r3,[r7,#10]
+ 352 0028 0133     	 adds r3,r3,#1
+ 353 002a 7B81     	 strh r3,[r7,#10]
+ 216:../SSC/Src/mailbox.c ****         pQueue->firstInQueue = firstInQueue;
+ 354              	 .loc 2 216 0
+ 355 002c 7B68     	 ldr r3,[r7,#4]
+ 356 002e 7A89     	 ldrh r2,[r7,#10]
+ 357 0030 1A80     	 strh r2,[r3]
+ 217:../SSC/Src/mailbox.c ****         if (pQueue->firstInQueue == pQueue->maxQueueSize)
+ 358              	 .loc 2 217 0
+ 359 0032 7B68     	 ldr r3,[r7,#4]
+ 360 0034 1A88     	 ldrh r2,[r3]
+ 361 0036 7B68     	 ldr r3,[r7,#4]
+ 362 0038 9B88     	 ldrh r3,[r3,#4]
+ 363 003a 9A42     	 cmp r2,r3
+ 364 003c 03D1     	 bne .L11
+ 218:../SSC/Src/mailbox.c ****         {
+ 219:../SSC/Src/mailbox.c ****             // Umbruch der Queue
+ 220:../SSC/Src/mailbox.c ****             pQueue->firstInQueue = 0;
+ 365              	 .loc 2 220 0
+ 366 003e 7B68     	 ldr r3,[r7,#4]
+ 367 0040 0022     	 movs r2,#0
+ 368 0042 1A80     	 strh r2,[r3]
+ 369              	.LBE2:
+ 370 0044 02E0     	 b .L12
+ 371              	.L11:
+ 372 0046 01E0     	 b .L12
+ 373              	.L10:
+ 221:../SSC/Src/mailbox.c ****         }
+ 222:../SSC/Src/mailbox.c ****     }
+ 223:../SSC/Src/mailbox.c ****     else
+ 224:../SSC/Src/mailbox.c ****         pMbx = 0;
+ 374              	 .loc 2 224 0
+ 375 0048 0023     	 movs r3,#0
+ 376 004a FB60     	 str r3,[r7,#12]
+ 377              	.L12:
+ 225:../SSC/Src/mailbox.c **** 
+ 226:../SSC/Src/mailbox.c **** 
+ 227:../SSC/Src/mailbox.c ****     LEAVE_MBX_CRITICAL;
+ 228:../SSC/Src/mailbox.c **** 
+ 229:../SSC/Src/mailbox.c ****     return pMbx;
+ 378              	 .loc 2 229 0
+ 379 004c FB68     	 ldr r3,[r7,#12]
+ 230:../SSC/Src/mailbox.c **** }
+ 380              	 .loc 2 230 0
+ 381 004e 1846     	 mov r0,r3
+ 382 0050 1437     	 adds r7,r7,#20
+ 383              	.LCFI29:
+ 384              	 .cfi_def_cfa_offset 4
+ 385 0052 BD46     	 mov sp,r7
+ 386              	.LCFI30:
+ 387              	 .cfi_def_cfa_register 13
+ 388              	 
+ 389 0054 5DF8047B 	 ldr r7,[sp],#4
+ 390              	.LCFI31:
+ 391              	 .cfi_restore 7
+ 392              	 .cfi_def_cfa_offset 0
+ 393 0058 7047     	 bx lr
+ 394              	 .cfi_endproc
+ 395              	.LFE173:
+ 397 005a 00BF     	 .section .text.MBX_Init,"ax",%progbits
+ 398              	 .align 2
+ 399              	 .global MBX_Init
+ 400              	 .thumb
+ 401              	 .thumb_func
+ 403              	MBX_Init:
+ 404              	.LFB174:
+ 231:../SSC/Src/mailbox.c **** 
+ 232:../SSC/Src/mailbox.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 233:../SSC/Src/mailbox.c **** /**
+ 234:../SSC/Src/mailbox.c ****  \brief    This function intialize the Mailbox Interface.
+ 235:../SSC/Src/mailbox.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 236:../SSC/Src/mailbox.c **** 
+ 237:../SSC/Src/mailbox.c **** void MBX_Init(void)
+ 238:../SSC/Src/mailbox.c **** {
+ 405              	 .loc 2 238 0
+ 406              	 .cfi_startproc
+ 407              	 
+ 408              	 
+ 409              	 
+ 410 0000 80B4     	 push {r7}
+ 411              	.LCFI32:
+ 412              	 .cfi_def_cfa_offset 4
+ 413              	 .cfi_offset 7,-4
+ 414 0002 83B0     	 sub sp,sp,#12
+ 415              	.LCFI33:
+ 416              	 .cfi_def_cfa_offset 16
+ 417 0004 00AF     	 add r7,sp,#0
+ 418              	.LCFI34:
+ 419              	 .cfi_def_cfa_register 7
+ 239:../SSC/Src/mailbox.c ****     u16ReceiveMbxSize = MIN_MBX_SIZE;
+ 420              	 .loc 2 239 0
+ 421 0006 294B     	 ldr r3,.L15
+ 422 0008 2222     	 movs r2,#34
+ 423 000a 1A80     	 strh r2,[r3]
+ 240:../SSC/Src/mailbox.c ****     u16SendMbxSize = MAX_MBX_SIZE;
+ 424              	 .loc 2 240 0
+ 425 000c 284B     	 ldr r3,.L15+4
+ 426 000e 4FF48072 	 mov r2,#256
+ 427 0012 1A80     	 strh r2,[r3]
+ 241:../SSC/Src/mailbox.c ****     u16EscAddrReceiveMbx = MIN_MBX_WRITE_ADDRESS;
+ 428              	 .loc 2 241 0
+ 429 0014 274B     	 ldr r3,.L15+8
+ 430 0016 4FF48052 	 mov r2,#4096
+ 431 001a 1A80     	 strh r2,[r3]
+ 242:../SSC/Src/mailbox.c ****     u16EscAddrSendMbx = MIN_MBX_READ_ADDRESS;
+ 432              	 .loc 2 242 0
+ 433 001c 264B     	 ldr r3,.L15+12
+ 434 001e 4FF48052 	 mov r2,#4096
+ 435 0022 1A80     	 strh r2,[r3]
+ 243:../SSC/Src/mailbox.c **** 
+ 244:../SSC/Src/mailbox.c ****     sMbxReceiveQueue.firstInQueue    = 0;
+ 436              	 .loc 2 244 0
+ 437 0024 254B     	 ldr r3,.L15+16
+ 438 0026 0022     	 movs r2,#0
+ 439 0028 1A80     	 strh r2,[r3]
+ 245:../SSC/Src/mailbox.c ****     sMbxReceiveQueue.lastInQueue     = 0;
+ 440              	 .loc 2 245 0
+ 441 002a 244B     	 ldr r3,.L15+16
+ 442 002c 0022     	 movs r2,#0
+ 443 002e 5A80     	 strh r2,[r3,#2]
+ 246:../SSC/Src/mailbox.c ****     sMbxReceiveQueue.maxQueueSize = MAX_MBX_QUEUE_SIZE;
+ 444              	 .loc 2 246 0
+ 445 0030 224B     	 ldr r3,.L15+16
+ 446 0032 0A22     	 movs r2,#10
+ 447 0034 9A80     	 strh r2,[r3,#4]
+ 247:../SSC/Src/mailbox.c ****     sMbxSendQueue.firstInQueue        = 0;
+ 448              	 .loc 2 247 0
+ 449 0036 224B     	 ldr r3,.L15+20
+ 450 0038 0022     	 movs r2,#0
+ 451 003a 1A80     	 strh r2,[r3]
+ 248:../SSC/Src/mailbox.c ****     sMbxSendQueue.lastInQueue         = 0;
+ 452              	 .loc 2 248 0
+ 453 003c 204B     	 ldr r3,.L15+20
+ 454 003e 0022     	 movs r2,#0
+ 455 0040 5A80     	 strh r2,[r3,#2]
+ 249:../SSC/Src/mailbox.c ****     sMbxSendQueue.maxQueueSize     = MAX_MBX_QUEUE_SIZE;
+ 456              	 .loc 2 249 0
+ 457 0042 1F4B     	 ldr r3,.L15+20
+ 458 0044 0A22     	 movs r2,#10
+ 459 0046 9A80     	 strh r2,[r3,#4]
+ 250:../SSC/Src/mailbox.c ****     psWriteMbx  = NULL;
+ 460              	 .loc 2 250 0
+ 461 0048 1E4B     	 ldr r3,.L15+24
+ 462 004a 0022     	 movs r2,#0
+ 463 004c 1A60     	 str r2,[r3]
+ 251:../SSC/Src/mailbox.c **** 
+ 252:../SSC/Src/mailbox.c **** 
+ 253:../SSC/Src/mailbox.c ****     psRepeatMbx = NULL;
+ 464              	 .loc 2 253 0
+ 465 004e 1E4B     	 ldr r3,.L15+28
+ 466 0050 0022     	 movs r2,#0
+ 467 0052 1A60     	 str r2,[r3]
+ 254:../SSC/Src/mailbox.c ****     psReadMbx    = NULL;
+ 468              	 .loc 2 254 0
+ 469 0054 1D4B     	 ldr r3,.L15+32
+ 470 0056 0022     	 movs r2,#0
+ 471 0058 1A60     	 str r2,[r3]
+ 255:../SSC/Src/mailbox.c ****     psStoreMbx    = NULL;
+ 472              	 .loc 2 255 0
+ 473 005a 1D4B     	 ldr r3,.L15+36
+ 474 005c 0022     	 movs r2,#0
+ 475 005e 1A60     	 str r2,[r3]
+ 256:../SSC/Src/mailbox.c **** 
+ 257:../SSC/Src/mailbox.c ****     bMbxRepeatToggle    = FALSE;
+ 476              	 .loc 2 257 0
+ 477 0060 1C4B     	 ldr r3,.L15+40
+ 478 0062 0022     	 movs r2,#0
+ 479 0064 1A70     	 strb r2,[r3]
+ 480              	.LBB3:
+ 258:../SSC/Src/mailbox.c ****     /*Reset Repeat acknowledge bit of SyncManager1 (0x80F bit 2)*/
+ 259:../SSC/Src/mailbox.c ****     {
+ 260:../SSC/Src/mailbox.c ****         UINT8 sm1Activate = 0;
+ 481              	 .loc 2 260 0
+ 482 0066 0023     	 movs r3,#0
+ 483 0068 FB71     	 strb r3,[r7,#7]
+ 261:../SSC/Src/mailbox.c ****         HW_EscReadByte(sm1Activate,(ESC_SM_PDICONTROL_OFFSET + SIZEOF_SM_REGISTER));
+ 484              	 .loc 2 261 0
+ 485 006a 1B4B     	 ldr r3,.L15+44
+ 486 006c 1B78     	 ldrb r3,[r3]
+ 487 006e FB71     	 strb r3,[r7,#7]
+ 262:../SSC/Src/mailbox.c ****         sm1Activate &= ~0x02;
+ 488              	 .loc 2 262 0
+ 489 0070 FB79     	 ldrb r3,[r7,#7]
+ 490 0072 23F00203 	 bic r3,r3,#2
+ 491 0076 FB71     	 strb r3,[r7,#7]
+ 263:../SSC/Src/mailbox.c ****         HW_EscWriteByte(sm1Activate,(ESC_SM_PDICONTROL_OFFSET + SIZEOF_SM_REGISTER));
+ 492              	 .loc 2 263 0
+ 493 0078 174A     	 ldr r2,.L15+44
+ 494 007a FB79     	 ldrb r3,[r7,#7]
+ 495 007c 1370     	 strb r3,[r2]
+ 496              	.LBE3:
+ 264:../SSC/Src/mailbox.c ****     }
+ 265:../SSC/Src/mailbox.c ****     bMbxRunning = FALSE;
+ 497              	 .loc 2 265 0
+ 498 007e 174B     	 ldr r3,.L15+48
+ 499 0080 0022     	 movs r2,#0
+ 500 0082 1A70     	 strb r2,[r3]
+ 266:../SSC/Src/mailbox.c ****     bSendMbxIsFull = FALSE;
+ 501              	 .loc 2 266 0
+ 502 0084 164B     	 ldr r3,.L15+52
+ 503 0086 0022     	 movs r2,#0
+ 504 0088 1A70     	 strb r2,[r3]
+ 267:../SSC/Src/mailbox.c ****     bReceiveMbxIsLocked = FALSE;
+ 505              	 .loc 2 267 0
+ 506 008a 164B     	 ldr r3,.L15+56
+ 507 008c 0022     	 movs r2,#0
+ 508 008e 1A70     	 strb r2,[r3]
+ 268:../SSC/Src/mailbox.c ****     u8MailboxSendReqStored    = 0;
+ 509              	 .loc 2 268 0
+ 510 0090 154B     	 ldr r3,.L15+60
+ 511 0092 0022     	 movs r2,#0
+ 512 0094 1A70     	 strb r2,[r3]
+ 269:../SSC/Src/mailbox.c ****     u8MbxWriteCounter = 0;
+ 513              	 .loc 2 269 0
+ 514 0096 154B     	 ldr r3,.L15+64
+ 515 0098 0022     	 movs r2,#0
+ 516 009a 1A70     	 strb r2,[r3]
+ 270:../SSC/Src/mailbox.c ****     u8MbxReadCounter    = 0;
+ 517              	 .loc 2 270 0
+ 518 009c 144B     	 ldr r3,.L15+68
+ 519 009e 0022     	 movs r2,#0
+ 520 00a0 1A70     	 strb r2,[r3]
+ 271:../SSC/Src/mailbox.c **** }
+ 521              	 .loc 2 271 0
+ 522 00a2 0C37     	 adds r7,r7,#12
+ 523              	.LCFI35:
+ 524              	 .cfi_def_cfa_offset 4
+ 525 00a4 BD46     	 mov sp,r7
+ 526              	.LCFI36:
+ 527              	 .cfi_def_cfa_register 13
+ 528              	 
+ 529 00a6 5DF8047B 	 ldr r7,[sp],#4
+ 530              	.LCFI37:
+ 531              	 .cfi_restore 7
+ 532              	 .cfi_def_cfa_offset 0
+ 533 00aa 7047     	 bx lr
+ 534              	.L16:
+ 535              	 .align 2
+ 536              	.L15:
+ 537 00ac 00000000 	 .word u16ReceiveMbxSize
+ 538 00b0 00000000 	 .word u16SendMbxSize
+ 539 00b4 00000000 	 .word u16EscAddrReceiveMbx
+ 540 00b8 00000000 	 .word u16EscAddrSendMbx
+ 541 00bc 00000000 	 .word sMbxReceiveQueue
+ 542 00c0 00000000 	 .word sMbxSendQueue
+ 543 00c4 00000000 	 .word psWriteMbx
+ 544 00c8 00000000 	 .word psRepeatMbx
+ 545 00cc 00000000 	 .word psReadMbx
+ 546 00d0 00000000 	 .word psStoreMbx
+ 547 00d4 00000000 	 .word bMbxRepeatToggle
+ 548 00d8 0F080154 	 .word 1409353743
+ 549 00dc 00000000 	 .word bMbxRunning
+ 550 00e0 00000000 	 .word bSendMbxIsFull
+ 551 00e4 00000000 	 .word bReceiveMbxIsLocked
+ 552 00e8 00000000 	 .word u8MailboxSendReqStored
+ 553 00ec 00000000 	 .word u8MbxWriteCounter
+ 554 00f0 00000000 	 .word u8MbxReadCounter
+ 555              	 .cfi_endproc
+ 556              	.LFE174:
+ 558              	 .section .text.MBX_StartMailboxHandler,"ax",%progbits
+ 559              	 .align 2
+ 560              	 .global MBX_StartMailboxHandler
+ 561              	 .thumb
+ 562              	 .thumb_func
+ 564              	MBX_StartMailboxHandler:
+ 565              	.LFB175:
+ 272:../SSC/Src/mailbox.c **** 
+ 273:../SSC/Src/mailbox.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 274:../SSC/Src/mailbox.c **** /**
+ 275:../SSC/Src/mailbox.c **** 
+ 276:../SSC/Src/mailbox.c ****  \brief     This function includes the state transition from INIT to
+ 277:../SSC/Src/mailbox.c ****  \brief     PRE-OPERATIONAL in the EtherCAT Slave corresponding to
+ 278:../SSC/Src/mailbox.c ****  \brief     local management service Start Mailbox Handler
+ 279:../SSC/Src/mailbox.c ****  \brief     it is checked if the mailbox areas overlaps each other
+ 280:../SSC/Src/mailbox.c ****  \brief     and the Sync Manager channels 0 and 1 are enabled.
+ 281:../SSC/Src/mailbox.c ****  \brief     This function shall only be called if mailbox is supported.
+ 282:../SSC/Src/mailbox.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 283:../SSC/Src/mailbox.c **** UINT16 MBX_StartMailboxHandler(void)
+ 284:../SSC/Src/mailbox.c **** {
+ 566              	 .loc 2 284 0
+ 567              	 .cfi_startproc
+ 568              	 
+ 569              	 
+ 570 0000 80B5     	 push {r7,lr}
+ 571              	.LCFI38:
+ 572              	 .cfi_def_cfa_offset 8
+ 573              	 .cfi_offset 7,-8
+ 574              	 .cfi_offset 14,-4
+ 575 0002 82B0     	 sub sp,sp,#8
+ 576              	.LCFI39:
+ 577              	 .cfi_def_cfa_offset 16
+ 578 0004 00AF     	 add r7,sp,#0
+ 579              	.LCFI40:
+ 580              	 .cfi_def_cfa_register 7
+ 285:../SSC/Src/mailbox.c ****     UINT16 result = 0;
+ 581              	 .loc 2 285 0
+ 582 0006 0023     	 movs r3,#0
+ 583 0008 FB80     	 strh r3,[r7,#6]
+ 286:../SSC/Src/mailbox.c ****     /* get address of the receive mailbox sync manager (SM0) */
+ 287:../SSC/Src/mailbox.c **** /*ECATCHANGE_START(V5.11) HW1*/
+ 288:../SSC/Src/mailbox.c ****     TSYNCMAN ESCMEM * pSyncMan = (TSYNCMAN ESCMEM *)GetSyncMan(MAILBOX_WRITE);
+ 584              	 .loc 2 288 0
+ 585 000a 0020     	 movs r0,#0
+ 586 000c FFF7FEFF 	 bl GetSyncMan
+ 587 0010 3860     	 str r0,[r7]
+ 289:../SSC/Src/mailbox.c **** /*ECATCHANGE_END(V5.11) HW1*/
+ 290:../SSC/Src/mailbox.c ****     /* store size of the receive mailbox */
+ 291:../SSC/Src/mailbox.c ****     u16ReceiveMbxSize     = pSyncMan->Length;
+ 588              	 .loc 2 291 0
+ 589 0012 3B68     	 ldr r3,[r7]
+ 590 0014 5B88     	 ldrh r3,[r3,#2]
+ 591 0016 9AB2     	 uxth r2,r3
+ 592 0018 304B     	 ldr r3,.L23
+ 593 001a 1A80     	 strh r2,[r3]
+ 292:../SSC/Src/mailbox.c ****     /* store the address of the receive mailbox */
+ 293:../SSC/Src/mailbox.c ****     u16EscAddrReceiveMbx = pSyncMan->PhysicalStartAddress;
+ 594              	 .loc 2 293 0
+ 595 001c 3B68     	 ldr r3,[r7]
+ 596 001e 1B88     	 ldrh r3,[r3]
+ 597 0020 9AB2     	 uxth r2,r3
+ 598 0022 2F4B     	 ldr r3,.L23+4
+ 599 0024 1A80     	 strh r2,[r3]
+ 294:../SSC/Src/mailbox.c **** 
+ 295:../SSC/Src/mailbox.c ****     /* get address of the send mailbox sync manager (SM1) */
+ 296:../SSC/Src/mailbox.c **** /*ECATCHANGE_START(V5.11) HW1*/
+ 297:../SSC/Src/mailbox.c ****     pSyncMan =(TSYNCMAN ESCMEM *) GetSyncMan(MAILBOX_READ);
+ 600              	 .loc 2 297 0
+ 601 0026 0120     	 movs r0,#1
+ 602 0028 FFF7FEFF 	 bl GetSyncMan
+ 603 002c 3860     	 str r0,[r7]
+ 298:../SSC/Src/mailbox.c **** /*ECATCHANGE_END(V5.11) HW1*/
+ 299:../SSC/Src/mailbox.c **** 
+ 300:../SSC/Src/mailbox.c ****     /* store the size of the send mailbox */
+ 301:../SSC/Src/mailbox.c ****     u16SendMbxSize = pSyncMan->Length;
+ 604              	 .loc 2 301 0
+ 605 002e 3B68     	 ldr r3,[r7]
+ 606 0030 5B88     	 ldrh r3,[r3,#2]
+ 607 0032 9AB2     	 uxth r2,r3
+ 608 0034 2B4B     	 ldr r3,.L23+8
+ 609 0036 1A80     	 strh r2,[r3]
+ 302:../SSC/Src/mailbox.c ****     /* store the address of the send mailbox */
+ 303:../SSC/Src/mailbox.c ****     u16EscAddrSendMbx = pSyncMan->PhysicalStartAddress;
+ 610              	 .loc 2 303 0
+ 611 0038 3B68     	 ldr r3,[r7]
+ 612 003a 1B88     	 ldrh r3,[r3]
+ 613 003c 9AB2     	 uxth r2,r3
+ 614 003e 2A4B     	 ldr r3,.L23+12
+ 615 0040 1A80     	 strh r2,[r3]
+ 304:../SSC/Src/mailbox.c **** 
+ 305:../SSC/Src/mailbox.c ****     // HBu 02.05.06: it should be checked if there are overlaps in the sync manager areas
+ 306:../SSC/Src/mailbox.c ****     if ((u16EscAddrReceiveMbx + u16ReceiveMbxSize) > u16EscAddrSendMbx && (u16EscAddrReceiveMbx < (
+ 616              	 .loc 2 306 0
+ 617 0042 274B     	 ldr r3,.L23+4
+ 618 0044 1B88     	 ldrh r3,[r3]
+ 619 0046 1A46     	 mov r2,r3
+ 620 0048 244B     	 ldr r3,.L23
+ 621 004a 1B88     	 ldrh r3,[r3]
+ 622 004c 1344     	 add r3,r3,r2
+ 623 004e 264A     	 ldr r2,.L23+12
+ 624 0050 1288     	 ldrh r2,[r2]
+ 625 0052 9342     	 cmp r3,r2
+ 626 0054 0CDD     	 ble .L18
+ 627              	 .loc 2 306 0 is_stmt 0 discriminator 1
+ 628 0056 224B     	 ldr r3,.L23+4
+ 629 0058 1B88     	 ldrh r3,[r3]
+ 630 005a 1A46     	 mov r2,r3
+ 631 005c 224B     	 ldr r3,.L23+12
+ 632 005e 1B88     	 ldrh r3,[r3]
+ 633 0060 1946     	 mov r1,r3
+ 634 0062 204B     	 ldr r3,.L23+8
+ 635 0064 1B88     	 ldrh r3,[r3]
+ 636 0066 0B44     	 add r3,r3,r1
+ 637 0068 9A42     	 cmp r2,r3
+ 638 006a 01DA     	 bge .L18
+ 307:../SSC/Src/mailbox.c ****     {
+ 308:../SSC/Src/mailbox.c ****         return ALSTATUSCODE_INVALIDMBXCFGINPREOP;
+ 639              	 .loc 2 308 0 is_stmt 1
+ 640 006c 1623     	 movs r3,#22
+ 641 006e 31E0     	 b .L19
+ 642              	.L18:
+ 309:../SSC/Src/mailbox.c ****     }
+ 310:../SSC/Src/mailbox.c **** 
+ 311:../SSC/Src/mailbox.c ****     /* enable the receive mailbox sync manager channel */
+ 312:../SSC/Src/mailbox.c **** /*ECATCHANGE_START(V5.11) HW1*/
+ 313:../SSC/Src/mailbox.c ****     EnableSyncManChannel(MAILBOX_WRITE);
+ 643              	 .loc 2 313 0
+ 644 0070 0020     	 movs r0,#0
+ 645 0072 FFF7FEFF 	 bl EnableSyncManChannel
+ 314:../SSC/Src/mailbox.c ****     /* enable the send mailbox sync manager channel */
+ 315:../SSC/Src/mailbox.c ****     EnableSyncManChannel(MAILBOX_READ);
+ 646              	 .loc 2 315 0
+ 647 0076 0120     	 movs r0,#1
+ 648 0078 FFF7FEFF 	 bl EnableSyncManChannel
+ 316:../SSC/Src/mailbox.c **** /*ECATCHANGE_END(V5.11) HW1*/
+ 317:../SSC/Src/mailbox.c **** 
+ 318:../SSC/Src/mailbox.c **** /* ECATCHANGE_START(V5.11) MBX2*/
+ 319:../SSC/Src/mailbox.c ****         psWriteMbx = (TMBX MBXMEM *) APPL_AllocMailboxBuffer(u16ReceiveMbxSize);
+ 649              	 .loc 2 319 0
+ 650 007c 174B     	 ldr r3,.L23
+ 651 007e 1B88     	 ldrh r3,[r3]
+ 652 0080 1846     	 mov r0,r3
+ 653 0082 FFF7FEFF 	 bl malloc
+ 654 0086 0346     	 mov r3,r0
+ 655 0088 1A46     	 mov r2,r3
+ 656 008a 184B     	 ldr r3,.L23+16
+ 657 008c 1A60     	 str r2,[r3]
+ 320:../SSC/Src/mailbox.c ****         if(psWriteMbx == NULL)
+ 658              	 .loc 2 320 0
+ 659 008e 174B     	 ldr r3,.L23+16
+ 660 0090 1B68     	 ldr r3,[r3]
+ 661 0092 002B     	 cmp r3,#0
+ 662 0094 15D1     	 bne .L20
+ 321:../SSC/Src/mailbox.c ****         {
+ 322:../SSC/Src/mailbox.c ****             bNoMbxMemoryAvailable = TRUE;
+ 663              	 .loc 2 322 0
+ 664 0096 164B     	 ldr r3,.L23+20
+ 665 0098 0122     	 movs r2,#1
+ 666 009a 1A70     	 strb r2,[r3]
+ 323:../SSC/Src/mailbox.c **** 
+ 324:../SSC/Src/mailbox.c ****             //check if at least enough memory for an mailbox error is available (other wise stop th
+ 325:../SSC/Src/mailbox.c ****             psWriteMbx = (TMBX MBXMEM *) APPL_AllocMailboxBuffer(10); /* a mailbox error datagram l
+ 667              	 .loc 2 325 0
+ 668 009c 0A20     	 movs r0,#10
+ 669 009e FFF7FEFF 	 bl malloc
+ 670 00a2 0346     	 mov r3,r0
+ 671 00a4 1A46     	 mov r2,r3
+ 672 00a6 114B     	 ldr r3,.L23+16
+ 673 00a8 1A60     	 str r2,[r3]
+ 326:../SSC/Src/mailbox.c ****             if(psWriteMbx == NULL)
+ 674              	 .loc 2 326 0
+ 675 00aa 104B     	 ldr r3,.L23+16
+ 676 00ac 1B68     	 ldr r3,[r3]
+ 677 00ae 002B     	 cmp r3,#0
+ 678 00b0 01D1     	 bne .L21
+ 327:../SSC/Src/mailbox.c ****             {
+ 328:../SSC/Src/mailbox.c ****                 result = ALSTATUSCODE_NOMEMORY;
+ 679              	 .loc 2 328 0
+ 680 00b2 0223     	 movs r3,#2
+ 681 00b4 FB80     	 strh r3,[r7,#6]
+ 682              	.L21:
+ 329:../SSC/Src/mailbox.c ****             }
+ 330:../SSC/Src/mailbox.c ****            
+ 331:../SSC/Src/mailbox.c ****             APPL_FreeMailboxBuffer(psWriteMbx);
+ 683              	 .loc 2 331 0
+ 684 00b6 0D4B     	 ldr r3,.L23+16
+ 685 00b8 1B68     	 ldr r3,[r3]
+ 686 00ba 1846     	 mov r0,r3
+ 687 00bc FFF7FEFF 	 bl free
+ 688 00c0 07E0     	 b .L22
+ 689              	.L20:
+ 332:../SSC/Src/mailbox.c ****         }
+ 333:../SSC/Src/mailbox.c ****         else
+ 334:../SSC/Src/mailbox.c ****         {
+ 335:../SSC/Src/mailbox.c ****             bNoMbxMemoryAvailable = FALSE;
+ 690              	 .loc 2 335 0
+ 691 00c2 0B4B     	 ldr r3,.L23+20
+ 692 00c4 0022     	 movs r2,#0
+ 693 00c6 1A70     	 strb r2,[r3]
+ 336:../SSC/Src/mailbox.c ****             APPL_FreeMailboxBuffer(psWriteMbx);
+ 694              	 .loc 2 336 0
+ 695 00c8 084B     	 ldr r3,.L23+16
+ 696 00ca 1B68     	 ldr r3,[r3]
+ 697 00cc 1846     	 mov r0,r3
+ 698 00ce FFF7FEFF 	 bl free
+ 699              	.L22:
+ 337:../SSC/Src/mailbox.c ****         }
+ 338:../SSC/Src/mailbox.c **** /* ECATCHANGE_END(V5.11) MBX2*/
+ 339:../SSC/Src/mailbox.c **** 
+ 340:../SSC/Src/mailbox.c ****     return result;
+ 700              	 .loc 2 340 0
+ 701 00d2 FB88     	 ldrh r3,[r7,#6]
+ 702              	.L19:
+ 341:../SSC/Src/mailbox.c **** }
+ 703              	 .loc 2 341 0
+ 704 00d4 1846     	 mov r0,r3
+ 705 00d6 0837     	 adds r7,r7,#8
+ 706              	.LCFI41:
+ 707              	 .cfi_def_cfa_offset 8
+ 708 00d8 BD46     	 mov sp,r7
+ 709              	.LCFI42:
+ 710              	 .cfi_def_cfa_register 13
+ 711              	 
+ 712 00da 80BD     	 pop {r7,pc}
+ 713              	.L24:
+ 714              	 .align 2
+ 715              	.L23:
+ 716 00dc 00000000 	 .word u16ReceiveMbxSize
+ 717 00e0 00000000 	 .word u16EscAddrReceiveMbx
+ 718 00e4 00000000 	 .word u16SendMbxSize
+ 719 00e8 00000000 	 .word u16EscAddrSendMbx
+ 720 00ec 00000000 	 .word psWriteMbx
+ 721 00f0 00000000 	 .word bNoMbxMemoryAvailable
+ 722              	 .cfi_endproc
+ 723              	.LFE175:
+ 725              	 .section .text.MBX_StopMailboxHandler,"ax",%progbits
+ 726              	 .align 2
+ 727              	 .global MBX_StopMailboxHandler
+ 728              	 .thumb
+ 729              	 .thumb_func
+ 731              	MBX_StopMailboxHandler:
+ 732              	.LFB176:
+ 342:../SSC/Src/mailbox.c **** 
+ 343:../SSC/Src/mailbox.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 344:../SSC/Src/mailbox.c **** /**
+ 345:../SSC/Src/mailbox.c **** 
+ 346:../SSC/Src/mailbox.c ****  \brief    This function includes the state transition from
+ 347:../SSC/Src/mailbox.c ****  \brief    PRE-OPERATIONAL to INIT in the EtherCAT Slave corresponding to
+ 348:../SSC/Src/mailbox.c ****  \brief  local management service Stop Mailbox Handler
+ 349:../SSC/Src/mailbox.c ****  \brief  the Sync Manager channels 0 and 1 are disabled
+ 350:../SSC/Src/mailbox.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 351:../SSC/Src/mailbox.c **** 
+ 352:../SSC/Src/mailbox.c **** void MBX_StopMailboxHandler(void)
+ 353:../SSC/Src/mailbox.c **** {
+ 733              	 .loc 2 353 0
+ 734              	 .cfi_startproc
+ 735              	 
+ 736              	 
+ 737 0000 80B5     	 push {r7,lr}
+ 738              	.LCFI43:
+ 739              	 .cfi_def_cfa_offset 8
+ 740              	 .cfi_offset 7,-8
+ 741              	 .cfi_offset 14,-4
+ 742 0002 82B0     	 sub sp,sp,#8
+ 743              	.LCFI44:
+ 744              	 .cfi_def_cfa_offset 16
+ 745 0004 00AF     	 add r7,sp,#0
+ 746              	.LCFI45:
+ 747              	 .cfi_def_cfa_register 7
+ 354:../SSC/Src/mailbox.c ****     TMBX MBXMEM * pMbx;
+ 355:../SSC/Src/mailbox.c **** 
+ 356:../SSC/Src/mailbox.c ****     /* mailbox handler is stopped */
+ 357:../SSC/Src/mailbox.c ****     bMbxRunning = FALSE;
+ 748              	 .loc 2 357 0
+ 749 0006 3F4B     	 ldr r3,.L33
+ 750 0008 0022     	 movs r2,#0
+ 751 000a 1A70     	 strb r2,[r3]
+ 358:../SSC/Src/mailbox.c ****     /* disable the receive mailbox sync manager channel */
+ 359:../SSC/Src/mailbox.c **** /*ECATCHANGE_START(V5.11) HW1*/
+ 360:../SSC/Src/mailbox.c ****     DisableSyncManChannel(MAILBOX_WRITE);
+ 752              	 .loc 2 360 0
+ 753 000c 0020     	 movs r0,#0
+ 754 000e FFF7FEFF 	 bl DisableSyncManChannel
+ 361:../SSC/Src/mailbox.c ****     /* disable the send mailbox sync manager channel */
+ 362:../SSC/Src/mailbox.c ****     DisableSyncManChannel(MAILBOX_READ);
+ 755              	 .loc 2 362 0
+ 756 0012 0120     	 movs r0,#1
+ 757 0014 FFF7FEFF 	 bl DisableSyncManChannel
+ 363:../SSC/Src/mailbox.c **** /*ECATCHANGE_END(V5.11) HW1*/
+ 364:../SSC/Src/mailbox.c ****     /* initialize variables again */
+ 365:../SSC/Src/mailbox.c **** 
+ 366:../SSC/Src/mailbox.c **** 
+ 367:../SSC/Src/mailbox.c ****     if (psRepeatMbx != NULL)
+ 758              	 .loc 2 367 0
+ 759 0018 3B4B     	 ldr r3,.L33+4
+ 760 001a 1B68     	 ldr r3,[r3]
+ 761 001c 002B     	 cmp r3,#0
+ 762 001e 04D0     	 beq .L26
+ 368:../SSC/Src/mailbox.c ****         APPL_FreeMailboxBuffer(psRepeatMbx);
+ 763              	 .loc 2 368 0
+ 764 0020 394B     	 ldr r3,.L33+4
+ 765 0022 1B68     	 ldr r3,[r3]
+ 766 0024 1846     	 mov r0,r3
+ 767 0026 FFF7FEFF 	 bl free
+ 768              	.L26:
+ 369:../SSC/Src/mailbox.c **** 
+ 370:../SSC/Src/mailbox.c ****     if (psStoreMbx != NULL && psStoreMbx != psRepeatMbx)
+ 769              	 .loc 2 370 0
+ 770 002a 384B     	 ldr r3,.L33+8
+ 771 002c 1B68     	 ldr r3,[r3]
+ 772 002e 002B     	 cmp r3,#0
+ 773 0030 0AD0     	 beq .L27
+ 774              	 .loc 2 370 0 is_stmt 0 discriminator 1
+ 775 0032 364B     	 ldr r3,.L33+8
+ 776 0034 1A68     	 ldr r2,[r3]
+ 777 0036 344B     	 ldr r3,.L33+4
+ 778 0038 1B68     	 ldr r3,[r3]
+ 779 003a 9A42     	 cmp r2,r3
+ 780 003c 04D0     	 beq .L27
+ 371:../SSC/Src/mailbox.c ****         APPL_FreeMailboxBuffer(psStoreMbx);
+ 781              	 .loc 2 371 0 is_stmt 1
+ 782 003e 334B     	 ldr r3,.L33+8
+ 783 0040 1B68     	 ldr r3,[r3]
+ 784 0042 1846     	 mov r0,r3
+ 785 0044 FFF7FEFF 	 bl free
+ 786              	.L27:
+ 372:../SSC/Src/mailbox.c **** 
+ 373:../SSC/Src/mailbox.c ****     if (psReadMbx != NULL && psReadMbx != psRepeatMbx && psReadMbx != psStoreMbx)
+ 787              	 .loc 2 373 0
+ 788 0048 314B     	 ldr r3,.L33+12
+ 789 004a 1B68     	 ldr r3,[r3]
+ 790 004c 002B     	 cmp r3,#0
+ 791 004e 10D0     	 beq .L28
+ 792              	 .loc 2 373 0 is_stmt 0 discriminator 1
+ 793 0050 2F4B     	 ldr r3,.L33+12
+ 794 0052 1A68     	 ldr r2,[r3]
+ 795 0054 2C4B     	 ldr r3,.L33+4
+ 796 0056 1B68     	 ldr r3,[r3]
+ 797 0058 9A42     	 cmp r2,r3
+ 798 005a 0AD0     	 beq .L28
+ 799              	 .loc 2 373 0 discriminator 2
+ 800 005c 2C4B     	 ldr r3,.L33+12
+ 801 005e 1A68     	 ldr r2,[r3]
+ 802 0060 2A4B     	 ldr r3,.L33+8
+ 803 0062 1B68     	 ldr r3,[r3]
+ 804 0064 9A42     	 cmp r2,r3
+ 805 0066 04D0     	 beq .L28
+ 374:../SSC/Src/mailbox.c ****         APPL_FreeMailboxBuffer(psReadMbx);
+ 806              	 .loc 2 374 0 is_stmt 1
+ 807 0068 294B     	 ldr r3,.L33+12
+ 808 006a 1B68     	 ldr r3,[r3]
+ 809 006c 1846     	 mov r0,r3
+ 810 006e FFF7FEFF 	 bl free
+ 811              	.L28:
+ 375:../SSC/Src/mailbox.c **** 
+ 376:../SSC/Src/mailbox.c **** 
+ 377:../SSC/Src/mailbox.c ****     psRepeatMbx = NULL;
+ 812              	 .loc 2 377 0
+ 813 0072 254B     	 ldr r3,.L33+4
+ 814 0074 0022     	 movs r2,#0
+ 815 0076 1A60     	 str r2,[r3]
+ 378:../SSC/Src/mailbox.c ****     psReadMbx = NULL;
+ 816              	 .loc 2 378 0
+ 817 0078 254B     	 ldr r3,.L33+12
+ 818 007a 0022     	 movs r2,#0
+ 819 007c 1A60     	 str r2,[r3]
+ 379:../SSC/Src/mailbox.c ****     psStoreMbx = NULL;
+ 820              	 .loc 2 379 0
+ 821 007e 234B     	 ldr r3,.L33+8
+ 822 0080 0022     	 movs r2,#0
+ 823 0082 1A60     	 str r2,[r3]
+ 380:../SSC/Src/mailbox.c **** 
+ 381:../SSC/Src/mailbox.c ****     bMbxRepeatToggle    = FALSE;
+ 824              	 .loc 2 381 0
+ 825 0084 234B     	 ldr r3,.L33+16
+ 826 0086 0022     	 movs r2,#0
+ 827 0088 1A70     	 strb r2,[r3]
+ 828              	.LBB4:
+ 382:../SSC/Src/mailbox.c ****     /*Reset Repeat acknowledge bit of SyncManager1 (0x080F bit 2)*/
+ 383:../SSC/Src/mailbox.c ****     {
+ 384:../SSC/Src/mailbox.c ****         UINT8 sm1Activate = 0;
+ 829              	 .loc 2 384 0
+ 830 008a 0023     	 movs r3,#0
+ 831 008c FB70     	 strb r3,[r7,#3]
+ 385:../SSC/Src/mailbox.c ****         HW_EscReadByte(sm1Activate,(ESC_SM_PDICONTROL_OFFSET + SIZEOF_SM_REGISTER));
+ 832              	 .loc 2 385 0
+ 833 008e 224B     	 ldr r3,.L33+20
+ 834 0090 1B78     	 ldrb r3,[r3]
+ 835 0092 FB70     	 strb r3,[r7,#3]
+ 386:../SSC/Src/mailbox.c ****         sm1Activate &= ~0x02;
+ 836              	 .loc 2 386 0
+ 837 0094 FB78     	 ldrb r3,[r7,#3]
+ 838 0096 23F00203 	 bic r3,r3,#2
+ 839 009a FB70     	 strb r3,[r7,#3]
+ 387:../SSC/Src/mailbox.c ****         HW_EscWriteByte(sm1Activate,(ESC_SM_PDICONTROL_OFFSET + SIZEOF_SM_REGISTER));
+ 840              	 .loc 2 387 0
+ 841 009c 1E4A     	 ldr r2,.L33+20
+ 842 009e FB78     	 ldrb r3,[r7,#3]
+ 843 00a0 1370     	 strb r3,[r2]
+ 844              	.LBE4:
+ 388:../SSC/Src/mailbox.c ****     }
+ 389:../SSC/Src/mailbox.c ****     bSendMbxIsFull         = FALSE;
+ 845              	 .loc 2 389 0
+ 846 00a2 1E4B     	 ldr r3,.L33+24
+ 847 00a4 0022     	 movs r2,#0
+ 848 00a6 1A70     	 strb r2,[r3]
+ 390:../SSC/Src/mailbox.c ****     bReceiveMbxIsLocked = FALSE;
+ 849              	 .loc 2 390 0
+ 850 00a8 1D4B     	 ldr r3,.L33+28
+ 851 00aa 0022     	 movs r2,#0
+ 852 00ac 1A70     	 strb r2,[r3]
+ 391:../SSC/Src/mailbox.c ****     u8MailboxSendReqStored    = 0;
+ 853              	 .loc 2 391 0
+ 854 00ae 1D4B     	 ldr r3,.L33+32
+ 855 00b0 0022     	 movs r2,#0
+ 856 00b2 1A70     	 strb r2,[r3]
+ 392:../SSC/Src/mailbox.c ****     u8MbxWriteCounter         = 0;
+ 857              	 .loc 2 392 0
+ 858 00b4 1C4B     	 ldr r3,.L33+36
+ 859 00b6 0022     	 movs r2,#0
+ 860 00b8 1A70     	 strb r2,[r3]
+ 393:../SSC/Src/mailbox.c ****     u8MbxReadCounter        = 0;
+ 861              	 .loc 2 393 0
+ 862 00ba 1C4B     	 ldr r3,.L33+40
+ 863 00bc 0022     	 movs r2,#0
+ 864 00be 1A70     	 strb r2,[r3]
+ 865              	.L30:
+ 394:../SSC/Src/mailbox.c **** 
+ 395:../SSC/Src/mailbox.c ****     do
+ 396:../SSC/Src/mailbox.c ****     {
+ 397:../SSC/Src/mailbox.c ****         pMbx = GetOutOfMbxQueue(&sMbxReceiveQueue);
+ 866              	 .loc 2 397 0
+ 867 00c0 1B48     	 ldr r0,.L33+44
+ 868 00c2 FFF7FEFF 	 bl GetOutOfMbxQueue
+ 869 00c6 7860     	 str r0,[r7,#4]
+ 398:../SSC/Src/mailbox.c ****         if (pMbx)
+ 870              	 .loc 2 398 0
+ 871 00c8 7B68     	 ldr r3,[r7,#4]
+ 872 00ca 002B     	 cmp r3,#0
+ 873 00cc 04D0     	 beq .L29
+ 399:../SSC/Src/mailbox.c ****         {
+ 400:../SSC/Src/mailbox.c ****             APPL_FreeMailboxBuffer(pMbx);
+ 874              	 .loc 2 400 0
+ 875 00ce 7868     	 ldr r0,[r7,#4]
+ 876 00d0 FFF7FEFF 	 bl free
+ 401:../SSC/Src/mailbox.c ****             pMbx = NULL;
+ 877              	 .loc 2 401 0
+ 878 00d4 0023     	 movs r3,#0
+ 879 00d6 7B60     	 str r3,[r7,#4]
+ 880              	.L29:
+ 402:../SSC/Src/mailbox.c ****         }
+ 403:../SSC/Src/mailbox.c ****     } while (pMbx != NULL);
+ 881              	 .loc 2 403 0
+ 882 00d8 7B68     	 ldr r3,[r7,#4]
+ 883 00da 002B     	 cmp r3,#0
+ 884 00dc F0D1     	 bne .L30
+ 885              	.L32:
+ 404:../SSC/Src/mailbox.c ****     do
+ 405:../SSC/Src/mailbox.c ****     {
+ 406:../SSC/Src/mailbox.c ****         pMbx = GetOutOfMbxQueue(&sMbxSendQueue);
+ 886              	 .loc 2 406 0
+ 887 00de 1548     	 ldr r0,.L33+48
+ 888 00e0 FFF7FEFF 	 bl GetOutOfMbxQueue
+ 889 00e4 7860     	 str r0,[r7,#4]
+ 407:../SSC/Src/mailbox.c ****         if (pMbx)
+ 890              	 .loc 2 407 0
+ 891 00e6 7B68     	 ldr r3,[r7,#4]
+ 892 00e8 002B     	 cmp r3,#0
+ 893 00ea 04D0     	 beq .L31
+ 408:../SSC/Src/mailbox.c ****         {
+ 409:../SSC/Src/mailbox.c ****             APPL_FreeMailboxBuffer(pMbx);
+ 894              	 .loc 2 409 0
+ 895 00ec 7868     	 ldr r0,[r7,#4]
+ 896 00ee FFF7FEFF 	 bl free
+ 410:../SSC/Src/mailbox.c ****             pMbx = NULL;
+ 897              	 .loc 2 410 0
+ 898 00f2 0023     	 movs r3,#0
+ 899 00f4 7B60     	 str r3,[r7,#4]
+ 900              	.L31:
+ 411:../SSC/Src/mailbox.c ****         }
+ 412:../SSC/Src/mailbox.c ****     } while (pMbx != NULL);
+ 901              	 .loc 2 412 0
+ 902 00f6 7B68     	 ldr r3,[r7,#4]
+ 903 00f8 002B     	 cmp r3,#0
+ 904 00fa F0D1     	 bne .L32
+ 413:../SSC/Src/mailbox.c **** 
+ 414:../SSC/Src/mailbox.c **** }
+ 905              	 .loc 2 414 0
+ 906 00fc 0837     	 adds r7,r7,#8
+ 907              	.LCFI46:
+ 908              	 .cfi_def_cfa_offset 8
+ 909 00fe BD46     	 mov sp,r7
+ 910              	.LCFI47:
+ 911              	 .cfi_def_cfa_register 13
+ 912              	 
+ 913 0100 80BD     	 pop {r7,pc}
+ 914              	.L34:
+ 915 0102 00BF     	 .align 2
+ 916              	.L33:
+ 917 0104 00000000 	 .word bMbxRunning
+ 918 0108 00000000 	 .word psRepeatMbx
+ 919 010c 00000000 	 .word psStoreMbx
+ 920 0110 00000000 	 .word psReadMbx
+ 921 0114 00000000 	 .word bMbxRepeatToggle
+ 922 0118 0F080154 	 .word 1409353743
+ 923 011c 00000000 	 .word bSendMbxIsFull
+ 924 0120 00000000 	 .word bReceiveMbxIsLocked
+ 925 0124 00000000 	 .word u8MailboxSendReqStored
+ 926 0128 00000000 	 .word u8MbxWriteCounter
+ 927 012c 00000000 	 .word u8MbxReadCounter
+ 928 0130 00000000 	 .word sMbxReceiveQueue
+ 929 0134 00000000 	 .word sMbxSendQueue
+ 930              	 .cfi_endproc
+ 931              	.LFE176:
+ 933              	 .section .text.MailboxServiceInd,"ax",%progbits
+ 934              	 .align 2
+ 935              	 .global MailboxServiceInd
+ 936              	 .thumb
+ 937              	 .thumb_func
+ 939              	MailboxServiceInd:
+ 940              	.LFB177:
+ 415:../SSC/Src/mailbox.c **** 
+ 416:../SSC/Src/mailbox.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 417:../SSC/Src/mailbox.c **** /**
+ 418:../SSC/Src/mailbox.c ****  \param     pMbx        Pointer to the received Mailbox command from Master.
+ 419:../SSC/Src/mailbox.c **** 
+ 420:../SSC/Src/mailbox.c ****  \brief    The function checks the mailbox header for the requested service and calls the
+ 421:../SSC/Src/mailbox.c ****  \brief    corresponding XXXX_ServiceInd-function
+ 422:../SSC/Src/mailbox.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 423:../SSC/Src/mailbox.c **** 
+ 424:../SSC/Src/mailbox.c **** UINT8 MailboxServiceInd(TMBX MBXMEM *pMbx)
+ 425:../SSC/Src/mailbox.c **** {
+ 941              	 .loc 2 425 0
+ 942              	 .cfi_startproc
+ 943              	 
+ 944              	 
+ 945 0000 80B5     	 push {r7,lr}
+ 946              	.LCFI48:
+ 947              	 .cfi_def_cfa_offset 8
+ 948              	 .cfi_offset 7,-8
+ 949              	 .cfi_offset 14,-4
+ 950 0002 84B0     	 sub sp,sp,#16
+ 951              	.LCFI49:
+ 952              	 .cfi_def_cfa_offset 24
+ 953 0004 00AF     	 add r7,sp,#0
+ 954              	.LCFI50:
+ 955              	 .cfi_def_cfa_register 7
+ 956 0006 7860     	 str r0,[r7,#4]
+ 426:../SSC/Src/mailbox.c ****     UINT8 result;
+ 427:../SSC/Src/mailbox.c **** 
+ 428:../SSC/Src/mailbox.c ****     /*only FoE is allowed in Boot mode*/
+ 429:../SSC/Src/mailbox.c ****     if(bBootMode == TRUE && (MBX_TYPE_FOE != ((pMbx->MbxHeader.Flags[MBX_OFFS_TYPE] & MBX_MASK_TYPE
+ 957              	 .loc 2 429 0
+ 958 0008 144B     	 ldr r3,.L43
+ 959 000a 1B78     	 ldrb r3,[r3]
+ 960 000c 002B     	 cmp r3,#0
+ 961 000e 07D0     	 beq .L36
+ 962              	 .loc 2 429 0 is_stmt 0 discriminator 1
+ 963 0010 7B68     	 ldr r3,[r7,#4]
+ 964 0012 5B79     	 ldrb r3,[r3,#5]
+ 965 0014 03F00F03 	 and r3,r3,#15
+ 966 0018 042B     	 cmp r3,#4
+ 967 001a 01D0     	 beq .L36
+ 430:../SSC/Src/mailbox.c ****         return MBXERR_UNSUPPORTEDPROTOCOL;
+ 968              	 .loc 2 430 0 is_stmt 1
+ 969 001c 0223     	 movs r3,#2
+ 970 001e 18E0     	 b .L37
+ 971              	.L36:
+ 431:../SSC/Src/mailbox.c **** 
+ 432:../SSC/Src/mailbox.c ****     switch ( (pMbx->MbxHeader.Flags[MBX_OFFS_TYPE] & MBX_MASK_TYPE) >> MBX_SHIFT_TYPE )
+ 972              	 .loc 2 432 0
+ 973 0020 7B68     	 ldr r3,[r7,#4]
+ 974 0022 5B79     	 ldrb r3,[r3,#5]
+ 975 0024 03F00F03 	 and r3,r3,#15
+ 976 0028 032B     	 cmp r3,#3
+ 977 002a 02D0     	 beq .L39
+ 978 002c 042B     	 cmp r3,#4
+ 979 002e 06D0     	 beq .L40
+ 980 0030 0BE0     	 b .L42
+ 981              	.L39:
+ 433:../SSC/Src/mailbox.c ****     {
+ 434:../SSC/Src/mailbox.c ****     case MBX_TYPE_COE:
+ 435:../SSC/Src/mailbox.c ****         /* CoE datagram received */
+ 436:../SSC/Src/mailbox.c ****         result = COE_ServiceInd((TCOEMBX MBXMEM *) pMbx);
+ 982              	 .loc 2 436 0
+ 983 0032 7868     	 ldr r0,[r7,#4]
+ 984 0034 FFF7FEFF 	 bl COE_ServiceInd
+ 985 0038 0346     	 mov r3,r0
+ 986 003a FB73     	 strb r3,[r7,#15]
+ 437:../SSC/Src/mailbox.c ****         break;
+ 987              	 .loc 2 437 0
+ 988 003c 08E0     	 b .L41
+ 989              	.L40:
+ 438:../SSC/Src/mailbox.c **** 
+ 439:../SSC/Src/mailbox.c ****     case MBX_TYPE_FOE:
+ 440:../SSC/Src/mailbox.c ****         /* FoE datagram received */
+ 441:../SSC/Src/mailbox.c ****         result = FOE_ServiceInd((TFOEMBX MBXMEM *) pMbx);
+ 990              	 .loc 2 441 0
+ 991 003e 7868     	 ldr r0,[r7,#4]
+ 992 0040 FFF7FEFF 	 bl FOE_ServiceInd
+ 993 0044 0346     	 mov r3,r0
+ 994 0046 FB73     	 strb r3,[r7,#15]
+ 442:../SSC/Src/mailbox.c ****         break;
+ 995              	 .loc 2 442 0
+ 996 0048 02E0     	 b .L41
+ 997              	.L42:
+ 443:../SSC/Src/mailbox.c **** 
+ 444:../SSC/Src/mailbox.c ****     default:
+ 445:../SSC/Src/mailbox.c **** 
+ 446:../SSC/Src/mailbox.c ****         result = MBXERR_UNSUPPORTEDPROTOCOL;
+ 998              	 .loc 2 446 0
+ 999 004a 0223     	 movs r3,#2
+ 1000 004c FB73     	 strb r3,[r7,#15]
+ 447:../SSC/Src/mailbox.c ****         break;
+ 1001              	 .loc 2 447 0
+ 1002 004e 00BF     	 nop
+ 1003              	.L41:
+ 448:../SSC/Src/mailbox.c ****     }
+ 449:../SSC/Src/mailbox.c **** 
+ 450:../SSC/Src/mailbox.c ****     return result;
+ 1004              	 .loc 2 450 0
+ 1005 0050 FB7B     	 ldrb r3,[r7,#15]
+ 1006              	.L37:
+ 451:../SSC/Src/mailbox.c **** }
+ 1007              	 .loc 2 451 0
+ 1008 0052 1846     	 mov r0,r3
+ 1009 0054 1037     	 adds r7,r7,#16
+ 1010              	.LCFI51:
+ 1011              	 .cfi_def_cfa_offset 8
+ 1012 0056 BD46     	 mov sp,r7
+ 1013              	.LCFI52:
+ 1014              	 .cfi_def_cfa_register 13
+ 1015              	 
+ 1016 0058 80BD     	 pop {r7,pc}
+ 1017              	.L44:
+ 1018 005a 00BF     	 .align 2
+ 1019              	.L43:
+ 1020 005c 00000000 	 .word bBootMode
+ 1021              	 .cfi_endproc
+ 1022              	.LFE177:
+ 1024              	 .section .text.MBX_MailboxWriteInd,"ax",%progbits
+ 1025              	 .align 2
+ 1026              	 .global MBX_MailboxWriteInd
+ 1027              	 .thumb
+ 1028              	 .thumb_func
+ 1030              	MBX_MailboxWriteInd:
+ 1031              	.LFB178:
+ 452:../SSC/Src/mailbox.c **** 
+ 453:../SSC/Src/mailbox.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 454:../SSC/Src/mailbox.c **** /**
+ 455:../SSC/Src/mailbox.c ****  \param     pMbx        Pointer to the received Mailbox command from Master.
+ 456:../SSC/Src/mailbox.c **** 
+ 457:../SSC/Src/mailbox.c ****  \brief    This function is called when the Master has written the Receive-Mailbox.
+ 458:../SSC/Src/mailbox.c ****  \brief    It will only be called if the send mailbox is empty, that a response for the
+ 459:../SSC/Src/mailbox.c ****  \brief    mailbox service could be stored.
+ 460:../SSC/Src/mailbox.c ****  \brief    The function checks the mailbox header for the requested service and calls the
+ 461:../SSC/Src/mailbox.c ****  \brief    corresponding XXXX_ServiceInd-function
+ 462:../SSC/Src/mailbox.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 463:../SSC/Src/mailbox.c **** 
+ 464:../SSC/Src/mailbox.c **** void MBX_MailboxWriteInd(TMBX MBXMEM *pMbx)
+ 465:../SSC/Src/mailbox.c **** {
+ 1032              	 .loc 2 465 0
+ 1033              	 .cfi_startproc
+ 1034              	 
+ 1035              	 
+ 1036 0000 80B5     	 push {r7,lr}
+ 1037              	.LCFI53:
+ 1038              	 .cfi_def_cfa_offset 8
+ 1039              	 .cfi_offset 7,-8
+ 1040              	 .cfi_offset 14,-4
+ 1041 0002 84B0     	 sub sp,sp,#16
+ 1042              	.LCFI54:
+ 1043              	 .cfi_def_cfa_offset 24
+ 1044 0004 00AF     	 add r7,sp,#0
+ 1045              	.LCFI55:
+ 1046              	 .cfi_def_cfa_register 7
+ 1047 0006 7860     	 str r0,[r7,#4]
+ 466:../SSC/Src/mailbox.c ****     UINT8 result = 0;
+ 1048              	 .loc 2 466 0
+ 1049 0008 0023     	 movs r3,#0
+ 1050 000a FB73     	 strb r3,[r7,#15]
+ 467:../SSC/Src/mailbox.c ****     UINT8 mbxCounter = pMbx->MbxHeader.Flags[MBX_OFFS_COUNTER] >> MBX_SHIFT_COUNTER;
+ 1051              	 .loc 2 467 0
+ 1052 000c 7B68     	 ldr r3,[r7,#4]
+ 1053 000e 5B79     	 ldrb r3,[r3,#5]
+ 1054 0010 1B09     	 lsrs r3,r3,#4
+ 1055 0012 BB73     	 strb r3,[r7,#14]
+ 468:../SSC/Src/mailbox.c ****     UINT16 MbxLen = SWAPWORD(pMbx->MbxHeader.Length);
+ 1056              	 .loc 2 468 0
+ 1057 0014 7B68     	 ldr r3,[r7,#4]
+ 1058 0016 1B88     	 ldrh r3,[r3]
+ 1059 0018 BB81     	 strh r3,[r7,#12]
+ 469:../SSC/Src/mailbox.c **** 
+ 470:../SSC/Src/mailbox.c ****     if(MbxLen > MAX_MBX_SIZE)
+ 1060              	 .loc 2 470 0
+ 1061 001a BB89     	 ldrh r3,[r7,#12]
+ 1062 001c B3F5807F 	 cmp r3,#256
+ 1063 0020 14D9     	 bls .L46
+ 471:../SSC/Src/mailbox.c ****     {
+ 472:../SSC/Src/mailbox.c ****         /* Mailbox error response: size specified in mailbox header too large*/
+ 473:../SSC/Src/mailbox.c ****         pMbx->MbxHeader.Length     = 4;
+ 1064              	 .loc 2 473 0
+ 1065 0022 7B68     	 ldr r3,[r7,#4]
+ 1066 0024 0422     	 movs r2,#4
+ 1067 0026 1A80     	 strh r2,[r3]
+ 474:../SSC/Src/mailbox.c ****         pMbx->MbxHeader.Flags[MBX_OFFS_TYPE]        &= ~MBX_MASK_TYPE;
+ 1068              	 .loc 2 474 0
+ 1069 0028 7B68     	 ldr r3,[r7,#4]
+ 1070 002a 5B79     	 ldrb r3,[r3,#5]
+ 1071 002c 23F00F03 	 bic r3,r3,#15
+ 1072 0030 DAB2     	 uxtb r2,r3
+ 1073 0032 7B68     	 ldr r3,[r7,#4]
+ 1074 0034 5A71     	 strb r2,[r3,#5]
+ 475:../SSC/Src/mailbox.c ****         pMbx->Data[0]                        = SWAPWORD(MBXSERVICE_MBXERRORCMD);
+ 1075              	 .loc 2 475 0
+ 1076 0036 7B68     	 ldr r3,[r7,#4]
+ 1077 0038 0122     	 movs r2,#1
+ 1078 003a DA80     	 strh r2,[r3,#6]
+ 476:../SSC/Src/mailbox.c ****         pMbx->Data[1]                        = SWAPWORD(MBXERR_INVALIDSIZE);
+ 1079              	 .loc 2 476 0
+ 1080 003c 7B68     	 ldr r3,[r7,#4]
+ 1081 003e 0822     	 movs r2,#8
+ 1082 0040 1A81     	 strh r2,[r3,#8]
+ 477:../SSC/Src/mailbox.c ****         MBX_MailboxSendReq(pMbx, 0);
+ 1083              	 .loc 2 477 0
+ 1084 0042 7868     	 ldr r0,[r7,#4]
+ 1085 0044 0021     	 movs r1,#0
+ 1086 0046 FFF7FEFF 	 bl MBX_MailboxSendReq
+ 1087 004a 2FE0     	 b .L45
+ 1088              	.L46:
+ 478:../SSC/Src/mailbox.c ****     }
+ 479:../SSC/Src/mailbox.c ****     else
+ 480:../SSC/Src/mailbox.c ****     /* if the mailbox datagram counter (Bit 4-6 of Byte 5 of the mailbox header) is unequal zero,
+ 481:../SSC/Src/mailbox.c ****        the master supports the mailbox data link layer,
+ 482:../SSC/Src/mailbox.c ****         in that case a repeated mailbox write request will be detected, if the counter is unequal z
+ 483:../SSC/Src/mailbox.c ****         and unchanged */
+ 484:../SSC/Src/mailbox.c ****     if ( mbxCounter == 0 || mbxCounter != u8MbxWriteCounter )
+ 1089              	 .loc 2 484 0
+ 1090 004c BB7B     	 ldrb r3,[r7,#14]
+ 1091 004e 002B     	 cmp r3,#0
+ 1092 0050 04D0     	 beq .L48
+ 1093              	 .loc 2 484 0 is_stmt 0 discriminator 1
+ 1094 0052 184B     	 ldr r3,.L51
+ 1095 0054 1B78     	 ldrb r3,[r3]
+ 1096 0056 BA7B     	 ldrb r2,[r7,#14]
+ 1097 0058 9A42     	 cmp r2,r3
+ 1098 005a 22D0     	 beq .L49
+ 1099              	.L48:
+ 485:../SSC/Src/mailbox.c ****     {
+ 486:../SSC/Src/mailbox.c ****         /* new mailbox service received */
+ 487:../SSC/Src/mailbox.c ****         /* mbxCounter = 0: old EtherCAT master */
+ 488:../SSC/Src/mailbox.c ****         /* new MBX service received, store the new mailbox counter */
+ 489:../SSC/Src/mailbox.c ****         u8MbxWriteCounter = mbxCounter;
+ 1100              	 .loc 2 489 0 is_stmt 1
+ 1101 005c 154A     	 ldr r2,.L51
+ 1102 005e BB7B     	 ldrb r3,[r7,#14]
+ 1103 0060 1370     	 strb r3,[r2]
+ 490:../SSC/Src/mailbox.c **** 
+ 491:../SSC/Src/mailbox.c ****         {
+ 492:../SSC/Src/mailbox.c ****             /* check the protocol type and call the XXXX_ServiceInd-function */
+ 493:../SSC/Src/mailbox.c **** 
+ 494:../SSC/Src/mailbox.c ****             result = PutInMbxQueue(pMbx, &sMbxReceiveQueue);
+ 1104              	 .loc 2 494 0
+ 1105 0062 7868     	 ldr r0,[r7,#4]
+ 1106 0064 1449     	 ldr r1,.L51+4
+ 1107 0066 FFF7FEFF 	 bl PutInMbxQueue
+ 1108 006a 0346     	 mov r3,r0
+ 1109 006c FB73     	 strb r3,[r7,#15]
+ 495:../SSC/Src/mailbox.c ****         }
+ 496:../SSC/Src/mailbox.c **** 
+ 497:../SSC/Src/mailbox.c ****         if ( result != 0 )
+ 1110              	 .loc 2 497 0
+ 1111 006e FB7B     	 ldrb r3,[r7,#15]
+ 1112 0070 002B     	 cmp r3,#0
+ 1113 0072 15D0     	 beq .L50
+ 498:../SSC/Src/mailbox.c ****         {
+ 499:../SSC/Src/mailbox.c ****             /* Mailbox error response: type 0 (mailbox service protocol) */
+ 500:../SSC/Src/mailbox.c ****             pMbx->MbxHeader.Length     = 4;
+ 1114              	 .loc 2 500 0
+ 1115 0074 7B68     	 ldr r3,[r7,#4]
+ 1116 0076 0422     	 movs r2,#4
+ 1117 0078 1A80     	 strh r2,[r3]
+ 501:../SSC/Src/mailbox.c ****             pMbx->MbxHeader.Flags[MBX_OFFS_TYPE]        &= ~MBX_MASK_TYPE;
+ 1118              	 .loc 2 501 0
+ 1119 007a 7B68     	 ldr r3,[r7,#4]
+ 1120 007c 5B79     	 ldrb r3,[r3,#5]
+ 1121 007e 23F00F03 	 bic r3,r3,#15
+ 1122 0082 DAB2     	 uxtb r2,r3
+ 1123 0084 7B68     	 ldr r3,[r7,#4]
+ 1124 0086 5A71     	 strb r2,[r3,#5]
+ 502:../SSC/Src/mailbox.c ****             pMbx->Data[0]                        = SWAPWORD(MBXSERVICE_MBXERRORCMD);
+ 1125              	 .loc 2 502 0
+ 1126 0088 7B68     	 ldr r3,[r7,#4]
+ 1127 008a 0122     	 movs r2,#1
+ 1128 008c DA80     	 strh r2,[r3,#6]
+ 503:../SSC/Src/mailbox.c ****             pMbx->Data[1]                        = SWAPWORD(result);
+ 1129              	 .loc 2 503 0
+ 1130 008e FB7B     	 ldrb r3,[r7,#15]
+ 1131 0090 9AB2     	 uxth r2,r3
+ 1132 0092 7B68     	 ldr r3,[r7,#4]
+ 1133 0094 1A81     	 strh r2,[r3,#8]
+ 504:../SSC/Src/mailbox.c ****             MBX_MailboxSendReq(pMbx, 0);
+ 1134              	 .loc 2 504 0
+ 1135 0096 7868     	 ldr r0,[r7,#4]
+ 1136 0098 0021     	 movs r1,#0
+ 1137 009a FFF7FEFF 	 bl MBX_MailboxSendReq
+ 497:../SSC/Src/mailbox.c ****         {
+ 1138              	 .loc 2 497 0
+ 1139 009e 05E0     	 b .L45
+ 1140              	.L50:
+ 1141 00a0 04E0     	 b .L45
+ 1142              	.L49:
+ 505:../SSC/Src/mailbox.c ****         }
+ 506:../SSC/Src/mailbox.c ****     }
+ 507:../SSC/Src/mailbox.c ****     // the mailbox buffer has to be freed here
+ 508:../SSC/Src/mailbox.c ****     else
+ 509:../SSC/Src/mailbox.c ****     {
+ 510:../SSC/Src/mailbox.c ****         APPL_FreeMailboxBuffer(pMbx);
+ 1143              	 .loc 2 510 0
+ 1144 00a2 7868     	 ldr r0,[r7,#4]
+ 1145 00a4 FFF7FEFF 	 bl free
+ 511:../SSC/Src/mailbox.c ****         pMbx = NULL;
+ 1146              	 .loc 2 511 0
+ 1147 00a8 0023     	 movs r3,#0
+ 1148 00aa 7B60     	 str r3,[r7,#4]
+ 1149              	.L45:
+ 512:../SSC/Src/mailbox.c ****     }
+ 513:../SSC/Src/mailbox.c **** }
+ 1150              	 .loc 2 513 0
+ 1151 00ac 1037     	 adds r7,r7,#16
+ 1152              	.LCFI56:
+ 1153              	 .cfi_def_cfa_offset 8
+ 1154 00ae BD46     	 mov sp,r7
+ 1155              	.LCFI57:
+ 1156              	 .cfi_def_cfa_register 13
+ 1157              	 
+ 1158 00b0 80BD     	 pop {r7,pc}
+ 1159              	.L52:
+ 1160 00b2 00BF     	 .align 2
+ 1161              	.L51:
+ 1162 00b4 00000000 	 .word u8MbxWriteCounter
+ 1163 00b8 00000000 	 .word sMbxReceiveQueue
+ 1164              	 .cfi_endproc
+ 1165              	.LFE178:
+ 1167              	 .section .text.MBX_MailboxReadInd,"ax",%progbits
+ 1168              	 .align 2
+ 1169              	 .global MBX_MailboxReadInd
+ 1170              	 .thumb
+ 1171              	 .thumb_func
+ 1173              	MBX_MailboxReadInd:
+ 1174              	.LFB179:
+ 514:../SSC/Src/mailbox.c **** 
+ 515:../SSC/Src/mailbox.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 516:../SSC/Src/mailbox.c **** /**
+ 517:../SSC/Src/mailbox.c ****  \brief This function is called when the Master has read the Send-Mailbox.
+ 518:../SSC/Src/mailbox.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 519:../SSC/Src/mailbox.c **** 
+ 520:../SSC/Src/mailbox.c **** void MBX_MailboxReadInd(void)
+ 521:../SSC/Src/mailbox.c **** {
+ 1175              	 .loc 2 521 0
+ 1176              	 .cfi_startproc
+ 1177              	 
+ 1178              	 
+ 1179 0000 80B5     	 push {r7,lr}
+ 1180              	.LCFI58:
+ 1181              	 .cfi_def_cfa_offset 8
+ 1182              	 .cfi_offset 7,-8
+ 1183              	 .cfi_offset 14,-4
+ 1184 0002 82B0     	 sub sp,sp,#8
+ 1185              	.LCFI59:
+ 1186              	 .cfi_def_cfa_offset 16
+ 1187 0004 00AF     	 add r7,sp,#0
+ 1188              	.LCFI60:
+ 1189              	 .cfi_def_cfa_register 7
+ 522:../SSC/Src/mailbox.c ****     bSendMbxIsFull = FALSE;
+ 1190              	 .loc 2 522 0
+ 1191 0006 344B     	 ldr r3,.L60
+ 1192 0008 0022     	 movs r2,#0
+ 1193 000a 1A70     	 strb r2,[r3]
+ 523:../SSC/Src/mailbox.c ****     // HBu 02.05.06: the pointer psRepeatMbx is only free if there is no stored
+ 524:../SSC/Src/mailbox.c ****     //               mailbox service from the last repeat
+ 525:../SSC/Src/mailbox.c ****     if ( psRepeatMbx && psStoreMbx == NULL )
+ 1194              	 .loc 2 525 0
+ 1195 000c 334B     	 ldr r3,.L60+4
+ 1196 000e 1B68     	 ldr r3,[r3]
+ 1197 0010 002B     	 cmp r3,#0
+ 1198 0012 0BD0     	 beq .L54
+ 1199              	 .loc 2 525 0 is_stmt 0 discriminator 1
+ 1200 0014 324B     	 ldr r3,.L60+8
+ 1201 0016 1B68     	 ldr r3,[r3]
+ 1202 0018 002B     	 cmp r3,#0
+ 1203 001a 07D1     	 bne .L54
+ 526:../SSC/Src/mailbox.c ****     {
+ 527:../SSC/Src/mailbox.c ****     /* the last sent service is not stored for repeat any longer */
+ 528:../SSC/Src/mailbox.c ****         APPL_FreeMailboxBuffer(psRepeatMbx);
+ 1204              	 .loc 2 528 0 is_stmt 1
+ 1205 001c 2F4B     	 ldr r3,.L60+4
+ 1206 001e 1B68     	 ldr r3,[r3]
+ 1207 0020 1846     	 mov r0,r3
+ 1208 0022 FFF7FEFF 	 bl free
+ 529:../SSC/Src/mailbox.c ****         psRepeatMbx = NULL;
+ 1209              	 .loc 2 529 0
+ 1210 0026 2D4B     	 ldr r3,.L60+4
+ 1211 0028 0022     	 movs r2,#0
+ 1212 002a 1A60     	 str r2,[r3]
+ 1213              	.L54:
+ 530:../SSC/Src/mailbox.c ****     }
+ 531:../SSC/Src/mailbox.c **** 
+ 532:../SSC/Src/mailbox.c ****     /* the actual sent service has to be stored for repeat */
+ 533:../SSC/Src/mailbox.c ****     psRepeatMbx = psReadMbx;
+ 1214              	 .loc 2 533 0
+ 1215 002c 2D4B     	 ldr r3,.L60+12
+ 1216 002e 1B68     	 ldr r3,[r3]
+ 1217 0030 2A4A     	 ldr r2,.L60+4
+ 1218 0032 1360     	 str r3,[r2]
+ 534:../SSC/Src/mailbox.c **** 
+ 535:../SSC/Src/mailbox.c ****       if ( psStoreMbx )
+ 1219              	 .loc 2 535 0
+ 1220 0034 2A4B     	 ldr r3,.L60+8
+ 1221 0036 1B68     	 ldr r3,[r3]
+ 1222 0038 002B     	 cmp r3,#0
+ 1223 003a 08D0     	 beq .L55
+ 536:../SSC/Src/mailbox.c ****       {
+ 537:../SSC/Src/mailbox.c ****         /* there was a buffer stored */
+ 538:../SSC/Src/mailbox.c ****         MBX_CopyToSendMailbox(psStoreMbx);
+ 1224              	 .loc 2 538 0
+ 1225 003c 284B     	 ldr r3,.L60+8
+ 1226 003e 1B68     	 ldr r3,[r3]
+ 1227 0040 1846     	 mov r0,r3
+ 1228 0042 FFF7FEFF 	 bl MBX_CopyToSendMailbox
+ 539:../SSC/Src/mailbox.c ****         /* no more buffer to be stored any more */
+ 540:../SSC/Src/mailbox.c ****         psStoreMbx = NULL;
+ 1229              	 .loc 2 540 0
+ 1230 0046 264B     	 ldr r3,.L60+8
+ 1231 0048 0022     	 movs r2,#0
+ 1232 004a 1A60     	 str r2,[r3]
+ 1233 004c 09E0     	 b .L56
+ 1234              	.L55:
+ 1235              	.LBB5:
+ 541:../SSC/Src/mailbox.c ****       }
+ 542:../SSC/Src/mailbox.c ****       else
+ 543:../SSC/Src/mailbox.c ****     {
+ 544:../SSC/Src/mailbox.c ****         TMBX MBXMEM *pMbx = GetOutOfMbxQueue(&sMbxSendQueue);
+ 1236              	 .loc 2 544 0
+ 1237 004e 2648     	 ldr r0,.L60+16
+ 1238 0050 FFF7FEFF 	 bl GetOutOfMbxQueue
+ 1239 0054 7860     	 str r0,[r7,#4]
+ 545:../SSC/Src/mailbox.c ****         if (pMbx)
+ 1240              	 .loc 2 545 0
+ 1241 0056 7B68     	 ldr r3,[r7,#4]
+ 1242 0058 002B     	 cmp r3,#0
+ 1243 005a 02D0     	 beq .L56
+ 546:../SSC/Src/mailbox.c ****         {
+ 547:../SSC/Src/mailbox.c ****             MBX_CopyToSendMailbox(pMbx);
+ 1244              	 .loc 2 547 0
+ 1245 005c 7868     	 ldr r0,[r7,#4]
+ 1246 005e FFF7FEFF 	 bl MBX_CopyToSendMailbox
+ 1247              	.L56:
+ 1248              	.LBE5:
+ 548:../SSC/Src/mailbox.c ****         }
+ 549:../SSC/Src/mailbox.c ****     }
+ 550:../SSC/Src/mailbox.c **** 
+ 551:../SSC/Src/mailbox.c ****       if ( u8MailboxSendReqStored )
+ 1249              	 .loc 2 551 0
+ 1250 0062 224B     	 ldr r3,.L60+20
+ 1251 0064 1B78     	 ldrb r3,[r3]
+ 1252 0066 002B     	 cmp r3,#0
+ 1253 0068 33D0     	 beq .L53
+ 552:../SSC/Src/mailbox.c ****     {
+ 553:../SSC/Src/mailbox.c ****         /* there are mailbox services stored to be sent */
+ 554:../SSC/Src/mailbox.c ****         if ( u8MailboxSendReqStored & COE_SERVICE )
+ 1254              	 .loc 2 554 0
+ 1255 006a 204B     	 ldr r3,.L60+20
+ 1256 006c 1B78     	 ldrb r3,[r3]
+ 1257 006e 03F00203 	 and r3,r3,#2
+ 1258 0072 002B     	 cmp r3,#0
+ 1259 0074 1BD0     	 beq .L58
+ 1260              	.LBB6:
+ 555:../SSC/Src/mailbox.c ****         {
+ 556:../SSC/Src/mailbox.c ****            UINT8 result = 0;
+ 1261              	 .loc 2 556 0
+ 1262 0076 0023     	 movs r3,#0
+ 1263 0078 FB70     	 strb r3,[r7,#3]
+ 557:../SSC/Src/mailbox.c ****             /* reset the flag indicating that CoE service to be sent was stored */
+ 558:../SSC/Src/mailbox.c ****             u8MailboxSendReqStored &= ~COE_SERVICE;
+ 1264              	 .loc 2 558 0
+ 1265 007a 1C4B     	 ldr r3,.L60+20
+ 1266 007c 1B78     	 ldrb r3,[r3]
+ 1267 007e 23F00203 	 bic r3,r3,#2
+ 1268 0082 DAB2     	 uxtb r2,r3
+ 1269 0084 194B     	 ldr r3,.L60+20
+ 1270 0086 1A70     	 strb r2,[r3]
+ 559:../SSC/Src/mailbox.c **** 
+ 560:../SSC/Src/mailbox.c ****             /* call CoE function that will send the stored CoE service */
+ 561:../SSC/Src/mailbox.c ****             result = COE_ContinueInd(psWriteMbx);
+ 1271              	 .loc 2 561 0
+ 1272 0088 194B     	 ldr r3,.L60+24
+ 1273 008a 1B68     	 ldr r3,[r3]
+ 1274 008c 1846     	 mov r0,r3
+ 1275 008e FFF7FEFF 	 bl COE_ContinueInd
+ 1276 0092 0346     	 mov r3,r0
+ 1277 0094 FB70     	 strb r3,[r7,#3]
+ 562:../SSC/Src/mailbox.c **** 
+ 563:../SSC/Src/mailbox.c ****             if (result != 0)
+ 1278              	 .loc 2 563 0
+ 1279 0096 FB78     	 ldrb r3,[r7,#3]
+ 1280 0098 002B     	 cmp r3,#0
+ 1281 009a 07D0     	 beq .L59
+ 564:../SSC/Src/mailbox.c ****             {
+ 565:../SSC/Src/mailbox.c ****                 /*Set the pending CoE indication is an error occurred during the continue indicatio
+ 566:../SSC/Src/mailbox.c ****                 u8MailboxSendReqStored |= COE_SERVICE;
+ 1282              	 .loc 2 566 0
+ 1283 009c 134B     	 ldr r3,.L60+20
+ 1284 009e 1B78     	 ldrb r3,[r3]
+ 1285 00a0 43F00203 	 orr r3,r3,#2
+ 1286 00a4 DAB2     	 uxtb r2,r3
+ 1287 00a6 114B     	 ldr r3,.L60+20
+ 1288 00a8 1A70     	 strb r2,[r3]
+ 1289              	.LBE6:
+ 1290 00aa 12E0     	 b .L53
+ 1291              	.L59:
+ 1292 00ac 11E0     	 b .L53
+ 1293              	.L58:
+ 567:../SSC/Src/mailbox.c ****             }
+ 568:../SSC/Src/mailbox.c ****         }
+ 569:../SSC/Src/mailbox.c ****         else
+ 570:../SSC/Src/mailbox.c ****         if ( u8MailboxSendReqStored & FOE_SERVICE )
+ 1294              	 .loc 2 570 0
+ 1295 00ae 0F4B     	 ldr r3,.L60+20
+ 1296 00b0 1B78     	 ldrb r3,[r3]
+ 1297 00b2 03F04003 	 and r3,r3,#64
+ 1298 00b6 002B     	 cmp r3,#0
+ 1299 00b8 0BD0     	 beq .L53
+ 571:../SSC/Src/mailbox.c ****         {
+ 572:../SSC/Src/mailbox.c ****             /* reset the flag indicating that FoE service to be sent was stored */
+ 573:../SSC/Src/mailbox.c ****             u8MailboxSendReqStored &= ~FOE_SERVICE;
+ 1300              	 .loc 2 573 0
+ 1301 00ba 0C4B     	 ldr r3,.L60+20
+ 1302 00bc 1B78     	 ldrb r3,[r3]
+ 1303 00be 23F04003 	 bic r3,r3,#64
+ 1304 00c2 DAB2     	 uxtb r2,r3
+ 1305 00c4 094B     	 ldr r3,.L60+20
+ 1306 00c6 1A70     	 strb r2,[r3]
+ 574:../SSC/Src/mailbox.c ****             /* call FoE function that will send the stored FoE service */
+ 575:../SSC/Src/mailbox.c ****             FOE_ContinueInd(psWriteMbx);
+ 1307              	 .loc 2 575 0
+ 1308 00c8 094B     	 ldr r3,.L60+24
+ 1309 00ca 1B68     	 ldr r3,[r3]
+ 1310 00cc 1846     	 mov r0,r3
+ 1311 00ce FFF7FEFF 	 bl FOE_ContinueInd
+ 1312              	.L53:
+ 576:../SSC/Src/mailbox.c ****         }
+ 577:../SSC/Src/mailbox.c ****         else
+ 578:../SSC/Src/mailbox.c ****         {
+ 579:../SSC/Src/mailbox.c ****         }
+ 580:../SSC/Src/mailbox.c ****     }
+ 581:../SSC/Src/mailbox.c **** }
+ 1313              	 .loc 2 581 0
+ 1314 00d2 0837     	 adds r7,r7,#8
+ 1315              	.LCFI61:
+ 1316              	 .cfi_def_cfa_offset 8
+ 1317 00d4 BD46     	 mov sp,r7
+ 1318              	.LCFI62:
+ 1319              	 .cfi_def_cfa_register 13
+ 1320              	 
+ 1321 00d6 80BD     	 pop {r7,pc}
+ 1322              	.L61:
+ 1323              	 .align 2
+ 1324              	.L60:
+ 1325 00d8 00000000 	 .word bSendMbxIsFull
+ 1326 00dc 00000000 	 .word psRepeatMbx
+ 1327 00e0 00000000 	 .word psStoreMbx
+ 1328 00e4 00000000 	 .word psReadMbx
+ 1329 00e8 00000000 	 .word sMbxSendQueue
+ 1330 00ec 00000000 	 .word u8MailboxSendReqStored
+ 1331 00f0 00000000 	 .word psWriteMbx
+ 1332              	 .cfi_endproc
+ 1333              	.LFE179:
+ 1335              	 .section .text.MBX_MailboxRepeatReq,"ax",%progbits
+ 1336              	 .align 2
+ 1337              	 .global MBX_MailboxRepeatReq
+ 1338              	 .thumb
+ 1339              	 .thumb_func
+ 1341              	MBX_MailboxRepeatReq:
+ 1342              	.LFB180:
+ 582:../SSC/Src/mailbox.c **** 
+ 583:../SSC/Src/mailbox.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 584:../SSC/Src/mailbox.c **** /**
+ 585:../SSC/Src/mailbox.c ****  \brief This function is called if the Master has requested a resending of the last
+ 586:../SSC/Src/mailbox.c ****  \brief sent mailbox
+ 587:../SSC/Src/mailbox.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 588:../SSC/Src/mailbox.c **** 
+ 589:../SSC/Src/mailbox.c **** void MBX_MailboxRepeatReq(void)
+ 590:../SSC/Src/mailbox.c **** {
+ 1343              	 .loc 2 590 0
+ 1344              	 .cfi_startproc
+ 1345              	 
+ 1346              	 
+ 1347 0000 80B5     	 push {r7,lr}
+ 1348              	.LCFI63:
+ 1349              	 .cfi_def_cfa_offset 8
+ 1350              	 .cfi_offset 7,-8
+ 1351              	 .cfi_offset 14,-4
+ 1352 0002 82B0     	 sub sp,sp,#8
+ 1353              	.LCFI64:
+ 1354              	 .cfi_def_cfa_offset 16
+ 1355 0004 00AF     	 add r7,sp,#0
+ 1356              	.LCFI65:
+ 1357              	 .cfi_def_cfa_register 7
+ 591:../SSC/Src/mailbox.c ****     if (psRepeatMbx)
+ 1358              	 .loc 2 591 0
+ 1359 0006 1A4B     	 ldr r3,.L65
+ 1360 0008 1B68     	 ldr r3,[r3]
+ 1361 000a 002B     	 cmp r3,#0
+ 1362 000c 1DD0     	 beq .L63
+ 1363              	.LBB7:
+ 592:../SSC/Src/mailbox.c ****     {
+ 593:../SSC/Src/mailbox.c ****         TMBX MBXMEM *pMbx = psRepeatMbx;
+ 1364              	 .loc 2 593 0
+ 1365 000e 184B     	 ldr r3,.L65
+ 1366 0010 1B68     	 ldr r3,[r3]
+ 1367 0012 7B60     	 str r3,[r7,#4]
+ 594:../SSC/Src/mailbox.c ****         /* send mailbox service stored for repeat */
+ 595:../SSC/Src/mailbox.c ****         /* HBu 13.10.06: if a repeat request is received (again) before the previously repeated mai
+ 596:../SSC/Src/mailbox.c ****            was read from the master (psStoreMbx != NULL) the next mailbox telegram to be sent is st
+ 597:../SSC/Src/mailbox.c ****             read mailbox so it has not to updated exchanged */
+ 598:../SSC/Src/mailbox.c ****         ENTER_MBX_CRITICAL;
+ 599:../SSC/Src/mailbox.c **** 
+ 600:../SSC/Src/mailbox.c ****        if (bSendMbxIsFull && psStoreMbx == NULL)
+ 1368              	 .loc 2 600 0
+ 1369 0014 174B     	 ldr r3,.L65+4
+ 1370 0016 1B78     	 ldrb r3,[r3]
+ 1371 0018 002B     	 cmp r3,#0
+ 1372 001a 10D0     	 beq .L64
+ 1373              	 .loc 2 600 0 is_stmt 0 discriminator 1
+ 1374 001c 164B     	 ldr r3,.L65+8
+ 1375 001e 1B68     	 ldr r3,[r3]
+ 1376 0020 002B     	 cmp r3,#0
+ 1377 0022 0CD1     	 bne .L64
+ 601:../SSC/Src/mailbox.c ****         {
+ 602:../SSC/Src/mailbox.c ****             /* mailbox is full, take the buffer off */
+ 603:../SSC/Src/mailbox.c **** /*ECATCHANGE_START(V5.11) HW1*/
+ 604:../SSC/Src/mailbox.c ****             DisableSyncManChannel(MAILBOX_READ);
+ 1378              	 .loc 2 604 0 is_stmt 1
+ 1379 0024 0120     	 movs r0,#1
+ 1380 0026 FFF7FEFF 	 bl DisableSyncManChannel
+ 605:../SSC/Src/mailbox.c **** 
+ 606:../SSC/Src/mailbox.c ****             /* store the buffer to be sent next */
+ 607:../SSC/Src/mailbox.c ****             psStoreMbx = psReadMbx;
+ 1381              	 .loc 2 607 0
+ 1382 002a 144B     	 ldr r3,.L65+12
+ 1383 002c 1B68     	 ldr r3,[r3]
+ 1384 002e 124A     	 ldr r2,.L65+8
+ 1385 0030 1360     	 str r3,[r2]
+ 608:../SSC/Src/mailbox.c ****             /* enable the mailbox again */
+ 609:../SSC/Src/mailbox.c ****             EnableSyncManChannel(MAILBOX_READ);
+ 1386              	 .loc 2 609 0
+ 1387 0032 0120     	 movs r0,#1
+ 1388 0034 FFF7FEFF 	 bl EnableSyncManChannel
+ 610:../SSC/Src/mailbox.c **** /*ECATCHANGE_END(V5.11) HW1*/
+ 611:../SSC/Src/mailbox.c **** 
+ 612:../SSC/Src/mailbox.c ****             /* HBu 15.02.06: flag has to be reset otherwise the mailbox service
+ 613:../SSC/Src/mailbox.c ****                              will not be copied by MBX_CopyToSendMailbox */
+ 614:../SSC/Src/mailbox.c ****             bSendMbxIsFull = FALSE;
+ 1389              	 .loc 2 614 0
+ 1390 0038 0E4B     	 ldr r3,.L65+4
+ 1391 003a 0022     	 movs r2,#0
+ 1392 003c 1A70     	 strb r2,[r3]
+ 1393              	.L64:
+ 615:../SSC/Src/mailbox.c ****         }
+ 616:../SSC/Src/mailbox.c **** 
+ 617:../SSC/Src/mailbox.c **** 
+ 618:../SSC/Src/mailbox.c ****         MBX_CopyToSendMailbox(pMbx);
+ 1394              	 .loc 2 618 0
+ 1395 003e 7868     	 ldr r0,[r7,#4]
+ 1396 0040 FFF7FEFF 	 bl MBX_CopyToSendMailbox
+ 619:../SSC/Src/mailbox.c ****         // HBu 17.06.06: psRepeatMbx has to be set to 0, when it was repeated, otherwise it would b
+ 620:../SSC/Src/mailbox.c ****         // to the empty queue (MAILBOX_QUEUE=1) or a buffer get lost, if the the next repeat reques
+ 621:../SSC/Src/mailbox.c ****         // the repeated buffer was read
+ 622:../SSC/Src/mailbox.c ****         psRepeatMbx = NULL;
+ 1397              	 .loc 2 622 0
+ 1398 0044 0A4B     	 ldr r3,.L65
+ 1399 0046 0022     	 movs r2,#0
+ 1400 0048 1A60     	 str r2,[r3]
+ 1401              	.L63:
+ 1402              	.LBE7:
+ 623:../SSC/Src/mailbox.c ****         LEAVE_MBX_CRITICAL;
+ 624:../SSC/Src/mailbox.c ****     }
+ 625:../SSC/Src/mailbox.c **** 
+ 626:../SSC/Src/mailbox.c ****     // Repeat was finished, toggle the acknowledge bit
+ 627:../SSC/Src/mailbox.c ****     bMbxRepeatToggle = !bMbxRepeatToggle;
+ 1403              	 .loc 2 627 0
+ 1404 004a 0D4B     	 ldr r3,.L65+16
+ 1405 004c 1B78     	 ldrb r3,[r3]
+ 1406 004e 002B     	 cmp r3,#0
+ 1407 0050 14BF     	 ite ne
+ 1408 0052 0123     	 movne r3,#1
+ 1409 0054 0023     	 moveq r3,#0
+ 1410 0056 DBB2     	 uxtb r3,r3
+ 1411 0058 83F00103 	 eor r3,r3,#1
+ 1412 005c DBB2     	 uxtb r3,r3
+ 1413 005e 03F00103 	 and r3,r3,#1
+ 1414 0062 DAB2     	 uxtb r2,r3
+ 1415 0064 064B     	 ldr r3,.L65+16
+ 1416 0066 1A70     	 strb r2,[r3]
+ 628:../SSC/Src/mailbox.c **** }
+ 1417              	 .loc 2 628 0
+ 1418 0068 0837     	 adds r7,r7,#8
+ 1419              	.LCFI66:
+ 1420              	 .cfi_def_cfa_offset 8
+ 1421 006a BD46     	 mov sp,r7
+ 1422              	.LCFI67:
+ 1423              	 .cfi_def_cfa_register 13
+ 1424              	 
+ 1425 006c 80BD     	 pop {r7,pc}
+ 1426              	.L66:
+ 1427 006e 00BF     	 .align 2
+ 1428              	.L65:
+ 1429 0070 00000000 	 .word psRepeatMbx
+ 1430 0074 00000000 	 .word bSendMbxIsFull
+ 1431 0078 00000000 	 .word psStoreMbx
+ 1432 007c 00000000 	 .word psReadMbx
+ 1433 0080 00000000 	 .word bMbxRepeatToggle
+ 1434              	 .cfi_endproc
+ 1435              	.LFE180:
+ 1437              	 .section .text.MBX_MailboxSendReq,"ax",%progbits
+ 1438              	 .align 2
+ 1439              	 .global MBX_MailboxSendReq
+ 1440              	 .thumb
+ 1441              	 .thumb_func
+ 1443              	MBX_MailboxSendReq:
+ 1444              	.LFB181:
+ 629:../SSC/Src/mailbox.c **** 
+ 630:../SSC/Src/mailbox.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 631:../SSC/Src/mailbox.c **** /**
+ 632:../SSC/Src/mailbox.c ****  \param pMbx            Pointer to a Mailbox command to be sent (read by the Master)
+ 633:../SSC/Src/mailbox.c ****  \param flags            Bit 0-6:    mailbox protocol type:
+ 634:../SSC/Src/mailbox.c ****                                         0x01 - emergency service
+ 635:../SSC/Src/mailbox.c ****                                         0x02 - CoE service
+ 636:../SSC/Src/mailbox.c ****                                         0x04 - SoE service
+ 637:../SSC/Src/mailbox.c ****                                         0x80 - EoE service
+ 638:../SSC/Src/mailbox.c ****                                         0x10 - AoE service
+ 639:../SSC/Src/mailbox.c ****                                         0x20 - VoE service
+ 640:../SSC/Src/mailbox.c ****                              Bit 7:   0 - no more fragments to be sent for the requested mailbox se
+ 641:../SSC/Src/mailbox.c ****                                        1 - additional fragments to be sent for the mailbox service,
+ 642:../SSC/Src/mailbox.c ****                                             corresponding XXXX_ContinueInd-function will be called 
+ 643:../SSC/Src/mailbox.c ****                                             the next fragment
+ 644:../SSC/Src/mailbox.c **** 
+ 645:../SSC/Src/mailbox.c ****  \return    0: Success - mailbox command could be stored in the send mailbox
+ 646:../SSC/Src/mailbox.c ****             1: Failed - mailbox command could not be stored in the send mailbox, the
+ 647:../SSC/Src/mailbox.c ****                             XXXX_ContinueInd service will be called when the mailbox was
+ 648:../SSC/Src/mailbox.c ****                             read from the master to
+ 649:../SSC/Src/mailbox.c **** 
+ 650:../SSC/Src/mailbox.c ****  \brief        This function puts a new Mailbox service in the Send Mailbox
+ 651:../SSC/Src/mailbox.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 652:../SSC/Src/mailbox.c **** 
+ 653:../SSC/Src/mailbox.c **** UINT8 MBX_MailboxSendReq( TMBX MBXMEM * pMbx, UINT8 flags )
+ 654:../SSC/Src/mailbox.c **** {
+ 1445              	 .loc 2 654 0
+ 1446              	 .cfi_startproc
+ 1447              	 
+ 1448              	 
+ 1449 0000 80B5     	 push {r7,lr}
+ 1450              	.LCFI68:
+ 1451              	 .cfi_def_cfa_offset 8
+ 1452              	 .cfi_offset 7,-8
+ 1453              	 .cfi_offset 14,-4
+ 1454 0002 84B0     	 sub sp,sp,#16
+ 1455              	.LCFI69:
+ 1456              	 .cfi_def_cfa_offset 24
+ 1457 0004 00AF     	 add r7,sp,#0
+ 1458              	.LCFI70:
+ 1459              	 .cfi_def_cfa_register 7
+ 1460 0006 7860     	 str r0,[r7,#4]
+ 1461 0008 0B46     	 mov r3,r1
+ 1462 000a FB70     	 strb r3,[r7,#3]
+ 655:../SSC/Src/mailbox.c ****     UINT8 result = 0;
+ 1463              	 .loc 2 655 0
+ 1464 000c 0023     	 movs r3,#0
+ 1465 000e FB73     	 strb r3,[r7,#15]
+ 656:../SSC/Src/mailbox.c **** 
+ 657:../SSC/Src/mailbox.c ****     /* HBu 06.02.06: in INIT-state a mailbox send request shall be refused */
+ 658:../SSC/Src/mailbox.c ****     if ( (nAlStatus & STATE_MASK) == STATE_INIT )
+ 1466              	 .loc 2 658 0
+ 1467 0010 2C4B     	 ldr r3,.L76
+ 1468 0012 1B78     	 ldrb r3,[r3]
+ 1469 0014 03F00F03 	 and r3,r3,#15
+ 1470 0018 012B     	 cmp r3,#1
+ 1471 001a 01D1     	 bne .L68
+ 659:../SSC/Src/mailbox.c ****         return ERROR_INVALIDSTATE;
+ 1472              	 .loc 2 659 0
+ 1473 001c F023     	 movs r3,#240
+ 1474 001e 4DE0     	 b .L69
+ 1475              	.L68:
+ 660:../SSC/Src/mailbox.c **** 
+ 661:../SSC/Src/mailbox.c **** 
+ 662:../SSC/Src/mailbox.c ****     ENTER_MBX_CRITICAL;
+ 663:../SSC/Src/mailbox.c ****     DISABLE_MBX_INT;
+ 664:../SSC/Src/mailbox.c **** 
+ 665:../SSC/Src/mailbox.c ****     /* the counter in the mailbox header has to be incremented with every new mailbox service to be
+ 666:../SSC/Src/mailbox.c ****        if the mailbox data link layer is supported (software switch MAILBOX_REPEAT_SUPPORTED set)*/
+ 667:../SSC/Src/mailbox.c ****     pMbx->MbxHeader.Flags[MBX_OFFS_COUNTER] &= ~MBX_MASK_COUNTER;
+ 1476              	 .loc 2 667 0
+ 1477 0020 7B68     	 ldr r3,[r7,#4]
+ 1478 0022 5B79     	 ldrb r3,[r3,#5]
+ 1479 0024 03F00F03 	 and r3,r3,#15
+ 1480 0028 DAB2     	 uxtb r2,r3
+ 1481 002a 7B68     	 ldr r3,[r7,#4]
+ 1482 002c 5A71     	 strb r2,[r3,#5]
+ 668:../SSC/Src/mailbox.c ****     /* HBu 13.02.06: Repeat-Counter was incremented too much if the mailbox service could not be se
+ 669:../SSC/Src/mailbox.c ****     /* u8MbxCounter holds the actual counter for the mailbox header, only the values
+ 670:../SSC/Src/mailbox.c ****        1-7 are allowed if the mailbox data link layer is supported  */
+ 671:../SSC/Src/mailbox.c ****     if ( (u8MbxReadCounter & 0x07) == 0 )
+ 1483              	 .loc 2 671 0
+ 1484 002e 264B     	 ldr r3,.L76+4
+ 1485 0030 1B78     	 ldrb r3,[r3]
+ 1486 0032 03F00703 	 and r3,r3,#7
+ 1487 0036 002B     	 cmp r3,#0
+ 1488 0038 02D1     	 bne .L70
+ 672:../SSC/Src/mailbox.c ****         u8MbxReadCounter = 1;
+ 1489              	 .loc 2 672 0
+ 1490 003a 234B     	 ldr r3,.L76+4
+ 1491 003c 0122     	 movs r2,#1
+ 1492 003e 1A70     	 strb r2,[r3]
+ 1493              	.L70:
+ 673:../SSC/Src/mailbox.c **** 
+ 674:../SSC/Src/mailbox.c ****     pMbx->MbxHeader.Flags[MBX_OFFS_COUNTER] |= u8MbxReadCounter << MBX_SHIFT_COUNTER;
+ 1494              	 .loc 2 674 0
+ 1495 0040 7B68     	 ldr r3,[r7,#4]
+ 1496 0042 5B79     	 ldrb r3,[r3,#5]
+ 1497 0044 DAB2     	 uxtb r2,r3
+ 1498 0046 204B     	 ldr r3,.L76+4
+ 1499 0048 1B78     	 ldrb r3,[r3]
+ 1500 004a 1B01     	 lsls r3,r3,#4
+ 1501 004c DBB2     	 uxtb r3,r3
+ 1502 004e 1343     	 orrs r3,r3,r2
+ 1503 0050 DBB2     	 uxtb r3,r3
+ 1504 0052 DAB2     	 uxtb r2,r3
+ 1505 0054 7B68     	 ldr r3,[r7,#4]
+ 1506 0056 5A71     	 strb r2,[r3,#5]
+ 675:../SSC/Src/mailbox.c **** 
+ 676:../SSC/Src/mailbox.c ****     /* try to copy the mailbox command in the ESC */
+ 677:../SSC/Src/mailbox.c ****     if ( MBX_CopyToSendMailbox(pMbx) != 0 )
+ 1507              	 .loc 2 677 0
+ 1508 0058 7868     	 ldr r0,[r7,#4]
+ 1509 005a FFF7FEFF 	 bl MBX_CopyToSendMailbox
+ 1510 005e 0346     	 mov r3,r0
+ 1511 0060 002B     	 cmp r3,#0
+ 1512 0062 14D0     	 beq .L71
+ 678:../SSC/Src/mailbox.c ****     {
+ 679:../SSC/Src/mailbox.c ****         /* no success, send mailbox was full, set flag  */
+ 680:../SSC/Src/mailbox.c ****         result = PutInMbxQueue(pMbx, &sMbxSendQueue);
+ 1513              	 .loc 2 680 0
+ 1514 0064 7868     	 ldr r0,[r7,#4]
+ 1515 0066 1949     	 ldr r1,.L76+8
+ 1516 0068 FFF7FEFF 	 bl PutInMbxQueue
+ 1517 006c 0346     	 mov r3,r0
+ 1518 006e FB73     	 strb r3,[r7,#15]
+ 681:../SSC/Src/mailbox.c ****         if (result != 0)
+ 1519              	 .loc 2 681 0
+ 1520 0070 FB7B     	 ldrb r3,[r7,#15]
+ 1521 0072 002B     	 cmp r3,#0
+ 1522 0074 04D0     	 beq .L72
+ 682:../SSC/Src/mailbox.c ****             flags |= FRAGMENTS_FOLLOW;
+ 1523              	 .loc 2 682 0
+ 1524 0076 FB78     	 ldrb r3,[r7,#3]
+ 1525 0078 63F07F03 	 orn r3,r3,#127
+ 1526 007c FB70     	 strb r3,[r7,#3]
+ 1527 007e 0CE0     	 b .L74
+ 1528              	.L72:
+ 683:../SSC/Src/mailbox.c ****         else
+ 684:../SSC/Src/mailbox.c ****             u8MbxReadCounter++;
+ 1529              	 .loc 2 684 0
+ 1530 0080 114B     	 ldr r3,.L76+4
+ 1531 0082 1B78     	 ldrb r3,[r3]
+ 1532 0084 0133     	 adds r3,r3,#1
+ 1533 0086 DAB2     	 uxtb r2,r3
+ 1534 0088 0F4B     	 ldr r3,.L76+4
+ 1535 008a 1A70     	 strb r2,[r3]
+ 1536 008c 05E0     	 b .L74
+ 1537              	.L71:
+ 685:../SSC/Src/mailbox.c ****     }
+ 686:../SSC/Src/mailbox.c ****     /* HBu 13.02.06: Repeat-Counter was incremented too much if the mailbox service could not be se
+ 687:../SSC/Src/mailbox.c ****     else
+ 688:../SSC/Src/mailbox.c ****     {
+ 689:../SSC/Src/mailbox.c ****         u8MbxReadCounter++;
+ 1538              	 .loc 2 689 0
+ 1539 008e 0E4B     	 ldr r3,.L76+4
+ 1540 0090 1B78     	 ldrb r3,[r3]
+ 1541 0092 0133     	 adds r3,r3,#1
+ 1542 0094 DAB2     	 uxtb r2,r3
+ 1543 0096 0C4B     	 ldr r3,.L76+4
+ 1544 0098 1A70     	 strb r2,[r3]
+ 1545              	.L74:
+ 690:../SSC/Src/mailbox.c ****     }
+ 691:../SSC/Src/mailbox.c **** 
+ 692:../SSC/Src/mailbox.c ****     if ( flags & FRAGMENTS_FOLLOW )
+ 1546              	 .loc 2 692 0
+ 1547 009a FB78     	 ldrb r3,[r7,#3]
+ 1548 009c 5BB2     	 sxtb r3,r3
+ 1549 009e 002B     	 cmp r3,#0
+ 1550 00a0 0BDA     	 bge .L75
+ 693:../SSC/Src/mailbox.c ****     {
+ 694:../SSC/Src/mailbox.c ****         /* store the mailbox service that the corresponding XXX_ContinueInd function will
+ 695:../SSC/Src/mailbox.c ****            be called when the send mailbox will have been read by the master because there
+ 696:../SSC/Src/mailbox.c ****            are mailbox commands to be sent for this service */
+ 697:../SSC/Src/mailbox.c ****         u8MailboxSendReqStored |= (flags & ((UINT8) ~FRAGMENTS_FOLLOW));
+ 1551              	 .loc 2 697 0
+ 1552 00a2 FB78     	 ldrb r3,[r7,#3]
+ 1553 00a4 03F07F03 	 and r3,r3,#127
+ 1554 00a8 DAB2     	 uxtb r2,r3
+ 1555 00aa 094B     	 ldr r3,.L76+12
+ 1556 00ac 1B78     	 ldrb r3,[r3]
+ 1557 00ae DBB2     	 uxtb r3,r3
+ 1558 00b0 1343     	 orrs r3,r3,r2
+ 1559 00b2 DBB2     	 uxtb r3,r3
+ 1560 00b4 DAB2     	 uxtb r2,r3
+ 1561 00b6 064B     	 ldr r3,.L76+12
+ 1562 00b8 1A70     	 strb r2,[r3]
+ 1563              	.L75:
+ 698:../SSC/Src/mailbox.c ****     }
+ 699:../SSC/Src/mailbox.c **** 
+ 700:../SSC/Src/mailbox.c ****     ENABLE_MBX_INT;
+ 701:../SSC/Src/mailbox.c ****     LEAVE_MBX_CRITICAL;
+ 702:../SSC/Src/mailbox.c **** 
+ 703:../SSC/Src/mailbox.c ****     return result;
+ 1564              	 .loc 2 703 0
+ 1565 00ba FB7B     	 ldrb r3,[r7,#15]
+ 1566              	.L69:
+ 704:../SSC/Src/mailbox.c **** }
+ 1567              	 .loc 2 704 0
+ 1568 00bc 1846     	 mov r0,r3
+ 1569 00be 1037     	 adds r7,r7,#16
+ 1570              	.LCFI71:
+ 1571              	 .cfi_def_cfa_offset 8
+ 1572 00c0 BD46     	 mov sp,r7
+ 1573              	.LCFI72:
+ 1574              	 .cfi_def_cfa_register 13
+ 1575              	 
+ 1576 00c2 80BD     	 pop {r7,pc}
+ 1577              	.L77:
+ 1578              	 .align 2
+ 1579              	.L76:
+ 1580 00c4 00000000 	 .word nAlStatus
+ 1581 00c8 00000000 	 .word u8MbxReadCounter
+ 1582 00cc 00000000 	 .word sMbxSendQueue
+ 1583 00d0 00000000 	 .word u8MailboxSendReqStored
+ 1584              	 .cfi_endproc
+ 1585              	.LFE181:
+ 1587              	 .section .text.MBX_CheckAndCopyMailbox,"ax",%progbits
+ 1588              	 .align 2
+ 1589              	 .global MBX_CheckAndCopyMailbox
+ 1590              	 .thumb
+ 1591              	 .thumb_func
+ 1593              	MBX_CheckAndCopyMailbox:
+ 1594              	.LFB182:
+ 705:../SSC/Src/mailbox.c **** 
+ 706:../SSC/Src/mailbox.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 707:../SSC/Src/mailbox.c **** /**
+ 708:../SSC/Src/mailbox.c ****  \brief    This function is used to check if the received mailbox command can be processed.
+ 709:../SSC/Src/mailbox.c **** 
+ 710:../SSC/Src/mailbox.c ****         Also the contents of the Receive Mailbox will be copied in the variable sMbx.
+ 711:../SSC/Src/mailbox.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 712:../SSC/Src/mailbox.c **** 
+ 713:../SSC/Src/mailbox.c **** void MBX_CheckAndCopyMailbox( void )
+ 714:../SSC/Src/mailbox.c **** {
+ 1595              	 .loc 2 714 0
+ 1596              	 .cfi_startproc
+ 1597              	 
+ 1598              	 
+ 1599 0000 80B5     	 push {r7,lr}
+ 1600              	.LCFI73:
+ 1601              	 .cfi_def_cfa_offset 8
+ 1602              	 .cfi_offset 7,-8
+ 1603              	 .cfi_offset 14,-4
+ 1604 0002 84B0     	 sub sp,sp,#16
+ 1605              	.LCFI74:
+ 1606              	 .cfi_def_cfa_offset 24
+ 1607 0004 00AF     	 add r7,sp,#0
+ 1608              	.LCFI75:
+ 1609              	 .cfi_def_cfa_register 7
+ 715:../SSC/Src/mailbox.c ****     UINT16 mbxLen;
+ 716:../SSC/Src/mailbox.c **** 
+ 717:../SSC/Src/mailbox.c ****     /* get the size of the received mailbox command and acknowledge the event*/
+ 718:../SSC/Src/mailbox.c ****     HW_EscReadWord(mbxLen,u16EscAddrReceiveMbx);
+ 1610              	 .loc 2 718 0
+ 1611 0006 464B     	 ldr r3,.L86
+ 1612 0008 1B88     	 ldrh r3,[r3]
+ 1613 000a 5B08     	 lsrs r3,r3,#1
+ 1614 000c 9BB2     	 uxth r3,r3
+ 1615 000e 5B00     	 lsls r3,r3,#1
+ 1616 0010 03F1A843 	 add r3,r3,#1409286144
+ 1617 0014 03F58033 	 add r3,r3,#65536
+ 1618 0018 1B88     	 ldrh r3,[r3]
+ 1619 001a FB81     	 strh r3,[r7,#14]
+ 719:../SSC/Src/mailbox.c ****     
+ 720:../SSC/Src/mailbox.c ****     /* the size has to be swapped here, all other bytes of the mailbox service will be swapped late
+ 721:../SSC/Src/mailbox.c ****     mbxLen = SWAPWORD(mbxLen);
+ 722:../SSC/Src/mailbox.c **** 
+ 723:../SSC/Src/mailbox.c **** /* ECATCHANGE_START(V5.11) MBX2*/
+ 724:../SSC/Src/mailbox.c ****     if(bNoMbxMemoryAvailable == TRUE)
+ 1620              	 .loc 2 724 0
+ 1621 001c 414B     	 ldr r3,.L86+4
+ 1622 001e 1B78     	 ldrb r3,[r3]
+ 1623 0020 002B     	 cmp r3,#0
+ 1624 0022 23D0     	 beq .L79
+ 1625              	.LBB8:
+ 725:../SSC/Src/mailbox.c ****     {
+ 726:../SSC/Src/mailbox.c ****         /* Return a no memory error in case of any mailbox request*/
+ 727:../SSC/Src/mailbox.c ****         TMBX MBXMEM *pMbx = (TMBX MBXMEM *) APPL_AllocMailboxBuffer(10); /* a mailbox error datagra
+ 1626              	 .loc 2 727 0
+ 1627 0024 0A20     	 movs r0,#10
+ 1628 0026 FFF7FEFF 	 bl malloc
+ 1629 002a 0346     	 mov r3,r0
+ 1630 002c BB60     	 str r3,[r7,#8]
+ 728:../SSC/Src/mailbox.c **** 
+ 729:../SSC/Src/mailbox.c ****         if(pMbx != NULL)
+ 1631              	 .loc 2 729 0
+ 1632 002e BB68     	 ldr r3,[r7,#8]
+ 1633 0030 002B     	 cmp r3,#0
+ 1634 0032 1BD0     	 beq .L79
+ 730:../SSC/Src/mailbox.c ****         {
+ 731:../SSC/Src/mailbox.c ****             HMEMSET(pMbx,0x00,10);
+ 1635              	 .loc 2 731 0
+ 1636 0034 B868     	 ldr r0,[r7,#8]
+ 1637 0036 0021     	 movs r1,#0
+ 1638 0038 0A22     	 movs r2,#10
+ 1639 003a FFF7FEFF 	 bl memset
+ 732:../SSC/Src/mailbox.c **** 
+ 733:../SSC/Src/mailbox.c ****             /* Mailbox error response: type 0 (mailbox service protocol) */
+ 734:../SSC/Src/mailbox.c ****             pMbx->MbxHeader.Length     = 4;
+ 1640              	 .loc 2 734 0
+ 1641 003e BB68     	 ldr r3,[r7,#8]
+ 1642 0040 0422     	 movs r2,#4
+ 1643 0042 1A80     	 strh r2,[r3]
+ 735:../SSC/Src/mailbox.c ****             pMbx->MbxHeader.Flags[MBX_OFFS_TYPE]        &= ~(MBX_MASK_TYPE);
+ 1644              	 .loc 2 735 0
+ 1645 0044 BB68     	 ldr r3,[r7,#8]
+ 1646 0046 5B79     	 ldrb r3,[r3,#5]
+ 1647 0048 23F00F03 	 bic r3,r3,#15
+ 1648 004c DAB2     	 uxtb r2,r3
+ 1649 004e BB68     	 ldr r3,[r7,#8]
+ 1650 0050 5A71     	 strb r2,[r3,#5]
+ 736:../SSC/Src/mailbox.c ****             pMbx->Data[0]                        = SWAPWORD(MBXSERVICE_MBXERRORCMD);
+ 1651              	 .loc 2 736 0
+ 1652 0052 BB68     	 ldr r3,[r7,#8]
+ 1653 0054 0122     	 movs r2,#1
+ 1654 0056 DA80     	 strh r2,[r3,#6]
+ 737:../SSC/Src/mailbox.c ****             pMbx->Data[1]                        = SWAPWORD(MBXERR_NOMOREMEMORY);
+ 1655              	 .loc 2 737 0
+ 1656 0058 BB68     	 ldr r3,[r7,#8]
+ 1657 005a 0722     	 movs r2,#7
+ 1658 005c 1A81     	 strh r2,[r3,#8]
+ 738:../SSC/Src/mailbox.c ****             MBX_MailboxSendReq(pMbx, 0);
+ 1659              	 .loc 2 738 0
+ 1660 005e B868     	 ldr r0,[r7,#8]
+ 1661 0060 0021     	 movs r1,#0
+ 1662 0062 FFF7FEFF 	 bl MBX_MailboxSendReq
+ 739:../SSC/Src/mailbox.c **** 
+ 740:../SSC/Src/mailbox.c ****             APPL_FreeMailboxBuffer(pMbx);
+ 1663              	 .loc 2 740 0
+ 1664 0066 B868     	 ldr r0,[r7,#8]
+ 1665 0068 FFF7FEFF 	 bl free
+ 1666              	.L79:
+ 1667              	.LBE8:
+ 741:../SSC/Src/mailbox.c ****         }
+ 742:../SSC/Src/mailbox.c ****     }
+ 743:../SSC/Src/mailbox.c **** /* ECATCHANGE_END(V5.11) MBX2*/
+ 744:../SSC/Src/mailbox.c ****     /* the length of the mailbox data is in the first two bytes of the mailbox,
+ 745:../SSC/Src/mailbox.c ****        so the length of the mailbox header has to be added */
+ 746:../SSC/Src/mailbox.c ****     mbxLen += MBX_HEADER_SIZE;
+ 1668              	 .loc 2 746 0
+ 1669 006c FB89     	 ldrh r3,[r7,#14]
+ 1670 006e 0633     	 adds r3,r3,#6
+ 1671 0070 FB81     	 strh r3,[r7,#14]
+ 747:../SSC/Src/mailbox.c **** 
+ 748:../SSC/Src/mailbox.c ****     /* in this example there are only two mailbox buffers available in the firmware (one for proces
+ 749:../SSC/Src/mailbox.c ****        one to stored the last sent response for a possible repeat request), so a
+ 750:../SSC/Src/mailbox.c ****        received mailbox service can only be processed if a free buffer is available */
+ 751:../SSC/Src/mailbox.c ****     if ( ( bSendMbxIsFull )                /* a received mailbox service will not be processed
+ 1672              	 .loc 2 751 0
+ 1673 0072 2D4B     	 ldr r3,.L86+8
+ 1674 0074 1B78     	 ldrb r3,[r3]
+ 1675 0076 002B     	 cmp r3,#0
+ 1676 0078 03D1     	 bne .L80
+ 752:../SSC/Src/mailbox.c ****                                                     as long as the send mailbox is still full
+ 753:../SSC/Src/mailbox.c ****                                                     (waits to be read from the master) */
+ 754:../SSC/Src/mailbox.c ****         ||( u8MailboxSendReqStored )    /* a mailbox service to be sent is still stored
+ 1677              	 .loc 2 754 0
+ 1678 007a 2C4B     	 ldr r3,.L86+12
+ 1679 007c 1B78     	 ldrb r3,[r3]
+ 1680 007e 002B     	 cmp r3,#0
+ 1681 0080 03D0     	 beq .L81
+ 1682              	.L80:
+ 755:../SSC/Src/mailbox.c ****                                                     so the received mailbox service will not be pro
+ 756:../SSC/Src/mailbox.c ****                                                     until all stored mailbox services are sent */
+ 757:../SSC/Src/mailbox.c ****         )
+ 758:../SSC/Src/mailbox.c ****     {
+ 759:../SSC/Src/mailbox.c ****         /* set flag that the processing of the mailbox service will be checked in the
+ 760:../SSC/Src/mailbox.c ****             function MBX_Main (called from ECAT_Main) */
+ 761:../SSC/Src/mailbox.c ****         bReceiveMbxIsLocked = TRUE;
+ 1683              	 .loc 2 761 0
+ 1684 0082 2B4B     	 ldr r3,.L86+16
+ 1685 0084 0122     	 movs r2,#1
+ 1686 0086 1A70     	 strb r2,[r3]
+ 1687 0088 46E0     	 b .L78
+ 1688              	.L81:
+ 762:../SSC/Src/mailbox.c ****     }
+ 763:../SSC/Src/mailbox.c ****     else
+ 764:../SSC/Src/mailbox.c ****     {
+ 765:../SSC/Src/mailbox.c ****         /* received mailbox command can be processed, reset flag */
+ 766:../SSC/Src/mailbox.c ****         bReceiveMbxIsLocked = FALSE;
+ 1689              	 .loc 2 766 0
+ 1690 008a 294B     	 ldr r3,.L86+16
+ 1691 008c 0022     	 movs r2,#0
+ 1692 008e 1A70     	 strb r2,[r3]
+ 767:../SSC/Src/mailbox.c **** 
+ 768:../SSC/Src/mailbox.c ****         /* if the read mailbox size is too big for the buffer, set the copy size to the maximum buf
+ 769:../SSC/Src/mailbox.c ****            memory could be overwritten,
+ 770:../SSC/Src/mailbox.c ****            the evaluation of the mailbox size will be done in the mailbox protocols called from MBX
+ 771:../SSC/Src/mailbox.c **** 
+ 772:../SSC/Src/mailbox.c ****         if (mbxLen > u16ReceiveMbxSize)
+ 1693              	 .loc 2 772 0
+ 1694 0090 284B     	 ldr r3,.L86+20
+ 1695 0092 1B88     	 ldrh r3,[r3]
+ 1696 0094 FA89     	 ldrh r2,[r7,#14]
+ 1697 0096 9A42     	 cmp r2,r3
+ 1698 0098 02D9     	 bls .L83
+ 773:../SSC/Src/mailbox.c ****             mbxLen = u16ReceiveMbxSize;
+ 1699              	 .loc 2 773 0
+ 1700 009a 264B     	 ldr r3,.L86+20
+ 1701 009c 1B88     	 ldrh r3,[r3]
+ 1702 009e FB81     	 strh r3,[r7,#14]
+ 1703              	.L83:
+ 774:../SSC/Src/mailbox.c **** 
+ 775:../SSC/Src/mailbox.c ****         psWriteMbx = (TMBX MBXMEM *) APPL_AllocMailboxBuffer(u16ReceiveMbxSize);
+ 1704              	 .loc 2 775 0
+ 1705 00a0 244B     	 ldr r3,.L86+20
+ 1706 00a2 1B88     	 ldrh r3,[r3]
+ 1707 00a4 1846     	 mov r0,r3
+ 1708 00a6 FFF7FEFF 	 bl malloc
+ 1709 00aa 0346     	 mov r3,r0
+ 1710 00ac 1A46     	 mov r2,r3
+ 1711 00ae 224B     	 ldr r3,.L86+24
+ 1712 00b0 1A60     	 str r2,[r3]
+ 776:../SSC/Src/mailbox.c **** 
+ 777:../SSC/Src/mailbox.c ****         /* if there is no more memory for mailbox buffer, the mailbox should not be read */
+ 778:../SSC/Src/mailbox.c ****         if (psWriteMbx == NULL)
+ 1713              	 .loc 2 778 0
+ 1714 00b2 214B     	 ldr r3,.L86+24
+ 1715 00b4 1B68     	 ldr r3,[r3]
+ 1716 00b6 002B     	 cmp r3,#0
+ 1717 00b8 03D1     	 bne .L84
+ 779:../SSC/Src/mailbox.c ****         {
+ 780:../SSC/Src/mailbox.c ****             /* set flag that the processing of the mailbox service will be checked in the
+ 781:../SSC/Src/mailbox.c ****                 function MBX_Main (called from ECAT_Main) */
+ 782:../SSC/Src/mailbox.c ****             bReceiveMbxIsLocked = TRUE;
+ 1718              	 .loc 2 782 0
+ 1719 00ba 1D4B     	 ldr r3,.L86+16
+ 1720 00bc 0122     	 movs r2,#1
+ 1721 00be 1A70     	 strb r2,[r3]
+ 783:../SSC/Src/mailbox.c ****             return;
+ 1722              	 .loc 2 783 0
+ 1723 00c0 2AE0     	 b .L78
+ 1724              	.L84:
+ 784:../SSC/Src/mailbox.c ****         }
+ 785:../SSC/Src/mailbox.c ****         /* copy the mailbox header and data*/
+ 786:../SSC/Src/mailbox.c ****         HW_EscReadMbxMem((MEM_ADDR MBXMEM *) psWriteMbx,u16EscAddrReceiveMbx,mbxLen);
+ 1725              	 .loc 2 786 0
+ 1726 00c2 1D4B     	 ldr r3,.L86+24
+ 1727 00c4 1968     	 ldr r1,[r3]
+ 1728 00c6 164B     	 ldr r3,.L86
+ 1729 00c8 1A88     	 ldrh r2,[r3]
+ 1730 00ca FB89     	 ldrh r3,[r7,#14]
+ 1731 00cc 0846     	 mov r0,r1
+ 1732 00ce 1146     	 mov r1,r2
+ 1733 00d0 1A46     	 mov r2,r3
+ 1734 00d2 FFF7FEFF 	 bl HW_EscReadMbxMem
+ 1735              	.LBB9:
+ 787:../SSC/Src/mailbox.c **** 
+ 788:../SSC/Src/mailbox.c **** 
+ 789:../SSC/Src/mailbox.c ****         {
+ 790:../SSC/Src/mailbox.c ****         /*Read Control and Status of SyncManager 0 to check if the buffer is unlocked*/
+ 791:../SSC/Src/mailbox.c ****         VARVOLATILE UINT8 smstate = 0x00;
+ 1736              	 .loc 2 791 0
+ 1737 00d6 0023     	 movs r3,#0
+ 1738 00d8 FB71     	 strb r3,[r7,#7]
+ 792:../SSC/Src/mailbox.c ****         HW_EscReadByte(smstate,ESC_SYNCMAN_STATUS_OFFSET);
+ 1739              	 .loc 2 792 0
+ 1740 00da 184B     	 ldr r3,.L86+28
+ 1741 00dc 1B78     	 ldrb r3,[r3]
+ 1742 00de DBB2     	 uxtb r3,r3
+ 1743 00e0 FB71     	 strb r3,[r7,#7]
+ 793:../SSC/Src/mailbox.c **** 
+ 794:../SSC/Src/mailbox.c ****         if(smstate & SM_STATUS_MBX_BUFFER_FULL)
+ 1744              	 .loc 2 794 0
+ 1745 00e2 FB79     	 ldrb r3,[r7,#7]
+ 1746 00e4 DBB2     	 uxtb r3,r3
+ 1747 00e6 03F00803 	 and r3,r3,#8
+ 1748 00ea 002B     	 cmp r3,#0
+ 1749 00ec 0FD0     	 beq .L85
+ 795:../SSC/Src/mailbox.c ****         {
+ 796:../SSC/Src/mailbox.c ****             /*Unlock the mailbox SyncManger buffer*/
+ 797:../SSC/Src/mailbox.c ****             u8dummy = 0;
+ 1750              	 .loc 2 797 0
+ 1751 00ee 144B     	 ldr r3,.L86+32
+ 1752 00f0 0022     	 movs r2,#0
+ 1753 00f2 1A70     	 strb r2,[r3]
+ 798:../SSC/Src/mailbox.c ****             HW_EscReadByte(u8dummy,(u16EscAddrReceiveMbx + u16ReceiveMbxSize - 1));
+ 1754              	 .loc 2 798 0
+ 1755 00f4 0A4B     	 ldr r3,.L86
+ 1756 00f6 1B88     	 ldrh r3,[r3]
+ 1757 00f8 1A46     	 mov r2,r3
+ 1758 00fa 0E4B     	 ldr r3,.L86+20
+ 1759 00fc 1B88     	 ldrh r3,[r3]
+ 1760 00fe 1344     	 add r3,r3,r2
+ 1761 0100 1A46     	 mov r2,r3
+ 1762 0102 104B     	 ldr r3,.L86+36
+ 1763 0104 1344     	 add r3,r3,r2
+ 1764 0106 1B78     	 ldrb r3,[r3]
+ 1765 0108 DAB2     	 uxtb r2,r3
+ 1766 010a 0D4B     	 ldr r3,.L86+32
+ 1767 010c 1A70     	 strb r2,[r3]
+ 1768              	.L85:
+ 1769              	.LBE9:
+ 799:../SSC/Src/mailbox.c **** 
+ 800:../SSC/Src/mailbox.c ****         }
+ 801:../SSC/Src/mailbox.c **** 
+ 802:../SSC/Src/mailbox.c ****         }
+ 803:../SSC/Src/mailbox.c **** 
+ 804:../SSC/Src/mailbox.c ****         /* in MBX_MailboxWriteInd the mailbox protocol will be processed */
+ 805:../SSC/Src/mailbox.c ****         MBX_MailboxWriteInd( psWriteMbx );
+ 1770              	 .loc 2 805 0
+ 1771 010e 0A4B     	 ldr r3,.L86+24
+ 1772 0110 1B68     	 ldr r3,[r3]
+ 1773 0112 1846     	 mov r0,r3
+ 1774 0114 FFF7FEFF 	 bl MBX_MailboxWriteInd
+ 1775              	.L78:
+ 806:../SSC/Src/mailbox.c **** 
+ 807:../SSC/Src/mailbox.c ****     }
+ 808:../SSC/Src/mailbox.c **** }
+ 1776              	 .loc 2 808 0
+ 1777 0118 1037     	 adds r7,r7,#16
+ 1778              	.LCFI76:
+ 1779              	 .cfi_def_cfa_offset 8
+ 1780 011a BD46     	 mov sp,r7
+ 1781              	.LCFI77:
+ 1782              	 .cfi_def_cfa_register 13
+ 1783              	 
+ 1784 011c 80BD     	 pop {r7,pc}
+ 1785              	.L87:
+ 1786 011e 00BF     	 .align 2
+ 1787              	.L86:
+ 1788 0120 00000000 	 .word u16EscAddrReceiveMbx
+ 1789 0124 00000000 	 .word bNoMbxMemoryAvailable
+ 1790 0128 00000000 	 .word bSendMbxIsFull
+ 1791 012c 00000000 	 .word u8MailboxSendReqStored
+ 1792 0130 00000000 	 .word bReceiveMbxIsLocked
+ 1793 0134 00000000 	 .word u16ReceiveMbxSize
+ 1794 0138 00000000 	 .word psWriteMbx
+ 1795 013c 05080154 	 .word 1409353733
+ 1796 0140 00000000 	 .word u8dummy
+ 1797 0144 FFFF0054 	 .word 1409351679
+ 1798              	 .cfi_endproc
+ 1799              	.LFE182:
+ 1801              	 .section .text.MBX_CopyToSendMailbox,"ax",%progbits
+ 1802              	 .align 2
+ 1803              	 .global MBX_CopyToSendMailbox
+ 1804              	 .thumb
+ 1805              	 .thumb_func
+ 1807              	MBX_CopyToSendMailbox:
+ 1808              	.LFB183:
+ 809:../SSC/Src/mailbox.c **** 
+ 810:../SSC/Src/mailbox.c **** 
+ 811:../SSC/Src/mailbox.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 812:../SSC/Src/mailbox.c **** /**
+ 813:../SSC/Src/mailbox.c ****  \param     pMbx        Pointer to the Mailbox command to be send to the master.
+ 814:../SSC/Src/mailbox.c **** 
+ 815:../SSC/Src/mailbox.c ****  \brief    This function copies data to the Send Mailbox.
+ 816:../SSC/Src/mailbox.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 817:../SSC/Src/mailbox.c **** 
+ 818:../SSC/Src/mailbox.c **** UINT8 MBX_CopyToSendMailbox( TMBX MBXMEM *pMbx )
+ 819:../SSC/Src/mailbox.c **** {
+ 1809              	 .loc 2 819 0
+ 1810              	 .cfi_startproc
+ 1811              	 
+ 1812              	 
+ 1813 0000 80B5     	 push {r7,lr}
+ 1814              	.LCFI78:
+ 1815              	 .cfi_def_cfa_offset 8
+ 1816              	 .cfi_offset 7,-8
+ 1817              	 .cfi_offset 14,-4
+ 1818 0002 84B0     	 sub sp,sp,#16
+ 1819              	.LCFI79:
+ 1820              	 .cfi_def_cfa_offset 24
+ 1821 0004 00AF     	 add r7,sp,#0
+ 1822              	.LCFI80:
+ 1823              	 .cfi_def_cfa_register 7
+ 1824 0006 7860     	 str r0,[r7,#4]
+ 820:../SSC/Src/mailbox.c ****     if ( (nAlStatus & STATE_MASK) == STATE_INIT)
+ 1825              	 .loc 2 820 0
+ 1826 0008 2A4B     	 ldr r3,.L96
+ 1827 000a 1B78     	 ldrb r3,[r3]
+ 1828 000c 03F00F03 	 and r3,r3,#15
+ 1829 0010 012B     	 cmp r3,#1
+ 1830 0012 01D1     	 bne .L89
+ 821:../SSC/Src/mailbox.c ****     {
+ 822:../SSC/Src/mailbox.c ****         /* the mailbox is disabled if the slave is in the INIT state */
+ 823:../SSC/Src/mailbox.c ****         return( ERROR_INVALIDSTATE );
+ 1831              	 .loc 2 823 0
+ 1832 0014 F023     	 movs r3,#240
+ 1833 0016 49E0     	 b .L90
+ 1834              	.L89:
+ 824:../SSC/Src/mailbox.c ****     }
+ 825:../SSC/Src/mailbox.c **** 
+ 826:../SSC/Src/mailbox.c **** 
+ 827:../SSC/Src/mailbox.c ****     if ( !bMbxRunning )
+ 1835              	 .loc 2 827 0
+ 1836 0018 274B     	 ldr r3,.L96+4
+ 1837 001a 1B78     	 ldrb r3,[r3]
+ 1838 001c 83F00103 	 eor r3,r3,#1
+ 1839 0020 DBB2     	 uxtb r3,r3
+ 1840 0022 002B     	 cmp r3,#0
+ 1841 0024 01D0     	 beq .L91
+ 828:../SSC/Src/mailbox.c ****     {
+ 829:../SSC/Src/mailbox.c ****         /* the mailbox is disabled if the slave is in the INIT state */
+ 830:../SSC/Src/mailbox.c ****         return( ERROR_INVALIDSTATE );
+ 1842              	 .loc 2 830 0
+ 1843 0026 F023     	 movs r3,#240
+ 1844 0028 40E0     	 b .L90
+ 1845              	.L91:
+ 831:../SSC/Src/mailbox.c ****     }
+ 832:../SSC/Src/mailbox.c **** 
+ 833:../SSC/Src/mailbox.c ****     if ( bSendMbxIsFull )
+ 1846              	 .loc 2 833 0
+ 1847 002a 244B     	 ldr r3,.L96+8
+ 1848 002c 1B78     	 ldrb r3,[r3]
+ 1849 002e 002B     	 cmp r3,#0
+ 1850 0030 01D0     	 beq .L92
+ 834:../SSC/Src/mailbox.c ****     {
+ 835:../SSC/Src/mailbox.c ****         /* mailbox service cannot be sent because the send mailbox is still full */
+ 836:../SSC/Src/mailbox.c ****         return MBXERR_NOMOREMEMORY;
+ 1851              	 .loc 2 836 0
+ 1852 0032 0723     	 movs r3,#7
+ 1853 0034 3AE0     	 b .L90
+ 1854              	.L92:
+ 1855              	.LBB10:
+ 837:../SSC/Src/mailbox.c ****     }
+ 838:../SSC/Src/mailbox.c ****     else
+ 839:../SSC/Src/mailbox.c ****     {
+ 840:../SSC/Src/mailbox.c ****         /* the variable mbxSize contains the size of the mailbox data to be sent */
+ 841:../SSC/Src/mailbox.c ****         UINT16 mbxSize = pMbx->MbxHeader.Length;
+ 1856              	 .loc 2 841 0
+ 1857 0036 7B68     	 ldr r3,[r7,#4]
+ 1858 0038 1B88     	 ldrh r3,[r3]
+ 1859 003a FB81     	 strh r3,[r7,#14]
+ 842:../SSC/Src/mailbox.c ****         HW_EscWriteMbxMem((MEM_ADDR *)pMbx, u16EscAddrSendMbx, (mbxSize + MBX_HEADER_SIZE));
+ 1860              	 .loc 2 842 0
+ 1861 003c 204B     	 ldr r3,.L96+12
+ 1862 003e 1A88     	 ldrh r2,[r3]
+ 1863 0040 FB89     	 ldrh r3,[r7,#14]
+ 1864 0042 0633     	 adds r3,r3,#6
+ 1865 0044 9BB2     	 uxth r3,r3
+ 1866 0046 7868     	 ldr r0,[r7,#4]
+ 1867 0048 1146     	 mov r1,r2
+ 1868 004a 1A46     	 mov r2,r3
+ 1869 004c FFF7FEFF 	 bl HW_EscWriteMbxMem
+ 1870              	.LBB11:
+ 843:../SSC/Src/mailbox.c **** /* ECATCHANGE_HW(V5.10) HW1*/
+ 844:../SSC/Src/mailbox.c **** 
+ 845:../SSC/Src/mailbox.c ****         {
+ 846:../SSC/Src/mailbox.c ****         /*Read Control and Status of SyncManager 1 to check if the buffer is still marked as empty*
+ 847:../SSC/Src/mailbox.c ****         VARVOLATILE UINT8 smstate = 0x00;
+ 1871              	 .loc 2 847 0
+ 1872 0050 0023     	 movs r3,#0
+ 1873 0052 7B73     	 strb r3,[r7,#13]
+ 848:../SSC/Src/mailbox.c ****         HW_EscReadByte(smstate,(ESC_SYNCMAN_STATUS_OFFSET + SIZEOF_SM_REGISTER));
+ 1874              	 .loc 2 848 0
+ 1875 0054 1B4B     	 ldr r3,.L96+16
+ 1876 0056 1B78     	 ldrb r3,[r3]
+ 1877 0058 DBB2     	 uxtb r3,r3
+ 1878 005a 7B73     	 strb r3,[r7,#13]
+ 849:../SSC/Src/mailbox.c **** 
+ 850:../SSC/Src/mailbox.c ****         if(!(smstate & SM_STATUS_MBX_BUFFER_FULL))
+ 1879              	 .loc 2 850 0
+ 1880 005c 7B7B     	 ldrb r3,[r7,#13]
+ 1881 005e DBB2     	 uxtb r3,r3
+ 1882 0060 03F00803 	 and r3,r3,#8
+ 1883 0064 002B     	 cmp r3,#0
+ 1884 0066 0FD1     	 bne .L93
+ 851:../SSC/Src/mailbox.c ****         {
+ 852:../SSC/Src/mailbox.c **** 
+ 853:../SSC/Src/mailbox.c ****             /*Write last Byte to trigger mailbox full flag*/
+ 854:../SSC/Src/mailbox.c ****             u8dummy = 0;
+ 1885              	 .loc 2 854 0
+ 1886 0068 174B     	 ldr r3,.L96+20
+ 1887 006a 0022     	 movs r2,#0
+ 1888 006c 1A70     	 strb r2,[r3]
+ 855:../SSC/Src/mailbox.c ****             HW_EscWriteByte(u8dummy,(u16EscAddrSendMbx + u16SendMbxSize - 1));
+ 1889              	 .loc 2 855 0
+ 1890 006e 144B     	 ldr r3,.L96+12
+ 1891 0070 1B88     	 ldrh r3,[r3]
+ 1892 0072 1A46     	 mov r2,r3
+ 1893 0074 154B     	 ldr r3,.L96+24
+ 1894 0076 1B88     	 ldrh r3,[r3]
+ 1895 0078 1344     	 add r3,r3,r2
+ 1896 007a 1A46     	 mov r2,r3
+ 1897 007c 144B     	 ldr r3,.L96+28
+ 1898 007e 1344     	 add r3,r3,r2
+ 1899 0080 114A     	 ldr r2,.L96+20
+ 1900 0082 1278     	 ldrb r2,[r2]
+ 1901 0084 D2B2     	 uxtb r2,r2
+ 1902 0086 1A70     	 strb r2,[r3]
+ 1903              	.L93:
+ 1904              	.LBE11:
+ 856:../SSC/Src/mailbox.c ****         }
+ 857:../SSC/Src/mailbox.c ****         }
+ 858:../SSC/Src/mailbox.c **** 
+ 859:../SSC/Src/mailbox.c ****         /* store last send mailbox service for a possible repeat
+ 860:../SSC/Src/mailbox.c ****             one buffer includes the last send service (psRepeatMbx),
+ 861:../SSC/Src/mailbox.c ****             the other one the actual service to be sent (psReadMbx),
+ 862:../SSC/Src/mailbox.c ****             there is no buffer available for a mailbox receive service
+ 863:../SSC/Src/mailbox.c ****             until the last sent buffer was read from the master
+ 864:../SSC/Src/mailbox.c ****             the exception is after the INIT2PREOP transition, in that
+ 865:../SSC/Src/mailbox.c ****             case there is no last sent service (psReadMbx = 0) */
+ 866:../SSC/Src/mailbox.c ****         if ( psReadMbx )
+ 1905              	 .loc 2 866 0
+ 1906 0088 124B     	 ldr r3,.L96+32
+ 1907 008a 1B68     	 ldr r3,[r3]
+ 1908 008c 002B     	 cmp r3,#0
+ 1909 008e 03D0     	 beq .L94
+ 867:../SSC/Src/mailbox.c ****             psWriteMbx = NULL;
+ 1910              	 .loc 2 867 0
+ 1911 0090 114B     	 ldr r3,.L96+36
+ 1912 0092 0022     	 movs r2,#0
+ 1913 0094 1A60     	 str r2,[r3]
+ 1914 0096 02E0     	 b .L95
+ 1915              	.L94:
+ 868:../SSC/Src/mailbox.c ****         else
+ 869:../SSC/Src/mailbox.c ****         {
+ 870:../SSC/Src/mailbox.c ****             /* only the first time after the INIT2PREOP-transition */
+ 871:../SSC/Src/mailbox.c ****             psWriteMbx = &asMbx[1];
+ 1916              	 .loc 2 871 0
+ 1917 0098 0F4B     	 ldr r3,.L96+36
+ 1918 009a 104A     	 ldr r2,.L96+40
+ 1919 009c 1A60     	 str r2,[r3]
+ 1920              	.L95:
+ 872:../SSC/Src/mailbox.c ****         }
+ 873:../SSC/Src/mailbox.c ****         // HBu 17.06.06: psRepeatMbx was already updated in MBX_MailboxReadInd
+ 874:../SSC/Src/mailbox.c ****         // psRepeatMbx = psReadMbx;
+ 875:../SSC/Src/mailbox.c ****         psReadMbx = pMbx;
+ 1921              	 .loc 2 875 0
+ 1922 009e 0D4A     	 ldr r2,.L96+32
+ 1923 00a0 7B68     	 ldr r3,[r7,#4]
+ 1924 00a2 1360     	 str r3,[r2]
+ 876:../SSC/Src/mailbox.c **** 
+ 877:../SSC/Src/mailbox.c ****         /* set flag that send mailbox is full now */
+ 878:../SSC/Src/mailbox.c ****         bSendMbxIsFull = TRUE;
+ 1925              	 .loc 2 878 0
+ 1926 00a4 054B     	 ldr r3,.L96+8
+ 1927 00a6 0122     	 movs r2,#1
+ 1928 00a8 1A70     	 strb r2,[r3]
+ 879:../SSC/Src/mailbox.c **** 
+ 880:../SSC/Src/mailbox.c **** 
+ 881:../SSC/Src/mailbox.c ****         return 0;
+ 1929              	 .loc 2 881 0
+ 1930 00aa 0023     	 movs r3,#0
+ 1931              	.L90:
+ 1932              	.LBE10:
+ 882:../SSC/Src/mailbox.c ****     }
+ 883:../SSC/Src/mailbox.c **** }
+ 1933              	 .loc 2 883 0
+ 1934 00ac 1846     	 mov r0,r3
+ 1935 00ae 1037     	 adds r7,r7,#16
+ 1936              	.LCFI81:
+ 1937              	 .cfi_def_cfa_offset 8
+ 1938 00b0 BD46     	 mov sp,r7
+ 1939              	.LCFI82:
+ 1940              	 .cfi_def_cfa_register 13
+ 1941              	 
+ 1942 00b2 80BD     	 pop {r7,pc}
+ 1943              	.L97:
+ 1944              	 .align 2
+ 1945              	.L96:
+ 1946 00b4 00000000 	 .word nAlStatus
+ 1947 00b8 00000000 	 .word bMbxRunning
+ 1948 00bc 00000000 	 .word bSendMbxIsFull
+ 1949 00c0 00000000 	 .word u16EscAddrSendMbx
+ 1950 00c4 0D080154 	 .word 1409353741
+ 1951 00c8 00000000 	 .word u8dummy
+ 1952 00cc 00000000 	 .word u16SendMbxSize
+ 1953 00d0 FFFF0054 	 .word 1409351679
+ 1954 00d4 00000000 	 .word psReadMbx
+ 1955 00d8 00000000 	 .word psWriteMbx
+ 1956 00dc 00010000 	 .word asMbx+256
+ 1957              	 .cfi_endproc
+ 1958              	.LFE183:
+ 1960              	 .section .text.MBX_Main,"ax",%progbits
+ 1961              	 .align 2
+ 1962              	 .global MBX_Main
+ 1963              	 .thumb
+ 1964              	 .thumb_func
+ 1966              	MBX_Main:
+ 1967              	.LFB184:
+ 884:../SSC/Src/mailbox.c **** 
+ 885:../SSC/Src/mailbox.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 886:../SSC/Src/mailbox.c **** /**
+ 887:../SSC/Src/mailbox.c ****  \brief    This function is called cyclically to check if a received Mailbox service was
+ 888:../SSC/Src/mailbox.c ****              stored.
+ 889:../SSC/Src/mailbox.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 890:../SSC/Src/mailbox.c **** 
+ 891:../SSC/Src/mailbox.c **** void MBX_Main(void)
+ 892:../SSC/Src/mailbox.c **** {
+ 1968              	 .loc 2 892 0
+ 1969              	 .cfi_startproc
+ 1970              	 
+ 1971              	 
+ 1972 0000 80B5     	 push {r7,lr}
+ 1973              	.LCFI83:
+ 1974              	 .cfi_def_cfa_offset 8
+ 1975              	 .cfi_offset 7,-8
+ 1976              	 .cfi_offset 14,-4
+ 1977 0002 82B0     	 sub sp,sp,#8
+ 1978              	.LCFI84:
+ 1979              	 .cfi_def_cfa_offset 16
+ 1980 0004 00AF     	 add r7,sp,#0
+ 1981              	.LCFI85:
+ 1982              	 .cfi_def_cfa_register 7
+ 893:../SSC/Src/mailbox.c ****     TMBX MBXMEM *pMbx = NULL;
+ 1983              	 .loc 2 893 0
+ 1984 0006 0023     	 movs r3,#0
+ 1985 0008 3B60     	 str r3,[r7]
+ 1986              	.L101:
+ 1987              	.LBB12:
+ 894:../SSC/Src/mailbox.c **** 
+ 895:../SSC/Src/mailbox.c ****     do
+ 896:../SSC/Src/mailbox.c ****     {
+ 897:../SSC/Src/mailbox.c ****         UINT8 result = 0;
+ 1988              	 .loc 2 897 0
+ 1989 000a 0023     	 movs r3,#0
+ 1990 000c FB71     	 strb r3,[r7,#7]
+ 898:../SSC/Src/mailbox.c **** 
+ 899:../SSC/Src/mailbox.c ****         pMbx = GetOutOfMbxQueue(&sMbxReceiveQueue);
+ 1991              	 .loc 2 899 0
+ 1992 000e 1848     	 ldr r0,.L103
+ 1993 0010 FFF7FEFF 	 bl GetOutOfMbxQueue
+ 1994 0014 3860     	 str r0,[r7]
+ 900:../SSC/Src/mailbox.c ****         if ( pMbx )
+ 1995              	 .loc 2 900 0
+ 1996 0016 3B68     	 ldr r3,[r7]
+ 1997 0018 002B     	 cmp r3,#0
+ 1998 001a 04D0     	 beq .L99
+ 901:../SSC/Src/mailbox.c ****             result = MailboxServiceInd(pMbx);
+ 1999              	 .loc 2 901 0
+ 2000 001c 3868     	 ldr r0,[r7]
+ 2001 001e FFF7FEFF 	 bl MailboxServiceInd
+ 2002 0022 0346     	 mov r3,r0
+ 2003 0024 FB71     	 strb r3,[r7,#7]
+ 2004              	.L99:
+ 902:../SSC/Src/mailbox.c **** 
+ 903:../SSC/Src/mailbox.c ****         if ( result != 0 )
+ 2005              	 .loc 2 903 0
+ 2006 0026 FB79     	 ldrb r3,[r7,#7]
+ 2007 0028 002B     	 cmp r3,#0
+ 2008 002a 14D0     	 beq .L100
+ 904:../SSC/Src/mailbox.c ****         {
+ 905:../SSC/Src/mailbox.c ****             /* Mailbox error response: type 0 (mailbox service protocol) */
+ 906:../SSC/Src/mailbox.c ****             pMbx->MbxHeader.Length     = 4;
+ 2009              	 .loc 2 906 0
+ 2010 002c 3B68     	 ldr r3,[r7]
+ 2011 002e 0422     	 movs r2,#4
+ 2012 0030 1A80     	 strh r2,[r3]
+ 907:../SSC/Src/mailbox.c ****             pMbx->MbxHeader.Flags[MBX_OFFS_TYPE]        &= ~(MBX_MASK_TYPE);
+ 2013              	 .loc 2 907 0
+ 2014 0032 3B68     	 ldr r3,[r7]
+ 2015 0034 5B79     	 ldrb r3,[r3,#5]
+ 2016 0036 23F00F03 	 bic r3,r3,#15
+ 2017 003a DAB2     	 uxtb r2,r3
+ 2018 003c 3B68     	 ldr r3,[r7]
+ 2019 003e 5A71     	 strb r2,[r3,#5]
+ 908:../SSC/Src/mailbox.c ****             pMbx->Data[0]                        = SWAPWORD(MBXSERVICE_MBXERRORCMD);
+ 2020              	 .loc 2 908 0
+ 2021 0040 3B68     	 ldr r3,[r7]
+ 2022 0042 0122     	 movs r2,#1
+ 2023 0044 DA80     	 strh r2,[r3,#6]
+ 909:../SSC/Src/mailbox.c ****             pMbx->Data[1]                        = SWAPWORD(result);
+ 2024              	 .loc 2 909 0
+ 2025 0046 FB79     	 ldrb r3,[r7,#7]
+ 2026 0048 9AB2     	 uxth r2,r3
+ 2027 004a 3B68     	 ldr r3,[r7]
+ 2028 004c 1A81     	 strh r2,[r3,#8]
+ 910:../SSC/Src/mailbox.c ****             MBX_MailboxSendReq(pMbx, 0);
+ 2029              	 .loc 2 910 0
+ 2030 004e 3868     	 ldr r0,[r7]
+ 2031 0050 0021     	 movs r1,#0
+ 2032 0052 FFF7FEFF 	 bl MBX_MailboxSendReq
+ 2033              	.L100:
+ 2034              	.LBE12:
+ 911:../SSC/Src/mailbox.c ****         }
+ 912:../SSC/Src/mailbox.c ****     }
+ 913:../SSC/Src/mailbox.c ****     while ( pMbx != NULL );
+ 2035              	 .loc 2 913 0
+ 2036 0056 3B68     	 ldr r3,[r7]
+ 2037 0058 002B     	 cmp r3,#0
+ 2038 005a D6D1     	 bne .L101
+ 914:../SSC/Src/mailbox.c **** 
+ 915:../SSC/Src/mailbox.c **** 
+ 916:../SSC/Src/mailbox.c **** 
+ 917:../SSC/Src/mailbox.c ****       if ( bReceiveMbxIsLocked )
+ 2039              	 .loc 2 917 0
+ 2040 005c 054B     	 ldr r3,.L103+4
+ 2041 005e 1B78     	 ldrb r3,[r3]
+ 2042 0060 002B     	 cmp r3,#0
+ 2043 0062 01D0     	 beq .L98
+ 918:../SSC/Src/mailbox.c ****       {
+ 919:../SSC/Src/mailbox.c ****           /* the work on the receive mailbox is locked, check if it can be unlocked (if all
+ 920:../SSC/Src/mailbox.c ****              mailbox commands has been sent */
+ 921:../SSC/Src/mailbox.c ****           MBX_CheckAndCopyMailbox();
+ 2044              	 .loc 2 921 0
+ 2045 0064 FFF7FEFF 	 bl MBX_CheckAndCopyMailbox
+ 2046              	.L98:
+ 922:../SSC/Src/mailbox.c ****       }
+ 923:../SSC/Src/mailbox.c **** }
+ 2047              	 .loc 2 923 0
+ 2048 0068 0837     	 adds r7,r7,#8
+ 2049              	.LCFI86:
+ 2050              	 .cfi_def_cfa_offset 8
+ 2051 006a BD46     	 mov sp,r7
+ 2052              	.LCFI87:
+ 2053              	 .cfi_def_cfa_register 13
+ 2054              	 
+ 2055 006c 80BD     	 pop {r7,pc}
+ 2056              	.L104:
+ 2057 006e 00BF     	 .align 2
+ 2058              	.L103:
+ 2059 0070 00000000 	 .word sMbxReceiveQueue
+ 2060 0074 00000000 	 .word bReceiveMbxIsLocked
+ 2061              	 .cfi_endproc
+ 2062              	.LFE184:
+ 2064              	 .text
+ 2065              	.Letext0:
+ 2066              	 .file 3 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 2067              	 .file 4 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 2068              	 .file 5 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include/XMC4800.h"
+ 2069              	 .file 6 "../SSC/Src/esc.h"
+ 2070              	 .file 7 "../SSC/Src/mailbox.h"
+ 2071              	 .file 8 "../SSC/Src/ecatcoe.h"
+ 2072              	 .file 9 "../SSC/Src/ecatfoe.h"
+ 2073              	 .file 10 "C:/Workspaces/SOES-FW-UPDATE/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Include/core_cm4.h"
+ 2074              	 .file 11 "../SSC/Src/ecatslv.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 mailbox.c
+    {standard input}:20     .text.HW_EscRead:00000000 $t
+    {standard input}:24     .text.HW_EscRead:00000000 HW_EscRead
+    {standard input}:68     .text.HW_EscReadMbxMem:00000000 $t
+    {standard input}:72     .text.HW_EscReadMbxMem:00000000 HW_EscReadMbxMem
+    {standard input}:114    .text.HW_EscWrite:00000000 $t
+    {standard input}:118    .text.HW_EscWrite:00000000 HW_EscWrite
+    {standard input}:161    .text.HW_EscWriteMbxMem:00000000 $t
+    {standard input}:165    .text.HW_EscWriteMbxMem:00000000 HW_EscWriteMbxMem
+                            *COM*:00000001 bReceiveMbxIsLocked
+                            *COM*:00000001 bSendMbxIsFull
+                            *COM*:00000001 bMbxRunning
+                            *COM*:00000001 bMbxRepeatToggle
+                            *COM*:00000002 u16SendMbxSize
+                            *COM*:00000002 u16ReceiveMbxSize
+                            *COM*:00000002 u16EscAddrReceiveMbx
+                            *COM*:00000002 u16EscAddrSendMbx
+                            *COM*:00000001 u8MbxWriteCounter
+                            *COM*:00000001 u8MbxReadCounter
+                            *COM*:00000200 asMbx
+                            *COM*:00000001 u8MailboxSendReqStored
+                            *COM*:00000004 psWriteMbx
+                            *COM*:00000004 psReadMbx
+                            *COM*:00000004 psRepeatMbx
+                            *COM*:00000004 psStoreMbx
+                            *COM*:00000034 sMbxSendQueue
+                            *COM*:00000034 sMbxReceiveQueue
+                            *COM*:00000001 bNoMbxMemoryAvailable
+    {standard input}:226    .text.PutInMbxQueue:00000000 $t
+    {standard input}:231    .text.PutInMbxQueue:00000000 PutInMbxQueue
+    {standard input}:309    .text.GetOutOfMbxQueue:00000000 $t
+    {standard input}:314    .text.GetOutOfMbxQueue:00000000 GetOutOfMbxQueue
+    {standard input}:398    .text.MBX_Init:00000000 $t
+    {standard input}:403    .text.MBX_Init:00000000 MBX_Init
+    {standard input}:537    .text.MBX_Init:000000ac $d
+    {standard input}:559    .text.MBX_StartMailboxHandler:00000000 $t
+    {standard input}:564    .text.MBX_StartMailboxHandler:00000000 MBX_StartMailboxHandler
+    {standard input}:716    .text.MBX_StartMailboxHandler:000000dc $d
+    {standard input}:726    .text.MBX_StopMailboxHandler:00000000 $t
+    {standard input}:731    .text.MBX_StopMailboxHandler:00000000 MBX_StopMailboxHandler
+    {standard input}:917    .text.MBX_StopMailboxHandler:00000104 $d
+    {standard input}:934    .text.MailboxServiceInd:00000000 $t
+    {standard input}:939    .text.MailboxServiceInd:00000000 MailboxServiceInd
+    {standard input}:1020   .text.MailboxServiceInd:0000005c $d
+    {standard input}:1025   .text.MBX_MailboxWriteInd:00000000 $t
+    {standard input}:1030   .text.MBX_MailboxWriteInd:00000000 MBX_MailboxWriteInd
+    {standard input}:1443   .text.MBX_MailboxSendReq:00000000 MBX_MailboxSendReq
+    {standard input}:1162   .text.MBX_MailboxWriteInd:000000b4 $d
+    {standard input}:1168   .text.MBX_MailboxReadInd:00000000 $t
+    {standard input}:1173   .text.MBX_MailboxReadInd:00000000 MBX_MailboxReadInd
+    {standard input}:1807   .text.MBX_CopyToSendMailbox:00000000 MBX_CopyToSendMailbox
+    {standard input}:1325   .text.MBX_MailboxReadInd:000000d8 $d
+    {standard input}:1336   .text.MBX_MailboxRepeatReq:00000000 $t
+    {standard input}:1341   .text.MBX_MailboxRepeatReq:00000000 MBX_MailboxRepeatReq
+    {standard input}:1429   .text.MBX_MailboxRepeatReq:00000070 $d
+    {standard input}:1438   .text.MBX_MailboxSendReq:00000000 $t
+    {standard input}:1580   .text.MBX_MailboxSendReq:000000c4 $d
+    {standard input}:1588   .text.MBX_CheckAndCopyMailbox:00000000 $t
+    {standard input}:1593   .text.MBX_CheckAndCopyMailbox:00000000 MBX_CheckAndCopyMailbox
+    {standard input}:1788   .text.MBX_CheckAndCopyMailbox:00000120 $d
+    {standard input}:1802   .text.MBX_CopyToSendMailbox:00000000 $t
+    {standard input}:1946   .text.MBX_CopyToSendMailbox:000000b4 $d
+    {standard input}:1961   .text.MBX_Main:00000000 $t
+    {standard input}:1966   .text.MBX_Main:00000000 MBX_Main
+    {standard input}:2059   .text.MBX_Main:00000070 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+memcpy
+GetSyncMan
+EnableSyncManChannel
+malloc
+free
+DisableSyncManChannel
+COE_ServiceInd
+FOE_ServiceInd
+bBootMode
+COE_ContinueInd
+FOE_ContinueInd
+nAlStatus
+memset
+u8dummy
