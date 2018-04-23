@@ -1,0 +1,691 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "foeappl.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.FOE_Read,"ax",%progbits
+  20              	 .align 2
+  21              	 .global FOE_Read
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	FOE_Read:
+  26              	.LFB177:
+  27              	 .file 1 "../SSC/Src/foeappl.c"
+   1:../SSC/Src/foeappl.c **** /*
+   2:../SSC/Src/foeappl.c **** * This source file is part of the EtherCAT Slave Stack Code licensed by Beckhoff Automation GmbH & 
+   3:../SSC/Src/foeappl.c **** * The corresponding license agreement applies. This hint shall not be removed.
+   4:../SSC/Src/foeappl.c **** */
+   5:../SSC/Src/foeappl.c **** 
+   6:../SSC/Src/foeappl.c **** /**
+   7:../SSC/Src/foeappl.c **** \addtogroup FoE FileTransfer over EtherCAT
+   8:../SSC/Src/foeappl.c **** @{
+   9:../SSC/Src/foeappl.c **** */
+  10:../SSC/Src/foeappl.c **** 
+  11:../SSC/Src/foeappl.c **** /**
+  12:../SSC/Src/foeappl.c **** \file foeappl.c
+  13:../SSC/Src/foeappl.c **** \author EthercatSSC@beckhoff.com
+  14:../SSC/Src/foeappl.c **** \brief Implementation
+  15:../SSC/Src/foeappl.c **** This file contains an example how to use the FoE services
+  16:../SSC/Src/foeappl.c **** 
+  17:../SSC/Src/foeappl.c **** \version 5.12
+  18:../SSC/Src/foeappl.c **** 
+  19:../SSC/Src/foeappl.c **** <br>Changes to version V5.11:<br>
+  20:../SSC/Src/foeappl.c **** V5.12 FOE1: update new interface,move the FoE sample to sampleappl,add FoE application callback fun
+  21:../SSC/Src/foeappl.c **** <br>Changes to version V5.10:<br>
+  22:../SSC/Src/foeappl.c **** V5.11 FOE2: FoE_Read() check File name buffer before store the requested file name, add string term
+  23:../SSC/Src/foeappl.c **** V5.11 TEST5: send a FoE busy on a FoE read request<br>
+  24:../SSC/Src/foeappl.c **** V5.11 TEST9: "add behaviour 0x2020.7 (SDO requests on 0x3006.0 are set to pending until an FoE read
+  25:../SSC/Src/foeappl.c **** <br>Changes to version V5.0:<br>
+  26:../SSC/Src/foeappl.c **** V5.10 FOE2: Update file handling to support File sizes greater than 0x8000 Bytes (change value of "
+  27:../SSC/Src/foeappl.c **** <br>Changes to version V4.20:<br>
+  28:../SSC/Src/foeappl.c **** V5.0 FOE3: Add additional file name copy operation to provide name byte swapping<br>
+  29:../SSC/Src/foeappl.c **** V5.0 FOE5: Add FoE test operation (FOE_SAVE_FILES need to be disabled). On download only the files 
+  30:../SSC/Src/foeappl.c **** V5.0 FOE6: Save file if MBX 16Bit access is enabled<br>
+  31:../SSC/Src/foeappl.c **** <br>Changes to version V4.11:<br>
+  32:../SSC/Src/foeappl.c **** V4.20 FOE 2: Add File store compiler switch<br>
+  33:../SSC/Src/foeappl.c **** V4.20 FOE 1: Removed FILESUPPORT<br>
+  34:../SSC/Src/foeappl.c **** V4.11 FOE 1: nFileWriteOffset is now a 32bit variable to extend the maximum file size<br>
+  35:../SSC/Src/foeappl.c **** <br>Changes to version V3.20:<br>
+  36:../SSC/Src/foeappl.c **** V4.10 FOE 1-14: Filetransfer over FoE: Files can be read and stored to harddisk<br>
+  37:../SSC/Src/foeappl.c ****                       without any filesizelimitation (FILESUPPORT must defined)
+  38:../SSC/Src/foeappl.c **** */
+  39:../SSC/Src/foeappl.c **** 
+  40:../SSC/Src/foeappl.c **** /*-----------------------------------------------------------------------------------------
+  41:../SSC/Src/foeappl.c **** ------
+  42:../SSC/Src/foeappl.c **** ------    Includes
+  43:../SSC/Src/foeappl.c **** ------
+  44:../SSC/Src/foeappl.c **** -----------------------------------------------------------------------------------------*/
+  45:../SSC/Src/foeappl.c **** 
+  46:../SSC/Src/foeappl.c **** #include "ecat_def.h"
+  47:../SSC/Src/foeappl.c **** 
+  48:../SSC/Src/foeappl.c **** 
+  49:../SSC/Src/foeappl.c **** #include "ecatslv.h"
+  50:../SSC/Src/foeappl.c **** 
+  51:../SSC/Src/foeappl.c **** #include "ecatfoe.h"
+  52:../SSC/Src/foeappl.c **** 
+  53:../SSC/Src/foeappl.c **** #define _FOEAPPL_ 1
+  54:../SSC/Src/foeappl.c ****     #include "foeappl.h"
+  55:../SSC/Src/foeappl.c **** #undef _FOEAPPL_
+  56:../SSC/Src/foeappl.c **** #define _FOEAPPL_ 0
+  57:../SSC/Src/foeappl.c **** 
+  58:../SSC/Src/foeappl.c **** #include "bootmode.h"
+  59:../SSC/Src/foeappl.c **** 
+  60:../SSC/Src/foeappl.c **** 
+  61:../SSC/Src/foeappl.c **** 
+  62:../SSC/Src/foeappl.c **** #include "applInterface.h"
+  63:../SSC/Src/foeappl.c **** #include "firmwareupdate_SSC.h"
+  64:../SSC/Src/foeappl.c **** /*-----------------------------------------------------------------------------------------
+  65:../SSC/Src/foeappl.c **** ------
+  66:../SSC/Src/foeappl.c **** ------    internal Types and Defines
+  67:../SSC/Src/foeappl.c **** ------
+  68:../SSC/Src/foeappl.c **** -----------------------------------------------------------------------------------------*/
+  69:../SSC/Src/foeappl.c **** 
+  70:../SSC/Src/foeappl.c **** /*-----------------------------------------------------------------------------------------
+  71:../SSC/Src/foeappl.c **** ------
+  72:../SSC/Src/foeappl.c **** ------    Module internal function declarations
+  73:../SSC/Src/foeappl.c **** ------
+  74:../SSC/Src/foeappl.c **** -----------------------------------------------------------------------------------------*/
+  75:../SSC/Src/foeappl.c **** 
+  76:../SSC/Src/foeappl.c **** /*-----------------------------------------------------------------------------------------
+  77:../SSC/Src/foeappl.c **** ------
+  78:../SSC/Src/foeappl.c **** ------    Module internal variable definitions
+  79:../SSC/Src/foeappl.c **** ------
+  80:../SSC/Src/foeappl.c **** -----------------------------------------------------------------------------------------*/
+  81:../SSC/Src/foeappl.c **** 
+  82:../SSC/Src/foeappl.c **** /*-----------------------------------------------------------------------------------------
+  83:../SSC/Src/foeappl.c **** ------
+  84:../SSC/Src/foeappl.c **** ------    Functions
+  85:../SSC/Src/foeappl.c **** ------
+  86:../SSC/Src/foeappl.c **** -----------------------------------------------------------------------------------------*/
+  87:../SSC/Src/foeappl.c **** 
+  88:../SSC/Src/foeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+  89:../SSC/Src/foeappl.c **** /**
+  90:../SSC/Src/foeappl.c ****  \param     pName         Pointer to the name of the file
+  91:../SSC/Src/foeappl.c ****  \param     nameSize      Length of the file name
+  92:../SSC/Src/foeappl.c ****  \param     pData         Pointer to the response data
+  93:../SSC/Src/foeappl.c ****  \param     password      Password for the file read
+  94:../SSC/Src/foeappl.c **** 
+  95:../SSC/Src/foeappl.c ****  \return size of the data to be sent, busy or an error code
+  96:../SSC/Src/foeappl.c ****             1..FOE_MAXBUSY-101 (size of data to be sent)
+  97:../SSC/Src/foeappl.c ****             FOE_MAXBUSY-100 (0%)    (busy)
+  98:../SSC/Src/foeappl.c ****             FOE_MAXBUSY (100%) (busy)
+  99:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOTDEFINED (error)
+ 100:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOTFOUND (error)
+ 101:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_ACCESS    (error)
+ 102:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_DISKFULL (error)
+ 103:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_ILLEGAL (error)
+ 104:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_PACKENO (error)
+ 105:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_EXISTS    (error)
+ 106:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOUSER    (error)
+ 107:../SSC/Src/foeappl.c **** 
+ 108:../SSC/Src/foeappl.c ****  \brief    The function starts a file reading
+ 109:../SSC/Src/foeappl.c **** 
+ 110:../SSC/Src/foeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 111:../SSC/Src/foeappl.c **** 
+ 112:../SSC/Src/foeappl.c **** UINT16 FOE_Read(UINT16 MBXMEM * pName, UINT16 nameSize, UINT16 MBXMEM * pData, UINT32 password)
+ 113:../SSC/Src/foeappl.c **** {
+  28              	 .loc 1 113 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32 0000 B0B5     	 push {r4,r5,r7,lr}
+  33              	.LCFI0:
+  34              	 .cfi_def_cfa_offset 16
+  35              	 .cfi_offset 4,-16
+  36              	 .cfi_offset 5,-12
+  37              	 .cfi_offset 7,-8
+  38              	 .cfi_offset 14,-4
+  39 0002 86B0     	 sub sp,sp,#24
+  40              	.LCFI1:
+  41              	 .cfi_def_cfa_offset 40
+  42 0004 02AF     	 add r7,sp,#8
+  43              	.LCFI2:
+  44              	 .cfi_def_cfa 7,32
+  45 0006 F860     	 str r0,[r7,#12]
+  46 0008 7A60     	 str r2,[r7,#4]
+  47 000a 3B60     	 str r3,[r7]
+  48 000c 0B46     	 mov r3,r1
+  49 000e 7B81     	 strh r3,[r7,#10]
+ 114:../SSC/Src/foeappl.c ****     
+ 115:../SSC/Src/foeappl.c **** /*ECATCHANGE_START(V5.12) FOE1*/
+ 116:../SSC/Src/foeappl.c ****     if (pAPPL_FoeRead != NULL)
+  50              	 .loc 1 116 0
+  51 0010 0B4B     	 ldr r3,.L4
+  52 0012 1B68     	 ldr r3,[r3]
+  53 0014 002B     	 cmp r3,#0
+  54 0016 0DD0     	 beq .L2
+ 117:../SSC/Src/foeappl.c ****     {
+ 118:../SSC/Src/foeappl.c ****         return  pAPPL_FoeRead(pName, nameSize, password, u16FoeMaxSendBlockSize, pData);
+  55              	 .loc 1 118 0
+  56 0018 094B     	 ldr r3,.L4
+  57 001a 1C68     	 ldr r4,[r3]
+  58 001c 094B     	 ldr r3,.L4+4
+  59 001e 1D88     	 ldrh r5,[r3]
+  60 0020 7A89     	 ldrh r2,[r7,#10]
+  61 0022 7B68     	 ldr r3,[r7,#4]
+  62 0024 0093     	 str r3,[sp]
+  63 0026 F868     	 ldr r0,[r7,#12]
+  64 0028 1146     	 mov r1,r2
+  65 002a 3A68     	 ldr r2,[r7]
+  66 002c 2B46     	 mov r3,r5
+  67 002e A047     	 blx r4
+  68 0030 0346     	 mov r3,r0
+  69 0032 01E0     	 b .L3
+  70              	.L2:
+ 119:../SSC/Src/foeappl.c ****     }
+ 120:../SSC/Src/foeappl.c **** 
+ 121:../SSC/Src/foeappl.c **** 
+ 122:../SSC/Src/foeappl.c ****     return ECAT_FOE_ERRCODE_NOTDEFINED;
+  71              	 .loc 1 122 0
+  72 0034 4FF40043 	 mov r3,#32768
+  73              	.L3:
+ 123:../SSC/Src/foeappl.c **** /*ECATCHANGE_END(V5.12) FOE1*/
+ 124:../SSC/Src/foeappl.c **** }
+  74              	 .loc 1 124 0
+  75 0038 1846     	 mov r0,r3
+  76 003a 1037     	 adds r7,r7,#16
+  77              	.LCFI3:
+  78              	 .cfi_def_cfa_offset 16
+  79 003c BD46     	 mov sp,r7
+  80              	.LCFI4:
+  81              	 .cfi_def_cfa_register 13
+  82              	 
+  83 003e B0BD     	 pop {r4,r5,r7,pc}
+  84              	.L5:
+  85              	 .align 2
+  86              	.L4:
+  87 0040 00000000 	 .word pAPPL_FoeRead
+  88 0044 00000000 	 .word u16FoeMaxSendBlockSize
+  89              	 .cfi_endproc
+  90              	.LFE177:
+  92              	 .section .text.FOE_Write,"ax",%progbits
+  93              	 .align 2
+  94              	 .global FOE_Write
+  95              	 .thumb
+  96              	 .thumb_func
+  98              	FOE_Write:
+  99              	.LFB178:
+ 125:../SSC/Src/foeappl.c **** 
+ 126:../SSC/Src/foeappl.c **** 
+ 127:../SSC/Src/foeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 128:../SSC/Src/foeappl.c **** /**
+ 129:../SSC/Src/foeappl.c ****  \param     pName         Pointer to the name of the file
+ 130:../SSC/Src/foeappl.c ****  \param     nameSize      Length of the file name
+ 131:../SSC/Src/foeappl.c ****  \param     password      Password for the file read
+ 132:../SSC/Src/foeappl.c **** 
+ 133:../SSC/Src/foeappl.c ****  \return okay, busy or an error code
+ 134:../SSC/Src/foeappl.c ****             0 (okay)
+ 135:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOTDEFINED (error)
+ 136:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOTFOUND (error)
+ 137:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_ACCESS    (error)
+ 138:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_DISKFULL (error)
+ 139:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_ILLEGAL (error)
+ 140:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_PACKENO (error)
+ 141:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_EXISTS    (error)
+ 142:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOUSER    (error)
+ 143:../SSC/Src/foeappl.c **** 
+ 144:../SSC/Src/foeappl.c ****             (no busy response shall be returned by this function.
+ 145:../SSC/Src/foeappl.c ****             If the slave stack requires some time to handle the incoming data the function FOE_Data
+ 146:../SSC/Src/foeappl.c **** 
+ 147:../SSC/Src/foeappl.c ****  \brief    The function starts a file writing
+ 148:../SSC/Src/foeappl.c **** 
+ 149:../SSC/Src/foeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 150:../SSC/Src/foeappl.c **** 
+ 151:../SSC/Src/foeappl.c **** UINT16 FOE_Write(UINT16 MBXMEM * pName, UINT16 nameSize, UINT32 password)
+ 152:../SSC/Src/foeappl.c **** {
+ 100              	 .loc 1 152 0
+ 101              	 .cfi_startproc
+ 102              	 
+ 103              	 
+ 104 0000 80B5     	 push {r7,lr}
+ 105              	.LCFI5:
+ 106              	 .cfi_def_cfa_offset 8
+ 107              	 .cfi_offset 7,-8
+ 108              	 .cfi_offset 14,-4
+ 109 0002 84B0     	 sub sp,sp,#16
+ 110              	.LCFI6:
+ 111              	 .cfi_def_cfa_offset 24
+ 112 0004 00AF     	 add r7,sp,#0
+ 113              	.LCFI7:
+ 114              	 .cfi_def_cfa_register 7
+ 115 0006 F860     	 str r0,[r7,#12]
+ 116 0008 0B46     	 mov r3,r1
+ 117 000a 7A60     	 str r2,[r7,#4]
+ 118 000c 7B81     	 strh r3,[r7,#10]
+ 153:../SSC/Src/foeappl.c **** /*ECATCHANGE_START(V5.12) FOE1*/
+ 154:../SSC/Src/foeappl.c **** 	if(bBootMode)
+ 119              	 .loc 1 154 0
+ 120 000e 0A4B     	 ldr r3,.L10
+ 121 0010 1B78     	 ldrb r3,[r3]
+ 122 0012 002B     	 cmp r3,#0
+ 123 0014 0AD0     	 beq .L7
+ 155:../SSC/Src/foeappl.c **** 	{
+ 156:../SSC/Src/foeappl.c **** 		if(password == 0xBEEFBEEF)
+ 124              	 .loc 1 156 0
+ 125 0016 7B68     	 ldr r3,[r7,#4]
+ 126 0018 084A     	 ldr r2,.L10+4
+ 127 001a 9342     	 cmp r3,r2
+ 128 001c 03D1     	 bne .L8
+ 157:../SSC/Src/foeappl.c **** 		{
+ 158:../SSC/Src/foeappl.c **** 			FWUPDATE_StartDownload();
+ 129              	 .loc 1 158 0
+ 130 001e FFF7FEFF 	 bl FWUPDATE_StartDownload
+ 159:../SSC/Src/foeappl.c **** 			return 0;
+ 131              	 .loc 1 159 0
+ 132 0022 0023     	 movs r3,#0
+ 133 0024 04E0     	 b .L9
+ 134              	.L8:
+ 160:../SSC/Src/foeappl.c **** 		}else
+ 161:../SSC/Src/foeappl.c **** 		{
+ 162:../SSC/Src/foeappl.c **** 			return ECAT_FOE_ERRCODE_ILLEGAL;
+ 135              	 .loc 1 162 0
+ 136 0026 48F20403 	 movw r3,#32772
+ 137 002a 01E0     	 b .L9
+ 138              	.L7:
+ 163:../SSC/Src/foeappl.c **** 		}
+ 164:../SSC/Src/foeappl.c **** 	}else
+ 165:../SSC/Src/foeappl.c **** 	{
+ 166:../SSC/Src/foeappl.c **** 		return ECAT_FOE_ERRCODE_DISKFULL;
+ 139              	 .loc 1 166 0
+ 140 002c 48F20303 	 movw r3,#32771
+ 141              	.L9:
+ 167:../SSC/Src/foeappl.c **** 	}
+ 168:../SSC/Src/foeappl.c **** /*ECATCHANGE_END(V5.12) FOE1*/
+ 169:../SSC/Src/foeappl.c **** }
+ 142              	 .loc 1 169 0
+ 143 0030 1846     	 mov r0,r3
+ 144 0032 1037     	 adds r7,r7,#16
+ 145              	.LCFI8:
+ 146              	 .cfi_def_cfa_offset 8
+ 147 0034 BD46     	 mov sp,r7
+ 148              	.LCFI9:
+ 149              	 .cfi_def_cfa_register 13
+ 150              	 
+ 151 0036 80BD     	 pop {r7,pc}
+ 152              	.L11:
+ 153              	 .align 2
+ 154              	.L10:
+ 155 0038 00000000 	 .word bBootMode
+ 156 003c EFBEEFBE 	 .word -1091584273
+ 157              	 .cfi_endproc
+ 158              	.LFE178:
+ 160              	 .section .text.FOE_Data,"ax",%progbits
+ 161              	 .align 2
+ 162              	 .global FOE_Data
+ 163              	 .thumb
+ 164              	 .thumb_func
+ 166              	FOE_Data:
+ 167              	.LFB179:
+ 170:../SSC/Src/foeappl.c **** 
+ 171:../SSC/Src/foeappl.c **** 
+ 172:../SSC/Src/foeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 173:../SSC/Src/foeappl.c **** /**
+ 174:../SSC/Src/foeappl.c ****  \param     pData         Received file data
+ 175:../SSC/Src/foeappl.c ****  \param 	Size          Length of received file data
+ 176:../SSC/Src/foeappl.c **** 
+ 177:../SSC/Src/foeappl.c ****  \return okay, busy or an error code
+ 178:../SSC/Src/foeappl.c ****             0 (okay)
+ 179:../SSC/Src/foeappl.c ****             FOE_MAXBUSY-100 (0%)    (busy)
+ 180:../SSC/Src/foeappl.c ****             FOE_MAXBUSY (100%) (busy)
+ 181:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOTDEFINED (error)
+ 182:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOTFOUND (error)
+ 183:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_ACCESS    (error)
+ 184:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_DISKFULL (error)
+ 185:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_ILLEGAL (error)
+ 186:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_PACKENO (error)
+ 187:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_EXISTS    (error)
+ 188:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOUSER    (error)
+ 189:../SSC/Src/foeappl.c **** 
+ 190:../SSC/Src/foeappl.c ****  \brief    The function is called to write the next part of a file
+ 191:../SSC/Src/foeappl.c **** 
+ 192:../SSC/Src/foeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 193:../SSC/Src/foeappl.c **** 
+ 194:../SSC/Src/foeappl.c **** UINT16 FOE_Data(UINT16 MBXMEM * pData, UINT16 Size)
+ 195:../SSC/Src/foeappl.c **** {
+ 168              	 .loc 1 195 0
+ 169              	 .cfi_startproc
+ 170              	 
+ 171              	 
+ 172 0000 80B5     	 push {r7,lr}
+ 173              	.LCFI10:
+ 174              	 .cfi_def_cfa_offset 8
+ 175              	 .cfi_offset 7,-8
+ 176              	 .cfi_offset 14,-4
+ 177 0002 82B0     	 sub sp,sp,#8
+ 178              	.LCFI11:
+ 179              	 .cfi_def_cfa_offset 16
+ 180 0004 00AF     	 add r7,sp,#0
+ 181              	.LCFI12:
+ 182              	 .cfi_def_cfa_register 7
+ 183 0006 7860     	 str r0,[r7,#4]
+ 184 0008 0B46     	 mov r3,r1
+ 185 000a 7B80     	 strh r3,[r7,#2]
+ 196:../SSC/Src/foeappl.c **** /*ECATCHANGE_START(V5.12) FOE1*/
+ 197:../SSC/Src/foeappl.c **** 	if(bBootMode)
+ 186              	 .loc 1 197 0
+ 187 000c 074B     	 ldr r3,.L16
+ 188 000e 1B78     	 ldrb r3,[r3]
+ 189 0010 002B     	 cmp r3,#0
+ 190 0012 05D0     	 beq .L13
+ 198:../SSC/Src/foeappl.c **** 	{
+ 199:../SSC/Src/foeappl.c **** 		FWUPDATE_Data(pData, Size);
+ 191              	 .loc 1 199 0
+ 192 0014 7B88     	 ldrh r3,[r7,#2]
+ 193 0016 7868     	 ldr r0,[r7,#4]
+ 194 0018 1946     	 mov r1,r3
+ 195 001a FFF7FEFF 	 bl FWUPDATE_Data
+ 196 001e 01E0     	 b .L12
+ 197              	.L13:
+ 200:../SSC/Src/foeappl.c **** 	}else
+ 201:../SSC/Src/foeappl.c **** 	{
+ 202:../SSC/Src/foeappl.c **** 		return ECAT_FOE_ERRCODE_DISKFULL;
+ 198              	 .loc 1 202 0
+ 199 0020 48F20303 	 movw r3,#32771
+ 200              	.L12:
+ 203:../SSC/Src/foeappl.c **** 	}
+ 204:../SSC/Src/foeappl.c **** /*ECATCHANGE_END(V5.12) FOE1*/
+ 205:../SSC/Src/foeappl.c **** }
+ 201              	 .loc 1 205 0
+ 202 0024 1846     	 mov r0,r3
+ 203 0026 0837     	 adds r7,r7,#8
+ 204              	.LCFI13:
+ 205              	 .cfi_def_cfa_offset 8
+ 206 0028 BD46     	 mov sp,r7
+ 207              	.LCFI14:
+ 208              	 .cfi_def_cfa_register 13
+ 209              	 
+ 210 002a 80BD     	 pop {r7,pc}
+ 211              	.L17:
+ 212              	 .align 2
+ 213              	.L16:
+ 214 002c 00000000 	 .word bBootMode
+ 215              	 .cfi_endproc
+ 216              	.LFE179:
+ 218              	 .section .text.FOE_Ack,"ax",%progbits
+ 219              	 .align 2
+ 220              	 .global FOE_Ack
+ 221              	 .thumb
+ 222              	 .thumb_func
+ 224              	FOE_Ack:
+ 225              	.LFB180:
+ 206:../SSC/Src/foeappl.c **** 
+ 207:../SSC/Src/foeappl.c **** 
+ 208:../SSC/Src/foeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 209:../SSC/Src/foeappl.c **** /**
+ 210:../SSC/Src/foeappl.c ****  \param     fileOffset    Offset of the next file data to be sent
+ 211:../SSC/Src/foeappl.c ****  \param     pData         Buffer for file data to be sent
+ 212:../SSC/Src/foeappl.c **** 
+ 213:../SSC/Src/foeappl.c ****  \return size of the data to be sent, busy or an error code
+ 214:../SSC/Src/foeappl.c ****             0 (all data was sent before)
+ 215:../SSC/Src/foeappl.c ****             1..MAX_FILE_SIZE (size of data to be sent)
+ 216:../SSC/Src/foeappl.c ****             FOE_MAXBUSY-100 (0%)    (busy)
+ 217:../SSC/Src/foeappl.c ****             FOE_MAXBUSY (100%) (busy)
+ 218:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOTDEFINED (error)
+ 219:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOTFOUND (error)
+ 220:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_ACCESS    (error)
+ 221:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_DISKFULL (error)
+ 222:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_ILLEGAL (error)
+ 223:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_PACKENO (error)
+ 224:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_EXISTS    (error)
+ 225:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOUSER    (error)
+ 226:../SSC/Src/foeappl.c **** 
+ 227:../SSC/Src/foeappl.c ****  \brief    The function is called when the reading of a part of a file is acknowledged
+ 228:../SSC/Src/foeappl.c **** 
+ 229:../SSC/Src/foeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 230:../SSC/Src/foeappl.c **** 
+ 231:../SSC/Src/foeappl.c **** UINT16 FOE_Ack(UINT32 fileOffset, UINT16 MBXMEM * pData)
+ 232:../SSC/Src/foeappl.c **** {
+ 226              	 .loc 1 232 0
+ 227              	 .cfi_startproc
+ 228              	 
+ 229              	 
+ 230 0000 80B5     	 push {r7,lr}
+ 231              	.LCFI15:
+ 232              	 .cfi_def_cfa_offset 8
+ 233              	 .cfi_offset 7,-8
+ 234              	 .cfi_offset 14,-4
+ 235 0002 82B0     	 sub sp,sp,#8
+ 236              	.LCFI16:
+ 237              	 .cfi_def_cfa_offset 16
+ 238 0004 00AF     	 add r7,sp,#0
+ 239              	.LCFI17:
+ 240              	 .cfi_def_cfa_register 7
+ 241 0006 7860     	 str r0,[r7,#4]
+ 242 0008 3960     	 str r1,[r7]
+ 233:../SSC/Src/foeappl.c ****     /*ECATCHANGE_START(V5.12) FOE1*/
+ 234:../SSC/Src/foeappl.c **** 
+ 235:../SSC/Src/foeappl.c ****     if (pAPPL_FoeReadData != NULL)
+ 243              	 .loc 1 235 0
+ 244 000a 0A4B     	 ldr r3,.L21
+ 245 000c 1B68     	 ldr r3,[r3]
+ 246 000e 002B     	 cmp r3,#0
+ 247 0010 09D0     	 beq .L19
+ 236:../SSC/Src/foeappl.c ****     {
+ 237:../SSC/Src/foeappl.c ****         return pAPPL_FoeReadData(fileOffset, u16FoeMaxSendBlockSize, pData);
+ 248              	 .loc 1 237 0
+ 249 0012 084B     	 ldr r3,.L21
+ 250 0014 1B68     	 ldr r3,[r3]
+ 251 0016 084A     	 ldr r2,.L21+4
+ 252 0018 1288     	 ldrh r2,[r2]
+ 253 001a 7868     	 ldr r0,[r7,#4]
+ 254 001c 1146     	 mov r1,r2
+ 255 001e 3A68     	 ldr r2,[r7]
+ 256 0020 9847     	 blx r3
+ 257 0022 0346     	 mov r3,r0
+ 258 0024 01E0     	 b .L20
+ 259              	.L19:
+ 238:../SSC/Src/foeappl.c ****     }
+ 239:../SSC/Src/foeappl.c **** 
+ 240:../SSC/Src/foeappl.c ****     return ECAT_FOE_ERRCODE_NOTDEFINED;
+ 260              	 .loc 1 240 0
+ 261 0026 4FF40043 	 mov r3,#32768
+ 262              	.L20:
+ 241:../SSC/Src/foeappl.c ****     /*ECATCHANGE_END(V5.12) FOE1*/
+ 242:../SSC/Src/foeappl.c **** }
+ 263              	 .loc 1 242 0
+ 264 002a 1846     	 mov r0,r3
+ 265 002c 0837     	 adds r7,r7,#8
+ 266              	.LCFI18:
+ 267              	 .cfi_def_cfa_offset 8
+ 268 002e BD46     	 mov sp,r7
+ 269              	.LCFI19:
+ 270              	 .cfi_def_cfa_register 13
+ 271              	 
+ 272 0030 80BD     	 pop {r7,pc}
+ 273              	.L22:
+ 274 0032 00BF     	 .align 2
+ 275              	.L21:
+ 276 0034 00000000 	 .word pAPPL_FoeReadData
+ 277 0038 00000000 	 .word u16FoeMaxSendBlockSize
+ 278              	 .cfi_endproc
+ 279              	.LFE180:
+ 281              	 .section .text.FOE_Busy,"ax",%progbits
+ 282              	 .align 2
+ 283              	 .global FOE_Busy
+ 284              	 .thumb
+ 285              	 .thumb_func
+ 287              	FOE_Busy:
+ 288              	.LFB181:
+ 243:../SSC/Src/foeappl.c **** 
+ 244:../SSC/Src/foeappl.c **** 
+ 245:../SSC/Src/foeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 246:../SSC/Src/foeappl.c **** /**
+ 247:../SSC/Src/foeappl.c ****  \param     done          Indicates how much of the busy action is done
+ 248:../SSC/Src/foeappl.c ****  \param     fileOffset    Offset of the next file data to be sent
+ 249:../SSC/Src/foeappl.c ****  \param     pData         Buffer for file data to be sent
+ 250:../SSC/Src/foeappl.c **** 
+ 251:../SSC/Src/foeappl.c ****  \return size of the data to be sent, busy or an error code
+ 252:../SSC/Src/foeappl.c ****             0 (all data was sent before)
+ 253:../SSC/Src/foeappl.c ****             1..MAX_FILE_SIZE (size of data to be sent)
+ 254:../SSC/Src/foeappl.c ****             FOE_MAXBUSY-100 (0%)    (busy)
+ 255:../SSC/Src/foeappl.c ****             FOE_MAXBUSY (100%) (busy)
+ 256:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOTDEFINED (error)
+ 257:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOTFOUND (error)
+ 258:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_ACCESS    (error)
+ 259:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_DISKFULL (error)
+ 260:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_ILLEGAL (error)
+ 261:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_PACKENO (error)
+ 262:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_EXISTS    (error)
+ 263:../SSC/Src/foeappl.c ****             ECAT_FOE_ERRCODE_NOUSER    (error)
+ 264:../SSC/Src/foeappl.c **** 
+ 265:../SSC/Src/foeappl.c ****  \brief    The function is called when the reading of a part of a file should be repeated
+ 266:../SSC/Src/foeappl.c **** 
+ 267:../SSC/Src/foeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 268:../SSC/Src/foeappl.c **** 
+ 269:../SSC/Src/foeappl.c **** UINT16 FOE_Busy(UINT16 done, UINT32 fileOffset, UINT16 MBXMEM * pData)
+ 270:../SSC/Src/foeappl.c **** {
+ 289              	 .loc 1 270 0
+ 290              	 .cfi_startproc
+ 291              	 
+ 292              	 
+ 293 0000 80B5     	 push {r7,lr}
+ 294              	.LCFI20:
+ 295              	 .cfi_def_cfa_offset 8
+ 296              	 .cfi_offset 7,-8
+ 297              	 .cfi_offset 14,-4
+ 298 0002 84B0     	 sub sp,sp,#16
+ 299              	.LCFI21:
+ 300              	 .cfi_def_cfa_offset 24
+ 301 0004 00AF     	 add r7,sp,#0
+ 302              	.LCFI22:
+ 303              	 .cfi_def_cfa_register 7
+ 304 0006 0346     	 mov r3,r0
+ 305 0008 B960     	 str r1,[r7,#8]
+ 306 000a 7A60     	 str r2,[r7,#4]
+ 307 000c FB81     	 strh r3,[r7,#14]
+ 271:../SSC/Src/foeappl.c ****     /* send last part again */
+ 272:../SSC/Src/foeappl.c ****     return FOE_Ack(fileOffset, pData);
+ 308              	 .loc 1 272 0
+ 309 000e B868     	 ldr r0,[r7,#8]
+ 310 0010 7968     	 ldr r1,[r7,#4]
+ 311 0012 FFF7FEFF 	 bl FOE_Ack
+ 312 0016 0346     	 mov r3,r0
+ 273:../SSC/Src/foeappl.c **** }
+ 313              	 .loc 1 273 0
+ 314 0018 1846     	 mov r0,r3
+ 315 001a 1037     	 adds r7,r7,#16
+ 316              	.LCFI23:
+ 317              	 .cfi_def_cfa_offset 8
+ 318 001c BD46     	 mov sp,r7
+ 319              	.LCFI24:
+ 320              	 .cfi_def_cfa_register 13
+ 321              	 
+ 322 001e 80BD     	 pop {r7,pc}
+ 323              	 .cfi_endproc
+ 324              	.LFE181:
+ 326              	 .section .text.FOE_Error,"ax",%progbits
+ 327              	 .align 2
+ 328              	 .global FOE_Error
+ 329              	 .thumb
+ 330              	 .thumb_func
+ 332              	FOE_Error:
+ 333              	.LFB182:
+ 274:../SSC/Src/foeappl.c **** 
+ 275:../SSC/Src/foeappl.c **** /*ECATCHANGE_START(V5.12) FOE1*/
+ 276:../SSC/Src/foeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 277:../SSC/Src/foeappl.c **** /**
+ 278:../SSC/Src/foeappl.c ****  \param     errorCode    error code
+ 279:../SSC/Src/foeappl.c **** 
+ 280:../SSC/Src/foeappl.c ****  \brief    The function is called when a file transfer is aborted from the other station
+ 281:../SSC/Src/foeappl.c **** 
+ 282:../SSC/Src/foeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 283:../SSC/Src/foeappl.c **** 
+ 284:../SSC/Src/foeappl.c **** void FOE_Error(UINT32 errorCode)
+ 285:../SSC/Src/foeappl.c **** {
+ 334              	 .loc 1 285 0
+ 335              	 .cfi_startproc
+ 336              	 
+ 337              	 
+ 338 0000 80B5     	 push {r7,lr}
+ 339              	.LCFI25:
+ 340              	 .cfi_def_cfa_offset 8
+ 341              	 .cfi_offset 7,-8
+ 342              	 .cfi_offset 14,-4
+ 343 0002 82B0     	 sub sp,sp,#8
+ 344              	.LCFI26:
+ 345              	 .cfi_def_cfa_offset 16
+ 346 0004 00AF     	 add r7,sp,#0
+ 347              	.LCFI27:
+ 348              	 .cfi_def_cfa_register 7
+ 349 0006 7860     	 str r0,[r7,#4]
+ 286:../SSC/Src/foeappl.c ****     if (pAPPL_FoeError != NULL)
+ 350              	 .loc 1 286 0
+ 351 0008 054B     	 ldr r3,.L27
+ 352 000a 1B68     	 ldr r3,[r3]
+ 353 000c 002B     	 cmp r3,#0
+ 354 000e 03D0     	 beq .L25
+ 287:../SSC/Src/foeappl.c ****     {
+ 288:../SSC/Src/foeappl.c ****         pAPPL_FoeError(errorCode);
+ 355              	 .loc 1 288 0
+ 356 0010 034B     	 ldr r3,.L27
+ 357 0012 1B68     	 ldr r3,[r3]
+ 358 0014 7868     	 ldr r0,[r7,#4]
+ 359 0016 9847     	 blx r3
+ 360              	.L25:
+ 289:../SSC/Src/foeappl.c ****     }
+ 290:../SSC/Src/foeappl.c **** }
+ 361              	 .loc 1 290 0
+ 362 0018 0837     	 adds r7,r7,#8
+ 363              	.LCFI28:
+ 364              	 .cfi_def_cfa_offset 8
+ 365 001a BD46     	 mov sp,r7
+ 366              	.LCFI29:
+ 367              	 .cfi_def_cfa_register 13
+ 368              	 
+ 369 001c 80BD     	 pop {r7,pc}
+ 370              	.L28:
+ 371 001e 00BF     	 .align 2
+ 372              	.L27:
+ 373 0020 00000000 	 .word pAPPL_FoeError
+ 374              	 .cfi_endproc
+ 375              	.LFE182:
+ 377              	 .text
+ 378              	.Letext0:
+ 379              	 .file 2 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 380              	 .file 3 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 381              	 .file 4 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Include/core_cm4.h"
+ 382              	 .file 5 "../SSC/Src/ecatslv.h"
+ 383              	 .file 6 "../SSC/Src/ecatfoe.h"
+ 384              	 .file 7 "../SSC/Src/applInterface.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 foeappl.c
+    {standard input}:20     .text.FOE_Read:00000000 $t
+    {standard input}:25     .text.FOE_Read:00000000 FOE_Read
+    {standard input}:87     .text.FOE_Read:00000040 $d
+    {standard input}:93     .text.FOE_Write:00000000 $t
+    {standard input}:98     .text.FOE_Write:00000000 FOE_Write
+    {standard input}:155    .text.FOE_Write:00000038 $d
+    {standard input}:161    .text.FOE_Data:00000000 $t
+    {standard input}:166    .text.FOE_Data:00000000 FOE_Data
+    {standard input}:214    .text.FOE_Data:0000002c $d
+    {standard input}:219    .text.FOE_Ack:00000000 $t
+    {standard input}:224    .text.FOE_Ack:00000000 FOE_Ack
+    {standard input}:276    .text.FOE_Ack:00000034 $d
+    {standard input}:282    .text.FOE_Busy:00000000 $t
+    {standard input}:287    .text.FOE_Busy:00000000 FOE_Busy
+    {standard input}:327    .text.FOE_Error:00000000 $t
+    {standard input}:332    .text.FOE_Error:00000000 FOE_Error
+    {standard input}:373    .text.FOE_Error:00000020 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+pAPPL_FoeRead
+u16FoeMaxSendBlockSize
+FWUPDATE_StartDownload
+bBootMode
+FWUPDATE_Data
+pAPPL_FoeReadData
+pAPPL_FoeError

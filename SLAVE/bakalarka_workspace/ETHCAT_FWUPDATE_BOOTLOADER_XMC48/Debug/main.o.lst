@@ -1,0 +1,903 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "main.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.XMC_SCU_RESET_ClearDeviceResetReason,"ax",%progbits
+  20              	 .align 2
+  21              	 .thumb
+  22              	 .thumb_func
+  24              	XMC_SCU_RESET_ClearDeviceResetReason:
+  25              	.LFB162:
+  26              	 .file 1 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc/xmc_scu.h"
+   1:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+   2:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @file xmc_scu.h
+   3:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @date 2016-03-09
+   4:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+   5:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @cond
+   6:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+   7:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMClib v2.1.8 - XMC Peripheral Driver Library 
+   8:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+   9:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Copyright (c) 2015-2016, Infineon Technologies AG
+  10:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * All rights reserved.                        
+  11:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                                             
+  12:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * following conditions are met:   
+  14:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                                                                              
+  15:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * disclaimer.                        
+  17:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 
+  18:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 
+  21:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * products derived from this software without specific prior written permission.                  
+  23:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                                                                              
+  24:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                                                                              
+  32:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+  35:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  36:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Change History
+  37:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * --------------
+  38:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  39:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-02-20:
+  40:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Initial <br>
+  41:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  42:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-05-20:
+  43:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Documentation improved <br>
+  44:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - XMC_ASSERT() hanging issues have fixed for XMC4 devices. <br>
+  45:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  46:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-06-20:
+  47:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Removed version macros and declaration of GetDriverVersion API
+  48:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Removed STATIC_INLINE property for the below APIs and declared as void
+  49:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *       XMC_SCU_INTERRUPT_EnableEvent, XMC_SCU_INTERRUPT_DisableEvent,
+  50:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *       XMC_SCU_INTERRUPT_TriggerEvent, XMC_SCU_INTERUPT_GetEventStatus,
+  51:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *       XMC_SCU_INTERUPT_ClearEventStatus
+  52:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  53:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 2015-11-30:
+  54:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Documentation improved <br>
+  55:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *      
+  56:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * 2016-03-09:
+  57:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *     - Optimization of write only registers
+  58:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *      
+  59:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @endcond 
+  60:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  61:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+  62:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #ifndef XMC_SCU_H
+  63:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #define XMC_SCU_H
+  64:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  
+  65:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+  66:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * HEADER FILES
+  67:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+  68:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #include <xmc_common.h>
+  69:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+  70:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+  71:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @addtogroup XMClib XMC Peripheral Library
+  72:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @{
+  73:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+  74:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  
+  75:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+  76:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @addtogroup SCU
+  77:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @brief System Control Unit(SCU) driver for XMC microcontroller family.
+  78:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  79:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * System control unit is the SoC power, reset and a clock manager with additional responsibility o
+  80:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * providing system stability protection and other auxiliary functions.<br>
+  81:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * SCU provides the following features,
+  82:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Power control
+  83:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4 
+  84:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Hibernate control 
+  85:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+  86:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Reset control
+  87:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Clock control
+  88:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Miscellaneous control(boot mode, system interrupts etc.)<br><br>
+  89:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  90:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The SCU driver is divided in to clock control logic, reset control logic, system interrupt contr
+  91:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+  92:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * , hibernate control logic, trap control logic, parity control logic 
+  93:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+  94:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * and miscellaneous control logic.<br>
+  95:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+  96:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Clock driver features:
+  97:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows clock configuration using the structure XMC_SCU_CLOCK_CONFIG_t and API XMC_SCU_CLOCK_I
+  98:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+  99:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides structure XMC_SCU_CLOCK_SYSPLL_CONFIG_t for configuring the system PLL
+ 100:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of clock source for system PLL, XMC_SCU_CLOCK_GetSystemPllClockSource()
+ 101:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for configuring different module clock frequencies XMC_SCU_CLOCK_SetWdtClockDiv
+ 102:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of clock source for external output, XMC_SCU_CLOCK_SetExternalOutputClockSou
+ 103:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for enabling external high power oscillator and ultra low power oscillator, XMC
+ 104:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for getting various clock frequencies XMC_SCU_CLOCK_GetPeripheralClockFrequency
+ 105:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  XMC_SCU_CLOCK_GetCpuClockFrequency(), XMC_SCU_CLOCK_GetSystemClockFrequency()<br>
+ 106:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 107:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC1
+ 108:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of peripheral clock frequency, XMC_SCU_CLOCK_SetFastPeripheralClockSource()
+ 109:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides API to get the peripheral clock frequency, XMC_SCU_CLOCK_GetFastPeripheralClockFrequ
+ 110:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 111:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 112:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Reset driver features:
+ 113:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+ 114:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to handle peripheral reset XMC_SCU_RESET_AssertPeripheralReset(), XMC_SCU_RESET_Deasse
+ 115:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuration of NMI generation for selected events, XMC_SCU_INTERRUPT_EnableNmiReques
+ 116:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 117:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC1
+ 118:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to trigger device reset XMC_SCU_RESET_AssertMasterReset()
+ 119:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to configure multiple sources for reset, XMC_SCU_RESET_EnableResetRequest()
+ 120:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif <br>
+ 121:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 122:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Interrupt driver features:
+ 123:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides APIs for enabling/ disabling interrupt event generation XMC_SCU_INTERRUPT_EnableEven
+ 124:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  XMC_SCU_INTERRUPT_DisableEvent()
+ 125:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides API for registering callback function for events XMC_SCU_INTERRUPT_SetEventHandler()
+ 126:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 127:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+ 128:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Hibernate driver features:
+ 129:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuration of hibernate domain XMC_SCU_HIB_EnableHibernateDomain(), XMC_SCU_HIB_Dis
+ 130:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of standby clock source, XMC_SCU_HIB_SetStandbyClockSource()
+ 131:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows selection of RTC clock source, XMC_SCU_HIB_SetRtcClockSource()
+ 132:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Provides API for enabling slow internal clock used for backup clock, XMC_SCU_HIB_EnableIntern
+ 133:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 134:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Trap driver features:
+ 135:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows handling of trap XMC_SCU_TRAP_Enable(), XMC_SCU_TRAP_GetStatus(), XMC_SCU_TRAP_Trigger
+ 136:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 137:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Parity driver features:
+ 138:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Parity error generated by on-chip RAM can be monitored, XMC_SCU_PARITY_Enable(), XMC_SCU_PARI
+ 139:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuration of trap generation on detection of parity error, XMC_SCU_PARITY_EnableTr
+ 140:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 141:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Power driver features:
+ 142:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to power the USB module XMC_SCU_POWER_EnableUsb(), XMC_SCU_POWER_DisableUsb()
+ 143:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 144:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 145:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Miscellaneous features:
+ 146:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows to trigger multiple capture compare unit(CCU) channels to be started together XMC_SCU_
+ 147:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC4
+ 148:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of out of range comparator (ORC) XMC_SCU_EnableOutOfRangeComparator()
+ 149:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of die temperature sensor XMC_SCU_EnableTemperatureSensor(), XMC_SCU_Ca
+ 150:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of device boot mode XMC_SCU_SetBootMode()<br>
+ 151:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 152:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \if XMC1
+ 153:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Enables configuration of die temperature sensor XMC_SCU_StartTempMeasurement(), XMC_SCU_SetRa
+ 154:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows configuring supply monitor unit using the structure XMC_SCU_SUPPLYMONITOR_t and API XM
+ 155:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * -# Allows handling of protected bits XMC_SCU_LockProtectedBits(), XMC_SCU_UnlockProtectedBits()<
+ 156:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  \endif
+ 157:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @{
+ 158:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 159:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  
+ 160:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 161:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * MACROS
+ 162:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 163:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 164:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 165:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * ENUMS
+ 166:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 167:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 168:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *  Defines the status of SCU API execution, used to verify the SCU related API calls.
+ 169:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 170:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** typedef enum XMC_SCU_STATUS 
+ 171:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 172:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   XMC_SCU_STATUS_OK   = 0UL, /**< SCU related operation successfully completed.*/
+ 173:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   XMC_SCU_STATUS_ERROR,      /**< SCU related operation failed. When API cannot fulfill request, th
+ 174:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   XMC_SCU_STATUS_BUSY,       /**< Cannot execute the SCU related operation request because
+ 175:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****                                   another operation is in progress. \a XMC_SCU_STATUS_BUSY is retur
+ 176:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****                                   processing another request. */
+ 177:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** } XMC_SCU_STATUS_t;
+ 178:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 179:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 180:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 181:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * DATA TYPES
+ 182:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 183:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 184:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 185:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Function pointer type used for registering callback functions on SCU event occurrence.
+ 186:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 187:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** typedef void (*XMC_SCU_INTERRUPT_EVENT_HANDLER_t)(void);
+ 188:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 189:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 190:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * DEVICE EXTENSIONS
+ 191:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 192:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 193:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #if (UC_FAMILY == XMC1)
+ 194:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #include <xmc1_scu.h>
+ 195:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #elif (UC_FAMILY == XMC4)
+ 196:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #include <xmc4_scu.h>
+ 197:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #else
+ 198:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #error "Unspecified chipset"
+ 199:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #endif
+ 200:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 201:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**************************************************************************************************
+ 202:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * API Prototypes
+ 203:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  **************************************************************************************************
+ 204:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 205:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #ifdef __cplusplus
+ 206:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** extern "C" {
+ 207:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** #endif
+ 208:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 209:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 210:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 211:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 212:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param trigger    CCU slices to be triggered synchronously via software. The value is a bitmask 
+ 213:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                    in the register CCUCON. <br>
+ 214:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                    \b Range: Use type @ref XMC_SCU_CCU_TRIGGER_t for bitmask of individual CCU s
+ 215:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                    combined using \a OR operation.
+ 216:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 217:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 218:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 219:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 220:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Generates active edge(low to high) trigger for multiple CCU units at the same time.\n\n
+ 221:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Before executing this API, all the required CCU timers should configure external start.
+ 222:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The edge of the start signal should be selected as active edge.
+ 223:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The input signal for the CCU slice should be selected as SCU input.
+ 224:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The above mentioned configurations can be made using the CCU LLD API XMC_CCU4_SLICE_StartConfig(
+ 225:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * CCU timer slice should be started using XMC_CCU4_SLICE_StartTimer() before triggering 
+ 226:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * the timer using this API.<BR>
+ 227:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 228:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_CCU4_SLICE_StartConfig(), XMC_CCU4_SLICE_SetInput(), XMC_SCU_SetCcuTriggerLow()\n\n\n
+ 229:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 230:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE void XMC_SCU_SetCcuTriggerHigh(const uint32_t trigger)
+ 231:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 232:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   SCU_GENERAL->CCUCON |= (uint32_t)trigger;
+ 233:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** }
+ 234:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 235:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 236:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 237:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param trigger  CCU slices to be triggered synchronously via software. The value is a bitmask of
+ 238:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                    in the register CCUCON. <br>
+ 239:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                    \b Range: Use type @ref XMC_SCU_CCU_TRIGGER_t for bitmask of individual CCU s
+ 240:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                    combined using \a OR operation.
+ 241:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 242:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 243:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 244:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 245:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Generates passive edge(high to low) trigger for multiple CCU units at the same time.\n\n
+ 246:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Before executing this API, all the required CCU timers should configure external start.
+ 247:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The edge of the start signal should be selected as passive edge.
+ 248:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The input signal for the CCU slice should be selected as SCU input.
+ 249:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The above mentioned configurations can be made using the CCU LLD API XMC_CCU4_SLICE_StartConfig(
+ 250:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * CCU timer slice should be started using XMC_CCU4_SLICE_StartTimer() before triggering 
+ 251:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * the timer using this API.<BR>
+ 252:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 253:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_CCU4_SLICE_StartConfig(), XMC_CCU4_SLICE_SetInput(), XMC_SCU_SetCcuTriggerHigh()\n\n\n
+ 254:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 255:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE void XMC_SCU_SetCcuTriggerLow(const uint32_t trigger)
+ 256:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 257:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   SCU_GENERAL->CCUCON &= (uint32_t)~trigger;
+ 258:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** }
+ 259:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 260:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 261:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 262:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param config Pointer to structure holding the clock prescaler values and divider values for 
+ 263:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                configuring clock generators and clock tree.\n
+ 264:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                \b Range: Configure the members of structure @ref XMC_SCU_CLOCK_CONFIG_t for vari
+ 265:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                parameters of clock setup.
+ 266:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 267:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 268:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 269:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 270:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Initializes clock generators and clock tree.\n\n
+ 271:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC1
+ 272:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Peripheral clock and system clock are configured based on the input configuration \a config.
+ 273:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The system clock frequency is tuned by configuring the FDIV and IDIV values of CLKCR register.
+ 274:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The values of FDIV and IDIV can be provided as part of input configuration.
+ 275:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The PCLK divider determines the ratio of peripheral clock to the system clock. 
+ 276:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The source of RTC clock is set based on the input configuration. 
+ 277:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \a SystemCoreClock variable will be updated with the value of
+ 278:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * system clock frequency. Access to protected bit fields are handled internally.
+ 279:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
+ 280:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \if XMC4
+ 281:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Enables the high precision oscillator(fOHP) input and configures the system and peripheral clock
+ 282:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Based on the system clock source selected in \a config, either fPLL or fOFI will be chosen as sy
+ 283:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Based on PLL mode(normal or prescaler mode) used, PLL ramps up in steps to achieve target freque
+ 284:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The clock dividers for CPU, CCU and peripheral clocks will be set based on the input configurati
+ 285:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The \a SystemCoreClock variable is set with the value of system clock frequency.
+ 286:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \endif
+ 287:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 288:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_CLOCK_GetPeripheralClockFrequency(), XMC_SCU_CLOCK_GetCpuClockFrequency() \n\n\n
+ 289:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 290:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_CLOCK_Init(const XMC_SCU_CLOCK_CONFIG_t *const config);
+ 291:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 292:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 293:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 294:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event  Bit mask of the event to enable. \b Range: Use type @ref XMC_SCU_INTERRUPT_EVENT_t
+ 295:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
+ 296:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 297:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 298:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 299:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 300:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Enables the generation of interrupt for the input events.\n\n
+ 301:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The events are enabled by setting the respective bit fields in the SRMSK register. \n
+ 302:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Note: User should separately enable the NVIC node responsible for handling the SCU interrupt.
+ 303:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The interrupt will be generated when the respective event occurs.
+ 304:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 305:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * NVIC_EnableIRQ(), XMC_SCU_INTERRUPT_DisableEvent()\n\n\n
+ 306:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 307:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_EnableEvent(const XMC_SCU_INTERRUPT_EVENT_t event);
+ 308:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 309:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 310:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 311:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 312:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event  Bit mask of the event to disable. \b Range: Use type @ref XMC_SCU_INTERRUPT_EVENT_
+ 313:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
+ 314:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 315:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 316:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 317:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 318:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Disables generation of interrupt on occurrence of the input event.\n\n
+ 319:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The events are disabled by resetting the respective bit fields in the SRMSK register. \n
+ 320:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 321:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * NVIC_DisableIRQ(), XMC_SCU_INTERRUPT_EnableEvent()\n\n\n
+ 322:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 323:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_DisableEvent(const XMC_SCU_INTERRUPT_EVENT_t event);
+ 324:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 325:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 326:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 327:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event Bit mask of the event to be triggered. \b Range: Use type @ref XMC_SCU_INTERRUPT_EV
+ 328:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
+ 329:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 330:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 331:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 332:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 333:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Triggers the event as if the hardware raised it.\n\n
+ 334:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Event will be triggered by setting the respective bitfield in the SRSET register.\n
+ 335:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Note: User should enable the NVIC node that handles the respective event for interrupt generatio
+ 336:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 337:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * NVIC_EnableIRQ(), XMC_SCU_INTERUPT_GetEventStatus(), XMC_SCU_INTERRUPT_ClearEventStatus() \n\n\n
+ 338:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 339:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_TriggerEvent(const XMC_SCU_INTERRUPT_EVENT_t  event);
+ 340:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 341:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 342:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return uint32_t  Status of the SCU events.
+ 343:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 344:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 345:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the status of all SCU events.\n\n
+ 346:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The status is read from the SRRAW register. To check the status of a particular 
+ 347:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * event, the returned value should be masked with the bit mask of the event. The bitmask
+ 348:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * of events can be obtained using the type @ref XMC_SCU_INTERRUPT_EVENT_t. Multiple events'
+ 349:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * status can be checked by combining the bit masks using \a OR operation. 
+ 350:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * After detecting the event, the event status should be cleared using software to detect the event
+ 351:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 352:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_INTERRUPT_ClearEventStatus(), XMC_SCU_INTERRUPT_TriggerEvent(), XMC_SCU_INTERRUPT_SetEve
+ 353:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 354:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** XMC_SCU_INTERRUPT_EVENT_t XMC_SCU_INTERUPT_GetEventStatus(void);
+ 355:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 356:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 357:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 358:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @param event  Bit mask of the events to clear. \b Range: Use type @ref XMC_SCU_INTERRUPT_EVENT_t
+ 359:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *                for providing the input value. Multiple events can be combined using the \a OR op
+ 360:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 361:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None
+ 362:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 363:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 364:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Clears the event status bit in SRRAW register.\n\n
+ 365:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The events are cleared by writing value 1 to their bit positions in the SRCLR register.
+ 366:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The API can be used when polling method is used. After detecting the event, the event status
+ 367:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * should be cleared using software to detect the event again.
+ 368:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 369:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 370:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_INTERUPT_GetEventStatus(), XMC_SCU_INTERRUPT_TriggerEvent() \n\n\n
+ 371:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 372:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** void XMC_SCU_INTERRUPT_ClearEventStatus(const XMC_SCU_INTERRUPT_EVENT_t event);
+ 373:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** 
+ 374:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 375:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 376:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return uint32_t  Status representing the reason for device reset.
+ 377:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 378:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 379:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Provides the value representing the reason for device reset.\n\n
+ 380:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The return value is an encoded word, which can indicate multiple reasons for the last reset. Eac
+ 381:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * returned word is representative of a last reset cause. The returned value should be appropriatel
+ 382:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * the cause of reset. 
+ 383:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * The cause of the last reset gets automatically stored in 
+ 384:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * the \a SCU_RSTSTAT register. The reset status shall be reset after each
+ 385:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * startup in order to ensure consistent source indication after the next reset.
+ 386:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \b Range: The type @ref XMC_SCU_RESET_REASON_t can be used to get the bit masks of the reset cau
+ 387:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 388:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 389:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_RESET_ClearDeviceResetReason() \n\n\n
+ 390:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 391:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE uint32_t XMC_SCU_RESET_GetDeviceResetReason(void)
+ 392:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** {
+ 393:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   return ((SCU_RESET->RSTSTAT) & SCU_RESET_RSTSTAT_RSTSTAT_Msk);
+ 394:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** }
+ 395:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** /**
+ 396:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * @return None 
+ 397:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 398:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Description</b><br>
+ 399:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Clears the reset reason bits in the reset status register. \n\n
+ 400:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * Clearing of the reset status information in the \a SCU_RSTSTAT register via register bit \a RSTC
+ 401:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * recommended to ensure a clear indication of the cause of next reset.
+ 402:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  *
+ 403:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * \par<b>Related APIs:</b><BR>
+ 404:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  * XMC_SCU_RESET_GetDeviceResetReason() \n\n\n
+ 405:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****  */
+ 406:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** __STATIC_INLINE void XMC_SCU_RESET_ClearDeviceResetReason(void)
+ 407:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** {
+  27              	 .loc 1 407 0
+  28              	 .cfi_startproc
+  29              	 
+  30              	 
+  31              	 
+  32 0000 80B4     	 push {r7}
+  33              	.LCFI0:
+  34              	 .cfi_def_cfa_offset 4
+  35              	 .cfi_offset 7,-4
+  36 0002 00AF     	 add r7,sp,#0
+  37              	.LCFI1:
+  38              	 .cfi_def_cfa_register 7
+ 408:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   /* Clear RSTSTAT.RSTSTAT bitfield */
+ 409:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h ****   SCU_RESET->RSTCLR = (uint32_t)SCU_RESET_RSTCLR_RSCLR_Msk;
+  39              	 .loc 1 409 0
+  40 0004 034B     	 ldr r3,.L2
+  41 0006 0122     	 movs r2,#1
+  42 0008 9A60     	 str r2,[r3,#8]
+ 410:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc\xmc_scu.h **** }
+  43              	 .loc 1 410 0
+  44 000a BD46     	 mov sp,r7
+  45              	.LCFI2:
+  46              	 .cfi_def_cfa_register 13
+  47              	 
+  48 000c 5DF8047B 	 ldr r7,[sp],#4
+  49              	.LCFI3:
+  50              	 .cfi_restore 7
+  51              	 .cfi_def_cfa_offset 0
+  52 0010 7047     	 bx lr
+  53              	.L3:
+  54 0012 00BF     	 .align 2
+  55              	.L2:
+  56 0014 00440050 	 .word 1342194688
+  57              	 .cfi_endproc
+  58              	.LFE162:
+  60              	 .section .flash_abm,"a",%progbits
+  61              	 .align 2
+  64              	ABM0_Header:
+  65 0000 0FE1C3A5 	 .word -1513889521
+  66 0004 00000208 	 .word 134348800
+  67 0008 FFFFFFFF 	 .word -1
+  68 000c FFFFFFFF 	 .word -1
+  69 0010 633142EF 	 .word -280874653
+  70              	 .section .text.BL_FlashABM0_Restart,"ax",%progbits
+  71              	 .align 2
+  72              	 .global BL_FlashABM0_Restart
+  73              	 .thumb
+  74              	 .thumb_func
+  76              	BL_FlashABM0_Restart:
+  77              	.LFB189:
+  78              	 .file 2 "../main.c"
+   1:../main.c     **** /******************************************************************************
+   2:../main.c     **** * Software License Agreement
+   3:../main.c     **** *
+   4:../main.c     **** * Copyright (c) 2016, Infineon Technologies AG
+   5:../main.c     **** * All rights reserved.
+   6:../main.c     **** *
+   7:../main.c     **** * Redistribution and use in source and binary forms, with or without
+   8:../main.c     **** * modification, are permitted provided that the following conditions are met:
+   9:../main.c     **** *
+  10:../main.c     **** * Redistributions of source code must retain the above copyright notice,
+  11:../main.c     **** * this list of conditions and the following disclaimer.
+  12:../main.c     **** *
+  13:../main.c     **** * Redistributions in binary form must reproduce the above copyright notice,
+  14:../main.c     **** * this list of conditions and the following disclaimer in the documentation
+  15:../main.c     **** * and/or other materials provided with the distribution.
+  16:../main.c     **** *
+  17:../main.c     **** * Neither the name of the copyright holders nor the names of its contributors
+  18:../main.c     **** * may be used to endorse or promote products derived from this software
+  19:../main.c     **** * without specific prior written permission
+  20:../main.c     **** 
+  21:../main.c     **** * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:../main.c     **** * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:../main.c     **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:../main.c     **** * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+  25:../main.c     **** * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:../main.c     **** * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:../main.c     **** * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:../main.c     **** * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:../main.c     **** * CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:../main.c     **** * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:../main.c     **** * POSSIBILITY OF SUCH DAMAGE.
+  32:../main.c     **** *
+  33:../main.c     **** * To improve the quality of the software, users are encouraged to share
+  34:../main.c     **** * modifications, enhancements or bug fixes with Infineon Technologies AG
+  35:../main.c     **** * (dave@infineon.com).
+  36:../main.c     **** *
+  37:../main.c     **** *****************************************************************************/
+  38:../main.c     **** 
+  39:../main.c     **** /****************************************************************
+  40:../main.c     **** * HEADER FILES
+  41:../main.c     **** ***************************************************************/
+  42:../main.c     **** #include <DAVE.h>                 //Declarations from DAVE Code Generation (includes SFR declaratio
+  43:../main.c     **** #include "xmc_scu.h"
+  44:../main.c     **** #include "xmc_gpio.h"
+  45:../main.c     **** #include "flashprog.h"
+  46:../main.c     **** 
+  47:../main.c     **** /****************************************************************
+  48:../main.c     **** * MACROS AND DEFINES
+  49:../main.c     **** ***************************************************************/
+  50:../main.c     **** /** MagicKey value for \ref ABM_Header_t. see */
+  51:../main.c     **** #define ABM_HEADER_MAGIC_KEY 0xA5C3E10F
+  52:../main.c     **** /* start address of back up buffer (@1MByte)*/
+  53:../main.c     **** #define START_ADDRESS_BACKUP_PARTITION       (uint32_t*)0x0C100000
+  54:../main.c     **** /* start address of application buffer
+  55:../main.c     ****  * (@128kByte after bootloader(64k) and EEPROM(64k)*/
+  56:../main.c     **** #define START_ADDRESS_APP_PARTITION          (uint32_t*)0x0C020000
+  57:../main.c     **** /* first 128KByte is occupied by bootlader */
+  58:../main.c     **** #define APP_PARTITION_MAX_SIZE               (1024 * 1024 - 128 * 1024)
+  59:../main.c     **** /* backup space including meta-info space */
+  60:../main.c     **** #define BACKUP_PARTITION_MAX_SIZE            (1024 * 1024)
+  61:../main.c     **** /* offset to backup start address
+  62:../main.c     ****  * of page to store file size inside backup */
+  63:../main.c     **** #define METAINFO_OFFSET                      (1024 * 1024 - 256)
+  64:../main.c     **** 
+  65:../main.c     **** /**
+  66:../main.c     ****  * \brief Alternative Boot Mode structure
+  67:../main.c     ****  *
+  68:../main.c     ****  * This structure is used by ABM0, ABM1 and PSRAM boot mode. If the code is
+  69:../main.c     ****  * scattered in non conious memory regions, the CRC check of the application
+  70:../main.c     ****  * code can be disabled with setting \ref Length and \ref ApplicationCRC32
+  71:../main.c     ****  * to 0xFFFFFFFF. To calculate the HeaderCRC32 the following code could be used:
+  72:../main.c     ****  * \code{.c}
+  73:../main.c     ****  * SCU_RESET->PRCLR2 = SCU_RESET_PRCLR2_FCERS_Msk;
+  74:../main.c     ****  * while((SCU_RESET->PRSTAT2 & SCU_RESET_PRSTAT2_FCERS_Msk));
+  75:../main.c     ****  * FCE->CLC = 0;
+  76:../main.c     ****  * while((FCE->CLC & FCE_CLC_DISS_Msk));
+  77:../main.c     ****  * FCE_KE0->CFG = 0;
+  78:../main.c     ****  * FCE_KE0->CRC = 0;
+  79:../main.c     ****  * FCE_KE0->IR = *((uint32_t*)0x0C00FFE0);
+  80:../main.c     ****  * FCE_KE0->IR = *((uint32_t*)(0x0C00FFE0+4));
+  81:../main.c     ****  * FCE_KE0->IR = *((uint32_t*)(0x0C00FFE0+8));
+  82:../main.c     ****  * FCE_KE0->IR = *((uint32_t*)(0x0C00FFE0+12));
+  83:../main.c     ****  * uint32_t HeaderCRC32 = FCE_KE0->RES;
+  84:../main.c     ****  * \endcode
+  85:../main.c     ****  */
+  86:../main.c     **** typedef struct ABM_Header {
+  87:../main.c     ****   uint32_t MagicKey; /**< Magic key. Always 0xA5C3E10F */
+  88:../main.c     ****   uint32_t StartAddress; /**< Start address of the programm to load */
+  89:../main.c     ****   uint32_t Length; /**< Length of the programm to load. */
+  90:../main.c     ****   uint32_t ApplicationCRC32; /**< CRC32 Sum of the complete application code */
+  91:../main.c     ****   uint32_t HeaderCRC32; /**< CRC32 Sum of the four fields before */
+  92:../main.c     **** } ABM_Header_t;
+  93:../main.c     **** 
+  94:../main.c     **** /****************************************************************
+  95:../main.c     **** * LOCAL DATA
+  96:../main.c     **** ***************************************************************/
+  97:../main.c     **** static const ABM_Header_t  __attribute__((section(".flash_abm")))
+  98:../main.c     **** ABM0_Header = {
+  99:../main.c     ****   .MagicKey = ABM_HEADER_MAGIC_KEY,
+ 100:../main.c     ****   .StartAddress = 0x08020000,  /* Start Flash Physical Sector 1 */
+ 101:../main.c     ****   .Length = 0xFFFFFFFF,
+ 102:../main.c     ****   .ApplicationCRC32 = 0xFFFFFFFF,
+ 103:../main.c     ****   .HeaderCRC32 =  0xEF423163
+ 104:../main.c     **** };
+ 105:../main.c     **** 
+ 106:../main.c     **** /****************************************************************
+ 107:../main.c     **** * API PROTOTYPES
+ 108:../main.c     **** ***************************************************************/
+ 109:../main.c     **** 
+ 110:../main.c     **** /****************************************************************
+ 111:../main.c     **** * API IMPLEMENTATION
+ 112:../main.c     **** ***************************************************************/
+ 113:../main.c     **** void BL_FlashABM0_Restart(void)
+ 114:../main.c     **** {
+  79              	 .loc 2 114 0
+  80              	 .cfi_startproc
+  81              	 
+  82              	 
+  83 0000 80B5     	 push {r7,lr}
+  84              	.LCFI4:
+  85              	 .cfi_def_cfa_offset 8
+  86              	 .cfi_offset 7,-8
+  87              	 .cfi_offset 14,-4
+  88 0002 00AF     	 add r7,sp,#0
+  89              	.LCFI5:
+  90              	 .cfi_def_cfa_register 7
+ 115:../main.c     ****   /* Restart in alternative bootmode 0 */
+ 116:../main.c     ****   /* Clear the reset cause field for proper reset detection of the ssw */
+ 117:../main.c     ****   XMC_SCU_RESET_ClearDeviceResetReason();
+  91              	 .loc 2 117 0
+  92 0004 FFF7FEFF 	 bl XMC_SCU_RESET_ClearDeviceResetReason
+ 118:../main.c     ****   /* Set ABM0 as boot mode in SWCON field of STCON register */
+ 119:../main.c     ****   XMC_SCU_SetBootMode(XMC_SCU_BOOTMODE_ABM0);
+  93              	 .loc 2 119 0
+  94 0008 4FF40060 	 mov r0,#2048
+  95 000c FFF7FEFF 	 bl XMC_SCU_SetBootMode
+ 120:../main.c     ****   /* Trigger power on reset */
+ 121:../main.c     ****   PPB->AIRCR = 1 << PPB_AIRCR_SYSRESETREQ_Pos
+  96              	 .loc 2 121 0
+  97 0010 4FF0E023 	 mov r3,#-536813568
+  98 0014 014A     	 ldr r2,.L5
+  99 0016 C3F80C2D 	 str r2,[r3,#3340]
+ 122:../main.c     **** 		            |0x5FA<<PPB_AIRCR_VECTKEY_Pos
+ 123:../main.c     **** 					| 0x1 << PPB_AIRCR_PRIGROUP_Pos;
+ 124:../main.c     **** }
+ 100              	 .loc 2 124 0
+ 101 001a 80BD     	 pop {r7,pc}
+ 102              	.L6:
+ 103              	 .align 2
+ 104              	.L5:
+ 105 001c 0401FA05 	 .word 100270340
+ 106              	 .cfi_endproc
+ 107              	.LFE189:
+ 109              	 .section .text.BL_Normal_Restart,"ax",%progbits
+ 110              	 .align 2
+ 111              	 .global BL_Normal_Restart
+ 112              	 .thumb
+ 113              	 .thumb_func
+ 115              	BL_Normal_Restart:
+ 116              	.LFB190:
+ 125:../main.c     **** 
+ 126:../main.c     **** void BL_Normal_Restart(void)
+ 127:../main.c     **** {
+ 117              	 .loc 2 127 0
+ 118              	 .cfi_startproc
+ 119              	 
+ 120              	 
+ 121 0000 80B5     	 push {r7,lr}
+ 122              	.LCFI6:
+ 123              	 .cfi_def_cfa_offset 8
+ 124              	 .cfi_offset 7,-8
+ 125              	 .cfi_offset 14,-4
+ 126 0002 00AF     	 add r7,sp,#0
+ 127              	.LCFI7:
+ 128              	 .cfi_def_cfa_register 7
+ 128:../main.c     ****   /* Restart in alternative bootmode 0 */
+ 129:../main.c     ****   /* Clear the reset cause field for proper reset detection of the ssw */
+ 130:../main.c     ****   XMC_SCU_RESET_ClearDeviceResetReason();
+ 129              	 .loc 2 130 0
+ 130 0004 FFF7FEFF 	 bl XMC_SCU_RESET_ClearDeviceResetReason
+ 131:../main.c     ****   /* Set ABM0 as boot mode in SWCON field of STCON register */
+ 132:../main.c     ****   XMC_SCU_SetBootMode(XMC_SCU_BOOTMODE_NORMAL);
+ 131              	 .loc 2 132 0
+ 132 0008 0020     	 movs r0,#0
+ 133 000a FFF7FEFF 	 bl XMC_SCU_SetBootMode
+ 133:../main.c     ****   /* Trigger power on reset */
+ 134:../main.c     ****   PPB->AIRCR = 1 << PPB_AIRCR_SYSRESETREQ_Pos
+ 134              	 .loc 2 134 0
+ 135 000e 4FF0E023 	 mov r3,#-536813568
+ 136 0012 024A     	 ldr r2,.L8
+ 137 0014 C3F80C2D 	 str r2,[r3,#3340]
+ 135:../main.c     **** 		            |0x5FA<<PPB_AIRCR_VECTKEY_Pos
+ 136:../main.c     **** 					| 0x1 << PPB_AIRCR_PRIGROUP_Pos;
+ 137:../main.c     **** }
+ 138              	 .loc 2 137 0
+ 139 0018 80BD     	 pop {r7,pc}
+ 140              	.L9:
+ 141 001a 00BF     	 .align 2
+ 142              	.L8:
+ 143 001c 0401FA05 	 .word 100270340
+ 144              	 .cfi_endproc
+ 145              	.LFE190:
+ 147              	 .section .text.main,"ax",%progbits
+ 148              	 .align 2
+ 149              	 .global main
+ 150              	 .thumb
+ 151              	 .thumb_func
+ 153              	main:
+ 154              	.LFB191:
+ 138:../main.c     **** 
+ 139:../main.c     **** /**
+ 140:../main.c     **** 
+ 141:../main.c     ****  * @brief main() - Application entry point
+ 142:../main.c     ****  *
+ 143:../main.c     ****  * Initializes the DAVE(TM) subsystem, LEDs and USB device stack. Processing of the USB stack.
+ 144:../main.c     ****  */
+ 145:../main.c     **** uint32_t main(void)
+ 146:../main.c     **** {
+ 155              	 .loc 2 146 0
+ 156              	 .cfi_startproc
+ 157              	 
+ 158              	 
+ 159 0000 80B5     	 push {r7,lr}
+ 160              	.LCFI8:
+ 161              	 .cfi_def_cfa_offset 8
+ 162              	 .cfi_offset 7,-8
+ 163              	 .cfi_offset 14,-4
+ 164 0002 82B0     	 sub sp,sp,#8
+ 165              	.LCFI9:
+ 166              	 .cfi_def_cfa_offset 16
+ 167 0004 00AF     	 add r7,sp,#0
+ 168              	.LCFI10:
+ 169              	 .cfi_def_cfa_register 7
+ 147:../main.c     ****   uint32_t firmware_size_bytes;
+ 148:../main.c     ****   uint32_t* ptr_backupdata = 0;
+ 170              	 .loc 2 148 0
+ 171 0006 0023     	 movs r3,#0
+ 172 0008 7B60     	 str r3,[r7,#4]
+ 149:../main.c     ****   firmware_size_bytes = (START_ADDRESS_BACKUP_PARTITION + METAINFO_OFFSET / 4)[63];
+ 173              	 .loc 2 149 0
+ 174 000a 234B     	 ldr r3,.L16
+ 175 000c 1B68     	 ldr r3,[r3]
+ 176 000e 3B60     	 str r3,[r7]
+ 150:../main.c     **** 
+ 151:../main.c     ****   /* check metainfo if firmware for update is available inside backup partition */
+ 152:../main.c     ****   if ( (firmware_size_bytes > 0) && (firmware_size_bytes < APP_PARTITION_MAX_SIZE) )
+ 177              	 .loc 2 152 0
+ 178 0010 3B68     	 ldr r3,[r7]
+ 179 0012 002B     	 cmp r3,#0
+ 180 0014 25D0     	 beq .L11
+ 181              	 .loc 2 152 0 is_stmt 0 discriminator 1
+ 182 0016 3B68     	 ldr r3,[r7]
+ 183 0018 B3F5602F 	 cmp r3,#917504
+ 184 001c 21D2     	 bcs .L11
+ 153:../main.c     ****   {
+ 154:../main.c     ****     /* metainfo indicates a new firmware is available inside backup partition */
+ 155:../main.c     ****     /* check CRC32 of firmware inside backup partition */
+ 156:../main.c     ****     if (FLASHPROG_CRC32_check(START_ADDRESS_BACKUP_PARTITION,
+ 185              	 .loc 2 156 0 is_stmt 1
+ 186 001e 4FF04160 	 mov r0,#202375168
+ 187 0022 3968     	 ldr r1,[r7]
+ 188 0024 FFF7FEFF 	 bl FLASHPROG_CRC32_check
+ 189 0028 0346     	 mov r3,r0
+ 190 002a 002B     	 cmp r3,#0
+ 191 002c 19D1     	 bne .L11
+ 157:../main.c     ****     		                  firmware_size_bytes) == FLASH_OK)
+ 158:../main.c     ****     {
+ 159:../main.c     ****       /* CRC32 of backup partition is OK - start programming */
+ 160:../main.c     **** 
+ 161:../main.c     ****       /* program new firmware into application partition */
+ 162:../main.c     ****       FLASHPROG_Init(START_ADDRESS_APP_PARTITION,
+ 192              	 .loc 2 162 0
+ 193 002e 1B48     	 ldr r0,.L16+4
+ 194 0030 4FF46021 	 mov r1,#917504
+ 195 0034 6422     	 movs r2,#100
+ 196 0036 C823     	 movs r3,#200
+ 197 0038 FFF7FEFF 	 bl FLASHPROG_Init
+ 163:../main.c     ****                      APP_PARTITION_MAX_SIZE,
+ 164:../main.c     ****                      FLASH_OPT_ERASE,
+ 165:../main.c     ****                      FLASH_OPT_CHECK);
+ 166:../main.c     ****       FLASHPROG_Data(START_ADDRESS_BACKUP_PARTITION, firmware_size_bytes);
+ 198              	 .loc 2 166 0
+ 199 003c 4FF04160 	 mov r0,#202375168
+ 200 0040 3968     	 ldr r1,[r7]
+ 201 0042 FFF7FEFF 	 bl FLASHPROG_Data
+ 167:../main.c     ****       FLASHPROG_Close();
+ 202              	 .loc 2 167 0
+ 203 0046 FFF7FEFF 	 bl FLASHPROG_Close
+ 168:../main.c     **** 
+ 169:../main.c     ****       /* delete EEPROM content (2nd 64k sector) */
+ 170:../main.c     ****       FLASHPROG_Delete_physical_sector(XMC_FLASH_PHY_SECTOR_4);
+ 204              	 .loc 2 170 0
+ 205 004a 1548     	 ldr r0,.L16+8
+ 206 004c FFF7FEFF 	 bl FLASHPROG_Delete_physical_sector
+ 171:../main.c     **** 
+ 172:../main.c     ****       /* Check CRC32 of firmware inside application partition*/
+ 173:../main.c     ****       if (FLASHPROG_CRC32_check(START_ADDRESS_APP_PARTITION,
+ 207              	 .loc 2 173 0
+ 208 0050 1248     	 ldr r0,.L16+4
+ 209 0052 3968     	 ldr r1,[r7]
+ 210 0054 FFF7FEFF 	 bl FLASHPROG_CRC32_check
+ 211 0058 0346     	 mov r3,r0
+ 212 005a 002B     	 cmp r3,#0
+ 213 005c 01D0     	 beq .L11
+ 174:../main.c     ****     		                          firmware_size_bytes) != FLASH_OK)
+ 175:../main.c     ****       {
+ 176:../main.c     ****         /* Restart to retry programming */
+ 177:../main.c     ****         BL_Normal_Restart();
+ 214              	 .loc 2 177 0
+ 215 005e FFF7FEFF 	 bl BL_Normal_Restart
+ 216              	.L11:
+ 178:../main.c     ****       }
+ 179:../main.c     ****       /* OK - new firmware was successfully programmed into application partition */
+ 180:../main.c     ****     }
+ 181:../main.c     ****   }
+ 182:../main.c     **** 
+ 183:../main.c     ****   /* CRC32 checked software from backup partition was just successfully programmed
+ 184:../main.c     ****    * into application partition.
+ 185:../main.c     ****    * In any case, make sure backup partition is erased before restarting firmware inside
+ 186:../main.c     ****    * application partition.
+ 187:../main.c     ****    */
+ 188:../main.c     ****   ptr_backupdata = START_ADDRESS_BACKUP_PARTITION;
+ 217              	 .loc 2 188 0
+ 218 0062 4FF04163 	 mov r3,#202375168
+ 219 0066 7B60     	 str r3,[r7,#4]
+ 189:../main.c     ****   while(ptr_backupdata<START_ADDRESS_BACKUP_PARTITION + BACKUP_PARTITION_MAX_SIZE / 4)
+ 220              	 .loc 2 189 0
+ 221 0068 0AE0     	 b .L12
+ 222              	.L14:
+ 190:../main.c     ****   {
+ 191:../main.c     ****     /* is erase needed? */
+ 192:../main.c     ****     if (*ptr_backupdata!=0)
+ 223              	 .loc 2 192 0
+ 224 006a 7B68     	 ldr r3,[r7,#4]
+ 225 006c 1B68     	 ldr r3,[r3]
+ 226 006e 002B     	 cmp r3,#0
+ 227 0070 03D0     	 beq .L13
+ 193:../main.c     ****     {
+ 194:../main.c     ****       /* erase backup partition */
+ 195:../main.c     ****       FLASHPROG_Delete_physical_sectors(ptr_backupdata, 1);
+ 228              	 .loc 2 195 0
+ 229 0072 7868     	 ldr r0,[r7,#4]
+ 230 0074 0121     	 movs r1,#1
+ 231 0076 FFF7FEFF 	 bl FLASHPROG_Delete_physical_sectors
+ 232              	.L13:
+ 196:../main.c     ****     }
+ 197:../main.c     ****     ptr_backupdata++;
+ 233              	 .loc 2 197 0
+ 234 007a 7B68     	 ldr r3,[r7,#4]
+ 235 007c 0433     	 adds r3,r3,#4
+ 236 007e 7B60     	 str r3,[r7,#4]
+ 237              	.L12:
+ 189:../main.c     ****   {
+ 238              	 .loc 2 189 0
+ 239 0080 7B68     	 ldr r3,[r7,#4]
+ 240 0082 B3F1426F 	 cmp r3,#203423744
+ 241 0086 F0D3     	 bcc .L14
+ 198:../main.c     ****   }
+ 199:../main.c     **** 
+ 200:../main.c     ****   /* Restart inside application partition */
+ 201:../main.c     ****   BL_FlashABM0_Restart();
+ 242              	 .loc 2 201 0
+ 243 0088 FFF7FEFF 	 bl BL_FlashABM0_Restart
+ 202:../main.c     **** 
+ 203:../main.c     ****   return 0;
+ 244              	 .loc 2 203 0
+ 245 008c 0023     	 movs r3,#0
+ 204:../main.c     **** }
+ 246              	 .loc 2 204 0
+ 247 008e 1846     	 mov r0,r3
+ 248 0090 0837     	 adds r7,r7,#8
+ 249              	.LCFI11:
+ 250              	 .cfi_def_cfa_offset 8
+ 251 0092 BD46     	 mov sp,r7
+ 252              	.LCFI12:
+ 253              	 .cfi_def_cfa_register 13
+ 254              	 
+ 255 0094 80BD     	 pop {r7,pc}
+ 256              	.L17:
+ 257 0096 00BF     	 .align 2
+ 258              	.L16:
+ 259 0098 FCFF1F0C 	 .word 203423740
+ 260 009c 0000020C 	 .word 201457664
+ 261 00a0 0000010C 	 .word 201392128
+ 262              	 .cfi_endproc
+ 263              	.LFE191:
+ 265              	 .text
+ 266              	.Letext0:
+ 267              	 .file 3 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 268              	 .file 4 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 269              	 .file 5 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include/XMC4800.h"
+ 270              	 .file 6 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/CMSIS/Include/core_cm4.h"
+ 271              	 .file 7 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include/system_XMC4800.h"
+ 272              	 .file 8 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc/xmc4_scu.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+    {standard input}:20     .text.XMC_SCU_RESET_ClearDeviceResetReason:00000000 $t
+    {standard input}:24     .text.XMC_SCU_RESET_ClearDeviceResetReason:00000000 XMC_SCU_RESET_ClearDeviceResetReason
+    {standard input}:56     .text.XMC_SCU_RESET_ClearDeviceResetReason:00000014 $d
+    {standard input}:61     .flash_abm:00000000 $d
+    {standard input}:64     .flash_abm:00000000 ABM0_Header
+    {standard input}:71     .text.BL_FlashABM0_Restart:00000000 $t
+    {standard input}:76     .text.BL_FlashABM0_Restart:00000000 BL_FlashABM0_Restart
+    {standard input}:105    .text.BL_FlashABM0_Restart:0000001c $d
+    {standard input}:110    .text.BL_Normal_Restart:00000000 $t
+    {standard input}:115    .text.BL_Normal_Restart:00000000 BL_Normal_Restart
+    {standard input}:143    .text.BL_Normal_Restart:0000001c $d
+    {standard input}:148    .text.main:00000000 $t
+    {standard input}:153    .text.main:00000000 main
+    {standard input}:259    .text.main:00000098 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+XMC_SCU_SetBootMode
+FLASHPROG_CRC32_check
+FLASHPROG_Init
+FLASHPROG_Data
+FLASHPROG_Close
+FLASHPROG_Delete_physical_sector
+FLASHPROG_Delete_physical_sectors

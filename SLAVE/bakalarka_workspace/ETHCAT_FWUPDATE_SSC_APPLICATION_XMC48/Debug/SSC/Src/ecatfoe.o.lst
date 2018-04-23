@@ -1,0 +1,1326 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "ecatfoe.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .comm u32PacketNo,4,4
+  20              	 .comm u32FileOffset,4,4
+  21              	 .comm u32LastFileOffset,4,4
+  22              	 .comm u16FileAccessState,2,2
+  23              	 .comm pFoeSendStored,4,4
+  24              	 .comm u16FoeMaxSendBlockSize,2,2
+  25              	 .section .text.FOE_Init,"ax",%progbits
+  26              	 .align 2
+  27              	 .global FOE_Init
+  28              	 .thumb
+  29              	 .thumb_func
+  31              	FOE_Init:
+  32              	.LFB177:
+  33              	 .file 1 "../SSC/Src/ecatfoe.c"
+   1:../SSC/Src/ecatfoe.c **** /*
+   2:../SSC/Src/ecatfoe.c **** * This source file is part of the EtherCAT Slave Stack Code licensed by Beckhoff Automation GmbH & 
+   3:../SSC/Src/ecatfoe.c **** * The corresponding license agreement applies. This hint shall not be removed.
+   4:../SSC/Src/ecatfoe.c **** */
+   5:../SSC/Src/ecatfoe.c **** 
+   6:../SSC/Src/ecatfoe.c **** /**
+   7:../SSC/Src/ecatfoe.c **** \addtogroup FoE FileTransfer over EtherCAT
+   8:../SSC/Src/ecatfoe.c **** @{
+   9:../SSC/Src/ecatfoe.c **** */
+  10:../SSC/Src/ecatfoe.c **** 
+  11:../SSC/Src/ecatfoe.c **** /**
+  12:../SSC/Src/ecatfoe.c **** \file ecatfoe.c
+  13:../SSC/Src/ecatfoe.c **** \author EthercatSSC@beckhoff.com
+  14:../SSC/Src/ecatfoe.c **** \brief Implementation
+  15:../SSC/Src/ecatfoe.c **** This file contains the FoE mailbox interface
+  16:../SSC/Src/ecatfoe.c **** 
+  17:../SSC/Src/ecatfoe.c **** \version 5.12
+  18:../SSC/Src/ecatfoe.c **** 
+  19:../SSC/Src/ecatfoe.c **** <br>Changes to version V5.11:<br>
+  20:../SSC/Src/ecatfoe.c **** V5.12 FOE2: handle 16bit only access<br>
+  21:../SSC/Src/ecatfoe.c **** V5.12 MBX4: in case of a disable mailbox queue and two consecutive foe uploads the mailbox receive 
+  22:../SSC/Src/ecatfoe.c **** <br>Changes to version V5.10:<br>
+  23:../SSC/Src/ecatfoe.c **** V5.11 FOE1: handle busy on a read request, change OPMode to OPCode (same terms as in the spec)<br>
+  24:../SSC/Src/ecatfoe.c **** <br>Changes to version V5.0:<br>
+  25:../SSC/Src/ecatfoe.c **** V5.10 MBX1: Remove multiple swapping of length filed in mailbox header<br>
+  26:../SSC/Src/ecatfoe.c **** <br>Changes to version V4.40:<br>
+  27:../SSC/Src/ecatfoe.c **** V5.0 FOE1: Free memory if FoE_ServciceInd() is left.<br>
+  28:../SSC/Src/ecatfoe.c **** V5.0 FOE2: Update error code (Bit 15 shall not be set).<br>
+  29:../SSC/Src/ecatfoe.c **** V5.0 FOE3: Update byte swapping for big endian and big endian 16 configurations.<br>
+  30:../SSC/Src/ecatfoe.c **** V5.0 FOE4: Update Error text handling for 16Bit operations.<br>
+  31:../SSC/Src/ecatfoe.c **** <br>Changes to version V4.11:<br>
+  32:../SSC/Src/ecatfoe.c **** V4.40 FOE1: correct FoE busy values<br>
+  33:../SSC/Src/ecatfoe.c **** V4.40 MBX2: HW_CopyToSendMailbox merge to a generic function (new: MBX_CopyToSendMailbox)<br>
+  34:../SSC/Src/ecatfoe.c **** <br>Changes to version V4.10:<br>
+  35:../SSC/Src/ecatfoe.c **** V4.11 FOE 1 fixed a problem with a huge FOE_MADATA define<br>
+  36:../SSC/Src/ecatfoe.c **** V4.11 FOE 2 u16PacketNo is now a 32bit variable (u32PacketNo) to conform with the spec<br>
+  37:../SSC/Src/ecatfoe.c **** <br>Changes to version V4.00:<br>
+  38:../SSC/Src/ecatfoe.c **** V4.10 FOE 1-3 when downloading the firmware the FoE state machine was not set to FOE_READY<br>
+  39:../SSC/Src/ecatfoe.c ****               when the last data segment was downloaded so that the next FoE service failed<br>
+  40:../SSC/Src/ecatfoe.c **** <br>Changes to version V3.20:<br>
+  41:../SSC/Src/ecatfoe.c **** V4.00 FOE 1 - if a FoE Error service is received it should not be acknowledged<br>
+  42:../SSC/Src/ecatfoe.c **** V4.00 FOE 2 - if a FoE service response could not be sent because the mailbox is full<br>
+  43:../SSC/Src/ecatfoe.c ****               it has to be re-transmit otherwise the response get lost<br>
+  44:../SSC/Src/ecatfoe.c **** 
+  45:../SSC/Src/ecatfoe.c **** */
+  46:../SSC/Src/ecatfoe.c **** 
+  47:../SSC/Src/ecatfoe.c **** /*-----------------------------------------------------------------------------------------
+  48:../SSC/Src/ecatfoe.c **** ------
+  49:../SSC/Src/ecatfoe.c **** ------    Includes
+  50:../SSC/Src/ecatfoe.c **** ------
+  51:../SSC/Src/ecatfoe.c **** -----------------------------------------------------------------------------------------*/
+  52:../SSC/Src/ecatfoe.c **** 
+  53:../SSC/Src/ecatfoe.c **** #include "ecat_def.h"
+  54:../SSC/Src/ecatfoe.c **** 
+  55:../SSC/Src/ecatfoe.c **** 
+  56:../SSC/Src/ecatfoe.c **** 
+  57:../SSC/Src/ecatfoe.c **** #include "ecatslv.h"
+  58:../SSC/Src/ecatfoe.c **** 
+  59:../SSC/Src/ecatfoe.c **** #define    _ECATFOE_ 1
+  60:../SSC/Src/ecatfoe.c **** #include "ecatfoe.h"
+  61:../SSC/Src/ecatfoe.c **** #undef    _ECATFOE_
+  62:../SSC/Src/ecatfoe.c **** #define    _ECATFOE_ 0
+  63:../SSC/Src/ecatfoe.c **** 
+  64:../SSC/Src/ecatfoe.c **** #include "foeappl.h"
+  65:../SSC/Src/ecatfoe.c **** /*-----------------------------------------------------------------------------------------
+  66:../SSC/Src/ecatfoe.c **** ------
+  67:../SSC/Src/ecatfoe.c **** ------    functions
+  68:../SSC/Src/ecatfoe.c **** ------
+  69:../SSC/Src/ecatfoe.c **** -----------------------------------------------------------------------------------------*/
+  70:../SSC/Src/ecatfoe.c **** 
+  71:../SSC/Src/ecatfoe.c **** /////////////////////////////////////////////////////////////////////////////////////////
+  72:../SSC/Src/ecatfoe.c **** /**
+  73:../SSC/Src/ecatfoe.c **** 
+  74:../SSC/Src/ecatfoe.c ****  \brief    This function initialize the FoE Interface.
+  75:../SSC/Src/ecatfoe.c **** *////////////////////////////////////////////////////////////////////////////////////////
+  76:../SSC/Src/ecatfoe.c **** 
+  77:../SSC/Src/ecatfoe.c **** void FOE_Init(void)
+  78:../SSC/Src/ecatfoe.c **** {
+  34              	 .loc 1 78 0
+  35              	 .cfi_startproc
+  36              	 
+  37              	 
+  38              	 
+  39 0000 80B4     	 push {r7}
+  40              	.LCFI0:
+  41              	 .cfi_def_cfa_offset 4
+  42              	 .cfi_offset 7,-4
+  43 0002 00AF     	 add r7,sp,#0
+  44              	.LCFI1:
+  45              	 .cfi_def_cfa_register 7
+  79:../SSC/Src/ecatfoe.c ****     /* no file transmission sequence is running */
+  80:../SSC/Src/ecatfoe.c ****     u16FileAccessState    = FOE_READY;
+  46              	 .loc 1 80 0
+  47 0004 064B     	 ldr r3,.L2
+  48 0006 0022     	 movs r2,#0
+  49 0008 1A80     	 strh r2,[r3]
+  81:../SSC/Src/ecatfoe.c ****     /* initialize the expected packet number */
+  82:../SSC/Src/ecatfoe.c ****     u32PacketNo = 0;
+  50              	 .loc 1 82 0
+  51 000a 064B     	 ldr r3,.L2+4
+  52 000c 0022     	 movs r2,#0
+  53 000e 1A60     	 str r2,[r3]
+  83:../SSC/Src/ecatfoe.c ****     pFoeSendStored = NULL;
+  54              	 .loc 1 83 0
+  55 0010 054B     	 ldr r3,.L2+8
+  56 0012 0022     	 movs r2,#0
+  57 0014 1A60     	 str r2,[r3]
+  84:../SSC/Src/ecatfoe.c **** }
+  58              	 .loc 1 84 0
+  59 0016 BD46     	 mov sp,r7
+  60              	.LCFI2:
+  61              	 .cfi_def_cfa_register 13
+  62              	 
+  63 0018 5DF8047B 	 ldr r7,[sp],#4
+  64              	.LCFI3:
+  65              	 .cfi_restore 7
+  66              	 .cfi_def_cfa_offset 0
+  67 001c 7047     	 bx lr
+  68              	.L3:
+  69 001e 00BF     	 .align 2
+  70              	.L2:
+  71 0020 00000000 	 .word u16FileAccessState
+  72 0024 00000000 	 .word u32PacketNo
+  73 0028 00000000 	 .word pFoeSendStored
+  74              	 .cfi_endproc
+  75              	.LFE177:
+  77              	 .section .text.FOE_ServiceInd,"ax",%progbits
+  78              	 .align 2
+  79              	 .global FOE_ServiceInd
+  80              	 .thumb
+  81              	 .thumb_func
+  83              	FOE_ServiceInd:
+  84              	.LFB178:
+  85:../SSC/Src/ecatfoe.c **** 
+  86:../SSC/Src/ecatfoe.c **** 
+  87:../SSC/Src/ecatfoe.c **** /////////////////////////////////////////////////////////////////////////////////////////
+  88:../SSC/Src/ecatfoe.c **** /**
+  89:../SSC/Src/ecatfoe.c ****  \param     pFoeInd      Pointer to the received mailbox data from the master.
+  90:../SSC/Src/ecatfoe.c **** 
+  91:../SSC/Src/ecatfoe.c ****  \return    result of the operation (0 (success) or mailbox error code (MBXERR_.... defined in
+  92:../SSC/Src/ecatfoe.c ****             mailbox.h))
+  93:../SSC/Src/ecatfoe.c **** 
+  94:../SSC/Src/ecatfoe.c ****  \brief    This function is called when a FoE (File Access over EtherCAT) service is received from
+  95:../SSC/Src/ecatfoe.c ****              the master.
+  96:../SSC/Src/ecatfoe.c **** *////////////////////////////////////////////////////////////////////////////////////////
+  97:../SSC/Src/ecatfoe.c **** 
+  98:../SSC/Src/ecatfoe.c **** UINT8 FOE_ServiceInd(TFOEMBX MBXMEM * pFoeInd)
+  99:../SSC/Src/ecatfoe.c **** {
+  85              	 .loc 1 99 0
+  86              	 .cfi_startproc
+  87              	 
+  88              	 
+  89 0000 80B5     	 push {r7,lr}
+  90              	.LCFI4:
+  91              	 .cfi_def_cfa_offset 8
+  92              	 .cfi_offset 7,-8
+  93              	 .cfi_offset 14,-4
+  94 0002 8CB0     	 sub sp,sp,#48
+  95              	.LCFI5:
+  96              	 .cfi_def_cfa_offset 56
+  97 0004 00AF     	 add r7,sp,#0
+  98              	.LCFI6:
+  99              	 .cfi_def_cfa_register 7
+ 100 0006 7860     	 str r0,[r7,#4]
+ 100:../SSC/Src/ecatfoe.c ****     /* initialize the result of the service checking */
+ 101:../SSC/Src/ecatfoe.c ****     UINT16 nextState = ECAT_FOE_ERRCODE_ILLEGAL;
+ 101              	 .loc 1 101 0
+ 102 0008 48F20403 	 movw r3,#32772
+ 103 000c FB85     	 strh r3,[r7,#46]
+ 102:../SSC/Src/ecatfoe.c ****     /* dataSize contains the size of the file data */
+ 103:../SSC/Src/ecatfoe.c ****     UINT16 dataSize = SWAPWORD(pFoeInd->MbxHeader.Length) - FOE_HEADER_SIZE;
+ 104              	 .loc 1 103 0
+ 105 000e 7B68     	 ldr r3,[r7,#4]
+ 106 0010 1B88     	 ldrh r3,[r3]
+ 107 0012 9BB2     	 uxth r3,r3
+ 108 0014 063B     	 subs r3,r3,#6
+ 109 0016 7B85     	 strh r3,[r7,#42]
+ 104:../SSC/Src/ecatfoe.c **** 
+ 105:../SSC/Src/ecatfoe.c **** 
+ 106:../SSC/Src/ecatfoe.c ****     /* it has to be checked if the mailbox protocol is correct, the sent mailbox data length has to
+ 107:../SSC/Src/ecatfoe.c ****        great enough for the service header of the FoE service */
+ 108:../SSC/Src/ecatfoe.c ****     if ( SWAPWORD(pFoeInd->MbxHeader.Length) < FOE_HEADER_SIZE )
+ 110              	 .loc 1 108 0
+ 111 0018 7B68     	 ldr r3,[r7,#4]
+ 112 001a 1B88     	 ldrh r3,[r3]
+ 113 001c 9BB2     	 uxth r3,r3
+ 114 001e 052B     	 cmp r3,#5
+ 115 0020 01D8     	 bhi .L5
+ 109:../SSC/Src/ecatfoe.c ****     {
+ 110:../SSC/Src/ecatfoe.c ****         return MBXERR_SIZETOOSHORT;
+ 116              	 .loc 1 110 0
+ 117 0022 0623     	 movs r3,#6
+ 118 0024 21E2     	 b .L6
+ 119              	.L5:
+ 111:../SSC/Src/ecatfoe.c ****     }
+ 112:../SSC/Src/ecatfoe.c **** 
+ 113:../SSC/Src/ecatfoe.c ****     switch ( SWAPWORD(pFoeInd->FoeHeader.OpCode) )
+ 120              	 .loc 1 113 0
+ 121 0026 7B68     	 ldr r3,[r7,#4]
+ 122 0028 DB88     	 ldrh r3,[r3,#6]
+ 123 002a 9BB2     	 uxth r3,r3
+ 124 002c 013B     	 subs r3,r3,#1
+ 125 002e 052B     	 cmp r3,#5
+ 126 0030 00F2F680 	 bhi .L7
+ 127 0034 01A2     	 adr r2,.L9
+ 128 0036 52F823F0 	 ldr pc,[r2,r3,lsl#2]
+ 129 003a 00BF     	 .p2align 2
+ 130              	.L9:
+ 131 003c 55000000 	 .word .L8+1
+ 132 0040 CB000000 	 .word .L10+1
+ 133 0044 13010000 	 .word .L11+1
+ 134 0048 6D010000 	 .word .L12+1
+ 135 004c C5010000 	 .word .L13+1
+ 136 0050 F1010000 	 .word .L14+1
+ 137              	 .p2align 1
+ 138              	.L8:
+ 114:../SSC/Src/ecatfoe.c ****     {
+ 115:../SSC/Src/ecatfoe.c ****     case ECAT_FOE_OPCODE_RRQ:
+ 116:../SSC/Src/ecatfoe.c ****         /* file read is requested */
+ 117:../SSC/Src/ecatfoe.c ****         if ( u16FileAccessState == FOE_READY )
+ 139              	 .loc 1 117 0
+ 140 0054 984B     	 ldr r3,.L49
+ 141 0056 1B88     	 ldrh r3,[r3]
+ 142 0058 002B     	 cmp r3,#0
+ 143 005a 35D1     	 bne .L15
+ 144              	.LBB2:
+ 118:../SSC/Src/ecatfoe.c ****         {
+ 119:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_START(V5.12) FOE2*/
+ 120:../SSC/Src/ecatfoe.c ****             UINT32 u32Password = SWAPDWORD((((UINT32)pFoeInd->FoeHeader.Cmd.Password[FOE_COMMAND_LO
+ 145              	 .loc 1 120 0
+ 146 005c 7B68     	 ldr r3,[r7,#4]
+ 147 005e 1B89     	 ldrh r3,[r3,#8]
+ 148 0060 9BB2     	 uxth r3,r3
+ 149 0062 1A46     	 mov r2,r3
+ 150 0064 7B68     	 ldr r3,[r7,#4]
+ 151 0066 5B89     	 ldrh r3,[r3,#10]
+ 152 0068 9BB2     	 uxth r3,r3
+ 153 006a 1B04     	 lsls r3,r3,#16
+ 154 006c 1343     	 orrs r3,r3,r2
+ 155 006e 7B62     	 str r3,[r7,#36]
+ 121:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_END(V5.12) FOE2*/
+ 122:../SSC/Src/ecatfoe.c ****             /* last FoE sequence was finished, call application function */
+ 123:../SSC/Src/ecatfoe.c **** /* ECATCHANGE_START(V5.12)*/
+ 124:../SSC/Src/ecatfoe.c ****             nextState = FOE_Read((UINT16 MBXMEM *)pFoeInd->Data, dataSize, (UINT16*)pFoeInd->Data, 
+ 156              	 .loc 1 124 0
+ 157 0070 7B68     	 ldr r3,[r7,#4]
+ 158 0072 03F10C01 	 add r1,r3,#12
+ 159 0076 7B68     	 ldr r3,[r7,#4]
+ 160 0078 0C33     	 adds r3,r3,#12
+ 161 007a 7A8D     	 ldrh r2,[r7,#42]
+ 162 007c 0846     	 mov r0,r1
+ 163 007e 1146     	 mov r1,r2
+ 164 0080 1A46     	 mov r2,r3
+ 165 0082 7B6A     	 ldr r3,[r7,#36]
+ 166 0084 FFF7FEFF 	 bl FOE_Read
+ 167 0088 0346     	 mov r3,r0
+ 168 008a FB85     	 strh r3,[r7,#46]
+ 125:../SSC/Src/ecatfoe.c **** /* ECATCHANGE_END(V5.12)*/
+ 126:../SSC/Src/ecatfoe.c **** 
+ 127:../SSC/Src/ecatfoe.c ****             /* u32LastFileOffset contains the offset of the file which is sent now */
+ 128:../SSC/Src/ecatfoe.c ****             u32LastFileOffset = 0;
+ 169              	 .loc 1 128 0
+ 170 008c 8B4B     	 ldr r3,.L49+4
+ 171 008e 0022     	 movs r2,#0
+ 172 0090 1A60     	 str r2,[r3]
+ 129:../SSC/Src/ecatfoe.c **** 
+ 130:../SSC/Src/ecatfoe.c ****             if (nextState <= FOE_MAXDATA)
+ 173              	 .loc 1 130 0
+ 174 0092 FB8D     	 ldrh r3,[r7,#46]
+ 175 0094 47F69572 	 movw r2,#32661
+ 176 0098 9342     	 cmp r3,r2
+ 177 009a 06D8     	 bhi .L16
+ 131:../SSC/Src/ecatfoe.c ****             {
+ 132:../SSC/Src/ecatfoe.c ****                 /* the first data packet shall be sent */
+ 133:../SSC/Src/ecatfoe.c ****                 u32PacketNo    = 1;
+ 178              	 .loc 1 133 0
+ 179 009c 884B     	 ldr r3,.L49+8
+ 180 009e 0122     	 movs r2,#1
+ 181 00a0 1A60     	 str r2,[r3]
+ 134:../SSC/Src/ecatfoe.c ****                 /* u32FileOffset contains the offset of the file which shall be sent when the next 
+ 135:../SSC/Src/ecatfoe.c ****                 u32FileOffset = nextState;
+ 182              	 .loc 1 135 0
+ 183 00a2 FB8D     	 ldrh r3,[r7,#46]
+ 184 00a4 874A     	 ldr r2,.L49+12
+ 185 00a6 1360     	 str r3,[r2]
+ 186 00a8 0EE0     	 b .L15
+ 187              	.L16:
+ 136:../SSC/Src/ecatfoe.c ****             }
+ 137:../SSC/Src/ecatfoe.c ****             else if (nextState <= FOE_MAXBUSY)
+ 188              	 .loc 1 137 0
+ 189 00aa FB8D     	 ldrh r3,[r7,#46]
+ 190 00ac 47F6FA72 	 movw r2,#32762
+ 191 00b0 9342     	 cmp r3,r2
+ 192 00b2 09D8     	 bhi .L15
+ 138:../SSC/Src/ecatfoe.c ****             {
+ 139:../SSC/Src/ecatfoe.c ****                 u32PacketNo    = 0;
+ 193              	 .loc 1 139 0
+ 194 00b4 824B     	 ldr r3,.L49+8
+ 195 00b6 0022     	 movs r2,#0
+ 196 00b8 1A60     	 str r2,[r3]
+ 140:../SSC/Src/ecatfoe.c ****                 u32FileOffset = 0;
+ 197              	 .loc 1 140 0
+ 198 00ba 824B     	 ldr r3,.L49+12
+ 199 00bc 0022     	 movs r2,#0
+ 200 00be 1A60     	 str r2,[r3]
+ 141:../SSC/Src/ecatfoe.c ****                 u16FileAccessState = FOE_WAIT_FOR_ACK;
+ 201              	 .loc 1 141 0
+ 202 00c0 7D4B     	 ldr r3,.L49
+ 203 00c2 0122     	 movs r2,#1
+ 204 00c4 1A80     	 strh r2,[r3]
+ 205              	.LBE2:
+ 142:../SSC/Src/ecatfoe.c ****             }
+ 143:../SSC/Src/ecatfoe.c ****         }
+ 144:../SSC/Src/ecatfoe.c ****         break;
+ 206              	 .loc 1 144 0
+ 207 00c6 ABE0     	 b .L7
+ 208              	.L15:
+ 209 00c8 AAE0     	 b .L7
+ 210              	.L10:
+ 145:../SSC/Src/ecatfoe.c **** 
+ 146:../SSC/Src/ecatfoe.c ****     case ECAT_FOE_OPCODE_WRQ:
+ 147:../SSC/Src/ecatfoe.c ****         /* file write is requested */
+ 148:../SSC/Src/ecatfoe.c ****         if ( u16FileAccessState == FOE_READY )
+ 211              	 .loc 1 148 0
+ 212 00ca 7B4B     	 ldr r3,.L49
+ 213 00cc 1B88     	 ldrh r3,[r3]
+ 214 00ce 002B     	 cmp r3,#0
+ 215 00d0 1ED1     	 bne .L17
+ 216              	.LBB3:
+ 149:../SSC/Src/ecatfoe.c ****         {
+ 150:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_START(V5.12) FOE2*/
+ 151:../SSC/Src/ecatfoe.c ****             UINT32 u32Password = SWAPDWORD((((UINT32)pFoeInd->FoeHeader.Cmd.Password[FOE_COMMAND_LO
+ 217              	 .loc 1 151 0
+ 218 00d2 7B68     	 ldr r3,[r7,#4]
+ 219 00d4 1B89     	 ldrh r3,[r3,#8]
+ 220 00d6 9BB2     	 uxth r3,r3
+ 221 00d8 1A46     	 mov r2,r3
+ 222 00da 7B68     	 ldr r3,[r7,#4]
+ 223 00dc 5B89     	 ldrh r3,[r3,#10]
+ 224 00de 9BB2     	 uxth r3,r3
+ 225 00e0 1B04     	 lsls r3,r3,#16
+ 226 00e2 1343     	 orrs r3,r3,r2
+ 227 00e4 3B62     	 str r3,[r7,#32]
+ 152:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_END(V5.12) FOE2*/
+ 153:../SSC/Src/ecatfoe.c ****             /* last FoE sequence was finished, call application function */
+ 154:../SSC/Src/ecatfoe.c **** /* ECATCHANGE_START(V5.12)*/
+ 155:../SSC/Src/ecatfoe.c ****             nextState = FOE_Write((UINT16 MBXMEM *)pFoeInd->Data, dataSize, u32Password);
+ 228              	 .loc 1 155 0
+ 229 00e6 7B68     	 ldr r3,[r7,#4]
+ 230 00e8 03F10C02 	 add r2,r3,#12
+ 231 00ec 7B8D     	 ldrh r3,[r7,#42]
+ 232 00ee 1046     	 mov r0,r2
+ 233 00f0 1946     	 mov r1,r3
+ 234 00f2 3A6A     	 ldr r2,[r7,#32]
+ 235 00f4 FFF7FEFF 	 bl FOE_Write
+ 236 00f8 0346     	 mov r3,r0
+ 237 00fa FB85     	 strh r3,[r7,#46]
+ 156:../SSC/Src/ecatfoe.c **** /* ECATCHANGE_END(V5.12)*/
+ 157:../SSC/Src/ecatfoe.c ****             if ( nextState == 0 )
+ 238              	 .loc 1 157 0
+ 239 00fc FB8D     	 ldrh r3,[r7,#46]
+ 240 00fe 002B     	 cmp r3,#0
+ 241 0100 02D1     	 bne .L18
+ 158:../SSC/Src/ecatfoe.c ****             {
+ 159:../SSC/Src/ecatfoe.c ****                 /* checking was successful, sent a FoE Ack service */
+ 160:../SSC/Src/ecatfoe.c ****                 nextState = FOE_ACK;
+ 242              	 .loc 1 160 0
+ 243 0102 47F6FD73 	 movw r3,#32765
+ 244 0106 FB85     	 strh r3,[r7,#46]
+ 245              	.L18:
+ 161:../SSC/Src/ecatfoe.c ****             }
+ 162:../SSC/Src/ecatfoe.c ****             /* initialize the packet number */
+ 163:../SSC/Src/ecatfoe.c ****             u32PacketNo    = 0;
+ 246              	 .loc 1 163 0
+ 247 0108 6D4B     	 ldr r3,.L49+8
+ 248 010a 0022     	 movs r2,#0
+ 249 010c 1A60     	 str r2,[r3]
+ 250              	.LBE3:
+ 164:../SSC/Src/ecatfoe.c ****         }
+ 165:../SSC/Src/ecatfoe.c ****         break;
+ 251              	 .loc 1 165 0
+ 252 010e 87E0     	 b .L7
+ 253              	.L17:
+ 254 0110 86E0     	 b .L7
+ 255              	.L11:
+ 166:../SSC/Src/ecatfoe.c **** 
+ 167:../SSC/Src/ecatfoe.c ****     case ECAT_FOE_OPCODE_DATA:
+ 168:../SSC/Src/ecatfoe.c ****         /* file data is received */
+ 169:../SSC/Src/ecatfoe.c ****         if ( u16FileAccessState == FOE_WAIT_FOR_DATA
+ 256              	 .loc 1 169 0
+ 257 0112 694B     	 ldr r3,.L49
+ 258 0114 1B88     	 ldrh r3,[r3]
+ 259 0116 022B     	 cmp r3,#2
+ 260 0118 03D0     	 beq .L19
+ 170:../SSC/Src/ecatfoe.c ****           || u16FileAccessState == FOE_WAIT_FOR_LAST_DATA )
+ 261              	 .loc 1 170 0
+ 262 011a 674B     	 ldr r3,.L49
+ 263 011c 1B88     	 ldrh r3,[r3]
+ 264 011e 062B     	 cmp r3,#6
+ 265 0120 23D1     	 bne .L20
+ 266              	.L19:
+ 267              	.LBB4:
+ 171:../SSC/Src/ecatfoe.c ****         {
+ 172:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_START(V5.12) FOE2*/
+ 173:../SSC/Src/ecatfoe.c ****             UINT32 u32CmdPacketNo = SWAPDWORD((((UINT32)pFoeInd->FoeHeader.Cmd.PacketNo[FOE_COMMAND
+ 268              	 .loc 1 173 0
+ 269 0122 7B68     	 ldr r3,[r7,#4]
+ 270 0124 1B89     	 ldrh r3,[r3,#8]
+ 271 0126 9BB2     	 uxth r3,r3
+ 272 0128 1A46     	 mov r2,r3
+ 273 012a 7B68     	 ldr r3,[r7,#4]
+ 274 012c 5B89     	 ldrh r3,[r3,#10]
+ 275 012e 9BB2     	 uxth r3,r3
+ 276 0130 1B04     	 lsls r3,r3,#16
+ 277 0132 1343     	 orrs r3,r3,r2
+ 278 0134 FB61     	 str r3,[r7,#28]
+ 174:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_END(V5.12) FOE2*/
+ 175:../SSC/Src/ecatfoe.c **** 
+ 176:../SSC/Src/ecatfoe.c ****             /* we are waiting for file data, service is correct */
+ 177:../SSC/Src/ecatfoe.c ****             if ( u32CmdPacketNo == u32PacketNo )
+ 279              	 .loc 1 177 0
+ 280 0136 624B     	 ldr r3,.L49+8
+ 281 0138 1B68     	 ldr r3,[r3]
+ 282 013a FA69     	 ldr r2,[r7,#28]
+ 283 013c 9A42     	 cmp r2,r3
+ 284 013e 10D1     	 bne .L21
+ 178:../SSC/Src/ecatfoe.c ****             {
+ 179:../SSC/Src/ecatfoe.c ****                 /* the packet number is correct, call application function to store the file data *
+ 180:../SSC/Src/ecatfoe.c **** /* ECATCHANGE_START(V5.12)*/
+ 181:../SSC/Src/ecatfoe.c ****                 nextState = FOE_Data((UINT16 MBXMEM *)pFoeInd->Data, dataSize);
+ 285              	 .loc 1 181 0
+ 286 0140 7B68     	 ldr r3,[r7,#4]
+ 287 0142 03F10C02 	 add r2,r3,#12
+ 288 0146 7B8D     	 ldrh r3,[r7,#42]
+ 289 0148 1046     	 mov r0,r2
+ 290 014a 1946     	 mov r1,r3
+ 291 014c FFF7FEFF 	 bl FOE_Data
+ 292 0150 0346     	 mov r3,r0
+ 293 0152 FB85     	 strh r3,[r7,#46]
+ 182:../SSC/Src/ecatfoe.c **** /* ECATCHANGE_END(V5.12)*/
+ 183:../SSC/Src/ecatfoe.c ****                 if ( nextState == 0 )
+ 294              	 .loc 1 183 0
+ 295 0154 FB8D     	 ldrh r3,[r7,#46]
+ 296 0156 002B     	 cmp r3,#0
+ 297 0158 07D1     	 bne .L20
+ 184:../SSC/Src/ecatfoe.c ****                 {
+ 185:../SSC/Src/ecatfoe.c ****                     /* checking was successful, sent a FoE Ack service */
+ 186:../SSC/Src/ecatfoe.c ****                     nextState = FOE_ACK;
+ 298              	 .loc 1 186 0
+ 299 015a 47F6FD73 	 movw r3,#32765
+ 300 015e FB85     	 strh r3,[r7,#46]
+ 301              	.LBE4:
+ 187:../SSC/Src/ecatfoe.c ****                 }
+ 188:../SSC/Src/ecatfoe.c ****             }
+ 189:../SSC/Src/ecatfoe.c ****             else
+ 190:../SSC/Src/ecatfoe.c ****             {
+ 191:../SSC/Src/ecatfoe.c ****                 nextState = ECAT_FOE_ERRCODE_PACKENO;
+ 192:../SSC/Src/ecatfoe.c ****             }
+ 193:../SSC/Src/ecatfoe.c ****         }
+ 194:../SSC/Src/ecatfoe.c ****         break;
+ 302              	 .loc 1 194 0
+ 303 0160 5EE0     	 b .L7
+ 304              	.L21:
+ 305              	.LBB5:
+ 191:../SSC/Src/ecatfoe.c ****             }
+ 306              	 .loc 1 191 0
+ 307 0162 48F20503 	 movw r3,#32773
+ 308 0166 FB85     	 strh r3,[r7,#46]
+ 309              	.LBE5:
+ 310              	 .loc 1 194 0
+ 311 0168 5AE0     	 b .L7
+ 312              	.L20:
+ 313              	 .loc 1 194 0 is_stmt 0 discriminator 1
+ 314 016a 59E0     	 b .L7
+ 315              	.L12:
+ 195:../SSC/Src/ecatfoe.c **** 
+ 196:../SSC/Src/ecatfoe.c ****     case ECAT_FOE_OPCODE_ACK:
+ 197:../SSC/Src/ecatfoe.c ****         /* acknowledge is received, next file part can be sent */
+ 198:../SSC/Src/ecatfoe.c ****         if ( u16FileAccessState == FOE_WAIT_FOR_ACK )
+ 316              	 .loc 1 198 0 is_stmt 1
+ 317 016c 524B     	 ldr r3,.L49
+ 318 016e 1B88     	 ldrh r3,[r3]
+ 319 0170 012B     	 cmp r3,#1
+ 320 0172 1ED1     	 bne .L23
+ 199:../SSC/Src/ecatfoe.c ****         {
+ 200:../SSC/Src/ecatfoe.c ****             /* we are waiting for an acknowledge, service is correct, call the application function
+ 201:../SSC/Src/ecatfoe.c ****                to get the next part of the file */
+ 202:../SSC/Src/ecatfoe.c **** /* ECATCHANGE_START(V5.12)*/
+ 203:../SSC/Src/ecatfoe.c ****             nextState = FOE_Ack( u32FileOffset, (UINT16 MBXMEM *)pFoeInd->Data );
+ 321              	 .loc 1 203 0
+ 322 0174 534B     	 ldr r3,.L49+12
+ 323 0176 1A68     	 ldr r2,[r3]
+ 324 0178 7B68     	 ldr r3,[r7,#4]
+ 325 017a 0C33     	 adds r3,r3,#12
+ 326 017c 1046     	 mov r0,r2
+ 327 017e 1946     	 mov r1,r3
+ 328 0180 FFF7FEFF 	 bl FOE_Ack
+ 329 0184 0346     	 mov r3,r0
+ 330 0186 FB85     	 strh r3,[r7,#46]
+ 204:../SSC/Src/ecatfoe.c **** /* ECATCHANGE_END(V5.12)*/
+ 205:../SSC/Src/ecatfoe.c ****             /* u32LastFileOffset contains the offset of the file which is sent now */
+ 206:../SSC/Src/ecatfoe.c ****             u32LastFileOffset = u32FileOffset;
+ 331              	 .loc 1 206 0
+ 332 0188 4E4B     	 ldr r3,.L49+12
+ 333 018a 1B68     	 ldr r3,[r3]
+ 334 018c 4B4A     	 ldr r2,.L49+4
+ 335 018e 1360     	 str r3,[r2]
+ 207:../SSC/Src/ecatfoe.c **** 
+ 208:../SSC/Src/ecatfoe.c ****             if (nextState <= FOE_MAXDATA) 
+ 336              	 .loc 1 208 0
+ 337 0190 FB8D     	 ldrh r3,[r7,#46]
+ 338 0192 47F69572 	 movw r2,#32661
+ 339 0196 9342     	 cmp r3,r2
+ 340 0198 13D8     	 bhi .L25
+ 209:../SSC/Src/ecatfoe.c ****             {
+ 210:../SSC/Src/ecatfoe.c ****                 /* u32FileOffset contains the offset of the file which shall be sent when the next 
+ 211:../SSC/Src/ecatfoe.c ****                 u32FileOffset += nextState;
+ 341              	 .loc 1 211 0
+ 342 019a FA8D     	 ldrh r2,[r7,#46]
+ 343 019c 494B     	 ldr r3,.L49+12
+ 344 019e 1B68     	 ldr r3,[r3]
+ 345 01a0 1344     	 add r3,r3,r2
+ 346 01a2 484A     	 ldr r2,.L49+12
+ 347 01a4 1360     	 str r3,[r2]
+ 212:../SSC/Src/ecatfoe.c ****                 /* increment the packet number */
+ 213:../SSC/Src/ecatfoe.c ****                 u32PacketNo++;
+ 348              	 .loc 1 213 0
+ 349 01a6 464B     	 ldr r3,.L49+8
+ 350 01a8 1B68     	 ldr r3,[r3]
+ 351 01aa 0133     	 adds r3,r3,#1
+ 352 01ac 444A     	 ldr r2,.L49+8
+ 353 01ae 1360     	 str r3,[r2]
+ 214:../SSC/Src/ecatfoe.c ****             }
+ 215:../SSC/Src/ecatfoe.c ****         }
+ 216:../SSC/Src/ecatfoe.c ****         else if ( u16FileAccessState == FOE_WAIT_FOR_LAST_ACK )
+ 217:../SSC/Src/ecatfoe.c ****         {
+ 218:../SSC/Src/ecatfoe.c ****             /* we were waiting for the last acknowledge, now the sequence is finished */
+ 219:../SSC/Src/ecatfoe.c ****             nextState = FOE_FINISHED_NOACK;
+ 220:../SSC/Src/ecatfoe.c ****         }
+ 221:../SSC/Src/ecatfoe.c ****         break;
+ 354              	 .loc 1 221 0
+ 355 01b0 36E0     	 b .L7
+ 356              	.L23:
+ 216:../SSC/Src/ecatfoe.c ****         {
+ 357              	 .loc 1 216 0
+ 358 01b2 414B     	 ldr r3,.L49
+ 359 01b4 1B88     	 ldrh r3,[r3]
+ 360 01b6 042B     	 cmp r3,#4
+ 361 01b8 03D1     	 bne .L25
+ 219:../SSC/Src/ecatfoe.c ****         }
+ 362              	 .loc 1 219 0
+ 363 01ba 47F6FE73 	 movw r3,#32766
+ 364 01be FB85     	 strh r3,[r7,#46]
+ 365              	 .loc 1 221 0
+ 366 01c0 2EE0     	 b .L7
+ 367              	.L25:
+ 368              	 .loc 1 221 0 is_stmt 0 discriminator 2
+ 369 01c2 2DE0     	 b .L7
+ 370              	.L13:
+ 222:../SSC/Src/ecatfoe.c **** 
+ 223:../SSC/Src/ecatfoe.c ****     case ECAT_FOE_OPCODE_ERR:
+ 224:../SSC/Src/ecatfoe.c ****         /* a FoE Error service is received */
+ 225:../SSC/Src/ecatfoe.c ****         if ( u16FileAccessState != FOE_READY )
+ 371              	 .loc 1 225 0 is_stmt 1
+ 372 01c4 3C4B     	 ldr r3,.L49
+ 373 01c6 1B88     	 ldrh r3,[r3]
+ 374 01c8 002B     	 cmp r3,#0
+ 375 01ca 10D0     	 beq .L26
+ 376              	.LBB6:
+ 226:../SSC/Src/ecatfoe.c ****         {
+ 227:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_START(V5.12) FOE2*/
+ 228:../SSC/Src/ecatfoe.c ****             UINT32 u32CmdErrorCode = SWAPDWORD((((UINT32)pFoeInd->FoeHeader.Cmd.ErrorCode[FOE_COMMA
+ 377              	 .loc 1 228 0
+ 378 01cc 7B68     	 ldr r3,[r7,#4]
+ 379 01ce 1B89     	 ldrh r3,[r3,#8]
+ 380 01d0 9BB2     	 uxth r3,r3
+ 381 01d2 1A46     	 mov r2,r3
+ 382 01d4 7B68     	 ldr r3,[r7,#4]
+ 383 01d6 5B89     	 ldrh r3,[r3,#10]
+ 384 01d8 9BB2     	 uxth r3,r3
+ 385 01da 1B04     	 lsls r3,r3,#16
+ 386 01dc 1343     	 orrs r3,r3,r2
+ 387 01de BB61     	 str r3,[r7,#24]
+ 229:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_END(V5.12) FOE2*/
+ 230:../SSC/Src/ecatfoe.c **** 
+ 231:../SSC/Src/ecatfoe.c ****             /* a file transmission sequence is active, inform the application, that this sequence
+ 232:../SSC/Src/ecatfoe.c ****                was stopped */
+ 233:../SSC/Src/ecatfoe.c ****             FOE_Error( u32CmdErrorCode );
+ 388              	 .loc 1 233 0
+ 389 01e0 B869     	 ldr r0,[r7,#24]
+ 390 01e2 FFF7FEFF 	 bl FOE_Error
+ 234:../SSC/Src/ecatfoe.c **** 
+ 235:../SSC/Src/ecatfoe.c ****             nextState = FOE_FINISHED;
+ 391              	 .loc 1 235 0
+ 392 01e6 47F6FF73 	 movw r3,#32767
+ 393 01ea FB85     	 strh r3,[r7,#46]
+ 394              	.LBE6:
+ 236:../SSC/Src/ecatfoe.c ****         }
+ 237:../SSC/Src/ecatfoe.c ****         break;
+ 395              	 .loc 1 237 0
+ 396 01ec 18E0     	 b .L7
+ 397              	.L26:
+ 398 01ee 17E0     	 b .L7
+ 399              	.L14:
+ 238:../SSC/Src/ecatfoe.c **** 
+ 239:../SSC/Src/ecatfoe.c ****     case ECAT_FOE_OPCODE_BUSY:
+ 240:../SSC/Src/ecatfoe.c ****         /* a FoE Busy service is received */
+ 241:../SSC/Src/ecatfoe.c ****         if ( u16FileAccessState == FOE_WAIT_FOR_ACK
+ 400              	 .loc 1 241 0
+ 401 01f0 314B     	 ldr r3,.L49
+ 402 01f2 1B88     	 ldrh r3,[r3]
+ 403 01f4 012B     	 cmp r3,#1
+ 404 01f6 03D0     	 beq .L27
+ 242:../SSC/Src/ecatfoe.c ****           || u16FileAccessState == FOE_WAIT_FOR_LAST_ACK )
+ 405              	 .loc 1 242 0
+ 406 01f8 2F4B     	 ldr r3,.L49
+ 407 01fa 1B88     	 ldrh r3,[r3]
+ 408 01fc 042B     	 cmp r3,#4
+ 409 01fe 0ED1     	 bne .L28
+ 410              	.L27:
+ 243:../SSC/Src/ecatfoe.c ****         {
+ 244:../SSC/Src/ecatfoe.c ****             /* we are waiting for an acknowledge, service is correct, call the application function
+ 245:../SSC/Src/ecatfoe.c ****                to resend the last part of the file */
+ 246:../SSC/Src/ecatfoe.c **** /* ECATCHANGE_START(V5.12)*/
+ 247:../SSC/Src/ecatfoe.c ****             nextState = FOE_Busy( SWAPWORD(pFoeInd->FoeHeader.Cmd.Busy.Done), u32LastFileOffset, (U
+ 411              	 .loc 1 247 0
+ 412 0200 7B68     	 ldr r3,[r7,#4]
+ 413 0202 1B89     	 ldrh r3,[r3,#8]
+ 414 0204 99B2     	 uxth r1,r3
+ 415 0206 2D4B     	 ldr r3,.L49+4
+ 416 0208 1A68     	 ldr r2,[r3]
+ 417 020a 7B68     	 ldr r3,[r7,#4]
+ 418 020c 0C33     	 adds r3,r3,#12
+ 419 020e 0846     	 mov r0,r1
+ 420 0210 1146     	 mov r1,r2
+ 421 0212 1A46     	 mov r2,r3
+ 422 0214 FFF7FEFF 	 bl FOE_Busy
+ 423 0218 0346     	 mov r3,r0
+ 424 021a FB85     	 strh r3,[r7,#46]
+ 248:../SSC/Src/ecatfoe.c **** /* ECATCHANGE_END(V5.12)*/
+ 249:../SSC/Src/ecatfoe.c ****         }
+ 250:../SSC/Src/ecatfoe.c ****         break;
+ 425              	 .loc 1 250 0
+ 426 021c FFE7     	 b .L48
+ 427              	.L28:
+ 428              	.L48:
+ 429 021e 00BF     	 nop
+ 430              	.L7:
+ 251:../SSC/Src/ecatfoe.c **** 
+ 252:../SSC/Src/ecatfoe.c ****     }
+ 253:../SSC/Src/ecatfoe.c **** 
+ 254:../SSC/Src/ecatfoe.c ****     if ( nextState <= FOE_MAXDATA )
+ 431              	 .loc 1 254 0
+ 432 0220 FB8D     	 ldrh r3,[r7,#46]
+ 433 0222 47F69572 	 movw r2,#32661
+ 434 0226 9342     	 cmp r3,r2
+ 435 0228 25D8     	 bhi .L29
+ 436              	.LBB7:
+ 255:../SSC/Src/ecatfoe.c ****     {
+ 256:../SSC/Src/ecatfoe.c ****         /* we send DATA and wait for ACK */
+ 257:../SSC/Src/ecatfoe.c ****         UINT32 d = SWAPDWORD(u32PacketNo);
+ 437              	 .loc 1 257 0
+ 438 022a 254B     	 ldr r3,.L49+8
+ 439 022c 1B68     	 ldr r3,[r3]
+ 440 022e BB60     	 str r3,[r7,#8]
+ 258:../SSC/Src/ecatfoe.c **** 
+ 259:../SSC/Src/ecatfoe.c ****         /* store the OpCode in the mailbox buffer */
+ 260:../SSC/Src/ecatfoe.c ****         pFoeInd->FoeHeader.OpCode           = SWAPWORD(ECAT_FOE_OPCODE_DATA);
+ 441              	 .loc 1 260 0
+ 442 0230 7B68     	 ldr r3,[r7,#4]
+ 443 0232 0022     	 movs r2,#0
+ 444 0234 42F00302 	 orr r2,r2,#3
+ 445 0238 9A71     	 strb r2,[r3,#6]
+ 446 023a 0022     	 movs r2,#0
+ 447 023c DA71     	 strb r2,[r3,#7]
+ 261:../SSC/Src/ecatfoe.c ****         /* store the packet number in the mailbox buffer */
+ 262:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_START(V5.12) FOE2*/
+ 263:../SSC/Src/ecatfoe.c ****         pFoeInd->FoeHeader.Cmd.PacketNo[FOE_COMMAND_LOWWORD] = ((d & 0x0000FFFF));
+ 448              	 .loc 1 263 0
+ 449 023e BB68     	 ldr r3,[r7,#8]
+ 450 0240 9AB2     	 uxth r2,r3
+ 451 0242 7B68     	 ldr r3,[r7,#4]
+ 452 0244 1A81     	 strh r2,[r3,#8]
+ 264:../SSC/Src/ecatfoe.c ****         pFoeInd->FoeHeader.Cmd.PacketNo[FOE_COMMAND_HIGHWORD] = ((d & 0xFFFF0000) >> 16);
+ 453              	 .loc 1 264 0
+ 454 0246 BB68     	 ldr r3,[r7,#8]
+ 455 0248 1B0C     	 lsrs r3,r3,#16
+ 456 024a 9AB2     	 uxth r2,r3
+ 457 024c 7B68     	 ldr r3,[r7,#4]
+ 458 024e 5A81     	 strh r2,[r3,#10]
+ 265:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_END(V5.12) FOE2*/
+ 266:../SSC/Src/ecatfoe.c ****      
+ 267:../SSC/Src/ecatfoe.c ****         /* store the size of the mailbox data in the mailbox buffer */
+ 268:../SSC/Src/ecatfoe.c ****         pFoeInd->MbxHeader.Length           = FOE_HEADER_SIZE + nextState;
+ 459              	 .loc 1 268 0
+ 460 0250 FB8D     	 ldrh r3,[r7,#46]
+ 461 0252 0633     	 adds r3,r3,#6
+ 462 0254 9AB2     	 uxth r2,r3
+ 463 0256 7B68     	 ldr r3,[r7,#4]
+ 464 0258 1A80     	 strh r2,[r3]
+ 269:../SSC/Src/ecatfoe.c **** 
+ 270:../SSC/Src/ecatfoe.c ****         if ( nextState == u16SendMbxSize - FOE_HEADER_SIZE - MBX_HEADER_SIZE )
+ 465              	 .loc 1 270 0
+ 466 025a FA8D     	 ldrh r2,[r7,#46]
+ 467 025c 1A4B     	 ldr r3,.L49+16
+ 468 025e 1B88     	 ldrh r3,[r3]
+ 469 0260 0C3B     	 subs r3,r3,#12
+ 470 0262 9A42     	 cmp r2,r3
+ 471 0264 03D1     	 bne .L30
+ 271:../SSC/Src/ecatfoe.c ****         {
+ 272:../SSC/Src/ecatfoe.c ****             /* packets still following, we wait for an ACK */
+ 273:../SSC/Src/ecatfoe.c ****             u16FileAccessState = FOE_WAIT_FOR_ACK;
+ 472              	 .loc 1 273 0
+ 473 0266 144B     	 ldr r3,.L49
+ 474 0268 0122     	 movs r2,#1
+ 475 026a 1A80     	 strh r2,[r3]
+ 476 026c C8E0     	 b .L32
+ 477              	.L30:
+ 274:../SSC/Src/ecatfoe.c ****         }
+ 275:../SSC/Src/ecatfoe.c ****         else
+ 276:../SSC/Src/ecatfoe.c ****         {
+ 277:../SSC/Src/ecatfoe.c ****             /* it was the last Packet, we wait for the last ACK */
+ 278:../SSC/Src/ecatfoe.c ****             u16FileAccessState = FOE_WAIT_FOR_LAST_ACK;
+ 478              	 .loc 1 278 0
+ 479 026e 124B     	 ldr r3,.L49
+ 480 0270 0422     	 movs r2,#4
+ 481 0272 1A80     	 strh r2,[r3]
+ 482              	.LBE7:
+ 483 0274 C4E0     	 b .L32
+ 484              	.L29:
+ 279:../SSC/Src/ecatfoe.c ****         }
+ 280:../SSC/Src/ecatfoe.c ****     }
+ 281:../SSC/Src/ecatfoe.c ****     else if ( nextState <= FOE_MAXBUSY )
+ 485              	 .loc 1 281 0
+ 486 0276 FB8D     	 ldrh r3,[r7,#46]
+ 487 0278 47F6FA72 	 movw r2,#32762
+ 488 027c 9342     	 cmp r3,r2
+ 489 027e 25D8     	 bhi .L33
+ 282:../SSC/Src/ecatfoe.c ****     {
+ 283:../SSC/Src/ecatfoe.c ****         /* we are still storing the received file data (in flash for example) and
+ 284:../SSC/Src/ecatfoe.c ****            send BUSY and wait for the DATA to be sent again */
+ 285:../SSC/Src/ecatfoe.c ****         /* store the OpCode in the mailbox buffer */
+ 286:../SSC/Src/ecatfoe.c ****         pFoeInd->FoeHeader.OpCode                   = SWAPWORD(ECAT_FOE_OPCODE_BUSY);
+ 490              	 .loc 1 286 0
+ 491 0280 7B68     	 ldr r3,[r7,#4]
+ 492 0282 0022     	 movs r2,#0
+ 493 0284 42F00602 	 orr r2,r2,#6
+ 494 0288 9A71     	 strb r2,[r3,#6]
+ 495 028a 0022     	 movs r2,#0
+ 496 028c DA71     	 strb r2,[r3,#7]
+ 287:../SSC/Src/ecatfoe.c ****         /* store the information how much progress we made until we can receive file data again */
+ 288:../SSC/Src/ecatfoe.c ****         pFoeInd->FoeHeader.Cmd.Busy.Done            = SWAPWORD(nextState-FOE_MAXBUSY_ZERO);
+ 497              	 .loc 1 288 0
+ 498 028e FB8D     	 ldrh r3,[r7,#46]
+ 499 0290 A3F5FF43 	 sub r3,r3,#32640
+ 500 0294 163B     	 subs r3,r3,#22
+ 501 0296 9AB2     	 uxth r2,r3
+ 502 0298 7B68     	 ldr r3,[r7,#4]
+ 503 029a 1A81     	 strh r2,[r3,#8]
+ 289:../SSC/Src/ecatfoe.c **** 
+ 290:../SSC/Src/ecatfoe.c ****         pFoeInd->FoeHeader.Cmd.Busy.Entire          = 0;
+ 504              	 .loc 1 290 0
+ 505 029c 7B68     	 ldr r3,[r7,#4]
+ 506 029e 0022     	 movs r2,#0
+ 507 02a0 9A72     	 strb r2,[r3,#10]
+ 508 02a2 0022     	 movs r2,#0
+ 509 02a4 DA72     	 strb r2,[r3,#11]
+ 291:../SSC/Src/ecatfoe.c ****         /* store the size of the mailbox data in the mailbox buffer */
+ 292:../SSC/Src/ecatfoe.c **** 
+ 293:../SSC/Src/ecatfoe.c ****         pFoeInd->MbxHeader.Length                   = FOE_HEADER_SIZE;
+ 510              	 .loc 1 293 0
+ 511 02a6 7B68     	 ldr r3,[r7,#4]
+ 512 02a8 0022     	 movs r2,#0
+ 513 02aa 42F00602 	 orr r2,r2,#6
+ 514 02ae 1A70     	 strb r2,[r3]
+ 515 02b0 0022     	 movs r2,#0
+ 516 02b2 5A70     	 strb r2,[r3,#1]
+ 517 02b4 A4E0     	 b .L32
+ 518              	.L50:
+ 519 02b6 00BF     	 .align 2
+ 520              	.L49:
+ 521 02b8 00000000 	 .word u16FileAccessState
+ 522 02bc 00000000 	 .word u32LastFileOffset
+ 523 02c0 00000000 	 .word u32PacketNo
+ 524 02c4 00000000 	 .word u32FileOffset
+ 525 02c8 00000000 	 .word u16SendMbxSize
+ 526              	.L33:
+ 294:../SSC/Src/ecatfoe.c ****     }
+ 295:../SSC/Src/ecatfoe.c ****     else if ( nextState == FOE_ACK || nextState == FOE_ACKFINISHED )
+ 527              	 .loc 1 295 0
+ 528 02cc FB8D     	 ldrh r3,[r7,#46]
+ 529 02ce 47F6FD72 	 movw r2,#32765
+ 530 02d2 9342     	 cmp r3,r2
+ 531 02d4 04D0     	 beq .L34
+ 532              	 .loc 1 295 0 is_stmt 0 discriminator 1
+ 533 02d6 FB8D     	 ldrh r3,[r7,#46]
+ 534 02d8 47F6FC72 	 movw r2,#32764
+ 535 02dc 9342     	 cmp r3,r2
+ 536 02de 2BD1     	 bne .L35
+ 537              	.L34:
+ 538              	.LBB8:
+ 296:../SSC/Src/ecatfoe.c ****     {
+ 297:../SSC/Src/ecatfoe.c ****         /* we send ACK and wait for DATA
+ 298:../SSC/Src/ecatfoe.c ****             the next file data is expected with an incremented packet number, but
+ 299:../SSC/Src/ecatfoe.c ****             we have to acknowledge the old packet first */
+ 300:../SSC/Src/ecatfoe.c ****         UINT32 d = SWAPDWORD(u32PacketNo);
+ 539              	 .loc 1 300 0 is_stmt 1
+ 540 02e0 644B     	 ldr r3,.L51
+ 541 02e2 1B68     	 ldr r3,[r3]
+ 542 02e4 FB60     	 str r3,[r7,#12]
+ 301:../SSC/Src/ecatfoe.c ****         u32PacketNo++;
+ 543              	 .loc 1 301 0
+ 544 02e6 634B     	 ldr r3,.L51
+ 545 02e8 1B68     	 ldr r3,[r3]
+ 546 02ea 0133     	 adds r3,r3,#1
+ 547 02ec 614A     	 ldr r2,.L51
+ 548 02ee 1360     	 str r3,[r2]
+ 302:../SSC/Src/ecatfoe.c ****         
+ 303:../SSC/Src/ecatfoe.c ****         /* store the OpCode in the mailbox buffer */
+ 304:../SSC/Src/ecatfoe.c ****         pFoeInd->FoeHeader.OpCode                   = SWAPWORD(ECAT_FOE_OPCODE_ACK);
+ 549              	 .loc 1 304 0
+ 550 02f0 7B68     	 ldr r3,[r7,#4]
+ 551 02f2 0022     	 movs r2,#0
+ 552 02f4 42F00402 	 orr r2,r2,#4
+ 553 02f8 9A71     	 strb r2,[r3,#6]
+ 554 02fa 0022     	 movs r2,#0
+ 555 02fc DA71     	 strb r2,[r3,#7]
+ 305:../SSC/Src/ecatfoe.c ****         /* store the packet number in the mailbox buffer */
+ 306:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_START(V5.12) FOE2*/
+ 307:../SSC/Src/ecatfoe.c ****         pFoeInd->FoeHeader.Cmd.PacketNo[FOE_COMMAND_LOWWORD] = ((d & 0x0000FFFF));
+ 556              	 .loc 1 307 0
+ 557 02fe FB68     	 ldr r3,[r7,#12]
+ 558 0300 9AB2     	 uxth r2,r3
+ 559 0302 7B68     	 ldr r3,[r7,#4]
+ 560 0304 1A81     	 strh r2,[r3,#8]
+ 308:../SSC/Src/ecatfoe.c ****         pFoeInd->FoeHeader.Cmd.PacketNo[FOE_COMMAND_HIGHWORD] = ((d & 0xFFFF0000) >> 16);
+ 561              	 .loc 1 308 0
+ 562 0306 FB68     	 ldr r3,[r7,#12]
+ 563 0308 1B0C     	 lsrs r3,r3,#16
+ 564 030a 9AB2     	 uxth r2,r3
+ 565 030c 7B68     	 ldr r3,[r7,#4]
+ 566 030e 5A81     	 strh r2,[r3,#10]
+ 309:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_END(V5.12) FOE2*/
+ 310:../SSC/Src/ecatfoe.c **** 
+ 311:../SSC/Src/ecatfoe.c ****         /* store the size of the mailbox data in the mailbox buffer */
+ 312:../SSC/Src/ecatfoe.c ****         pFoeInd->MbxHeader.Length                   = SIZEOF(TFOEHEADER);
+ 567              	 .loc 1 312 0
+ 568 0310 7B68     	 ldr r3,[r7,#4]
+ 569 0312 0022     	 movs r2,#0
+ 570 0314 42F00602 	 orr r2,r2,#6
+ 571 0318 1A70     	 strb r2,[r3]
+ 572 031a 0022     	 movs r2,#0
+ 573 031c 5A70     	 strb r2,[r3,#1]
+ 313:../SSC/Src/ecatfoe.c **** 
+ 314:../SSC/Src/ecatfoe.c ****         /* we wait for the next data part */
+ 315:../SSC/Src/ecatfoe.c ****         if ( nextState == FOE_ACK )
+ 574              	 .loc 1 315 0
+ 575 031e FB8D     	 ldrh r3,[r7,#46]
+ 576 0320 47F6FD72 	 movw r2,#32765
+ 577 0324 9342     	 cmp r3,r2
+ 578 0326 03D1     	 bne .L36
+ 316:../SSC/Src/ecatfoe.c ****         {
+ 317:../SSC/Src/ecatfoe.c ****             /* we wait for the next data part */
+ 318:../SSC/Src/ecatfoe.c ****             u16FileAccessState = FOE_WAIT_FOR_DATA;
+ 579              	 .loc 1 318 0
+ 580 0328 534B     	 ldr r3,.L51+4
+ 581 032a 0222     	 movs r2,#2
+ 582 032c 1A80     	 strh r2,[r3]
+ 583              	.LBE8:
+ 296:../SSC/Src/ecatfoe.c ****         /* we send ACK and wait for DATA
+ 584              	 .loc 1 296 0
+ 585 032e 67E0     	 b .L32
+ 586              	.L36:
+ 587              	.LBB9:
+ 319:../SSC/Src/ecatfoe.c ****         }
+ 320:../SSC/Src/ecatfoe.c ****         else
+ 321:../SSC/Src/ecatfoe.c ****         {
+ 322:../SSC/Src/ecatfoe.c ****             /* the last data part was received */
+ 323:../SSC/Src/ecatfoe.c ****             u16FileAccessState = FOE_READY;
+ 588              	 .loc 1 323 0
+ 589 0330 514B     	 ldr r3,.L51+4
+ 590 0332 0022     	 movs r2,#0
+ 591 0334 1A80     	 strh r2,[r3]
+ 592              	.LBE9:
+ 296:../SSC/Src/ecatfoe.c ****         /* we send ACK and wait for DATA
+ 593              	 .loc 1 296 0
+ 594 0336 63E0     	 b .L32
+ 595              	.L35:
+ 324:../SSC/Src/ecatfoe.c ****         }
+ 325:../SSC/Src/ecatfoe.c ****     }
+ 326:../SSC/Src/ecatfoe.c ****     else if ( nextState < FOE_ERROR )
+ 596              	 .loc 1 326 0
+ 597 0338 FB8D     	 ldrh r3,[r7,#46]
+ 598 033a 1BB2     	 sxth r3,r3
+ 599 033c 002B     	 cmp r3,#0
+ 600 033e 07DB     	 blt .L38
+ 327:../SSC/Src/ecatfoe.c ****     {
+ 328:../SSC/Src/ecatfoe.c ****         /* the file transmission sequence is finished, we have to send nothing */
+ 329:../SSC/Src/ecatfoe.c ****         u16FileAccessState = FOE_READY;
+ 601              	 .loc 1 329 0
+ 602 0340 4D4B     	 ldr r3,.L51+4
+ 603 0342 0022     	 movs r2,#0
+ 604 0344 1A80     	 strh r2,[r3]
+ 330:../SSC/Src/ecatfoe.c ****         APPL_FreeMailboxBuffer(pFoeInd);
+ 605              	 .loc 1 330 0
+ 606 0346 7868     	 ldr r0,[r7,#4]
+ 607 0348 FFF7FEFF 	 bl free
+ 331:../SSC/Src/ecatfoe.c ****         return 0;
+ 608              	 .loc 1 331 0
+ 609 034c 0023     	 movs r3,#0
+ 610 034e 8CE0     	 b .L6
+ 611              	.L38:
+ 612              	.LBB10:
+ 332:../SSC/Src/ecatfoe.c ****     }
+ 333:../SSC/Src/ecatfoe.c ****     else
+ 334:../SSC/Src/ecatfoe.c ****     {
+ 335:../SSC/Src/ecatfoe.c ****         UINT32 d = SWAPDWORD(nextState);
+ 613              	 .loc 1 335 0
+ 614 0350 FB8D     	 ldrh r3,[r7,#46]
+ 615 0352 7B61     	 str r3,[r7,#20]
+ 336:../SSC/Src/ecatfoe.c ****         UINT8 b = 0;
+ 616              	 .loc 1 336 0
+ 617 0354 0023     	 movs r3,#0
+ 618 0356 87F82D30 	 strb r3,[r7,#45]
+ 337:../SSC/Src/ecatfoe.c **** 
+ 338:../SSC/Src/ecatfoe.c ****         /* store the OpCode in the mailbox buffer */
+ 339:../SSC/Src/ecatfoe.c ****         pFoeInd->FoeHeader.OpCode                    = SWAPWORD(ECAT_FOE_OPCODE_ERR);
+ 619              	 .loc 1 339 0
+ 620 035a 7B68     	 ldr r3,[r7,#4]
+ 621 035c 0022     	 movs r2,#0
+ 622 035e 42F00502 	 orr r2,r2,#5
+ 623 0362 9A71     	 strb r2,[r3,#6]
+ 624 0364 0022     	 movs r2,#0
+ 625 0366 DA71     	 strb r2,[r3,#7]
+ 340:../SSC/Src/ecatfoe.c ****         /* store the ErrorCode in the mailbox buffer */
+ 341:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_START(V5.12) FOE2*/
+ 342:../SSC/Src/ecatfoe.c ****         pFoeInd->FoeHeader.Cmd.ErrorCode[FOE_COMMAND_LOWWORD] = ((d & 0x0000FFFF));
+ 626              	 .loc 1 342 0
+ 627 0368 7B69     	 ldr r3,[r7,#20]
+ 628 036a 9AB2     	 uxth r2,r3
+ 629 036c 7B68     	 ldr r3,[r7,#4]
+ 630 036e 1A81     	 strh r2,[r3,#8]
+ 343:../SSC/Src/ecatfoe.c ****         pFoeInd->FoeHeader.Cmd.ErrorCode[FOE_COMMAND_HIGHWORD] = ((d & 0xFFFF0000) >> 16);
+ 631              	 .loc 1 343 0
+ 632 0370 7B69     	 ldr r3,[r7,#20]
+ 633 0372 1B0C     	 lsrs r3,r3,#16
+ 634 0374 9AB2     	 uxth r2,r3
+ 635 0376 7B68     	 ldr r3,[r7,#4]
+ 636 0378 5A81     	 strh r2,[r3,#10]
+ 344:../SSC/Src/ecatfoe.c **** /*ECATCHANGE_END(V5.12) FOE2*/
+ 345:../SSC/Src/ecatfoe.c **** 
+ 346:../SSC/Src/ecatfoe.c ****         /* store the size of the mailbox data in the mailbox buffer */
+ 347:../SSC/Src/ecatfoe.c ****         pFoeInd->MbxHeader.Length                   = SIZEOF(TFOEHEADER);
+ 637              	 .loc 1 347 0
+ 638 037a 7B68     	 ldr r3,[r7,#4]
+ 639 037c 0022     	 movs r2,#0
+ 640 037e 42F00602 	 orr r2,r2,#6
+ 641 0382 1A70     	 strb r2,[r3]
+ 642 0384 0022     	 movs r2,#0
+ 643 0386 5A70     	 strb r2,[r3,#1]
+ 348:../SSC/Src/ecatfoe.c **** 
+ 349:../SSC/Src/ecatfoe.c ****         /* Error Text is returned in pFoeInd->Data */
+ 350:../SSC/Src/ecatfoe.c ****         while (b < 32)
+ 644              	 .loc 1 350 0
+ 645 0388 23E0     	 b .L39
+ 646              	.L43:
+ 647              	.LBB11:
+ 351:../SSC/Src/ecatfoe.c ****         {
+ 352:../SSC/Src/ecatfoe.c ****             UINT16 data = ((UINT16 MBXMEM *) pFoeInd->Data)[(b >> 1)];
+ 648              	 .loc 1 352 0
+ 649 038a 97F82D30 	 ldrb r3,[r7,#45]
+ 650 038e 5B08     	 lsrs r3,r3,#1
+ 651 0390 DBB2     	 uxtb r3,r3
+ 652 0392 7A68     	 ldr r2,[r7,#4]
+ 653 0394 191D     	 adds r1,r3,#4
+ 654 0396 4B00     	 lsls r3,r1,#1
+ 655 0398 1344     	 add r3,r3,r2
+ 656 039a 1879     	 ldrb r0,[r3,#4]
+ 657 039c 4B00     	 lsls r3,r1,#1
+ 658 039e 1344     	 add r3,r3,r2
+ 659 03a0 5B79     	 ldrb r3,[r3,#5]
+ 660 03a2 1B02     	 lsls r3,r3,#8
+ 661 03a4 0343     	 orrs r3,r3,r0
+ 662 03a6 7B82     	 strh r3,[r7,#18]
+ 353:../SSC/Src/ecatfoe.c **** 
+ 354:../SSC/Src/ecatfoe.c ****             if ((data & 0x00FF) == 0)
+ 663              	 .loc 1 354 0
+ 664 03a8 7B8A     	 ldrh r3,[r7,#18]
+ 665 03aa DBB2     	 uxtb r3,r3
+ 666 03ac 002B     	 cmp r3,#0
+ 667 03ae 00D1     	 bne .L40
+ 355:../SSC/Src/ecatfoe.c ****             {
+ 356:../SSC/Src/ecatfoe.c ****                 break;
+ 668              	 .loc 1 356 0
+ 669 03b0 13E0     	 b .L41
+ 670              	.L40:
+ 357:../SSC/Src/ecatfoe.c ****             }
+ 358:../SSC/Src/ecatfoe.c ****             b++;
+ 671              	 .loc 1 358 0
+ 672 03b2 97F82D30 	 ldrb r3,[r7,#45]
+ 673 03b6 0133     	 adds r3,r3,#1
+ 674 03b8 87F82D30 	 strb r3,[r7,#45]
+ 359:../SSC/Src/ecatfoe.c ****         
+ 360:../SSC/Src/ecatfoe.c ****             if ((data & 0xFF00) == 0)
+ 675              	 .loc 1 360 0
+ 676 03bc 7B8A     	 ldrh r3,[r7,#18]
+ 677 03be 03F47F43 	 and r3,r3,#65280
+ 678 03c2 002B     	 cmp r3,#0
+ 679 03c4 00D1     	 bne .L42
+ 361:../SSC/Src/ecatfoe.c ****             {
+ 362:../SSC/Src/ecatfoe.c ****                 break;
+ 680              	 .loc 1 362 0
+ 681 03c6 08E0     	 b .L41
+ 682              	.L42:
+ 363:../SSC/Src/ecatfoe.c ****             }
+ 364:../SSC/Src/ecatfoe.c ****             b++;
+ 683              	 .loc 1 364 0
+ 684 03c8 97F82D30 	 ldrb r3,[r7,#45]
+ 685 03cc 0133     	 adds r3,r3,#1
+ 686 03ce 87F82D30 	 strb r3,[r7,#45]
+ 687              	.L39:
+ 688              	.LBE11:
+ 350:../SSC/Src/ecatfoe.c ****         {
+ 689              	 .loc 1 350 0
+ 690 03d2 97F82D30 	 ldrb r3,[r7,#45]
+ 691 03d6 1F2B     	 cmp r3,#31
+ 692 03d8 D7D9     	 bls .L43
+ 693              	.L41:
+ 365:../SSC/Src/ecatfoe.c ****         }
+ 366:../SSC/Src/ecatfoe.c ****         if ( b < 32 )
+ 694              	 .loc 1 366 0
+ 695 03da 97F82D30 	 ldrb r3,[r7,#45]
+ 696 03de 1F2B     	 cmp r3,#31
+ 697 03e0 0BD8     	 bhi .L44
+ 367:../SSC/Src/ecatfoe.c ****         {
+ 368:../SSC/Src/ecatfoe.c ****             pFoeInd->MbxHeader.Length    += b+1;
+ 698              	 .loc 1 368 0
+ 699 03e2 7B68     	 ldr r3,[r7,#4]
+ 700 03e4 1B88     	 ldrh r3,[r3]
+ 701 03e6 9AB2     	 uxth r2,r3
+ 702 03e8 97F82D30 	 ldrb r3,[r7,#45]
+ 703 03ec 9BB2     	 uxth r3,r3
+ 704 03ee 1344     	 add r3,r3,r2
+ 705 03f0 9BB2     	 uxth r3,r3
+ 706 03f2 0133     	 adds r3,r3,#1
+ 707 03f4 9AB2     	 uxth r2,r3
+ 708 03f6 7B68     	 ldr r3,[r7,#4]
+ 709 03f8 1A80     	 strh r2,[r3]
+ 710              	.L44:
+ 369:../SSC/Src/ecatfoe.c ****         }
+ 370:../SSC/Src/ecatfoe.c **** 
+ 371:../SSC/Src/ecatfoe.c ****         /* the file transmission sequence is finished */
+ 372:../SSC/Src/ecatfoe.c ****         u16FileAccessState = FOE_READY;
+ 711              	 .loc 1 372 0
+ 712 03fa 1F4B     	 ldr r3,.L51+4
+ 713 03fc 0022     	 movs r2,#0
+ 714 03fe 1A80     	 strh r2,[r3]
+ 715              	.L32:
+ 716              	.LBE10:
+ 373:../SSC/Src/ecatfoe.c ****     }
+ 374:../SSC/Src/ecatfoe.c **** 
+ 375:../SSC/Src/ecatfoe.c ****     if ( bBootMode )
+ 717              	 .loc 1 375 0
+ 718 0400 1E4B     	 ldr r3,.L51+8
+ 719 0402 1B78     	 ldrb r3,[r3]
+ 720 0404 002B     	 cmp r3,#0
+ 721 0406 25D0     	 beq .L45
+ 376:../SSC/Src/ecatfoe.c ****     {
+ 377:../SSC/Src/ecatfoe.c ****         /* in BOOT mode the mailbox buffer is not sent via the mailbox functions
+ 378:../SSC/Src/ecatfoe.c ****            because only FoE is allowed in BOOT mode, so we have to include the
+ 379:../SSC/Src/ecatfoe.c ****             mailbox data link layer counter */
+ 380:../SSC/Src/ecatfoe.c ****         pFoeInd->MbxHeader.Flags[MBX_OFFS_COUNTER] &= ~MBX_MASK_COUNTER;
+ 722              	 .loc 1 380 0
+ 723 0408 7B68     	 ldr r3,[r7,#4]
+ 724 040a 5B79     	 ldrb r3,[r3,#5]
+ 725 040c 03F00F03 	 and r3,r3,#15
+ 726 0410 DAB2     	 uxtb r2,r3
+ 727 0412 7B68     	 ldr r3,[r7,#4]
+ 728 0414 5A71     	 strb r2,[r3,#5]
+ 381:../SSC/Src/ecatfoe.c ****         if ( (u8MbxReadCounter & 0x07) == 0 )
+ 729              	 .loc 1 381 0
+ 730 0416 1A4B     	 ldr r3,.L51+12
+ 731 0418 1B78     	 ldrb r3,[r3]
+ 732 041a 03F00703 	 and r3,r3,#7
+ 733 041e 002B     	 cmp r3,#0
+ 734 0420 02D1     	 bne .L46
+ 382:../SSC/Src/ecatfoe.c ****         {
+ 383:../SSC/Src/ecatfoe.c ****             /* counter 0 is not allowed if mailbox data link layer is supported */
+ 384:../SSC/Src/ecatfoe.c ****             u8MbxReadCounter = 1;
+ 735              	 .loc 1 384 0
+ 736 0422 174B     	 ldr r3,.L51+12
+ 737 0424 0122     	 movs r2,#1
+ 738 0426 1A70     	 strb r2,[r3]
+ 739              	.L46:
+ 385:../SSC/Src/ecatfoe.c ****         }
+ 386:../SSC/Src/ecatfoe.c ****         /* store the counter in the mailbox header */
+ 387:../SSC/Src/ecatfoe.c ****         pFoeInd->MbxHeader.Flags[MBX_OFFS_COUNTER] |= u8MbxReadCounter << MBX_SHIFT_COUNTER;
+ 740              	 .loc 1 387 0
+ 741 0428 7B68     	 ldr r3,[r7,#4]
+ 742 042a 5B79     	 ldrb r3,[r3,#5]
+ 743 042c DAB2     	 uxtb r2,r3
+ 744 042e 144B     	 ldr r3,.L51+12
+ 745 0430 1B78     	 ldrb r3,[r3]
+ 746 0432 1B01     	 lsls r3,r3,#4
+ 747 0434 DBB2     	 uxtb r3,r3
+ 748 0436 1343     	 orrs r3,r3,r2
+ 749 0438 DBB2     	 uxtb r3,r3
+ 750 043a DAB2     	 uxtb r2,r3
+ 751 043c 7B68     	 ldr r3,[r7,#4]
+ 752 043e 5A71     	 strb r2,[r3,#5]
+ 388:../SSC/Src/ecatfoe.c ****         /* increment the counter for the next service */
+ 389:../SSC/Src/ecatfoe.c ****           u8MbxReadCounter++;
+ 753              	 .loc 1 389 0
+ 754 0440 0F4B     	 ldr r3,.L51+12
+ 755 0442 1B78     	 ldrb r3,[r3]
+ 756 0444 0133     	 adds r3,r3,#1
+ 757 0446 DAB2     	 uxtb r2,r3
+ 758 0448 0D4B     	 ldr r3,.L51+12
+ 759 044a 1A70     	 strb r2,[r3]
+ 390:../SSC/Src/ecatfoe.c ****         /* call the function to send the mailbox service directly,
+ 391:../SSC/Src/ecatfoe.c ****            in BOOT mode we can be sure that the send mailbox is empty
+ 392:../SSC/Src/ecatfoe.c ****            because no parallel services are allowed */
+ 393:../SSC/Src/ecatfoe.c ****         MBX_CopyToSendMailbox((TMBX MBXMEM *) pFoeInd);
+ 760              	 .loc 1 393 0
+ 761 044c 7868     	 ldr r0,[r7,#4]
+ 762 044e FFF7FEFF 	 bl MBX_CopyToSendMailbox
+ 763 0452 09E0     	 b .L47
+ 764              	.L45:
+ 394:../SSC/Src/ecatfoe.c ****     }
+ 395:../SSC/Src/ecatfoe.c ****     else
+ 396:../SSC/Src/ecatfoe.c ****     {
+ 397:../SSC/Src/ecatfoe.c ****         if ( MBX_MailboxSendReq((TMBX MBXMEM *) pFoeInd, FOE_SERVICE) != 0 )
+ 765              	 .loc 1 397 0
+ 766 0454 7868     	 ldr r0,[r7,#4]
+ 767 0456 4021     	 movs r1,#64
+ 768 0458 FFF7FEFF 	 bl MBX_MailboxSendReq
+ 769 045c 0346     	 mov r3,r0
+ 770 045e 002B     	 cmp r3,#0
+ 771 0460 02D0     	 beq .L47
+ 398:../SSC/Src/ecatfoe.c ****         {
+ 399:../SSC/Src/ecatfoe.c ****             /* if the mailbox service could not be sent (or stored), the response will be
+ 400:../SSC/Src/ecatfoe.c ****                stored in the variable pFoeSendStored and will be sent automatically
+ 401:../SSC/Src/ecatfoe.c ****                 from the mailbox handler (FOE_ContinueInd) when the send mailbox will be read
+ 402:../SSC/Src/ecatfoe.c ****                 the next time from the master */
+ 403:../SSC/Src/ecatfoe.c ****             pFoeSendStored = (TMBX MBXMEM *) pFoeInd;
+ 772              	 .loc 1 403 0
+ 773 0462 084A     	 ldr r2,.L51+16
+ 774 0464 7B68     	 ldr r3,[r7,#4]
+ 775 0466 1360     	 str r3,[r2]
+ 776              	.L47:
+ 404:../SSC/Src/ecatfoe.c ****         }
+ 405:../SSC/Src/ecatfoe.c ****     }
+ 406:../SSC/Src/ecatfoe.c **** 
+ 407:../SSC/Src/ecatfoe.c ****     return 0;
+ 777              	 .loc 1 407 0
+ 778 0468 0023     	 movs r3,#0
+ 779              	.L6:
+ 408:../SSC/Src/ecatfoe.c **** }
+ 780              	 .loc 1 408 0
+ 781 046a 1846     	 mov r0,r3
+ 782 046c 3037     	 adds r7,r7,#48
+ 783              	.LCFI7:
+ 784              	 .cfi_def_cfa_offset 8
+ 785 046e BD46     	 mov sp,r7
+ 786              	.LCFI8:
+ 787              	 .cfi_def_cfa_register 13
+ 788              	 
+ 789 0470 80BD     	 pop {r7,pc}
+ 790              	.L52:
+ 791 0472 00BF     	 .align 2
+ 792              	.L51:
+ 793 0474 00000000 	 .word u32PacketNo
+ 794 0478 00000000 	 .word u16FileAccessState
+ 795 047c 00000000 	 .word bBootMode
+ 796 0480 00000000 	 .word u8MbxReadCounter
+ 797 0484 00000000 	 .word pFoeSendStored
+ 798              	 .cfi_endproc
+ 799              	.LFE178:
+ 801              	 .section .text.FOE_ContinueInd,"ax",%progbits
+ 802              	 .align 2
+ 803              	 .global FOE_ContinueInd
+ 804              	 .thumb
+ 805              	 .thumb_func
+ 807              	FOE_ContinueInd:
+ 808              	.LFB179:
+ 409:../SSC/Src/ecatfoe.c **** 
+ 410:../SSC/Src/ecatfoe.c **** 
+ 411:../SSC/Src/ecatfoe.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 412:../SSC/Src/ecatfoe.c **** /**
+ 413:../SSC/Src/ecatfoe.c ****  \param     pMbx      Pointer to the free mailbox buffer
+ 414:../SSC/Src/ecatfoe.c **** 
+ 415:../SSC/Src/ecatfoe.c ****  \brief    This function is called when the next mailbox fragment can be sent.
+ 416:../SSC/Src/ecatfoe.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 417:../SSC/Src/ecatfoe.c **** 
+ 418:../SSC/Src/ecatfoe.c **** void FOE_ContinueInd(TMBX MBXMEM * pMbx)
+ 419:../SSC/Src/ecatfoe.c **** {
+ 809              	 .loc 1 419 0
+ 810              	 .cfi_startproc
+ 811              	 
+ 812              	 
+ 813 0000 80B5     	 push {r7,lr}
+ 814              	.LCFI9:
+ 815              	 .cfi_def_cfa_offset 8
+ 816              	 .cfi_offset 7,-8
+ 817              	 .cfi_offset 14,-4
+ 818 0002 82B0     	 sub sp,sp,#8
+ 819              	.LCFI10:
+ 820              	 .cfi_def_cfa_offset 16
+ 821 0004 00AF     	 add r7,sp,#0
+ 822              	.LCFI11:
+ 823              	 .cfi_def_cfa_register 7
+ 824 0006 7860     	 str r0,[r7,#4]
+ 420:../SSC/Src/ecatfoe.c ****     if ( pFoeSendStored )
+ 825              	 .loc 1 420 0
+ 826 0008 074B     	 ldr r3,.L55
+ 827 000a 1B68     	 ldr r3,[r3]
+ 828 000c 002B     	 cmp r3,#0
+ 829 000e 08D0     	 beq .L53
+ 421:../SSC/Src/ecatfoe.c ****     {
+ 422:../SSC/Src/ecatfoe.c ****         /* send the stored FoE service which could not be sent before */
+ 423:../SSC/Src/ecatfoe.c ****         MBX_MailboxSendReq(pFoeSendStored, 0);
+ 830              	 .loc 1 423 0
+ 831 0010 054B     	 ldr r3,.L55
+ 832 0012 1B68     	 ldr r3,[r3]
+ 833 0014 1846     	 mov r0,r3
+ 834 0016 0021     	 movs r1,#0
+ 835 0018 FFF7FEFF 	 bl MBX_MailboxSendReq
+ 424:../SSC/Src/ecatfoe.c ****         pFoeSendStored = 0;
+ 836              	 .loc 1 424 0
+ 837 001c 024B     	 ldr r3,.L55
+ 838 001e 0022     	 movs r2,#0
+ 839 0020 1A60     	 str r2,[r3]
+ 840              	.L53:
+ 425:../SSC/Src/ecatfoe.c ****     }
+ 426:../SSC/Src/ecatfoe.c **** }
+ 841              	 .loc 1 426 0
+ 842 0022 0837     	 adds r7,r7,#8
+ 843              	.LCFI12:
+ 844              	 .cfi_def_cfa_offset 8
+ 845 0024 BD46     	 mov sp,r7
+ 846              	.LCFI13:
+ 847              	 .cfi_def_cfa_register 13
+ 848              	 
+ 849 0026 80BD     	 pop {r7,pc}
+ 850              	.L56:
+ 851              	 .align 2
+ 852              	.L55:
+ 853 0028 00000000 	 .word pFoeSendStored
+ 854              	 .cfi_endproc
+ 855              	.LFE179:
+ 857              	 .text
+ 858              	.Letext0:
+ 859              	 .file 2 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 860              	 .file 3 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 861              	 .file 4 "../SSC/Src/mailbox.h"
+ 862              	 .file 5 "../SSC/Src/ecatfoe.h"
+ 863              	 .file 6 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Include/core_cm4.h"
+ 864              	 .file 7 "../SSC/Src/ecatslv.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 ecatfoe.c
+                            *COM*:00000004 u32PacketNo
+                            *COM*:00000004 u32FileOffset
+                            *COM*:00000004 u32LastFileOffset
+                            *COM*:00000002 u16FileAccessState
+                            *COM*:00000004 pFoeSendStored
+                            *COM*:00000002 u16FoeMaxSendBlockSize
+    {standard input}:26     .text.FOE_Init:00000000 $t
+    {standard input}:31     .text.FOE_Init:00000000 FOE_Init
+    {standard input}:71     .text.FOE_Init:00000020 $d
+    {standard input}:78     .text.FOE_ServiceInd:00000000 $t
+    {standard input}:83     .text.FOE_ServiceInd:00000000 FOE_ServiceInd
+    {standard input}:131    .text.FOE_ServiceInd:0000003c $d
+    {standard input}:137    .text.FOE_ServiceInd:00000054 $t
+    {standard input}:521    .text.FOE_ServiceInd:000002b8 $d
+    {standard input}:528    .text.FOE_ServiceInd:000002cc $t
+    {standard input}:793    .text.FOE_ServiceInd:00000474 $d
+    {standard input}:802    .text.FOE_ContinueInd:00000000 $t
+    {standard input}:807    .text.FOE_ContinueInd:00000000 FOE_ContinueInd
+    {standard input}:853    .text.FOE_ContinueInd:00000028 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+FOE_Read
+FOE_Write
+FOE_Data
+FOE_Ack
+FOE_Error
+FOE_Busy
+u16SendMbxSize
+free
+MBX_CopyToSendMailbox
+MBX_MailboxSendReq
+bBootMode
+u8MbxReadCounter

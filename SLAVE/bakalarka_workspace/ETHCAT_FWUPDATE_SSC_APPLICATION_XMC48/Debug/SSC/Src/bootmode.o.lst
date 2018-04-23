@@ -1,0 +1,269 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "bootmode.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.BL_Start,"ax",%progbits
+  20              	 .align 2
+  21              	 .global BL_Start
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	BL_Start:
+  26              	.LFB135:
+  27              	 .file 1 "../SSC/Src/bootmode.c"
+   1:../SSC/Src/bootmode.c **** /*
+   2:../SSC/Src/bootmode.c **** * This source file is part of the EtherCAT Slave Stack Code licensed by Beckhoff Automation GmbH & 
+   3:../SSC/Src/bootmode.c **** * The corresponding license agreement applies. This hint shall not be removed.
+   4:../SSC/Src/bootmode.c **** */
+   5:../SSC/Src/bootmode.c **** 
+   6:../SSC/Src/bootmode.c **** /**
+   7:../SSC/Src/bootmode.c **** \addtogroup ESM EtherCAT State Machine
+   8:../SSC/Src/bootmode.c **** @{
+   9:../SSC/Src/bootmode.c **** */
+  10:../SSC/Src/bootmode.c **** 
+  11:../SSC/Src/bootmode.c **** /**
+  12:../SSC/Src/bootmode.c **** \file bootmode.c
+  13:../SSC/Src/bootmode.c **** \author EthercatSSC@beckhoff.com
+  14:../SSC/Src/bootmode.c **** \brief Implementation
+  15:../SSC/Src/bootmode.c **** 
+  16:../SSC/Src/bootmode.c **** \version 5.12
+  17:../SSC/Src/bootmode.c **** 
+  18:../SSC/Src/bootmode.c **** <br>Changes to version V4.20:<br>
+  19:../SSC/Src/bootmode.c **** V5.12 BOOT2: call BL_Start() from Init to Boot<br>
+  20:../SSC/Src/bootmode.c **** <br>Changes to version - :<br>
+  21:../SSC/Src/bootmode.c **** V4.20: File created
+  22:../SSC/Src/bootmode.c **** */
+  23:../SSC/Src/bootmode.c **** 
+  24:../SSC/Src/bootmode.c **** /*--------------------------------------------------------------------------------------
+  25:../SSC/Src/bootmode.c **** ------
+  26:../SSC/Src/bootmode.c **** ------    Includes
+  27:../SSC/Src/bootmode.c **** ------
+  28:../SSC/Src/bootmode.c **** --------------------------------------------------------------------------------------*/
+  29:../SSC/Src/bootmode.c **** #include "ecat_def.h"
+  30:../SSC/Src/bootmode.c **** 
+  31:../SSC/Src/bootmode.c **** 
+  32:../SSC/Src/bootmode.c **** #define    _BOOTMODE_ 1
+  33:../SSC/Src/bootmode.c **** #include "bootmode.h"
+  34:../SSC/Src/bootmode.c **** #undef _BOOTMODE_
+  35:../SSC/Src/bootmode.c **** 
+  36:../SSC/Src/bootmode.c **** #include "ecatfoe.h"
+  37:../SSC/Src/bootmode.c **** 
+  38:../SSC/Src/bootmode.c **** /*ECATCHANGE_START(V5.12) BOOT2*/
+  39:../SSC/Src/bootmode.c **** /////////////////////////////////////////////////////////////////////////////////////////
+  40:../SSC/Src/bootmode.c **** /**
+  41:../SSC/Src/bootmode.c ****  \param    State        Current state
+  42:../SSC/Src/bootmode.c **** 
+  43:../SSC/Src/bootmode.c ****  \brief Called from INIT to BOOT
+  44:../SSC/Src/bootmode.c **** *////////////////////////////////////////////////////////////////////////////////////////
+  45:../SSC/Src/bootmode.c **** void BL_Start( UINT8 State)
+  46:../SSC/Src/bootmode.c **** {
+  28              	 .loc 1 46 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32              	 
+  33 0000 80B4     	 push {r7}
+  34              	.LCFI0:
+  35              	 .cfi_def_cfa_offset 4
+  36              	 .cfi_offset 7,-4
+  37 0002 83B0     	 sub sp,sp,#12
+  38              	.LCFI1:
+  39              	 .cfi_def_cfa_offset 16
+  40 0004 00AF     	 add r7,sp,#0
+  41              	.LCFI2:
+  42              	 .cfi_def_cfa_register 7
+  43 0006 0346     	 mov r3,r0
+  44 0008 FB71     	 strb r3,[r7,#7]
+  47:../SSC/Src/bootmode.c **** }
+  45              	 .loc 1 47 0
+  46 000a 0C37     	 adds r7,r7,#12
+  47              	.LCFI3:
+  48              	 .cfi_def_cfa_offset 4
+  49 000c BD46     	 mov sp,r7
+  50              	.LCFI4:
+  51              	 .cfi_def_cfa_register 13
+  52              	 
+  53 000e 5DF8047B 	 ldr r7,[sp],#4
+  54              	.LCFI5:
+  55              	 .cfi_restore 7
+  56              	 .cfi_def_cfa_offset 0
+  57 0012 7047     	 bx lr
+  58              	 .cfi_endproc
+  59              	.LFE135:
+  61              	 .section .text.BL_Stop,"ax",%progbits
+  62              	 .align 2
+  63              	 .global BL_Stop
+  64              	 .thumb
+  65              	 .thumb_func
+  67              	BL_Stop:
+  68              	.LFB136:
+  48:../SSC/Src/bootmode.c **** /*ECATCHANGE_END(V5.12) BOOT2*/
+  49:../SSC/Src/bootmode.c **** 
+  50:../SSC/Src/bootmode.c **** /////////////////////////////////////////////////////////////////////////////////////////
+  51:../SSC/Src/bootmode.c **** /**
+  52:../SSC/Src/bootmode.c **** 
+  53:../SSC/Src/bootmode.c **** \brief Called in the state transition from BOOT to Init
+  54:../SSC/Src/bootmode.c **** *////////////////////////////////////////////////////////////////////////////////////////
+  55:../SSC/Src/bootmode.c **** void BL_Stop(void)
+  56:../SSC/Src/bootmode.c **** {
+  69              	 .loc 1 56 0
+  70              	 .cfi_startproc
+  71              	 
+  72              	 
+  73              	 
+  74 0000 80B4     	 push {r7}
+  75              	.LCFI6:
+  76              	 .cfi_def_cfa_offset 4
+  77              	 .cfi_offset 7,-4
+  78 0002 00AF     	 add r7,sp,#0
+  79              	.LCFI7:
+  80              	 .cfi_def_cfa_register 7
+  57:../SSC/Src/bootmode.c **** }
+  81              	 .loc 1 57 0
+  82 0004 BD46     	 mov sp,r7
+  83              	.LCFI8:
+  84              	 .cfi_def_cfa_register 13
+  85              	 
+  86 0006 5DF8047B 	 ldr r7,[sp],#4
+  87              	.LCFI9:
+  88              	 .cfi_restore 7
+  89              	 .cfi_def_cfa_offset 0
+  90 000a 7047     	 bx lr
+  91              	 .cfi_endproc
+  92              	.LFE136:
+  94              	 .section .text.BL_StartDownload,"ax",%progbits
+  95              	 .align 2
+  96              	 .global BL_StartDownload
+  97              	 .thumb
+  98              	 .thumb_func
+ 100              	BL_StartDownload:
+ 101              	.LFB137:
+  58:../SSC/Src/bootmode.c **** 
+  59:../SSC/Src/bootmode.c **** /////////////////////////////////////////////////////////////////////////////////////////
+  60:../SSC/Src/bootmode.c **** /**
+  61:../SSC/Src/bootmode.c ****  \param    password    download password
+  62:../SSC/Src/bootmode.c **** 
+  63:../SSC/Src/bootmode.c ****  \brief Dummy BL_StartDownload function
+  64:../SSC/Src/bootmode.c **** *////////////////////////////////////////////////////////////////////////////////////////
+  65:../SSC/Src/bootmode.c **** void BL_StartDownload(UINT32 password)
+  66:../SSC/Src/bootmode.c **** {
+ 102              	 .loc 1 66 0
+ 103              	 .cfi_startproc
+ 104              	 
+ 105              	 
+ 106              	 
+ 107 0000 80B4     	 push {r7}
+ 108              	.LCFI10:
+ 109              	 .cfi_def_cfa_offset 4
+ 110              	 .cfi_offset 7,-4
+ 111 0002 83B0     	 sub sp,sp,#12
+ 112              	.LCFI11:
+ 113              	 .cfi_def_cfa_offset 16
+ 114 0004 00AF     	 add r7,sp,#0
+ 115              	.LCFI12:
+ 116              	 .cfi_def_cfa_register 7
+ 117 0006 7860     	 str r0,[r7,#4]
+  67:../SSC/Src/bootmode.c **** }
+ 118              	 .loc 1 67 0
+ 119 0008 0C37     	 adds r7,r7,#12
+ 120              	.LCFI13:
+ 121              	 .cfi_def_cfa_offset 4
+ 122 000a BD46     	 mov sp,r7
+ 123              	.LCFI14:
+ 124              	 .cfi_def_cfa_register 13
+ 125              	 
+ 126 000c 5DF8047B 	 ldr r7,[sp],#4
+ 127              	.LCFI15:
+ 128              	 .cfi_restore 7
+ 129              	 .cfi_def_cfa_offset 0
+ 130 0010 7047     	 bx lr
+ 131              	 .cfi_endproc
+ 132              	.LFE137:
+ 134 0012 00BF     	 .section .text.BL_Data,"ax",%progbits
+ 135              	 .align 2
+ 136              	 .global BL_Data
+ 137              	 .thumb
+ 138              	 .thumb_func
+ 140              	BL_Data:
+ 141              	.LFB138:
+  68:../SSC/Src/bootmode.c **** /////////////////////////////////////////////////////////////////////////////////////////
+  69:../SSC/Src/bootmode.c **** /**
+  70:../SSC/Src/bootmode.c ****  \param    pData    Data pointer
+  71:../SSC/Src/bootmode.c ****  \param    Size    Data Length
+  72:../SSC/Src/bootmode.c **** 
+  73:../SSC/Src/bootmode.c **** 
+  74:../SSC/Src/bootmode.c ****  \return    FoE error code
+  75:../SSC/Src/bootmode.c **** 
+  76:../SSC/Src/bootmode.c ****  \brief Dummy BL_Data function
+  77:../SSC/Src/bootmode.c **** *////////////////////////////////////////////////////////////////////////////////////////
+  78:../SSC/Src/bootmode.c **** UINT16 BL_Data(UINT16 *pData,UINT16 Size)
+  79:../SSC/Src/bootmode.c **** {
+ 142              	 .loc 1 79 0
+ 143              	 .cfi_startproc
+ 144              	 
+ 145              	 
+ 146              	 
+ 147 0000 80B4     	 push {r7}
+ 148              	.LCFI16:
+ 149              	 .cfi_def_cfa_offset 4
+ 150              	 .cfi_offset 7,-4
+ 151 0002 83B0     	 sub sp,sp,#12
+ 152              	.LCFI17:
+ 153              	 .cfi_def_cfa_offset 16
+ 154 0004 00AF     	 add r7,sp,#0
+ 155              	.LCFI18:
+ 156              	 .cfi_def_cfa_register 7
+ 157 0006 7860     	 str r0,[r7,#4]
+ 158 0008 0B46     	 mov r3,r1
+ 159 000a 7B80     	 strh r3,[r7,#2]
+  80:../SSC/Src/bootmode.c ****     return 0;
+ 160              	 .loc 1 80 0
+ 161 000c 0023     	 movs r3,#0
+  81:../SSC/Src/bootmode.c **** }
+ 162              	 .loc 1 81 0
+ 163 000e 1846     	 mov r0,r3
+ 164 0010 0C37     	 adds r7,r7,#12
+ 165              	.LCFI19:
+ 166              	 .cfi_def_cfa_offset 4
+ 167 0012 BD46     	 mov sp,r7
+ 168              	.LCFI20:
+ 169              	 .cfi_def_cfa_register 13
+ 170              	 
+ 171 0014 5DF8047B 	 ldr r7,[sp],#4
+ 172              	.LCFI21:
+ 173              	 .cfi_restore 7
+ 174              	 .cfi_def_cfa_offset 0
+ 175 0018 7047     	 bx lr
+ 176              	 .cfi_endproc
+ 177              	.LFE138:
+ 179 001a 00BF     	 .text
+ 180              	.Letext0:
+ 181              	 .file 2 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 182              	 .file 3 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 183              	 .file 4 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Include/core_cm4.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 bootmode.c
+    {standard input}:20     .text.BL_Start:00000000 $t
+    {standard input}:25     .text.BL_Start:00000000 BL_Start
+    {standard input}:62     .text.BL_Stop:00000000 $t
+    {standard input}:67     .text.BL_Stop:00000000 BL_Stop
+    {standard input}:95     .text.BL_StartDownload:00000000 $t
+    {standard input}:100    .text.BL_StartDownload:00000000 BL_StartDownload
+    {standard input}:135    .text.BL_Data:00000000 $t
+    {standard input}:140    .text.BL_Data:00000000 BL_Data
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

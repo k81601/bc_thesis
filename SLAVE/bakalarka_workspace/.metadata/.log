@@ -1,0 +1,1863 @@
+!SESSION 2018-04-19 13:43:06.641 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY SOLVER 1 0 2018-04-19 13:43:43.489
+!MESSAGE USER_ACTION : Default solver exe path is: C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-04-19 13:43:43.900
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-04-19 13:43:43.906
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-04-19 13:43:44.381
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 13:43:47.633
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY DAVE CE 4 0 2018-04-19 13:43:47.744
+!MESSAGE 
+
+***START of Exception Info***
+C:\Program Files\DAVE-IDE-4.4.2-64Bit\D_LibraryStore_4.4\libLock (Access is denied)
+java.io.FileOutputStream.open0(Native Method)
+java.io.FileOutputStream.open(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+com.ifx.dave.appslib.download.LibraryStoreLocker.serialize(LibraryStoreLocker.java:183)
+com.ifx.dave.appslib.download.LibraryStoreLocker.checkInLibraryStore(LibraryStoreLocker.java:78)
+com.ifx.dave.appslib.provider.LibraryIndexer.<init>(LibraryIndexer.java:81)
+com.ifx.dave.appslib.update.LibraryUpdateController.<init>(LibraryUpdateController.java:60)
+com.ifx.dave.appslib.update.CheckForAppUpdatesCommand$UpdateLibThread.run(CheckForAppUpdatesCommand.java:22)
+***END of Exception Info***
+
+
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-19 13:43:47.870
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-19 13:43:49.518
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.4//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-19 13:43:52.988
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.4//daveSite.xml
+
+!ENTRY org.eclipse.equinox.ds 1 0 2018-04-19 13:44:06.409
+!MESSAGE Could not bind a reference of component org.eclipse.fx.core.internal.JUtilLoggerFactory. The reference is: Reference[name = registerHandler, interface = java.util.logging.Handler, policy = dynamic, policy-option = greedy, cardinality = 0..n, target = null, bind = registerHandler, unbind = unregisterHandler, updated = null]
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 13:44:14.995
+!MESSAGE Resource '/ETHCAT_SSC_XMC48' is not open.
+
+!ENTRY Import 1 0 2018-04-19 13:44:15.230
+!MESSAGE USER_ACTION : Time taken for importing project: ETHCAT_SSC_XMC48 into workspace is : 11056 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 13:44:16.142
+!MESSAGE Resource '/ETHCAT_SSC_XMC48' is not open.
+
+!ENTRY APPSTORE 1 0 2018-04-19 13:44:16.934
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 646 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 13:44:16.947
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 7 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 13:44:17.696
+!MESSAGE USER_ACTION : Active project:ETHCAT_SSC_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-19 13:44:20.307
+!MESSAGE Time Taken By De-Serialization  : 1591 ms :: C:\src\bakalarka_workspace\ETHCAT_SSC_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 13:44:20.318
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 13:44:20.580
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 2885 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 13:44:20.629
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 43 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 13:44:20.666
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 36 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 13:44:20.670
+!MESSAGE USER_ACTION : Time taken for updating views is: 2 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 13:44:22.941
+!MESSAGE USER_ACTION : Time taken for rendering views is: 2270 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 13:44:23.800
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 6860 msec 
+
+!ENTRY APP_CONFIGURATOR 1 0 2018-04-19 13:44:32.009
+!MESSAGE USER_ACTION : Time taken for opening editor is: 761 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 14:12:18.096
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 14:12:18.490
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-19 14:12:19.569
+!MESSAGE Time Taken By Serialization  : 1069 ms :: C:\src\bakalarka_workspace\ETHCAT_SSC_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 14:12:20.710
+!MESSAGE ****************Cleaning project data:ETHCAT_SSC_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 14:12:20.751
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 835 msec 
+
+!ENTRY SOLVER 1 0 2018-04-19 14:12:20.752
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-04-19 14:12:21.026
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+
+!ENTRY DAVE CE 4 0 2018-04-19 14:12:21.041
+!MESSAGE 
+
+***START of Exception Info***
+C:\Program Files\DAVE-IDE-4.4.2-64Bit\D_LibraryStore_4.4\libLock (Access is denied)
+java.io.FileOutputStream.open0(Native Method)
+java.io.FileOutputStream.open(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+com.ifx.dave.appslib.download.LibraryStoreLocker.serialize(LibraryStoreLocker.java:183)
+com.ifx.dave.appslib.download.LibraryStoreLocker.checkOutLibraryStore(LibraryStoreLocker.java:105)
+com.ifx.davex.ce.core.perspective.ShutdownHook.preShutdown(ShutdownHook.java:92)
+org.eclipse.ui.internal.Workbench$7.run(Workbench.java:994)
+org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+org.eclipse.ui.internal.Workbench.firePreShutdown(Workbench.java:991)
+org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1130)
+org.eclipse.ui.internal.Workbench.access$22(Workbench.java:1118)
+org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1459)
+org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+org.eclipse.ui.internal.Workbench.close(Workbench.java:1456)
+org.eclipse.ui.internal.Workbench.close(Workbench.java:1429)
+org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1594)
+org.eclipse.ui.internal.WorkbenchWindow.access$16(WorkbenchWindow.java:1540)
+org.eclipse.ui.internal.WorkbenchWindow$11.run(WorkbenchWindow.java:1626)
+org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1623)
+org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1637)
+org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:524)
+org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$7.shellClosed(WBWRenderer.java:629)
+org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:99)
+org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+org.eclipse.swt.widgets.Display.sendEvent(Display.java:4418)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:315)
+org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1728)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4801)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2547)
+org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:506)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4897)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2547)
+org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:506)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4897)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
+org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3822)
+org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+org.eclipse.ui.internal.Workbench$5.run(Workbench.java:693)
+org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:610)
+org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+com.ifx.davex.product.DaveApplication.start(DaveApplication.java:140)
+org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+java.lang.reflect.Method.invoke(Unknown Source)
+org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+***END of Exception Info***
+
+
+!SESSION 2018-04-19 14:14:02.615 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY SOLVER 1 0 2018-04-19 14:14:24.140
+!MESSAGE USER_ACTION : Default solver exe path is: C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-04-19 14:14:24.254
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-04-19 14:14:24.255
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-04-19 14:14:24.459
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-04-19 14:14:25.205
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 742 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 14:14:25.799
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 7 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 14:14:26.225
+!MESSAGE USER_ACTION : Active project:ETHCAT_SSC_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-19 14:14:30.845
+!MESSAGE Time Taken By De-Serialization  : 3110 ms :: C:\src\bakalarka_workspace\ETHCAT_SSC_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 14:14:30.858
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 14:14:31.485
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 5263 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 14:14:31.577
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 88 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 14:14:31.600
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 22 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 14:14:31.603
+!MESSAGE USER_ACTION : Time taken for updating views is: 2 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 14:14:33.874
+!MESSAGE USER_ACTION : Time taken for rendering views is: 2270 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 14:14:34.435
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 8644 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 14:14:35.892
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY DAVE CE 4 0 2018-04-19 14:14:35.896
+!MESSAGE 
+
+***START of Exception Info***
+C:\Program Files\DAVE-IDE-4.4.2-64Bit\D_LibraryStore_4.4\libLock (Access is denied)
+java.io.FileOutputStream.open0(Native Method)
+java.io.FileOutputStream.open(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+com.ifx.dave.appslib.download.LibraryStoreLocker.serialize(LibraryStoreLocker.java:183)
+com.ifx.dave.appslib.download.LibraryStoreLocker.checkInLibraryStore(LibraryStoreLocker.java:78)
+com.ifx.dave.appslib.provider.LibraryIndexer.<init>(LibraryIndexer.java:81)
+com.ifx.dave.appslib.update.LibraryUpdateController.<init>(LibraryUpdateController.java:60)
+com.ifx.dave.appslib.update.CheckForAppUpdatesCommand$UpdateLibThread.run(CheckForAppUpdatesCommand.java:22)
+***END of Exception Info***
+
+
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-19 14:14:36.035
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-19 14:14:37.406
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.4//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-19 14:14:39.359
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.4//daveSite.xml
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-04-19 14:17:40.726
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-04-19 14:17:40.728
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:17:43.062
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:17:44.191
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY CODEGEN 1 0 2018-04-19 14:28:21.678
+!MESSAGE Code generation started...
+
+!ENTRY CODEGEN 1 0 2018-04-19 14:28:24.972
+!MESSAGE Code generation completed...
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:28:35.324
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:28:35.889
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.ui 4 4 2018-04-19 14:28:39.339
+!MESSAGE Conflicting handlers for org.eclipse.debug.ui.commands.DebugLast: {ActionDelegateHandlerProxy(null,com.dave.activeproject.ui.actions.ActiveProjDebugLastAction in com.dave.activeproject)} vs {ActionDelegateHandlerProxy(null,org.eclipse.debug.internal.ui.actions.DebugLastAction in org.eclipse.debug.ui)}
+
+!ENTRY org.eclipse.equinox.ds 1 0 2018-04-19 14:39:46.121
+!MESSAGE Could not bind a reference of component org.eclipse.fx.core.internal.JUtilLoggerFactory. The reference is: Reference[name = registerHandler, interface = java.util.logging.Handler, policy = dynamic, policy-option = greedy, cardinality = 0..n, target = null, bind = registerHandler, unbind = unregisterHandler, updated = null]
+
+!ENTRY org.eclipse.equinox.ds 1 0 2018-04-19 14:39:46.167
+!MESSAGE Could not bind a reference of component org.eclipse.fx.ide.css.cssext.ui.internal.DefaultCssExtProvider. The reference is: Reference[name = ICSSExtModelProvider, interface = org.eclipse.fx.ide.css.cssext.ICSSExtModelProvider, policy = dynamic, cardinality = 0..n, target = null, bind = bindCssExtensionModelProvider, unbind = unbindCssExtensionModelProvider]
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:39:53.926
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:39:54.496
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:57:12.163
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:57:12.728
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:58:16.381
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:58:16.891
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:59:16.835
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:59:17.351
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:59:40.988
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 14:59:41.510
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-04-19 15:05:03.936
+!MESSAGE Debug session 'ETHCAT_SSC_XMC48 Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 15:05:14.763
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 15:05:15.308
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-04-19 15:06:56.474
+!MESSAGE Debug session 'ETHCAT_SSC_XMC48 Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 15:07:11.686
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 15:07:12.228
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 15:10:51.345
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 15:10:51.995
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:14:26.906
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:14:27.038
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-19 15:14:27.366
+!MESSAGE Time Taken By Serialization  : 323 ms :: C:\src\bakalarka_workspace\ETHCAT_SSC_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:14:27.516
+!MESSAGE ****************Cleaning project data:ETHCAT_SSC_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:14:27.641
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 145 msec 
+
+!ENTRY SOLVER 1 0 2018-04-19 15:14:27.642
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-04-19 15:14:27.907
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+
+!ENTRY DAVE CE 4 0 2018-04-19 15:14:27.918
+!MESSAGE 
+
+***START of Exception Info***
+C:\Program Files\DAVE-IDE-4.4.2-64Bit\D_LibraryStore_4.4\libLock (Access is denied)
+java.io.FileOutputStream.open0(Native Method)
+java.io.FileOutputStream.open(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+com.ifx.dave.appslib.download.LibraryStoreLocker.serialize(LibraryStoreLocker.java:183)
+com.ifx.dave.appslib.download.LibraryStoreLocker.checkOutLibraryStore(LibraryStoreLocker.java:105)
+com.ifx.davex.ce.core.perspective.ShutdownHook.preShutdown(ShutdownHook.java:92)
+org.eclipse.ui.internal.Workbench$7.run(Workbench.java:994)
+org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+org.eclipse.ui.internal.Workbench.firePreShutdown(Workbench.java:991)
+org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1130)
+org.eclipse.ui.internal.Workbench.access$22(Workbench.java:1118)
+org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1459)
+org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+org.eclipse.ui.internal.Workbench.close(Workbench.java:1456)
+org.eclipse.ui.internal.Workbench.close(Workbench.java:1429)
+org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1594)
+org.eclipse.ui.internal.WorkbenchWindow.access$16(WorkbenchWindow.java:1540)
+org.eclipse.ui.internal.WorkbenchWindow$11.run(WorkbenchWindow.java:1626)
+org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1623)
+org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1637)
+org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:524)
+org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$7.shellClosed(WBWRenderer.java:629)
+org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:99)
+org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+org.eclipse.swt.widgets.Display.sendEvent(Display.java:4418)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:315)
+org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1728)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4801)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2547)
+org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:506)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4897)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2547)
+org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:506)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4897)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
+org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3822)
+org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+org.eclipse.ui.internal.Workbench$5.run(Workbench.java:693)
+org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:610)
+org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+com.ifx.davex.product.DaveApplication.start(DaveApplication.java:140)
+org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+java.lang.reflect.Method.invoke(Unknown Source)
+org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+***END of Exception Info***
+
+
+
+!ENTRY org.eclipse.cdt.dsf 4 -1 2018-04-19 15:14:29.662
+!MESSAGE Invocation exception when calling a service event handler method
+!STACK 0
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor52.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.cdt.dsf.service.DsfSession.doDispatchEvent(DsfSession.java:531)
+	at org.eclipse.cdt.dsf.service.DsfSession.access$2(DsfSession.java:475)
+	at org.eclipse.cdt.dsf.service.DsfSession$3.run(DsfSession.java:398)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.util.concurrent.RejectedExecutionException: Display org.eclipse.swt.widgets.Display@9dada78 is disposed
+	at org.eclipse.cdt.dsf.ui.concurrent.SimpleDisplayExecutor.execute(SimpleDisplayExecutor.java:85)
+	at org.eclipse.cdt.dsf.ui.viewmodel.AbstractVMAdapter.handleEvent(AbstractVMAdapter.java:260)
+	at org.eclipse.cdt.dsf.ui.viewmodel.datamodel.AbstractDMVMAdapter.eventDispatched(AbstractDMVMAdapter.java:103)
+	... 13 more
+Caused by: org.eclipse.swt.SWTException: Device is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.widgets.Display.error(Display.java:1262)
+	at org.eclipse.swt.widgets.Display.asyncExec(Display.java:710)
+	at org.eclipse.cdt.dsf.ui.concurrent.SimpleDisplayExecutor.execute(SimpleDisplayExecutor.java:77)
+	... 15 more
+Root exception:
+java.util.concurrent.RejectedExecutionException: Display org.eclipse.swt.widgets.Display@9dada78 is disposed
+	at org.eclipse.cdt.dsf.ui.concurrent.SimpleDisplayExecutor.execute(SimpleDisplayExecutor.java:85)
+	at org.eclipse.cdt.dsf.ui.viewmodel.AbstractVMAdapter.handleEvent(AbstractVMAdapter.java:260)
+	at org.eclipse.cdt.dsf.ui.viewmodel.datamodel.AbstractDMVMAdapter.eventDispatched(AbstractDMVMAdapter.java:103)
+	at sun.reflect.GeneratedMethodAccessor52.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.cdt.dsf.service.DsfSession.doDispatchEvent(DsfSession.java:531)
+	at org.eclipse.cdt.dsf.service.DsfSession.access$2(DsfSession.java:475)
+	at org.eclipse.cdt.dsf.service.DsfSession$3.run(DsfSession.java:398)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.eclipse.swt.SWTException: Device is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4533)
+	at org.eclipse.swt.SWT.error(SWT.java:4448)
+	at org.eclipse.swt.SWT.error(SWT.java:4419)
+	at org.eclipse.swt.widgets.Display.error(Display.java:1262)
+	at org.eclipse.swt.widgets.Display.asyncExec(Display.java:710)
+	at org.eclipse.cdt.dsf.ui.concurrent.SimpleDisplayExecutor.execute(SimpleDisplayExecutor.java:77)
+	... 15 more
+
+!ENTRY org.eclipse.core.jobs 2 2 2018-04-19 15:14:31.206
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.cdt.dsf.gdb.internal.ui.console.GdbBasicCliConsole$ErrorReadJob
+
+!ENTRY org.eclipse.core.jobs 2 2 2018-04-19 15:14:31.207
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.cdt.dsf.gdb.internal.ui.console.GdbBasicCliConsole$InputReadJob
+
+!ENTRY org.eclipse.core.jobs 2 2 2018-04-19 15:14:31.208
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.cdt.dsf.gdb.internal.ui.console.GdbBasicCliConsole$ErrorReadJob
+!SESSION 2018-04-19 15:15:41.984 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY SOLVER 1 0 2018-04-19 15:16:13.217
+!MESSAGE USER_ACTION : Default solver exe path is: C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-04-19 15:16:13.348
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-04-19 15:16:13.349
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-04-19 15:16:13.649
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-04-19 15:16:14.629
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 697 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:16:15.055
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 7 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:16:15.933
+!MESSAGE USER_ACTION : Active project:ETHCAT_SSC_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY org.eclipse.wst.common.project.facet.core 4 0 2018-04-19 15:16:15.954
+!MESSAGE Project facet jst.ejb has not been defined. It is used in plugin org.eclipse.jst.j2ee.
+
+!ENTRY COMMON 1 0 2018-04-19 15:16:18.527
+!MESSAGE Time Taken By De-Serialization  : 1602 ms :: C:\src\bakalarka_workspace\ETHCAT_SSC_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:16:18.538
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:16:18.799
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 2867 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:16:18.853
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 49 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:16:18.883
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 28 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:16:18.885
+!MESSAGE USER_ACTION : Time taken for updating views is: 1 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:16:21.042
+!MESSAGE USER_ACTION : Time taken for rendering views is: 2156 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:16:21.490
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 6442 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:16:22.814
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY DAVE CE 4 0 2018-04-19 15:16:22.818
+!MESSAGE 
+
+***START of Exception Info***
+C:\Program Files\DAVE-IDE-4.4.2-64Bit\D_LibraryStore_4.4\libLock (Access is denied)
+java.io.FileOutputStream.open0(Native Method)
+java.io.FileOutputStream.open(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+com.ifx.dave.appslib.download.LibraryStoreLocker.serialize(LibraryStoreLocker.java:183)
+com.ifx.dave.appslib.download.LibraryStoreLocker.checkInLibraryStore(LibraryStoreLocker.java:78)
+com.ifx.dave.appslib.provider.LibraryIndexer.<init>(LibraryIndexer.java:81)
+com.ifx.dave.appslib.update.LibraryUpdateController.<init>(LibraryUpdateController.java:60)
+com.ifx.dave.appslib.update.CheckForAppUpdatesCommand$UpdateLibThread.run(CheckForAppUpdatesCommand.java:22)
+***END of Exception Info***
+
+
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-19 15:16:22.917
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-19 15:16:24.153
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.4//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-19 15:16:25.623
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.4//daveSite.xml
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-04-19 15:16:52.528
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-04-19 15:16:52.531
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 15:16:55.430
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 15:16:56.120
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 15:22:48.012
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 15:22:48.519
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.equinox.ds 1 0 2018-04-19 15:38:58.340
+!MESSAGE Could not bind a reference of component org.eclipse.fx.core.internal.JUtilLoggerFactory. The reference is: Reference[name = registerHandler, interface = java.util.logging.Handler, policy = dynamic, policy-option = greedy, cardinality = 0..n, target = null, bind = registerHandler, unbind = unregisterHandler, updated = null]
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:39:00.993
+!MESSAGE Resource '/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48' is not open.
+
+!ENTRY Import 1 0 2018-04-19 15:39:01.407
+!MESSAGE USER_ACTION : Time taken for importing project: ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48 into workspace is : 3406 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:39:02.159
+!MESSAGE Resource '/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48' is not open.
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:39:02.235
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:39:02.469
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-19 15:39:02.850
+!MESSAGE Time Taken By Serialization  : 380 ms :: C:\src\bakalarka_workspace\ETHCAT_SSC_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:39:03.875
+!MESSAGE ****************Cleaning project data:ETHCAT_SSC_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:04.041
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 437 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:04.539
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-19 15:39:07.045
+!MESSAGE Time Taken By De-Serialization  : 2322 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:39:07.051
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:07.284
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 2746 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:07.455
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 167 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:07.525
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 68 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:07.526
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:08.816
+!MESSAGE USER_ACTION : Time taken for rendering views is: 1289 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:09.311
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 5707 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:39:25.052
+!MESSAGE Resource '/ETHCAT_FWUPDATE_BOOTLOADER_XMC48' is not open.
+
+!ENTRY Import 1 0 2018-04-19 15:39:25.085
+!MESSAGE USER_ACTION : Time taken for importing project: ETHCAT_FWUPDATE_BOOTLOADER_XMC48 into workspace is : 1956 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:39:25.266
+!MESSAGE Resource '/ETHCAT_FWUPDATE_BOOTLOADER_XMC48' is not open.
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:39:25.371
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:39:25.450
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-19 15:39:25.666
+!MESSAGE Time Taken By Serialization  : 215 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:39:26.298
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:26.322
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 423 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:26.748
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_BOOTLOADER_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-19 15:39:26.822
+!MESSAGE Time Taken By De-Serialization  : 63 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:39:26.823
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:26.824
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 77 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:26.826
+!MESSAGE USER_ACTION : Time taken for updating views is: 1 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:27.290
+!MESSAGE USER_ACTION : Time taken for rendering views is: 463 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:39:27.474
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 1575 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:58:29.726
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:58:29.728
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-19 15:58:29.749
+!MESSAGE Time Taken By Serialization  : 19 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:58:34.654
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_BOOTLOADER_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:58:34.655
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 38 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:58:34.849
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-19 15:58:36.101
+!MESSAGE Time Taken By De-Serialization  : 1118 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 15:58:36.105
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:58:36.243
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 1395 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:58:36.258
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 13 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:58:36.262
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 4 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:58:36.266
+!MESSAGE USER_ACTION : Time taken for updating views is: 2 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:58:36.946
+!MESSAGE USER_ACTION : Time taken for rendering views is: 679 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 15:58:37.228
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 2611 msec 
+
+!ENTRY org.eclipse.core.expressions 4 201 2018-04-19 16:10:23.232
+!MESSAGE No property tester contributes a property org.eclipse.wst.jsdt.chromium.debug.core.isJsFile to type class org.eclipse.cdt.internal.core.model.TranslationUnit
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.eclipse.wst.jsdt.chromium.debug.core.isJsFile to type class org.eclipse.cdt.internal.core.model.TranslationUnit
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:127)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:97)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.AndExpression.evaluate(AndExpression.java:31)
+	at org.eclipse.ui.internal.dialogs.RegistryPageContributor.failsEnablement(RegistryPageContributor.java:306)
+	at org.eclipse.ui.internal.dialogs.RegistryPageContributor.isApplicableTo(RegistryPageContributor.java:248)
+	at org.eclipse.ui.internal.dialogs.PropertyPageContributorManager.getApplicableContributors(PropertyPageContributorManager.java:216)
+	at org.eclipse.ui.internal.dialogs.PropertyPageContributorManager.getApplicableContributors(PropertyPageContributorManager.java:235)
+	at org.eclipse.ui.dialogs.PropertyDialogAction.hasPropertyPagesFor(PropertyDialogAction.java:106)
+	at org.eclipse.ui.dialogs.PropertyDialogAction.isApplicableForSelection(PropertyDialogAction.java:148)
+	at org.eclipse.cdt.ui.actions.OpenViewActionGroup.fillContextMenu(OpenViewActionGroup.java:229)
+	at org.eclipse.cdt.internal.ui.cview.MainActionGroup.fillContextMenu(MainActionGroup.java:235)
+	at org.eclipse.cdt.internal.ui.cview.CView.fillContextMenu(CView.java:712)
+	at org.eclipse.cdt.internal.ui.cview.CView$5.menuAboutToShow(CView.java:459)
+	at org.eclipse.jface.action.MenuManager.fireAboutToShow(MenuManager.java:339)
+	at org.eclipse.jface.action.MenuManager.handleAboutToShow(MenuManager.java:470)
+	at org.eclipse.jface.action.MenuManager.access$1(MenuManager.java:465)
+	at org.eclipse.jface.action.MenuManager$2.menuShown(MenuManager.java:497)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:256)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4418)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1084)
+	at org.eclipse.swt.widgets.Control.WM_INITMENUPOPUP(Control.java:5160)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4828)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+	at org.eclipse.swt.internal.win32.OS.TrackPopupMenu(Native Method)
+	at org.eclipse.swt.widgets.Menu._setVisible(Menu.java:262)
+	at org.eclipse.swt.widgets.Display.runPopups(Display.java:4277)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3818)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:693)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:610)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at com.ifx.davex.product.DaveApplication.start(DaveApplication.java:140)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2018-04-19 16:10:23.253
+!MESSAGE No property tester contributes a property org.eclipse.wst.jsdt.chromium.debug.core.isJsFile to type class org.eclipse.cdt.internal.core.model.TranslationUnit
+
+!ENTRY org.eclipse.core.expressions 4 201 2018-04-19 16:10:25.119
+!MESSAGE No property tester contributes a property org.eclipse.wst.jsdt.chromium.debug.core.isJsFile to type class org.eclipse.cdt.internal.core.model.TranslationUnit
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.eclipse.wst.jsdt.chromium.debug.core.isJsFile to type class org.eclipse.cdt.internal.core.model.TranslationUnit
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:127)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:97)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.AndExpression.evaluate(AndExpression.java:31)
+	at org.eclipse.ui.internal.dialogs.RegistryPageContributor.failsEnablement(RegistryPageContributor.java:306)
+	at org.eclipse.ui.internal.dialogs.RegistryPageContributor.isApplicableTo(RegistryPageContributor.java:248)
+	at org.eclipse.ui.internal.dialogs.PropertyPageContributorManager.getApplicableContributors(PropertyPageContributorManager.java:216)
+	at org.eclipse.ui.internal.dialogs.PropertyPageContributorManager.getApplicableContributors(PropertyPageContributorManager.java:235)
+	at org.eclipse.ui.dialogs.PropertyDialogAction.hasPropertyPagesFor(PropertyDialogAction.java:106)
+	at org.eclipse.ui.dialogs.PropertyDialogAction.isApplicableForSelection(PropertyDialogAction.java:148)
+	at org.eclipse.cdt.ui.actions.OpenViewActionGroup.fillContextMenu(OpenViewActionGroup.java:229)
+	at org.eclipse.cdt.internal.ui.cview.MainActionGroup.fillContextMenu(MainActionGroup.java:235)
+	at org.eclipse.cdt.internal.ui.cview.CView.fillContextMenu(CView.java:712)
+	at org.eclipse.cdt.internal.ui.cview.CView$5.menuAboutToShow(CView.java:459)
+	at org.eclipse.jface.action.MenuManager.fireAboutToShow(MenuManager.java:339)
+	at org.eclipse.jface.action.MenuManager.handleAboutToShow(MenuManager.java:470)
+	at org.eclipse.jface.action.MenuManager.access$1(MenuManager.java:465)
+	at org.eclipse.jface.action.MenuManager$2.menuShown(MenuManager.java:497)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:256)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4418)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1084)
+	at org.eclipse.swt.widgets.Control.WM_INITMENUPOPUP(Control.java:5160)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4828)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+	at org.eclipse.swt.internal.win32.OS.TrackPopupMenu(Native Method)
+	at org.eclipse.swt.widgets.Menu._setVisible(Menu.java:262)
+	at org.eclipse.swt.widgets.Display.runPopups(Display.java:4277)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3818)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:693)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:610)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at com.ifx.davex.product.DaveApplication.start(DaveApplication.java:140)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2018-04-19 16:10:25.120
+!MESSAGE No property tester contributes a property org.eclipse.wst.jsdt.chromium.debug.core.isJsFile to type class org.eclipse.cdt.internal.core.model.TranslationUnit
+
+!ENTRY org.eclipse.core.expressions 4 201 2018-04-19 16:14:17.559
+!MESSAGE No property tester contributes a property org.eclipse.wst.jsdt.chromium.debug.core.isJsFile to type class org.eclipse.cdt.internal.core.model.TranslationUnit
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.eclipse.wst.jsdt.chromium.debug.core.isJsFile to type class org.eclipse.cdt.internal.core.model.TranslationUnit
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:127)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:97)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.AndExpression.evaluate(AndExpression.java:31)
+	at org.eclipse.ui.internal.dialogs.RegistryPageContributor.failsEnablement(RegistryPageContributor.java:306)
+	at org.eclipse.ui.internal.dialogs.RegistryPageContributor.isApplicableTo(RegistryPageContributor.java:248)
+	at org.eclipse.ui.internal.dialogs.PropertyPageContributorManager.getApplicableContributors(PropertyPageContributorManager.java:216)
+	at org.eclipse.ui.internal.dialogs.PropertyPageContributorManager.getApplicableContributors(PropertyPageContributorManager.java:235)
+	at org.eclipse.ui.dialogs.PropertyDialogAction.hasPropertyPagesFor(PropertyDialogAction.java:106)
+	at org.eclipse.ui.dialogs.PropertyDialogAction.isApplicableForSelection(PropertyDialogAction.java:148)
+	at org.eclipse.cdt.ui.actions.OpenViewActionGroup.fillContextMenu(OpenViewActionGroup.java:229)
+	at org.eclipse.cdt.internal.ui.cview.MainActionGroup.fillContextMenu(MainActionGroup.java:235)
+	at org.eclipse.cdt.internal.ui.cview.CView.fillContextMenu(CView.java:712)
+	at org.eclipse.cdt.internal.ui.cview.CView$5.menuAboutToShow(CView.java:459)
+	at org.eclipse.jface.action.MenuManager.fireAboutToShow(MenuManager.java:339)
+	at org.eclipse.jface.action.MenuManager.handleAboutToShow(MenuManager.java:470)
+	at org.eclipse.jface.action.MenuManager.access$1(MenuManager.java:465)
+	at org.eclipse.jface.action.MenuManager$2.menuShown(MenuManager.java:497)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:256)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4418)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1084)
+	at org.eclipse.swt.widgets.Control.WM_INITMENUPOPUP(Control.java:5160)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4828)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+	at org.eclipse.swt.internal.win32.OS.TrackPopupMenu(Native Method)
+	at org.eclipse.swt.widgets.Menu._setVisible(Menu.java:262)
+	at org.eclipse.swt.widgets.Display.runPopups(Display.java:4277)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3818)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:693)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:610)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at com.ifx.davex.product.DaveApplication.start(DaveApplication.java:140)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2018-04-19 16:14:17.947
+!MESSAGE No property tester contributes a property org.eclipse.wst.jsdt.chromium.debug.core.isJsFile to type class org.eclipse.cdt.internal.core.model.TranslationUnit
+
+!ENTRY org.eclipse.core.expressions 4 201 2018-04-19 16:14:17.966
+!MESSAGE No property tester contributes a property org.eclipse.wst.jsdt.chromium.debug.core.isJsFile to type class org.eclipse.cdt.internal.core.model.TranslationUnit
+!STACK 1
+org.eclipse.core.runtime.CoreException: No property tester contributes a property org.eclipse.wst.jsdt.chromium.debug.core.isJsFile to type class org.eclipse.cdt.internal.core.model.TranslationUnit
+	at org.eclipse.core.internal.expressions.TypeExtensionManager.getProperty(TypeExtensionManager.java:127)
+	at org.eclipse.core.internal.expressions.TestExpression.evaluate(TestExpression.java:97)
+	at org.eclipse.core.internal.expressions.CompositeExpression.evaluateAnd(CompositeExpression.java:53)
+	at org.eclipse.core.internal.expressions.AndExpression.evaluate(AndExpression.java:31)
+	at org.eclipse.ui.internal.dialogs.RegistryPageContributor.failsEnablement(RegistryPageContributor.java:306)
+	at org.eclipse.ui.internal.dialogs.RegistryPageContributor.isApplicableTo(RegistryPageContributor.java:248)
+	at org.eclipse.ui.internal.dialogs.PropertyPageContributorManager.getApplicableContributors(PropertyPageContributorManager.java:216)
+	at org.eclipse.ui.internal.dialogs.PropertyPageContributorManager.getApplicableContributors(PropertyPageContributorManager.java:235)
+	at org.eclipse.ui.dialogs.PropertyDialogAction.hasPropertyPagesFor(PropertyDialogAction.java:106)
+	at org.eclipse.ui.dialogs.PropertyDialogAction.isApplicableForSelection(PropertyDialogAction.java:148)
+	at org.eclipse.cdt.ui.actions.OpenViewActionGroup.fillContextMenu(OpenViewActionGroup.java:229)
+	at org.eclipse.cdt.internal.ui.cview.MainActionGroup.fillContextMenu(MainActionGroup.java:235)
+	at org.eclipse.cdt.internal.ui.cview.CView.fillContextMenu(CView.java:712)
+	at org.eclipse.cdt.internal.ui.cview.CView$5.menuAboutToShow(CView.java:459)
+	at org.eclipse.jface.action.MenuManager.fireAboutToShow(MenuManager.java:339)
+	at org.eclipse.jface.action.MenuManager.handleAboutToShow(MenuManager.java:470)
+	at org.eclipse.jface.action.MenuManager.access$1(MenuManager.java:465)
+	at org.eclipse.jface.action.MenuManager$2.menuShown(MenuManager.java:497)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:256)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4418)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1084)
+	at org.eclipse.swt.widgets.Control.WM_INITMENUPOPUP(Control.java:5160)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4828)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+	at org.eclipse.swt.internal.win32.OS.TrackPopupMenu(Native Method)
+	at org.eclipse.swt.widgets.Menu._setVisible(Menu.java:262)
+	at org.eclipse.swt.widgets.Display.runPopups(Display.java:4277)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3818)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:693)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:610)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+	at com.ifx.davex.product.DaveApplication.start(DaveApplication.java:140)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+!SUBENTRY 1 org.eclipse.core.expressions 4 201 2018-04-19 16:14:17.966
+!MESSAGE No property tester contributes a property org.eclipse.wst.jsdt.chromium.debug.core.isJsFile to type class org.eclipse.cdt.internal.core.model.TranslationUnit
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:17:45.339
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:17:45.508
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-19 16:17:45.885
+!MESSAGE Time Taken By Serialization  : 373 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:17:52.252
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:17:52.271
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 311 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:17:52.580
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_BOOTLOADER_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-19 16:17:52.752
+!MESSAGE Time Taken By De-Serialization  : 148 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:17:52.753
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:17:52.754
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 174 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:17:52.759
+!MESSAGE USER_ACTION : Time taken for updating views is: 1 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:17:53.152
+!MESSAGE USER_ACTION : Time taken for rendering views is: 393 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:17:53.331
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 1371 msec 
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 16:19:16.831
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 16:19:17.451
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:19:40.156
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:19:40.157
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-19 16:19:40.189
+!MESSAGE Time Taken By Serialization  : 30 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:19:40.323
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_BOOTLOADER_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:19:40.324
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 31 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:19:40.585
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-19 16:19:41.719
+!MESSAGE Time Taken By De-Serialization  : 1000 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:19:41.723
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:19:41.906
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 1322 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:19:41.914
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 8 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:19:41.915
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 1 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:19:41.915
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:19:42.596
+!MESSAGE USER_ACTION : Time taken for rendering views is: 680 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:19:42.870
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 2576 msec 
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 16:19:59.592
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 16:20:00.150
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:22:04.435
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:22:04.493
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-19 16:22:04.718
+!MESSAGE Time Taken By Serialization  : 223 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:22:05.082
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:05.091
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 151 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:05.412
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_BOOTLOADER_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-19 16:22:05.531
+!MESSAGE Time Taken By De-Serialization  : 113 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:22:05.531
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:05.532
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 120 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:05.534
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:05.841
+!MESSAGE USER_ACTION : Time taken for rendering views is: 307 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:06.030
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 1090 msec 
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 16:22:10.277
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 16:22:10.801
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:22:21.668
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:22:21.670
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-19 16:22:21.703
+!MESSAGE Time Taken By Serialization  : 33 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:22:21.824
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_BOOTLOADER_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:21.825
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 27 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:22.086
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-19 16:22:22.986
+!MESSAGE Time Taken By De-Serialization  : 791 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-19 16:22:22.989
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:23.078
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 992 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:23.088
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 9 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:23.089
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:23.090
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:23.627
+!MESSAGE USER_ACTION : Time taken for rendering views is: 536 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-19 16:22:23.826
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 2029 msec 
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 16:22:39.103
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 16:22:39.578
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.cdt.dsf 4 10004 2018-04-19 16:22:41.284
+!MESSAGE Invalid breakpoint parameter(s)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2018-04-19 16:22:41.284
+!MESSAGE Invalid breakpoint parameter(s)
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 16:24:17.744
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-19 16:24:18.313
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.cdt.dsf 4 10004 2018-04-19 16:24:19.330
+!MESSAGE Invalid breakpoint parameter(s)
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10004 2018-04-19 16:24:19.330
+!MESSAGE Invalid breakpoint parameter(s)
+
+!ENTRY org.eclipse.cdt.dsf 4 10005 2018-04-19 16:25:45.769
+!MESSAGE Request for monitor: 'RequestMonitor (org.eclipse.cdt.dsf.concurrent.RequestMonitor@3acc72bc): Status ERROR: org.eclipse.cdt.dsf.gdb code=10001 Context cannot be suspended. null' resulted in an error.
+!SUBENTRY 1 org.eclipse.cdt.dsf.gdb 4 10001 2018-04-19 16:25:45.769
+!MESSAGE Context cannot be suspended.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-04-19 16:26:04.120
+!MESSAGE Debug session 'ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48 Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag 4 0 2018-04-20 09:11:40.211
+!MESSAGE Debug session 'ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48 Debug' already started. Terminate the first one before restarting.
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-20 09:12:39.146
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-20 09:12:41.170
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 11:44:39.144
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 11:44:39.525
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-20 11:44:41.728
+!MESSAGE Time Taken By Serialization  : 2180 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 11:44:43.307
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:44:43.368
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 72 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:44:44.880
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_BOOTLOADER_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-20 11:44:45.806
+!MESSAGE Time Taken By De-Serialization  : 710 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 11:44:45.808
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:44:45.812
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 934 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:44:45.821
+!MESSAGE USER_ACTION : Time taken for updating views is: 1 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:44:46.832
+!MESSAGE USER_ACTION : Time taken for rendering views is: 1009 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:44:47.675
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 4379 msec 
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-20 11:45:02.186
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-20 11:45:03.852
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 11:45:21.430
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 11:45:21.435
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-20 11:45:21.552
+!MESSAGE Time Taken By Serialization  : 115 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_BOOTLOADER_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 11:45:22.008
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_BOOTLOADER_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:45:22.010
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 104 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:45:23.666
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-20 11:45:26.820
+!MESSAGE Time Taken By De-Serialization  : 2733 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 11:45:26.835
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:45:27.383
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 3719 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:45:27.483
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 97 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:45:27.491
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 4 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:45:27.494
+!MESSAGE USER_ACTION : Time taken for updating views is: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:45:29.534
+!MESSAGE USER_ACTION : Time taken for rendering views is: 2040 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 11:45:30.235
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 8329 msec 
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-20 11:45:45.253
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-20 11:45:46.609
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 12:55:04.288
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 12:55:04.533
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-20 12:55:05.755
+!MESSAGE Time Taken By Serialization  : 1216 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 12:55:06.999
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 12:55:07.035
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 880 msec 
+
+!ENTRY SOLVER 1 0 2018-04-20 12:55:07.037
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-04-20 12:55:07.332
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+
+!ENTRY DAVE CE 4 0 2018-04-20 12:55:07.342
+!MESSAGE 
+
+***START of Exception Info***
+C:\Program Files\DAVE-IDE-4.4.2-64Bit\D_LibraryStore_4.4\libLock (Access is denied)
+java.io.FileOutputStream.open0(Native Method)
+java.io.FileOutputStream.open(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+com.ifx.dave.appslib.download.LibraryStoreLocker.serialize(LibraryStoreLocker.java:183)
+com.ifx.dave.appslib.download.LibraryStoreLocker.checkOutLibraryStore(LibraryStoreLocker.java:105)
+com.ifx.davex.ce.core.perspective.ShutdownHook.preShutdown(ShutdownHook.java:92)
+org.eclipse.ui.internal.Workbench$7.run(Workbench.java:994)
+org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+org.eclipse.ui.internal.Workbench.firePreShutdown(Workbench.java:991)
+org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1130)
+org.eclipse.ui.internal.Workbench.access$22(Workbench.java:1118)
+org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1459)
+org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+org.eclipse.ui.internal.Workbench.close(Workbench.java:1456)
+org.eclipse.ui.internal.Workbench.close(Workbench.java:1429)
+org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1594)
+org.eclipse.ui.internal.WorkbenchWindow.access$16(WorkbenchWindow.java:1540)
+org.eclipse.ui.internal.WorkbenchWindow$11.run(WorkbenchWindow.java:1626)
+org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1623)
+org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1637)
+org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:524)
+org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$7.shellClosed(WBWRenderer.java:629)
+org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:99)
+org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+org.eclipse.swt.widgets.Display.sendEvent(Display.java:4418)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:315)
+org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1728)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4801)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2547)
+org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:506)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4897)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2547)
+org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:506)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4897)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
+org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3822)
+org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+org.eclipse.ui.internal.Workbench$5.run(Workbench.java:693)
+org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:610)
+org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+com.ifx.davex.product.DaveApplication.start(DaveApplication.java:140)
+org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+java.lang.reflect.Method.invoke(Unknown Source)
+org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+***END of Exception Info***
+
+
+
+!ENTRY org.eclipse.core.jobs 2 2 2018-04-20 12:55:17.858
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.cdt.dsf.gdb.internal.ui.console.GdbBasicCliConsole$InputReadJob
+!SESSION 2018-04-20 13:04:56.513 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY SOLVER 1 0 2018-04-20 13:05:39.470
+!MESSAGE USER_ACTION : Default solver exe path is: C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-04-20 13:05:39.667
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-04-20 13:05:39.668
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-04-20 13:05:40.085
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-04-20 13:05:40.865
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 775 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 13:05:41.287
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 14 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 13:05:42.007
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-20 13:05:45.740
+!MESSAGE Time Taken By De-Serialization  : 2462 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 13:05:45.754
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 13:05:46.099
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 4093 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 13:05:46.141
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 38 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 13:05:46.168
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 25 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 13:05:46.170
+!MESSAGE USER_ACTION : Time taken for updating views is: 2 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 13:05:49.021
+!MESSAGE USER_ACTION : Time taken for rendering views is: 2849 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 13:05:49.662
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 8390 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 13:05:52.278
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY DAVE CE 4 0 2018-04-20 13:05:52.283
+!MESSAGE 
+
+***START of Exception Info***
+C:\Program Files\DAVE-IDE-4.4.2-64Bit\D_LibraryStore_4.4\libLock (Access is denied)
+java.io.FileOutputStream.open0(Native Method)
+java.io.FileOutputStream.open(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+com.ifx.dave.appslib.download.LibraryStoreLocker.serialize(LibraryStoreLocker.java:183)
+com.ifx.dave.appslib.download.LibraryStoreLocker.checkInLibraryStore(LibraryStoreLocker.java:78)
+com.ifx.dave.appslib.provider.LibraryIndexer.<init>(LibraryIndexer.java:81)
+com.ifx.dave.appslib.update.LibraryUpdateController.<init>(LibraryUpdateController.java:60)
+com.ifx.dave.appslib.update.CheckForAppUpdatesCommand$UpdateLibThread.run(CheckForAppUpdatesCommand.java:22)
+***END of Exception Info***
+
+
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-20 13:05:52.351
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-20 13:05:53.422
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.4//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-20 13:05:55.334
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.4//daveSite.xml
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-04-20 13:05:59.004
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-04-20 13:05:59.011
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-20 13:06:30.414
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-20 13:06:31.683
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY org.eclipse.ui 4 4 2018-04-20 13:06:35.503
+!MESSAGE Conflicting handlers for org.eclipse.debug.ui.commands.DebugLast: {ActionDelegateHandlerProxy(null,org.eclipse.debug.internal.ui.actions.DebugLastAction in org.eclipse.debug.ui)} vs {ActionDelegateHandlerProxy(null,com.dave.activeproject.ui.actions.ActiveProjDebugLastAction in com.dave.activeproject)}
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-20 13:09:44.149
+!MESSAGE C:/Program Files (x86)/SEGGER/JLink_V630k/JLinkGDBServerCL.exe -if swd -device XMC4800-F144x2048 -endian little -speed 1000 -port 2331 -swoport 2332 -telnetport 2333 -vd -ir -localhostonly 1 -singlerun -strict -timeout 0
+
+!ENTRY ilg.gnuarmeclipse.debug.gdbjtag.jlink 4 1 2018-04-20 13:09:45.671
+!MESSAGE C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\ARM-GCC-49/bin/arm-none-eabi-gdb --interpreter=mi2 --nx
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 17:19:32.756
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 17:19:33.336
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-20 17:19:34.733
+!MESSAGE Time Taken By Serialization  : 1386 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-20 17:19:35.242
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-20 17:19:35.780
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 703 msec 
+
+!ENTRY SOLVER 1 0 2018-04-20 17:19:35.782
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-04-20 17:19:36.083
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+
+!ENTRY DAVE CE 4 0 2018-04-20 17:19:36.108
+!MESSAGE 
+
+***START of Exception Info***
+C:\Program Files\DAVE-IDE-4.4.2-64Bit\D_LibraryStore_4.4\libLock (Access is denied)
+java.io.FileOutputStream.open0(Native Method)
+java.io.FileOutputStream.open(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+com.ifx.dave.appslib.download.LibraryStoreLocker.serialize(LibraryStoreLocker.java:183)
+com.ifx.dave.appslib.download.LibraryStoreLocker.checkOutLibraryStore(LibraryStoreLocker.java:105)
+com.ifx.davex.ce.core.perspective.ShutdownHook.preShutdown(ShutdownHook.java:92)
+org.eclipse.ui.internal.Workbench$7.run(Workbench.java:994)
+org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+org.eclipse.ui.internal.Workbench.firePreShutdown(Workbench.java:991)
+org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1130)
+org.eclipse.ui.internal.Workbench.access$22(Workbench.java:1118)
+org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1459)
+org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+org.eclipse.ui.internal.Workbench.close(Workbench.java:1456)
+org.eclipse.ui.internal.Workbench.close(Workbench.java:1429)
+org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1594)
+org.eclipse.ui.internal.WorkbenchWindow.access$16(WorkbenchWindow.java:1540)
+org.eclipse.ui.internal.WorkbenchWindow$11.run(WorkbenchWindow.java:1626)
+org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1623)
+org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1637)
+org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:524)
+org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$7.shellClosed(WBWRenderer.java:629)
+org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:99)
+org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+org.eclipse.swt.widgets.Display.sendEvent(Display.java:4418)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:315)
+org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1728)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4801)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2547)
+org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:506)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4897)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2547)
+org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:506)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4897)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
+org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3822)
+org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+org.eclipse.ui.internal.Workbench$5.run(Workbench.java:693)
+org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:610)
+org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+com.ifx.davex.product.DaveApplication.start(DaveApplication.java:140)
+org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+java.lang.reflect.Method.invoke(Unknown Source)
+org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+***END of Exception Info***
+
+
+
+!ENTRY org.eclipse.core.jobs 2 2 2018-04-20 17:19:41.154
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.eclipse.cdt.dsf.gdb.internal.ui.console.GdbBasicCliConsole$InputReadJob
+!SESSION 2018-04-23 17:32:39.637 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_131
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY SOLVER 1 0 2018-04-23 17:33:34.278
+!MESSAGE USER_ACTION : Default solver exe path is: C:\Program Files\DAVE-IDE-4.4.2-64Bit\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-04-23 17:33:34.417
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-04-23 17:33:34.418
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-04-23 17:33:35.012
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-04-23 17:33:35.823
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 807 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-23 17:33:36.187
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 7 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-23 17:33:36.719
+!MESSAGE USER_ACTION : Active project:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48[ Software ID:XMC4.8.00.F144.ALL]
+
+!ENTRY COMMON 1 0 2018-04-23 17:33:40.135
+!MESSAGE Time Taken By De-Serialization  : 2231 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-23 17:33:40.151
+!MESSAGE *************Serializing EMF and Groovy data to RAM*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-23 17:33:40.483
+!MESSAGE USER_ACTION : Time taken for initializing Application Model is: 3755 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-23 17:33:40.538
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(updateQuery): 43 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-23 17:33:40.571
+!MESSAGE USER_ACTION : Time taken for reloadLastSolverResult(getSolutionQuery): 32 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-23 17:33:40.575
+!MESSAGE USER_ACTION : Time taken for updating views is: 2 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-23 17:33:44.141
+!MESSAGE USER_ACTION : Time taken for rendering views is: 3563 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-23 17:33:44.815
+!MESSAGE USER_ACTION : Total time taken for setting project as active is: 8634 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-23 17:33:46.680
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY DAVE CE 4 0 2018-04-23 17:33:46.684
+!MESSAGE 
+
+***START of Exception Info***
+C:\Program Files\DAVE-IDE-4.4.2-64Bit\D_LibraryStore_4.4\libLock (Access is denied)
+java.io.FileOutputStream.open0(Native Method)
+java.io.FileOutputStream.open(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+com.ifx.dave.appslib.download.LibraryStoreLocker.serialize(LibraryStoreLocker.java:183)
+com.ifx.dave.appslib.download.LibraryStoreLocker.checkInLibraryStore(LibraryStoreLocker.java:78)
+com.ifx.dave.appslib.provider.LibraryIndexer.<init>(LibraryIndexer.java:81)
+com.ifx.dave.appslib.update.LibraryUpdateController.<init>(LibraryUpdateController.java:60)
+com.ifx.dave.appslib.update.CheckForAppUpdatesCommand$UpdateLibThread.run(CheckForAppUpdatesCommand.java:22)
+***END of Exception Info***
+
+
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-23 17:33:46.772
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-23 17:33:48.145
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.4//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-04-23 17:33:49.923
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.4//daveSite.xml
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-23 17:33:58.504
+!MESSAGE *************Saving EMF data into file system*******************
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-23 17:33:58.668
+!MESSAGE *************Saving Groovy data into file system*******************
+
+!ENTRY COMMON 1 0 2018-04-23 17:33:58.997
+!MESSAGE Time Taken By Serialization  : 328 ms :: C:\src\bakalarka_workspace\ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48\Dave\Model\projectData.bin
+
+!ENTRY com.dave.mbs.common 1 0 2018-04-23 17:33:59.541
+!MESSAGE ****************Cleaning project data:ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48*******************
+
+!ENTRY APPLICATION_MODEL 1 0 2018-04-23 17:33:59.671
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 504 msec 
+
+!ENTRY SOLVER 1 0 2018-04-23 17:33:59.672
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-04-23 17:33:59.927
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+
+!ENTRY DAVE CE 4 0 2018-04-23 17:33:59.931
+!MESSAGE 
+
+***START of Exception Info***
+C:\Program Files\DAVE-IDE-4.4.2-64Bit\D_LibraryStore_4.4\libLock (Access is denied)
+java.io.FileOutputStream.open0(Native Method)
+java.io.FileOutputStream.open(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+java.io.FileOutputStream.<init>(Unknown Source)
+com.ifx.dave.appslib.download.LibraryStoreLocker.serialize(LibraryStoreLocker.java:183)
+com.ifx.dave.appslib.download.LibraryStoreLocker.checkOutLibraryStore(LibraryStoreLocker.java:105)
+com.ifx.davex.ce.core.perspective.ShutdownHook.preShutdown(ShutdownHook.java:92)
+org.eclipse.ui.internal.Workbench$7.run(Workbench.java:994)
+org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+org.eclipse.ui.internal.JFaceUtil$1.run(JFaceUtil.java:50)
+org.eclipse.jface.util.SafeRunnable.run(SafeRunnable.java:173)
+org.eclipse.ui.internal.Workbench.firePreShutdown(Workbench.java:991)
+org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1130)
+org.eclipse.ui.internal.Workbench.access$22(Workbench.java:1118)
+org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1459)
+org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+org.eclipse.ui.internal.Workbench.close(Workbench.java:1456)
+org.eclipse.ui.internal.Workbench.close(Workbench.java:1429)
+org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1594)
+org.eclipse.ui.internal.WorkbenchWindow.access$16(WorkbenchWindow.java:1540)
+org.eclipse.ui.internal.WorkbenchWindow$11.run(WorkbenchWindow.java:1626)
+org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1623)
+org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1637)
+org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:524)
+org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$7.shellClosed(WBWRenderer.java:629)
+org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:99)
+org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+org.eclipse.swt.widgets.Display.sendEvent(Display.java:4418)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1079)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1103)
+org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1088)
+org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:315)
+org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1728)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4801)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2547)
+org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:506)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4897)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2547)
+org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:506)
+org.eclipse.swt.widgets.Control.windowProc(Control.java:4897)
+org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:359)
+org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1656)
+org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2199)
+org.eclipse.swt.widgets.Display.windowProc(Display.java:5110)
+org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2552)
+org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3822)
+org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$4.run(PartRenderingEngine.java:1121)
+org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1022)
+org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:150)
+org.eclipse.ui.internal.Workbench$5.run(Workbench.java:693)
+org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
+org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:610)
+org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
+com.ifx.davex.product.DaveApplication.start(DaveApplication.java:140)
+org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
+org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
+sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+java.lang.reflect.Method.invoke(Unknown Source)
+org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:673)
+org.eclipse.equinox.launcher.Main.basicRun(Main.java:610)
+org.eclipse.equinox.launcher.Main.run(Main.java:1519)
+***END of Exception Info***
+
+

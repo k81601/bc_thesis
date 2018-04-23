@@ -1,0 +1,2185 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "flashprog.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.XMC_FCE_GetCRCResult,"ax",%progbits
+  20              	 .align 2
+  21              	 .thumb
+  22              	 .thumb_func
+  24              	XMC_FCE_GetCRCResult:
+  25              	.LFB164:
+  26              	 .file 1 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc_fce.h"
+   1:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+   2:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @file xmc_fce.h
+   3:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @date 2015-06-20
+   4:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+   5:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @cond
+   6:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  **************************************************************************************************
+   7:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * XMClib v2.1.18 - XMC Peripheral Driver Library 
+   8:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+   9:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Copyright (c) 2015-2018, Infineon Technologies AG
+  10:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * All rights reserved.                        
+  11:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *                                             
+  12:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * following conditions are met:   
+  14:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *                                                                              
+  15:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * disclaimer.                        
+  17:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * 
+  18:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * 
+  21:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * products derived from this software without specific prior written permission.                  
+  23:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *                                                                              
+  24:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *                                                                              
+  32:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  **************************************************************************************************
+  35:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+  36:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Change History
+  37:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * --------------
+  38:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+  39:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * 2015-02-20:
+  40:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *     - Initial
+  41:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *      
+  42:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * 2015-05-20:
+  43:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *     - Description updated <br>
+  44:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *   
+  45:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * 2015-06-20:
+  46:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *     - Removed version macros and declaration of GetDriverVersion API
+  47:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @endcond 
+  48:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+  49:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+  50:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+  51:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #ifndef XMC_FCE_H
+  52:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #define XMC_FCE_H
+  53:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+  54:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**************************************************************************************************
+  55:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * HEADER FILES
+  56:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  **************************************************************************************************
+  57:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  
+  58:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #include <xmc_common.h>
+  59:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+  60:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #if defined (FCE)
+  61:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+  62:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+  63:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @addtogroup XMClib
+  64:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @{
+  65:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+  66:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+  67:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+  68:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @addtogroup FCE
+  69:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @brief Flexible CRC Engine(FCE) driver for the XMC microcontroller family.
+  70:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+  71:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The FCE provides a parallel implementation of Cyclic Redundancy Code (CRC)
+  72:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * algorithms. The current FCE version for the XMC4000 microcontroller family implements the
+  73:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * IEEE 802.3 ethernet CRC32, the CCITT CRC16 and the SAE J1850 CRC8 polynomials.
+  74:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The primary target of FCE is to be used as an hardware acceleration engine for software
+  75:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * applications or operating systems services using CRC signatures.
+  76:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+  77:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @image html fce_overview.png	 
+  78:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @image latex ../images/fce_overview.png	 
+  79:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * FCE Features: <br>
+  80:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @image html fce_polynomials.png
+  81:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @image latex ../images/fce_polynomials.png
+  82:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *    * CRC kernel 0 and 1: IEEE 802.3 CRC32 ethernet polynomial: 0x04C11DB71 <br>
+  83:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *    * CRC kernel 2: CCITT CRC16 polynomial: 0x1021 <br>
+  84:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *    * CRC kernel 3: SAE J1850 CRC8 polynomial: 0x1D <br>
+  85:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *    * Configuration Registers enable to control the CRC operation and perform automatic checksum 
+  86:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *      the end of a message. <br>
+  87:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *    * Extended register interface to control reliability of FCE execution in safety applications.
+  88:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *    * Error notification scheme via dedicated interrupt node for: <br>
+  89:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****         a)Transient error detection: Error interrupt generation (maskable) with local status regist
+  90:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 		  (cleared by software) <br>
+  91:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****         b)Checksum failure: Error interrupt generation (maskable) with local status register (clear
+  92:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 		
+  93:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****      FCE provides one interrupt line to the interrupt system. Each CRC engine has its own set of fl
+  94:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+  95:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @{
+  96:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+  97:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  
+  98:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**************************************************************************************************
+  99:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * MACROS
+ 100:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  **************************************************************************************************
+ 101:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  
+ 102:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #define XMC_FCE_CRC32_0        FCE_KE0 /**< Kernel 0 <br> */
+ 103:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #define XMC_FCE_CRC32_1        FCE_KE1 /**< Kernel 1 <br> */
+ 104:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #define XMC_FCE_CRC16          FCE_KE2 /**< Kernel 2 <br> */
+ 105:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #define XMC_FCE_CRC8           FCE_KE3 /**< Kernel 3 <br> */
+ 106:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 107:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #define XMC_FCE_REFIN_SET      (1U) /**< Enables input reflection */
+ 108:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #define XMC_FCE_REFIN_RESET    (0U) /**< Disables input reflection */
+ 109:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #define XMC_FCE_REFOUT_SET     (1U) /**< Enables output reflection */
+ 110:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #define XMC_FCE_REFOUT_RESET   (0U) /**< Disables output reflection */
+ 111:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #define XMC_FCE_INVSEL_SET     (1U) /**< Enables output inversion */
+ 112:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #define XMC_FCE_INVSEL_RESET   (0U) /**< Disables output inversion */
+ 113:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 114:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**************************************************************************************************
+ 115:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * ENUMS
+ 116:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  **************************************************************************************************
+ 117:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  
+ 118:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 119:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * FCE interrupt configuration
+ 120:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 121:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** typedef enum XMC_FCE_CONFIG_INTERRUPT
+ 122:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 123:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_CFG_CONFIG_CMI = FCE_KE_CFG_CMI_Msk, /**< Enables CRC Mismatch interrupt \n*/
+ 124:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_CFG_CONFIG_CEI = FCE_KE_CFG_CEI_Msk, /**< Enables Configuration error interrupt \n*/
+ 125:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_CFG_CONFIG_LEI = FCE_KE_CFG_LEI_Msk, /**< Enables Length error interrupt \n*/
+ 126:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_CFG_CONFIG_BEI = FCE_KE_CFG_BEI_Msk  /**< Enables Bus error interrupt \n*/
+ 127:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** } XMC_FCE_CONFIG_INTERRUPT_t;
+ 128:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 129:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 130:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * FCE operation configuration
+ 131:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 132:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** typedef enum XMC_FCE_CONFIG_OPERATION
+ 133:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 134:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_CFG_CONFIG_CCE = FCE_KE_CFG_CCE_Msk, /**< Enables CRC check */
+ 135:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_CFG_CONFIG_ALR = FCE_KE_CFG_ALR_Msk  /**< Enables Automatic length reload */
+ 136:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** } XMC_FCE_CONFIG_OPERATION_t;
+ 137:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 138:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 139:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * FCE algorithm configuration
+ 140:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 141:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** typedef enum XMC_FCE_CONFIG_ALGO
+ 142:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 143:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_CFG_CONFIG_REFIN  = FCE_KE_CFG_REFIN_Msk,  /**< Enables input byte reflection */
+ 144:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_CFG_CONFIG_REFOUT = FCE_KE_CFG_REFOUT_Msk, /**< Enables Final CRC reflection */
+ 145:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_CFG_CONFIG_XSEL   = FCE_KE_CFG_XSEL_Msk    /**< Enables output inversion */
+ 146:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** } XMC_FCE_CONFIG_ALGO_t;
+ 147:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 148:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 149:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * FCE status flag configuration
+ 150:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 151:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** typedef enum XMC_FCE_STS_FLAG
+ 152:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 153:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_STS_MISMATCH_CRC = FCE_KE_STS_CMF_Msk, /**< CRC Mismatch flag */
+ 154:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_STS_CONFIG_ERROR = FCE_KE_STS_CEF_Msk, /**< Configuration Error flag */
+ 155:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_STS_LENGTH_ERROR = FCE_KE_STS_LEF_Msk, /**< Length Error flag */
+ 156:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_STS_BUS_ERROR    = FCE_KE_STS_BEF_Msk	 /**< Bus Error flag */
+ 157:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** } XMC_FCE_STS_FLAG_t;
+ 158:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 159:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 160:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * FCE control configuration
+ 161:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 162:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** typedef enum XMC_FCE_CTR_TEST
+ 163:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 164:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_CTR_MISMATCH_CRC   = FCE_KE_CTR_FCM_Msk,      /**< Forces CRC mismatch */
+ 165:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_CTR_MISMATCH_CFG   = FCE_KE_CTR_FRM_CFG_Msk,	/**< Forces CFG Register mismatch */
+ 166:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_CTR_MISMATCH_CHECK = FCE_KE_CTR_FRM_CHECK_Msk /**< Forces CRC Check Register mismatch */
+ 167:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** } XMC_FCE_CTR_TEST_t;
+ 168:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 169:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 170:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * FCE status enumeration
+ 171:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 172:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** typedef enum XMC_FCE_STATUS
+ 173:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 174:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_STATUS_OK = 0, /**< Returns OK on success */
+ 175:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_STATUS_BUSY,   /**< Returns BUSY when API is busy with a previous request */
+ 176:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_STATUS_ERROR   /**< Returns ERROR when API cannot fulfil request */
+ 177:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** } XMC_FCE_STATUS_t;
+ 178:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 179:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**************************************************************************************************
+ 180:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * DATA STRUCTURES
+ 181:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  **************************************************************************************************
+ 182:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 183:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 184:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * FCE kernel
+ 185:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */ 
+ 186:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** typedef FCE_KE_TypeDef XMC_FCE_Kernel_t;
+ 187:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 188:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /* Anonymous structure/union guard start */
+ 189:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #if defined (__CC_ARM)
+ 190:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   #pragma push
+ 191:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   #pragma anon_unions
+ 192:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #elif defined (__TASKING__)
+ 193:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   #pragma warning 586
+ 194:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #endif
+ 195:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 196:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 197:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @brief XMC_FCE configuration structure
+ 198:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 199:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** typedef struct XMC_FCE_CONFIG
+ 200:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 201:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   union
+ 202:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   {
+ 203:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****     uint32_t regval;
+ 204:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****     struct
+ 205:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****     {
+ 206:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 	  uint32_t               : 8;
+ 207:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****       uint32_t config_refin  : 1;  /**< Enables byte-wise reflection */
+ 208:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****       uint32_t config_refout : 1;  /**< Enables bit-wise reflection */
+ 209:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****       uint32_t config_xsel   : 1;  /**< Enables output inversion */
+ 210:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****       uint32_t               : 21; /**< Reserved bits */	  
+ 211:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****     };
+ 212:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   };
+ 213:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** } XMC_FCE_CONFIG_t;
+ 214:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 215:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /* Anonymous structure/union guard end */
+ 216:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #if defined (__CC_ARM)
+ 217:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   #pragma pop
+ 218:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #elif defined (__TASKING__)
+ 219:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   #pragma warning restore
+ 220:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #endif
+ 221:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 222:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 223:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * FCE handler
+ 224:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 225:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** typedef struct XMC_FCE
+ 226:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 227:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_Kernel_t *kernel_ptr;    /**< FCE Kernel Pointer */
+ 228:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   XMC_FCE_CONFIG_t fce_cfg_update; /**< FCE CFG register update */
+ 229:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   uint32_t seedvalue;              /**< CRC seed value to be used */
+ 230:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** } XMC_FCE_t;
+ 231:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 232:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**************************************************************************************************
+ 233:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * API PROTOTYPES
+ 234:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  **************************************************************************************************
+ 235:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  
+ 236:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #ifdef __cplusplus
+ 237:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** extern "C" {
+ 238:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** #endif
+ 239:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  
+ 240:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 241:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param None
+ 242:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return uint32_t Module revision number
+ 243:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 244:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 245:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Read FCE module revision number <br>
+ 246:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * 
+ 247:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 248:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The value of a module revision starts with 0x01 (first revision). The current revision
+ 249:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * number is 0x01.
+ 250:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 251:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE uint32_t XMC_FCE_ReadModuleRev(void)
+ 252:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 253:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   return (uint32_t)(FCE->ID & FCE_ID_MOD_REV_Msk);
+ 254:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 255:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 256:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 257:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param None
+ 258:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return uint32_t Module type
+ 259:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 260:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 261:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Read the FCE module type <br>
+ 262:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * 
+ 263:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 264:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The return value is currently 0xC0. It defines the module as a 32-bit module.
+ 265:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 266:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE uint32_t XMC_FCE_ReadModuleType(void)
+ 267:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 268:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   return (uint32_t)((FCE->ID & FCE_ID_MOD_TYPE_Msk) >> FCE_ID_MOD_TYPE_Pos);
+ 269:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 270:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 271:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 272:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param None
+ 273:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return uint32_t Module number
+ 274:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 275:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 276:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Read FCE module number <br>
+ 277:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * 
+ 278:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 279:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The return value for FCE module is currently 0x00CA.
+ 280:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 281:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE uint32_t XMC_FCE_ReadModuleNumber(void)
+ 282:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 283:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   return ((uint32_t)((FCE->ID & FCE_ID_MOD_NUMBER_Msk) >> FCE_ID_MOD_NUMBER_Pos));
+ 284:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 285:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 286:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 287:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param None
+ 288:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return bool Disable status
+ 289:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 290:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 291:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 292:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Return the disable status <br>
+ 293:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 294:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 295:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The function reads the FCE module disable status (DISS) bit. It returns "true" if
+ 296:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * set, "false" otherwise.
+ 297:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 298:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE bool XMC_FCE_Get_DisableStatus(void)
+ 299:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 300:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   return (bool)(FCE->CLC &= (uint32_t)~FCE_CLC_DISS_Msk);
+ 301:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 302:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 303:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 304:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param None
+ 305:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return None
+ 306:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 307:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 308:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Disable the FCE module <br>
+ 309:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * 
+ 310:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 311:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The function asserts the FCE peripheral reset and sets the DISR bit in the CLC
+ 312:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * register.
+ 313:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 314:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Note: </b><br>
+ 315:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * All pending transactions running on the bus slave interface must be completed before
+ 316:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * entering the disabled state.
+ 317:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 318:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** void XMC_FCE_Disable(void);
+ 319:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 320:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 321:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param None
+ 322:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return None
+ 323:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 324:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 325:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Enable the FCE module <br>
+ 326:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 327:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 328:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The function de-asserts the peripheral reset and clears the DISR bit CLC register.
+ 329:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 330:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** void XMC_FCE_Enable(void);
+ 331:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 332:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 333:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 334:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return ::XMC_FCE_STATUS_t
+ 335:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 336:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 337:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Initialize the FCE engine <br>
+ 338:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * 
+ 339:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 340:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The function sets to the CFG and CRC registers with the FCE configuration and
+ 341:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * seeds values. The function always returns XMC_FCE_STATUS_SUCCESS.
+ 342:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 343:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Note: </b><br>
+ 344:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The software must first ensure that the CRC kernel is properly configured with the
+ 345:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * initial CRC value (seed value).
+ 346:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 347:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** XMC_FCE_STATUS_t XMC_FCE_Init(const XMC_FCE_t *const engine);
+ 348:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 349:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 350:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 351:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param seedvalue Initial CRC value
+ 352:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return None
+ 353:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 354:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 355:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Initialize FCE seed value
+ 356:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 357:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 358:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The function sets the initial CRC (seed) value in the CRC register.
+ 359:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 360:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE void XMC_FCE_InitializeSeedValue(const XMC_FCE_t *const engine, uint32_t seedvalue)
+ 361:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 362:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   engine->kernel_ptr->CRC = seedvalue;
+ 363:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 364:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 365:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 366:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 367:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param event OR'd values of ::XMC_FCE_CONFIG_INTERRUPT_t enumeration values
+ 368:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return None
+ 369:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 370:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 371:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Enable FCE event(s) <br>
+ 372:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 373:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 374:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The function sets the CFG register to enable FCE event(s).
+ 375:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 376:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE void XMC_FCE_EnableEvent(const XMC_FCE_t *const engine, uint32_t event)
+ 377:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 378:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   engine->kernel_ptr->CFG |= (uint32_t)event;
+ 379:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 380:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 381:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 382:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 383:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param event OR'd values of ::XMC_FCE_CONFIG_INTERRUPT_t enumeration values
+ 384:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return None
+ 385:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 386:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 387:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Disable FCE event(s) <br>
+ 388:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 389:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 390:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The function clears the CFG register to disable FCE event(s).
+ 391:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 392:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE void XMC_FCE_DisableEvent(const XMC_FCE_t *const engine, uint32_t event)
+ 393:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 394:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   engine->kernel_ptr->CFG &= ~(uint32_t)event;
+ 395:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 396:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 397:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 398:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 399:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param event Event of type ::XMC_FCE_STS_FLAG_t
+ 400:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return bool
+ 401:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 402:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 403:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Return the event status of FCE event <br>
+ 404:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 405:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 406:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The function returns the status of a single requested FCE event by reading the
+ 407:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * appropriate bit-fields of the STS register.
+ 408:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 409:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE bool XMC_FCE_GetEventStatus(const XMC_FCE_t *const engine, XMC_FCE_STS_FLAG_t event
+ 410:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 411:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   return (bool) (engine->kernel_ptr->STS & (uint32_t)event);
+ 412:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 413:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 414:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 415:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 416:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param event Event of type ::XMC_FCE_STS_FLAG_t
+ 417:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return None
+ 418:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 419:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 420:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Clear an FCE event <br>
+ 421:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 422:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 423:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The function clears requested FCE events by setting the bit-fields of the STS
+ 424:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * register.
+ 425:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 426:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE void XMC_FCE_ClearEvent(const XMC_FCE_t *const engine, XMC_FCE_STS_FLAG_t event)
+ 427:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 428:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   engine->kernel_ptr->STS |= (uint32_t)event;
+ 429:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 430:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 431:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 432:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 433:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param operation FCE operation of type ::XMC_FCE_CONFIG_OPERATION_t
+ 434:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return None
+ 435:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 436:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 437:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Enable CRC operations <br>
+ 438:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 439:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 440:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The function enables FRC operations by writing to the CFG register. 
+ 441:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 442:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Note: </b><br>
+ 443:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * CRC comparison check (at the end of message) can be enabled using the CCE bit-field.
+ 444:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Automatic reload of LENGTH field (at the end of message) can be enabled using the
+ 445:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * ALR bit field.
+ 446:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 447:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE void XMC_FCE_EnableOperation(const XMC_FCE_t *const engine, uint32_t operation)
+ 448:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 449:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   engine->kernel_ptr->CFG |= operation;
+ 450:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 451:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 452:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 453:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 454:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param operation FCE operation of type ::XMC_FCE_CONFIG_OPERATION_t
+ 455:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return None
+ 456:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 457:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 458:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Disable CRC operations <br>
+ 459:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 460:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 461:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * The function disables FRC operations by writing to the CFG register.
+ 462:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 463:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Note: </b><br>
+ 464:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * CRC comparison check (at the end of message) can be disabled using the CCE bit-field.
+ 465:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Automatic reload of LENGTH field (at the end of message) can be disabled using the
+ 466:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * ALR bit field.
+ 467:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 468:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE void XMC_FCE_DisableOperation(const XMC_FCE_t *const engine, uint32_t operation)
+ 469:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 470:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   engine->kernel_ptr->CFG &= ~(uint32_t)operation;
+ 471:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 472:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 473:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 474:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 475:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param algo A valid algorithm of type ::XMC_FCE_CONFIG_ALGO_t or a valid combination
+ 476:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *             of logically OR'd algorithms
+ 477:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return None
+ 478:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 479:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 480:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Enables CRC algorithm(s) <br>
+ 481:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 482:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Note: </b><br>
+ 483:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Options for enabling CRC algorithm:    <br>
+ 484:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * REFIN: Input byte wise reflection      <br>
+ 485:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * REFOUT: Output bit wise reflection     <br>
+ 486:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * XSEL: Value to be XORed with final CRC <br>
+ 487:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 488:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE void XMC_FCE_EnableCRCAlgorithm(const XMC_FCE_t *const engine, uint32_t algo)
+ 489:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 490:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   engine->kernel_ptr->CFG |= (uint32_t)algo;
+ 491:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 492:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 493:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 494:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 495:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param algo A valid algorithm of type ::XMC_FCE_CONFIG_ALGO_t or a valid combination
+ 496:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *             of logically OR'd algorithms
+ 497:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return None
+ 498:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 499:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 500:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Disable CRC algorithm(s) <br>
+ 501:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 502:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Note: </b><br>
+ 503:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Options for disabling CRC algorithm:   <br>
+ 504:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * REFIN: Input byte wise reflection      <br>
+ 505:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * REFOUT: Output bit wise reflection     <br>
+ 506:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * XSEL: Value to be XORed with final CRC <br>
+ 507:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 508:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE void XMC_FCE_DisableCRCAlgorithm(const XMC_FCE_t *const engine, uint32_t algo)
+ 509:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 510:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   engine->kernel_ptr->CFG &= ~(uint32_t)algo;
+ 511:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 512:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 513:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 514:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 515:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param checkvalue Checksum value
+ 516:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return None
+ 517:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 518:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 519:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Updates CRC check value <br>
+ 520:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 521:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 522:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * When the CFG.CCE bit field is set, every time the IR register is written, the
+ 523:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * LENGTH register is decremented by one until it reaches zero. The hardware monitors
+ 524:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * the transition of the LENGTH register from 1 to 0 to detect the end of the
+ 525:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * message and proceed with the comparison of the result register (RES) value with
+ 526:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * the CHECK register value.
+ 527:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 528:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE void XMC_FCE_UpdateCRCCheck(const XMC_FCE_t *const engine, const uint32_t checkvalu
+ 529:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 530:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   engine->kernel_ptr->CHECK = 0xFACECAFEU;
+ 531:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   engine->kernel_ptr->CHECK = checkvalue;
+ 532:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 533:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 534:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 535:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 536:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param checklength Checksum length
+ 537:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return None <br>
+ 538:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 539:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 540:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Updates CRC length specified in the input parameter <br>
+ 541:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 542:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par
+ 543:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * When the ALR bit field is set to 1, every write to the IR register decrements
+ 544:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * the value of the LENGTH bit field. The LENGTH field shall be reloaded with its
+ 545:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * configuration value at the end of the cycle where LENGTH reaches 0.
+ 546:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 547:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE void XMC_FCE_UpdateLength(const XMC_FCE_t *const engine, const uint32_t checklength
+ 548:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+ 549:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   engine->kernel_ptr->LENGTH = 0xFACECAFEU;
+ 550:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   engine->kernel_ptr->LENGTH = checklength;
+ 551:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+ 552:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 553:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 554:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to @ref XMC_FCE_t, pointing to the FCE base address
+ 555:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param data Pointer to the data buffer
+ 556:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param length Total number of bytes of data buffer
+ 557:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param result Pointer to computed CRC result
+ 558:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return XMC_FCE_STATUS_ERROR on error
+ 559:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return XMC_FCE_STATUS_SUCCESS otherwise.
+ 560:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 561:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 562:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Calculate and updates the CRC8 checksum in the result pointer <br>
+ 563:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 564:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Note: </b><br>
+ 565:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * A write to IRm (m = 3) triggers the CRC kernel to update the message checksum
+ 566:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * according to the IR and current CRC register contents. Any write transaction
+ 567:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * is allowed to this IRm register. Only the lower 8-bit of the write transactions
+ 568:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * will be used. ::XMC_FCE_GetCRCResult() should be called after invoking
+ 569:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * ::XMC_FCE_CalculateCRC8() to get final CRC value.
+ 570:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 571:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** XMC_FCE_STATUS_t XMC_FCE_CalculateCRC8(const XMC_FCE_t *const engine,
+ 572:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****                                        const uint8_t *data,
+ 573:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 									   uint32_t length,
+ 574:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 									   uint8_t *result);
+ 575:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 576:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 577:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 578:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param data Pointer to the data buffer
+ 579:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param length Length of data buffer
+ 580:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param result Pointer to computed CRC result
+ 581:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return XMC_FCE_STATUS_ERROR on error
+ 582:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return XMC_FCE_STATUS_SUCCESS otherwise.
+ 583:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 584:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 585:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Calculate and update the RC16 checksum in the result pointer <br>
+ 586:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 587:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Note: </b><br>
+ 588:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * A write to Internal Register (IRm m = 2) triggers the CRC kernel to update the
+ 589:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * message checksum according to the IR and current CRC register contents. Only 32-bit
+ 590:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * or 16-bit write transactions are permitted. Any other bus write transaction will
+ 591:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * lead to a bus error. Only the lower 16-bit of the write transactions will be used.
+ 592:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * ::XMC_FCE_GetCRCResult() should be called after ::XMC_FCE_CalculateCRC16() to get
+ 593:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * final CRC value.
+ 594:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 595:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** XMC_FCE_STATUS_t XMC_FCE_CalculateCRC16(const XMC_FCE_t *const engine,
+ 596:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****                                         const uint16_t *data,
+ 597:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 										uint32_t length,
+ 598:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 										uint16_t *result);
+ 599:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 600:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 601:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to @ref XMC_FCE_t, pointing to the FCE base address
+ 602:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param data Pointer to the data buffer
+ 603:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param length Total number of bytes of data buffer
+ 604:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param result Pointer to computed CRC result
+ 605:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return XMC_FCE_STATUS_ERROR on error
+ 606:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return XMC_FCE_STATUS_SUCCESS otherwise.
+ 607:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 608:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description</b><br>
+ 609:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Calculate and update the calculated CRC32 checksum in the result pointer <br>
+ 610:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 611:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Note:</b><br>
+ 612:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * A write to Internal Register (IRm, m = 0-1) triggers the CRC kernel to update
+ 613:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * the message checksum according to the IR and current CRC register contents. Only
+ 614:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * 32-bit write transactions are permitted. Any other bus write transaction will
+ 615:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * lead to a bus error. ::XMC_FCE_GetCRCResult() should be called after
+ 616:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * ::XMC_FCE_CalculateCRC32() to get final CRC value.
+ 617:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 618:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** XMC_FCE_STATUS_t XMC_FCE_CalculateCRC32(const XMC_FCE_t *const engine,
+ 619:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****                                         const uint32_t *data,
+ 620:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 										uint32_t length,
+ 621:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 										uint32_t *result);
+ 622:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** 
+ 623:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** /**
+ 624:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param engine Constant pointer to ::XMC_FCE_t, pointing to the FCE base address
+ 625:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @param result Pointer to CRC result
+ 626:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * @return None
+ 627:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  *
+ 628:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * \par<b>Description: </b><br>
+ 629:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  * Read the final CRC value from RES register <br>
+ 630:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****  */
+ 631:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** __STATIC_INLINE void XMC_FCE_GetCRCResult(const XMC_FCE_t *const engine, uint32_t *result)
+ 632:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** {
+  27              	 .loc 1 632 0
+  28              	 .cfi_startproc
+  29              	 
+  30              	 
+  31              	 
+  32 0000 80B4     	 push {r7}
+  33              	.LCFI0:
+  34              	 .cfi_def_cfa_offset 4
+  35              	 .cfi_offset 7,-4
+  36 0002 83B0     	 sub sp,sp,#12
+  37              	.LCFI1:
+  38              	 .cfi_def_cfa_offset 16
+  39 0004 00AF     	 add r7,sp,#0
+  40              	.LCFI2:
+  41              	 .cfi_def_cfa_register 7
+  42 0006 7860     	 str r0,[r7,#4]
+  43 0008 3960     	 str r1,[r7]
+ 633:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h ****   *result= engine->kernel_ptr->RES;
+  44              	 .loc 1 633 0
+  45 000a 7B68     	 ldr r3,[r7,#4]
+  46 000c 1B68     	 ldr r3,[r3]
+  47 000e 5A68     	 ldr r2,[r3,#4]
+  48 0010 3B68     	 ldr r3,[r7]
+  49 0012 1A60     	 str r2,[r3]
+ 634:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_fce.h **** }
+  50              	 .loc 1 634 0
+  51 0014 0C37     	 adds r7,r7,#12
+  52              	.LCFI3:
+  53              	 .cfi_def_cfa_offset 4
+  54 0016 BD46     	 mov sp,r7
+  55              	.LCFI4:
+  56              	 .cfi_def_cfa_register 13
+  57              	 
+  58 0018 5DF8047B 	 ldr r7,[sp],#4
+  59              	.LCFI5:
+  60              	 .cfi_restore 7
+  61              	 .cfi_def_cfa_offset 0
+  62 001c 7047     	 bx lr
+  63              	 .cfi_endproc
+  64              	.LFE164:
+  66              	 .global physical_sector_addresses
+  67 001e 00BF     	 .section .data.physical_sector_addresses,"aw",%progbits
+  68              	 .align 2
+  71              	physical_sector_addresses:
+  72 0000 0000000C 	 .word 201326592
+  73 0004 0000010C 	 .word 201392128
+  74 0008 0000020C 	 .word 201457664
+  75 000c 0000040C 	 .word 201588736
+  76 0010 0000080C 	 .word 201850880
+  77 0014 00000C0C 	 .word 202113024
+  78 0018 0000100C 	 .word 202375168
+  79 001c 0000140C 	 .word 202637312
+  80 0020 0000180C 	 .word 202899456
+  81 0024 00001C0C 	 .word 203161600
+  82 0028 00002C0C 	 .word 204210176
+  83              	 .section .data.FCE_config0,"aw",%progbits
+  84              	 .align 2
+  87              	FCE_config0:
+  88 0000 20000250 	 .word 1342308384
+  89 0004 00       	 .space 1
+  90 0005 07       	 .byte 7
+  91 0006 0000     	 .space 2
+  92 0008 FFFFFFFF 	 .word -1
+  93              	 .section .bss.gl_flash_write_address,"aw",%nobits
+  94              	 .align 2
+  97              	gl_flash_write_address:
+  98 0000 00000000 	 .space 4
+  99              	 .section .bss.gl_flash_write_start_address,"aw",%nobits
+ 100              	 .align 2
+ 103              	gl_flash_write_start_address:
+ 104 0000 00000000 	 .space 4
+ 105              	 .section .bss.gl_flash_bytes_written,"aw",%nobits
+ 106              	 .align 2
+ 109              	gl_flash_bytes_written:
+ 110 0000 00000000 	 .space 4
+ 111              	 .section .bss.gl_flash_check_prog,"aw",%nobits
+ 114              	gl_flash_check_prog:
+ 115 0000 00       	 .space 1
+ 116              	 .section .bss.gl_flash_erased,"aw",%nobits
+ 117              	 .align 1
+ 120              	gl_flash_erased:
+ 121 0000 0000     	 .space 2
+ 122              	 .section .bss.gl_flash_max_size,"aw",%nobits
+ 123              	 .align 2
+ 126              	gl_flash_max_size:
+ 127 0000 00000000 	 .space 4
+ 128              	 .section .bss.gl_flash_page_prep,"aw",%nobits
+ 129              	 .align 2
+ 132              	gl_flash_page_prep:
+ 133 0000 00000000 	 .space 256
+ 133      00000000 
+ 133      00000000 
+ 133      00000000 
+ 133      00000000 
+ 134              	 .section .bss.gl_flash_page_prep_index,"aw",%nobits
+ 135              	 .align 2
+ 138              	gl_flash_page_prep_index:
+ 139 0000 00000000 	 .space 4
+ 140              	 .section .text.Flash_lGetPhysicalSector,"ax",%progbits
+ 141              	 .align 2
+ 142              	 .global Flash_lGetPhysicalSector
+ 143              	 .thumb
+ 144              	 .thumb_func
+ 146              	Flash_lGetPhysicalSector:
+ 147              	.LFB165:
+ 148              	 .file 2 "../flashprog.c"
+   1:../flashprog.c **** /******************************************************************************
+   2:../flashprog.c **** * Software License Agreement
+   3:../flashprog.c **** *
+   4:../flashprog.c **** * Copyright (c) 2016, Infineon Technologies AG
+   5:../flashprog.c **** * All rights reserved.
+   6:../flashprog.c **** *
+   7:../flashprog.c **** * Redistribution and use in source and binary forms, with or without
+   8:../flashprog.c **** * modification, are permitted provided that the following conditions are met:
+   9:../flashprog.c **** *
+  10:../flashprog.c **** * Redistributions of source code must retain the above copyright notice,
+  11:../flashprog.c **** * this list of conditions and the following disclaimer.
+  12:../flashprog.c **** *
+  13:../flashprog.c **** * Redistributions in binary form must reproduce the above copyright notice,
+  14:../flashprog.c **** * this list of conditions and the following disclaimer in the documentation
+  15:../flashprog.c **** * and/or other materials provided with the distribution.
+  16:../flashprog.c **** *
+  17:../flashprog.c **** * Neither the name of the copyright holders nor the names of its contributors
+  18:../flashprog.c **** * may be used to endorse or promote products derived from this software
+  19:../flashprog.c **** * without specific prior written permission
+  20:../flashprog.c **** 
+  21:../flashprog.c **** * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:../flashprog.c **** * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:../flashprog.c **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:../flashprog.c **** * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+  25:../flashprog.c **** * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:../flashprog.c **** * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:../flashprog.c **** * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:../flashprog.c **** * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:../flashprog.c **** * CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:../flashprog.c **** * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:../flashprog.c **** * POSSIBILITY OF SUCH DAMAGE.
+  32:../flashprog.c **** *
+  33:../flashprog.c **** * To improve the quality of the software, users are encouraged to share
+  34:../flashprog.c **** * modifications, enhancements or bug fixes with Infineon Technologies AG
+  35:../flashprog.c **** * (dave@infineon.com).
+  36:../flashprog.c **** *
+  37:../flashprog.c **** *****************************************************************************/
+  38:../flashprog.c **** 
+  39:../flashprog.c **** /****************************************************************
+  40:../flashprog.c **** * HEADER FILES
+  41:../flashprog.c **** ***************************************************************/
+  42:../flashprog.c **** #include "xmc_flash.h"
+  43:../flashprog.c **** #include "flashprog.h"
+  44:../flashprog.c **** #include <xmc_fce.h>
+  45:../flashprog.c **** 
+  46:../flashprog.c **** /****************************************************************
+  47:../flashprog.c **** * MACROS AND DEFINES
+  48:../flashprog.c **** ***************************************************************/
+  49:../flashprog.c **** 
+  50:../flashprog.c **** /****************************************************************
+  51:../flashprog.c **** * LOCAL DATA
+  52:../flashprog.c **** ***************************************************************/
+  53:../flashprog.c **** uint32_t* physical_sector_addresses[XMC_FLASH_SECTOR_COUNT_MAX + 1]=
+  54:../flashprog.c **** {
+  55:../flashprog.c ****   XMC_FLASH_PHY_SECTOR_0,
+  56:../flashprog.c ****   XMC_FLASH_PHY_SECTOR_4,
+  57:../flashprog.c ****   XMC_FLASH_PHY_SECTOR_8,
+  58:../flashprog.c ****   XMC_FLASH_PHY_SECTOR_9,
+  59:../flashprog.c ****   XMC_FLASH_PHY_SECTOR_10,
+  60:../flashprog.c ****   XMC_FLASH_PHY_SECTOR_11,
+  61:../flashprog.c ****   XMC_FLASH_PHY_SECTOR_12,
+  62:../flashprog.c ****   XMC_FLASH_PHY_SECTOR_13,
+  63:../flashprog.c ****   XMC_FLASH_PHY_SECTOR_14,
+  64:../flashprog.c ****   XMC_FLASH_PHY_SECTOR_15,
+  65:../flashprog.c ****   XMC_FLASH_PHY_SECTOR_15 + 0x040000UL  /*end address +1 of last sector */
+  66:../flashprog.c **** };
+  67:../flashprog.c **** 
+  68:../flashprog.c **** /* Specification to initialize FCE for CRC32 calculation*/
+  69:../flashprog.c **** static XMC_FCE_t FCE_config0 =
+  70:../flashprog.c **** {
+  71:../flashprog.c ****   .kernel_ptr    = XMC_FCE_CRC32_0,    /**< FCE Kernel Pointer */
+  72:../flashprog.c ****   .fce_cfg_update.config_xsel = true,
+  73:../flashprog.c ****   .fce_cfg_update.config_refin = true,
+  74:../flashprog.c ****   .fce_cfg_update.config_refout = true,
+  75:../flashprog.c ****   .seedvalue = 0xffffffff
+  76:../flashprog.c **** };
+  77:../flashprog.c **** 
+  78:../flashprog.c **** static uint32_t* gl_flash_write_address;
+  79:../flashprog.c **** static uint32_t* gl_flash_write_start_address;
+  80:../flashprog.c **** static uint32_t  gl_flash_bytes_written=0;
+  81:../flashprog.c **** static uint8_t   gl_flash_check_prog;
+  82:../flashprog.c **** static uint16_t  gl_flash_erased;
+  83:../flashprog.c **** static uint32_t  gl_flash_max_size=0;
+  84:../flashprog.c **** static uint8_t   gl_flash_page_prep[256];
+  85:../flashprog.c **** static uint32_t  gl_flash_page_prep_index=0;
+  86:../flashprog.c **** 
+  87:../flashprog.c **** /****************************************************************
+  88:../flashprog.c **** * API PROTOTYPES
+  89:../flashprog.c **** ***************************************************************/
+  90:../flashprog.c **** 
+  91:../flashprog.c **** /****************************************************************
+  92:../flashprog.c **** * API IMPLEMENTATION
+  93:../flashprog.c **** ***************************************************************/
+  94:../flashprog.c **** /**
+  95:../flashprog.c ****  * @brief Flash_lGetPhysicalSector
+  96:../flashprog.c ****  *
+  97:../flashprog.c ****  * Returns the sector start address of physical sector to which an address belongs
+  98:../flashprog.c ****  *
+  99:../flashprog.c ****  * @input :  address : address for which the start address of physical sector
+ 100:../flashprog.c ****  *                     is returned
+ 101:../flashprog.c ****  *
+ 102:../flashprog.c ****  * @output : none
+ 103:../flashprog.c ****  *
+ 104:../flashprog.c ****  * @return : start address of physical sector
+ 105:../flashprog.c ****  *
+ 106:../flashprog.c ****  */
+ 107:../flashprog.c **** uint32_t* Flash_lGetPhysicalSector(uint32_t* address)
+ 108:../flashprog.c **** {
+ 149              	 .loc 2 108 0
+ 150              	 .cfi_startproc
+ 151              	 
+ 152              	 
+ 153              	 
+ 154 0000 80B4     	 push {r7}
+ 155              	.LCFI6:
+ 156              	 .cfi_def_cfa_offset 4
+ 157              	 .cfi_offset 7,-4
+ 158 0002 85B0     	 sub sp,sp,#20
+ 159              	.LCFI7:
+ 160              	 .cfi_def_cfa_offset 24
+ 161 0004 00AF     	 add r7,sp,#0
+ 162              	.LCFI8:
+ 163              	 .cfi_def_cfa_register 7
+ 164 0006 7860     	 str r0,[r7,#4]
+ 109:../flashprog.c ****   uint8_t sector_number;
+ 110:../flashprog.c **** 
+ 111:../flashprog.c ****   for (sector_number=0; sector_number<XMC_FLASH_SECTOR_COUNT_MAX; sector_number++)
+ 165              	 .loc 2 111 0
+ 166 0008 0023     	 movs r3,#0
+ 167 000a FB73     	 strb r3,[r7,#15]
+ 168 000c 16E0     	 b .L3
+ 169              	.L6:
+ 112:../flashprog.c ****   {
+ 113:../flashprog.c ****     if ((address>=physical_sector_addresses[sector_number]) && (address<physical_sector_addresses[s
+ 170              	 .loc 2 113 0
+ 171 000e FB7B     	 ldrb r3,[r7,#15]
+ 172 0010 0F4A     	 ldr r2,.L7
+ 173 0012 52F82320 	 ldr r2,[r2,r3,lsl#2]
+ 174 0016 7B68     	 ldr r3,[r7,#4]
+ 175 0018 9A42     	 cmp r2,r3
+ 176 001a 0CD8     	 bhi .L4
+ 177              	 .loc 2 113 0 is_stmt 0 discriminator 1
+ 178 001c FB7B     	 ldrb r3,[r7,#15]
+ 179 001e 0133     	 adds r3,r3,#1
+ 180 0020 0B4A     	 ldr r2,.L7
+ 181 0022 52F82320 	 ldr r2,[r2,r3,lsl#2]
+ 182 0026 7B68     	 ldr r3,[r7,#4]
+ 183 0028 9A42     	 cmp r2,r3
+ 184 002a 04D9     	 bls .L4
+ 114:../flashprog.c ****       return physical_sector_addresses[sector_number];
+ 185              	 .loc 2 114 0 is_stmt 1
+ 186 002c FB7B     	 ldrb r3,[r7,#15]
+ 187 002e 084A     	 ldr r2,.L7
+ 188 0030 52F82330 	 ldr r3,[r2,r3,lsl#2]
+ 189 0034 06E0     	 b .L5
+ 190              	.L4:
+ 111:../flashprog.c ****   {
+ 191              	 .loc 2 111 0 discriminator 2
+ 192 0036 FB7B     	 ldrb r3,[r7,#15]
+ 193 0038 0133     	 adds r3,r3,#1
+ 194 003a FB73     	 strb r3,[r7,#15]
+ 195              	.L3:
+ 111:../flashprog.c ****   {
+ 196              	 .loc 2 111 0 is_stmt 0 discriminator 1
+ 197 003c FB7B     	 ldrb r3,[r7,#15]
+ 198 003e 092B     	 cmp r3,#9
+ 199 0040 E5D9     	 bls .L6
+ 115:../flashprog.c ****   }
+ 116:../flashprog.c ****   /* should not be reached */
+ 117:../flashprog.c ****   return 0;
+ 200              	 .loc 2 117 0 is_stmt 1
+ 201 0042 0023     	 movs r3,#0
+ 202              	.L5:
+ 118:../flashprog.c **** }
+ 203              	 .loc 2 118 0
+ 204 0044 1846     	 mov r0,r3
+ 205 0046 1437     	 adds r7,r7,#20
+ 206              	.LCFI9:
+ 207              	 .cfi_def_cfa_offset 4
+ 208 0048 BD46     	 mov sp,r7
+ 209              	.LCFI10:
+ 210              	 .cfi_def_cfa_register 13
+ 211              	 
+ 212 004a 5DF8047B 	 ldr r7,[sp],#4
+ 213              	.LCFI11:
+ 214              	 .cfi_restore 7
+ 215              	 .cfi_def_cfa_offset 0
+ 216 004e 7047     	 bx lr
+ 217              	.L8:
+ 218              	 .align 2
+ 219              	.L7:
+ 220 0050 00000000 	 .word physical_sector_addresses
+ 221              	 .cfi_endproc
+ 222              	.LFE165:
+ 224              	 .section .text.Flash_lGetPhysicalSectorNumber,"ax",%progbits
+ 225              	 .align 2
+ 226              	 .global Flash_lGetPhysicalSectorNumber
+ 227              	 .thumb
+ 228              	 .thumb_func
+ 230              	Flash_lGetPhysicalSectorNumber:
+ 231              	.LFB166:
+ 119:../flashprog.c **** 
+ 120:../flashprog.c **** /**
+ 121:../flashprog.c ****  * @brief Flash_lGetPhysicalSectorNumber
+ 122:../flashprog.c ****  *
+ 123:../flashprog.c ****  * Returns the sector number of physical sector having a certain start address
+ 124:../flashprog.c ****  *
+ 125:../flashprog.c ****  * @input :  physical_sector_start_address : address of physical sector for which the
+ 126:../flashprog.c ****  *                                   sector number is returned
+ 127:../flashprog.c ****  *
+ 128:../flashprog.c ****  * @output : none
+ 129:../flashprog.c ****  *
+ 130:../flashprog.c ****  * @return : sector number
+ 131:../flashprog.c ****  *
+ 132:../flashprog.c ****  */
+ 133:../flashprog.c **** uint8_t Flash_lGetPhysicalSectorNumber(uint32_t* physical_sector_start_address)
+ 134:../flashprog.c **** {
+ 232              	 .loc 2 134 0
+ 233              	 .cfi_startproc
+ 234              	 
+ 235              	 
+ 236              	 
+ 237 0000 80B4     	 push {r7}
+ 238              	.LCFI12:
+ 239              	 .cfi_def_cfa_offset 4
+ 240              	 .cfi_offset 7,-4
+ 241 0002 85B0     	 sub sp,sp,#20
+ 242              	.LCFI13:
+ 243              	 .cfi_def_cfa_offset 24
+ 244 0004 00AF     	 add r7,sp,#0
+ 245              	.LCFI14:
+ 246              	 .cfi_def_cfa_register 7
+ 247 0006 7860     	 str r0,[r7,#4]
+ 135:../flashprog.c ****   uint8_t sector_number;
+ 136:../flashprog.c **** 
+ 137:../flashprog.c ****   for (sector_number=0; sector_number<XMC_FLASH_SECTOR_COUNT_MAX; sector_number++)
+ 248              	 .loc 2 137 0
+ 249 0008 0023     	 movs r3,#0
+ 250 000a FB73     	 strb r3,[r7,#15]
+ 251 000c 0BE0     	 b .L10
+ 252              	.L13:
+ 138:../flashprog.c ****   {
+ 139:../flashprog.c ****     if (physical_sector_start_address==physical_sector_addresses[sector_number])
+ 253              	 .loc 2 139 0
+ 254 000e FB7B     	 ldrb r3,[r7,#15]
+ 255 0010 0A4A     	 ldr r2,.L14
+ 256 0012 52F82320 	 ldr r2,[r2,r3,lsl#2]
+ 257 0016 7B68     	 ldr r3,[r7,#4]
+ 258 0018 9A42     	 cmp r2,r3
+ 259 001a 01D1     	 bne .L11
+ 140:../flashprog.c ****       return sector_number;
+ 260              	 .loc 2 140 0
+ 261 001c FB7B     	 ldrb r3,[r7,#15]
+ 262 001e 06E0     	 b .L12
+ 263              	.L11:
+ 137:../flashprog.c ****   {
+ 264              	 .loc 2 137 0 discriminator 2
+ 265 0020 FB7B     	 ldrb r3,[r7,#15]
+ 266 0022 0133     	 adds r3,r3,#1
+ 267 0024 FB73     	 strb r3,[r7,#15]
+ 268              	.L10:
+ 137:../flashprog.c ****   {
+ 269              	 .loc 2 137 0 is_stmt 0 discriminator 1
+ 270 0026 FB7B     	 ldrb r3,[r7,#15]
+ 271 0028 092B     	 cmp r3,#9
+ 272 002a F0D9     	 bls .L13
+ 141:../flashprog.c ****   }
+ 142:../flashprog.c ****   return 0;
+ 273              	 .loc 2 142 0 is_stmt 1
+ 274 002c 0023     	 movs r3,#0
+ 275              	.L12:
+ 143:../flashprog.c **** }
+ 276              	 .loc 2 143 0
+ 277 002e 1846     	 mov r0,r3
+ 278 0030 1437     	 adds r7,r7,#20
+ 279              	.LCFI15:
+ 280              	 .cfi_def_cfa_offset 4
+ 281 0032 BD46     	 mov sp,r7
+ 282              	.LCFI16:
+ 283              	 .cfi_def_cfa_register 13
+ 284              	 
+ 285 0034 5DF8047B 	 ldr r7,[sp],#4
+ 286              	.LCFI17:
+ 287              	 .cfi_restore 7
+ 288              	 .cfi_def_cfa_offset 0
+ 289 0038 7047     	 bx lr
+ 290              	.L15:
+ 291 003a 00BF     	 .align 2
+ 292              	.L14:
+ 293 003c 00000000 	 .word physical_sector_addresses
+ 294              	 .cfi_endproc
+ 295              	.LFE166:
+ 297              	 .section .text.Flash_lGetPhysicalSectorAddress,"ax",%progbits
+ 298              	 .align 2
+ 299              	 .global Flash_lGetPhysicalSectorAddress
+ 300              	 .thumb
+ 301              	 .thumb_func
+ 303              	Flash_lGetPhysicalSectorAddress:
+ 304              	.LFB167:
+ 144:../flashprog.c **** 
+ 145:../flashprog.c **** /**
+ 146:../flashprog.c ****  * @brief Flash_lGetPhysicalSectorAddress
+ 147:../flashprog.c ****  *
+ 148:../flashprog.c ****  * Returns the start address of a physical sector defined by a sector number
+ 149:../flashprog.c ****  *
+ 150:../flashprog.c ****  * @input :  physical_sector_number : number of physical sector
+ 151:../flashprog.c ****  *
+ 152:../flashprog.c ****  * @output : none
+ 153:../flashprog.c ****  *
+ 154:../flashprog.c ****  * @return : start address of the physical sector
+ 155:../flashprog.c ****  *
+ 156:../flashprog.c ****  */
+ 157:../flashprog.c **** uint32_t* Flash_lGetPhysicalSectorAddress(uint8_t physical_sector_number)
+ 158:../flashprog.c **** {
+ 305              	 .loc 2 158 0
+ 306              	 .cfi_startproc
+ 307              	 
+ 308              	 
+ 309              	 
+ 310 0000 80B4     	 push {r7}
+ 311              	.LCFI18:
+ 312              	 .cfi_def_cfa_offset 4
+ 313              	 .cfi_offset 7,-4
+ 314 0002 83B0     	 sub sp,sp,#12
+ 315              	.LCFI19:
+ 316              	 .cfi_def_cfa_offset 16
+ 317 0004 00AF     	 add r7,sp,#0
+ 318              	.LCFI20:
+ 319              	 .cfi_def_cfa_register 7
+ 320 0006 0346     	 mov r3,r0
+ 321 0008 FB71     	 strb r3,[r7,#7]
+ 159:../flashprog.c ****   return physical_sector_addresses[physical_sector_number];
+ 322              	 .loc 2 159 0
+ 323 000a FB79     	 ldrb r3,[r7,#7]
+ 324 000c 044A     	 ldr r2,.L18
+ 325 000e 52F82330 	 ldr r3,[r2,r3,lsl#2]
+ 160:../flashprog.c **** }
+ 326              	 .loc 2 160 0
+ 327 0012 1846     	 mov r0,r3
+ 328 0014 0C37     	 adds r7,r7,#12
+ 329              	.LCFI21:
+ 330              	 .cfi_def_cfa_offset 4
+ 331 0016 BD46     	 mov sp,r7
+ 332              	.LCFI22:
+ 333              	 .cfi_def_cfa_register 13
+ 334              	 
+ 335 0018 5DF8047B 	 ldr r7,[sp],#4
+ 336              	.LCFI23:
+ 337              	 .cfi_restore 7
+ 338              	 .cfi_def_cfa_offset 0
+ 339 001c 7047     	 bx lr
+ 340              	.L19:
+ 341 001e 00BF     	 .align 2
+ 342              	.L18:
+ 343 0020 00000000 	 .word physical_sector_addresses
+ 344              	 .cfi_endproc
+ 345              	.LFE167:
+ 347              	 .section .text.Flash_lCheckPhysicalSectorNumberInRange,"ax",%progbits
+ 348              	 .align 2
+ 349              	 .global Flash_lCheckPhysicalSectorNumberInRange
+ 350              	 .thumb
+ 351              	 .thumb_func
+ 353              	Flash_lCheckPhysicalSectorNumberInRange:
+ 354              	.LFB168:
+ 161:../flashprog.c **** 
+ 162:../flashprog.c **** /**
+ 163:../flashprog.c ****  * @brief Flash_lCheckPhysicalSectorNumberInRange
+ 164:../flashprog.c ****  *
+ 165:../flashprog.c ****  * Checks if a physical sector defined by a sector number overlaps with an address range
+ 166:../flashprog.c ****  *
+ 167:../flashprog.c ****  * @input :  ptr_startaddress : start address of range
+ 168:../flashprog.c ****  *           size_bytes       : size of range in bytes
+ 169:../flashprog.c ****  *           sector_number    : sector number to check
+ 170:../flashprog.c ****  *
+ 171:../flashprog.c ****  * @output : none
+ 172:../flashprog.c ****  *
+ 173:../flashprog.c ****  * @return : FLASH_SECTOR_NOT_IN_RANGE - sector does not overlap with address range
+ 174:../flashprog.c ****  *           FLASH_SECTOR_IN_RANGE - sector overlaps with address range
+ 175:../flashprog.c ****  *
+ 176:../flashprog.c ****  */
+ 177:../flashprog.c **** uint8_t Flash_lCheckPhysicalSectorNumberInRange(uint32_t* ptr_startaddress, uint32_t size_bytes, ui
+ 178:../flashprog.c **** {
+ 355              	 .loc 2 178 0
+ 356              	 .cfi_startproc
+ 357              	 
+ 358              	 
+ 359              	 
+ 360 0000 80B4     	 push {r7}
+ 361              	.LCFI24:
+ 362              	 .cfi_def_cfa_offset 4
+ 363              	 .cfi_offset 7,-4
+ 364 0002 87B0     	 sub sp,sp,#28
+ 365              	.LCFI25:
+ 366              	 .cfi_def_cfa_offset 32
+ 367 0004 00AF     	 add r7,sp,#0
+ 368              	.LCFI26:
+ 369              	 .cfi_def_cfa_register 7
+ 370 0006 F860     	 str r0,[r7,#12]
+ 371 0008 B960     	 str r1,[r7,#8]
+ 372 000a 7A60     	 str r2,[r7,#4]
+ 179:../flashprog.c ****   uint8_t hit=FLASH_SECTOR_NOT_IN_RANGE;
+ 373              	 .loc 2 179 0
+ 374 000c 0523     	 movs r3,#5
+ 375 000e FB75     	 strb r3,[r7,#23]
+ 180:../flashprog.c ****   uint32_t* ptr_endaddress=ptr_startaddress + size_bytes / 4;
+ 376              	 .loc 2 180 0
+ 377 0010 BB68     	 ldr r3,[r7,#8]
+ 378 0012 9B08     	 lsrs r3,r3,#2
+ 379 0014 9B00     	 lsls r3,r3,#2
+ 380 0016 FA68     	 ldr r2,[r7,#12]
+ 381 0018 1344     	 add r3,r3,r2
+ 382 001a 3B61     	 str r3,[r7,#16]
+ 181:../flashprog.c **** 
+ 182:../flashprog.c ****   /* Check if startaddress is inside physical sector */
+ 183:../flashprog.c ****   if ((ptr_startaddress>=physical_sector_addresses[sector_number]) && (ptr_startaddress<physical_se
+ 383              	 .loc 2 183 0
+ 384 001c 1C4A     	 ldr r2,.L25
+ 385 001e 7B68     	 ldr r3,[r7,#4]
+ 386 0020 52F82320 	 ldr r2,[r2,r3,lsl#2]
+ 387 0024 FB68     	 ldr r3,[r7,#12]
+ 388 0026 9A42     	 cmp r2,r3
+ 389 0028 09D8     	 bhi .L21
+ 390              	 .loc 2 183 0 is_stmt 0 discriminator 1
+ 391 002a 7B68     	 ldr r3,[r7,#4]
+ 392 002c 0133     	 adds r3,r3,#1
+ 393 002e 184A     	 ldr r2,.L25
+ 394 0030 52F82320 	 ldr r2,[r2,r3,lsl#2]
+ 395 0034 FB68     	 ldr r3,[r7,#12]
+ 396 0036 9A42     	 cmp r2,r3
+ 397 0038 01D9     	 bls .L21
+ 184:../flashprog.c ****     hit=FLASH_SECTOR_IN_RANGE;
+ 398              	 .loc 2 184 0 is_stmt 1
+ 399 003a 0423     	 movs r3,#4
+ 400 003c FB75     	 strb r3,[r7,#23]
+ 401              	.L21:
+ 185:../flashprog.c ****   /* Check if endaddress is inside physical sector */
+ 186:../flashprog.c ****   if ((ptr_endaddress>=physical_sector_addresses[sector_number]) && (ptr_endaddress<physical_sector
+ 402              	 .loc 2 186 0
+ 403 003e 144A     	 ldr r2,.L25
+ 404 0040 7B68     	 ldr r3,[r7,#4]
+ 405 0042 52F82320 	 ldr r2,[r2,r3,lsl#2]
+ 406 0046 3B69     	 ldr r3,[r7,#16]
+ 407 0048 9A42     	 cmp r2,r3
+ 408 004a 09D8     	 bhi .L22
+ 409              	 .loc 2 186 0 is_stmt 0 discriminator 1
+ 410 004c 7B68     	 ldr r3,[r7,#4]
+ 411 004e 0133     	 adds r3,r3,#1
+ 412 0050 0F4A     	 ldr r2,.L25
+ 413 0052 52F82320 	 ldr r2,[r2,r3,lsl#2]
+ 414 0056 3B69     	 ldr r3,[r7,#16]
+ 415 0058 9A42     	 cmp r2,r3
+ 416 005a 01D9     	 bls .L22
+ 187:../flashprog.c ****     hit=FLASH_SECTOR_IN_RANGE;
+ 417              	 .loc 2 187 0 is_stmt 1
+ 418 005c 0423     	 movs r3,#4
+ 419 005e FB75     	 strb r3,[r7,#23]
+ 420              	.L22:
+ 188:../flashprog.c ****   /* Check if complete physical sector is covered by range  */
+ 189:../flashprog.c ****   if ((physical_sector_addresses[sector_number]>=ptr_startaddress) && (physical_sector_addresses[se
+ 421              	 .loc 2 189 0
+ 422 0060 0B4A     	 ldr r2,.L25
+ 423 0062 7B68     	 ldr r3,[r7,#4]
+ 424 0064 52F82320 	 ldr r2,[r2,r3,lsl#2]
+ 425 0068 FB68     	 ldr r3,[r7,#12]
+ 426 006a 9A42     	 cmp r2,r3
+ 427 006c 09D3     	 bcc .L23
+ 428              	 .loc 2 189 0 is_stmt 0 discriminator 1
+ 429 006e 7B68     	 ldr r3,[r7,#4]
+ 430 0070 0133     	 adds r3,r3,#1
+ 431 0072 074A     	 ldr r2,.L25
+ 432 0074 52F82320 	 ldr r2,[r2,r3,lsl#2]
+ 433 0078 3B69     	 ldr r3,[r7,#16]
+ 434 007a 9A42     	 cmp r2,r3
+ 435 007c 01D2     	 bcs .L23
+ 190:../flashprog.c ****     hit=FLASH_SECTOR_IN_RANGE;
+ 436              	 .loc 2 190 0 is_stmt 1
+ 437 007e 0423     	 movs r3,#4
+ 438 0080 FB75     	 strb r3,[r7,#23]
+ 439              	.L23:
+ 191:../flashprog.c **** 
+ 192:../flashprog.c ****   return hit;
+ 440              	 .loc 2 192 0
+ 441 0082 FB7D     	 ldrb r3,[r7,#23]
+ 193:../flashprog.c **** }
+ 442              	 .loc 2 193 0
+ 443 0084 1846     	 mov r0,r3
+ 444 0086 1C37     	 adds r7,r7,#28
+ 445              	.LCFI27:
+ 446              	 .cfi_def_cfa_offset 4
+ 447 0088 BD46     	 mov sp,r7
+ 448              	.LCFI28:
+ 449              	 .cfi_def_cfa_register 13
+ 450              	 
+ 451 008a 5DF8047B 	 ldr r7,[sp],#4
+ 452              	.LCFI29:
+ 453              	 .cfi_restore 7
+ 454              	 .cfi_def_cfa_offset 0
+ 455 008e 7047     	 bx lr
+ 456              	.L26:
+ 457              	 .align 2
+ 458              	.L25:
+ 459 0090 00000000 	 .word physical_sector_addresses
+ 460              	 .cfi_endproc
+ 461              	.LFE168:
+ 463              	 .section .text.FLASHPROG_Init,"ax",%progbits
+ 464              	 .align 2
+ 465              	 .global FLASHPROG_Init
+ 466              	 .thumb
+ 467              	 .thumb_func
+ 469              	FLASHPROG_Init:
+ 470              	.LFB169:
+ 194:../flashprog.c **** 
+ 195:../flashprog.c **** /**
+ 196:../flashprog.c ****  * @brief FLASHPROG_Init
+ 197:../flashprog.c ****  *
+ 198:../flashprog.c ****  * Initializes flash programming with flash destination address,
+ 199:../flashprog.c ****  * size of available space inside EEPROM and options (erase before writing and
+ 200:../flashprog.c ****  * check programming)
+ 201:../flashprog.c ****  *
+ 202:../flashprog.c ****  * @input :  dest_address          : ptr to destination data inside flash
+ 203:../flashprog.c ****  *           max_size              : amount of data (bytes) available at destination location
+ 204:../flashprog.c ****  *                                   inside flash
+ 205:../flashprog.c ****  *           erase                 : specifies if physical sectors must be deleted
+ 206:../flashprog.c ****  *                                   before programming starts
+ 207:../flashprog.c ****  *                                   FLASH_OPT_ERASE - no erase executed
+ 208:../flashprog.c ****  *                                   FLASH_OPT_NO_ERASE - erase exectued
+ 209:../flashprog.c ****  *           check_prog            : specifies if content is checked for
+ 210:../flashprog.c ****  *                                   correctness after each page programming
+ 211:../flashprog.c ****  *                                   FLASH_OPT_CHECK - data check enabled
+ 212:../flashprog.c ****  *                                   FLASH_OPT_NO_CHECK - data check disabled
+ 213:../flashprog.c ****  *
+ 214:../flashprog.c ****  * @output : none
+ 215:../flashprog.c ****  *
+ 216:../flashprog.c ****  *
+ 217:../flashprog.c ****  * @return : none
+ 218:../flashprog.c ****  *
+ 219:../flashprog.c ****  */
+ 220:../flashprog.c **** void FLASHPROG_Init(uint32_t* dest_address, uint32_t max_size, uint8_t erase, uint8_t check_prog)
+ 221:../flashprog.c **** {
+ 471              	 .loc 2 221 0
+ 472              	 .cfi_startproc
+ 473              	 
+ 474              	 
+ 475              	 
+ 476 0000 80B4     	 push {r7}
+ 477              	.LCFI30:
+ 478              	 .cfi_def_cfa_offset 4
+ 479              	 .cfi_offset 7,-4
+ 480 0002 85B0     	 sub sp,sp,#20
+ 481              	.LCFI31:
+ 482              	 .cfi_def_cfa_offset 24
+ 483 0004 00AF     	 add r7,sp,#0
+ 484              	.LCFI32:
+ 485              	 .cfi_def_cfa_register 7
+ 486 0006 F860     	 str r0,[r7,#12]
+ 487 0008 B960     	 str r1,[r7,#8]
+ 488 000a 1146     	 mov r1,r2
+ 489 000c 1A46     	 mov r2,r3
+ 490 000e 0B46     	 mov r3,r1
+ 491 0010 FB71     	 strb r3,[r7,#7]
+ 492 0012 1346     	 mov r3,r2
+ 493 0014 BB71     	 strb r3,[r7,#6]
+ 222:../flashprog.c ****   gl_flash_write_address = dest_address;
+ 494              	 .loc 2 222 0
+ 495 0016 114A     	 ldr r2,.L30
+ 496 0018 FB68     	 ldr r3,[r7,#12]
+ 497 001a 1360     	 str r3,[r2]
+ 223:../flashprog.c ****   gl_flash_write_start_address = dest_address;
+ 498              	 .loc 2 223 0
+ 499 001c 104A     	 ldr r2,.L30+4
+ 500 001e FB68     	 ldr r3,[r7,#12]
+ 501 0020 1360     	 str r3,[r2]
+ 224:../flashprog.c ****   gl_flash_max_size = max_size;
+ 502              	 .loc 2 224 0
+ 503 0022 104A     	 ldr r2,.L30+8
+ 504 0024 BB68     	 ldr r3,[r7,#8]
+ 505 0026 1360     	 str r3,[r2]
+ 225:../flashprog.c ****   gl_flash_check_prog = check_prog;
+ 506              	 .loc 2 225 0
+ 507 0028 0F4A     	 ldr r2,.L30+12
+ 508 002a BB79     	 ldrb r3,[r7,#6]
+ 509 002c 1370     	 strb r3,[r2]
+ 226:../flashprog.c ****   gl_flash_bytes_written = 0;
+ 510              	 .loc 2 226 0
+ 511 002e 0F4B     	 ldr r3,.L30+16
+ 512 0030 0022     	 movs r2,#0
+ 513 0032 1A60     	 str r2,[r3]
+ 227:../flashprog.c ****   if (erase == FLASH_OPT_NO_ERASE)
+ 514              	 .loc 2 227 0
+ 515 0034 FB79     	 ldrb r3,[r7,#7]
+ 516 0036 652B     	 cmp r3,#101
+ 517 0038 04D1     	 bne .L28
+ 228:../flashprog.c ****     gl_flash_erased = 0xffffU;
+ 518              	 .loc 2 228 0
+ 519 003a 0D4B     	 ldr r3,.L30+20
+ 520 003c 4FF6FF72 	 movw r2,#65535
+ 521 0040 1A80     	 strh r2,[r3]
+ 522 0042 02E0     	 b .L29
+ 523              	.L28:
+ 229:../flashprog.c ****   else
+ 230:../flashprog.c ****     gl_flash_erased = 0U;
+ 524              	 .loc 2 230 0
+ 525 0044 0A4B     	 ldr r3,.L30+20
+ 526 0046 0022     	 movs r2,#0
+ 527 0048 1A80     	 strh r2,[r3]
+ 528              	.L29:
+ 231:../flashprog.c ****   gl_flash_page_prep_index = 0U;
+ 529              	 .loc 2 231 0
+ 530 004a 0A4B     	 ldr r3,.L30+24
+ 531 004c 0022     	 movs r2,#0
+ 532 004e 1A60     	 str r2,[r3]
+ 232:../flashprog.c **** }
+ 533              	 .loc 2 232 0
+ 534 0050 1437     	 adds r7,r7,#20
+ 535              	.LCFI33:
+ 536              	 .cfi_def_cfa_offset 4
+ 537 0052 BD46     	 mov sp,r7
+ 538              	.LCFI34:
+ 539              	 .cfi_def_cfa_register 13
+ 540              	 
+ 541 0054 5DF8047B 	 ldr r7,[sp],#4
+ 542              	.LCFI35:
+ 543              	 .cfi_restore 7
+ 544              	 .cfi_def_cfa_offset 0
+ 545 0058 7047     	 bx lr
+ 546              	.L31:
+ 547 005a 00BF     	 .align 2
+ 548              	.L30:
+ 549 005c 00000000 	 .word gl_flash_write_address
+ 550 0060 00000000 	 .word gl_flash_write_start_address
+ 551 0064 00000000 	 .word gl_flash_max_size
+ 552 0068 00000000 	 .word gl_flash_check_prog
+ 553 006c 00000000 	 .word gl_flash_bytes_written
+ 554 0070 00000000 	 .word gl_flash_erased
+ 555 0074 00000000 	 .word gl_flash_page_prep_index
+ 556              	 .cfi_endproc
+ 557              	.LFE169:
+ 559              	 .section .text.FLASHPROG_Data,"ax",%progbits
+ 560              	 .align 2
+ 561              	 .global FLASHPROG_Data
+ 562              	 .thumb
+ 563              	 .thumb_func
+ 565              	FLASHPROG_Data:
+ 566              	.LFB170:
+ 233:../flashprog.c **** 
+ 234:../flashprog.c **** /**
+ 235:../flashprog.c ****  * @brief FLASHPROG_Data
+ 236:../flashprog.c ****  *
+ 237:../flashprog.c ****  * Provides next data for programming flash
+ 238:../flashprog.c ****  *
+ 239:../flashprog.c ****  * @input :  src_data  : ptr to source data
+ 240:../flashprog.c ****  *           size_bytes: amount of data (bytes) available at src location
+ 241:../flashprog.c ****  *
+ 242:../flashprog.c ****  * @output : none
+ 243:../flashprog.c ****  *
+ 244:../flashprog.c ****  * @return : FLASH_FULL_ERROR - no more space left inside destination
+ 245:../flashprog.c ****  *           FLASH_PROG_ERROR - programming error
+ 246:../flashprog.c ****  *
+ 247:../flashprog.c ****  */
+ 248:../flashprog.c **** uint32_t FLASHPROG_Data(void* src_data, uint32_t size_bytes)
+ 249:../flashprog.c **** {
+ 567              	 .loc 2 249 0
+ 568              	 .cfi_startproc
+ 569              	 
+ 570              	 
+ 571 0000 80B5     	 push {r7,lr}
+ 572              	.LCFI36:
+ 573              	 .cfi_def_cfa_offset 8
+ 574              	 .cfi_offset 7,-8
+ 575              	 .cfi_offset 14,-4
+ 576 0002 88B0     	 sub sp,sp,#32
+ 577              	.LCFI37:
+ 578              	 .cfi_def_cfa_offset 40
+ 579 0004 00AF     	 add r7,sp,#0
+ 580              	.LCFI38:
+ 581              	 .cfi_def_cfa_register 7
+ 582 0006 7860     	 str r0,[r7,#4]
+ 583 0008 3960     	 str r1,[r7]
+ 250:../flashprog.c ****   uint32_t result = FLASH_OK;
+ 584              	 .loc 2 250 0
+ 585 000a 0023     	 movs r3,#0
+ 586 000c FB61     	 str r3,[r7,#28]
+ 251:../flashprog.c ****   uint32_t bytes_processed = 0;
+ 587              	 .loc 2 251 0
+ 588 000e 0023     	 movs r3,#0
+ 589 0010 BB61     	 str r3,[r7,#24]
+ 252:../flashprog.c **** 
+ 253:../flashprog.c ****   while((size_bytes > bytes_processed) && (result == FLASH_OK))
+ 590              	 .loc 2 253 0
+ 591 0012 7EE0     	 b .L33
+ 592              	.L44:
+ 254:../flashprog.c ****   {
+ 255:../flashprog.c ****     while((gl_flash_page_prep_index < XMC_FLASH_BYTES_PER_PAGE) && (size_bytes > bytes_processed))
+ 593              	 .loc 2 255 0
+ 594 0014 0FE0     	 b .L34
+ 595              	.L36:
+ 256:../flashprog.c ****     {
+ 257:../flashprog.c ****       gl_flash_page_prep[gl_flash_page_prep_index]=((uint8_t*)src_data)[bytes_processed];
+ 596              	 .loc 2 257 0
+ 597 0016 454B     	 ldr r3,.L46
+ 598 0018 1B68     	 ldr r3,[r3]
+ 599 001a 7968     	 ldr r1,[r7,#4]
+ 600 001c BA69     	 ldr r2,[r7,#24]
+ 601 001e 0A44     	 add r2,r2,r1
+ 602 0020 1178     	 ldrb r1,[r2]
+ 603 0022 434A     	 ldr r2,.L46+4
+ 604 0024 D154     	 strb r1,[r2,r3]
+ 258:../flashprog.c ****       bytes_processed+=1;
+ 605              	 .loc 2 258 0
+ 606 0026 BB69     	 ldr r3,[r7,#24]
+ 607 0028 0133     	 adds r3,r3,#1
+ 608 002a BB61     	 str r3,[r7,#24]
+ 259:../flashprog.c ****       gl_flash_page_prep_index++;
+ 609              	 .loc 2 259 0
+ 610 002c 3F4B     	 ldr r3,.L46
+ 611 002e 1B68     	 ldr r3,[r3]
+ 612 0030 0133     	 adds r3,r3,#1
+ 613 0032 3E4A     	 ldr r2,.L46
+ 614 0034 1360     	 str r3,[r2]
+ 615              	.L34:
+ 255:../flashprog.c ****     {
+ 616              	 .loc 2 255 0
+ 617 0036 3D4B     	 ldr r3,.L46
+ 618 0038 1B68     	 ldr r3,[r3]
+ 619 003a FF2B     	 cmp r3,#255
+ 620 003c 03D8     	 bhi .L35
+ 255:../flashprog.c ****     {
+ 621              	 .loc 2 255 0 is_stmt 0 discriminator 1
+ 622 003e 3A68     	 ldr r2,[r7]
+ 623 0040 BB69     	 ldr r3,[r7,#24]
+ 624 0042 9A42     	 cmp r2,r3
+ 625 0044 E7D8     	 bhi .L36
+ 626              	.L35:
+ 260:../flashprog.c ****     }
+ 261:../flashprog.c **** 
+ 262:../flashprog.c ****     /* Complete page prepared ? */
+ 263:../flashprog.c ****     if (gl_flash_page_prep_index == XMC_FLASH_BYTES_PER_PAGE)
+ 627              	 .loc 2 263 0 is_stmt 1
+ 628 0046 394B     	 ldr r3,.L46
+ 629 0048 1B68     	 ldr r3,[r3]
+ 630 004a B3F5807F 	 cmp r3,#256
+ 631 004e 60D1     	 bne .L33
+ 264:../flashprog.c ****     {
+ 265:../flashprog.c ****       if ((gl_flash_bytes_written + XMC_FLASH_BYTES_PER_PAGE) <= gl_flash_max_size)
+ 632              	 .loc 2 265 0
+ 633 0050 384B     	 ldr r3,.L46+8
+ 634 0052 1B68     	 ldr r3,[r3]
+ 635 0054 03F58072 	 add r2,r3,#256
+ 636 0058 374B     	 ldr r3,.L46+12
+ 637 005a 1B68     	 ldr r3,[r3]
+ 638 005c 9A42     	 cmp r2,r3
+ 639 005e 56D8     	 bhi .L37
+ 640              	.LBB2:
+ 266:../flashprog.c ****       {
+ 267:../flashprog.c ****         /* One complete page is prepared; start programming */
+ 268:../flashprog.c **** 
+ 269:../flashprog.c ****         /* Check if physical sector already has been deleted; if not, delete */
+ 270:../flashprog.c ****         uint32_t* PhysicalSector = Flash_lGetPhysicalSector(gl_flash_write_address);
+ 641              	 .loc 2 270 0
+ 642 0060 364B     	 ldr r3,.L46+16
+ 643 0062 1B68     	 ldr r3,[r3]
+ 644 0064 1846     	 mov r0,r3
+ 645 0066 FFF7FEFF 	 bl Flash_lGetPhysicalSector
+ 646 006a 3861     	 str r0,[r7,#16]
+ 271:../flashprog.c ****         uint8_t PhysicalSectorNumber = Flash_lGetPhysicalSectorNumber(PhysicalSector);
+ 647              	 .loc 2 271 0
+ 648 006c 3869     	 ldr r0,[r7,#16]
+ 649 006e FFF7FEFF 	 bl Flash_lGetPhysicalSectorNumber
+ 650 0072 0346     	 mov r3,r0
+ 651 0074 FB73     	 strb r3,[r7,#15]
+ 272:../flashprog.c ****         if (!(gl_flash_erased & 1 << PhysicalSectorNumber))
+ 652              	 .loc 2 272 0
+ 653 0076 324B     	 ldr r3,.L46+20
+ 654 0078 1B88     	 ldrh r3,[r3]
+ 655 007a 1A46     	 mov r2,r3
+ 656 007c FB7B     	 ldrb r3,[r7,#15]
+ 657 007e 42FA03F3 	 asr r3,r2,r3
+ 658 0082 03F00103 	 and r3,r3,#1
+ 659 0086 002B     	 cmp r3,#0
+ 660 0088 0FD1     	 bne .L38
+ 273:../flashprog.c ****         {
+ 274:../flashprog.c ****           XMC_FLASH_ErasePhysicalSector(PhysicalSector);
+ 661              	 .loc 2 274 0
+ 662 008a 3869     	 ldr r0,[r7,#16]
+ 663 008c FFF7FEFF 	 bl XMC_FLASH_ErasePhysicalSector
+ 275:../flashprog.c ****           gl_flash_erased |= (1<<PhysicalSectorNumber);
+ 664              	 .loc 2 275 0
+ 665 0090 FB7B     	 ldrb r3,[r7,#15]
+ 666 0092 0122     	 movs r2,#1
+ 667 0094 02FA03F3 	 lsl r3,r2,r3
+ 668 0098 9AB2     	 uxth r2,r3
+ 669 009a 294B     	 ldr r3,.L46+20
+ 670 009c 1B88     	 ldrh r3,[r3]
+ 671 009e 9BB2     	 uxth r3,r3
+ 672 00a0 1343     	 orrs r3,r3,r2
+ 673 00a2 9BB2     	 uxth r3,r3
+ 674 00a4 9AB2     	 uxth r2,r3
+ 675 00a6 264B     	 ldr r3,.L46+20
+ 676 00a8 1A80     	 strh r2,[r3]
+ 677              	.L38:
+ 276:../flashprog.c ****         }
+ 277:../flashprog.c **** 
+ 278:../flashprog.c ****         /* Program page */
+ 279:../flashprog.c ****         XMC_FLASH_ProgramPage((void*)gl_flash_write_address,(void*)gl_flash_page_prep);
+ 678              	 .loc 2 279 0
+ 679 00aa 244B     	 ldr r3,.L46+16
+ 680 00ac 1B68     	 ldr r3,[r3]
+ 681 00ae 1846     	 mov r0,r3
+ 682 00b0 1F49     	 ldr r1,.L46+4
+ 683 00b2 FFF7FEFF 	 bl XMC_FLASH_ProgramPage
+ 280:../flashprog.c **** 
+ 281:../flashprog.c ****         /* Check for programming errors */
+ 282:../flashprog.c ****         if (gl_flash_check_prog == FLASH_OPT_CHECK)
+ 684              	 .loc 2 282 0
+ 685 00b6 234B     	 ldr r3,.L46+24
+ 686 00b8 1B78     	 ldrb r3,[r3]
+ 687 00ba C82B     	 cmp r3,#200
+ 688 00bc 17D1     	 bne .L39
+ 689              	.LBB3:
+ 283:../flashprog.c ****         {
+ 284:../flashprog.c ****           for (uint32_t offset = 0; offset < 64; offset ++)
+ 690              	 .loc 2 284 0
+ 691 00be 0023     	 movs r3,#0
+ 692 00c0 7B61     	 str r3,[r7,#20]
+ 693 00c2 11E0     	 b .L40
+ 694              	.L42:
+ 285:../flashprog.c ****           {
+ 286:../flashprog.c ****             if ( gl_flash_write_address[offset] != ((uint32_t*)gl_flash_page_prep)[offset] )
+ 695              	 .loc 2 286 0
+ 696 00c4 1D4B     	 ldr r3,.L46+16
+ 697 00c6 1A68     	 ldr r2,[r3]
+ 698 00c8 7B69     	 ldr r3,[r7,#20]
+ 699 00ca 9B00     	 lsls r3,r3,#2
+ 700 00cc 1344     	 add r3,r3,r2
+ 701 00ce 1A68     	 ldr r2,[r3]
+ 702 00d0 7B69     	 ldr r3,[r7,#20]
+ 703 00d2 9B00     	 lsls r3,r3,#2
+ 704 00d4 1649     	 ldr r1,.L46+4
+ 705 00d6 0B44     	 add r3,r3,r1
+ 706 00d8 1B68     	 ldr r3,[r3]
+ 707 00da 9A42     	 cmp r2,r3
+ 708 00dc 01D0     	 beq .L41
+ 287:../flashprog.c ****               result = FLASH_PROG_ERROR;
+ 709              	 .loc 2 287 0
+ 710 00de 0223     	 movs r3,#2
+ 711 00e0 FB61     	 str r3,[r7,#28]
+ 712              	.L41:
+ 284:../flashprog.c ****           {
+ 713              	 .loc 2 284 0 discriminator 2
+ 714 00e2 7B69     	 ldr r3,[r7,#20]
+ 715 00e4 0133     	 adds r3,r3,#1
+ 716 00e6 7B61     	 str r3,[r7,#20]
+ 717              	.L40:
+ 284:../flashprog.c ****           {
+ 718              	 .loc 2 284 0 is_stmt 0 discriminator 1
+ 719 00e8 7B69     	 ldr r3,[r7,#20]
+ 720 00ea 3F2B     	 cmp r3,#63
+ 721 00ec EAD9     	 bls .L42
+ 722              	.L39:
+ 723              	.LBE3:
+ 288:../flashprog.c ****           }
+ 289:../flashprog.c ****         }
+ 290:../flashprog.c **** 
+ 291:../flashprog.c ****         gl_flash_write_address = gl_flash_write_address + XMC_FLASH_BYTES_PER_PAGE / 4;
+ 724              	 .loc 2 291 0 is_stmt 1
+ 725 00ee 134B     	 ldr r3,.L46+16
+ 726 00f0 1B68     	 ldr r3,[r3]
+ 727 00f2 03F58073 	 add r3,r3,#256
+ 728 00f6 114A     	 ldr r2,.L46+16
+ 729 00f8 1360     	 str r3,[r2]
+ 292:../flashprog.c ****         gl_flash_bytes_written = gl_flash_bytes_written + XMC_FLASH_BYTES_PER_PAGE;
+ 730              	 .loc 2 292 0
+ 731 00fa 0E4B     	 ldr r3,.L46+8
+ 732 00fc 1B68     	 ldr r3,[r3]
+ 733 00fe 03F58073 	 add r3,r3,#256
+ 734 0102 0C4A     	 ldr r2,.L46+8
+ 735 0104 1360     	 str r3,[r2]
+ 293:../flashprog.c ****         gl_flash_page_prep_index=0;
+ 736              	 .loc 2 293 0
+ 737 0106 094B     	 ldr r3,.L46
+ 738 0108 0022     	 movs r2,#0
+ 739 010a 1A60     	 str r2,[r3]
+ 740              	.LBE2:
+ 741 010c 01E0     	 b .L33
+ 742              	.L37:
+ 294:../flashprog.c ****       }
+ 295:../flashprog.c ****       else
+ 296:../flashprog.c ****       {
+ 297:../flashprog.c ****         result = FLASH_FULL_ERROR;
+ 743              	 .loc 2 297 0
+ 744 010e 0123     	 movs r3,#1
+ 745 0110 FB61     	 str r3,[r7,#28]
+ 746              	.L33:
+ 253:../flashprog.c ****   {
+ 747              	 .loc 2 253 0
+ 748 0112 3A68     	 ldr r2,[r7]
+ 749 0114 BB69     	 ldr r3,[r7,#24]
+ 750 0116 9A42     	 cmp r2,r3
+ 751 0118 03D9     	 bls .L43
+ 253:../flashprog.c ****   {
+ 752              	 .loc 2 253 0 is_stmt 0 discriminator 1
+ 753 011a FB69     	 ldr r3,[r7,#28]
+ 754 011c 002B     	 cmp r3,#0
+ 755 011e 3FF479AF 	 beq .L44
+ 756              	.L43:
+ 298:../flashprog.c ****       }
+ 299:../flashprog.c ****     }
+ 300:../flashprog.c ****   }
+ 301:../flashprog.c ****   return result;
+ 757              	 .loc 2 301 0 is_stmt 1
+ 758 0122 FB69     	 ldr r3,[r7,#28]
+ 302:../flashprog.c **** }
+ 759              	 .loc 2 302 0
+ 760 0124 1846     	 mov r0,r3
+ 761 0126 2037     	 adds r7,r7,#32
+ 762              	.LCFI39:
+ 763              	 .cfi_def_cfa_offset 8
+ 764 0128 BD46     	 mov sp,r7
+ 765              	.LCFI40:
+ 766              	 .cfi_def_cfa_register 13
+ 767              	 
+ 768 012a 80BD     	 pop {r7,pc}
+ 769              	.L47:
+ 770              	 .align 2
+ 771              	.L46:
+ 772 012c 00000000 	 .word gl_flash_page_prep_index
+ 773 0130 00000000 	 .word gl_flash_page_prep
+ 774 0134 00000000 	 .word gl_flash_bytes_written
+ 775 0138 00000000 	 .word gl_flash_max_size
+ 776 013c 00000000 	 .word gl_flash_write_address
+ 777 0140 00000000 	 .word gl_flash_erased
+ 778 0144 00000000 	 .word gl_flash_check_prog
+ 779              	 .cfi_endproc
+ 780              	.LFE170:
+ 782              	 .section .text.FLASHPROG_Close,"ax",%progbits
+ 783              	 .align 2
+ 784              	 .global FLASHPROG_Close
+ 785              	 .thumb
+ 786              	 .thumb_func
+ 788              	FLASHPROG_Close:
+ 789              	.LFB171:
+ 303:../flashprog.c **** 
+ 304:../flashprog.c **** /**
+ 305:../flashprog.c ****  * @brief FLASHPROG_Close
+ 306:../flashprog.c ****  * Finalize flash programming. Flush remaining data into last page.
+ 307:../flashprog.c ****  *
+ 308:../flashprog.c ****  * @input :  none
+ 309:../flashprog.c ****  *
+ 310:../flashprog.c ****  * @output : none
+ 311:../flashprog.c ****  *
+ 312:../flashprog.c ****  * @return : none
+ 313:../flashprog.c ****  *
+ 314:../flashprog.c ****  */
+ 315:../flashprog.c **** uint32_t FLASHPROG_Close(void)
+ 316:../flashprog.c **** {
+ 790              	 .loc 2 316 0
+ 791              	 .cfi_startproc
+ 792              	 
+ 793              	 
+ 794 0000 80B5     	 push {r7,lr}
+ 795              	.LCFI41:
+ 796              	 .cfi_def_cfa_offset 8
+ 797              	 .cfi_offset 7,-8
+ 798              	 .cfi_offset 14,-4
+ 799 0002 00AF     	 add r7,sp,#0
+ 800              	.LCFI42:
+ 801              	 .cfi_def_cfa_register 7
+ 317:../flashprog.c ****   /* Data remaining in page preparation ? */
+ 318:../flashprog.c ****   if (gl_flash_page_prep_index!=0)
+ 802              	 .loc 2 318 0
+ 803 0004 0F4B     	 ldr r3,.L52
+ 804 0006 1B68     	 ldr r3,[r3]
+ 805 0008 002B     	 cmp r3,#0
+ 806 000a 17D0     	 beq .L49
+ 319:../flashprog.c ****   {
+ 320:../flashprog.c ****     if ((gl_flash_bytes_written + 256) < gl_flash_max_size)
+ 807              	 .loc 2 320 0
+ 808 000c 0E4B     	 ldr r3,.L52+4
+ 809 000e 1B68     	 ldr r3,[r3]
+ 810 0010 03F58072 	 add r2,r3,#256
+ 811 0014 0D4B     	 ldr r3,.L52+8
+ 812 0016 1B68     	 ldr r3,[r3]
+ 813 0018 9A42     	 cmp r2,r3
+ 814 001a 0DD2     	 bcs .L50
+ 321:../flashprog.c ****     {
+ 322:../flashprog.c ****       /* Programm remaining data */
+ 323:../flashprog.c ****       XMC_FLASH_ProgramPage((void*)gl_flash_write_address,(void*)gl_flash_page_prep);
+ 815              	 .loc 2 323 0
+ 816 001c 0C4B     	 ldr r3,.L52+12
+ 817 001e 1B68     	 ldr r3,[r3]
+ 818 0020 1846     	 mov r0,r3
+ 819 0022 0C49     	 ldr r1,.L52+16
+ 820 0024 FFF7FEFF 	 bl XMC_FLASH_ProgramPage
+ 324:../flashprog.c ****       gl_flash_bytes_written = gl_flash_bytes_written + gl_flash_page_prep_index;
+ 821              	 .loc 2 324 0
+ 822 0028 074B     	 ldr r3,.L52+4
+ 823 002a 1A68     	 ldr r2,[r3]
+ 824 002c 054B     	 ldr r3,.L52
+ 825 002e 1B68     	 ldr r3,[r3]
+ 826 0030 1344     	 add r3,r3,r2
+ 827 0032 054A     	 ldr r2,.L52+4
+ 828 0034 1360     	 str r3,[r2]
+ 829 0036 01E0     	 b .L49
+ 830              	.L50:
+ 325:../flashprog.c ****     }
+ 326:../flashprog.c ****     else
+ 327:../flashprog.c ****     {
+ 328:../flashprog.c ****       return FLASH_FULL_ERROR;
+ 831              	 .loc 2 328 0
+ 832 0038 0123     	 movs r3,#1
+ 833 003a 00E0     	 b .L51
+ 834              	.L49:
+ 329:../flashprog.c ****     }
+ 330:../flashprog.c ****   }
+ 331:../flashprog.c ****   return FLASH_OK;
+ 835              	 .loc 2 331 0
+ 836 003c 0023     	 movs r3,#0
+ 837              	.L51:
+ 332:../flashprog.c **** }
+ 838              	 .loc 2 332 0
+ 839 003e 1846     	 mov r0,r3
+ 840 0040 80BD     	 pop {r7,pc}
+ 841              	.L53:
+ 842 0042 00BF     	 .align 2
+ 843              	.L52:
+ 844 0044 00000000 	 .word gl_flash_page_prep_index
+ 845 0048 00000000 	 .word gl_flash_bytes_written
+ 846 004c 00000000 	 .word gl_flash_max_size
+ 847 0050 00000000 	 .word gl_flash_write_address
+ 848 0054 00000000 	 .word gl_flash_page_prep
+ 849              	 .cfi_endproc
+ 850              	.LFE171:
+ 852              	 .section .text.FLASHPROG_Delete_physical_sector,"ax",%progbits
+ 853              	 .align 2
+ 854              	 .global FLASHPROG_Delete_physical_sector
+ 855              	 .thumb
+ 856              	 .thumb_func
+ 858              	FLASHPROG_Delete_physical_sector:
+ 859              	.LFB172:
+ 333:../flashprog.c **** 
+ 334:../flashprog.c **** /**
+ 335:../flashprog.c ****  * @brief FLASHPROG_Delete_physical_sector
+ 336:../flashprog.c ****  * Delete physical sector starting with the given start address
+ 337:../flashprog.c ****  *
+ 338:../flashprog.c ****  * @input :  ptr_sector_startaddress : start address of physical section
+ 339:../flashprog.c ****  *
+ 340:../flashprog.c ****  * @output : none
+ 341:../flashprog.c ****  *
+ 342:../flashprog.c ****  * @return : none
+ 343:../flashprog.c ****  *
+ 344:../flashprog.c ****  */
+ 345:../flashprog.c **** void FLASHPROG_Delete_physical_sector(uint32_t* ptr_sector_startaddress)
+ 346:../flashprog.c **** {
+ 860              	 .loc 2 346 0
+ 861              	 .cfi_startproc
+ 862              	 
+ 863              	 
+ 864 0000 80B5     	 push {r7,lr}
+ 865              	.LCFI43:
+ 866              	 .cfi_def_cfa_offset 8
+ 867              	 .cfi_offset 7,-8
+ 868              	 .cfi_offset 14,-4
+ 869 0002 82B0     	 sub sp,sp,#8
+ 870              	.LCFI44:
+ 871              	 .cfi_def_cfa_offset 16
+ 872 0004 00AF     	 add r7,sp,#0
+ 873              	.LCFI45:
+ 874              	 .cfi_def_cfa_register 7
+ 875 0006 7860     	 str r0,[r7,#4]
+ 347:../flashprog.c ****   XMC_FLASH_ErasePhysicalSector(ptr_sector_startaddress);
+ 876              	 .loc 2 347 0
+ 877 0008 7868     	 ldr r0,[r7,#4]
+ 878 000a FFF7FEFF 	 bl XMC_FLASH_ErasePhysicalSector
+ 348:../flashprog.c **** }
+ 879              	 .loc 2 348 0
+ 880 000e 0837     	 adds r7,r7,#8
+ 881              	.LCFI46:
+ 882              	 .cfi_def_cfa_offset 8
+ 883 0010 BD46     	 mov sp,r7
+ 884              	.LCFI47:
+ 885              	 .cfi_def_cfa_register 13
+ 886              	 
+ 887 0012 80BD     	 pop {r7,pc}
+ 888              	 .cfi_endproc
+ 889              	.LFE172:
+ 891              	 .section .text.FLASHPROG_Delete_physical_sectors,"ax",%progbits
+ 892              	 .align 2
+ 893              	 .global FLASHPROG_Delete_physical_sectors
+ 894              	 .thumb
+ 895              	 .thumb_func
+ 897              	FLASHPROG_Delete_physical_sectors:
+ 898              	.LFB173:
+ 349:../flashprog.c **** 
+ 350:../flashprog.c **** /**
+ 351:../flashprog.c ****  * @brief FLASHPROG_Delete_physical_sectors
+ 352:../flashprog.c ****  * Delete all physical sectors overlapping with the given address range
+ 353:../flashprog.c ****  *
+ 354:../flashprog.c ****  * @input :  ptr_startaddress : start address of range
+ 355:../flashprog.c ****  *           size_bytes       : amount of data (bytes) in range
+ 356:../flashprog.c ****  *
+ 357:../flashprog.c ****  * @output : none
+ 358:../flashprog.c ****  *
+ 359:../flashprog.c ****  * @return : none
+ 360:../flashprog.c ****  *
+ 361:../flashprog.c ****  */
+ 362:../flashprog.c **** void FLASHPROG_Delete_physical_sectors(uint32_t* ptr_startaddress, uint32_t size_bytes)
+ 363:../flashprog.c **** {
+ 899              	 .loc 2 363 0
+ 900              	 .cfi_startproc
+ 901              	 
+ 902              	 
+ 903 0000 80B5     	 push {r7,lr}
+ 904              	.LCFI48:
+ 905              	 .cfi_def_cfa_offset 8
+ 906              	 .cfi_offset 7,-8
+ 907              	 .cfi_offset 14,-4
+ 908 0002 84B0     	 sub sp,sp,#16
+ 909              	.LCFI49:
+ 910              	 .cfi_def_cfa_offset 24
+ 911 0004 00AF     	 add r7,sp,#0
+ 912              	.LCFI50:
+ 913              	 .cfi_def_cfa_register 7
+ 914 0006 7860     	 str r0,[r7,#4]
+ 915 0008 3960     	 str r1,[r7]
+ 364:../flashprog.c ****   uint8_t sector_number;
+ 365:../flashprog.c **** 
+ 366:../flashprog.c ****   for (sector_number=0; sector_number<XMC_FLASH_SECTOR_COUNT_MAX; sector_number++)
+ 916              	 .loc 2 366 0
+ 917 000a 0023     	 movs r3,#0
+ 918 000c FB73     	 strb r3,[r7,#15]
+ 919 000e 13E0     	 b .L56
+ 920              	.L58:
+ 367:../flashprog.c ****   {
+ 368:../flashprog.c ****     if (Flash_lCheckPhysicalSectorNumberInRange(ptr_startaddress, size_bytes, sector_number)==FLASH
+ 921              	 .loc 2 368 0
+ 922 0010 FB7B     	 ldrb r3,[r7,#15]
+ 923 0012 7868     	 ldr r0,[r7,#4]
+ 924 0014 3968     	 ldr r1,[r7]
+ 925 0016 1A46     	 mov r2,r3
+ 926 0018 FFF7FEFF 	 bl Flash_lCheckPhysicalSectorNumberInRange
+ 927 001c 0346     	 mov r3,r0
+ 928 001e 042B     	 cmp r3,#4
+ 929 0020 07D1     	 bne .L57
+ 369:../flashprog.c ****     {
+ 370:../flashprog.c ****       XMC_FLASH_ErasePhysicalSector(Flash_lGetPhysicalSectorAddress(sector_number));
+ 930              	 .loc 2 370 0
+ 931 0022 FB7B     	 ldrb r3,[r7,#15]
+ 932 0024 1846     	 mov r0,r3
+ 933 0026 FFF7FEFF 	 bl Flash_lGetPhysicalSectorAddress
+ 934 002a 0346     	 mov r3,r0
+ 935 002c 1846     	 mov r0,r3
+ 936 002e FFF7FEFF 	 bl XMC_FLASH_ErasePhysicalSector
+ 937              	.L57:
+ 366:../flashprog.c ****   {
+ 938              	 .loc 2 366 0 discriminator 2
+ 939 0032 FB7B     	 ldrb r3,[r7,#15]
+ 940 0034 0133     	 adds r3,r3,#1
+ 941 0036 FB73     	 strb r3,[r7,#15]
+ 942              	.L56:
+ 366:../flashprog.c ****   {
+ 943              	 .loc 2 366 0 is_stmt 0 discriminator 1
+ 944 0038 FB7B     	 ldrb r3,[r7,#15]
+ 945 003a 092B     	 cmp r3,#9
+ 946 003c E8D9     	 bls .L58
+ 371:../flashprog.c ****     }
+ 372:../flashprog.c ****   }
+ 373:../flashprog.c **** }
+ 947              	 .loc 2 373 0 is_stmt 1
+ 948 003e 1037     	 adds r7,r7,#16
+ 949              	.LCFI51:
+ 950              	 .cfi_def_cfa_offset 8
+ 951 0040 BD46     	 mov sp,r7
+ 952              	.LCFI52:
+ 953              	 .cfi_def_cfa_register 13
+ 954              	 
+ 955 0042 80BD     	 pop {r7,pc}
+ 956              	 .cfi_endproc
+ 957              	.LFE173:
+ 959              	 .section .text.FLASHPROG_Bytes_written,"ax",%progbits
+ 960              	 .align 2
+ 961              	 .global FLASHPROG_Bytes_written
+ 962              	 .thumb
+ 963              	 .thumb_func
+ 965              	FLASHPROG_Bytes_written:
+ 966              	.LFB174:
+ 374:../flashprog.c **** 
+ 375:../flashprog.c **** /**
+ 376:../flashprog.c ****  * @brief FLASHPROG_Bytes_written
+ 377:../flashprog.c ****  * Returns amount of data written to flash
+ 378:../flashprog.c ****  *
+ 379:../flashprog.c ****  * @input :  none
+ 380:../flashprog.c ****  *
+ 381:../flashprog.c ****  * @output : none
+ 382:../flashprog.c ****  *
+ 383:../flashprog.c ****  * @return : number of bytes written
+ 384:../flashprog.c ****  *
+ 385:../flashprog.c ****  */
+ 386:../flashprog.c **** uint32_t FLASHPROG_Bytes_written(void)
+ 387:../flashprog.c **** {
+ 967              	 .loc 2 387 0
+ 968              	 .cfi_startproc
+ 969              	 
+ 970              	 
+ 971              	 
+ 972 0000 80B4     	 push {r7}
+ 973              	.LCFI53:
+ 974              	 .cfi_def_cfa_offset 4
+ 975              	 .cfi_offset 7,-4
+ 976 0002 00AF     	 add r7,sp,#0
+ 977              	.LCFI54:
+ 978              	 .cfi_def_cfa_register 7
+ 388:../flashprog.c ****   return gl_flash_bytes_written;
+ 979              	 .loc 2 388 0
+ 980 0004 034B     	 ldr r3,.L61
+ 981 0006 1B68     	 ldr r3,[r3]
+ 389:../flashprog.c **** }
+ 982              	 .loc 2 389 0
+ 983 0008 1846     	 mov r0,r3
+ 984 000a BD46     	 mov sp,r7
+ 985              	.LCFI55:
+ 986              	 .cfi_def_cfa_register 13
+ 987              	 
+ 988 000c 5DF8047B 	 ldr r7,[sp],#4
+ 989              	.LCFI56:
+ 990              	 .cfi_restore 7
+ 991              	 .cfi_def_cfa_offset 0
+ 992 0010 7047     	 bx lr
+ 993              	.L62:
+ 994 0012 00BF     	 .align 2
+ 995              	.L61:
+ 996 0014 00000000 	 .word gl_flash_bytes_written
+ 997              	 .cfi_endproc
+ 998              	.LFE174:
+ 1000              	 .section .text.FLASHPROG_CRC32_check,"ax",%progbits
+ 1001              	 .align 2
+ 1002              	 .global FLASHPROG_CRC32_check
+ 1003              	 .thumb
+ 1004              	 .thumb_func
+ 1006              	FLASHPROG_CRC32_check:
+ 1007              	.LFB175:
+ 390:../flashprog.c **** 
+ 391:../flashprog.c **** /**
+ 392:../flashprog.c ****  * @brief FLASHPROG_CRC32_check
+ 393:../flashprog.c ****  * CRC32 check of data programmed into address range.
+ 394:../flashprog.c ****  * Last word inside the range is expected to carry CRC32.
+ 395:../flashprog.c ****  *
+ 396:../flashprog.c ****  * @input :  ptr_startaddress : start address of
+ 397:../flashprog.c ****  *           size_bytes       : amount of data (bytes)
+ 398:../flashprog.c ****  *
+ 399:../flashprog.c ****  * @output : none
+ 400:../flashprog.c ****  *
+ 401:../flashprog.c ****  * @return : FLASH_OK - CRC32 check is ok
+ 402:../flashprog.c ****  *           FLAHS_CRC_ERROR - CRC32 check failed
+ 403:../flashprog.c ****  *
+ 404:../flashprog.c ****  */
+ 405:../flashprog.c **** uint32_t FLASHPROG_CRC32_check(uint32_t* ptr_startaddress, uint32_t size_bytes)
+ 406:../flashprog.c **** {
+ 1008              	 .loc 2 406 0
+ 1009              	 .cfi_startproc
+ 1010              	 
+ 1011              	 
+ 1012 0000 80B5     	 push {r7,lr}
+ 1013              	.LCFI57:
+ 1014              	 .cfi_def_cfa_offset 8
+ 1015              	 .cfi_offset 7,-8
+ 1016              	 .cfi_offset 14,-4
+ 1017 0002 86B0     	 sub sp,sp,#24
+ 1018              	.LCFI58:
+ 1019              	 .cfi_def_cfa_offset 32
+ 1020 0004 00AF     	 add r7,sp,#0
+ 1021              	.LCFI59:
+ 1022              	 .cfi_def_cfa_register 7
+ 1023 0006 7860     	 str r0,[r7,#4]
+ 1024 0008 3960     	 str r1,[r7]
+ 407:../flashprog.c ****   uint32_t crc32_result;
+ 408:../flashprog.c ****   uint32_t crc32_expected;
+ 409:../flashprog.c ****   XMC_FCE_STATUS_t fce_status;
+ 410:../flashprog.c **** 
+ 411:../flashprog.c ****   XMC_FCE_Enable();
+ 1025              	 .loc 2 411 0
+ 1026 000a FFF7FEFF 	 bl XMC_FCE_Enable
+ 412:../flashprog.c ****   XMC_FCE_Init(&FCE_config0);
+ 1027              	 .loc 2 412 0
+ 1028 000e 1548     	 ldr r0,.L67
+ 1029 0010 FFF7FEFF 	 bl XMC_FCE_Init
+ 413:../flashprog.c ****   fce_status = XMC_FCE_CalculateCRC32(&FCE_config0,  ptr_startaddress, size_bytes - 4, &crc32_resul
+ 1030              	 .loc 2 413 0
+ 1031 0014 3B68     	 ldr r3,[r7]
+ 1032 0016 1A1F     	 subs r2,r3,#4
+ 1033 0018 07F10C03 	 add r3,r7,#12
+ 1034 001c 1148     	 ldr r0,.L67
+ 1035 001e 7968     	 ldr r1,[r7,#4]
+ 1036 0020 FFF7FEFF 	 bl XMC_FCE_CalculateCRC32
+ 1037 0024 0346     	 mov r3,r0
+ 1038 0026 FB75     	 strb r3,[r7,#23]
+ 414:../flashprog.c ****   XMC_FCE_GetCRCResult(&FCE_config0, &crc32_result);
+ 1039              	 .loc 2 414 0
+ 1040 0028 07F10C03 	 add r3,r7,#12
+ 1041 002c 0D48     	 ldr r0,.L67
+ 1042 002e 1946     	 mov r1,r3
+ 1043 0030 FFF7FEFF 	 bl XMC_FCE_GetCRCResult
+ 415:../flashprog.c ****   if (fce_status == XMC_FCE_STATUS_OK)
+ 1044              	 .loc 2 415 0
+ 1045 0034 FB7D     	 ldrb r3,[r7,#23]
+ 1046 0036 002B     	 cmp r3,#0
+ 1047 0038 0FD1     	 bne .L64
+ 416:../flashprog.c ****   {
+ 417:../flashprog.c ****     crc32_expected = *(ptr_startaddress + size_bytes/4 - 1);
+ 1048              	 .loc 2 417 0
+ 1049 003a 3B68     	 ldr r3,[r7]
+ 1050 003c 9B08     	 lsrs r3,r3,#2
+ 1051 003e 03F18043 	 add r3,r3,#1073741824
+ 1052 0042 013B     	 subs r3,r3,#1
+ 1053 0044 9B00     	 lsls r3,r3,#2
+ 1054 0046 7A68     	 ldr r2,[r7,#4]
+ 1055 0048 1344     	 add r3,r3,r2
+ 1056 004a 1B68     	 ldr r3,[r3]
+ 1057 004c 3B61     	 str r3,[r7,#16]
+ 418:../flashprog.c ****     if (crc32_result != crc32_expected)
+ 1058              	 .loc 2 418 0
+ 1059 004e FA68     	 ldr r2,[r7,#12]
+ 1060 0050 3B69     	 ldr r3,[r7,#16]
+ 1061 0052 9A42     	 cmp r2,r3
+ 1062 0054 01D0     	 beq .L64
+ 419:../flashprog.c ****     {
+ 420:../flashprog.c ****       return FLASH_CRC_ERROR;
+ 1063              	 .loc 2 420 0
+ 1064 0056 0323     	 movs r3,#3
+ 1065 0058 00E0     	 b .L66
+ 1066              	.L64:
+ 421:../flashprog.c ****     }
+ 422:../flashprog.c ****   }
+ 423:../flashprog.c ****   return FLASH_OK;
+ 1067              	 .loc 2 423 0
+ 1068 005a 0023     	 movs r3,#0
+ 1069              	.L66:
+ 424:../flashprog.c **** }
+ 1070              	 .loc 2 424 0 discriminator 1
+ 1071 005c 1846     	 mov r0,r3
+ 1072 005e 1837     	 adds r7,r7,#24
+ 1073              	.LCFI60:
+ 1074              	 .cfi_def_cfa_offset 8
+ 1075 0060 BD46     	 mov sp,r7
+ 1076              	.LCFI61:
+ 1077              	 .cfi_def_cfa_register 13
+ 1078              	 
+ 1079 0062 80BD     	 pop {r7,pc}
+ 1080              	.L68:
+ 1081              	 .align 2
+ 1082              	.L67:
+ 1083 0064 00000000 	 .word FCE_config0
+ 1084              	 .cfi_endproc
+ 1085              	.LFE175:
+ 1087              	 .text
+ 1088              	.Letext0:
+ 1089              	 .file 3 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1090              	 .file 4 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 1091              	 .file 5 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include/XMC4800.h"
+ 1092              	 .file 6 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Include/core_cm4.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 flashprog.c
+    {standard input}:20     .text.XMC_FCE_GetCRCResult:00000000 $t
+    {standard input}:24     .text.XMC_FCE_GetCRCResult:00000000 XMC_FCE_GetCRCResult
+    {standard input}:71     .data.physical_sector_addresses:00000000 physical_sector_addresses
+    {standard input}:68     .data.physical_sector_addresses:00000000 $d
+    {standard input}:84     .data.FCE_config0:00000000 $d
+    {standard input}:87     .data.FCE_config0:00000000 FCE_config0
+    {standard input}:94     .bss.gl_flash_write_address:00000000 $d
+    {standard input}:97     .bss.gl_flash_write_address:00000000 gl_flash_write_address
+    {standard input}:100    .bss.gl_flash_write_start_address:00000000 $d
+    {standard input}:103    .bss.gl_flash_write_start_address:00000000 gl_flash_write_start_address
+    {standard input}:106    .bss.gl_flash_bytes_written:00000000 $d
+    {standard input}:109    .bss.gl_flash_bytes_written:00000000 gl_flash_bytes_written
+    {standard input}:114    .bss.gl_flash_check_prog:00000000 gl_flash_check_prog
+    {standard input}:115    .bss.gl_flash_check_prog:00000000 $d
+    {standard input}:117    .bss.gl_flash_erased:00000000 $d
+    {standard input}:120    .bss.gl_flash_erased:00000000 gl_flash_erased
+    {standard input}:123    .bss.gl_flash_max_size:00000000 $d
+    {standard input}:126    .bss.gl_flash_max_size:00000000 gl_flash_max_size
+    {standard input}:129    .bss.gl_flash_page_prep:00000000 $d
+    {standard input}:132    .bss.gl_flash_page_prep:00000000 gl_flash_page_prep
+    {standard input}:135    .bss.gl_flash_page_prep_index:00000000 $d
+    {standard input}:138    .bss.gl_flash_page_prep_index:00000000 gl_flash_page_prep_index
+    {standard input}:141    .text.Flash_lGetPhysicalSector:00000000 $t
+    {standard input}:146    .text.Flash_lGetPhysicalSector:00000000 Flash_lGetPhysicalSector
+    {standard input}:220    .text.Flash_lGetPhysicalSector:00000050 $d
+    {standard input}:225    .text.Flash_lGetPhysicalSectorNumber:00000000 $t
+    {standard input}:230    .text.Flash_lGetPhysicalSectorNumber:00000000 Flash_lGetPhysicalSectorNumber
+    {standard input}:293    .text.Flash_lGetPhysicalSectorNumber:0000003c $d
+    {standard input}:298    .text.Flash_lGetPhysicalSectorAddress:00000000 $t
+    {standard input}:303    .text.Flash_lGetPhysicalSectorAddress:00000000 Flash_lGetPhysicalSectorAddress
+    {standard input}:343    .text.Flash_lGetPhysicalSectorAddress:00000020 $d
+    {standard input}:348    .text.Flash_lCheckPhysicalSectorNumberInRange:00000000 $t
+    {standard input}:353    .text.Flash_lCheckPhysicalSectorNumberInRange:00000000 Flash_lCheckPhysicalSectorNumberInRange
+    {standard input}:459    .text.Flash_lCheckPhysicalSectorNumberInRange:00000090 $d
+    {standard input}:464    .text.FLASHPROG_Init:00000000 $t
+    {standard input}:469    .text.FLASHPROG_Init:00000000 FLASHPROG_Init
+    {standard input}:549    .text.FLASHPROG_Init:0000005c $d
+    {standard input}:560    .text.FLASHPROG_Data:00000000 $t
+    {standard input}:565    .text.FLASHPROG_Data:00000000 FLASHPROG_Data
+    {standard input}:772    .text.FLASHPROG_Data:0000012c $d
+    {standard input}:783    .text.FLASHPROG_Close:00000000 $t
+    {standard input}:788    .text.FLASHPROG_Close:00000000 FLASHPROG_Close
+    {standard input}:844    .text.FLASHPROG_Close:00000044 $d
+    {standard input}:853    .text.FLASHPROG_Delete_physical_sector:00000000 $t
+    {standard input}:858    .text.FLASHPROG_Delete_physical_sector:00000000 FLASHPROG_Delete_physical_sector
+    {standard input}:892    .text.FLASHPROG_Delete_physical_sectors:00000000 $t
+    {standard input}:897    .text.FLASHPROG_Delete_physical_sectors:00000000 FLASHPROG_Delete_physical_sectors
+    {standard input}:960    .text.FLASHPROG_Bytes_written:00000000 $t
+    {standard input}:965    .text.FLASHPROG_Bytes_written:00000000 FLASHPROG_Bytes_written
+    {standard input}:996    .text.FLASHPROG_Bytes_written:00000014 $d
+    {standard input}:1001   .text.FLASHPROG_CRC32_check:00000000 $t
+    {standard input}:1006   .text.FLASHPROG_CRC32_check:00000000 FLASHPROG_CRC32_check
+    {standard input}:1083   .text.FLASHPROG_CRC32_check:00000064 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+XMC_FLASH_ErasePhysicalSector
+XMC_FLASH_ProgramPage
+XMC_FCE_Enable
+XMC_FCE_Init
+XMC_FCE_CalculateCRC32

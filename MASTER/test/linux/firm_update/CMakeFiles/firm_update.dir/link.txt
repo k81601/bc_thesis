@@ -1,1 +1,0 @@
-/usr/bin/cc     CMakeFiles/firm_update.dir/firm_update.o  -o firm_update -rdynamic -lsoem 

@@ -1,7 +1,0 @@
-
-firmware_crc_swapped.bin 
--binary 
--byte-swap 4 
-
--o firmware_crc.bin -binary
-

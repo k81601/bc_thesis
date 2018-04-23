@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="ASCII"?>
+<ResourceModel:Peripheral xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceModel="http://www.infineon.com/Davex/Resource.ecore" URI="http://resources/48.0.1/peripheral/ccu8/0" description="Capture Compare Unit 8 - Unit 0" baseAddress="0x40020000">
+  <provided xsi:type="ResourceModel:ResourceGroup" name="0" URI="http://resources/48.0.1/peripheral/ccu8/0/cc8/0">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/PWM_CCU8/v4_1_26/PWM_CCU8_0.app#//@hwResources.0"/>
+    <resourcesList name="c0v" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_c0v"/>
+    <resourcesList name="c1v" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_c1v"/>
+    <resourcesList name="c2v" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_c2v"/>
+    <resourcesList name="c3v" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_c3v"/>
+    <resourcesList name="chc" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_chc"/>
+    <resourcesList name="cmc" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_cmc"/>
+    <resourcesList name="cr1" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_cr1"/>
+    <resourcesList name="cr1s" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_cr1s"/>
+    <resourcesList name="cr2" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_cr2"/>
+    <resourcesList name="cr2s" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_cr2s"/>
+    <resourcesList name="dc1r" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_dc1r"/>
+    <resourcesList name="dc2r" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_dc2r"/>
+    <resourcesList name="dit" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_dit"/>
+    <resourcesList name="dits" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_dits"/>
+    <resourcesList name="dtc" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_dtc"/>
+    <resourcesList name="fpc" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_fpc"/>
+    <resourcesList name="fpcs" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_fpcs"/>
+    <resourcesList name="gcsc_sdsc" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcsc/s0dsc"/>
+    <resourcesList name="gcsc_spsc" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcsc/s0psc"/>
+    <resourcesList name="gcsc_ssc" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcsc/s0sc"/>
+    <resourcesList name="gcsc_sst1c" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcsc/s0st1c"/>
+    <resourcesList name="gcsc_sst2c" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcsc/s0st2c"/>
+    <resourcesList name="gcss_sdse" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcss/s0dse"/>
+    <resourcesList name="gcss_spse" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcss/s0pse"/>
+    <resourcesList name="gcss_sse" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcss/s0se"/>
+    <resourcesList name="gcss_sst1s" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcss/s0st1s"/>
+    <resourcesList name="gcss_sst2s" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcss/s0st2s"/>
+    <resourcesList name="gcst_cc8st1" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcst/cc80st1"/>
+    <resourcesList name="gcst_cc8st2" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcst/cc80st2"/>
+    <resourcesList name="gcst_sdss" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcst/s0dss"/>
+    <resourcesList name="gcst_spss" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcst/s0pss"/>
+    <resourcesList name="gcst_sss" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gcst/s0ss"/>
+    <resourcesList name="gctrl_mse" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gctrl/mse0"/>
+    <resourcesList name="gidls_csi" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gidlc/cs0i"/>
+    <resourcesList name="gidls_ssi" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gidls/ss0i"/>
+    <resourcesList name="gstat_si" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gstat/s0i"/>
+    <resourcesList name="ins" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins"/>
+    <resourcesList name="ins_ev0is" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev0is"/>
+    <resourcesList name="ins_ev1is" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev1is"/>
+    <resourcesList name="ins_ev2is" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev2is"/>
+    <resourcesList name="inte" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_inte"/>
+    <resourcesList name="ints" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_ints"/>
+    <resourcesList name="pr" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_pr"/>
+    <resourcesList name="prs" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_prs"/>
+    <resourcesList name="psc" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_psc"/>
+    <resourcesList name="psl" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_psl"/>
+    <resourcesList name="srs_cm1sr" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/cm1sr"/>
+    <resourcesList name="srs_cm2sr" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/cm2sr"/>
+    <resourcesList name="srs_e0sr" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/e0sr"/>
+    <resourcesList name="srs_e1sr" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/e1sr"/>
+    <resourcesList name="srs_e2sr" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/e2sr"/>
+    <resourcesList name="srs_posr" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/posr"/>
+    <resourcesList name="swr" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_swr"/>
+    <resourcesList name="sws" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_sws"/>
+    <resourcesList name="tc" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_tc"/>
+    <resourcesList name="tcclr" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_tcclr"/>
+    <resourcesList name="tcset" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_tcset"/>
+    <resourcesList name="tcst" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_tcst"/>
+    <resourcesList name="timer" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_timer"/>
+    <resourcesList name="gp0_unsync" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_gp0_unsync"/>
+    <resourcesList name="gp1_unsync" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_gp1_unsync"/>
+    <resourcesList name="gp2_unsync" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_gp2_unsync"/>
+    <resourcesList name="concat_bus_in" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_concat_bus_in"/>
+    <resourcesList name="mci0" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_mci0"/>
+    <resourcesList name="mci1" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_mci1"/>
+    <resourcesList name="mci2" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_mci2"/>
+    <resourcesList name="mci3" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_mci3"/>
+    <resourcesList name="pchck_int" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_pchck_int"/>
+    <resourcesList name="mcss_slice" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_mcss_slice"/>
+    <resourcesList name="global_signal" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_global_signal"/>
+    <resourcesList name="pmus_omds" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_pmus_omds"/>
+    <resourcesList name="e0as" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_e0as"/>
+    <resourcesList name="e1as" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_e1as"/>
+    <resourcesList name="e2as" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_e2as"/>
+    <resourcesList name="cmd1s_cmu1s" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_cmd1s_cmu1s"/>
+    <resourcesList name="cmd2s_cmu2s" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_cmd2s_cmu2s"/>
+    <resourcesList name="gp0" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_gp0"/>
+    <resourcesList name="gp1" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_gp1"/>
+    <resourcesList name="gp2" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_gp2"/>
+    <resourcesList name="ps" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_ps"/>
+    <resourcesList name="st" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_st"/>
+    <resourcesList name="sta" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_sta"/>
+    <resourcesList name="stb" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_stb"/>
+    <resourcesList name="out0" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_out0"/>
+    <resourcesList name="out1" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_out1"/>
+    <resourcesList name="out2" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_out2"/>
+    <resourcesList name="out3" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_out3"/>
+    <resourcesList name="concat_bus_out" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/cc80_concat_bus_out"/>
+  </provided>
+  <provided xsi:type="ResourceModel:RegisterParameter" name="CC80_INS" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins" value="0x00000000" toolTipHelpDescription="Input Selector Configuration" defaultValue="0x00000000" addressOffset="0x100" resetValue="0x00000000" resetMask="0xFFFFFFFF">
+    <bitFields name="EV0IS" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev0is" value="0x00000000" toolTipHelpDescription="Event 0 signal selection" defaultValue="0x00000000" startPos="0" stopPos="3" accessPermission="rw" maxValue="15" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0000" description="CCU8x.INyA"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0001" description="CCU8x.INyB"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0010" description="CCU8x.INyC"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0011" description="CCU8x.INyD"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0100" description="CCU8x.INyE"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0101" description="CCU8x.INyF"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0110" description="CCU8x.INyG"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="CCU8x.INyH"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1000" description="CCU8x.INyI"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1001" description="CCU8x.INyJ"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1010" description="CCU8x.INyK"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1011" description="CCU8x.INyL"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1100" description="CCU8x.INyM"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1101" description="CCU8x.INyN"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1110" description="CCU8x.INyO"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="CCU8x.INyP"/>
+    </bitFields>
+    <bitFields name="EV1IS" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev1is" value="0x00000000" toolTipHelpDescription="Event 1 signal selection" defaultValue="0x00000000" startPos="4" stopPos="7" accessPermission="rw" maxValue="15" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0000" description="CCU8x.INyA"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0001" description="CCU8x.INyB"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0010" description="CCU8x.INyC"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0011" description="CCU8x.INyD"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0100" description="CCU8x.INyE"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0101" description="CCU8x.INyF"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0110" description="CCU8x.INyG"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="CCU8x.INyH"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1000" description="CCU8x.INyI"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1001" description="CCU8x.INyJ"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1010" description="CCU8x.INyK"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1011" description="CCU8x.INyL"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1100" description="CCU8x.INyM"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1101" description="CCU8x.INyN"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1110" description="CCU8x.INyO"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="CCU8x.INyP"/>
+    </bitFields>
+    <bitFields name="EV2IS" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev2is" value="0x00000000" toolTipHelpDescription="Event 2 signal selection" defaultValue="0x00000000" startPos="8" stopPos="11" accessPermission="rw" maxValue="15" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0000" description="CCU8x.INyA"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0001" description="CCU8x.INyB"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0010" description="CCU8x.INyC"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0011" description="CCU8x.INyD"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0100" description="CCU8x.INyE"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0101" description="CCU8x.INyF"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0110" description="CCU8x.INyG"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="CCU8x.INyH"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1000" description="CCU8x.INyI"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1001" description="CCU8x.INyJ"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1010" description="CCU8x.INyK"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1011" description="CCU8x.INyL"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1100" description="CCU8x.INyM"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1101" description="CCU8x.INyN"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1110" description="CCU8x.INyO"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="CCU8x.INyP"/>
+    </bitFields>
+    <bitFields name="EV0EM" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev0em" value="0x00000000" toolTipHelpDescription="Event 0 Edge Selection" defaultValue="0x00000000" startPos="16" stopPos="17" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="No action"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Signal active on rising edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Signal active on falling edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Signal active on both edges"/>
+    </bitFields>
+    <bitFields name="EV1EM" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev1em" value="0x00000000" toolTipHelpDescription="Event 1 Edge Selection" defaultValue="0x00000000" startPos="18" stopPos="19" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="No action"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Signal active on rising edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Signal active on falling edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Signal active on both edges"/>
+    </bitFields>
+    <bitFields name="EV2EM" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev2em" value="0x00000000" toolTipHelpDescription="Event 2 Edge Selection" defaultValue="0x00000000" startPos="20" stopPos="21" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="No action"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Signal active on rising edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Signal active on falling edge"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Signal active on both edges"/>
+    </bitFields>
+    <bitFields name="EV0LM" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev0lm" value="0x00000000" toolTipHelpDescription="Event 0 Level Selection" defaultValue="0x00000000" startPos="22" stopPos="22" accessPermission="rw" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0" description="Active on HIGH level"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1" description="Active on LOW level"/>
+    </bitFields>
+    <bitFields name="EV1LM" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev1lm" value="0x00000000" toolTipHelpDescription="Event 1 Level Selection" defaultValue="0x00000000" startPos="23" stopPos="23" accessPermission="rw" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0" description="Active on HIGH level"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1" description="Active on LOW level"/>
+    </bitFields>
+    <bitFields name="EV2LM" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev2lm" value="0x00000000" toolTipHelpDescription="Event 2 Level Selection" defaultValue="0x00000000" startPos="24" stopPos="24" accessPermission="rw" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0" description="Active on HIGH level"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1" description="Active on LOW level"/>
+    </bitFields>
+    <bitFields name="LPF0M" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/lpf0m" value="0x00000000" toolTipHelpDescription="Event 0 Low Pass Filter Configuration" defaultValue="0x00000000" startPos="25" stopPos="26" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="LPF is disabled"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="3 clock cycles of fCCU8"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="5 clock cycles of fCCU8"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="7 clock cycles of fCCU8"/>
+    </bitFields>
+    <bitFields name="LPF1M" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/lpf1m" value="0x00000000" toolTipHelpDescription="Event 1 Low Pass Filter Configuration" defaultValue="0x00000000" startPos="27" stopPos="28" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="LPF is disabled"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="3 clock cycles of fCCU8"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="5 clock cycles of fCCU8"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="7 clock cycles of fCCU8"/>
+    </bitFields>
+    <bitFields name="LPF2M" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/lpf2m" value="0x00000000" toolTipHelpDescription="Event 2 Low Pass Filter Configuration" defaultValue="0x00000000" startPos="29" stopPos="30" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="LPF is disabled"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="3 clock cycles of fCCU8"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="5 clock cycles of fCCU8"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="7 clock cycles of fCCU8"/>
+    </bitFields>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="EV1IS" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev1is" value="0x00000000" toolTipHelpDescription="Event 1 signal selection" defaultValue="0x00000000" startPos="4" stopPos="7" accessPermission="rw" maxValue="15" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0000" description="CCU8x.INyA"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0001" description="CCU8x.INyB"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0010" description="CCU8x.INyC"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0011" description="CCU8x.INyD"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0100" description="CCU8x.INyE"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0101" description="CCU8x.INyF"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0110" description="CCU8x.INyG"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="CCU8x.INyH"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1000" description="CCU8x.INyI"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1001" description="CCU8x.INyJ"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1010" description="CCU8x.INyK"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1011" description="CCU8x.INyL"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1100" description="CCU8x.INyM"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1101" description="CCU8x.INyN"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1110" description="CCU8x.INyO"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="CCU8x.INyP"/>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="EV2IS" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev2is" value="0x00000000" toolTipHelpDescription="Event 2 signal selection" defaultValue="0x00000000" startPos="8" stopPos="11" accessPermission="rw" maxValue="15" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0000" description="CCU8x.INyA"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0001" description="CCU8x.INyB"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0010" description="CCU8x.INyC"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0011" description="CCU8x.INyD"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0100" description="CCU8x.INyE"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0101" description="CCU8x.INyF"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0110" description="CCU8x.INyG"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="CCU8x.INyH"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1000" description="CCU8x.INyI"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1001" description="CCU8x.INyJ"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1010" description="CCU8x.INyK"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1011" description="CCU8x.INyL"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1100" description="CCU8x.INyM"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1101" description="CCU8x.INyN"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1110" description="CCU8x.INyO"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="CCU8x.INyP"/>
+  </provided>
+  <provided xsi:type="ResourceModel:RegisterParameter" name="CC80_SRS" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs" value="0x00000000" toolTipHelpDescription="Service Request Selector" defaultValue="0x00000000" addressOffset="0x1a8" resetValue="0x00000000" resetMask="0xFFFFFFFF">
+    <bitFields name="POSR" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/posr" value="0x00000000" toolTipHelpDescription="Period/One match Service request selector" defaultValue="0x00000000" startPos="0" stopPos="1" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Forward to CC8ySR0"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Forward to CC8ySR1"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Forward to CC8ySR2"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Forward to CC8ySR3"/>
+    </bitFields>
+    <bitFields name="CM1SR" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/cm1sr" value="0x00000000" toolTipHelpDescription="Channel 1 Compare match Service request selector" defaultValue="0x00000000" startPos="2" stopPos="3" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Forward to CC8ySR0"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Forward to CC8ySR1"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Forward to CC8ySR2"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Forward to CC8ySR3"/>
+    </bitFields>
+    <bitFields name="CM2SR" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/cm2sr" value="0x00000000" toolTipHelpDescription="Channel 2 Compare match Service request selector" defaultValue="0x00000000" startPos="4" stopPos="5" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Forward to CC8ySR0"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Forward to CC8ySR1"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Forward to CC8ySR2"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Forward to CC8ySR3"/>
+    </bitFields>
+    <bitFields name="E0SR" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/e0sr" value="0x00000000" toolTipHelpDescription="Event 0 Service request selector" defaultValue="0x00000000" startPos="8" stopPos="9" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Forward to CCvySR0"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Forward to CC8ySR1"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Forward to CC8ySR2"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Forward to CC8ySR3"/>
+    </bitFields>
+    <bitFields name="E1SR" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/e1sr" value="0x00000000" toolTipHelpDescription="Event 1 Service request selector" defaultValue="0x00000000" startPos="10" stopPos="11" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Forward to CC8ySR0"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Forward to CC8ySR1"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Forward to CC8ySR2"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Forward to CC8ySR3"/>
+    </bitFields>
+    <bitFields name="E2SR" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/e2sr" value="0x00000000" toolTipHelpDescription="Event 2 Service request selector" defaultValue="0x00000000" startPos="12" stopPos="13" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Forward to CC8ySR0"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Forward to CCvySR1"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Forward to CC8ySR2"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Forward to CC8ySR3"/>
+    </bitFields>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="E2SR" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/e2sr" value="0x00000000" toolTipHelpDescription="Event 2 Service request selector" defaultValue="0x00000000" startPos="12" stopPos="13" accessPermission="rw" maxValue="3" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Forward to CC8ySR0"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Forward to CCvySR1"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Forward to CC8ySR2"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Forward to CC8ySR3"/>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="CM2SR" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/cm2sr" value="0x00000000" toolTipHelpDescription="Channel 2 Compare match Service request selector" defaultValue="0x00000000" startPos="4" stopPos="5" accessPermission="rw" maxValue="3" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Forward to CC8ySR0"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Forward to CC8ySR1"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Forward to CC8ySR2"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Forward to CC8ySR3"/>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="CM1SR" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/cm1sr" value="0x00000000" toolTipHelpDescription="Channel 1 Compare match Service request selector" defaultValue="0x00000000" startPos="2" stopPos="3" accessPermission="rw" maxValue="3" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Forward to CC8ySR0"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Forward to CC8ySR1"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Forward to CC8ySR2"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Forward to CC8ySR3"/>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="POSR" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/posr" value="0x00000000" toolTipHelpDescription="Period/One match Service request selector" defaultValue="0x00000000" startPos="0" stopPos="1" accessPermission="rw" maxValue="3" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Forward to CC8ySR0"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Forward to CC8ySR1"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Forward to CC8ySR2"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Forward to CC8ySR3"/>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="E0SR" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/e0sr" value="0x00000000" toolTipHelpDescription="Event 0 Service request selector" defaultValue="0x00000000" startPos="8" stopPos="9" accessPermission="rw" maxValue="3" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Forward to CCvySR0"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Forward to CC8ySR1"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Forward to CC8ySR2"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Forward to CC8ySR3"/>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="E1SR" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_srs/e1sr" value="0x00000000" toolTipHelpDescription="Event 1 Service request selector" defaultValue="0x00000000" startPos="10" stopPos="11" accessPermission="rw" maxValue="3" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Forward to CC8ySR0"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Forward to CC8ySR1"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Forward to CC8ySR2"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Forward to CC8ySR3"/>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="EV0IS" URI="http://resources/48.0.1/peripheral/ccu8/0/cc80_ins/ev0is" value="0x00000000" toolTipHelpDescription="Event 0 signal selection" defaultValue="0x00000000" startPos="0" stopPos="3" accessPermission="rw" maxValue="15" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0000" description="CCU8x.INyA"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0001" description="CCU8x.INyB"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0010" description="CCU8x.INyC"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0011" description="CCU8x.INyD"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0100" description="CCU8x.INyE"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0101" description="CCU8x.INyF"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0110" description="CCU8x.INyG"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0111" description="CCU8x.INyH"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1000" description="CCU8x.INyI"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1001" description="CCU8x.INyJ"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1010" description="CCU8x.INyK"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1011" description="CCU8x.INyL"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1100" description="CCU8x.INyM"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1101" description="CCU8x.INyN"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1110" description="CCU8x.INyO"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="CCU8x.INyP"/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="global" URI="http://resources/48.0.1/peripheral/ccu8/0/global">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/GLOBAL_CCU8/v4_1_12/GLOBAL_CCU8_0.app#//@hwResources.0"/>
+    <resourcesList name="gctrl" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gctrl"/>
+    <resourcesList name="gctrl_pcis" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gctrl/pcis"/>
+    <resourcesList name="gidlc_sprb" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gidlc/sprb"/>
+    <resourcesList name="gidls_cprb" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gidls/cprb"/>
+    <resourcesList name="gidls_psic" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gidls/psic"/>
+    <resourcesList name="gstat" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/gstat"/>
+    <resourcesList name="midr" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/midr"/>
+    <resourcesList name="clk" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/global_clk"/>
+    <resourcesList name="global_signal" requiredResourceUri="http://resources/48.0.1/peripheral/ccu8/0/global_global_signal"/>
+  </provided>
+  <provided xsi:type="ResourceModel:RegisterParameter" name="GCTRL" URI="http://resources/48.0.1/peripheral/ccu8/0/gctrl" value="0x00000000" toolTipHelpDescription="Global Control Register" defaultValue="0x00000000" addressOffset="0x0000" resetValue="0x00000000" resetMask="0xFFFFFFFF">
+    <bitFields name="PRBC" URI="http://resources/48.0.1/peripheral/ccu8/0/gctrl/prbc" value="0x00000000" toolTipHelpDescription="Prescaler Clear Configuration" defaultValue="0x00000000" startPos="0" stopPos="2" accessPermission="rw" maxValue="7" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#000" description="SW only"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#001" description="GSTATThe register contains the status of the prescaler and each timer slice (idle mode or running)..PRB and prescaler registers are cleared when the Run Bit of CC80 is cleared."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#010" description="GSTATThe register contains the status of the prescaler and each timer slice (idle mode or running)..PRB and prescaler registers are cleared when the Run Bit of CC81 is cleared."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#011" description="GSTATThe register contains the status of the prescaler and each timer slice (idle mode or running)..PRB and prescaler registers are cleared when the Run Bit of CC82 is cleared."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#100" description="GSTATThe register contains the status of the prescaler and each timer slice (idle mode or running)..PRB and prescaler registers are cleared when the Run Bit of CC83 is cleared."/>
+    </bitFields>
+    <bitFields name="PCIS" URI="http://resources/48.0.1/peripheral/ccu8/0/gctrl/pcis" value="0x00000000" toolTipHelpDescription="Prescaler Input Clock Selection" defaultValue="0x00000000" startPos="4" stopPos="5" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Module clock"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="CCU8x.ECLKA"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="CCU8x.ECLKB"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="CCU8x.ECLKC"/>
+    </bitFields>
+    <bitFields name="SUSCFG" URI="http://resources/48.0.1/peripheral/ccu8/0/gctrl/suscfg" value="0x00000000" toolTipHelpDescription="Suspend Mode Configuration" defaultValue="0x00000000" startPos="8" stopPos="9" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Suspend request ignored. The module never enters in suspend"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Stops all the running slices immediately. Safe stop is not applied."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="Stops the block immediately and clamps all the outputs to PASSIVE state. Safe stop is applied."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Waits for the roll over of each slice to stop and clamp the slices outputs. Safe stop is applied."/>
+    </bitFields>
+    <bitFields name="MSE0" URI="http://resources/48.0.1/peripheral/ccu8/0/gctrl/mse0" value="0x00000000" toolTipHelpDescription="Slice 0 Multi Channel shadow transfer enable" defaultValue="0x00000000" startPos="10" stopPos="10" accessPermission="rw" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0" description="Shadow transfer can only be requested by SW"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1" description="Shadow transfer can be requested via SW and via the CCU8x.MCSS input."/>
+    </bitFields>
+    <bitFields name="MSE1" URI="http://resources/48.0.1/peripheral/ccu8/0/gctrl/mse1" value="0x00000000" toolTipHelpDescription="Slice 1 Multi Channel shadow transfer enable" defaultValue="0x00000000" startPos="11" stopPos="11" accessPermission="rw" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0" description="Shadow transfer can only be requested by SW"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1" description="Shadow transfer can be requested via SW and via the CCU8x.MCSS input."/>
+    </bitFields>
+    <bitFields name="MSE2" URI="http://resources/48.0.1/peripheral/ccu8/0/gctrl/mse2" value="0x00000000" toolTipHelpDescription="Slice 2 Multi Channel shadow transfer enable" defaultValue="0x00000000" startPos="12" stopPos="12" accessPermission="rw" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0" description="Shadow transfer can only be requested by SW"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1" description="Shadow transfer can be requested via SW and via the CCU8xMCSS input."/>
+    </bitFields>
+    <bitFields name="MSE3" URI="http://resources/48.0.1/peripheral/ccu8/0/gctrl/mse3" value="0x00000000" toolTipHelpDescription="Slice 3 Multi Channel shadow transfer enable" defaultValue="0x00000000" startPos="13" stopPos="13" accessPermission="rw" maxValue="1" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0" description="Shadow transfer can only be requested by SW"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1" description="Shadow transfer can be requested via SW and via the CCU8x.MCSS input."/>
+    </bitFields>
+    <bitFields name="MSDE" URI="http://resources/48.0.1/peripheral/ccu8/0/gctrl/msde" value="0x00000000" toolTipHelpDescription="Multi Channel shadow transfer request configuration" defaultValue="0x00000000" startPos="14" stopPos="15" accessPermission="rw" maxValue="3" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Only the shadow transfer for period and compare values is requested"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="Shadow transfer for the compare, period and prescaler compare values is requested"/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="Shadow transfer for the compare, period, prescaler and dither compare values is requested"/>
+    </bitFields>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="PCIS" URI="http://resources/48.0.1/peripheral/ccu8/0/gctrl/pcis" value="0x00000000" toolTipHelpDescription="Prescaler Input Clock Selection" defaultValue="0x00000000" startPos="4" stopPos="5" accessPermission="rw" maxValue="3" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#00" description="Module clock"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#01" description="CCU8x.ECLKA"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#10" description="CCU8x.ECLKB"/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#11" description="CCU8x.ECLKC"/>
+  </provided>
+  <addressBlock offset="0x0" size="0x4000" usage="registers"/>
+</ResourceModel:Peripheral>

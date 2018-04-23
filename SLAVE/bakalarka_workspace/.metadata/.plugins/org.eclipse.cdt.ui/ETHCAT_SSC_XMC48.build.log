@@ -1,0 +1,29 @@
+15:22:45 **** Incremental Build of configuration Debug for project ETHCAT_SSC_XMC48 ****
+"\"C:\\Program Files\\DAVE-IDE-4.4.2-64Bit\\eclipse\\ARM-GCC-49\\bin\\make\"" --output-sync -j4 all 
+'Building file: ../SSC/Src/XMC_ESC.c'
+'Invoking: ARM-GCC C Compiler'
+"C:/Program Files/DAVE-IDE-4.4.2-64Bit/eclipse/ARM-GCC-49/bin/arm-none-eabi-gcc" -MMD -MT "SSC/Src/XMC_ESC.o" -DXMC4800_F144x2048 -I"C:/src/bakalarka_workspace/ETHCAT_SSC_XMC48/Libraries/XMCLib/inc" -I"C:/src/bakalarka_workspace/ETHCAT_SSC_XMC48/Libraries/CMSIS/Include" -I"C:/src/bakalarka_workspace/ETHCAT_SSC_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include" -I"C:/src/bakalarka_workspace/ETHCAT_SSC_XMC48" -I"C:/src/bakalarka_workspace/ETHCAT_SSC_XMC48/Dave/Generated" -I"C:/src/bakalarka_workspace/ETHCAT_SSC_XMC48/Libraries" -O0 -ffunction-sections -fdata-sections -Wall -std=gnu99 -mfloat-abi=softfp -Wa,-adhlns="SSC/Src/XMC_ESC.o.lst" -pipe -c -fmessage-length=0 -MMD -MP -MF"SSC/Src/XMC_ESC.d" -MT"SSC/Src/XMC_ESC.d SSC/Src/XMC_ESC.o" -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mthumb -g -gdwarf-2 -o "SSC/Src/XMC_ESC.o" "../SSC/Src/XMC_ESC.c" 
+'Finished building: ../SSC/Src/XMC_ESC.c'
+
+'Building target: ETHCAT_SSC_XMC48.elf'
+'Invoking: ARM-GCC C Linker'
+"C:/Program Files/DAVE-IDE-4.4.2-64Bit/eclipse/ARM-GCC-49/bin/arm-none-eabi-gcc" -T"../linker_script.ld" -nostartfiles -Xlinker --gc-sections -specs=nano.specs -specs=nosys.specs -Wl,-Map,"ETHCAT_SSC_XMC48.map" -mfloat-abi=softfp -mfpu=fpv4-sp-d16 -mcpu=cortex-m4 -mthumb -g -gdwarf-2 -o "ETHCAT_SSC_XMC48.elf" "@objects.rsp"  -lm
+'Finished building target: ETHCAT_SSC_XMC48.elf'
+
+'Invoking: ARM-GCC Create Flash Image'
+"C:/Program Files/DAVE-IDE-4.4.2-64Bit/eclipse/ARM-GCC-49/bin/arm-none-eabi-objcopy" -O ihex "ETHCAT_SSC_XMC48.elf" "ETHCAT_SSC_XMC48.hex"
+'Finished building: ETHCAT_SSC_XMC48.hex'
+
+'Invoking: ARM-GCC Print Size'
+"C:/Program Files/DAVE-IDE-4.4.2-64Bit/eclipse/ARM-GCC-49/bin/arm-none-eabi-size" --format=berkeley "ETHCAT_SSC_XMC48.elf"
+   text	   data	    bss	    dec	    hex	filename
+  44172	   3384	   6764	  54320	   d430	ETHCAT_SSC_XMC48.elf
+'Finished building: ETHCAT_SSC_XMC48.siz'
+
+'Invoking: ARM-GCC Create Listing'
+"C:/Program Files/DAVE-IDE-4.4.2-64Bit/eclipse/ARM-GCC-49/bin/arm-none-eabi-objdump" -h -S "ETHCAT_SSC_XMC48.elf" > "ETHCAT_SSC_XMC48.lst"
+'Finished building: ETHCAT_SSC_XMC48.lst'
+
+
+15:22:47 Build Finished (took 2s.57ms)
+

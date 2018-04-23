@@ -1,0 +1,828 @@
+package Model.APPS.PWM_CCU8.v4_1_26;
+
+/*
+ Copyright (c) 2015 - 2016, Infineon Technologies AG
+ All rights reserved.
+                                            
+ Redistribution and use in source and binary forms, with or without modification, are permitted provided that the
+ following conditions are met:
+                                                                             
+ Redistributions of source code must retain the above copyright notice, this list of conditions and the following
+ disclaimer.
+  
+ Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following
+ disclaimer in the documentation and/or other materials provided with the distribution.
+  
+ Neither the name of the copyright holders nor the names of its contributors may be used to endorse or promote
+ products derived from this software without specific prior written permission.
+                                                                             
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+ INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+ SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+ WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+                                                                             
+ To improve the quality of the software, users are encouraged to share modifications, enhancements or bug fixes with
+ Infineon Technologies AG: dave@infineon.com. */
+
+/*************** Revision History **********************************************
+Version        Date          Description 
+
+  4.0.0       14-Feb-2015   <ul><li>Initial version for DAVEv4.</li><br></ul>
+  4.0.1       20-Feb-2015   <ul>
+                            <li>Help Doc update.</li><br>
+                            <li>signal "event_period_one" changed to "event_period_match".</li><br>
+                            </ul>
+  4.0.2       11-May-2015   <ul>
+                            <li>Implemented Pin sorting based on driver strength.</li><br>
+                            <li>Default pin drive strength set to "Medium Driver".</li><br>
+                            <li>"External Setting" tab initilization correctly spelt as initialization.</li><br>           
+                            <li>"External Setting" tab No inversion correctly spelt as No Inversion.</li><br>
+                            <li>"External Setting" tab Trap Values modification not dependent on check box.</li><br>
+                            <li>"External Setting" tab added support to configuring edge trigger on level dependent events, for service request generation .</li><br>
+                            <li>Added support for MCI and MCSS signals.</li><br>
+                            <li>Updated APP description.</li><br>
+                            <li>In APP Handle variable module_freq changed to frequency_tclk.</li><br>
+                            <li>In APP Handle variable module_ptr changed to ccu8_module_ptr.</li><br>
+                            <li>In APP Handle variable slice_ptr changed to ccu8_slice_ptr.</li><br>
+                            <li>Enum PWM_CCU8_STATE_t elements name changed.</li><br>
+                            <li>Signals with "comapre" word changed to "compare".</li><br>
+                            <li>Enum PWM_CCU8_OutputPassiveLevelType_t and PWM_CCU8_TIMER_STATUS_t removed.</li><br>
+                            <li>Signals "event_0', "event_1", "event_2" when connected internally in APP, are not visible in 
+                            <li>DAVE "HW Signal Connection" Tab.</li><br>
+                            <li>Removed unused Global Macro Definitions.</li><br>
+                            <li>Bug Fix: MCM shadow transfer selection now updates the relevant bits via XMC_CCU8_SetMultiChannelShadowTransferMode API.</li><br>
+                            </ul>  
+  4.1.0       20-May-2015   <ul>
+                            <li>PWM_CCU8_AcknowledgeInterrupt() api is renamed as PWM_CCU8_ClearEvent().</li><br>
+                            <li>Logic for minimum LLD version check is added in pwm_ccu8.h file.</li><br>
+                            </ul>
+  4.1.2       04-Jun-2015   <ul>
+                            <li>Fixed the issue where DAVE reports error:"It is not allowed to read cell values during the updating except in CellClosures"</li><br>
+                            <li>Bug Fix: The Override event edge configuration can now be set by selecting the "Trigger Edge"</li><br>
+                            <li>When Trap is selected, the Trigger edge is set to "XMC_CCU8_SLICE_EVENT_EDGE_SENSITIVITY_NONE" internally.  </li><br>
+                            <li>Bug Fix: Fixed the allowable max frequency limit in center aligned mode</li><br>
+                            </ul> 
+  4.1.4       19-Jun-2015   <ul>
+                            <li>'_AddPin' suffix is removed for MVirtualSignal variables.</li><br>
+                            <li>LLD package version check is added.</li><br>
+                            </ul>
+  4.1.6       23-Jun-2015   <ul>
+                            <li>Help doc update</li><br>
+                            <li>Spell check update in pwm_ccu8.h file</li><br>
+                            </ul>
+  4.1.8       30-Jun-2015   <ul>
+                            <li>Help doc update in example of CCU8 in Center Aligned Asymmetric Mode section</li><br>
+                            <li>Corrected the value of "asym_shift" during code generation in "Center Aligned Asymmetric Mode" </li><br>
+                            </ul> 
+  4.1.10      08-July-2015  <ul>
+                            <li>Help doc update</li><br>
+                            </ul>
+  4.1.11      13-Aug-2015  <ul>
+                            <li>Added support for signals gp0, gp1, gp2 and ps</li><br>
+                            <li>Added support for XMC1400 device</li><br>
+                            <li>Added support for selection of channel in external load function</li><br>
+                            <li>Added support for selection of shadow transfer mode using API "XMC_CCU8_SLICE_SetShadowTransferMode"</li><br>
+                            <li>Added support for selection of immediate shadow transfer using API "XMC_CCU8_SLICE_WriteImmediateAfterShadowTransfer" in XMC14* devices</li><br>
+                            <li>Added support for automatic shadow transfer using API "XMC_CCU8_SLICE_EnableAutomaticShadowTransferRequest" in XMC14* devices</li><br>
+                            </ul>
+  4.1.13      18-Sep-2015  <ul>
+                            <li>Help Doc update</li><br>
+                           </ul>
+  4.1.14      08-Oct-2015  <ul>
+                            <li>Copy Right Update in Manifest file</li><br>
+                           </ul>
+  4.1.16      26-Oct-2015  <ul>
+                            <li>Tool tip updated for Shadow transfer mode selection</li><br>
+                            <li>Added note in "Shadow Transfer Settings: tab for "Automatic Shadow Transfer"</li><br>
+                           </ul>
+  4.1.18      17-Dec-2015  <ul>
+                            <li>Added support for XMC43xx devices</li><br>
+                           </ul>
+  4.1.20      21-Mar-2016  <ul>
+                            <li>Bug Fix: Trap enable configuration is corrected in PWM_CCU8_lConfigure_Events() API</li><br>
+                            <li>UI frame width is increased. This avoids left, right arrows for tabs</li><br>
+                           </ul>
+  4.1.22      02-Aug-2016  <ul>
+                            <li>Bug Fix: Mandatory Signal Connections feature updated.</li><br>
+                           </ul>
+  4.1.24      10-Aug-2016  <ul>
+                            <li>Bug Fix: Mandatory Signal Connections feature updated for asymmetric mode.</li><br>
+                           </ul>                          
+  4.1.26      28-Oct-2016  <ul>
+                            <li>Changed PWM_CCU8_Stop() to set the ST output to the passive value after stopping the timer.</li><br>
+                            <li>Fixed: Max frequency set to fCCU8/4.</li><br>
+                           </ul>
+*******************************************************************************/
+// Import statements
+import ifx.davex.app.manifest.*
+
+class  PWM_CCU8 extends PWM_CCU8_GUI {
+
+        static final int MHZ_1 = 1000000
+
+        static final int PERIOD_BIT_WIDTH = 16
+    
+        static final int PRESCALER_MAX = 15
+        
+        static final int PRESCALER_DT_MAX = 3
+        
+        static final int CCU8_DT_BIT_WIDTH = 8
+        
+        static final int HRPWM_DT_BIT_WIDTH = 16
+
+    // Note  : PWM_CCU8 properties are mandatory and important
+    // Begin : PWM_CCU8 property section
+    def version            = '4.1.26'
+    
+    // Example 
+    //    def categoriesDescription = [
+    //        "Peripheral Specific Apps/Communication/Universal Serial Interface Channel (USIC)"]
+
+    def categoriesDescription = ["General Purpose/Timed Signals", "Power Conversion"] 
+
+    // Minimum DAVE version required for the App
+    def minDaveVersion           = '4.3.2'
+    
+    // Keywords to search in Apps selection view
+    def keywords      = ['ALL', 'PWM', 'PWM_CCU8', 'CCU', 'CCU8', 'Power Conversion']
+    
+    // Software IDs and its required minimum version
+    // Example
+    // def softwareIDs       = [
+    //  "XMC4.5.00.F144.ALL":"1.0.0",
+    //     "XMC4.5.00.F144.ALL":"1.0.0",
+    //    "XMC4.5.00.F144.ALL":"1.0.0"]
+
+    def softwareIDs       = [
+        //XMC48
+        "XMC4.8.*.*.ALL":"1.0.0",
+        
+        //XMC47
+        "XMC4.7.*.*.ALL":"1.0.0",
+        
+        //XMC45
+        "XMC4.5.00.E144.ALL":"1.0.0",
+        "XMC4.5.00.F144.ALL":"1.0.0",
+        "XMC4.5.00.F100.ALL":"1.0.0",
+
+        "XMC4.5.02.F100.ALL":"1.0.0",
+
+        "XMC4.5.04.F144.ALL":"1.0.0",
+        "XMC4.5.04.F100.ALL":"1.0.0",
+
+        //"XMC44        
+        "XMC4.4.00.F100.ALL":"1.0.0",
+        "XMC4.4.00.F64.ALL":"1.0.0",
+        
+        "XMC4.4.02.F100.ALL":"1.0.0",
+        "XMC4.4.02.F64.ALL":"1.0.0",
+
+        //"XMC43
+        "XMC4.3.*.*.ALL":"1.0.0",
+        
+        //"XMC42
+        "XMC4.2.00.F64.ALL":"1.0.0",
+        "XMC4.2.00.Q48.ALL":"1.0.0",
+                            
+        //"XMC41
+        "XMC4.1.00.F64.ALL":"1.0.0",
+        "XMC4.1.00.Q48.ALL":"1.0.0",
+        
+        "XMC4.1.04.F64.ALL":"1.0.0",
+        "XMC4.1.04.Q48.ALL":"1.0.0",
+        
+        "XMC4.1.08.F64.ALL":"1.0.0",
+        "XMC4.1.08.Q48.ALL":"1.0.0",
+
+        //"XMC14
+        "XMC1.4.04.*.*":"1.0.0",
+        "XMC1.4.02.*.*":"1.0.0",
+        
+        //"XMC13
+        "XMC1.3.01.Q040.ALL":"1.0.0",
+        "XMC1.3.01.Q024.ALL":"1.0.0",
+
+        "XMC1.3.01.T038.ALL":"1.0.0",
+        "XMC1.3.01.T016.ALL":"1.0.0",
+
+        "XMC1.3.02.Q040.ALL":"1.0.0",
+        "XMC1.3.02.Q024.ALL":"1.0.0",
+        
+        "XMC1.3.02.T038.ALL":"1.0.0",
+        "XMC1.3.02.T016.ALL":"1.0.0",
+        
+        ]
+
+
+    def singleton     = false
+    def initProvider  = true
+    def deprecated    = false
+    def sharable      = false
+
+    // App short description 
+    def description = "PWM APP using one timer slice of CCU8, with external events and dead time support, to generate up to 4 PWM outputs."
+
+    // End   : PWM_CCU8 property section
+
+    // Begin : User variable section
+
+
+    MVirtualResourceGroup hwres_ccu8_cc8_slice
+    MVirtualResourceGroup hwres_port_ch1_out0
+    MVirtualResourceGroup hwres_port_ch1_out1
+    MVirtualResourceGroup hwres_port_ch2_out2
+    MVirtualResourceGroup hwres_port_ch2_out3
+    
+    MRequiredApp   pwm_ccu8_app_global_ccu8_cc8
+    
+    MVirtualSignalRA vs_ccu8_cc8_global
+    MVirtualSignalRA vs_ccu8_cc8_global_sync_start
+    
+    MVirtualSignal vs_ccu8_cc8_config_global
+    
+    MVirtualSignal vs_ccu8_cc8_period_match_interrupt
+    MVirtualSignal vs_ccu8_cc8_ch1_compare_match_interrupt
+    MVirtualSignal vs_ccu8_cc8_ch2_compare_match_interrupt
+    MVirtualSignal vs_event0_interrupt
+    MVirtualSignal vs_event1_interrupt
+    MVirtualSignal vs_event2_interrupt
+    
+    MVirtualSignal vs_ccu8_cc8_st
+    MVirtualSignal vs_ccu8_cc8_sta
+    MVirtualSignal vs_ccu8_cc8_stb
+    MVirtualSignal vs_ccu8_cc8_ch1_out_a
+    MVirtualSignal vs_ccu8_cc8_ch1_out_b
+    MVirtualSignal vs_ccu8_cc8_ch2_out_a
+    MVirtualSignal vs_ccu8_cc8_ch2_out_b
+    
+    MVirtualSignal vs_ccu8_cc8_gp0_unsync
+    MVirtualSignal vs_ccu8_cc8_gp1_unsync
+    MVirtualSignal vs_ccu8_cc8_gp2_unsync
+    
+    MVirtualSignal vs_ccu8_cc8_gp0
+    MVirtualSignal vs_ccu8_cc8_gp1
+    MVirtualSignal vs_ccu8_cc8_gp2
+
+    MVirtualSignal vs_ccu8_cc8_ps
+    
+    MVirtualSignal vs_ccu8_cc8_mci0
+    MVirtualSignal vs_ccu8_cc8_mci1
+    MVirtualSignal vs_ccu8_cc8_mci2
+    MVirtualSignal vs_ccu8_cc8_mci3
+    MVirtualSignal vs_ccu8_cc8_mcss
+    
+    MVirtualSignal vs_port_ch1_out0
+    MVirtualSignal vs_port_ch1_out1
+    MVirtualSignal vs_port_ch2_out2
+    MVirtualSignal vs_port_ch2_out3
+    
+    GInteger ginteger_sym_cmp_ch1          = GInteger(widgetName:"ginteger_sym_cmp_ch1",         value:1999, minValue:Long.MIN_VALUE, maxValue:Long.MAX_VALUE, enabled:true, visible:false, isMandatoryValue:false)
+    GInteger ginteger_sym_cmp_ch2          = GInteger(widgetName:"ginteger_sym_cmp_ch2",         value:1999, minValue:Long.MIN_VALUE, maxValue:Long.MAX_VALUE, enabled:true, visible:false, isMandatoryValue:false)
+    GInteger ginteger_prescaler_dead_time  = GInteger(widgetName:"ginteger_prescaler_dead_time", value:1999, minValue:Long.MIN_VALUE, maxValue:Long.MAX_VALUE, enabled:true, visible:false, isMandatoryValue:false)
+    GFloat   gfloat_asym_act_shift         = GFloat  (widgetName:"gfloat_asym_act_shift",        value:50,   minValue:0,              maxValue:100,            enabled:true, visible:false, isMandatoryValue:false)
+    GCheck   gcheck_tab_general_enable     = GCheck  (widgetName:"gcheck_tab_general_enable",     value:true, enabled:true, visible:false);
+    GCheck   gcheck_tab_ee_enable          = GCheck  (widgetName:"gcheck_tab_ee_enable",          value:true, enabled:true, visible:false);
+    GCheck   gcheck_tab_interrupts_enable  = GCheck  (widgetName:"gcheck_tab_interrupts_enable",  value:true, enabled:true, visible:false);
+    GCheck   gcheck_tab_hrpwm_enable       = GCheck  (widgetName:"gcheck_tab_hrpwm_enable",       value:true, enabled:true, visible:false);
+    GCheck   gcheck_tab_pins_enable        = GCheck  (widgetName:"gcheck_tab_output_pins_enable", value:true, enabled:true, visible:false);
+    GCheck   gcheck_tab_shadow_txfr_enable = GCheck  (widgetName:"gcheck_tab_shadow_txfr_enable", value:true, enabled:true, visible:false);
+    
+    // End   : User variable section
+
+    // PWM_CCU8 Constructor
+    public PWM_CCU8(DaveEnv daveEnv) {
+        
+
+
+        String dave_family = daveEnv.project.selectedDevice.deviceId.family;
+        String dave_series = daveEnv.project.selectedDevice.deviceId.series;
+    
+        /* ---------------------------------------------------------- */
+        /* ------------ Hardware resource consumption block --------- */
+        /* ---------------------------------------------------------- */
+        hwres_ccu8_cc8_slice   = MVirtualResourceGroup("CC8 Config", ["peripheral", "ccu8", "*", "cc8", "*"],      true );
+        
+        
+        hwres_port_ch1_out0     = MVirtualResourceGroup("PWM_CCU8 CH1 Direct Out",     ["port", "p", "*", "pad", "*"], MF({gcheck_ch1_out0_enable.value}, Boolean));
+        hwres_port_ch1_out1     = MVirtualResourceGroup("PWM_CCU8 CH1 Invert Out",     ["port", "p", "*", "pad", "*"], MF({gcheck_ch1_out1_enable.value}, Boolean));
+        hwres_port_ch2_out2     = MVirtualResourceGroup("PWM_CCU8 CH2 Direct Out",     ["port", "p", "*", "pad", "*"], MF({gcheck_ch2_out2_enable.value && !(gcombo_compare_mode.value == "Asymmetric")}, Boolean));
+        hwres_port_ch2_out3     = MVirtualResourceGroup("PWM_CCU8 CH2 Invert Out",     ["port", "p", "*", "pad", "*"], MF({gcheck_ch2_out3_enable.value && !(gcombo_compare_mode.value == "Asymmetric")}, Boolean));
+        
+        /* ---------------------------------------------------------- */
+        /* ------------ App consumption Block ----------------------- */
+        /* ---------------------------------------------------------- */
+                    
+        pwm_ccu8_app_global_ccu8_cc8 = MRequiredApp("GLOBAL_CCU8", "GLOBAL_CCU8",  RSHARABLE, "4.1.4", true);
+
+        /* ---------------------------------------------------------- */
+        /* -------------- APP IO Signals ---------------------------- */
+        /* ---------------------------------------------------------- */
+
+        vs_ccu8_cc8_global =                         MVirtualSignalRA(pwm_ccu8_app_global_ccu8_cc8,  "vs_global_ccu8_globalsignal" );
+        vs_ccu8_cc8_global_sync_start =              MVirtualSignalRA(pwm_ccu8_app_global_ccu8_cc8,  "vs_global_ccu8_gsc_enable" );
+        
+        vs_ccu8_cc8_config_global =                  MVirtualSignal(hwres_ccu8_cc8_slice,  "ccu8_global_signal",  "global_signal",  true, false);
+        
+        vs_ccu8_cc8_period_match_interrupt =         MVirtualSignal(hwres_ccu8_cc8_slice,  "event_period_match",  "pmus_omds",   
+														MF({((gcheck_int_per_match.value && gcheck_int_per_match.enabled) || (gcheck_int_one_match_down.value && gcheck_int_one_match_down.enabled))},  Boolean), 
+														MF({((gcheck_int_per_match.value && gcheck_int_per_match.enabled) || (gcheck_int_one_match_down.value && gcheck_int_one_match_down.enabled))},  Boolean),
+														"Signal is not connected to any target signal. Use HW signal connections dialog to establish connection.");
+        vs_ccu8_cc8_ch1_compare_match_interrupt =    MVirtualSignal(hwres_ccu8_cc8_slice,  "event_ch1_cmp_match", "cmd1s_cmu1s", 
+														MF({(gcheck_int_cmp1_match_up.value && gcheck_int_cmp1_match_up.enabled) || (gcheck_int_cmp1_match_down.value && gcheck_int_cmp1_match_down.enabled)},  Boolean),
+														MF({(gcheck_int_cmp1_match_up.value && gcheck_int_cmp1_match_up.enabled) || (gcheck_int_cmp1_match_down.value && gcheck_int_cmp1_match_down.enabled)},  Boolean),
+														"Signal is not connected to any target signal. Use HW signal connections dialog to establish connection.");
+        vs_ccu8_cc8_ch2_compare_match_interrupt =    MVirtualSignal(hwres_ccu8_cc8_slice,  "event_ch2_cmp_match", "cmd2s_cmu2s", 
+														MF({(gcheck_int_cmp2_match_up.value && gcheck_int_cmp2_match_up.enabled) || (gcheck_int_cmp2_match_down.value && gcheck_int_cmp2_match_down.enabled)},  Boolean), 
+														MF({(gcheck_int_cmp2_match_up.value && gcheck_int_cmp2_match_up.enabled) || (gcheck_int_cmp2_match_down.value && gcheck_int_cmp2_match_down.enabled)},  Boolean),
+														"Signal is not connected to any target signal. Use HW signal connections dialog to establish connection.");
+        vs_event0_interrupt =                        MVirtualSignal(hwres_ccu8_cc8_slice,  "event_0",             "e0as",        
+														MF({(gcheck_int_e0.value == true)},  Boolean), 
+														MF({(gcheck_int_e0.value == true)},  Boolean),
+														"Signal is not connected to any target signal. Use HW signal connections dialog to establish connection.");
+        vs_event1_interrupt =                        MVirtualSignal(hwres_ccu8_cc8_slice,  "event_1",             "e1as",        
+														MF({(gcheck_int_e1.value == true)},  Boolean), 
+														MF({(gcheck_int_e1.value == true)},  Boolean),
+														"Signal is not connected to any target signal. Use HW signal connections dialog to establish connection.");
+        vs_event2_interrupt =                        MVirtualSignal(hwres_ccu8_cc8_slice,  "event_2",             "e2as",        
+														MF({(gcheck_int_e2.value == true)},  Boolean), 
+														MF({(gcheck_int_e2.value == true)},  Boolean),
+														"Signal is not connected to any target signal. Use HW signal connections dialog to establish connection.");
+            
+/*        vs_ccu8_cc8_period_match_interrupt =         MVirtualSignal(hwres_ccu8_cc8_slice,  "event_period_match",  "pmus_omds",     true, true);
+        vs_ccu8_cc8_ch1_compare_match_interrupt =    MVirtualSignal(hwres_ccu8_cc8_slice,  "event_ch1_cmp_match", "cmd1s_cmu1s",   true, true);
+        vs_ccu8_cc8_ch2_compare_match_interrupt =    MVirtualSignal(hwres_ccu8_cc8_slice,  "event_ch2_cmp_match", "cmd2s_cmu2s",   true, true);
+        vs_event0_interrupt =                        MVirtualSignal(hwres_ccu8_cc8_slice,  "event_0",             "e0as",          true, true);
+        vs_event1_interrupt =                        MVirtualSignal(hwres_ccu8_cc8_slice,  "event_1",             "e1as",          true, true);
+        vs_event2_interrupt =                        MVirtualSignal(hwres_ccu8_cc8_slice,  "event_2",             "e2as",          true, true);
+*/        vs_ccu8_cc8_st =                             MVirtualSignal(hwres_ccu8_cc8_slice,  "timer_st",            "st",            true, true);
+        vs_ccu8_cc8_sta =                            MVirtualSignal(hwres_ccu8_cc8_slice,  "timer_st1",           "sta",           true, true);
+        vs_ccu8_cc8_stb =                            MVirtualSignal(hwres_ccu8_cc8_slice,  "timer_st2",           "stb",           true, true);
+        vs_ccu8_cc8_gp0_unsync =                     MVirtualSignal(hwres_ccu8_cc8_slice,  "ext_event0",          "gp0_unsync",    true, MF({!(gcombo_e0_fn.value == "External Start" && gcheck_sync_start.value)},Boolean));
+        vs_ccu8_cc8_gp1_unsync =                     MVirtualSignal(hwres_ccu8_cc8_slice,  "ext_event1",          "gp1_unsync",    true, MF({!(gcombo_e1_fn.value == "External Start" && gcheck_sync_start.value)},Boolean));
+        vs_ccu8_cc8_gp2_unsync =                     MVirtualSignal(hwres_ccu8_cc8_slice,  "ext_event2",          "gp2_unsync",    true, MF({!(gcombo_e2_fn.value == "External Start" && gcheck_sync_start.value)},Boolean));
+        vs_ccu8_cc8_gp0        =                     MVirtualSignal(hwres_ccu8_cc8_slice,  "gp0",                 "gp0",           true, true);
+        vs_ccu8_cc8_gp1        =                     MVirtualSignal(hwres_ccu8_cc8_slice,  "gp1",                 "gp1",           true, true);
+        vs_ccu8_cc8_gp2        =                     MVirtualSignal(hwres_ccu8_cc8_slice,  "gp2",                 "gp2",           true, true);
+        vs_ccu8_cc8_ps         =                     MVirtualSignal(hwres_ccu8_cc8_slice,  "ps",                  "ps",            true, true);
+        vs_ccu8_cc8_mci0 =                           MVirtualSignal(hwres_ccu8_cc8_slice,  "mcm_input_0",         "mci0",          true, true);
+        vs_ccu8_cc8_mci1 =                           MVirtualSignal(hwres_ccu8_cc8_slice,  "mcm_input_1",         "mci1",          true, true);
+        vs_ccu8_cc8_mci2 =                           MVirtualSignal(hwres_ccu8_cc8_slice,  "mcm_input_2",         "mci2",          true, true);
+        vs_ccu8_cc8_mci3 =                           MVirtualSignal(hwres_ccu8_cc8_slice,  "mcm_input_3",         "mci3",          true, true);
+        vs_ccu8_cc8_mcss =                           MVirtualSignal(hwres_ccu8_cc8_slice,  "mcss_input",          "mcss",          true, true);
+        
+        vs_ccu8_cc8_ch1_out_a =                      MVirtualSignal(hwres_ccu8_cc8_slice,  "pwm_ch1_direct",      "out0",          true, true);
+        vs_ccu8_cc8_ch1_out_b =                      MVirtualSignal(hwres_ccu8_cc8_slice,  "pwm_ch1_inverted",    "out1",          true, true);
+        vs_ccu8_cc8_ch2_out_a =                      MVirtualSignal(hwres_ccu8_cc8_slice,  "pwm_ch2_direct",      "out2",          true, MF({gcombo_compare_mode.value == "Symmetric"},  Boolean));
+        vs_ccu8_cc8_ch2_out_b =                      MVirtualSignal(hwres_ccu8_cc8_slice,  "pwm_ch2_inverted",    "out3",          true, MF({gcombo_compare_mode.value == "Symmetric"},  Boolean));
+
+        
+        /*@AddPin simplifies the connection between signal and pin. Refer DAVE reference manual.*/
+        @AddPin
+        vs_port_ch1_out0        =                    MVirtualSignal(hwres_port_ch1_out0,"Out - CCU8 CH1 Direct PAD", "pad",  MF({gcheck_ch1_out0_enable.value}, Boolean),false);
+        @AddPin
+        vs_port_ch1_out1        =                    MVirtualSignal(hwres_port_ch1_out1,"Out - CCU8 CH1 Invert PAD", "pad",  MF({gcheck_ch1_out1_enable.value}, Boolean),false);
+        @AddPin
+        vs_port_ch2_out2        =                    MVirtualSignal(hwres_port_ch2_out2,"Out - CCU8 CH2 Direct PAD", "pad",  MF({gcheck_ch2_out2_enable.value && !(gcombo_compare_mode.value == "Asymmetric")}, Boolean),false);
+        @AddPin
+        vs_port_ch2_out3        =                    MVirtualSignal(hwres_port_ch2_out3,"Out - CCU8 CH2 Invert PAD", "pad",  MF({gcheck_ch2_out3_enable.value && !(gcombo_compare_mode.value == "Asymmetric")}, Boolean),false);
+
+        
+        /* ---------------------------------------------------------- */
+        /* ---------------- APP IO Connections ---------------------- */
+        /* ---------------------------------------------------------- */
+        
+        addConnectionConstraint(vs_ccu8_cc8_global,            vs_ccu8_cc8_config_global, true );
+        
+        addConnectionConstraint(vs_ccu8_cc8_global_sync_start, vs_ccu8_cc8_gp0_unsync,   MF({gcombo_e0_fn.value == "External Start" && gcheck_sync_start.value},Boolean));
+        addConnectionConstraint(vs_ccu8_cc8_global_sync_start, vs_ccu8_cc8_gp1_unsync,   MF({gcombo_e1_fn.value == "External Start" && gcheck_sync_start.value},Boolean));
+        addConnectionConstraint(vs_ccu8_cc8_global_sync_start, vs_ccu8_cc8_gp2_unsync,   MF({gcombo_e2_fn.value == "External Start" && gcheck_sync_start.value},Boolean));
+    
+        addConnectionConstraint(vs_ccu8_cc8_ch1_out_a,         vs_port_ch1_out0,         MF({gcheck_ch1_out0_enable.value}, Boolean));
+        addConnectionConstraint(vs_ccu8_cc8_ch1_out_b,         vs_port_ch1_out1,         MF({gcheck_ch1_out1_enable.value}, Boolean));
+        addConnectionConstraint(vs_ccu8_cc8_ch2_out_a,         vs_port_ch2_out2,         MF({gcheck_ch2_out2_enable.value && !(gcombo_compare_mode.value == "Asymmetric")}, Boolean));
+        addConnectionConstraint(vs_ccu8_cc8_ch2_out_b,         vs_port_ch2_out3,         MF({gcheck_ch2_out3_enable.value && !(gcombo_compare_mode.value == "Asymmetric")}, Boolean));
+
+        addResourcePropertyConstraint(hwres_port_ch1_out0, "speed_class of rg_property", MF({pin_class(gcombo_ch1_out0_strng.value)}, List), MF({(gcheck_ch1_out0_enable.value && dave_family.equals("XMC4"))},Boolean));
+        addResourcePropertyConstraint(hwres_port_ch1_out1, "speed_class of rg_property", MF({pin_class(gcombo_ch1_out1_strng.value)}, List), MF({(gcheck_ch1_out1_enable.value && dave_family.equals("XMC4"))},Boolean));
+        addResourcePropertyConstraint(hwres_port_ch2_out2, "speed_class of rg_property", MF({pin_class(gcombo_ch2_out2_strng.value)}, List), MF({(gcheck_ch2_out2_enable.value && dave_family.equals("XMC4"))},Boolean));
+        addResourcePropertyConstraint(hwres_port_ch2_out3, "speed_class of rg_property", MF({pin_class(gcombo_ch2_out3_strng.value)}, List), MF({(gcheck_ch2_out3_enable.value && dave_family.equals("XMC4"))},Boolean));
+        
+        /* -------------------------------------------------------- */
+        /* ------------ APP Configuration ------------------------- */
+        /* -------------------------------------------------------- */
+
+        gtab_general.enabled     = MF({gcheck_tab_general_enable.value},Boolean);
+        gtab_ee.enabled          = MF({gcheck_tab_ee_enable.value},Boolean);
+        gtab_interrupts.enabled  = MF({gcheck_tab_interrupts_enable.value},Boolean);
+        gtab_pins.enabled        = MF({gcheck_tab_pins_enable.value},Boolean);
+        gtab_shadow_txfr.enabled = MF({gcheck_tab_shadow_txfr_enable.value},Boolean);
+/************************************************************************************************************************************/
+        gfloat_clock.value  = MF({Double Clock = 120;
+                                         Clock = (Double)(pwm_ccu8_app_global_ccu8_cc8.getVal(["gfloat_clkFreq", "value"])); // get clock form global APP.
+                                         return(Clock); }, Double); 
+                                
+/************************************************************************************************************************************/
+        ggroup_symmetric.enabled    = MF({gcombo_compare_mode.value == "Symmetric"},  Boolean);
+        ggroup_asymmetric.enabled   = MF({gcombo_compare_mode.value == "Asymmetric"}, Boolean);
+        
+/************************************************************************************************************************************/
+        
+//                   |__compare channel__|        
+//                     |UP1 |DN1 |UP2 |DN2 |   
+//        ----------------------------------
+//        Edge & Sym   | Y  | N  | Y  | N  |
+//        Cent & Sym   | Y  | Y  | Y  | Y  |
+//        Edge & Asym  | Y  | N  | Y  | N  |
+//        Cent & Asym  | Y  | N  | N  | Y  |
+        
+        gcheck_int_cmp1_match_down.enabled = MF({  gcombo_counting_mode.value == "Center Aligned" && gcombo_compare_mode.value == "Symmetric"},  Boolean);
+        gcheck_int_cmp2_match_up.enabled   = MF({!(gcombo_counting_mode.value == "Center Aligned" && gcombo_compare_mode.value == "Asymmetric")},  Boolean);
+        gcheck_int_cmp2_match_down.enabled = MF({  gcombo_counting_mode.value == "Center Aligned" },  Boolean);
+        
+        gcheck_int_one_match_down.enabled  = MF({!(gcombo_counting_mode.value == "Edge Aligned")},  Boolean);
+
+/************************************************************************************************************************************/
+        
+        gcombo_e0_fn.options = MF({
+                                    List l = [ "No Event", "External Start", "External Stop", "External Count Direction", 
+                                               "External Gating", "External Count", "External Load", "External Modulation"];
+                                           
+                                        if (gcombo_e1_fn.value != "No Event"){l.remove(gcombo_e1_fn.value)}
+                                        if (gcombo_e2_fn.value != "No Event"){l.remove(gcombo_e2_fn.value)}
+                                        if (gcombo_counting_mode.value == "Center Aligned"){l.remove("External Count Direction")}
+                                        if (gcombo_compare_mode.value == "Asymmetric"){l.remove("External Count Direction")}
+                                        return(l); },List);
+                                    
+        gcombo_e1_fn.options = MF({
+                                    List l = [ "No Event", "External Start", "External Stop", "External Count Direction", "External Gating",
+                                               "External Count", "External Load", "External Modulation", "External Override (Edge)",];
+                                           
+                                        if (gcombo_e0_fn.value != "No Event"){l.remove(gcombo_e0_fn.value)}
+                                        if (gcombo_e2_fn.value != "No Event"){l.remove(gcombo_e2_fn.value)}
+                                        if (gcombo_counting_mode.value == "Center Aligned"){l.remove("External Count Direction")}
+                                        if (gcombo_compare_mode.value == "Asymmetric"){l.remove("External Count Direction")}
+                                        return(l); },List);
+                                    
+        gcombo_e2_fn.options = MF({
+                                    List l = [ "No Event", "External Start", "External Stop", "External Count Direction", "External Gating", 
+                                               "External Count", "External Load", "External Modulation", "External Override (Level)", "External Trap"];
+                                           
+                                        if (gcombo_e0_fn.value != "No Event"){l.remove(gcombo_e0_fn.value)}
+                                        if (gcombo_e1_fn.value != "No Event"){l.remove(gcombo_e1_fn.value)}
+                                        if (gcombo_counting_mode.value == "Center Aligned"){l.remove("External Count Direction")}
+                                        if (gcombo_compare_mode.value == "Asymmetric"){l.remove("External Count Direction")}
+                                        return(l); },List);
+                                     
+        gcombo_counting_mode.enabled =  MF({!(gcombo_e0_fn.value == "External Count Direction" ||
+                                              gcombo_e1_fn.value == "External Count Direction" ||
+                                              gcombo_e2_fn.value == "External Count Direction") }, Boolean);
+                                          
+        gcombo_compare_mode.enabled =   MF({!(gcombo_e0_fn.value == "External Count Direction" ||
+                                              gcombo_e1_fn.value == "External Count Direction" ||
+                                              gcombo_e2_fn.value == "External Count Direction") }, Boolean);
+
+                                        
+        ggroup_ext_start.enabled =       MF({gcombo_e0_fn.value == "External Start" || 
+                                             gcombo_e1_fn.value == "External Start" || 
+                                             gcombo_e2_fn.value == "External Start" }, Boolean);
+                                   
+        ggroup_ext_stop.enabled =        MF({gcombo_e0_fn.value == "External Stop" ||
+                                             gcombo_e1_fn.value == "External Stop" ||
+                                             gcombo_e2_fn.value == "External Stop" }, Boolean);
+                                   
+        ggroup_ext_trap.enabled =        MF({gcombo_e0_fn.value == "External Trap" ||
+                                             gcombo_e1_fn.value == "External Trap" ||
+                                             gcombo_e2_fn.value == "External Trap" }, Boolean);
+                                   
+        ggroup_ext_mod.enabled =         MF({gcombo_e0_fn.value == "External Modulation" ||
+                                             gcombo_e1_fn.value == "External Modulation" ||
+                                             gcombo_e2_fn.value == "External Modulation" }, Boolean);
+                                   
+        ggroup_ext_load.enabled =        MF({gcombo_e0_fn.value == "External Load" ||
+                                             gcombo_e1_fn.value == "External Load" ||
+                                             gcombo_e2_fn.value == "External Load" }, Boolean);
+                                   
+        ggroup_ext_gate.enabled =        MF({gcombo_e0_fn.value == "External Gating" ||
+                                             gcombo_e1_fn.value == "External Gating" ||
+                                             gcombo_e2_fn.value == "External Gating" }, Boolean);
+                                   
+        ggroup_ext_count.enabled =       MF({gcombo_e0_fn.value == "External Count" ||
+                                             gcombo_e1_fn.value == "External Count" ||
+                                             gcombo_e2_fn.value == "External Count" }, Boolean);
+
+        ggroup_ext_count_dir.enabled =   MF({gcombo_e0_fn.value == "External Count Direction" ||
+                                             gcombo_e1_fn.value == "External Count Direction" ||
+                                             gcombo_e2_fn.value == "External Count Direction" }, Boolean);
+
+        ggroup_ext_e1_override.enabled = MF({gcombo_e0_fn.value == "External Override (Edge)" ||
+                                             gcombo_e1_fn.value == "External Override (Edge)" ||
+                                             gcombo_e2_fn.value == "External Override (Edge)" }, Boolean);
+
+        ggroup_ext_e2_override.enabled = MF({gcombo_e0_fn.value == "External Override (Level)" ||
+                                             gcombo_e1_fn.value == "External Override (Level)" ||
+                                             gcombo_e2_fn.value == "External Override (Level)" }, Boolean);
+                                         
+        gcombo_ext_start_edge.value =    MF({     if((gcombo_e0_fn.value == "External Start") && gcheck_sync_start.value) {"Rising"}
+                                             else if((gcombo_e1_fn.value == "External Start") && gcheck_sync_start.value) {"Rising"}
+                                             else if((gcombo_e2_fn.value == "External Start") && gcheck_sync_start.value) {"Rising"}
+                                             else if(gcombo_e0_fn.value == "External Start") {gcombo_e0_trigger.value}
+                                             else if(gcombo_e1_fn.value == "External Start") {gcombo_e1_trigger.value}
+                                             else if(gcombo_e2_fn.value == "External Start") {gcombo_e2_trigger.value}
+                                             else {"No Trigger"}},  String);
+        gcombo_ext_start_edge.enabled =  MF({!gcheck_sync_start.value},Boolean);
+        
+        gcombo_ext_stop_edge.value =     MF({     if(gcombo_e0_fn.value == "External Stop") {gcombo_e0_trigger.value}
+                                             else if(gcombo_e1_fn.value == "External Stop") {gcombo_e1_trigger.value}
+                                             else if(gcombo_e2_fn.value == "External Stop") {gcombo_e2_trigger.value}
+                                             else {"No Trigger"}},  String);
+
+        gcombo_ext_load_edge.value =     MF({     if(gcombo_e0_fn.value == "External Load") {gcombo_e0_trigger.value}
+                                             else if(gcombo_e1_fn.value == "External Load") {gcombo_e1_trigger.value}
+                                             else if(gcombo_e2_fn.value == "External Load") {gcombo_e2_trigger.value}
+                                             else {"No Trigger"}},  String);
+
+        gcombo_ext_count_edge.value =    MF({     if(gcombo_e0_fn.value == "External Count") {gcombo_e0_trigger.value}
+                                             else if(gcombo_e1_fn.value == "External Count") {gcombo_e1_trigger.value}
+                                             else if(gcombo_e2_fn.value == "External Count") {gcombo_e2_trigger.value}
+                                             else {"No Trigger"}},  String);
+        
+     gcombo_ext_e1_override_edge.value = MF({     if(gcombo_e0_fn.value == "External Override (Edge)") {gcombo_e0_trigger.value}
+                                             else if(gcombo_e1_fn.value == "External Override (Edge)") {gcombo_e1_trigger.value}
+                                             else if(gcombo_e2_fn.value == "External Override (Edge)") {gcombo_e2_trigger.value}
+                                             else {"No Trigger"}},  String);
+                                         
+     gcombo_e2_trigger.enabled =         MF({gcombo_e2_fn.value != "External Trap"},Boolean);
+                                         
+                                         
+/************************************************************************************************************************************/
+                                         
+        gcombo_status_bit.enabled       = MF({!(gcombo_compare_mode.value == "Asymmetric")},Boolean);
+        gcombo_dither_mode.enabled      = MF ({gcheck_dither_enable.value},Boolean);
+        
+        ginteger_dither_cmp_val.enabled = MF ({gcheck_dither_enable.value},Boolean);
+        
+        gcombo_mcm_shadow_txfr.enabled  = MF ({gcheck_mcm_ch1_enable.value || gcheck_mcm_ch2_enable.value},Boolean);
+        gcheck_mcm_ch2_enable.enabled   = MF({(gcombo_compare_mode.value == "Symmetric")},  Boolean);
+
+        ggroup_ch2_out2.visible         = MF({!(gcombo_compare_mode.value == "Asymmetric")},Boolean);
+        ggroup_ch2_out3.visible         = MF({!(gcombo_compare_mode.value == "Asymmetric")},Boolean);
+        ggroup_ch2_out2_setting.visible = MF({!(gcombo_compare_mode.value == "Asymmetric")},Boolean);
+        ggroup_ch2_out3_setting.visible = MF({!(gcombo_compare_mode.value == "Asymmetric")},Boolean);
+
+/************************************************************************************************************************************/
+        glabel_ch1_out0_strng.visible   = MF({dave_family == "XMC4"},Boolean);
+        gcombo_ch1_out0_strng.visible   = MF({dave_family == "XMC4"},Boolean);
+        
+        glabel_ch1_out1_strng.visible   = MF({dave_family == "XMC4"},Boolean);
+        gcombo_ch1_out1_strng.visible   = MF({dave_family == "XMC4"},Boolean);
+        
+        glabel_ch2_out2_strng.visible   = MF({dave_family == "XMC4"},Boolean);
+        gcombo_ch2_out2_strng.visible   = MF({dave_family == "XMC4"},Boolean);
+        
+        glabel_ch2_out3_strng.visible   = MF({dave_family == "XMC4"},Boolean);
+        gcombo_ch2_out3_strng.visible   = MF({dave_family == "XMC4"},Boolean);
+        
+/************************************************************************************************************************************/
+        glabel_shadow_txfr_mode_note.visible = MF({gcheck_shadow_txfr_auto_period.value || 
+                                                   gcheck_shadow_txfr_auto_compare_1.value ||
+                                                   gcheck_shadow_txfr_auto_compare_2.value ||
+                                                   gcheck_shadow_txfr_auto_passive_level.value ||
+                                                   gcheck_shadow_txfr_auto_dither.value},Boolean);
+/************************************************************************************************************************************/
+        
+        gfloat_res.minValue = MF({Math.ceil(1000/gfloat_clock.value)},Double); // in nsec.
+        gfloat_res.maxValue = MF({Math.ceil(2.power(PRESCALER_MAX) * (1000/gfloat_clock.value) )}, Double);
+        
+/************************************************************************************************************************************/
+        
+        ginteger_prescaler.value = MF({
+                                        Double Divider = gfloat_res.value /(1000/gfloat_clock.value);// calculate the clock divider required
+                                        Integer value = (Math.floor(Math.log(Divider) / Math.log( 2 ) )).toInteger(); // find the nearest integer in upper side
+                                        if(value > PRESCALER_MAX) {
+                                          value = PRESCALER_MAX;
+                                        }
+                                        value; },Integer);        
+        
+/************************************************************************************************************************************/
+        gfloat_act_res.minValue = MF({gfloat_res.minValue - 1},Double);
+        gfloat_act_res.maxValue = MF({gfloat_res.maxValue + 1},Double);
+        gfloat_act_res.value    = MF({
+                                   Double Actual_Resolution = 0;
+                                   Actual_Resolution = (Double) (((Double)1000/(Double)gfloat_clock.value) *  2.power(ginteger_prescaler.value));
+                                   return(Actual_Resolution); },Double);
+                               
+/************************************************************************************************************************************/
+
+        ginteger_period.minValue = 1;//MF({1},Integer);
+        ginteger_period.maxValue = MF({(2.power(PERIOD_BIT_WIDTH)-1)},Integer);
+        ginteger_period.value    = MF({
+                                       int count = 0;
+                                       if (gcombo_counting_mode.value == "Edge Aligned")
+                                       {count = (Integer)((gfloat_clock.value * MHZ_1) / (2.power(ginteger_prescaler.value) * ginteger_freq.value))}
+                                       
+                                       else if (gcombo_counting_mode.value == "Center Aligned")
+                                       {count = (Integer)((gfloat_clock.value * MHZ_1) / (2.power(ginteger_prescaler.value) * 2 * ginteger_freq.value))}
+                                       
+                                       count = count - 1;
+                                       
+                                       if(count < ginteger_period.minValue){count = ginteger_period.minValue };
+                                       if(count > ginteger_period.maxValue){count = ginteger_period.maxValue };
+                                       
+                                       return(count); },Integer);
+                                   
+/************************************************************************************************************************************/
+        ginteger_freq.minValue    =  MF({
+                                          Double value;
+                                          value = ((gfloat_clock.value * MHZ_1) / (ginteger_period.maxValue * 2.power(ginteger_prescaler.value)));
+                                          if (gcombo_counting_mode.value == "Center Aligned"){ value = value / 2;}
+                                          value = Math.ceil(value);
+                                          value.toInteger();},Integer);
+                                      
+        ginteger_freq.maxValue   = MF({Double value;
+                                                value = ((gfloat_clock.value * MHZ_1) / (2 * (ginteger_period.minValue + 1) * 2.power(ginteger_prescaler.value)));
+                                                if (gcombo_counting_mode.value == "Center Aligned"){ value = value / 2;}
+                                                value = Math.floor(value);
+                                                value.toInteger();},Integer);
+
+        gfloat_act_freq.minValue =   MF({(Double)(ginteger_freq.minValue - 1)},Double);
+        gfloat_act_freq.maxValue =   MF({(Double)(ginteger_freq.maxValue + 1)},Double);
+        gfloat_act_freq.value    =   MF({Double value;
+                                         value = (((Double)(gfloat_clock.value * MHZ_1) / ((ginteger_period.value + 1)    * 2.power(ginteger_prescaler.value))) )
+                                         if(gcombo_counting_mode.value == "Center Aligned"){value = value/2;}
+                                         return(value);},Double);
+
+/************************************************************************************************************************************/
+        
+        ginteger_sym_cmp_ch1.minValue = 0;
+        ginteger_sym_cmp_ch1.maxValue = MF({ginteger_period.value + 1},Integer);
+        ginteger_sym_cmp_ch1.value    = MF({
+                                             if(gcombo_compare_mode.value == "Symmetric" ) 
+                                             {
+                                                (Integer) ((ginteger_period.value + 1) * (100.0 - gfloat_sym_duty_ch1.value) / 100.0);
+                                             }
+                                             else
+                                             {
+                                                 return(ginteger_period.value + 1);
+                                             }
+                                           },Integer);
+/************************************************************************************************************************************/
+       ginteger_sym_cmp_ch2.minValue = 0;
+       ginteger_sym_cmp_ch2.maxValue = MF({ginteger_period.value + 1},Integer);
+       ginteger_sym_cmp_ch2.value    = MF({
+                                        if(gcombo_compare_mode.value == "Symmetric") 
+                                            {
+                                               (Integer) ((ginteger_period.value + 1) * (100.0 - gfloat_sym_duty_ch2.value) / 100.0);
+                                            }
+                                            else
+                                            {
+                                                return(ginteger_period.value + 1);
+                                            }
+                                              },Integer);
+/************************************************************************************************************************************/
+                                  
+         gfloat_sym_act_duty_ch1.value = MF({(Double)100.0 - ((Double)100.0 * (Double)ginteger_sym_cmp_ch1.value / (Double)(ginteger_period.value + 1)) },Double);
+                                    
+/************************************************************************************************************************************/
+                                            
+         gfloat_sym_act_duty_ch2.value = MF({(Double)100.0 - ((Double)100.0 * (Double)ginteger_sym_cmp_ch2.value / (Double)(ginteger_period.value + 1)) },Double);
+                                    
+/************************************************************************************************************************************/
+                                  
+        ginteger_asym_cmp_ch1.minValue = 0;
+        ginteger_asym_cmp_ch1.maxValue = MF({if (gcombo_compare_mode.value == "Asymmetric"){ginteger_period.value + 1} else {ginteger_period.maxValue}},Integer);
+        
+/************************************************************************************************************************************/
+    
+        ginteger_asym_cmp_ch2.minValue = MF({if(gcombo_compare_mode.value == "Asymmetric" && gcombo_counting_mode.value == "Edge Aligned") {ginteger_asym_cmp_ch1.value} else {0}},Integer);
+        ginteger_asym_cmp_ch2.maxValue = MF({if (gcombo_compare_mode.value == "Asymmetric"){ginteger_period.value + 1} else {ginteger_period.maxValue}},Integer);
+
+/************************************************************************************************************************************/
+       gfloat_asym_act_duty.value     = MF({
+                                             Double duty = 0;
+                                             Double period = (ginteger_period.value + 1);
+
+                                             if(gcombo_compare_mode.value == "Asymmetric"  && gcombo_counting_mode.value == "Edge Aligned")
+                                             {
+                                                 duty =  ((ginteger_asym_cmp_ch2.value - ginteger_asym_cmp_ch1.value));
+                                                 duty = duty / (period);
+                                             }
+                                             else if(gcombo_compare_mode.value == "Asymmetric"  && gcombo_counting_mode.value == "Center Aligned")
+                                             {
+                                                 duty = (2 * period) - ((ginteger_asym_cmp_ch2.value + ginteger_asym_cmp_ch1.value));
+                                                 duty = duty / (2 * period);
+                                             }     
+                                             duty = duty * 100.0;
+                                             return (duty); } ,Double);
+                                         
+        gfloat_asym_act_shift.value = MF({
+                                            Double shift = 0;
+                                            Double period = (ginteger_period.value + 1);
+                                            if(gcombo_compare_mode.value == "Asymmetric")
+                                            {
+                                            shift = ginteger_asym_cmp_ch1.value / (2 * period)
+                                            shift = shift * 100.0;
+                                            }
+                                            return (shift);    },Double);
+
+/************************************************************************************************************************************/
+
+     gfloat_ch1_dt_rise.enabled =      MF({gcheck_ch1_dt_enable.value},Boolean);
+     gfloat_ch1_dt_fall.enabled =      MF({gcheck_ch1_dt_enable.value},Boolean);
+     
+     gfloat_ch2_dt_rise.enabled =      MF({gcheck_ch2_dt_enable.value},Boolean);
+     gfloat_ch2_dt_fall.enabled =      MF({gcheck_ch2_dt_enable.value},Boolean);
+
+/************************************************************************************************************************************/
+        
+     ginteger_prescaler_dead_time.value = MF({
+                                              List l=[];
+                                              Double Divider;
+                                              Double Clock_Period;
+                                              Integer value = 0;;
+                                              l.add(gfloat_ch1_dt_rise.value);
+                                              l.add(gfloat_ch1_dt_fall.value);
+                                              l.add(gfloat_ch2_dt_rise.value);
+                                              l.add(gfloat_ch2_dt_fall.value);
+                                              Clock_Period = 1000/((double)gfloat_clock.value / 2.power(ginteger_prescaler.value)) // in nsec
+                                              Divider = l.max()/(Clock_Period * (2.power(CCU8_DT_BIT_WIDTH)-1))
+                                              value = (Integer)(Math.floor(Divider)).toInteger(); // find the nearest integer in lower side
+                                              
+                                              if(value > PRESCALER_DT_MAX) {
+                                                 value = PRESCALER_DT_MAX;
+                                              }
+                                              value;},Integer);
+                                          
+     gfloat_ch1_dt_rise.minValue = 0.0;
+     gfloat_ch1_dt_rise.maxValue = MF({
+                                         Double value =1000;
+                                           value = (2.power(CCU8_DT_BIT_WIDTH) * 2.power(PRESCALER_DT_MAX)) * ((Double)1000/((double)gfloat_clock.value / 2.power(ginteger_prescaler.value)));
+                                       
+                                         value; },Double);
+                                  
+    gfloat_ch1_dt_fall.minValue = MF({gfloat_ch1_dt_rise.minValue},Double);
+    gfloat_ch1_dt_fall.maxValue = MF({gfloat_ch1_dt_rise.maxValue},Double);
+    
+    gfloat_ch2_dt_rise.minValue = MF({gfloat_ch1_dt_rise.minValue},Double);
+    gfloat_ch2_dt_rise.maxValue = MF({gfloat_ch1_dt_rise.maxValue},Double);
+    
+    gfloat_ch2_dt_fall.minValue = MF({gfloat_ch1_dt_rise.minValue},Double);
+    gfloat_ch2_dt_fall.maxValue = MF({gfloat_ch1_dt_rise.maxValue},Double);
+    
+    ggroup_ch2_dt.visible       = MF({gcombo_compare_mode.value == "Symmetric"},Boolean);
+
+/************************************************************************************************************************************/
+    ggroup_shadow_update_config.enabled = MF({dave_family == "XMC1" && dave_series == "4"},Boolean);
+    gtab_shadow_txfr.visible            = MF({!(dave_family = "XMC4" && dave_series == "5")},Boolean);
+    ggroup_shadow_update_config_lable.visible = false;
+    }
+
+/*Local Function for pin class selection*/
+List pin_class(String drive_strength)
+    {
+        List list;
+            if (drive_strength == "Weak Driver" || drive_strength == "Medium Driver")
+            {
+                 list = ['A1', 'A1+', 'A2'];
+            }
+            else if (drive_strength == "Strong Driver Slow Edge")
+            {
+                 list = ['A1+'];
+            }
+            else if (drive_strength == "Strong Driver Soft Edge")
+            {
+                 list = ['A1+', 'A2'];
+            }
+            else if(drive_strength == "Strong Driver Medium Edge" || drive_strength == "Strong Driver Sharp Edge")
+            {
+                 list = ['A2'];
+            }
+            else
+            {
+                 list = ['A1','A1+' ,'A2'];
+            }
+            return list;
+    }
+    
+    // File Generation
+    def generateFiles(){
+        copy("pwm_ccu8.c", "pwm_ccu8.c")
+        copy("pwm_ccu8.h", "pwm_ccu8.h")
+        generate("pwm_ccu8_confc.tmpl", "pwm_ccu8_conf.c")
+        generate("pwm_ccu8_confh.tmpl", "pwm_ccu8_conf.h")
+        generate("pwm_ccu8_externh.tmpl", "pwm_ccu8_extern.h")
+    }
+    
+    //
+    // Add main code here
+    //
+    static main(args){
+        
+        PWM_CCU8 obj  = new PWM_CCU8();
+      }
+    
+}
+
+

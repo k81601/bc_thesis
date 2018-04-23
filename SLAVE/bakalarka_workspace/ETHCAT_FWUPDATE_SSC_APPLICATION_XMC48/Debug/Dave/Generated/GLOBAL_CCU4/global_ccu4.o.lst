@@ -1,0 +1,1174 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "global_ccu4.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.XMC_CCU4_StartPrescaler,"ax",%progbits
+  20              	 .align 2
+  21              	 .thumb
+  22              	 .thumb_func
+  24              	XMC_CCU4_StartPrescaler:
+  25              	.LFB137:
+  26              	 .file 1 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc_ccu4.h"
+   1:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+   2:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @file xmc_ccu4.h
+   3:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @date 2017-09-15
+   4:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+   5:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @cond
+   6:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  **************************************************************************************************
+   7:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * XMClib v2.1.18 - XMC Peripheral Driver Library 
+   8:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+   9:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Copyright (c) 2015-2018, Infineon Technologies AG
+  10:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * All rights reserved.                        
+  11:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *                                             
+  12:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * following conditions are met:   
+  14:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *                                                                              
+  15:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * disclaimer.                        
+  17:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 
+  18:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 
+  21:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * products derived from this software without specific prior written permission.                  
+  23:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *                                                                              
+  24:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *                                                                              
+  32:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  **************************************************************************************************
+  35:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+  36:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Change History
+  37:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * --------------
+  38:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+  39:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 2015-02-20:
+  40:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - Initial <br>
+  41:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - Documentation updates <br>
+  42:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+  43:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 2015-06-20:
+  44:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - Removed version macros and declaration of GetDriverVersion API <br>
+  45:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+  46:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 2015-07-22:
+  47:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - XMC_CCU4_SLICE_ConfigureStatusBitOverrideEvent() is updated to support XMC14 device. <br>
+  48:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+  49:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 2015-08-17:
+  50:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - XMC_CCU4_SLICE_PRESCALER_t enum is added to set the prescaler divider. <br>
+  51:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - XMC_CCU4_SLICE_SHADOW_TRANSFER_MODE_t enum item names are updated according to the guideli
+  52:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - XMC_CCU4_EnableShadowTransfer() API is made as inline, to improve the speed. <br>
+  53:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+  54:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 2015-09-29:
+  55:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - In XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_t, two more enum items are added to support exte
+  56:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *       settings.
+  57:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+  58:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 2015-10-07:
+  59:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - XMC_CCU4_SLICE_GetEvent() is made as inline.
+  60:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - XMC_CCU4_SLICE_MULTI_IRQ_ID_t is added to support the XMC_CCU4_SLICE_EnableMultipleEvents(
+  61:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *       XMC_CCU4_SLICE_DisableMultipleEvents() APIs.
+  62:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - DOC updates for the newly added APIs.
+  63:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+  64:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 2016-03-09:
+  65:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - Optimization of write only registers 
+  66:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+  67:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 2016-05-20:
+  68:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - Added XMC_CCU4_SLICE_StopClearTimer()
+  69:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - Changed implementation of XMC_CCU4_SLICE_StopTimer() and XMC_CCU4_SLICE_ClearTimer() to av
+  70:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+  71:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 2017-04-27:
+  72:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - XMC_CCU4_SLICE_SetPrescaler() changed div_val parameter to type XMC_CCU4_SLICE_PRESCALER_t
+  73:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 
+  74:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 2017-09-15:
+  75:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *     - Fix XMC_CCU4_SLICE_SetShadowTransferMode()
+  76:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+  77:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @endcond
+  78:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+  79:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+  80:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #ifndef XMC_CCU4_H
+  81:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #define XMC_CCU4_H
+  82:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  
+  83:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**************************************************************************************************
+  84:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * HEADER FILES
+  85:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  **************************************************************************************************
+  86:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #include "xmc_common.h"
+  87:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU40)
+  88:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+  89:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if UC_FAMILY == XMC1
+  90:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  #include "xmc1_ccu4_map.h"
+  91:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+  92:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+  93:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if UC_FAMILY == XMC4
+  94:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  #include "xmc4_ccu4_map.h"
+  95:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+  96:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+  97:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+  98:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @addtogroup XMClib XMC Peripheral Library
+  99:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @{
+ 100:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 101:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  
+ 102:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 103:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @addtogroup CCU4
+ 104:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @brief Capture Compare Unit 4 (CCU4) low level driver for XMC family of microcontrollers<br>
+ 105:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 106:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * The CCU4 peripheral is a major component for systems that need general purpose timers for signal
+ 107:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * monitoring/conditioning and Pulse Width Modulation (PWM) signal generation. Power electronic con
+ 108:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * switched mode power supplies or interruptible power supplies, can easily be implemented with the
+ 109:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * CCU4 peripheral.\n
+ 110:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Each CCU4 module is comprised of four identical 16 bit Capture/Compare Timer slices, CC4y (where
+ 111:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * timer slice can work in compare mode or in capture mode.
+ 112:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 113:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * APIs provided in this file cover the following functional blocks of CCU4:\n
+ 114:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * -- Timer configuration, Capture configuration, Function/Event configuration, Interrupt configura
+ 115:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par Note:
+ 116:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 1. SLICE (APIs prefixed with e.g. XMC_CCU4_SLICE_)
+ 117:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 2. Module (APIs are not having any prefix e.g. XMC_CCU4_)
+ 118:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 119:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par Timer(Compare mode) configuration:
+ 120:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * This section of the LLD provides the configuration structure XMC_CCU4_SLICE_COMPARE_CONFIG_t and
+ 121:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * function XMC_CCU4_SLICE_CompareInit().
+ 122:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 123:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * It can be used to:
+ 124:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * -# Start and Stop the timer. (XMC_CCU4_SLICE_StartTimer(), XMC_CCU4_SLICE_StopTimer())
+ 125:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * -# Update the period, compare, Dither, Prescaler  and Passive values. (XMC_CCU4_SLICE_SetTimerPe
+ 126:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *    XMC_CCU4_SLICE_SetTimerCompareMatch(), XMC_CCU4_SLICE_SetPrescaler(), XMC_CCU4_SLICE_SetDithe
+ 127:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *    XMC_CCU4_SLICE_SetPassiveLevel())
+ 128:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * -# Enable the slices to support multichannel mode. (XMC_CCU4_SLICE_EnableMultiChannelMode())
+ 129:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 
+ 130:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par Capture configuration:
+ 131:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * This section of the LLD provides the configuration structure XMC_CCU4_SLICE_CAPTURE_CONFIG_t and
+ 132:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * function XMC_CCU4_SLICE_CaptureInit().
+ 133:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 134:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * It can be used to:
+ 135:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * -# Configure the capture functionality. (XMC_CCU4_SLICE_Capture0Config(), XMC_CCU4_SLICE_Capture
+ 136:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * -# Read the captured values along with the status, which indicate the value is latest or not.
+ 137:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *    (XMC_CCU4_SLICE_GetCaptureRegisterValue())
+ 138:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 
+ 139:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par Function/Event configuration:
+ 140:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * This section of the LLD provides the configuration structure XMC_CCU4_SLICE_EVENT_CONFIG_t.\n
+ 141:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * 
+ 142:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * It can be used to:
+ 143:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * -# Enable and Disable the events. (XMC_CCU4_SLICE_EnableEvent(), XMC_CCU4_SLICE_DisableEvent())
+ 144:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * -# Configure to start and stop the timer on external events.(XMC_CCU4_SLICE_StartConfig(), XMC_C
+ 145:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * -# Modulation, external load and Gating of the timer output.(XMC_CCU4_SLICE_ModulationConfig(), 
+ 146:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *    XMC_CCU4_SLICE_LoadConfig(), XMC_CCU4_SLICE_GateConfig())
+ 147:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * -# Control the count direction of the timer based on the external event. (XMC_CCU4_SLICE_Directi
+ 148:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * -# Count the external events.(XMC_CCU4_SLICE_CountConfig())
+ 149:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * -# External Trap. Which can be used as protective feature.(XMC_CCU4_SLICE_EnableTrap(), XMC_CCU4
+ 150:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *    XMC_CCU4_SLICE_TrapConfig())
+ 151:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 152:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par Interrupt configuration:
+ 153:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * This section of the LLD provides the function to configure the interrupt node to each event (XMC
+ 154:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @{
+ 155:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 156:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  
+ 157:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**************************************************************************************************
+ 158:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * MACROS
+ 159:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  **************************************************************************************************
+ 160:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /* Macro to check if the interrupt enum passed is valid */
+ 161:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #define XMC_CCU4_SLICE_CHECK_INTERRUPT(interrupt) \
+ 162:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****     ((interrupt == XMC_CCU4_SLICE_IRQ_ID_PERIOD_MATCH)           || \
+ 163:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****      (interrupt == XMC_CCU4_SLICE_IRQ_ID_ONE_MATCH)              || \
+ 164:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****      (interrupt == XMC_CCU4_SLICE_IRQ_ID_COMPARE_MATCH_UP)  || \
+ 165:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****      (interrupt == XMC_CCU4_SLICE_IRQ_ID_COMPARE_MATCH_DOWN)|| \
+ 166:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****      (interrupt == XMC_CCU4_SLICE_IRQ_ID_EVENT0)                 || \
+ 167:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****      (interrupt == XMC_CCU4_SLICE_IRQ_ID_EVENT1)                 || \
+ 168:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****      (interrupt == XMC_CCU4_SLICE_IRQ_ID_EVENT2)                 || \
+ 169:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****      (interrupt == XMC_CCU4_SLICE_IRQ_ID_TRAP))
+ 170:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 171:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**************************************************************************************************
+ 172:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * ENUMS
+ 173:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  **************************************************************************************************
+ 174:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 175:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 176:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Typedef for CCU4 Global data structure
+ 177:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 178:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef CCU4_GLOBAL_TypeDef XMC_CCU4_MODULE_t;
+ 179:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 180:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 181:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Typedef for CCU4 Slice data structure
+ 182:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 183:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef CCU4_CC4_TypeDef XMC_CCU4_SLICE_t;
+ 184:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 185:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 186:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Return Value of an API
+ 187:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 188:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_STATUS
+ 189:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 190:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_STATUS_OK      = 0U, /**< API fulfils request */
+ 191:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_STATUS_ERROR       , /**< API cannot fulfil the request */
+ 192:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_STATUS_RUNNING     , /**< The timer slice is currently running */
+ 193:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_STATUS_IDLE          /**< The timer slice is currently idle */
+ 194:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_STATUS_t;
+ 195:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 196:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 197:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  CCU4 module clock
+ 198:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 199:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_CLOCK
+ 200:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 201:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_CLOCK_SCU        = 0U, /**< Select the fCCU as the clock */
+ 202:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_CLOCK_EXTERNAL_A     , /**< External clock-A */
+ 203:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_CLOCK_EXTERNAL_B     , /**< External clock-B */
+ 204:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_CLOCK_EXTERNAL_C       /**< External clock-C */
+ 205:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_CLOCK_t;
+ 206:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 207:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 208:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * CCU4 set the shadow transfer type for multichannel mode
+ 209:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 210:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_MULTI_CHANNEL_SHADOW_TRANSFER
+ 211:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 212:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_MULTI_CHANNEL_SHADOW_TRANSFER_SW_SLICE0       = (uint32_t)0x4000000, /**< Shadow transfe
+ 213:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                      only for slice
+ 214:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_MULTI_CHANNEL_SHADOW_TRANSFER_SW_MCSS_SLICE0  = (uint32_t)0x4000400, /**< Shadow transfe
+ 215:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                      and hardware f
+ 216:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_MULTI_CHANNEL_SHADOW_TRANSFER_SW_SLICE1       = (uint32_t)0x8000000, /**< Shadow transfe
+ 217:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                      only for slice
+ 218:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_MULTI_CHANNEL_SHADOW_TRANSFER_SW_MCSS_SLICE1  = (uint32_t)0x8000800, /**< Shadow transfe
+ 219:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                      and hardware f
+ 220:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_MULTI_CHANNEL_SHADOW_TRANSFER_SW_SLICE2       = (uint32_t)0x10000000, /**< Shadow transf
+ 221:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                       only for slic
+ 222:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_MULTI_CHANNEL_SHADOW_TRANSFER_SW_MCSS_SLICE2  = (uint32_t)0x10001000, /**< Shadow transf
+ 223:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                       and hardware 
+ 224:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_MULTI_CHANNEL_SHADOW_TRANSFER_SW_SLICE3       = (uint32_t)0x20000000, /**< Shadow transf
+ 225:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                       only for slic
+ 226:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_MULTI_CHANNEL_SHADOW_TRANSFER_SW_MCSS_SLICE3  = (uint32_t)0x20002000  /**< Shadow transf
+ 227:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                       and hardware 
+ 228:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_MULTI_CHANNEL_SHADOW_TRANSFER_t;
+ 229:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 230:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 231:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Operational modes of CCU4 slice
+ 232:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 233:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_MODE
+ 234:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 235:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MODE_COMPARE  = 0U, /**< slice(CC4y) operates in Compare Mode */
+ 236:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MODE_CAPTURE        /**< slice(CC4y) operates in Capture Mode */
+ 237:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_MODE_t;
+ 238:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 239:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 240:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Timer counting modes for the slice
+ 241:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 242:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_TIMER_COUNT_MODE
+ 243:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 244:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_TIMER_COUNT_MODE_EA  = 0U, /**< Edge Aligned Mode */
+ 245:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_TIMER_COUNT_MODE_CA        /**< Center Aligned Mode */
+ 246:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_TIMER_COUNT_MODE_t;
+ 247:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 248:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 249:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Timer repetition mode for the slice
+ 250:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 251:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_TIMER_REPEAT_MODE
+ 252:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 253:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_TIMER_REPEAT_MODE_REPEAT = 0U,  /**< Repetitive mode: continuous mode of operation
+ 254:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_TIMER_REPEAT_MODE_SINGLE        /**< Single shot mode: Once a Period match/One mat
+ 255:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                       occurs timer goes to idle state */
+ 256:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_TIMER_REPEAT_MODE_t;
+ 257:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 258:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 259:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Timer counting direction for the CCU4 slice
+ 260:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 261:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_TIMER_COUNT_DIR
+ 262:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 263:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_TIMER_COUNT_DIR_UP   = 0U, /**< Counting up */
+ 264:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_TIMER_COUNT_DIR_DOWN       /**< Counting down */
+ 265:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_TIMER_COUNT_DIR_t;
+ 266:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 267:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 268:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Capture mode register sets
+ 269:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 270:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_CAP_REG_SET
+ 271:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 272:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_CAP_REG_SET_LOW  = 0U, /**< Capture register-0, Capture register-1 used */
+ 273:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_CAP_REG_SET_HIGH       /**< Capture register-2, Capture register-3 used */
+ 274:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_CAP_REG_SET_t;
+ 275:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 276:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 277:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Prescaler mode
+ 278:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 279:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_PRESCALER_MODE
+ 280:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 281:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_MODE_NORMAL = 0U, /**< Fixed division of module clock */
+ 282:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_MODE_FLOAT        /**< Floating divider. */
+ 283:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_PRESCALER_MODE_t;
+ 284:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 285:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 286:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Timer output passive level
+ 287:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 288:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_OUTPUT_PASSIVE_LEVEL
+ 289:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 290:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_OUTPUT_PASSIVE_LEVEL_LOW  = 0U, /**< Passive level = Low */
+ 291:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_OUTPUT_PASSIVE_LEVEL_HIGH       /**< Passive level = High */
+ 292:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_OUTPUT_PASSIVE_LEVEL_t;
+ 293:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 294:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 295:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Timer clock Divider
+ 296:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 297:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_PRESCALER
+ 298:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 299:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_1  = 0U, /**< Slice Clock = fccu4 */
+ 300:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_2      , /**< Slice Clock = fccu4/2 */
+ 301:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_4      , /**< Slice Clock = fccu4/4 */
+ 302:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_8      , /**< Slice Clock = fccu4/8 */
+ 303:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_16     , /**< Slice Clock = fccu4/16 */
+ 304:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_32     , /**< Slice Clock = fccu4/32 */
+ 305:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_64     , /**< Slice Clock = fccu4/64 */
+ 306:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_128    , /**< Slice Clock = fccu4/128 */
+ 307:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_256    , /**< Slice Clock = fccu4/256 */
+ 308:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_512    , /**< Slice Clock = fccu4/512 */
+ 309:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_1024   , /**< Slice Clock = fccu4/1024 */
+ 310:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_2048   , /**< Slice Clock = fccu4/2048 */
+ 311:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_4096   , /**< Slice Clock = fccu4/4096 */
+ 312:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_8192   , /**< Slice Clock = fccu4/8192 */
+ 313:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_16384  , /**< Slice Clock = fccu4/16384 */
+ 314:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_PRESCALER_32768    /**< Slice Clock = fccu4/32768 */
+ 315:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_PRESCALER_t;
+ 316:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 317:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 318:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  External Function list
+ 319:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 320:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_FUNCTION
+ 321:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 322:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_FUNCTION_START           = 0U, /**< Start function */
+ 323:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_FUNCTION_STOP                , /**< Stop function */
+ 324:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_FUNCTION_CAPTURE_EVENT0      , /**< Capture Event-0 function, CCycapt0 signal is u
+ 325:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                      generation */
+ 326:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_FUNCTION_CAPTURE_EVENT1      , /**< Capture Event-1 function, CCycapt1 signal is u
+ 327:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                      generation */
+ 328:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_FUNCTION_GATING              , /**< Gating function */
+ 329:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_FUNCTION_DIRECTION           , /**< Direction function */
+ 330:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_FUNCTION_LOAD                , /**< Load function */
+ 331:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_FUNCTION_COUNT               , /**< Counting function */
+ 332:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_FUNCTION_OVERRIDE            , /**< Override function */
+ 333:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_FUNCTION_MODULATION          , /**< Modulation function */
+ 334:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_FUNCTION_TRAP                  /**< Trap function */
+ 335:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_FUNCTION_t;
+ 336:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 337:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 338:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  External Event list
+ 339:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 340:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_EVENT
+ 341:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 342:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_NONE  = 0U, /**< None */
+ 343:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_0         , /**< Event-0 */
+ 344:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_1         , /**< Event-1 */
+ 345:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_2           /**< Event-2 */
+ 346:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_EVENT_t;
+ 347:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 348:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 349:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  External Event trigger criteria  - Edge sensitivity
+ 350:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 351:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY
+ 352:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 353:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY_NONE         = 0U, /**< None */
+ 354:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY_RISING_EDGE      , /**< Rising Edge of the input signal gen
+ 355:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY_FALLING_EDGE     , /**< Falling Edge of the input signal ge
+ 356:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                 trigger */
+ 357:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY_DUAL_EDGE          /**< Both Rising and Falling edges cause
+ 358:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY_t;
+ 359:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 360:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 361:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  External Event trigger criteria  - Level sensitivity
+ 362:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 363:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY
+ 364:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 365:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_ACTIVE_HIGH = 0U, /**< Level sensitive functions react to 
+ 366:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_ACTIVE_LOW  = 1U, /**< Level sensitive functions react to 
+ 367:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   /* Below enum items can be utilised specific to the functionality */
+ 368:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_COUNT_UP_ON_LOW = 0U, /**< Timer counts up, during Low sta
+ 369:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_COUNT_UP_ON_HIGH = 1U /**< Timer counts up, during High st
+ 370:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_t;
+ 371:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 372:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 373:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Low pass filter Configuration. The External Event input should be stable for a selected number 
+ 374:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 375:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_EVENT_FILTER
+ 376:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 377:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_FILTER_DISABLED  = 0U, /**< No Low Pass Filter */
+ 378:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_FILTER_3_CYCLES      , /**< 3 clock cycles */
+ 379:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_FILTER_5_CYCLES      , /**< 5 clock cycles */
+ 380:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_FILTER_7_CYCLES        /**< 7 clock cycles */
+ 381:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_EVENT_FILTER_t;
+ 382:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 383:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 384:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  External Event Input list. This list depicts the possible input connections to the CCU4 slice.
+ 385:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Interconnects are specific to each device.
+ 386:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 387:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef uint8_t XMC_CCU4_SLICE_INPUT_t;
+ 388:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 389:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 390:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Actions that can be performed upon detection of an external Timer STOP event
+ 391:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 392:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_END_MODE
+ 393:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 394:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_END_MODE_TIMER_STOP       = 0U, /**< Stops the timer, without clearing TIMER regis
+ 395:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_END_MODE_TIMER_CLEAR          , /**< Without stopping timer, clears the TIMER regi
+ 396:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_END_MODE_TIMER_STOP_CLEAR       /**< Stops the timer and clears the TIMER register
+ 397:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_END_MODE_t;
+ 398:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 399:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 400:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Actions that can be performed upon detection of an external Timer START event
+ 401:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 402:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_START_MODE
+ 403:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 404:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_START_MODE_TIMER_START       = 0U, /**< Start the timer from the current count of 
+ 405:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_START_MODE_TIMER_START_CLEAR       /**< Clears the TIMER register and start the ti
+ 406:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_START_MODE_t;
+ 407:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 408:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 409:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Modulation of timer output signals
+ 410:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 411:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_MODULATION_MODE
+ 412:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 413:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MODULATION_MODE_CLEAR_ST_OUT  = 0U, /**< Clear ST and OUT signals */
+ 414:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MODULATION_MODE_CLEAR_OUT           /**< Clear only the OUT signal */
+ 415:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_MODULATION_MODE_t;
+ 416:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 417:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 418:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Trap exit mode
+ 419:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 420:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_TRAP_EXIT_MODE
+ 421:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 422:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_TRAP_EXIT_MODE_AUTOMATIC = 0U, /**< Clear trap state as soon as the trap signal is
+ 423:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_TRAP_EXIT_MODE_SW              /**< Clear only when acknowledged by software */
+ 424:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_TRAP_EXIT_MODE_t;
+ 425:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 426:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 427:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Timer clear on capture
+ 428:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 429:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_TIMER_CLEAR_MODE
+ 430:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 431:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_TIMER_CLEAR_MODE_NEVER    = 0U, /**< Never clear the timer on any capture event */
+ 432:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_TIMER_CLEAR_MODE_CAP_HIGH     , /**< Clear only when timer value has been captured
+ 433:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_TIMER_CLEAR_MODE_CAP_LOW      , /**< Clear only when timer value has been captured
+ 434:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_TIMER_CLEAR_MODE_ALWAYS         /**< Always clear the timer upon detection of any 
+ 435:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_TIMER_CLEAR_MODE_t;
+ 436:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 437:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 438:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Multi Channel Shadow transfer request configuration options
+ 439:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 440:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_MCMS_ACTION
+ 441:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 442:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MCMS_ACTION_TRANSFER_PR_CR          = 0U, /**< Transfer Compare and Period Shadow 
+ 443:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                 the actual registers upon MCS xfer 
+ 444:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MCMS_ACTION_TRANSFER_PR_CR_PCMP     = 1U, /**< Transfer Compare, Period and Presca
+ 445:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                 register values to the actual regis
+ 446:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                 request */
+ 447:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MCMS_ACTION_TRANSFER_PR_CR_PCMP_DIT = 3U  /**< Transfer Compare, Period ,Prescaler
+ 448:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                 Compare register values to the actu
+ 449:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                 MCS xfer request */
+ 450:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_MCMS_ACTION_t;
+ 451:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 452:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 453:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Available Interrupt Event Ids
+ 454:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 455:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_IRQ_ID
+ 456:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 457:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_IRQ_ID_PERIOD_MATCH       = 0U , /**< Period match counting up */
+ 458:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_IRQ_ID_ONE_MATCH          = 1U , /**< Period match -> One match counting down */
+ 459:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_IRQ_ID_COMPARE_MATCH_UP   = 2U , /**< Compare match counting up */
+ 460:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_IRQ_ID_COMPARE_MATCH_DOWN = 3U , /**< Compare match counting down */
+ 461:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_IRQ_ID_EVENT0             = 8U , /**< Event-0 occurrence */
+ 462:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_IRQ_ID_EVENT1             = 9U , /**< Event-1 occurrence */
+ 463:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_IRQ_ID_EVENT2             = 10U, /**< Event-2 occurrence */
+ 464:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_IRQ_ID_TRAP               = 11U  /**< Trap occurrence */
+ 465:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_IRQ_ID_t;
+ 466:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 467:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 468:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Available Interrupt Event Ids, which is added to support multi event APIs
+ 469:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 470:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_MULTI_IRQ_ID
+ 471:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 472:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MULTI_IRQ_ID_PERIOD_MATCH       = 0x1U,   /**< Period match counting up */
+ 473:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MULTI_IRQ_ID_ONE_MATCH          = 0x2U,   /**< Period match -> One match counting 
+ 474:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MULTI_IRQ_ID_COMPARE_MATCH_UP   = 0x4U,   /**< Compare match counting up */
+ 475:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MULTI_IRQ_ID_COMPARE_MATCH_DOWN = 0x8U,   /**< Compare match counting down */
+ 476:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MULTI_IRQ_ID_EVENT0             = 0x100U, /**< Event-0 occurrence */
+ 477:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MULTI_IRQ_ID_EVENT1             = 0x200U, /**< Event-1 occurrence */
+ 478:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MULTI_IRQ_ID_EVENT2             = 0x400U, /**< Event-2 occurrence */
+ 479:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_MULTI_IRQ_ID_t;
+ 480:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 481:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 482:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Service Request Lines for CCU4. Event are mapped to these SR lines and these are used to generat
+ 483:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 484:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_SR_ID
+ 485:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 486:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_SR_ID_0    = 0U, /**< Service Request Line-0 selected  */
+ 487:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_SR_ID_1        , /**< Service Request Line-1 selected  */
+ 488:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_SR_ID_2        , /**< Service Request Line-2 selected  */
+ 489:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_SR_ID_3          /**< Service Request Line-3 selected  */
+ 490:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_SR_ID_t;
+ 491:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 492:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 493:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Slice shadow transfer options.
+ 494:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 495:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SHADOW_TRANSFER
+ 496:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 497:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SHADOW_TRANSFER_SLICE_0            = CCU4_GCSS_S0SE_Msk, /**< Transfer Period, Compare a
+ 498:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           shadow register values to
+ 499:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           SLICE-0 */
+ 500:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SHADOW_TRANSFER_DITHER_SLICE_0     = CCU4_GCSS_S0DSE_Msk, /**< Transfer Dither compare s
+ 501:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           to actual register for SL
+ 502:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_0  = CCU4_GCSS_S0PSE_Msk, /**< Transfer Prescaler shadow
+ 503:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           actual register for SLICE
+ 504:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SHADOW_TRANSFER_SLICE_1            = CCU4_GCSS_S1SE_Msk, /**< Transfer Period, Compare a
+ 505:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           shadow register values to
+ 506:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           SLICE-1 */
+ 507:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SHADOW_TRANSFER_DITHER_SLICE_1     = CCU4_GCSS_S1DSE_Msk, /**< Transfer Dither compare s
+ 508:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           to actual registers for S
+ 509:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_1  = CCU4_GCSS_S1PSE_Msk, /**< Transfer Prescaler shadow
+ 510:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           actual register for SLICE
+ 511:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SHADOW_TRANSFER_SLICE_2            = CCU4_GCSS_S2SE_Msk, /**< Transfer Period, Compare a
+ 512:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           shadow register values to
+ 513:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           SLICE-2 */
+ 514:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SHADOW_TRANSFER_DITHER_SLICE_2     = CCU4_GCSS_S2DSE_Msk, /**< Transfer Dither compare s
+ 515:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           to actual register for SL
+ 516:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_2  = CCU4_GCSS_S2PSE_Msk, /**< Transfer Prescaler shadow
+ 517:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           actual register for SLICE
+ 518:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SHADOW_TRANSFER_SLICE_3            = CCU4_GCSS_S3SE_Msk, /**< Transfer Period, Compare a
+ 519:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           shadow register values to
+ 520:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           SLICE-3 */
+ 521:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SHADOW_TRANSFER_DITHER_SLICE_3     = CCU4_GCSS_S3DSE_Msk, /**< Transfer Dither compare s
+ 522:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           to actual register for SL
+ 523:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_3  = CCU4_GCSS_S3PSE_Msk  /**< Transfer Prescaler shadow
+ 524:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                           actual register for SLICE
+ 525:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SHADOW_TRANSFER_t;
+ 526:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 527:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU4V3) || defined(DOXYGEN)/* Defined for XMC1400 devices only */
+ 528:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 529:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Slice shadow transfer mode options.
+ 530:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @note Only available for XMC1400 series
+ 531:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 532:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_SHADOW_TRANSFER_MODE
+ 533:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 534:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_SHADOW_TRANSFER_MODE_IN_PERIOD_MATCH_AND_ONE_MATCH = 0U,  /**< Shadow transfer is 
+ 535:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                 One match. */
+ 536:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_SHADOW_TRANSFER_MODE_ONLY_IN_PERIOD_MATCH = 1U,  /**< Shadow transfer is done only
+ 537:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_SHADOW_TRANSFER_MODE_ONLY_IN_ONE_MATCH = 2U  /**< Shadow transfer is done only in 
+ 538:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_SHADOW_TRANSFER_MODE_t; 
+ 539:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   
+ 540:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   
+ 541:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 542:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Immediate write into configuration register
+ 543:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  @note Only available for XMC1400 series
+ 544:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 545:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_WRITE_INTO
+ 546:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 547:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_WRITE_INTO_PERIOD_CONFIGURATION = CCU4_CC4_STC_IRPC_Msk,                  /**< Imm
+ 548:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                 Wri
+ 549:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                 Con
+ 550:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_WRITE_INTO_COMPARE_CONFIGURATION = CCU4_CC4_STC_IRCC_Msk,                 /**< Imm
+ 551:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                 Wri
+ 552:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                 Con
+ 553:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_WRITE_INTO_PASSIVE_LEVEL_CONFIGURATION = CCU4_CC4_STC_IRLC_Msk,           /**< Imm
+ 554:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                 Wri
+ 555:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 	                                                                                            Config
+ 556:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_WRITE_INTO_DITHER_VALUE_CONFIGURATION = CCU4_CC4_STC_IRDC_Msk,            /**< Imm
+ 557:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                 Wri
+ 558:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 	                                                                                            Config
+ 559:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_WRITE_INTO_FLOATING_PRESCALER_VALUE_CONFIGURATION = CCU4_CC4_STC_IRFC_Msk /**< Imm
+ 560:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                 Wri
+ 561:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                 Val
+ 562:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_WRITE_INTO_t;
+ 563:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 564:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 565:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 566:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Automatic Shadow Transfer request when writing into shadow register
+ 567:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  @note Only available for XMC1400 series
+ 568:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 569:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_AUTOMAIC_SHADOW_TRANSFER_WRITE_INTO
+ 570:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 571:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_AUTOMAIC_SHADOW_TRANSFER_WRITE_INTO_PERIOD_SHADOW = CCU4_CC4_STC_ASPC_Msk,        
+ 572:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 	                                                                                                  
+ 573:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                    
+ 574:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                    
+ 575:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_AUTOMAIC_SHADOW_TRANSFER_WRITE_INTO_COMPARE_SHADOW = CCU4_CC4_STC_ASCC_Msk,       
+ 576:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 	                                                                                                  
+ 577:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 	                                                                                                  
+ 578:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 	                                                                                                  
+ 579:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_AUTOMAIC_SHADOW_TRANSFER_WRITE_INTO_PASSIVE_LEVEL = CCU4_CC4_STC_ASLC_Msk,        
+ 580:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 	                                                                                                  
+ 581:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                    
+ 582:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_AUTOMAIC_SHADOW_TRANSFER_WRITE_INTO_DITHER_SHADOW = CCU4_CC4_STC_ASDC_Msk,        
+ 583:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                    
+ 584:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                    
+ 585:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_AUTOMAIC_SHADOW_TRANSFER_WRITE_INTO_FLOATING_PRESCALER_SHADOW = CCU4_CC4_STC_ASFC_
+ 586:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 	                                                                                                  
+ 587:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                    
+ 588:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                                                                    
+ 589:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 590:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_AUTOMAIC_SHADOW_TRANSFER_WRITE_INTO_t;
+ 591:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 592:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 593:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Used to create Mask needed for Multi-channel Shadow transfer enable/disable
+ 594:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 595:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef enum XMC_CCU4_SLICE_MASK
+ 596:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 597:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MASK_SLICE_0  = 1U , /**< SLICE-0 */
+ 598:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MASK_SLICE_1  = 2U , /**< SLICE-1 */
+ 599:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MASK_SLICE_2  = 4U , /**< SLICE-2 */
+ 600:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_MASK_SLICE_3  = 8U   /**< SLICE-3 */
+ 601:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_MASK_t;
+ 602:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 603:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 604:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**************************************************************************************************
+ 605:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * DATA STRUCTURES
+ 606:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  **************************************************************************************************
+ 607:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 608:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 609:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Configuration data structure of an External Event(Event-0/1/2).
+ 610:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Needed to configure the various aspects of an External Event.
+ 611:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  This structure will not connect the external event with an external function.
+ 612:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 613:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef struct XMC_CCU4_SLICE_EVENT_CONFIG
+ 614:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 615:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_INPUT_t                   mapped_input; /**< Required input signal for the Event *
+ 616:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_EDGE_SENSITIVITY_t  edge;         /**< Select the event edge of the input si
+ 617:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                               This is needed for an edge sensitive 
+ 618:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_LEVEL_SENSITIVITY_t level;        /**< Select the event level of the input s
+ 619:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                                               This is needed for an level sensitive
+ 620:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_CCU4_SLICE_EVENT_FILTER_t            duration;     /**< Low Pass filter duration in terms of 
+ 621:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_EVENT_CONFIG_t;
+ 622:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 623:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /*Anonymous structure/union guard start*/
+ 624:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(__CC_ARM)
+ 625:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   #pragma push
+ 626:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   #pragma anon_unions
+ 627:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #elif defined(__TASKING__)
+ 628:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   #pragma warning 586
+ 629:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 630:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 631:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 632:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Configuration data structure for CCU4 slice. Specifically configures the CCU4 slice to compare 
+ 633:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  This excludes event and function configuration.
+ 634:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 635:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef struct XMC_CCU4_SLICE_COMPARE_CONFIG
+ 636:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 637:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   union
+ 638:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   {
+ 639:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****     struct
+ 640:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****     {
+ 641:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t timer_mode : 1;         /**< Edge aligned or Centre Aligned.
+ 642:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                              Accepts enum ::XMC_CCU4_SLICE_TIMER_COUNT_MODE_t */
+ 643:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t monoshot : 1;           /**< Single shot or Continuous mode .
+ 644:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                              Accepts enum :: XMC_CCU4_SLICE_TIMER_REPEAT_MODE_t*/
+ 645:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t shadow_xfer_clear : 1;  /**< Should PR and CR shadow xfer happen when timer is clear
+ 646:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t : 10;
+ 647:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t dither_timer_period: 1; /**< Can the period of the timer dither? */
+ 648:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t dither_duty_cycle : 1;  /**< Can the compare match of the timer dither? */
+ 649:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t : 1;
+ 650:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t prescaler_mode: 1;      /**< Normal or floating prescaler mode.
+ 651:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                              Accepts enum :: XMC_CCU4_SLICE_PRESCALER_MODE_t*/
+ 652:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t : 8;
+ 653:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t mcm_enable : 1;         /**< Multi-Channel mode enable? */
+ 654:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t : 6;
+ 655:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****     };
+ 656:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****     uint32_t tc;
+ 657:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   };
+ 658:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   uint32_t prescaler_initval : 4;      /**< Initial prescaler divider value 
+ 659:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                             Accepts enum :: XMC_CCU4_SLICE_PRESCALER_t */
+ 660:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   uint32_t float_limit : 4;            /**< The max value which the prescaler divider can increment
+ 661:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   uint32_t dither_limit : 4;           /**< The value that determines the spreading of dithering */
+ 662:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   uint32_t passive_level : 1;          /**< Configuration of ST and OUT passive levels.
+ 663:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                              Accepts enum :: XMC_CCU4_SLICE_OUTPUT_PASSIVE_LEVEL_t*
+ 664:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   uint32_t timer_concatenation : 1;    /**< Enables the concatenation of the timer if true.*/
+ 665:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_COMPARE_CONFIG_t;
+ 666:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 667:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 668:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Configuration data structure for CCU4 slice. Specifically configures the CCU4 slice to capture 
+ 669:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  This excludes event and function configuration.
+ 670:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */ 
+ 671:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** typedef struct XMC_CCU4_SLICE_CAPTURE_CONFIG
+ 672:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 673:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   union
+ 674:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   {
+ 675:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****     struct
+ 676:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****     {
+ 677:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t : 4;
+ 678:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t fifo_enable : 1;      /**< Should the capture registers be setup as a FIFO?(Extended
+ 679:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t timer_clear_mode : 2; /**< How should the timer register be cleared upon detection o
+ 680:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****                                           Accepts enum ::XMC_CCU4_SLICE_TIMER_CLEAR_MODE_t*/
+ 681:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t : 4;
+ 682:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t same_event : 1;       /**< Should the capture event for C1V/C0V and C3V/C2V be same 
+ 683:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t ignore_full_flag : 1; /**< Should updates to capture registers follow full flag rule
+ 684:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t : 3;
+ 685:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t prescaler_mode: 1;    /**< Normal or floating prescaler Accepts enum :: XMC_CCU4_SLI
+ 686:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****       uint32_t : 15;
+ 687:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****     };
+ 688:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****     uint32_t tc;
+ 689:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   };
+ 690:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   uint32_t prescaler_initval : 4;    /**< Prescaler divider value */
+ 691:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   uint32_t float_limit : 4;          /**< The max value which the prescaler divider can increment t
+ 692:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   uint32_t timer_concatenation : 1;  /**< Enables the concatenation of the timer */
+ 693:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } XMC_CCU4_SLICE_CAPTURE_CONFIG_t;
+ 694:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /*Anonymous structure/union guard end*/
+ 695:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(__CC_ARM)
+ 696:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   #pragma pop
+ 697:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #elif defined(__TASKING__)
+ 698:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   #pragma warning restore
+ 699:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 700:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**************************************************************************************************
+ 701:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * API Prototypes
+ 702:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  **************************************************************************************************
+ 703:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 704:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #ifdef __cplusplus
+ 705:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** extern "C" {
+ 706:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 707:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 708:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** __STATIC_INLINE bool XMC_CCU4_IsValidModule(const XMC_CCU4_MODULE_t *const module)
+ 709:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 710:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   bool tmp = false;
+ 711:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   
+ 712:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = (module == CCU40);
+ 713:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   
+ 714:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU41) 
+ 715:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (module == CCU41);
+ 716:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 717:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 718:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU42)
+ 719:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (module == CCU42);
+ 720:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 721:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 722:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU43)
+ 723:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (module == CCU43);
+ 724:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 725:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   
+ 726:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   return tmp;  
+ 727:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } 
+ 728:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 729:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** __STATIC_INLINE bool XMC_CCU4_IsValidSlice(const XMC_CCU4_SLICE_t *const slice)
+ 730:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+ 731:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   bool tmp = false;
+ 732:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   
+ 733:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = (slice == CCU40_CC40);
+ 734:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU40_CC41)  
+ 735:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU40_CC41);
+ 736:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 737:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU40_CC42)  
+ 738:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU40_CC42);
+ 739:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 740:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU40_CC43)  
+ 741:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU40_CC43);
+ 742:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 743:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU41)  
+ 744:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU41_CC40);
+ 745:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU41_CC41)  
+ 746:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU41_CC41);
+ 747:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 748:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU41_CC42)  
+ 749:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU41_CC42);
+ 750:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 751:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU41_CC43)  
+ 752:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU41_CC43);
+ 753:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 754:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif 
+ 755:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU42)  
+ 756:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU42_CC40);
+ 757:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU42_CC41)  
+ 758:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU42_CC41);
+ 759:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 760:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU42_CC42)  
+ 761:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU42_CC42);
+ 762:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 763:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU42_CC43)  
+ 764:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU42_CC43);
+ 765:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 766:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 767:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU43)  
+ 768:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU43_CC40);
+ 769:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU43_CC41)  
+ 770:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU43_CC41);
+ 771:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 772:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU43_CC42)  
+ 773:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU43_CC42);
+ 774:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 775:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #if defined(CCU43_CC43)  
+ 776:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   tmp = tmp || (slice == CCU43_CC43);
+ 777:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif
+ 778:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** #endif 
+ 779:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   
+ 780:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   return tmp;  
+ 781:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** } 
+ 782:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 783:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 784:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @param module Constant pointer to CCU4 module
+ 785:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @param mcs_action multi-channel shadow transfer request configuration
+ 786:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @return <BR>
+ 787:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *    None<BR>
+ 788:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 789:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par<b>Description:</b><br>
+ 790:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Initialization of global register GCTRL.<br>\n
+ 791:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  As part of module initialization, behaviour of the module upon detection
+ 792:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Multi-Channel Mode trigger is configured. Will also invoke the XMC_CCU4_EnableModule().
+ 793:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  The API call would bring up the required CCU4 module and also initialize the module for
+ 794:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  the required multi-channel shadow transfer.
+ 795:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 796:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par<b>Related APIs:</b><br>
+ 797:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * XMC_CCU4_SLICE_CompareInit()<BR> XMC_CCU4_SLICE_CaptureInit().
+ 798:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 799:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** void XMC_CCU4_Init(XMC_CCU4_MODULE_t *const module, const XMC_CCU4_SLICE_MCMS_ACTION_t mcs_action);
+ 800:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 801:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 802:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @param module Constant pointer to CCU4 module
+ 803:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @param clock Choice of input clock to the module
+ 804:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @return <BR>
+ 805:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *    None<BR>
+ 806:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 807:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par<b>Description:</b><br>
+ 808:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Selects the Module Clock by configuring GCTRL.PCIS bits.<BR>\n
+ 809:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  There are 3 potential clock sources. This API helps to select the required clock source.
+ 810:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Call to this API is valid after the XMC_CCU4_Init().
+ 811:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 812:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par<b>Related APIs:</b><br>
+ 813:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * None.<BR>
+ 814:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 815:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** void XMC_CCU4_SetModuleClock(XMC_CCU4_MODULE_t *const module, const XMC_CCU4_CLOCK_t clock);
+ 816:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 817:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 818:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @param module Constant pointer to CCU4 module
+ 819:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @return <BR>
+ 820:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *    None<BR>
+ 821:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 822:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par<b>Description:</b><br>
+ 823:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Enables the CCU4 module and brings it to active state.<BR>\n
+ 824:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Also disables the gating of the clock signal (if applicable depending on the device being select
+ 825:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Invoke this API before any operations are done on the CCU4 module. Invoked from  XMC_CCU4_Init()
+ 826:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 827:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par<b>Related APIs:</b><br>
+ 828:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * XMC_CCU4_SetModuleClock()<BR> XMC_CCU4_DisableModule()<BR> XMC_CCU4_StartPrescaler().
+ 829:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 830:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** void XMC_CCU4_EnableModule(XMC_CCU4_MODULE_t *const module);
+ 831:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 832:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 833:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @param module Constant pointer to CCU4 module
+ 834:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @return <BR>
+ 835:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *    None<BR>
+ 836:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 837:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par<b>Description:</b><br>
+ 838:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Brings the CCU4 module to reset state and enables gating of the clock signal(if applicable depen
+ 839:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * on the device being selected).<BR>\n
+ 840:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Invoke this API when a CCU4 module needs to be disabled completely.
+ 841:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * Any operation on the CCU4 module will have no effect after this API is called.
+ 842:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 843:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par<b>Related APIs:</b><br>
+ 844:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * XMC_CCU4_EnableModule()<BR> XMC_CCU4_DisableModule().
+ 845:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 846:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** void XMC_CCU4_DisableModule(XMC_CCU4_MODULE_t *const module);
+ 847:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** 
+ 848:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** /**
+ 849:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @param module Constant pointer to CCU4 module
+ 850:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * @return <BR>
+ 851:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *    None<BR>
+ 852:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 853:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par<b>Description:</b><br>
+ 854:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Starts the prescaler and restores clocks to the timer slices, by setting GIDLC.SPRB bit.<BR>\n
+ 855:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  Once the input to the prescaler has been chosen and the prescaler divider of all slices program
+ 856:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  the prescaler itself may be started. Invoke this  API after XMC_CCU4_Init()
+ 857:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *  (Mandatory to fully initialize the module).Directly accessed register is GIDLC.
+ 858:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  *
+ 859:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * \par<b>Related APIs:</b><br>
+ 860:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * XMC_CCU4_Init()<BR> XMC_CCU4_EnableClock()<BR> XMC_CCU4_DisableClock()<BR> XMC_CCU4_StartPrescal
+ 861:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  * XMC_CCU4_StopPrescaler().
+ 862:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****  */
+ 863:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** __STATIC_INLINE void XMC_CCU4_StartPrescaler(XMC_CCU4_MODULE_t *const module)
+ 864:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** {
+  27              	 .loc 1 864 0
+  28              	 .cfi_startproc
+  29              	 
+  30              	 
+  31              	 
+  32 0000 80B4     	 push {r7}
+  33              	.LCFI0:
+  34              	 .cfi_def_cfa_offset 4
+  35              	 .cfi_offset 7,-4
+  36 0002 83B0     	 sub sp,sp,#12
+  37              	.LCFI1:
+  38              	 .cfi_def_cfa_offset 16
+  39 0004 00AF     	 add r7,sp,#0
+  40              	.LCFI2:
+  41              	 .cfi_def_cfa_register 7
+  42 0006 7860     	 str r0,[r7,#4]
+ 865:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   XMC_ASSERT("XMC_CCU4_StartPrescaler:Invalid Module Pointer", XMC_CCU4_IsValidModule(module));
+ 866:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h ****   module->GIDLC |= (uint32_t) CCU4_GIDLC_SPRB_Msk;
+  43              	 .loc 1 866 0
+  44 0008 7B68     	 ldr r3,[r7,#4]
+  45 000a DB68     	 ldr r3,[r3,#12]
+  46 000c 43F48072 	 orr r2,r3,#256
+  47 0010 7B68     	 ldr r3,[r7,#4]
+  48 0012 DA60     	 str r2,[r3,#12]
+ 867:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc\xmc_ccu4.h **** }
+  49              	 .loc 1 867 0
+  50 0014 0C37     	 adds r7,r7,#12
+  51              	.LCFI3:
+  52              	 .cfi_def_cfa_offset 4
+  53 0016 BD46     	 mov sp,r7
+  54              	.LCFI4:
+  55              	 .cfi_def_cfa_register 13
+  56              	 
+  57 0018 5DF8047B 	 ldr r7,[sp],#4
+  58              	.LCFI5:
+  59              	 .cfi_restore 7
+  60              	 .cfi_def_cfa_offset 0
+  61 001c 7047     	 bx lr
+  62              	 .cfi_endproc
+  63              	.LFE137:
+  65 001e 00BF     	 .section .text.GLOBAL_CCU4_GetAppVersion,"ax",%progbits
+  66              	 .align 2
+  67              	 .global GLOBAL_CCU4_GetAppVersion
+  68              	 .thumb
+  69              	 .thumb_func
+  71              	GLOBAL_CCU4_GetAppVersion:
+  72              	.LFB215:
+  73              	 .file 2 "../Dave/Generated/GLOBAL_CCU4/global_ccu4.c"
+   1:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** /**
+   2:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * @file global_ccu4.c
+   3:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * @date 2016-02-10
+   4:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *
+   5:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * NOTE:
+   6:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * This file is generated by DAVE. Any manual modification done to this file will be lost when the 
+   7:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *
+   8:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * @cond
+   9:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  **************************************************************************************************
+  10:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * GLOBAL_CCU4 v4.1.12 - Configures the global properties of CCU4x peripheral instance.
+  11:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *
+  12:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * Copyright (c) 2016, Infineon Technologies AG
+  13:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * All rights reserved.
+  14:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *
+  15:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  16:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * following conditions are met:
+  17:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *
+  18:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *   Redistributions of source code must retain the above copyright notice, this list of conditions
+  19:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *   disclaimer.
+  20:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *
+  21:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *   Redistributions in binary form must reproduce the above copyright notice, this list of conditi
+  22:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *   following disclaimer in the documentation and/or other materials provided with the distributio
+  23:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *
+  24:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *   Neither the name of the copyright holders nor the names of its contributors may be used to end
+  25:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *   products derived from this software without specific prior written permission.
+  26:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *
+  27:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  28:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  29:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  30:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  31:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  32:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  33:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  34:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *
+  35:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  36:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * with Infineon Technologies AG (dave@infineon.com).
+  37:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  **************************************************************************************************
+  38:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *
+  39:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * Change History
+  40:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * --------------
+  41:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *
+  42:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * 2015-02-16:
+  43:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *     - Initial version<br>
+  44:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *
+  45:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * @endcond
+  46:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  *
+  47:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  */
+  48:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** /**************************************************************************************************
+  49:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * HEADER FILES
+  50:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  **************************************************************************************************
+  51:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** 
+  52:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** #include "global_ccu4.h"
+  53:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** 
+  54:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** /**************************************************************************************************
+  55:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * MACROS
+  56:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  **************************************************************************************************
+  57:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** 
+  58:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** /**************************************************************************************************
+  59:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * LOCAL DATA
+  60:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  **************************************************************************************************
+  61:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  
+  62:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** /**************************************************************************************************
+  63:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * LOCAL ROUTINES
+  64:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  **************************************************************************************************
+  65:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** 
+  66:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** /**************************************************************************************************
+  67:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  * API IMPLEMENTATION
+  68:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****  **************************************************************************************************
+  69:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** /* Returns the version of the GLOBAL_CCU4 APP. */
+  70:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** DAVE_APP_VERSION_t GLOBAL_CCU4_GetAppVersion(void)
+  71:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** {
+  74              	 .loc 2 71 0
+  75              	 .cfi_startproc
+  76              	 
+  77              	 
+  78              	 
+  79 0000 80B4     	 push {r7}
+  80              	.LCFI6:
+  81              	 .cfi_def_cfa_offset 4
+  82              	 .cfi_offset 7,-4
+  83 0002 83B0     	 sub sp,sp,#12
+  84              	.LCFI7:
+  85              	 .cfi_def_cfa_offset 16
+  86 0004 00AF     	 add r7,sp,#0
+  87              	.LCFI8:
+  88              	 .cfi_def_cfa_register 7
+  72:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****   DAVE_APP_VERSION_t version;
+  73:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** 
+  74:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****   version.major = GLOBAL_CCU4_MAJOR_VERSION;
+  89              	 .loc 2 74 0
+  90 0006 0423     	 movs r3,#4
+  91 0008 3B70     	 strb r3,[r7]
+  75:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****   version.minor = GLOBAL_CCU4_MINOR_VERSION;
+  92              	 .loc 2 75 0
+  93 000a 0123     	 movs r3,#1
+  94 000c 7B70     	 strb r3,[r7,#1]
+  76:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****   version.patch = GLOBAL_CCU4_PATCH_VERSION;
+  95              	 .loc 2 76 0
+  96 000e 0C23     	 movs r3,#12
+  97 0010 BB70     	 strb r3,[r7,#2]
+  77:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** 
+  78:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****   return version;
+  98              	 .loc 2 78 0
+  99 0012 3B1D     	 adds r3,r7,#4
+ 100 0014 3A46     	 mov r2,r7
+ 101 0016 1268     	 ldr r2,[r2]
+ 102 0018 1146     	 mov r1,r2
+ 103 001a 1980     	 strh r1,[r3]
+ 104 001c 0233     	 adds r3,r3,#2
+ 105 001e 120C     	 lsrs r2,r2,#16
+ 106 0020 1A70     	 strb r2,[r3]
+ 107 0022 0023     	 movs r3,#0
+ 108 0024 3A79     	 ldrb r2,[r7,#4]
+ 109 0026 62F30703 	 bfi r3,r2,#0,#8
+ 110 002a 7A79     	 ldrb r2,[r7,#5]
+ 111 002c 62F30F23 	 bfi r3,r2,#8,#8
+ 112 0030 BA79     	 ldrb r2,[r7,#6]
+ 113 0032 62F31743 	 bfi r3,r2,#16,#8
+  79:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** }
+ 114              	 .loc 2 79 0
+ 115 0036 1846     	 mov r0,r3
+ 116 0038 0C37     	 adds r7,r7,#12
+ 117              	.LCFI9:
+ 118              	 .cfi_def_cfa_offset 4
+ 119 003a BD46     	 mov sp,r7
+ 120              	.LCFI10:
+ 121              	 .cfi_def_cfa_register 13
+ 122              	 
+ 123 003c 5DF8047B 	 ldr r7,[sp],#4
+ 124              	.LCFI11:
+ 125              	 .cfi_restore 7
+ 126              	 .cfi_def_cfa_offset 0
+ 127 0040 7047     	 bx lr
+ 128              	 .cfi_endproc
+ 129              	.LFE215:
+ 131 0042 00BF     	 .section .text.GLOBAL_CCU4_Init,"ax",%progbits
+ 132              	 .align 2
+ 133              	 .global GLOBAL_CCU4_Init
+ 134              	 .thumb
+ 135              	 .thumb_func
+ 137              	GLOBAL_CCU4_Init:
+ 138              	.LFB216:
+  80:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** 
+  81:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** /* Initializes the slice with the generated configuration */
+  82:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** GLOBAL_CCU4_STATUS_t GLOBAL_CCU4_Init(GLOBAL_CCU4_t* handle)
+  83:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** {
+ 139              	 .loc 2 83 0
+ 140              	 .cfi_startproc
+ 141              	 
+ 142              	 
+ 143 0000 80B5     	 push {r7,lr}
+ 144              	.LCFI12:
+ 145              	 .cfi_def_cfa_offset 8
+ 146              	 .cfi_offset 7,-8
+ 147              	 .cfi_offset 14,-4
+ 148 0002 82B0     	 sub sp,sp,#8
+ 149              	.LCFI13:
+ 150              	 .cfi_def_cfa_offset 16
+ 151 0004 00AF     	 add r7,sp,#0
+ 152              	.LCFI14:
+ 153              	 .cfi_def_cfa_register 7
+ 154 0006 7860     	 str r0,[r7,#4]
+  84:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****   XMC_ASSERT("GLOBAL_CCU4_Init:NULL handler", (NULL != handle));
+  85:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** 
+  86:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****   if (false == handle->is_initialized)
+ 155              	 .loc 2 86 0
+ 156 0008 7B68     	 ldr r3,[r7,#4]
+ 157 000a 5B7B     	 ldrb r3,[r3,#13]
+ 158 000c 83F00103 	 eor r3,r3,#1
+ 159 0010 DBB2     	 uxtb r3,r3
+ 160 0012 002B     	 cmp r3,#0
+ 161 0014 0FD0     	 beq .L5
+  87:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****   {
+  88:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****     /* Enable CCU4 module */
+  89:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****     XMC_CCU4_Init(handle->module_ptr,handle->mcs_action);
+ 162              	 .loc 2 89 0
+ 163 0016 7B68     	 ldr r3,[r7,#4]
+ 164 0018 9A68     	 ldr r2,[r3,#8]
+ 165 001a 7B68     	 ldr r3,[r7,#4]
+ 166 001c 1B7B     	 ldrb r3,[r3,#12]
+ 167 001e 1046     	 mov r0,r2
+ 168 0020 1946     	 mov r1,r3
+ 169 0022 FFF7FEFF 	 bl XMC_CCU4_Init
+  90:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****     /* Start the prescaler */
+  91:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****     XMC_CCU4_StartPrescaler(handle->module_ptr);
+ 170              	 .loc 2 91 0
+ 171 0026 7B68     	 ldr r3,[r7,#4]
+ 172 0028 9B68     	 ldr r3,[r3,#8]
+ 173 002a 1846     	 mov r0,r3
+ 174 002c FFF7FEFF 	 bl XMC_CCU4_StartPrescaler
+  92:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****     /* Restricts multiple initializations */
+  93:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****     handle->is_initialized = true;
+ 175              	 .loc 2 93 0
+ 176 0030 7B68     	 ldr r3,[r7,#4]
+ 177 0032 0122     	 movs r2,#1
+ 178 0034 5A73     	 strb r2,[r3,#13]
+ 179              	.L5:
+  94:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****   }
+  95:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** 
+  96:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c ****   return (GLOBAL_CCU4_STATUS_SUCCESS);
+ 180              	 .loc 2 96 0
+ 181 0036 0023     	 movs r3,#0
+  97:../Dave/Generated/GLOBAL_CCU4/global_ccu4.c **** }
+ 182              	 .loc 2 97 0
+ 183 0038 1846     	 mov r0,r3
+ 184 003a 0837     	 adds r7,r7,#8
+ 185              	.LCFI15:
+ 186              	 .cfi_def_cfa_offset 8
+ 187 003c BD46     	 mov sp,r7
+ 188              	.LCFI16:
+ 189              	 .cfi_def_cfa_register 13
+ 190              	 
+ 191 003e 80BD     	 pop {r7,pc}
+ 192              	 .cfi_endproc
+ 193              	.LFE216:
+ 195              	 .text
+ 196              	.Letext0:
+ 197              	 .file 3 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 198              	 .file 4 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 199              	 .file 5 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include/XMC4800.h"
+ 200              	 .file 6 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/XMCLib/inc/xmc4_scu.h"
+ 201              	 .file 7 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/DAVE_Common.h"
+ 202              	 .file 8 "../Dave/Generated/GLOBAL_CCU4/global_ccu4.h"
+ 203              	 .file 9 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Include/core_cm4.h"
+ 204              	 .file 10 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include/system_XMC4800.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 global_ccu4.c
+    {standard input}:20     .text.XMC_CCU4_StartPrescaler:00000000 $t
+    {standard input}:24     .text.XMC_CCU4_StartPrescaler:00000000 XMC_CCU4_StartPrescaler
+    {standard input}:66     .text.GLOBAL_CCU4_GetAppVersion:00000000 $t
+    {standard input}:71     .text.GLOBAL_CCU4_GetAppVersion:00000000 GLOBAL_CCU4_GetAppVersion
+    {standard input}:132    .text.GLOBAL_CCU4_Init:00000000 $t
+    {standard input}:137    .text.GLOBAL_CCU4_Init:00000000 GLOBAL_CCU4_Init
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+XMC_CCU4_Init

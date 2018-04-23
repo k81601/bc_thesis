@@ -1,0 +1,43 @@
+package Model.APPS.ECAT_SSC.v4_0_18;
+
+// Import statements
+import ifx.davex.app.manifest.*
+
+abstract class ECAT_SSC_GUI extends AppManifest {
+	/* Begin : UI variable section */
+	 public GTab gtab_pin_settings;
+	 public GImage gimage_5;
+	 public GInteger ginteger_phy_offset;
+	 public GCombo gcombo_port0_tx_shift;
+	 public GCombo gcombo_port1_tx_shift;
+	 public GCheck gcheck_enable_reset_request;
+	 public GCheck gcheck_enable_mdio;
+	 public GCheck gcheck_enable_led_err;
+	 public GCheck gcheck_enable_led_run;
+	 public GCheck gcheck_enable_led_link_act_p0;
+	 public GCheck gcheck_enable_led_link_act_p1;
+	 public GGroup ggroup_phy_settings;
+	 public GInterruptPrio ginterruptprio_ecat;
+	 public GMessage gmessage_clock_setting_error;
+
+	 public ECAT_SSC_GUI(DaveEnv daveEnv){
+
+	 gtab_pin_settings = GTab(widgetName:"gtab_pin_settings", text:"Pin Settings", enabled:true, visible:true)
+	 gimage_5 = GImage(widgetName:"gimage_5", path: "doc/ECAT_Logo.jpg", enabled:true, visible:true)
+	 ginteger_phy_offset = GInteger(widgetName:"ginteger_phy_offset", value:0, minValue:0, maxValue:31, enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_port0_tx_shift = GCombo(widgetName:"gcombo_port0_tx_shift", options:["0ns","10ns","20ns","30ns"], value:"0ns", enabled:true, visible:true, isMandatoryValue:false)
+	 gcombo_port1_tx_shift = GCombo(widgetName:"gcombo_port1_tx_shift", options:["0ns","10ns","20ns","30ns"], value:"0ns", enabled:true, visible:true, isMandatoryValue:false)
+	 gcheck_enable_reset_request = GCheck(widgetName:"gcheck_enable_reset_request", value:false, enabled:true, visible:true)
+	 gcheck_enable_mdio = GCheck(widgetName:"gcheck_enable_mdio", value:true, enabled:true, visible:true)
+	 gcheck_enable_led_err = GCheck(widgetName:"gcheck_enable_led_err", value:true, enabled:true, visible:true)
+	 gcheck_enable_led_run = GCheck(widgetName:"gcheck_enable_led_run", value:true, enabled:true, visible:true)
+	 gcheck_enable_led_link_act_p0 = GCheck(widgetName:"gcheck_enable_led_link_act_p0", value:true, enabled:true, visible:true)
+	 gcheck_enable_led_link_act_p1 = GCheck(widgetName:"gcheck_enable_led_link_act_p1", value:true, enabled:true, visible:true)
+	 ggroup_phy_settings = GGroup(widgetName:"ggroup_phy_settings", text:"PHY Settings", enabled:true, visible:true)
+	 ginterruptprio_ecat = GInterruptPrio(widgetName:"ginterruptprio_ecat", priorityValue:63, minPriority:0, maxPriority:63, subPriorityValue:0, minSubPriority:0, maxSubPriority:0, subPriorityVisible:true, enabled:true, visible:true)
+	 gmessage_clock_setting_error = GMessage(widgetName:"gmessage_clock_setting_error", text:"EtherCAT clock  is not enabled in the \"Clock Selection Settings\" tab of CLOCK_XMC4 APP. Enable the same to continue.", isError:true, visible:true)
+
+
+	 }
+	/* End : UI variable section */
+}

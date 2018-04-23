@@ -1,8 +1,0 @@
-firmware_padded.bin 
--binary 
--byte-swap 4 
--crc32-b-e 
--maximum-address firmware_padded.bin -binary 
-
--o firmware_crc_swapped.bin -binary
-

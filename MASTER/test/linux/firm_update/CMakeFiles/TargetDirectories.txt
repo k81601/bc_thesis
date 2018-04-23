@@ -1,7 +1,0 @@
-/home/jakub/src/git/SOEM/test/linux/firm_update/CMakeFiles/rebuild_cache.dir
-/home/jakub/src/git/SOEM/test/linux/firm_update/CMakeFiles/install.dir
-/home/jakub/src/git/SOEM/test/linux/firm_update/CMakeFiles/list_install_components.dir
-/home/jakub/src/git/SOEM/test/linux/firm_update/CMakeFiles/firm_update.dir
-/home/jakub/src/git/SOEM/test/linux/firm_update/CMakeFiles/install/strip.dir
-/home/jakub/src/git/SOEM/test/linux/firm_update/CMakeFiles/install/local.dir
-/home/jakub/src/git/SOEM/test/linux/firm_update/CMakeFiles/edit_cache.dir

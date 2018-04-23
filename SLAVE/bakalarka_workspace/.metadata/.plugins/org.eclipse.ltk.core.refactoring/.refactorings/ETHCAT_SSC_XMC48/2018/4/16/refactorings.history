@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;ETHCAT_SSC_XMC48/SSC/XMC_ESC_sscproject.xml&apos; to &apos;XMC_ESC_SSC_IO.xml&apos;" description="Rename resource &apos;XMC_ESC_sscproject.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="SSC/XMC_ESC_sscproject.xml" name="XMC_ESC_SSC_IO.xml" stamp="1524139445969" updateReferences="true"/>
+</session>

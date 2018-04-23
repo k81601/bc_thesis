@@ -1,0 +1,3533 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "coeappl.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.HW_EscRead,"ax",%progbits
+  20              	 .align 2
+  21              	 .thumb
+  22              	 .thumb_func
+  24              	HW_EscRead:
+  25              	.LFB169:
+  26              	 .file 1 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC/xmc_eschw.h"
+   1:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**
+   2:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @file xmc_eschw.h
+   3:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @date 2018-01-24
+   4:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+   5:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * NOTE:
+   6:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * This file is copied by DAVE. Any manual modification done to this file will be lost when the cod
+   7:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+   8:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @cond
+   9:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  **************************************************************************************************
+  10:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * ECAT_SSC v4.0.18 - ECAT_SSC APP initializes the XMC ESC and sets up the interface for Beckhoff E
+  11:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  12:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * Copyright (c) 2016-2018, Infineon Technologies AG
+  13:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * All rights reserved.
+  14:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  15:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  16:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * following conditions are met:
+  17:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  18:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *   Redistributions of source code must retain the above copyright notice, this list of conditions
+  19:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *   disclaimer.
+  20:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  21:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *   Redistributions in binary form must reproduce the above copyright notice, this list of conditi
+  22:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *   disclaimer in the documentation and/or other materials provided with the distribution.
+  23:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  24:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *   Neither the name of the copyright holders nor the names of its contributors may be used to end
+  25:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *   products derived from this software without specific prior written permission.
+  26:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  27:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  28:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  29:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  30:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  31:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  32:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  33:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  34:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  35:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  36:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * with Infineon Technologies AG (dave@infineon.com).
+  37:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  **************************************************************************************************
+  38:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  39:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * Change History
+  40:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * --------------
+  41:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  42:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * 2016-02-05:
+  43:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *     - Initial version
+  44:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  45:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * 2018-01-24:
+  46:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *     - Added HW_ClearTimer()
+  47:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  48:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @endcond
+  49:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+  50:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  */
+  51:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  52:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #ifndef XMC_ESCHW_H
+  53:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define XMC_ESCHW_H
+  54:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  55:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**************************************************************************************************
+  56:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * HEADER FILES
+  57:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  **************************************************************************************************
+  58:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #include "SSC/Src/esc.h"
+  59:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #include "xmc_ecat.h"
+  60:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #include "../E_EEPROM_XMC4/e_eeprom_xmc4.h"
+  61:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  62:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  /*************************************************************************************************
+  63:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****   * MACROS
+  64:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****   *************************************************************************************************
+  65:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  66:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define ECAT_TIMER_INC_P_MS (1U) /**< Timer increment value */
+  67:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  68:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define pEsc ((uint8_t *)ECAT0)  /**< EtherCAT module address */
+  69:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  70:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** extern uint8_t aEepromData[];
+  71:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  72:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**************************************************************************************************
+  73:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * API Prototypes
+  74:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  **************************************************************************************************
+  75:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  76:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #ifdef __cplusplus
+  77:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** extern "C" {
+  78:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #endif
+  79:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  80:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**
+  81:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @ingroup ECAT_SSC_apidoc
+  82:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @{
+  83:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  */
+  84:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  85:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscReadDWord(DWordValue, Address)     ((DWordValue) = (UINT32)(((volatile UINT32 *)pEsc)
+  86:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  87:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscReadDWordIsr(DWordValue, Address)  HW_EscReadDWord(DWordValue, Address)              
+  88:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  89:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscReadWord(WordValue, Address)       ((WordValue) = (((volatile UINT16 *)pEsc)[((Addres
+  90:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  91:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscReadWordIsr(WordValue, Address)    HW_EscReadWord(WordValue, Address)                
+  92:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  93:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscReadByte(ByteValue, Address)       ((ByteValue) = (((volatile UINT8 *)pEsc)[(Address)
+  94:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  95:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscReadByteIsr(ByteValue, Address)    HW_EscReadByte(ByteValue, Address)                
+  96:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  97:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscWriteDWord(DWordValue, Address)    ((((volatile UINT32 *)pEsc)[(Address>>2)]) = (DWor
+  98:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+  99:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscWriteDWordIsr(DWordValue, Address) HW_EscWriteWord(DWordValue, Address)              
+ 100:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 101:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscWriteWord(WordValue, Address)      ((((volatile UINT16 *)pEsc)[((Address)>>1)]) = (Wo
+ 102:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 103:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscWriteWordIsr(WordValue, Address)   HW_EscWriteWord(WordValue, Address)               
+ 104:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 105:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscWriteByte(ByteValue, Address)      ((((volatile UINT8 *)pEsc)[(Address)]) = (ByteValu
+ 106:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 107:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** #define HW_EscWriteByteIsr(ByteValue, Address)   HW_EscWriteByte(ByteValue, Address)               
+ 108:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** 
+ 109:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** /**
+ 110:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @brief 16Bit ESC read access
+ 111:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 112:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param pData Pointer to local destination buffer.
+ 113:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Address EtherCAT Slave Controller address. Specifies the offset within the ESC memory are
+ 114:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @param Len Access size in Bytes
+ 115:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 116:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * @return None
+ 117:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * <BR>
+ 118:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 119:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * \par<b>Description:</b><br>
+ 120:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  * Reads from the EtherCAT Slave Controller. This function is used to access ESC registers and the 
+ 121:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  *
+ 122:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****  */
+ 123:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** __STATIC_INLINE void HW_EscRead(MEM_ADDR *pData, UINT16 Address, UINT16 Len)
+ 124:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** {
+  27              	 .loc 1 124 0
+  28              	 .cfi_startproc
+  29              	 
+  30              	 
+  31 0000 80B5     	 push {r7,lr}
+  32              	.LCFI0:
+  33              	 .cfi_def_cfa_offset 8
+  34              	 .cfi_offset 7,-8
+  35              	 .cfi_offset 14,-4
+  36 0002 82B0     	 sub sp,sp,#8
+  37              	.LCFI1:
+  38              	 .cfi_def_cfa_offset 16
+  39 0004 00AF     	 add r7,sp,#0
+  40              	.LCFI2:
+  41              	 .cfi_def_cfa_register 7
+  42 0006 7860     	 str r0,[r7,#4]
+  43 0008 0B46     	 mov r3,r1
+  44 000a 7B80     	 strh r3,[r7,#2]
+  45 000c 1346     	 mov r3,r2
+  46 000e 3B80     	 strh r3,[r7]
+ 125:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h ****   memcpy(pData, &pEsc[Address], Len);
+  47              	 .loc 1 125 0
+  48 0010 7B88     	 ldrh r3,[r7,#2]
+  49 0012 03F1A843 	 add r3,r3,#1409286144
+  50 0016 03F58033 	 add r3,r3,#65536
+  51 001a 3A88     	 ldrh r2,[r7]
+  52 001c 7868     	 ldr r0,[r7,#4]
+  53 001e 1946     	 mov r1,r3
+  54 0020 FFF7FEFF 	 bl memcpy
+ 126:C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Dave/Generated/ECAT_SSC\xmc_eschw.h **** }
+  55              	 .loc 1 126 0
+  56 0024 0837     	 adds r7,r7,#8
+  57              	.LCFI3:
+  58              	 .cfi_def_cfa_offset 8
+  59 0026 BD46     	 mov sp,r7
+  60              	.LCFI4:
+  61              	 .cfi_def_cfa_register 13
+  62              	 
+  63 0028 80BD     	 pop {r7,pc}
+  64              	 .cfi_endproc
+  65              	.LFE169:
+  67              	 .global u64Timestamp
+  68 002a 00BF     	 .section .bss.u64Timestamp,"aw",%nobits
+  69              	 .align 3
+  72              	u64Timestamp:
+  73 0000 00000000 	 .space 8
+  73      00000000 
+  74              	 .comm u32LastDc32Value,4,4
+  75              	 .comm u32CheckForDcOverrunCnt,4,4
+  76              	 .global asEntryDesc0x1600
+  77              	 .section .rodata.asEntryDesc0x1600,"a",%progbits
+  78              	 .align 2
+  81              	asEntryDesc0x1600:
+  82 0000 0500     	 .short 5
+  83 0002 0800     	 .short 8
+  84 0004 0700     	 .short 7
+  85 0006 0700     	 .short 7
+  86 0008 2000     	 .short 32
+  87 000a 0700     	 .short 7
+  88 000c 0700     	 .short 7
+  89 000e 2000     	 .short 32
+  90 0010 0700     	 .short 7
+  91 0012 0700     	 .short 7
+  92 0014 2000     	 .short 32
+  93 0016 0700     	 .short 7
+  94 0018 0700     	 .short 7
+  95 001a 2000     	 .short 32
+  96 001c 0700     	 .short 7
+  97 001e 0700     	 .short 7
+  98 0020 2000     	 .short 32
+  99 0022 0700     	 .short 7
+ 100 0024 0700     	 .short 7
+ 101 0026 2000     	 .short 32
+ 102 0028 0700     	 .short 7
+ 103 002a 0700     	 .short 7
+ 104 002c 2000     	 .short 32
+ 105 002e 0700     	 .short 7
+ 106 0030 0700     	 .short 7
+ 107 0032 2000     	 .short 32
+ 108 0034 0700     	 .short 7
+ 109 0036 0700     	 .short 7
+ 110 0038 2000     	 .short 32
+ 111 003a 0700     	 .short 7
+ 112 003c 0700     	 .short 7
+ 113 003e 2000     	 .short 32
+ 114 0040 0700     	 .short 7
+ 115 0042 0700     	 .short 7
+ 116 0044 2000     	 .short 32
+ 117 0046 0700     	 .short 7
+ 118 0048 0700     	 .short 7
+ 119 004a 2000     	 .short 32
+ 120 004c 0700     	 .short 7
+ 121              	 .global aName0x1600
+ 122 004e 0000     	 .section .rodata.aName0x1600,"a",%progbits
+ 123              	 .align 2
+ 126              	aName0x1600:
+ 127 0000 4F55545F 	 .ascii "OUT_GENERIC process data mapping\000SubIndex 001\000"
+ 127      47454E45 
+ 127      52494320 
+ 127      70726F63 
+ 127      65737320 
+ 128 002e 53756249 	 .ascii "SubIndex 002\000SubIndex 003\000SubIndex 004\000Sub"
+ 128      6E646578 
+ 128      20303032 
+ 128      00537562 
+ 128      496E6465 
+ 129 0058 496E6465 	 .ascii "Index 005\000SubIndex 006\000SubIndex 007\000SubInd"
+ 129      78203030 
+ 129      35005375 
+ 129      62496E64 
+ 129      65782030 
+ 130 0082 65782030 	 .ascii "ex 008\000SubIndex 009\000SubIndex 010\000SubIndex "
+ 130      30380053 
+ 130      7562496E 
+ 130      64657820 
+ 130      30303900 
+ 131 00ac 30313100 	 .ascii "011\000SubIndex 012\000\377\000"
+ 131      53756249 
+ 131      6E646578 
+ 131      20303132 
+ 131      00FF00
+ 132              	 .global asEntryDesc0x1A00
+ 133 00bf 00       	 .section .rodata.asEntryDesc0x1A00,"a",%progbits
+ 134              	 .align 2
+ 137              	asEntryDesc0x1A00:
+ 138 0000 0500     	 .short 5
+ 139 0002 0800     	 .short 8
+ 140 0004 0700     	 .short 7
+ 141 0006 0700     	 .short 7
+ 142 0008 2000     	 .short 32
+ 143 000a 0700     	 .short 7
+ 144 000c 0700     	 .short 7
+ 145 000e 2000     	 .short 32
+ 146 0010 0700     	 .short 7
+ 147 0012 0700     	 .short 7
+ 148 0014 2000     	 .short 32
+ 149 0016 0700     	 .short 7
+ 150 0018 0700     	 .short 7
+ 151 001a 2000     	 .short 32
+ 152 001c 0700     	 .short 7
+ 153 001e 0700     	 .short 7
+ 154 0020 2000     	 .short 32
+ 155 0022 0700     	 .short 7
+ 156 0024 0700     	 .short 7
+ 157 0026 2000     	 .short 32
+ 158 0028 0700     	 .short 7
+ 159 002a 0700     	 .short 7
+ 160 002c 2000     	 .short 32
+ 161 002e 0700     	 .short 7
+ 162 0030 0700     	 .short 7
+ 163 0032 2000     	 .short 32
+ 164 0034 0700     	 .short 7
+ 165 0036 0700     	 .short 7
+ 166 0038 2000     	 .short 32
+ 167 003a 0700     	 .short 7
+ 168 003c 0700     	 .short 7
+ 169 003e 2000     	 .short 32
+ 170 0040 0700     	 .short 7
+ 171 0042 0700     	 .short 7
+ 172 0044 2000     	 .short 32
+ 173 0046 0700     	 .short 7
+ 174 0048 0700     	 .short 7
+ 175 004a 2000     	 .short 32
+ 176 004c 0700     	 .short 7
+ 177              	 .global aName0x1A00
+ 178 004e 0000     	 .section .rodata.aName0x1A00,"a",%progbits
+ 179              	 .align 2
+ 182              	aName0x1A00:
+ 183 0000 494E5F47 	 .ascii "IN_GENERIC process data mapping\000SubIndex 001\000"
+ 183      454E4552 
+ 183      49432070 
+ 183      726F6365 
+ 183      73732064 
+ 184 002d 53756249 	 .ascii "SubIndex 002\000SubIndex 003\000SubIndex 004\000Sub"
+ 184      6E646578 
+ 184      20303032 
+ 184      00537562 
+ 184      496E6465 
+ 185 0057 496E6465 	 .ascii "Index 005\000SubIndex 006\000SubIndex 007\000SubInd"
+ 185      78203030 
+ 185      35005375 
+ 185      62496E64 
+ 185      65782030 
+ 186 0081 65782030 	 .ascii "ex 008\000SubIndex 009\000SubIndex 010\000SubIndex "
+ 186      30380053 
+ 186      7562496E 
+ 186      64657820 
+ 186      30303900 
+ 187 00ab 30313100 	 .ascii "011\000SubIndex 012\000\377\000"
+ 187      53756249 
+ 187      6E646578 
+ 187      20303132 
+ 187      00FF00
+ 188              	 .global asEntryDesc0x1C12
+ 189 00be 0000     	 .section .rodata.asEntryDesc0x1C12,"a",%progbits
+ 190              	 .align 2
+ 193              	asEntryDesc0x1C12:
+ 194 0000 0500     	 .short 5
+ 195 0002 0800     	 .short 8
+ 196 0004 0700     	 .short 7
+ 197 0006 0600     	 .short 6
+ 198 0008 1000     	 .short 16
+ 199 000a 0700     	 .short 7
+ 200              	 .global aName0x1C12
+ 201              	 .section .rodata.aName0x1C12,"a",%progbits
+ 202              	 .align 2
+ 205              	aName0x1C12:
+ 206 0000 53796E63 	 .ascii "SyncManager 2 assignment\000\377\000"
+ 206      4D616E61 
+ 206      67657220 
+ 206      32206173 
+ 206      7369676E 
+ 207              	 .global asEntryDesc0x1C13
+ 208 001b 00       	 .section .rodata.asEntryDesc0x1C13,"a",%progbits
+ 209              	 .align 2
+ 212              	asEntryDesc0x1C13:
+ 213 0000 0500     	 .short 5
+ 214 0002 0800     	 .short 8
+ 215 0004 0700     	 .short 7
+ 216 0006 0600     	 .short 6
+ 217 0008 1000     	 .short 16
+ 218 000a 0700     	 .short 7
+ 219              	 .global aName0x1C13
+ 220              	 .section .rodata.aName0x1C13,"a",%progbits
+ 221              	 .align 2
+ 224              	aName0x1C13:
+ 225 0000 53796E63 	 .ascii "SyncManager 3 assignment\000\377\000"
+ 225      4D616E61 
+ 225      67657220 
+ 225      33206173 
+ 225      7369676E 
+ 226              	 .global asEntryDesc0x6000
+ 227 001b 00       	 .section .rodata.asEntryDesc0x6000,"a",%progbits
+ 228              	 .align 2
+ 231              	asEntryDesc0x6000:
+ 232 0000 0500     	 .short 5
+ 233 0002 0800     	 .short 8
+ 234 0004 0700     	 .short 7
+ 235 0006 0600     	 .short 6
+ 236 0008 1000     	 .short 16
+ 237 000a 0700     	 .short 7
+ 238 000c 0600     	 .short 6
+ 239 000e 1000     	 .short 16
+ 240 0010 0700     	 .short 7
+ 241 0012 0600     	 .short 6
+ 242 0014 1000     	 .short 16
+ 243 0016 0700     	 .short 7
+ 244 0018 0600     	 .short 6
+ 245 001a 1000     	 .short 16
+ 246 001c 0700     	 .short 7
+ 247 001e 0100     	 .short 1
+ 248 0020 0100     	 .short 1
+ 249 0022 0700     	 .short 7
+ 250 0024 0100     	 .short 1
+ 251 0026 0100     	 .short 1
+ 252 0028 0700     	 .short 7
+ 253 002a 0100     	 .short 1
+ 254 002c 0100     	 .short 1
+ 255 002e 0700     	 .short 7
+ 256 0030 0100     	 .short 1
+ 257 0032 0100     	 .short 1
+ 258 0034 0700     	 .short 7
+ 259 0036 0100     	 .short 1
+ 260 0038 0100     	 .short 1
+ 261 003a 0700     	 .short 7
+ 262 003c 0100     	 .short 1
+ 263 003e 0100     	 .short 1
+ 264 0040 0700     	 .short 7
+ 265 0042 0100     	 .short 1
+ 266 0044 0100     	 .short 1
+ 267 0046 0700     	 .short 7
+ 268 0048 0100     	 .short 1
+ 269 004a 0100     	 .short 1
+ 270 004c 0700     	 .short 7
+ 271              	 .global aName0x6000
+ 272 004e 0000     	 .section .rodata.aName0x6000,"a",%progbits
+ 273              	 .align 2
+ 276              	aName0x6000:
+ 277 0000 494E5F47 	 .ascii "IN_GENERIC\000IN_GEN_INT1\000IN_GEN_INT2\000IN_GEN_"
+ 277      454E4552 
+ 277      49430049 
+ 277      4E5F4745 
+ 277      4E5F494E 
+ 278 002a 494E5433 	 .ascii "INT3\000IN_GEN_INT4\000IN_GEN_Bit1\000IN_GEN_Bit2\000"
+ 278      00494E5F 
+ 278      47454E5F 
+ 278      494E5434 
+ 278      00494E5F 
+ 279 0053 494E5F47 	 .ascii "IN_GEN_Bit3\000IN_GEN_Bit4\000IN_GEN_Bit5\000IN_GEN"
+ 279      454E5F42 
+ 279      69743300 
+ 279      494E5F47 
+ 279      454E5F42 
+ 280 007d 5F426974 	 .ascii "_Bit6\000IN_GEN_Bit7\000IN_GEN_Bit8\000\377\000"
+ 280      3600494E 
+ 280      5F47454E 
+ 280      5F426974 
+ 280      3700494E 
+ 281              	 .global asEntryDesc0x7000
+ 282 009d 000000   	 .section .rodata.asEntryDesc0x7000,"a",%progbits
+ 283              	 .align 2
+ 286              	asEntryDesc0x7000:
+ 287 0000 0500     	 .short 5
+ 288 0002 0800     	 .short 8
+ 289 0004 0700     	 .short 7
+ 290 0006 0600     	 .short 6
+ 291 0008 1000     	 .short 16
+ 292 000a 3F00     	 .short 63
+ 293 000c 0600     	 .short 6
+ 294 000e 1000     	 .short 16
+ 295 0010 3F00     	 .short 63
+ 296 0012 0600     	 .short 6
+ 297 0014 1000     	 .short 16
+ 298 0016 3F00     	 .short 63
+ 299 0018 0600     	 .short 6
+ 300 001a 1000     	 .short 16
+ 301 001c 3F00     	 .short 63
+ 302 001e 0100     	 .short 1
+ 303 0020 0100     	 .short 1
+ 304 0022 3F00     	 .short 63
+ 305 0024 0100     	 .short 1
+ 306 0026 0100     	 .short 1
+ 307 0028 3F00     	 .short 63
+ 308 002a 0100     	 .short 1
+ 309 002c 0100     	 .short 1
+ 310 002e 3F00     	 .short 63
+ 311 0030 0100     	 .short 1
+ 312 0032 0100     	 .short 1
+ 313 0034 3F00     	 .short 63
+ 314 0036 0100     	 .short 1
+ 315 0038 0100     	 .short 1
+ 316 003a 3F00     	 .short 63
+ 317 003c 0100     	 .short 1
+ 318 003e 0100     	 .short 1
+ 319 0040 3F00     	 .short 63
+ 320 0042 0100     	 .short 1
+ 321 0044 0100     	 .short 1
+ 322 0046 3F00     	 .short 63
+ 323 0048 0100     	 .short 1
+ 324 004a 0100     	 .short 1
+ 325 004c 3F00     	 .short 63
+ 326              	 .global aName0x7000
+ 327 004e 0000     	 .section .rodata.aName0x7000,"a",%progbits
+ 328              	 .align 2
+ 331              	aName0x7000:
+ 332 0000 4F55545F 	 .ascii "OUT_GENERIC\000OUT_GEN_INT1\000OUT_GEN_INT2\000OUT_"
+ 332      47454E45 
+ 332      52494300 
+ 332      4F55545F 
+ 332      47454E5F 
+ 333 002a 47454E5F 	 .ascii "GEN_INT3\000OUT_GEN_INT4\000OUT_GEN_Bit1\000OUT_GEN"
+ 333      494E5433 
+ 333      004F5554 
+ 333      5F47454E 
+ 333      5F494E54 
+ 334 0054 5F426974 	 .ascii "_Bit2\000OUT_GEN_Bit3\000OUT_GEN_Bit4\000OUT_GEN_Bi"
+ 334      32004F55 
+ 334      545F4745 
+ 334      4E5F4269 
+ 334      7433004F 
+ 335 007e 7435004F 	 .ascii "t5\000OUT_GEN_Bit6\000OUT_GEN_Bit7\000OUT_GEN_Bit8\000"
+ 335      55545F47 
+ 335      454E5F42 
+ 335      69743600 
+ 335      4F55545F 
+ 336 00a8 FF00     	 .ascii "\377\000"
+ 337              	 .global asEntryDesc0xF000
+ 338 00aa 0000     	 .section .rodata.asEntryDesc0xF000,"a",%progbits
+ 339              	 .align 2
+ 342              	asEntryDesc0xF000:
+ 343 0000 0500     	 .short 5
+ 344 0002 0800     	 .short 8
+ 345 0004 0700     	 .short 7
+ 346 0006 0600     	 .short 6
+ 347 0008 1000     	 .short 16
+ 348 000a 0700     	 .short 7
+ 349 000c 0600     	 .short 6
+ 350 000e 1000     	 .short 16
+ 351 0010 0700     	 .short 7
+ 352              	 .global aName0xF000
+ 353 0012 0000     	 .section .rodata.aName0xF000,"a",%progbits
+ 354              	 .align 2
+ 357              	aName0xF000:
+ 358 0000 4D6F6475 	 .ascii "Modular Device Profile\000Index distance \000Maximu"
+ 358      6C617220 
+ 358      44657669 
+ 358      63652050 
+ 358      726F6669 
+ 359 002d 6D206E75 	 .ascii "m number of modules \000\377\000"
+ 359      6D626572 
+ 359      206F6620 
+ 359      6D6F6475 
+ 359      6C657320 
+ 360              	 .global ApplicationObjDic
+ 361              	 .section .data.ApplicationObjDic,"aw",%progbits
+ 362              	 .align 2
+ 365              	ApplicationObjDic:
+ 366 0000 00000000 	 .word 0
+ 367 0004 00000000 	 .word 0
+ 368 0008 0016     	 .short 5632
+ 369 000a 2100     	 .short 33
+ 370 000c 0C09     	 .short 2316
+ 371 000e 0000     	 .space 2
+ 372 0010 00000000 	 .word asEntryDesc0x1600
+ 373 0014 00000000 	 .word aName0x1600
+ 374 0018 00000000 	 .word OUT_GENERICProcessDataMapping0x1600
+ 375 001c 00000000 	 .word 0
+ 376 0020 00000000 	 .word 0
+ 377 0024 0000     	 .short 0
+ 378 0026 0000     	 .space 2
+ 379 0028 00000000 	 .word 0
+ 380 002c 00000000 	 .word 0
+ 381 0030 001A     	 .short 6656
+ 382 0032 2100     	 .short 33
+ 383 0034 0C09     	 .short 2316
+ 384 0036 0000     	 .space 2
+ 385 0038 00000000 	 .word asEntryDesc0x1A00
+ 386 003c 00000000 	 .word aName0x1A00
+ 387 0040 00000000 	 .word IN_GENERICProcessDataMapping0x1A00
+ 388 0044 00000000 	 .word 0
+ 389 0048 00000000 	 .word 0
+ 390 004c 0000     	 .short 0
+ 391 004e 0000     	 .space 2
+ 392 0050 00000000 	 .word 0
+ 393 0054 00000000 	 .word 0
+ 394 0058 121C     	 .short 7186
+ 395 005a 0600     	 .short 6
+ 396 005c 0108     	 .short 2049
+ 397 005e 0000     	 .space 2
+ 398 0060 00000000 	 .word asEntryDesc0x1C12
+ 399 0064 00000000 	 .word aName0x1C12
+ 400 0068 00000000 	 .word sRxPDOassign
+ 401 006c 00000000 	 .word 0
+ 402 0070 00000000 	 .word 0
+ 403 0074 0000     	 .short 0
+ 404 0076 0000     	 .space 2
+ 405 0078 00000000 	 .word 0
+ 406 007c 00000000 	 .word 0
+ 407 0080 131C     	 .short 7187
+ 408 0082 0600     	 .short 6
+ 409 0084 0108     	 .short 2049
+ 410 0086 0000     	 .space 2
+ 411 0088 00000000 	 .word asEntryDesc0x1C13
+ 412 008c 00000000 	 .word aName0x1C13
+ 413 0090 00000000 	 .word sTxPDOassign
+ 414 0094 00000000 	 .word 0
+ 415 0098 00000000 	 .word 0
+ 416 009c 0000     	 .short 0
+ 417 009e 0000     	 .space 2
+ 418 00a0 00000000 	 .word 0
+ 419 00a4 00000000 	 .word 0
+ 420 00a8 0060     	 .short 24576
+ 421 00aa 2A00     	 .short 42
+ 422 00ac 0C09     	 .short 2316
+ 423 00ae 0000     	 .space 2
+ 424 00b0 00000000 	 .word asEntryDesc0x6000
+ 425 00b4 00000000 	 .word aName0x6000
+ 426 00b8 00000000 	 .word IN_GENERIC0x6000
+ 427 00bc 00000000 	 .word 0
+ 428 00c0 00000000 	 .word 0
+ 429 00c4 0000     	 .short 0
+ 430 00c6 0000     	 .space 2
+ 431 00c8 00000000 	 .word 0
+ 432 00cc 00000000 	 .word 0
+ 433 00d0 0070     	 .short 28672
+ 434 00d2 2A00     	 .short 42
+ 435 00d4 0C09     	 .short 2316
+ 436 00d6 0000     	 .space 2
+ 437 00d8 00000000 	 .word asEntryDesc0x7000
+ 438 00dc 00000000 	 .word aName0x7000
+ 439 00e0 00000000 	 .word OUT_GENERIC0x7000
+ 440 00e4 00000000 	 .word 0
+ 441 00e8 00000000 	 .word 0
+ 442 00ec 0000     	 .short 0
+ 443 00ee 0000     	 .space 2
+ 444 00f0 00000000 	 .word 0
+ 445 00f4 00000000 	 .word 0
+ 446 00f8 00F0     	 .short -4096
+ 447 00fa 2A00     	 .short 42
+ 448 00fc 0209     	 .short 2306
+ 449 00fe 0000     	 .space 2
+ 450 0100 00000000 	 .word asEntryDesc0xF000
+ 451 0104 00000000 	 .word aName0xF000
+ 452 0108 00000000 	 .word ModularDeviceProfile0xF000
+ 453 010c 00000000 	 .word 0
+ 454 0110 00000000 	 .word 0
+ 455 0114 0000     	 .short 0
+ 456 0116 0000     	 .space 2
+ 457 0118 00000000 	 .word 0
+ 458 011c 00000000 	 .word 0
+ 459 0120 FFFF     	 .short -1
+ 460 0122 0000     	 .short 0
+ 461 0124 0000     	 .short 0
+ 462 0126 0000     	 .space 2
+ 463 0128 00000000 	 .word 0
+ 464 012c 00000000 	 .word 0
+ 465 0130 00000000 	 .word 0
+ 466 0134 00000000 	 .word 0
+ 467 0138 00000000 	 .space 8
+ 467      00000000 
+ 468              	 .global u32Devicetype
+ 469              	 .section .data.u32Devicetype,"aw",%progbits
+ 470              	 .align 2
+ 473              	u32Devicetype:
+ 474 0000 89130000 	 .word 5001
+ 475              	 .global sEntryDesc0x1000
+ 476              	 .section .rodata.sEntryDesc0x1000,"a",%progbits
+ 477              	 .align 2
+ 480              	sEntryDesc0x1000:
+ 481 0000 0700     	 .short 7
+ 482 0002 2000     	 .short 32
+ 483 0004 0700     	 .short 7
+ 484              	 .global aName0x1000
+ 485 0006 0000     	 .section .rodata.aName0x1000,"a",%progbits
+ 486              	 .align 2
+ 489              	aName0x1000:
+ 490 0000 44657669 	 .ascii "Device type\000"
+ 490      63652074 
+ 490      79706500 
+ 491              	 .global u16ErrorRegister
+ 492              	 .section .bss.u16ErrorRegister,"aw",%nobits
+ 493              	 .align 1
+ 496              	u16ErrorRegister:
+ 497 0000 0000     	 .space 2
+ 498              	 .global sEntryDesc0x1001
+ 499              	 .section .rodata.sEntryDesc0x1001,"a",%progbits
+ 500              	 .align 2
+ 503              	sEntryDesc0x1001:
+ 504 0000 0500     	 .short 5
+ 505 0002 0800     	 .short 8
+ 506 0004 0700     	 .short 7
+ 507              	 .global aName0x1001
+ 508 0006 0000     	 .section .rodata.aName0x1001,"a",%progbits
+ 509              	 .align 2
+ 512              	aName0x1001:
+ 513 0000 4572726F 	 .ascii "Error register\000"
+ 513      72207265 
+ 513      67697374 
+ 513      657200
+ 514              	 .global acDevicename
+ 515 000f 00       	 .section .data.acDevicename,"aw",%progbits
+ 516              	 .align 2
+ 519              	acDevicename:
+ 520 0000 584D435F 	 .ascii "XMC_ESC\000"
+ 520      45534300 
+ 521              	 .global sEntryDesc0x1008
+ 522              	 .section .rodata.sEntryDesc0x1008,"a",%progbits
+ 523              	 .align 2
+ 526              	sEntryDesc0x1008:
+ 527 0000 0900     	 .short 9
+ 528 0002 3800     	 .short 56
+ 529 0004 0700     	 .short 7
+ 530              	 .global aName0x1008
+ 531 0006 0000     	 .section .rodata.aName0x1008,"a",%progbits
+ 532              	 .align 2
+ 535              	aName0x1008:
+ 536 0000 44657669 	 .ascii "Device name\000"
+ 536      6365206E 
+ 536      616D6500 
+ 537              	 .global acHardwareversion
+ 538              	 .section .data.acHardwareversion,"aw",%progbits
+ 539              	 .align 2
+ 542              	acHardwareversion:
+ 543 0000 312E3000 	 .ascii "1.0\000"
+ 544              	 .global sEntryDesc0x1009
+ 545              	 .section .rodata.sEntryDesc0x1009,"a",%progbits
+ 546              	 .align 2
+ 549              	sEntryDesc0x1009:
+ 550 0000 0900     	 .short 9
+ 551 0002 1800     	 .short 24
+ 552 0004 0700     	 .short 7
+ 553              	 .global aName0x1009
+ 554 0006 0000     	 .section .rodata.aName0x1009,"a",%progbits
+ 555              	 .align 2
+ 558              	aName0x1009:
+ 559 0000 48617264 	 .ascii "Hardware version\000"
+ 559      77617265 
+ 559      20766572 
+ 559      73696F6E 
+ 559      00
+ 560              	 .global acSoftwareversion
+ 561 0011 000000   	 .section .data.acSoftwareversion,"aw",%progbits
+ 562              	 .align 2
+ 565              	acSoftwareversion:
+ 566 0000 352E3132 	 .ascii "5.12\000"
+ 566      00
+ 567              	 .global sEntryDesc0x100A
+ 568 0005 000000   	 .section .rodata.sEntryDesc0x100A,"a",%progbits
+ 569              	 .align 2
+ 572              	sEntryDesc0x100A:
+ 573 0000 0900     	 .short 9
+ 574 0002 2000     	 .short 32
+ 575 0004 0700     	 .short 7
+ 576              	 .global aName0x100A
+ 577 0006 0000     	 .section .rodata.aName0x100A,"a",%progbits
+ 578              	 .align 2
+ 581              	aName0x100A:
+ 582 0000 536F6674 	 .ascii "Software version\000"
+ 582      77617265 
+ 582      20766572 
+ 582      73696F6E 
+ 582      00
+ 583              	 .global sIdentity
+ 584 0011 000000   	 .section .data.sIdentity,"aw",%progbits
+ 585              	 .align 2
+ 588              	sIdentity:
+ 589 0000 0400     	 .short 4
+ 590 0002 0000     	 .space 2
+ 591 0004 4E030000 	 .word 846
+ 592 0008 00000000 	 .word 0
+ 593 000c 00000000 	 .word 0
+ 594 0010 00000000 	 .word 0
+ 595              	 .global asEntryDesc0x1018
+ 596              	 .section .rodata.asEntryDesc0x1018,"a",%progbits
+ 597              	 .align 2
+ 600              	asEntryDesc0x1018:
+ 601 0000 0500     	 .short 5
+ 602 0002 0800     	 .short 8
+ 603 0004 0700     	 .short 7
+ 604 0006 0700     	 .short 7
+ 605 0008 2000     	 .short 32
+ 606 000a 0700     	 .short 7
+ 607 000c 0700     	 .short 7
+ 608 000e 2000     	 .short 32
+ 609 0010 0700     	 .short 7
+ 610 0012 0700     	 .short 7
+ 611 0014 2000     	 .short 32
+ 612 0016 0700     	 .short 7
+ 613 0018 0700     	 .short 7
+ 614 001a 2000     	 .short 32
+ 615 001c 0700     	 .short 7
+ 616              	 .global aName0x1018
+ 617 001e 0000     	 .section .rodata.aName0x1018,"a",%progbits
+ 618              	 .align 2
+ 621              	aName0x1018:
+ 622 0000 4964656E 	 .ascii "Identity\000Vendor ID\000Product code\000Revision\000"
+ 622      74697479 
+ 622      0056656E 
+ 622      646F7220 
+ 622      49440050 
+ 623 0029 53657269 	 .ascii "Serial number\000\377\000"
+ 623      616C206E 
+ 623      756D6265 
+ 623      7200FF00 
+ 624              	 .global asEntryDesc0x10F1
+ 625 0039 000000   	 .section .rodata.asEntryDesc0x10F1,"a",%progbits
+ 626              	 .align 2
+ 629              	asEntryDesc0x10F1:
+ 630 0000 0500     	 .short 5
+ 631 0002 0800     	 .short 8
+ 632 0004 0700     	 .short 7
+ 633 0006 0700     	 .short 7
+ 634 0008 2000     	 .short 32
+ 635 000a 3F00     	 .short 63
+ 636 000c 0600     	 .short 6
+ 637 000e 1000     	 .short 16
+ 638 0010 3F00     	 .short 63
+ 639              	 .global aName0x10F1
+ 640 0012 0000     	 .section .rodata.aName0x10F1,"a",%progbits
+ 641              	 .align 2
+ 644              	aName0x10F1:
+ 645 0000 4572726F 	 .ascii "Error Settings\000Local Error Reaction\000Sync Erro"
+ 645      72205365 
+ 645      7474696E 
+ 645      6773004C 
+ 645      6F63616C 
+ 646 002d 7220436F 	 .ascii "r Counter Limit\000\377\000"
+ 646      756E7465 
+ 646      72204C69 
+ 646      6D697400 
+ 646      FF00
+ 647              	 .global sEntryDesc0x10F8
+ 648 003f 00       	 .section .rodata.sEntryDesc0x10F8,"a",%progbits
+ 649              	 .align 2
+ 652              	sEntryDesc0x10F8:
+ 653 0000 1B00     	 .short 27
+ 654 0002 4000     	 .short 64
+ 655 0004 BF00     	 .short 191
+ 656              	 .global aName0x10F8
+ 657 0006 0000     	 .section .rodata.aName0x10F8,"a",%progbits
+ 658              	 .align 2
+ 661              	aName0x10F8:
+ 662 0000 54696D65 	 .ascii "Timestamp Object\000\377\000"
+ 662      7374616D 
+ 662      70204F62 
+ 662      6A656374 
+ 662      00FF00
+ 663 0013 00       	 .section .text.Read0x10F8,"ax",%progbits
+ 664              	 .align 2
+ 665              	 .global Read0x10F8
+ 666              	 .thumb
+ 667              	 .thumb_func
+ 669              	Read0x10F8:
+ 670              	.LFB177:
+ 671              	 .file 2 "../SSC/Src/coeappl.c"
+   1:../SSC/Src/coeappl.c **** /*
+   2:../SSC/Src/coeappl.c **** * This source file is part of the EtherCAT Slave Stack Code licensed by Beckhoff Automation GmbH & 
+   3:../SSC/Src/coeappl.c **** * The corresponding license agreement applies. This hint shall not be removed.
+   4:../SSC/Src/coeappl.c **** */
+   5:../SSC/Src/coeappl.c **** 
+   6:../SSC/Src/coeappl.c **** /**
+   7:../SSC/Src/coeappl.c **** \addtogroup CoE CAN Application Profile over EtherCAT
+   8:../SSC/Src/coeappl.c **** @{
+   9:../SSC/Src/coeappl.c **** */
+  10:../SSC/Src/coeappl.c **** 
+  11:../SSC/Src/coeappl.c **** /**
+  12:../SSC/Src/coeappl.c **** \file coeappl.c
+  13:../SSC/Src/coeappl.c **** \author EthercatSSC@beckhoff.com
+  14:../SSC/Src/coeappl.c **** \brief Implementation
+  15:../SSC/Src/coeappl.c **** This file contains an example for CoE services and the CoE object dictionary
+  16:../SSC/Src/coeappl.c **** 
+  17:../SSC/Src/coeappl.c **** \version 5.12
+  18:../SSC/Src/coeappl.c **** 
+  19:../SSC/Src/coeappl.c **** <br>Changes to version V5.11:<br>
+  20:../SSC/Src/coeappl.c **** V5.12 COE1: load backup value after the complete OD was initialized<br>
+  21:../SSC/Src/coeappl.c **** V5.12 COE4: add timestamp object (0x10F8) and update diagnosis handling<br>
+  22:../SSC/Src/coeappl.c **** V5.12 COE8: fix invalid sizecalculation to init backup entries<br>
+  23:../SSC/Src/coeappl.c **** V5.12 ECAT1: update SM Parameter measurement (based on the system time), enhancement for input only
+  24:../SSC/Src/coeappl.c **** V5.12 ECAT5: update Sync error counter/flag handling,check enum memory alignment depending on the p
+  25:../SSC/Src/coeappl.c **** <br>Changes to version V5.10:<br>
+  26:../SSC/Src/coeappl.c **** V5.11 COE1: update invalid end entry in the object dictionaries (error with some compilers)<br>
+  27:../SSC/Src/coeappl.c **** V5.11 COE3: change 0x10F3.2 (Sync Error limit) from UINT32 to UINT16 (according to the ETG.1020)<br
+  28:../SSC/Src/coeappl.c **** V5.11 ECAT10: change PROTO handling to prevent compiler errors<br>
+  29:../SSC/Src/coeappl.c **** V5.11 ECAT4: enhance SM/Sync monitoring for input/output only slaves<br>
+  30:../SSC/Src/coeappl.c **** <br>Changes to version V5.01:<br>
+  31:../SSC/Src/coeappl.c **** V5.10 COE1: Define one entry description for all 0x1C3x objects and change data type of SI11,12,13 
+  32:../SSC/Src/coeappl.c **** V5.10 COE2: Change return value of Get ObjectSize to UINT32<br>
+  33:../SSC/Src/coeappl.c ****             Change object size to UINT32<br>
+  34:../SSC/Src/coeappl.c **** V5.10 ECAT13: Update Synchronisation handling (FreeRun,SM Sync, Sync0, Sync1)<br>
+  35:../SSC/Src/coeappl.c ****               Compare DC UINT configuration (by ESC Config data) vs. DC activation register setting
+  36:../SSC/Src/coeappl.c ****               Update 0x1C3x entries<br>
+  37:../SSC/Src/coeappl.c **** <br>Changes to version V5.0:<br>
+  38:../SSC/Src/coeappl.c **** V5.01 APPL3: Include library demo application<br>
+  39:../SSC/Src/coeappl.c **** V5.01 COE1: Remove alignment entry (SI33) from objects 0x1C32/0x1C33<br>
+  40:../SSC/Src/coeappl.c **** V5.01 EL9800 1: Read/Write functions for setting object 0x8020 moved to el9800appl.c<br>
+  41:../SSC/Src/coeappl.c **** V5.01 EL9800 2: Add TxPdo Parameter object 0x1802<br>
+  42:../SSC/Src/coeappl.c **** V5.01 SDO6: Update SDO response interface handling. (used if the object access function returns "AB
+  43:../SSC/Src/coeappl.c **** <br>Changes to version V4.40:<br>
+  44:../SSC/Src/coeappl.c **** V5.0 TEST1: Add test application. See Application Note ET9300 for more details.<br>
+  45:../SSC/Src/coeappl.c **** V5.0 COE1: Add reserved Subindex7 to object 0x1C32 and 0x1C33.<br>
+  46:../SSC/Src/coeappl.c **** V5.0 COE4: Create object dictionary on device startup.<br>
+  47:../SSC/Src/coeappl.c **** V5.0 COE6: Update entry descriptions for object with the code ARRAY.<br>
+  48:../SSC/Src/coeappl.c **** V5.0 ECAT2: Reference to application specific object dictionary is set to "ApplicationObjDic".<br>
+  49:../SSC/Src/coeappl.c **** <br>Changes to version V4.30:<br>
+  50:../SSC/Src/coeappl.c **** V4.40 COE 6: change dynamic object dictionary handling<br>
+  51:../SSC/Src/coeappl.c **** V4.40 CiA402 2: enable freerun Sync Mode for CiA402 Device (The motion controller application will 
+  52:../SSC/Src/coeappl.c **** V4.40 COE5: move identification and synchronisation object values to ecat_def.h<br>
+  53:../SSC/Src/coeappl.c **** V4.40 DIAG1: Add diagnosis object 0x10F3<br>
+  54:../SSC/Src/coeappl.c **** V4.40 OBJ3: Update the global object dictionary pointer if a new list head is added<br>
+  55:../SSC/Src/coeappl.c **** V4.40 COE4: Prevent access NULL pointer<br>
+  56:../SSC/Src/coeappl.c **** V4.40 SYNC1: Initialize 0x1C3x objects<br>
+  57:../SSC/Src/coeappl.c **** V4.40 HW1: Add (adapt) objects for FC1100 support<br>
+  58:../SSC/Src/coeappl.c **** <br>Changes to version V4.20:<br>
+  59:../SSC/Src/coeappl.c **** V4.30 OBJ 3: Handle object dictionary in double link list<br>
+  60:../SSC/Src/coeappl.c **** V4.30 OBJ 2: General EtherCAT device objects are moved from chnappl.h to coeappl.c<br>
+  61:../SSC/Src/coeappl.c **** V4.30 SYNC: set 0x1C32:05; 0x1C33:05 (minCyleTime) to MIN_PD_CYCLE_TIME
+  62:../SSC/Src/coeappl.c ****                     (should be set dynamic if required)<br>
+  63:../SSC/Src/coeappl.c **** V4.30 PDO: rename PDO specific function calls
+  64:../SSC/Src/coeappl.c ****                     (PDO specific functions are moved to ecatappl.c)<br>
+  65:../SSC/Src/coeappl.c **** V4.20 PIC24: Add EL9800_4 (PIC24) required source code<br>
+  66:../SSC/Src/coeappl.c **** V4.11 ECAT 1: C166: MinDelayTime renamed in CalcAndCopyTime<br>
+  67:../SSC/Src/coeappl.c **** <br>Changes to version V4.07:<br>
+  68:../SSC/Src/coeappl.c **** V4.10 ECAT 1: To save and restore arrays in the object directory.<br>
+  69:../SSC/Src/coeappl.c ****             The code to get the size of an array entry was changed.<br>
+  70:../SSC/Src/coeappl.c **** V4.10 COE 1:  The SM-Parameter were extended<br>
+  71:../SSC/Src/coeappl.c **** <br>Changes to version V4.06:<br>
+  72:../SSC/Src/coeappl.c **** V4.07 COEAPPL 1: The PDO numbers were adapted according top the modular device profile,<br>
+  73:../SSC/Src/coeappl.c ****            the PDO numbers increment now with every module (in chnappl.h)<br>
+  74:../SSC/Src/coeappl.c **** V4.07 COEAPPL 2: The example is working for the NIOS with the evaluation board DBC2C20 V1.2<br>
+  75:../SSC/Src/coeappl.c ****             which is available by Altera<br>
+  76:../SSC/Src/coeappl.c **** V4.07 ECAT 1: The sources for SPI and MCI were merged (in ecat_def.h<br>
+  77:../SSC/Src/coeappl.c ****             set the switch MCI_HW to 1 when using the MCI,<br>
+  78:../SSC/Src/coeappl.c ****             set the switch SPI_HW to 1 when using the SPI<br>
+  79:../SSC/Src/coeappl.c **** <br>Changes to version V4.03:<br>
+  80:../SSC/Src/coeappl.c **** V4.04 SDO 1: The SDO interface was changed in that way that a SDO response<br>
+  81:../SSC/Src/coeappl.c ****             could be sent by the application to a later time. In that case<br>
+  82:../SSC/Src/coeappl.c ****             the functions OBJ_Read and OBJ_Write shall return the value<br>
+  83:../SSC/Src/coeappl.c ****             ABORTIDX_WORKING. To send the SDO response the new function SDOS_SdoRes<br>
+  84:../SSC/Src/coeappl.c ****             has to be called by the application. While waiting for the call<br>
+  85:../SSC/Src/coeappl.c ****             of SDOS_SdoRes the SDO interface will answer to another SDO request<br>
+  86:../SSC/Src/coeappl.c ****             with the error MBXERR_SERVICEINWORK in the mailbox protocol.<br>
+  87:../SSC/Src/coeappl.c ****             In this example the reading and writing of object 0x8020 is delayed,<br>
+  88:../SSC/Src/coeappl.c ****             the function SDOS_SdoRes will be called from COE_Main.<br>
+  89:../SSC/Src/coeappl.c **** <br>Changes to version V4.00:<br>
+  90:../SSC/Src/coeappl.c **** V4.01 COEAPPL 1: The object dictionary and the mapping functions are now defined<br>
+  91:../SSC/Src/coeappl.c ****              in chnappl.h (chnappl.inc made problems with some developing tools)<br>
+  92:../SSC/Src/coeappl.c **** <br>Changes to version V3.20:<br>
+  93:../SSC/Src/coeappl.c **** V4.00 COEAPPL 1: The object dictionary and the mapping functions are now defined<br>
+  94:../SSC/Src/coeappl.c ****             in chnappl.c and were adapted to the modular device profile<br>
+  95:../SSC/Src/coeappl.c **** V4.00 COEAPPL 2: The handling of backup parameters was included according to<br>
+  96:../SSC/Src/coeappl.c ****             the EtherCAT Guidelines and Protocol Enhancements Specification<br>
+  97:../SSC/Src/coeappl.c **** V4.00 COEAPPL 3: The handling of the TxPDO Toggle was included according to<br>
+  98:../SSC/Src/coeappl.c ****              the EtherCAT Guidelines and Protocol Enhancements Specification<br>
+  99:../SSC/Src/coeappl.c **** V4.00 COEAPPL 4: The handling of the TxPDO State was included according to<br>
+ 100:../SSC/Src/coeappl.c ****             the EtherCAT Guidelines and Protocol Enhancements Specification<br>
+ 101:../SSC/Src/coeappl.c **** V4.00 ECAT 1: The handling of the Sync Manager Parameter was included according to<br>
+ 102:../SSC/Src/coeappl.c ****             the EtherCAT Guidelines and Protocol Enhancements Specification
+ 103:../SSC/Src/coeappl.c **** */
+ 104:../SSC/Src/coeappl.c **** 
+ 105:../SSC/Src/coeappl.c **** /*-----------------------------------------------------------------------------------------
+ 106:../SSC/Src/coeappl.c **** ------
+ 107:../SSC/Src/coeappl.c **** ------    Includes
+ 108:../SSC/Src/coeappl.c **** ------
+ 109:../SSC/Src/coeappl.c **** -----------------------------------------------------------------------------------------*/
+ 110:../SSC/Src/coeappl.c **** 
+ 111:../SSC/Src/coeappl.c **** #include "ecat_def.h"
+ 112:../SSC/Src/coeappl.c **** 
+ 113:../SSC/Src/coeappl.c **** 
+ 114:../SSC/Src/coeappl.c **** #include "ecatslv.h"
+ 115:../SSC/Src/coeappl.c **** 
+ 116:../SSC/Src/coeappl.c **** #define _COEAPPL_    1
+ 117:../SSC/Src/coeappl.c **** #include "coeappl.h"
+ 118:../SSC/Src/coeappl.c **** #undef _COEAPPL_
+ 119:../SSC/Src/coeappl.c **** /*remove definition of _COEAPPL_ (#ifdef is used in coeappl.h)*/
+ 120:../SSC/Src/coeappl.c **** 
+ 121:../SSC/Src/coeappl.c **** #define _OBJD_
+ 122:../SSC/Src/coeappl.c **** 
+ 123:../SSC/Src/coeappl.c **** 
+ 124:../SSC/Src/coeappl.c **** /*Add Application specific Objects*/
+ 125:../SSC/Src/coeappl.c **** #include "XMC_ESC.h"
+ 126:../SSC/Src/coeappl.c **** 
+ 127:../SSC/Src/coeappl.c **** 
+ 128:../SSC/Src/coeappl.c **** #undef _OBJD_
+ 129:../SSC/Src/coeappl.c **** /*-----------------------------------------------------------------------------------------
+ 130:../SSC/Src/coeappl.c **** ------
+ 131:../SSC/Src/coeappl.c **** ------    Backup Parameter
+ 132:../SSC/Src/coeappl.c **** ------
+ 133:../SSC/Src/coeappl.c **** -----------------------------------------------------------------------------------------*/
+ 134:../SSC/Src/coeappl.c **** 
+ 135:../SSC/Src/coeappl.c **** /*-----------------------------------------------------------------------------------------
+ 136:../SSC/Src/coeappl.c **** ------
+ 137:../SSC/Src/coeappl.c **** ------    Generic EtherCAT device object
+ 138:../SSC/Src/coeappl.c **** ------
+ 139:../SSC/Src/coeappl.c **** -----------------------------------------------------------------------------------------*/
+ 140:../SSC/Src/coeappl.c **** 
+ 141:../SSC/Src/coeappl.c **** /*---------------------------------------------
+ 142:../SSC/Src/coeappl.c **** -    0x1000
+ 143:../SSC/Src/coeappl.c **** -----------------------------------------------*/
+ 144:../SSC/Src/coeappl.c **** /**
+ 145:../SSC/Src/coeappl.c ****  * \brief 0x1000 (Device type) variable to handle the object data
+ 146:../SSC/Src/coeappl.c ****  */
+ 147:../SSC/Src/coeappl.c **** UINT32 u32Devicetype = (DEVICE_PROFILE_TYPE);
+ 148:../SSC/Src/coeappl.c **** 
+ 149:../SSC/Src/coeappl.c **** /**
+ 150:../SSC/Src/coeappl.c ****  * \brief 0x1000 (Device type) entry description
+ 151:../SSC/Src/coeappl.c ****  */
+ 152:../SSC/Src/coeappl.c **** OBJCONST TSDOINFOENTRYDESC    OBJMEM sEntryDesc0x1000 = {DEFTYPE_UNSIGNED32, 0x20, ACCESS_READ};
+ 153:../SSC/Src/coeappl.c **** 
+ 154:../SSC/Src/coeappl.c **** /**
+ 155:../SSC/Src/coeappl.c ****  * \brief 0x1000 (Device type) object name
+ 156:../SSC/Src/coeappl.c ****  */
+ 157:../SSC/Src/coeappl.c **** OBJCONST UCHAR OBJMEM aName0x1000[] = "Device type";
+ 158:../SSC/Src/coeappl.c **** 
+ 159:../SSC/Src/coeappl.c **** 
+ 160:../SSC/Src/coeappl.c **** /*---------------------------------------------
+ 161:../SSC/Src/coeappl.c **** -    0x1001
+ 162:../SSC/Src/coeappl.c **** -----------------------------------------------*/
+ 163:../SSC/Src/coeappl.c **** /**
+ 164:../SSC/Src/coeappl.c ****  * \brief 0x1001 (Error Register) variable to handle the object data
+ 165:../SSC/Src/coeappl.c ****  */
+ 166:../SSC/Src/coeappl.c **** UINT16 u16ErrorRegister = 0x0;
+ 167:../SSC/Src/coeappl.c **** 
+ 168:../SSC/Src/coeappl.c **** /**
+ 169:../SSC/Src/coeappl.c ****  * \brief 0x1001 (Error Register) entry description
+ 170:../SSC/Src/coeappl.c ****  */
+ 171:../SSC/Src/coeappl.c **** OBJCONST TSDOINFOENTRYDESC    OBJMEM sEntryDesc0x1001 = {DEFTYPE_UNSIGNED8, 0x08, ACCESS_READ};
+ 172:../SSC/Src/coeappl.c **** 
+ 173:../SSC/Src/coeappl.c **** /**
+ 174:../SSC/Src/coeappl.c ****  * \brief 0x1001 (Error Register) object name
+ 175:../SSC/Src/coeappl.c ****  */
+ 176:../SSC/Src/coeappl.c **** OBJCONST UCHAR OBJMEM aName0x1001[] = "Error register";
+ 177:../SSC/Src/coeappl.c **** 
+ 178:../SSC/Src/coeappl.c **** 
+ 179:../SSC/Src/coeappl.c **** /*---------------------------------------------
+ 180:../SSC/Src/coeappl.c **** -    0x1008
+ 181:../SSC/Src/coeappl.c **** -----------------------------------------------*/
+ 182:../SSC/Src/coeappl.c **** /**
+ 183:../SSC/Src/coeappl.c ****  * \brief 0x1008 (Device name) variable to handle the object data
+ 184:../SSC/Src/coeappl.c ****  */
+ 185:../SSC/Src/coeappl.c **** CHAR acDevicename[] = DEVICE_NAME;
+ 186:../SSC/Src/coeappl.c **** 
+ 187:../SSC/Src/coeappl.c **** /**
+ 188:../SSC/Src/coeappl.c ****  * \brief 0x1008 (Device name) entry description
+ 189:../SSC/Src/coeappl.c ****  */
+ 190:../SSC/Src/coeappl.c **** OBJCONST TSDOINFOENTRYDESC    OBJMEM sEntryDesc0x1008 = {DEFTYPE_VISIBLESTRING, BYTE2BIT(DEVICE_NAM
+ 191:../SSC/Src/coeappl.c **** 
+ 192:../SSC/Src/coeappl.c **** /**
+ 193:../SSC/Src/coeappl.c ****  * \brief 0x1008 (Device name) object name
+ 194:../SSC/Src/coeappl.c ****  */
+ 195:../SSC/Src/coeappl.c **** OBJCONST UCHAR OBJMEM aName0x1008[] = "Device name";
+ 196:../SSC/Src/coeappl.c **** 
+ 197:../SSC/Src/coeappl.c **** 
+ 198:../SSC/Src/coeappl.c **** /*---------------------------------------------
+ 199:../SSC/Src/coeappl.c **** -    0x1009
+ 200:../SSC/Src/coeappl.c **** -----------------------------------------------*/
+ 201:../SSC/Src/coeappl.c **** /**
+ 202:../SSC/Src/coeappl.c ****  * \brief 0x1009 (Hardware version) variable to handle the object data
+ 203:../SSC/Src/coeappl.c ****  */
+ 204:../SSC/Src/coeappl.c **** CHAR acHardwareversion[] = DEVICE_HW_VERSION;
+ 205:../SSC/Src/coeappl.c **** 
+ 206:../SSC/Src/coeappl.c **** /**
+ 207:../SSC/Src/coeappl.c ****  * \brief 0x1009 (Hardware version) entry description
+ 208:../SSC/Src/coeappl.c ****  */
+ 209:../SSC/Src/coeappl.c **** OBJCONST TSDOINFOENTRYDESC    OBJMEM sEntryDesc0x1009 = {DEFTYPE_VISIBLESTRING,BYTE2BIT(DEVICE_HW_V
+ 210:../SSC/Src/coeappl.c **** 
+ 211:../SSC/Src/coeappl.c **** /**
+ 212:../SSC/Src/coeappl.c ****  * \brief 0x1009 (Hardware version) object name
+ 213:../SSC/Src/coeappl.c ****  */
+ 214:../SSC/Src/coeappl.c **** OBJCONST UCHAR OBJMEM aName0x1009[] = "Hardware version";
+ 215:../SSC/Src/coeappl.c **** 
+ 216:../SSC/Src/coeappl.c **** 
+ 217:../SSC/Src/coeappl.c **** /*---------------------------------------------
+ 218:../SSC/Src/coeappl.c **** -    0x100A
+ 219:../SSC/Src/coeappl.c **** -----------------------------------------------*/
+ 220:../SSC/Src/coeappl.c **** /**
+ 221:../SSC/Src/coeappl.c ****  * \brief 0x100A (Software version) variable to handle the object data
+ 222:../SSC/Src/coeappl.c ****  */
+ 223:../SSC/Src/coeappl.c **** CHAR acSoftwareversion[] = DEVICE_SW_VERSION;
+ 224:../SSC/Src/coeappl.c **** 
+ 225:../SSC/Src/coeappl.c **** /**
+ 226:../SSC/Src/coeappl.c ****  * \brief 0x1009 (Hardware version) entry description
+ 227:../SSC/Src/coeappl.c ****  */
+ 228:../SSC/Src/coeappl.c **** OBJCONST TSDOINFOENTRYDESC    OBJMEM sEntryDesc0x100A = {DEFTYPE_VISIBLESTRING,BYTE2BIT(DEVICE_SW_V
+ 229:../SSC/Src/coeappl.c **** 
+ 230:../SSC/Src/coeappl.c **** /**
+ 231:../SSC/Src/coeappl.c ****  * \brief 0x1009 (Hardware version) object name
+ 232:../SSC/Src/coeappl.c ****  */
+ 233:../SSC/Src/coeappl.c **** OBJCONST UCHAR OBJMEM aName0x100A[] = "Software version";
+ 234:../SSC/Src/coeappl.c **** 
+ 235:../SSC/Src/coeappl.c **** 
+ 236:../SSC/Src/coeappl.c **** 
+ 237:../SSC/Src/coeappl.c **** 
+ 238:../SSC/Src/coeappl.c **** /*---------------------------------------------
+ 239:../SSC/Src/coeappl.c **** -    0x1018
+ 240:../SSC/Src/coeappl.c **** -----------------------------------------------*/
+ 241:../SSC/Src/coeappl.c **** 
+ 242:../SSC/Src/coeappl.c **** /**
+ 243:../SSC/Src/coeappl.c ****  * \brief 0x1018 (Identity) variable to handle the object data
+ 244:../SSC/Src/coeappl.c ****  */
+ 245:../SSC/Src/coeappl.c **** TOBJ1018 sIdentity = {4, (VENDOR_ID), (PRODUCT_CODE), (REVISION_NUMBER), (SERIAL_NUMBER)};
+ 246:../SSC/Src/coeappl.c **** 
+ 247:../SSC/Src/coeappl.c **** /**
+ 248:../SSC/Src/coeappl.c ****  * \brief 0x1018 (Identity) entry descriptions
+ 249:../SSC/Src/coeappl.c ****  * 
+ 250:../SSC/Src/coeappl.c ****  * Subindex 000
+ 251:../SSC/Src/coeappl.c ****  * SubIndex 001: Vendor ID
+ 252:../SSC/Src/coeappl.c ****  * SubIndex 002: Product code
+ 253:../SSC/Src/coeappl.c ****  * SubIndex 003: Revision
+ 254:../SSC/Src/coeappl.c ****  * SubIndex 004: Serial number
+ 255:../SSC/Src/coeappl.c ****  */
+ 256:../SSC/Src/coeappl.c **** OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1018[] = {
+ 257:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED8, 0x8, ACCESS_READ },
+ 258:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED32, 0x20, ACCESS_READ}, 
+ 259:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED32, 0x20, ACCESS_READ}, 
+ 260:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED32, 0x20, ACCESS_READ}, 
+ 261:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED32, 0x20, ACCESS_READ}};
+ 262:../SSC/Src/coeappl.c **** 
+ 263:../SSC/Src/coeappl.c **** /**
+ 264:../SSC/Src/coeappl.c ****  * \brief 0x1018 (Identity) object and entry names
+ 265:../SSC/Src/coeappl.c ****  */
+ 266:../SSC/Src/coeappl.c **** OBJCONST UCHAR OBJMEM aName0x1018[] = "Identity\000Vendor ID\000Product code\000Revision\000Serial 
+ 267:../SSC/Src/coeappl.c **** 
+ 268:../SSC/Src/coeappl.c **** 
+ 269:../SSC/Src/coeappl.c **** 
+ 270:../SSC/Src/coeappl.c **** /*---------------------------------------------
+ 271:../SSC/Src/coeappl.c **** -    0x10F1
+ 272:../SSC/Src/coeappl.c **** -----------------------------------------------*/
+ 273:../SSC/Src/coeappl.c **** /**
+ 274:../SSC/Src/coeappl.c ****  * \brief 0x10F1 (Error settings) entry description
+ 275:../SSC/Src/coeappl.c ****  * Subindex 000
+ 276:../SSC/Src/coeappl.c ****  * SubIndex 001: Local Error Reaction
+ 277:../SSC/Src/coeappl.c ****  * SubIndex 002: Sync Error Counter Limit
+ 278:../SSC/Src/coeappl.c ****  */
+ 279:../SSC/Src/coeappl.c **** OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x10F1[] = {
+ 280:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED8, 0x8, ACCESS_READ },
+ 281:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED32, 0x20, ACCESS_READWRITE}, 
+ 282:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED16, 0x10, ACCESS_READWRITE}};
+ 283:../SSC/Src/coeappl.c **** 
+ 284:../SSC/Src/coeappl.c **** /**
+ 285:../SSC/Src/coeappl.c ****  * \brief 0x10F1 (Error settings) object and entry names
+ 286:../SSC/Src/coeappl.c ****  */   
+ 287:../SSC/Src/coeappl.c **** OBJCONST UCHAR OBJMEM aName0x10F1[] = "Error Settings\000Local Error Reaction\000Sync Error Counter
+ 288:../SSC/Src/coeappl.c **** 
+ 289:../SSC/Src/coeappl.c **** 
+ 290:../SSC/Src/coeappl.c **** //object declaration and initialization in objdef.h
+ 291:../SSC/Src/coeappl.c **** 
+ 292:../SSC/Src/coeappl.c **** 
+ 293:../SSC/Src/coeappl.c **** /*ECATCHANGE_START(V5.12) COE4*/
+ 294:../SSC/Src/coeappl.c **** /*---------------------------------------------
+ 295:../SSC/Src/coeappl.c **** -    0x10F8 (Timestamp object)
+ 296:../SSC/Src/coeappl.c **** -----------------------------------------------*/
+ 297:../SSC/Src/coeappl.c **** /**
+ 298:../SSC/Src/coeappl.c **** * \brief 0x10F8 (Timestamp object) entry description
+ 299:../SSC/Src/coeappl.c **** */
+ 300:../SSC/Src/coeappl.c **** OBJCONST TSDOINFOENTRYDESC    OBJMEM sEntryDesc0x10F8 = { DEFTYPE_UNSIGNED64, 0x40, ACCESS_READWRIT
+ 301:../SSC/Src/coeappl.c **** 
+ 302:../SSC/Src/coeappl.c **** /**
+ 303:../SSC/Src/coeappl.c **** * \brief 0x10F8 (Timestamp object) object name
+ 304:../SSC/Src/coeappl.c **** */
+ 305:../SSC/Src/coeappl.c **** OBJCONST UCHAR OBJMEM aName0x10F8[] = "Timestamp Object\000\377";
+ 306:../SSC/Src/coeappl.c **** 
+ 307:../SSC/Src/coeappl.c **** 
+ 308:../SSC/Src/coeappl.c **** //object declaration and initialization in coeappl.h
+ 309:../SSC/Src/coeappl.c **** 
+ 310:../SSC/Src/coeappl.c **** /**
+ 311:../SSC/Src/coeappl.c **** \param     index                    index of the requested object.
+ 312:../SSC/Src/coeappl.c **** \param     subindex                subindex of the requested object.
+ 313:../SSC/Src/coeappl.c **** \param    dataSize                received data size of the SDO Download
+ 314:../SSC/Src/coeappl.c **** \param    pData                    Pointer to the buffer where the written data can be copied from
+ 315:../SSC/Src/coeappl.c **** \param    bCompleteAccess    Indicates if a complete write of all subindices of the
+ 316:../SSC/Src/coeappl.c **** object shall be done or not
+ 317:../SSC/Src/coeappl.c **** 
+ 318:../SSC/Src/coeappl.c **** \return    result of the write operation (0 (success) or an abort code (ABORTIDX_.... defined in
+ 319:../SSC/Src/coeappl.c **** sdosrv.h))
+ 320:../SSC/Src/coeappl.c **** 
+ 321:../SSC/Src/coeappl.c **** \brief    This function reads the object 0x10F8
+ 322:../SSC/Src/coeappl.c **** */
+ 323:../SSC/Src/coeappl.c **** UINT8 Read0x10F8(UINT16 index, UINT8 subindex, UINT32 dataSize, UINT16 MBXMEM * pData, UINT8 bCompl
+ 324:../SSC/Src/coeappl.c **** {
+ 672              	 .loc 2 324 0
+ 673              	 .cfi_startproc
+ 674              	 
+ 675              	 
+ 676 0000 80B5     	 push {r7,lr}
+ 677              	.LCFI5:
+ 678              	 .cfi_def_cfa_offset 8
+ 679              	 .cfi_offset 7,-8
+ 680              	 .cfi_offset 14,-4
+ 681 0002 84B0     	 sub sp,sp,#16
+ 682              	.LCFI6:
+ 683              	 .cfi_def_cfa_offset 24
+ 684 0004 00AF     	 add r7,sp,#0
+ 685              	.LCFI7:
+ 686              	 .cfi_def_cfa_register 7
+ 687 0006 BA60     	 str r2,[r7,#8]
+ 688 0008 7B60     	 str r3,[r7,#4]
+ 689 000a 0346     	 mov r3,r0
+ 690 000c FB81     	 strh r3,[r7,#14]
+ 691 000e 0B46     	 mov r3,r1
+ 692 0010 7B73     	 strb r3,[r7,#13]
+ 325:../SSC/Src/coeappl.c **** 
+ 326:../SSC/Src/coeappl.c ****     if (index != 0x10F8)
+ 693              	 .loc 2 326 0
+ 694 0012 FB89     	 ldrh r3,[r7,#14]
+ 695 0014 41F2F802 	 movw r2,#4344
+ 696 0018 9342     	 cmp r3,r2
+ 697 001a 01D0     	 beq .L3
+ 327:../SSC/Src/coeappl.c ****     {
+ 328:../SSC/Src/coeappl.c ****         return ABORTIDX_PARAM_IS_INCOMPATIBLE;
+ 698              	 .loc 2 328 0
+ 699 001c 0B23     	 movs r3,#11
+ 700 001e 16E0     	 b .L4
+ 701              	.L3:
+ 329:../SSC/Src/coeappl.c ****     }
+ 330:../SSC/Src/coeappl.c **** 
+ 331:../SSC/Src/coeappl.c ****     
+ 332:../SSC/Src/coeappl.c ****     if (bCompleteAccess)
+ 702              	 .loc 2 332 0
+ 703 0020 3B7E     	 ldrb r3,[r7,#24]
+ 704 0022 002B     	 cmp r3,#0
+ 705 0024 01D0     	 beq .L5
+ 333:../SSC/Src/coeappl.c ****     {
+ 334:../SSC/Src/coeappl.c ****          /* Complete Access is not supported for object 0x10F8 */
+ 335:../SSC/Src/coeappl.c ****         return ABORTIDX_UNSUPPORTED_ACCESS;
+ 706              	 .loc 2 335 0
+ 707 0026 0523     	 movs r3,#5
+ 708 0028 11E0     	 b .L4
+ 709              	.L5:
+ 336:../SSC/Src/coeappl.c ****     }
+ 337:../SSC/Src/coeappl.c **** 
+ 338:../SSC/Src/coeappl.c ****     if (subindex > 0)
+ 710              	 .loc 2 338 0
+ 711 002a 7B7B     	 ldrb r3,[r7,#13]
+ 712 002c 002B     	 cmp r3,#0
+ 713 002e 01D0     	 beq .L6
+ 339:../SSC/Src/coeappl.c ****     {
+ 340:../SSC/Src/coeappl.c ****         return ABORTIDX_SUBINDEX_NOT_EXISTING;
+ 714              	 .loc 2 340 0
+ 715 0030 1123     	 movs r3,#17
+ 716 0032 0CE0     	 b .L4
+ 717              	.L6:
+ 341:../SSC/Src/coeappl.c ****     }
+ 342:../SSC/Src/coeappl.c **** 
+ 343:../SSC/Src/coeappl.c ****     if (dataSize > 8)
+ 718              	 .loc 2 343 0
+ 719 0034 BB68     	 ldr r3,[r7,#8]
+ 720 0036 082B     	 cmp r3,#8
+ 721 0038 01D9     	 bls .L7
+ 344:../SSC/Src/coeappl.c ****     {
+ 345:../SSC/Src/coeappl.c ****         return ABORTIDX_PARAM_LENGTH_TOO_LONG;
+ 722              	 .loc 2 345 0
+ 723 003a 0F23     	 movs r3,#15
+ 724 003c 07E0     	 b .L4
+ 725              	.L7:
+ 346:../SSC/Src/coeappl.c ****     }
+ 347:../SSC/Src/coeappl.c **** 
+ 348:../SSC/Src/coeappl.c **** 
+ 349:../SSC/Src/coeappl.c ****     COE_SyncTimeStamp();
+ 726              	 .loc 2 349 0
+ 727 003e FFF7FEFF 	 bl COE_SyncTimeStamp
+ 350:../SSC/Src/coeappl.c **** 
+ 351:../SSC/Src/coeappl.c ****     MEMCPY(pData, &u64Timestamp, dataSize);
+ 728              	 .loc 2 351 0
+ 729 0042 7868     	 ldr r0,[r7,#4]
+ 730 0044 0449     	 ldr r1,.L8
+ 731 0046 BA68     	 ldr r2,[r7,#8]
+ 732 0048 FFF7FEFF 	 bl memcpy
+ 352:../SSC/Src/coeappl.c ****     return 0;
+ 733              	 .loc 2 352 0
+ 734 004c 0023     	 movs r3,#0
+ 735              	.L4:
+ 353:../SSC/Src/coeappl.c **** }
+ 736              	 .loc 2 353 0
+ 737 004e 1846     	 mov r0,r3
+ 738 0050 1037     	 adds r7,r7,#16
+ 739              	.LCFI8:
+ 740              	 .cfi_def_cfa_offset 8
+ 741 0052 BD46     	 mov sp,r7
+ 742              	.LCFI9:
+ 743              	 .cfi_def_cfa_register 13
+ 744              	 
+ 745 0054 80BD     	 pop {r7,pc}
+ 746              	.L9:
+ 747 0056 00BF     	 .align 2
+ 748              	.L8:
+ 749 0058 00000000 	 .word u64Timestamp
+ 750              	 .cfi_endproc
+ 751              	.LFE177:
+ 753              	 .section .text.COE_SyncTimeStamp,"ax",%progbits
+ 754              	 .align 2
+ 755              	 .global COE_SyncTimeStamp
+ 756              	 .thumb
+ 757              	 .thumb_func
+ 759              	COE_SyncTimeStamp:
+ 760              	.LFB178:
+ 354:../SSC/Src/coeappl.c **** 
+ 355:../SSC/Src/coeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 356:../SSC/Src/coeappl.c **** /**
+ 357:../SSC/Src/coeappl.c **** \brief    This function updates the local timestamp object (0x10F8) and has to be called at least e
+ 358:../SSC/Src/coeappl.c ****           Called from the Timer handler 
+ 359:../SSC/Src/coeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 360:../SSC/Src/coeappl.c **** void COE_SyncTimeStamp(void)
+ 361:../SSC/Src/coeappl.c **** {
+ 761              	 .loc 2 361 0
+ 762              	 .cfi_startproc
+ 763              	 
+ 764              	 
+ 765 0000 80B5     	 push {r7,lr}
+ 766              	.LCFI10:
+ 767              	 .cfi_def_cfa_offset 8
+ 768              	 .cfi_offset 7,-8
+ 769              	 .cfi_offset 14,-4
+ 770 0002 82B0     	 sub sp,sp,#8
+ 771              	.LCFI11:
+ 772              	 .cfi_def_cfa_offset 16
+ 773 0004 00AF     	 add r7,sp,#0
+ 774              	.LCFI12:
+ 775              	 .cfi_def_cfa_register 7
+ 362:../SSC/Src/coeappl.c **** 
+ 363:../SSC/Src/coeappl.c ****     if (b32BitDc)
+ 776              	 .loc 2 363 0
+ 777 0006 204B     	 ldr r3,.L14
+ 778 0008 1B78     	 ldrb r3,[r3]
+ 779 000a 002B     	 cmp r3,#0
+ 780 000c 2FD0     	 beq .L11
+ 781              	.LBB2:
+ 364:../SSC/Src/coeappl.c ****     {
+ 365:../SSC/Src/coeappl.c ****         UINT32 DcTime = (UINT32)(u64Timestamp & (UINT64)0x00000000FFFFFFFF);
+ 782              	 .loc 2 365 0
+ 783 000e 1F4B     	 ldr r3,.L14+4
+ 784 0010 D3E90023 	 ldrd r2,[r3]
+ 785 0014 1346     	 mov r3,r2
+ 786 0016 7B60     	 str r3,[r7,#4]
+ 366:../SSC/Src/coeappl.c **** 
+ 367:../SSC/Src/coeappl.c **** 
+ 368:../SSC/Src/coeappl.c ****         HW_EscReadDWord(DcTime, ESC_SYSTEMTIME_OFFSET);
+ 787              	 .loc 2 368 0
+ 788 0018 1D4B     	 ldr r3,.L14+8
+ 789 001a 1B68     	 ldr r3,[r3]
+ 790 001c 7B60     	 str r3,[r7,#4]
+ 369:../SSC/Src/coeappl.c **** 
+ 370:../SSC/Src/coeappl.c ****         /*update the lower 32Bit*/
+ 371:../SSC/Src/coeappl.c ****         u64Timestamp = ((u64Timestamp & ((UINT64)0xFFFFFFFF00000000)) | (UINT64)DcTime);
+ 791              	 .loc 2 371 0
+ 792 001e 1B4B     	 ldr r3,.L14+4
+ 793 0020 D3E90023 	 ldrd r2,[r3]
+ 794 0024 4FF00000 	 mov r0,#0
+ 795 0028 4FF0FF31 	 mov r1,#-1
+ 796 002c 00EA0200 	 and r0,r0,r2
+ 797 0030 01EA0301 	 and r1,r1,r3
+ 798 0034 7B68     	 ldr r3,[r7,#4]
+ 799 0036 1A46     	 mov r2,r3
+ 800 0038 4FF00003 	 mov r3,#0
+ 801 003c 42EA0002 	 orr r2,r2,r0
+ 802 0040 43EA0103 	 orr r3,r3,r1
+ 803 0044 1149     	 ldr r1,.L14+4
+ 804 0046 C1E90023 	 strd r2,[r1]
+ 372:../SSC/Src/coeappl.c **** 
+ 373:../SSC/Src/coeappl.c ****         if (DcTime < u32LastDc32Value)
+ 805              	 .loc 2 373 0
+ 806 004a 124B     	 ldr r3,.L14+12
+ 807 004c 1B68     	 ldr r3,[r3]
+ 808 004e 7A68     	 ldr r2,[r7,#4]
+ 809 0050 9A42     	 cmp r2,r3
+ 810 0052 08D2     	 bcs .L12
+ 374:../SSC/Src/coeappl.c ****         {
+ 375:../SSC/Src/coeappl.c ****             /*32Bit overrun*/
+ 376:../SSC/Src/coeappl.c ****             u64Timestamp = u64Timestamp + ((UINT64)0x0000000100000000);
+ 811              	 .loc 2 376 0
+ 812 0054 0D4B     	 ldr r3,.L14+4
+ 813 0056 D3E90023 	 ldrd r2,[r3]
+ 814 005a 0032     	 adds r2,r2,#0
+ 815 005c 43F10103 	 adc r3,r3,#1
+ 816 0060 0A49     	 ldr r1,.L14+4
+ 817 0062 C1E90023 	 strd r2,[r1]
+ 818              	.L12:
+ 377:../SSC/Src/coeappl.c ****         }
+ 378:../SSC/Src/coeappl.c ****         
+ 379:../SSC/Src/coeappl.c ****         u32LastDc32Value = DcTime;
+ 819              	 .loc 2 379 0
+ 820 0066 0B4A     	 ldr r2,.L14+12
+ 821 0068 7B68     	 ldr r3,[r7,#4]
+ 822 006a 1360     	 str r3,[r2]
+ 823              	.LBE2:
+ 824 006c 05E0     	 b .L13
+ 825              	.L11:
+ 380:../SSC/Src/coeappl.c ****     }
+ 381:../SSC/Src/coeappl.c ****     else
+ 382:../SSC/Src/coeappl.c ****     {
+ 383:../SSC/Src/coeappl.c ****         /*The DC unit supports 64Bit => update the complete object*/
+ 384:../SSC/Src/coeappl.c ****         
+ 385:../SSC/Src/coeappl.c ****         HW_EscRead((MEM_ADDR *)&u64Timestamp, ESC_SYSTEMTIME_OFFSET, 8);
+ 826              	 .loc 2 385 0
+ 827 006e 0748     	 ldr r0,.L14+4
+ 828 0070 4FF41161 	 mov r1,#2320
+ 829 0074 0822     	 movs r2,#8
+ 830 0076 FFF7FEFF 	 bl HW_EscRead
+ 831              	.L13:
+ 386:../SSC/Src/coeappl.c ****     }
+ 387:../SSC/Src/coeappl.c **** 
+ 388:../SSC/Src/coeappl.c ****     u32CheckForDcOverrunCnt = 0;
+ 832              	 .loc 2 388 0
+ 833 007a 074B     	 ldr r3,.L14+16
+ 834 007c 0022     	 movs r2,#0
+ 835 007e 1A60     	 str r2,[r3]
+ 389:../SSC/Src/coeappl.c **** 
+ 390:../SSC/Src/coeappl.c **** }
+ 836              	 .loc 2 390 0
+ 837 0080 0837     	 adds r7,r7,#8
+ 838              	.LCFI13:
+ 839              	 .cfi_def_cfa_offset 8
+ 840 0082 BD46     	 mov sp,r7
+ 841              	.LCFI14:
+ 842              	 .cfi_def_cfa_register 13
+ 843              	 
+ 844 0084 80BD     	 pop {r7,pc}
+ 845              	.L15:
+ 846 0086 00BF     	 .align 2
+ 847              	.L14:
+ 848 0088 00000000 	 .word b32BitDc
+ 849 008c 00000000 	 .word u64Timestamp
+ 850 0090 10090154 	 .word 1409354000
+ 851 0094 00000000 	 .word u32LastDc32Value
+ 852 0098 00000000 	 .word u32CheckForDcOverrunCnt
+ 853              	 .cfi_endproc
+ 854              	.LFE178:
+ 856              	 .global sSyncmanagertype
+ 857              	 .section .data.sSyncmanagertype,"aw",%progbits
+ 858              	 .align 2
+ 861              	sSyncmanagertype:
+ 862 0000 0400     	 .short 4
+ 863 0002 0201     	 .short 258
+ 864 0004 0403     	 .short 772
+ 865              	 .global asEntryDesc0x1C00
+ 866 0006 0000     	 .section .rodata.asEntryDesc0x1C00,"a",%progbits
+ 867              	 .align 2
+ 870              	asEntryDesc0x1C00:
+ 871 0000 0500     	 .short 5
+ 872 0002 0800     	 .short 8
+ 873 0004 0700     	 .short 7
+ 874 0006 0500     	 .short 5
+ 875 0008 0800     	 .short 8
+ 876 000a 0700     	 .short 7
+ 877              	 .global aName0x1C00
+ 878              	 .section .rodata.aName0x1C00,"a",%progbits
+ 879              	 .align 2
+ 882              	aName0x1C00:
+ 883 0000 53796E63 	 .ascii "Sync manager type\000"
+ 883      206D616E 
+ 883      61676572 
+ 883      20747970 
+ 883      6500
+ 884              	 .global asEntryDesc0x1C3x
+ 885 0012 0000     	 .section .rodata.asEntryDesc0x1C3x,"a",%progbits
+ 886              	 .align 2
+ 889              	asEntryDesc0x1C3x:
+ 890 0000 0500     	 .short 5
+ 891 0002 0800     	 .short 8
+ 892 0004 0700     	 .short 7
+ 893 0006 0600     	 .short 6
+ 894 0008 1000     	 .short 16
+ 895 000a 0F00     	 .short 15
+ 896 000c 0700     	 .short 7
+ 897 000e 2000     	 .short 32
+ 898 0010 0700     	 .short 7
+ 899 0012 0000     	 .short 0
+ 900 0014 2000     	 .short 32
+ 901 0016 0000     	 .short 0
+ 902 0018 0600     	 .short 6
+ 903 001a 1000     	 .short 16
+ 904 001c 0700     	 .short 7
+ 905 001e 0700     	 .short 7
+ 906 0020 2000     	 .short 32
+ 907 0022 0700     	 .short 7
+ 908 0024 0700     	 .short 7
+ 909 0026 2000     	 .short 32
+ 910 0028 0700     	 .short 7
+ 911 002a 0000     	 .short 0
+ 912 002c 2000     	 .short 32
+ 913 002e 0000     	 .short 0
+ 914 0030 0600     	 .short 6
+ 915 0032 1000     	 .short 16
+ 916 0034 3F00     	 .short 63
+ 917 0036 0700     	 .short 7
+ 918 0038 2000     	 .short 32
+ 919 003a 0700     	 .short 7
+ 920 003c 0700     	 .short 7
+ 921 003e 2000     	 .short 32
+ 922 0040 3F00     	 .short 63
+ 923 0042 0600     	 .short 6
+ 924 0044 1000     	 .short 16
+ 925 0046 0700     	 .short 7
+ 926 0048 0600     	 .short 6
+ 927 004a 1000     	 .short 16
+ 928 004c 0700     	 .short 7
+ 929 004e 0000     	 .short 0
+ 930 0050 1000     	 .short 16
+ 931 0052 0000     	 .short 0
+ 932 0054 0000     	 .short 0
+ 933 0056 1000     	 .short 16
+ 934 0058 0000     	 .short 0
+ 935 005a 0000     	 .short 0
+ 936 005c 2000     	 .short 32
+ 937 005e 0000     	 .short 0
+ 938 0060 0000     	 .short 0
+ 939 0062 2000     	 .short 32
+ 940 0064 0000     	 .short 0
+ 941 0066 0000     	 .short 0
+ 942 0068 2000     	 .short 32
+ 943 006a 0000     	 .short 0
+ 944 006c 0000     	 .short 0
+ 945 006e 2000     	 .short 32
+ 946 0070 0000     	 .short 0
+ 947 0072 0000     	 .short 0
+ 948 0074 0000     	 .short 0
+ 949 0076 0000     	 .short 0
+ 950 0078 0000     	 .short 0
+ 951 007a 0000     	 .short 0
+ 952 007c 0000     	 .short 0
+ 953 007e 0000     	 .short 0
+ 954 0080 0000     	 .short 0
+ 955 0082 0000     	 .short 0
+ 956 0084 0000     	 .short 0
+ 957 0086 0000     	 .short 0
+ 958 0088 0000     	 .short 0
+ 959 008a 0000     	 .short 0
+ 960 008c 0000     	 .short 0
+ 961 008e 0000     	 .short 0
+ 962 0090 0000     	 .short 0
+ 963 0092 0000     	 .short 0
+ 964 0094 0000     	 .short 0
+ 965 0096 0000     	 .short 0
+ 966 0098 0000     	 .short 0
+ 967 009a 0000     	 .short 0
+ 968 009c 0000     	 .short 0
+ 969 009e 0000     	 .short 0
+ 970 00a0 0000     	 .short 0
+ 971 00a2 0000     	 .short 0
+ 972 00a4 0000     	 .short 0
+ 973 00a6 0000     	 .short 0
+ 974 00a8 0000     	 .short 0
+ 975 00aa 0000     	 .short 0
+ 976 00ac 0000     	 .short 0
+ 977 00ae 0000     	 .short 0
+ 978 00b0 0000     	 .short 0
+ 979 00b2 0000     	 .short 0
+ 980 00b4 0000     	 .short 0
+ 981 00b6 0000     	 .short 0
+ 982 00b8 0000     	 .short 0
+ 983 00ba 0000     	 .short 0
+ 984 00bc 0000     	 .short 0
+ 985 00be 0000     	 .short 0
+ 986 00c0 0100     	 .short 1
+ 987 00c2 0100     	 .short 1
+ 988 00c4 0700     	 .short 7
+ 989              	 .global aName0x1C32
+ 990 00c6 0000     	 .section .rodata.aName0x1C32,"a",%progbits
+ 991              	 .align 2
+ 994              	aName0x1C32:
+ 995 0000 534D206F 	 .ascii "SM output parameter\000Synchronization Type\000Cycl"
+ 995      75747075 
+ 995      74207061 
+ 995      72616D65 
+ 995      74657200 
+ 996 002d 65205469 	 .ascii "e Time\000\000Synchronization Types supported\000Mi"
+ 996      6D650000 
+ 996      53796E63 
+ 996      68726F6E 
+ 996      697A6174 
+ 997 0057 6E696D75 	 .ascii "nimum Cycle Time\000Calc and Copy Time\000\000Get C"
+ 997      6D204379 
+ 997      636C6520 
+ 997      54696D65 
+ 997      0043616C 
+ 998 0081 79636C65 	 .ascii "ycle Time\000Delay Time\000Sync0 Cycle Time\000SM-E"
+ 998      2054696D 
+ 998      65004465 
+ 998      6C617920 
+ 998      54696D65 
+ 999 00ab 76656E74 	 .ascii "vent Missed\000Cycle Time Too Small\000Shift Time T"
+ 999      204D6973 
+ 999      73656400 
+ 999      4379636C 
+ 999      65205469 
+ 1000 00d8 6F6F2053 	 .ascii "oo Short\000\000\000\000\000\000\000\000\000\000\000"
+ 1000      686F7274 
+ 1000      00000000 
+ 1000      00000000 
+ 1000      000000
+ 1001 00eb 00000000 	 .ascii "\000\000\000\000\000\000\000\000Sync Error\000\377\000"
+ 1001      00000000 
+ 1001      53796E63 
+ 1001      20457272 
+ 1001      6F7200FF 
+ 1002              	 .global aName0x1C33
+ 1003              	 .section .rodata.aName0x1C33,"a",%progbits
+ 1004              	 .align 2
+ 1007              	aName0x1C33:
+ 1008 0000 534D2069 	 .ascii "SM input parameter\000Synchronization Type\000Cycle"
+ 1008      6E707574 
+ 1008      20706172 
+ 1008      616D6574 
+ 1008      65720053 
+ 1009 002d 2054696D 	 .ascii " Time\000\000Synchronization Types supported\000Min"
+ 1009      65000053 
+ 1009      796E6368 
+ 1009      726F6E69 
+ 1009      7A617469 
+ 1010 0057 696D756D 	 .ascii "imum Cycle Time\000Calc and Copy Time\000\000Get Cy"
+ 1010      20437963 
+ 1010      6C652054 
+ 1010      696D6500 
+ 1010      43616C63 
+ 1011 0081 636C6520 	 .ascii "cle Time\000Delay Time\000Sync0 Cycle Time\000SM-Ev"
+ 1011      54696D65 
+ 1011      0044656C 
+ 1011      61792054 
+ 1011      696D6500 
+ 1012 00ab 656E7420 	 .ascii "ent Missed\000Cycle Time Too Small\000Shift Time To"
+ 1012      4D697373 
+ 1012      65640043 
+ 1012      79636C65 
+ 1012      2054696D 
+ 1013 00d8 6F205368 	 .ascii "o Short\000\000\000\000\000\000\000\000\000\000\000"
+ 1013      6F727400 
+ 1013      00000000 
+ 1013      00000000 
+ 1013      0000
+ 1014 00ea 00000000 	 .ascii "\000\000\000\000\000\000\000\000Sync Error\000\377\000"
+ 1014      00000000 
+ 1014      53796E63 
+ 1014      20457272 
+ 1014      6F7200FF 
+ 1015              	 .global ObjDicList
+ 1016 00ff 00       	 .section .bss.ObjDicList,"aw",%nobits
+ 1017              	 .align 2
+ 1020              	ObjDicList:
+ 1021 0000 00000000 	 .space 4
+ 1022              	 .global GenObjDic
+ 1023              	 .section .data.GenObjDic,"aw",%progbits
+ 1024              	 .align 2
+ 1027              	GenObjDic:
+ 1028 0000 00000000 	 .word 0
+ 1029 0004 00000000 	 .word 0
+ 1030 0008 0010     	 .short 4096
+ 1031 000a 0700     	 .short 7
+ 1032 000c 0007     	 .short 1792
+ 1033 000e 0000     	 .space 2
+ 1034 0010 00000000 	 .word sEntryDesc0x1000
+ 1035 0014 00000000 	 .word aName0x1000
+ 1036 0018 00000000 	 .word u32Devicetype
+ 1037 001c 00000000 	 .word 0
+ 1038 0020 00000000 	 .word 0
+ 1039 0024 0000     	 .short 0
+ 1040 0026 0000     	 .space 2
+ 1041 0028 00000000 	 .word 0
+ 1042 002c 00000000 	 .word 0
+ 1043 0030 0110     	 .short 4097
+ 1044 0032 0500     	 .short 5
+ 1045 0034 0007     	 .short 1792
+ 1046 0036 0000     	 .space 2
+ 1047 0038 00000000 	 .word sEntryDesc0x1001
+ 1048 003c 00000000 	 .word aName0x1001
+ 1049 0040 00000000 	 .word u16ErrorRegister
+ 1050 0044 00000000 	 .word 0
+ 1051 0048 00000000 	 .word 0
+ 1052 004c 0000     	 .short 0
+ 1053 004e 0000     	 .space 2
+ 1054 0050 00000000 	 .word 0
+ 1055 0054 00000000 	 .word 0
+ 1056 0058 0810     	 .short 4104
+ 1057 005a 0900     	 .short 9
+ 1058 005c 0007     	 .short 1792
+ 1059 005e 0000     	 .space 2
+ 1060 0060 00000000 	 .word sEntryDesc0x1008
+ 1061 0064 00000000 	 .word aName0x1008
+ 1062 0068 00000000 	 .word acDevicename
+ 1063 006c 00000000 	 .word 0
+ 1064 0070 00000000 	 .word 0
+ 1065 0074 0000     	 .short 0
+ 1066 0076 0000     	 .space 2
+ 1067 0078 00000000 	 .word 0
+ 1068 007c 00000000 	 .word 0
+ 1069 0080 0910     	 .short 4105
+ 1070 0082 0900     	 .short 9
+ 1071 0084 0007     	 .short 1792
+ 1072 0086 0000     	 .space 2
+ 1073 0088 00000000 	 .word sEntryDesc0x1009
+ 1074 008c 00000000 	 .word aName0x1009
+ 1075 0090 00000000 	 .word acHardwareversion
+ 1076 0094 00000000 	 .word 0
+ 1077 0098 00000000 	 .word 0
+ 1078 009c 0000     	 .short 0
+ 1079 009e 0000     	 .space 2
+ 1080 00a0 00000000 	 .word 0
+ 1081 00a4 00000000 	 .word 0
+ 1082 00a8 0A10     	 .short 4106
+ 1083 00aa 0900     	 .short 9
+ 1084 00ac 0007     	 .short 1792
+ 1085 00ae 0000     	 .space 2
+ 1086 00b0 00000000 	 .word sEntryDesc0x100A
+ 1087 00b4 00000000 	 .word aName0x100A
+ 1088 00b8 00000000 	 .word acSoftwareversion
+ 1089 00bc 00000000 	 .word 0
+ 1090 00c0 00000000 	 .word 0
+ 1091 00c4 0000     	 .short 0
+ 1092 00c6 0000     	 .space 2
+ 1093 00c8 00000000 	 .word 0
+ 1094 00cc 00000000 	 .word 0
+ 1095 00d0 1810     	 .short 4120
+ 1096 00d2 2300     	 .short 35
+ 1097 00d4 0409     	 .short 2308
+ 1098 00d6 0000     	 .space 2
+ 1099 00d8 00000000 	 .word asEntryDesc0x1018
+ 1100 00dc 00000000 	 .word aName0x1018
+ 1101 00e0 00000000 	 .word sIdentity
+ 1102 00e4 00000000 	 .word 0
+ 1103 00e8 00000000 	 .word 0
+ 1104 00ec 0000     	 .short 0
+ 1105 00ee 0000     	 .space 2
+ 1106 00f0 00000000 	 .word 0
+ 1107 00f4 00000000 	 .word 0
+ 1108 00f8 F110     	 .short 4337
+ 1109 00fa 2A00     	 .short 42
+ 1110 00fc 0209     	 .short 2306
+ 1111 00fe 0000     	 .space 2
+ 1112 0100 00000000 	 .word asEntryDesc0x10F1
+ 1113 0104 00000000 	 .word aName0x10F1
+ 1114 0108 00000000 	 .word sErrorSettings
+ 1115 010c 00000000 	 .word 0
+ 1116 0110 00000000 	 .word 0
+ 1117 0114 0000     	 .short 0
+ 1118 0116 0000     	 .space 2
+ 1119 0118 00000000 	 .word 0
+ 1120 011c 00000000 	 .word 0
+ 1121 0120 F810     	 .short 4344
+ 1122 0122 1B00     	 .short 27
+ 1123 0124 0007     	 .short 1792
+ 1124 0126 0000     	 .space 2
+ 1125 0128 00000000 	 .word sEntryDesc0x10F8
+ 1126 012c 00000000 	 .word aName0x10F8
+ 1127 0130 00000000 	 .word u64Timestamp
+ 1128 0134 00000000 	 .word Read0x10F8
+ 1129 0138 00000000 	 .word 0
+ 1130 013c 0000     	 .short 0
+ 1131 013e 0000     	 .space 2
+ 1132 0140 00000000 	 .word 0
+ 1133 0144 00000000 	 .word 0
+ 1134 0148 001C     	 .short 7168
+ 1135 014a 0500     	 .short 5
+ 1136 014c 0408     	 .short 2052
+ 1137 014e 0000     	 .space 2
+ 1138 0150 00000000 	 .word asEntryDesc0x1C00
+ 1139 0154 00000000 	 .word aName0x1C00
+ 1140 0158 00000000 	 .word sSyncmanagertype
+ 1141 015c 00000000 	 .word 0
+ 1142 0160 00000000 	 .word 0
+ 1143 0164 0000     	 .short 0
+ 1144 0166 0000     	 .space 2
+ 1145 0168 00000000 	 .word 0
+ 1146 016c 00000000 	 .word 0
+ 1147 0170 321C     	 .short 7218
+ 1148 0172 2900     	 .short 41
+ 1149 0174 2009     	 .short 2336
+ 1150 0176 0000     	 .space 2
+ 1151 0178 00000000 	 .word asEntryDesc0x1C3x
+ 1152 017c 00000000 	 .word aName0x1C32
+ 1153 0180 00000000 	 .word sSyncManOutPar
+ 1154 0184 00000000 	 .word 0
+ 1155 0188 00000000 	 .word 0
+ 1156 018c 0000     	 .short 0
+ 1157 018e 0000     	 .space 2
+ 1158 0190 00000000 	 .word 0
+ 1159 0194 00000000 	 .word 0
+ 1160 0198 331C     	 .short 7219
+ 1161 019a 2900     	 .short 41
+ 1162 019c 2009     	 .short 2336
+ 1163 019e 0000     	 .space 2
+ 1164 01a0 00000000 	 .word asEntryDesc0x1C3x
+ 1165 01a4 00000000 	 .word aName0x1C33
+ 1166 01a8 00000000 	 .word sSyncManInPar
+ 1167 01ac 00000000 	 .word 0
+ 1168 01b0 00000000 	 .word 0
+ 1169 01b4 0000     	 .short 0
+ 1170 01b6 0000     	 .space 2
+ 1171 01b8 00000000 	 .word 0
+ 1172 01bc 00000000 	 .word 0
+ 1173 01c0 FFFF     	 .short -1
+ 1174 01c2 0000     	 .short 0
+ 1175 01c4 0000     	 .short 0
+ 1176 01c6 0000     	 .space 2
+ 1177 01c8 00000000 	 .word 0
+ 1178 01cc 00000000 	 .word 0
+ 1179 01d0 00000000 	 .word 0
+ 1180 01d4 00000000 	 .word 0
+ 1181 01d8 00000000 	 .word 0
+ 1182 01dc 0000     	 .short 0
+ 1183 01de 0000     	 .space 2
+ 1184              	 .section .text.COE_GetObjectDictionary,"ax",%progbits
+ 1185              	 .align 2
+ 1186              	 .global COE_GetObjectDictionary
+ 1187              	 .thumb
+ 1188              	 .thumb_func
+ 1190              	COE_GetObjectDictionary:
+ 1191              	.LFB179:
+ 391:../SSC/Src/coeappl.c **** /*ECATCHANGE_END(V5.12) COE4*/
+ 392:../SSC/Src/coeappl.c **** 
+ 393:../SSC/Src/coeappl.c **** 
+ 394:../SSC/Src/coeappl.c **** 
+ 395:../SSC/Src/coeappl.c **** /*---------------------------------------------
+ 396:../SSC/Src/coeappl.c **** -    0x1C00
+ 397:../SSC/Src/coeappl.c **** -----------------------------------------------*/
+ 398:../SSC/Src/coeappl.c **** 
+ 399:../SSC/Src/coeappl.c **** /**
+ 400:../SSC/Src/coeappl.c ****  * \brief 0x1C00 (Sync manager type) variable to handle the object data
+ 401:../SSC/Src/coeappl.c ****  *
+ 402:../SSC/Src/coeappl.c ****  * SI 0 : 4 (4 SyncManagers available)
+ 403:../SSC/Src/coeappl.c ****  * SI1 (SM0): Mailbox Out (0x1)
+ 404:../SSC/Src/coeappl.c ****  * SI2 (SM1): Mailbox In (0x2)
+ 405:../SSC/Src/coeappl.c ****  * SI3 (SM2): Process data Out (0x3)
+ 406:../SSC/Src/coeappl.c ****  * SI4 (SM3): Process data In (0x4)
+ 407:../SSC/Src/coeappl.c ****  *
+ 408:../SSC/Src/coeappl.c ****  */
+ 409:../SSC/Src/coeappl.c ****  /*ECATCHANGE_START(V5.12)*/
+ 410:../SSC/Src/coeappl.c **** TOBJ1C00 sSyncmanagertype = {0x04, {0x0102, 0x0304}};
+ 411:../SSC/Src/coeappl.c **** /*ECATCHANGE_END(V5.12)*/
+ 412:../SSC/Src/coeappl.c **** 
+ 413:../SSC/Src/coeappl.c **** 
+ 414:../SSC/Src/coeappl.c **** /**
+ 415:../SSC/Src/coeappl.c ****  * \brief 0x1C00 (Sync manager type) entry descriptions
+ 416:../SSC/Src/coeappl.c ****  *
+ 417:../SSC/Src/coeappl.c ****  * The object is an array so only the first entry is described (which is used for all entries).
+ 418:../SSC/Src/coeappl.c ****  */
+ 419:../SSC/Src/coeappl.c **** OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1C00[] = {
+ 420:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED8, 0x08, ACCESS_READ},
+ 421:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED8, 0x08, ACCESS_READ}};
+ 422:../SSC/Src/coeappl.c **** 
+ 423:../SSC/Src/coeappl.c **** /**
+ 424:../SSC/Src/coeappl.c ****  * \brief 0x1C00 (Sync manager type) object name
+ 425:../SSC/Src/coeappl.c ****  */
+ 426:../SSC/Src/coeappl.c **** OBJCONST UCHAR OBJMEM aName0x1C00[] = "Sync manager type";
+ 427:../SSC/Src/coeappl.c **** 
+ 428:../SSC/Src/coeappl.c **** 
+ 429:../SSC/Src/coeappl.c **** /*---------------------------------------------
+ 430:../SSC/Src/coeappl.c **** -    0x1C3x
+ 431:../SSC/Src/coeappl.c **** -----------------------------------------------*/
+ 432:../SSC/Src/coeappl.c **** /**
+ 433:../SSC/Src/coeappl.c ****  * \brief 0x1C3x (SyncManager parameter) entry description
+ 434:../SSC/Src/coeappl.c ****  *
+ 435:../SSC/Src/coeappl.c ****  * The entry descriptions are used for 0x1C32 and 0x1C33
+ 436:../SSC/Src/coeappl.c ****  */
+ 437:../SSC/Src/coeappl.c **** OBJCONST TSDOINFOENTRYDESC    OBJMEM asEntryDesc0x1C3x[] = {
+ 438:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED8, 0x8, ACCESS_READ }, /* Subindex 000 */
+ 439:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED16, 0x10, (ACCESS_READ | ACCESS_WRITE_PREOP)}, /* SubIndex 001: Synchronization
+ 440:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED32, 0x20, ACCESS_READ}, /* SubIndex 002: Cycle Time */
+ 441:../SSC/Src/coeappl.c ****    {0x0000, 0x20, 0}, /* SubIndex 003: Shift Time (not supported)*/
+ 442:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED16, 0x10, ACCESS_READ}, /* SubIndex 004: Synchronization Types supported */
+ 443:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED32, 0x20, ACCESS_READ}, /* SubIndex 005: Minimum Cycle Time */
+ 444:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED32, 0x20, ACCESS_READ}, /* SubIndex 006: Calc and Copy Time */
+ 445:../SSC/Src/coeappl.c ****    {0x0000, 0x20, 0}, /* Subindex 007 Minimum Delay Time (not supported)*/
+ 446:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED16, 0x10, ACCESS_READWRITE}, /* SubIndex 008: Get Cycle Time */
+ 447:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED32, 0x20, ACCESS_READ}, /* SubIndex 009: Delay Time */
+ 448:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED32, 0x20, ACCESS_READWRITE}, /* SubIndex 010: Sync0 Cycle Time */
+ 449:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED16, 0x10, ACCESS_READ}, /* SubIndex 011: SM-Event Missed */
+ 450:../SSC/Src/coeappl.c ****    {DEFTYPE_UNSIGNED16, 0x10, ACCESS_READ}, /* SubIndex 012: Cycle Time Too Small */
+ 451:../SSC/Src/coeappl.c ****    {0x0000, 0x10, 0}, /* SubIndex 013: Shift Too Short Counter (not supported)*/
+ 452:../SSC/Src/coeappl.c ****    {0x0000, 0x10, 0}, /* Subindex 014: RxPDO Toggle Failed (not supported)*/
+ 453:../SSC/Src/coeappl.c ****    {0x0000, 0x20, 0}, /* Subindex 015: Minimum Cycle Distance (not supported)*/
+ 454:../SSC/Src/coeappl.c ****    {0x0000, 0x20, 0}, /* Subindex 016: Maximum Cycle Distance (not supported)*/
+ 455:../SSC/Src/coeappl.c ****    {0x0000, 0x20, 0}, /* Subindex 017: Minimum SM Sync Distance (not supported)*/
+ 456:../SSC/Src/coeappl.c ****    {0x0000, 0x20, 0}, /* Subindex 018: Maximum SM Sync Distance (not supported)*/
+ 457:../SSC/Src/coeappl.c ****    {0x0000, 0, 0}, /* Subindex 019 doesn't exist */
+ 458:../SSC/Src/coeappl.c ****    {0x0000, 0, 0}, /* Subindex 020 doesn't exist */
+ 459:../SSC/Src/coeappl.c ****    {0x0000, 0, 0}, /* Subindex 021 doesn't exist */
+ 460:../SSC/Src/coeappl.c ****    {0x0000, 0, 0}, /* Subindex 022 doesn't exist */
+ 461:../SSC/Src/coeappl.c ****    {0x0000, 0, 0}, /* Subindex 023 doesn't exist */
+ 462:../SSC/Src/coeappl.c ****    {0x0000, 0, 0}, /* Subindex 024 doesn't exist */
+ 463:../SSC/Src/coeappl.c ****    {0x0000, 0, 0}, /* Subindex 025 doesn't exist */
+ 464:../SSC/Src/coeappl.c ****    {0x0000, 0, 0}, /* Subindex 026 doesn't exist */
+ 465:../SSC/Src/coeappl.c ****    {0x0000, 0, 0}, /* Subindex 027 doesn't exist */
+ 466:../SSC/Src/coeappl.c ****    {0x0000, 0, 0}, /* Subindex 028 doesn't exist */
+ 467:../SSC/Src/coeappl.c ****    {0x0000, 0, 0}, /* Subindex 029 doesn't exist */
+ 468:../SSC/Src/coeappl.c ****    {0x0000, 0, 0}, /* Subindex 030 doesn't exist */
+ 469:../SSC/Src/coeappl.c ****    {0x0000, 0, 0}, /* Subindex 031 doesn't exist */
+ 470:../SSC/Src/coeappl.c ****    {DEFTYPE_BOOLEAN, 0x01, ACCESS_READ}}; /* SubIndex 032: Sync error */
+ 471:../SSC/Src/coeappl.c **** 
+ 472:../SSC/Src/coeappl.c **** /**
+ 473:../SSC/Src/coeappl.c ****  * \brief 0x1C32 (SyncManager 2 parameter) object and entry names
+ 474:../SSC/Src/coeappl.c ****  */
+ 475:../SSC/Src/coeappl.c **** OBJCONST UCHAR OBJMEM aName0x1C32[] = "SM output parameter\000Synchronization Type\000Cycle Time\00
+ 476:../SSC/Src/coeappl.c **** 
+ 477:../SSC/Src/coeappl.c **** /**
+ 478:../SSC/Src/coeappl.c ****  * \brief 0x1C33 (SyncManager 3 parameter) object and entry names
+ 479:../SSC/Src/coeappl.c ****  */
+ 480:../SSC/Src/coeappl.c **** OBJCONST UCHAR OBJMEM aName0x1C33[] = "SM input parameter\000Synchronization Type\000Cycle Time\000
+ 481:../SSC/Src/coeappl.c **** 
+ 482:../SSC/Src/coeappl.c **** /******************************************************************************
+ 483:../SSC/Src/coeappl.c **** ** Object Dictionary
+ 484:../SSC/Src/coeappl.c **** ******************************************************************************/
+ 485:../SSC/Src/coeappl.c **** /**
+ 486:../SSC/Src/coeappl.c ****  * \brief Object dictionary pointer
+ 487:../SSC/Src/coeappl.c ****  */
+ 488:../SSC/Src/coeappl.c **** TOBJECT    OBJMEM * ObjDicList = NULL;
+ 489:../SSC/Src/coeappl.c **** 
+ 490:../SSC/Src/coeappl.c **** /**
+ 491:../SSC/Src/coeappl.c ****  * \brief List of generic application independent objects
+ 492:../SSC/Src/coeappl.c ****  */
+ 493:../SSC/Src/coeappl.c **** TOBJECT    OBJMEM GenObjDic[] = {
+ 494:../SSC/Src/coeappl.c ****     /* Object 0x1000 */
+ 495:../SSC/Src/coeappl.c ****    {NULL,NULL,  0x1000, {DEFTYPE_UNSIGNED32, 0 | (OBJCODE_VAR << 8)}, &sEntryDesc0x1000, aName0x100
+ 496:../SSC/Src/coeappl.c ****    /* Object 0x1001 */
+ 497:../SSC/Src/coeappl.c ****    {NULL,NULL,  0x1001, {DEFTYPE_UNSIGNED8, 0 | (OBJCODE_VAR << 8)}, &sEntryDesc0x1001, aName0x1001
+ 498:../SSC/Src/coeappl.c **** /* Object 0x1008 */
+ 499:../SSC/Src/coeappl.c ****    {NULL,NULL,  0x1008, {DEFTYPE_VISIBLESTRING, 0 | (OBJCODE_VAR << 8)}, &sEntryDesc0x1008, aName0x
+ 500:../SSC/Src/coeappl.c ****    /* Object 0x1009 */
+ 501:../SSC/Src/coeappl.c ****    {NULL,NULL,  0x1009, {DEFTYPE_VISIBLESTRING, 0 | (OBJCODE_VAR << 8)}, &sEntryDesc0x1009, aName0x
+ 502:../SSC/Src/coeappl.c ****    /* Object 0x100A */
+ 503:../SSC/Src/coeappl.c ****    {NULL,NULL,  0x100A, {DEFTYPE_VISIBLESTRING, 0 | (OBJCODE_VAR << 8)}, &sEntryDesc0x100A, aName0x
+ 504:../SSC/Src/coeappl.c ****    /* Object 0x1018 */
+ 505:../SSC/Src/coeappl.c ****    {NULL,NULL,  0x1018, {DEFTYPE_IDENTITY, 4 | (OBJCODE_REC << 8)}, asEntryDesc0x1018, aName0x1018,
+ 506:../SSC/Src/coeappl.c ****     /* Object 0x10F1 */
+ 507:../SSC/Src/coeappl.c ****    {NULL,NULL,  0x10F1, {DEFTYPE_RECORD, 2 | (OBJCODE_REC << 8)}, asEntryDesc0x10F1, aName0x10F1, &
+ 508:../SSC/Src/coeappl.c **** /*ECATCHANGE_START(V5.12) COE4*/
+ 509:../SSC/Src/coeappl.c ****     /* Object 0x10F8 */
+ 510:../SSC/Src/coeappl.c ****    { NULL,NULL,  0x10F8,{ DEFTYPE_UNSIGNED64, 0 | (OBJCODE_VAR << 8) }, &sEntryDesc0x10F8, aName0x1
+ 511:../SSC/Src/coeappl.c **** /*ECATCHANGE_END(V5.12) COE4*/
+ 512:../SSC/Src/coeappl.c ****    /* Object 0x1C00 */
+ 513:../SSC/Src/coeappl.c ****    {NULL,NULL, 0x1C00, {DEFTYPE_UNSIGNED8, 4 | (OBJCODE_ARR << 8)}, asEntryDesc0x1C00, aName0x1C00,
+ 514:../SSC/Src/coeappl.c ****    /* Object 0x1C32 */
+ 515:../SSC/Src/coeappl.c ****    {NULL,NULL, 0x1C32, {DEFTYPE_SMPAR, 32 | (OBJCODE_REC << 8)}, asEntryDesc0x1C3x, aName0x1C32, &s
+ 516:../SSC/Src/coeappl.c ****    /* Object 0x1C33 */
+ 517:../SSC/Src/coeappl.c ****    {NULL,NULL, 0x1C33, {DEFTYPE_SMPAR, 32 | (OBJCODE_REC << 8)}, asEntryDesc0x1C3x, aName0x1C33, &s
+ 518:../SSC/Src/coeappl.c ****    
+ 519:../SSC/Src/coeappl.c ****   /*end of entries*/
+ 520:../SSC/Src/coeappl.c ****   {NULL,NULL, 0xFFFF, {0, 0}, NULL, NULL, NULL, NULL, NULL, 0x000}};
+ 521:../SSC/Src/coeappl.c **** 
+ 522:../SSC/Src/coeappl.c **** 
+ 523:../SSC/Src/coeappl.c **** /*-----------------------------------------------------------------------------------------
+ 524:../SSC/Src/coeappl.c **** ------
+ 525:../SSC/Src/coeappl.c **** ------    Functions
+ 526:../SSC/Src/coeappl.c **** ------
+ 527:../SSC/Src/coeappl.c **** -----------------------------------------------------------------------------------------*/
+ 528:../SSC/Src/coeappl.c **** 
+ 529:../SSC/Src/coeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 530:../SSC/Src/coeappl.c **** /**
+ 531:../SSC/Src/coeappl.c **** 
+ 532:../SSC/Src/coeappl.c ****  \brief    returns the pointer to the object dictionary
+ 533:../SSC/Src/coeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 534:../SSC/Src/coeappl.c **** OBJCONST TOBJECT OBJMEM * COE_GetObjectDictionary(void)
+ 535:../SSC/Src/coeappl.c **** {
+ 1192              	 .loc 2 535 0
+ 1193              	 .cfi_startproc
+ 1194              	 
+ 1195              	 
+ 1196              	 
+ 1197 0000 80B4     	 push {r7}
+ 1198              	.LCFI15:
+ 1199              	 .cfi_def_cfa_offset 4
+ 1200              	 .cfi_offset 7,-4
+ 1201 0002 00AF     	 add r7,sp,#0
+ 1202              	.LCFI16:
+ 1203              	 .cfi_def_cfa_register 7
+ 536:../SSC/Src/coeappl.c ****     return (OBJCONST TOBJECT OBJMEM *) ObjDicList;
+ 1204              	 .loc 2 536 0
+ 1205 0004 034B     	 ldr r3,.L18
+ 1206 0006 1B68     	 ldr r3,[r3]
+ 537:../SSC/Src/coeappl.c **** }
+ 1207              	 .loc 2 537 0
+ 1208 0008 1846     	 mov r0,r3
+ 1209 000a BD46     	 mov sp,r7
+ 1210              	.LCFI17:
+ 1211              	 .cfi_def_cfa_register 13
+ 1212              	 
+ 1213 000c 5DF8047B 	 ldr r7,[sp],#4
+ 1214              	.LCFI18:
+ 1215              	 .cfi_restore 7
+ 1216              	 .cfi_def_cfa_offset 0
+ 1217 0010 7047     	 bx lr
+ 1218              	.L19:
+ 1219 0012 00BF     	 .align 2
+ 1220              	.L18:
+ 1221 0014 00000000 	 .word ObjDicList
+ 1222              	 .cfi_endproc
+ 1223              	.LFE179:
+ 1225              	 .section .text.COE_UpdateSyncErrorStatus,"ax",%progbits
+ 1226              	 .align 2
+ 1227              	 .global COE_UpdateSyncErrorStatus
+ 1228              	 .thumb
+ 1229              	 .thumb_func
+ 1231              	COE_UpdateSyncErrorStatus:
+ 1232              	.LFB180:
+ 538:../SSC/Src/coeappl.c **** 
+ 539:../SSC/Src/coeappl.c **** 
+ 540:../SSC/Src/coeappl.c **** /*ECATCHANGE_START(V5.12) ECAT5*/
+ 541:../SSC/Src/coeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 542:../SSC/Src/coeappl.c **** /**
+ 543:../SSC/Src/coeappl.c **** \brief     Update the Sync Error Indication
+ 544:../SSC/Src/coeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 545:../SSC/Src/coeappl.c **** void COE_UpdateSyncErrorStatus(void)
+ 546:../SSC/Src/coeappl.c **** {
+ 1233              	 .loc 2 546 0
+ 1234              	 .cfi_startproc
+ 1235              	 
+ 1236              	 
+ 1237              	 
+ 1238 0000 80B4     	 push {r7}
+ 1239              	.LCFI19:
+ 1240              	 .cfi_def_cfa_offset 4
+ 1241              	 .cfi_offset 7,-4
+ 1242 0002 00AF     	 add r7,sp,#0
+ 1243              	.LCFI20:
+ 1244              	 .cfi_def_cfa_register 7
+ 547:../SSC/Src/coeappl.c ****     if (sSyncManOutPar.u16CycleExceededCounter > 0 || sSyncManOutPar.u16SmEventMissedCounter > sErr
+ 1245              	 .loc 2 547 0
+ 1246 0004 144B     	 ldr r3,.L27
+ 1247 0006 5B8D     	 ldrh r3,[r3,#42]
+ 1248 0008 002B     	 cmp r3,#0
+ 1249 000a 05D1     	 bne .L21
+ 1250              	 .loc 2 547 0 is_stmt 0 discriminator 1
+ 1251 000c 124B     	 ldr r3,.L27
+ 1252 000e 1A8D     	 ldrh r2,[r3,#40]
+ 1253 0010 124B     	 ldr r3,.L27+4
+ 1254 0012 1B89     	 ldrh r3,[r3,#8]
+ 1255 0014 9A42     	 cmp r2,r3
+ 1256 0016 04D9     	 bls .L22
+ 1257              	.L21:
+ 548:../SSC/Src/coeappl.c ****     {
+ 549:../SSC/Src/coeappl.c ****         sSyncManOutPar.u8SyncError = 1;
+ 1258              	 .loc 2 549 0 is_stmt 1
+ 1259 0018 0F4B     	 ldr r3,.L27
+ 1260 001a 0122     	 movs r2,#1
+ 1261 001c 83F84020 	 strb r2,[r3,#64]
+ 1262 0020 03E0     	 b .L23
+ 1263              	.L22:
+ 550:../SSC/Src/coeappl.c ****     }
+ 551:../SSC/Src/coeappl.c ****     else
+ 552:../SSC/Src/coeappl.c ****     {
+ 553:../SSC/Src/coeappl.c ****         sSyncManOutPar.u8SyncError = 0;
+ 1264              	 .loc 2 553 0
+ 1265 0022 0D4B     	 ldr r3,.L27
+ 1266 0024 0022     	 movs r2,#0
+ 1267 0026 83F84020 	 strb r2,[r3,#64]
+ 1268              	.L23:
+ 554:../SSC/Src/coeappl.c ****     }
+ 555:../SSC/Src/coeappl.c **** 
+ 556:../SSC/Src/coeappl.c **** 
+ 557:../SSC/Src/coeappl.c ****     if (sSyncManInPar.u16CycleExceededCounter > 0 || sSyncManInPar.u16SmEventMissedCounter > sError
+ 1269              	 .loc 2 557 0
+ 1270 002a 0D4B     	 ldr r3,.L27+8
+ 1271 002c 5B8D     	 ldrh r3,[r3,#42]
+ 1272 002e 002B     	 cmp r3,#0
+ 1273 0030 05D1     	 bne .L24
+ 1274              	 .loc 2 557 0 is_stmt 0 discriminator 1
+ 1275 0032 0B4B     	 ldr r3,.L27+8
+ 1276 0034 1A8D     	 ldrh r2,[r3,#40]
+ 1277 0036 094B     	 ldr r3,.L27+4
+ 1278 0038 1B89     	 ldrh r3,[r3,#8]
+ 1279 003a 9A42     	 cmp r2,r3
+ 1280 003c 04D9     	 bls .L25
+ 1281              	.L24:
+ 558:../SSC/Src/coeappl.c ****     {
+ 559:../SSC/Src/coeappl.c ****         sSyncManInPar.u8SyncError = 1;
+ 1282              	 .loc 2 559 0 is_stmt 1
+ 1283 003e 084B     	 ldr r3,.L27+8
+ 1284 0040 0122     	 movs r2,#1
+ 1285 0042 83F84020 	 strb r2,[r3,#64]
+ 1286 0046 03E0     	 b .L20
+ 1287              	.L25:
+ 560:../SSC/Src/coeappl.c ****     }
+ 561:../SSC/Src/coeappl.c ****     else
+ 562:../SSC/Src/coeappl.c ****     {
+ 563:../SSC/Src/coeappl.c ****         sSyncManInPar.u8SyncError = 0;
+ 1288              	 .loc 2 563 0
+ 1289 0048 054B     	 ldr r3,.L27+8
+ 1290 004a 0022     	 movs r2,#0
+ 1291 004c 83F84020 	 strb r2,[r3,#64]
+ 1292              	.L20:
+ 564:../SSC/Src/coeappl.c ****     }
+ 565:../SSC/Src/coeappl.c **** 
+ 566:../SSC/Src/coeappl.c **** }
+ 1293              	 .loc 2 566 0
+ 1294 0050 BD46     	 mov sp,r7
+ 1295              	.LCFI21:
+ 1296              	 .cfi_def_cfa_register 13
+ 1297              	 
+ 1298 0052 5DF8047B 	 ldr r7,[sp],#4
+ 1299              	.LCFI22:
+ 1300              	 .cfi_restore 7
+ 1301              	 .cfi_def_cfa_offset 0
+ 1302 0056 7047     	 bx lr
+ 1303              	.L28:
+ 1304              	 .align 2
+ 1305              	.L27:
+ 1306 0058 00000000 	 .word sSyncManOutPar
+ 1307 005c 00000000 	 .word sErrorSettings
+ 1308 0060 00000000 	 .word sSyncManInPar
+ 1309              	 .cfi_endproc
+ 1310              	.LFE180:
+ 1312              	 .section .text.COE_ObjInit,"ax",%progbits
+ 1313              	 .align 2
+ 1314              	 .global COE_ObjInit
+ 1315              	 .thumb
+ 1316              	 .thumb_func
+ 1318              	COE_ObjInit:
+ 1319              	.LFB181:
+ 567:../SSC/Src/coeappl.c **** /*ECATCHANGE_END(V5.12) ECAT5*/
+ 568:../SSC/Src/coeappl.c **** 
+ 569:../SSC/Src/coeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 570:../SSC/Src/coeappl.c **** /**
+ 571:../SSC/Src/coeappl.c ****  \brief     This function initialize the several objects
+ 572:../SSC/Src/coeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 573:../SSC/Src/coeappl.c **** 
+ 574:../SSC/Src/coeappl.c **** void COE_ObjInit(void)
+ 575:../SSC/Src/coeappl.c **** {
+ 1320              	 .loc 2 575 0
+ 1321              	 .cfi_startproc
+ 1322              	 
+ 1323              	 
+ 1324 0000 80B5     	 push {r7,lr}
+ 1325              	.LCFI23:
+ 1326              	 .cfi_def_cfa_offset 8
+ 1327              	 .cfi_offset 7,-8
+ 1328              	 .cfi_offset 14,-4
+ 1329 0002 82B0     	 sub sp,sp,#8
+ 1330              	.LCFI24:
+ 1331              	 .cfi_def_cfa_offset 16
+ 1332 0004 00AF     	 add r7,sp,#0
+ 1333              	.LCFI25:
+ 1334              	 .cfi_def_cfa_register 7
+ 576:../SSC/Src/coeappl.c ****     /* initialize the Sync Manager Output parameter object 0x1C32 */
+ 577:../SSC/Src/coeappl.c **** 
+ 578:../SSC/Src/coeappl.c ****     sSyncManOutPar.subindex0         = 32;
+ 1335              	 .loc 2 578 0
+ 1336 0006 434B     	 ldr r3,.L33
+ 1337 0008 2022     	 movs r2,#32
+ 1338 000a 1A80     	 strh r2,[r3]
+ 579:../SSC/Src/coeappl.c ****     /*
+ 580:../SSC/Src/coeappl.c ****     subindex 1 contains the actual synchronization mode, it could be written
+ 581:../SSC/Src/coeappl.c ****       from the master to switch between ECAT FreeRun and ECAT Synchron Mode
+ 582:../SSC/Src/coeappl.c ****         if the slave supports both modes,
+ 583:../SSC/Src/coeappl.c ****         in DC mode (selected by the DC registers) this value will be overwritten
+ 584:../SSC/Src/coeappl.c ****         with SYNCTYPE_DCSYNC0 or SYNCTYPE_DCSYNC1 */
+ 585:../SSC/Src/coeappl.c ****      /*default mode is ECAT Synchron Mode */
+ 586:../SSC/Src/coeappl.c ****     sSyncManOutPar.u16SyncType     = SYNCTYPE_FREERUN;
+ 1339              	 .loc 2 586 0
+ 1340 000c 414B     	 ldr r3,.L33
+ 1341 000e 0022     	 movs r2,#0
+ 1342 0010 5A80     	 strh r2,[r3,#2]
+ 587:../SSC/Src/coeappl.c **** 
+ 588:../SSC/Src/coeappl.c ****     /* subindex 2 contains the cycle time of the application,
+ 589:../SSC/Src/coeappl.c ****        in ECAT FreeRun mode it could be used for a timer interrupt to run the application,
+ 590:../SSC/Src/coeappl.c ****         in ECAT Synchron mode it could be written from the master with its local cycle time
+ 591:../SSC/Src/coeappl.c ****         that the slave can check if this cycle time is supported,
+ 592:../SSC/Src/coeappl.c ****         in DC Mode this value will be overwritten with the DC cycle time register */
+ 593:../SSC/Src/coeappl.c ****     sSyncManOutPar.u32CycleTime     = 0;
+ 1343              	 .loc 2 593 0
+ 1344 0012 404B     	 ldr r3,.L33
+ 1345 0014 0022     	 movs r2,#0
+ 1346 0016 5A60     	 str r2,[r3,#4]
+ 594:../SSC/Src/coeappl.c **** 
+ 595:../SSC/Src/coeappl.c ****     /* the subindex 4 contains the supported synchronization types */
+ 596:../SSC/Src/coeappl.c **** 
+ 597:../SSC/Src/coeappl.c ****     sSyncManOutPar.u16SyncTypesSupported    = SYNCTYPE_FREERUNSUPP            /* ECAT FreeRun Mode 
+ 1347              	 .loc 2 597 0
+ 1348 0018 3E4B     	 ldr r3,.L33
+ 1349 001a 44F21F02 	 movw r2,#16415
+ 1350 001e 9A81     	 strh r2,[r3,#12]
+ 598:../SSC/Src/coeappl.c **** 
+ 599:../SSC/Src/coeappl.c **** #if (PD_OUTPUT_CALC_AND_COPY_TIME == 0) || (PD_INPUT_CALC_AND_COPY_TIME == 0) || (MIN_PD_CYCLE_TIME
+ 600:../SSC/Src/coeappl.c **** /*ECATCHANGE_START(V5.12) ECAT1*/
+ 601:../SSC/Src/coeappl.c ****                                               | SYNCTYPE_TIMESVARIABLE        /* the execution time
+ 602:../SSC/Src/coeappl.c **** /*ECATCHANGE_END(V5.12) ECAT1*/
+ 603:../SSC/Src/coeappl.c **** #endif
+ 604:../SSC/Src/coeappl.c ****                                               | SYNCTYPE_SYNCHRONSUPP         /* ECAT Synchron Mode
+ 605:../SSC/Src/coeappl.c ****                                               | SYNCTYPE_DCSYNC0SUPP          /* DC Sync0 Mode is s
+ 606:../SSC/Src/coeappl.c ****                                               | SYNCTYPE_DCSYNC1SUPP          /* DC Sync1 Mode is s
+ 607:../SSC/Src/coeappl.c ****                                               | SYNCTYPE_SUBCYCLESUPP         /*Subordinated applic
+ 608:../SSC/Src/coeappl.c ****     ;
+ 609:../SSC/Src/coeappl.c **** 
+ 610:../SSC/Src/coeappl.c ****     /* subindex 5 contains the minimum cycle time the slave is able to support,
+ 611:../SSC/Src/coeappl.c ****        will be calculated dynamically because it depends on the connected modules
+ 612:../SSC/Src/coeappl.c ****         (in this example we will make an online measurement in the ESC Interrupt Routine).
+ 613:../SSC/Src/coeappl.c ****         For the sample application this value is set to MIN_PD_CYCLE_TIME */
+ 614:../SSC/Src/coeappl.c ****     sSyncManOutPar.u32MinCycleTime = MIN_PD_CYCLE_TIME;
+ 1351              	 .loc 2 614 0
+ 1352 0020 3C4B     	 ldr r3,.L33
+ 1353 0022 3D4A     	 ldr r2,.L33+4
+ 1354 0024 1A61     	 str r2,[r3,#16]
+ 615:../SSC/Src/coeappl.c ****     /* only for DC Mode important: subindex 6 contains the minimum delay time the slave
+ 616:../SSC/Src/coeappl.c ****        needs after receiving the SM2-event before the SYNC0(SYNC1) can be received without delays
+ 617:../SSC/Src/coeappl.c ****        will be calculated dynamically because it depends on the connected modules
+ 618:../SSC/Src/coeappl.c ****         (in this example we will make an online measurement in the ESC Interrupt Routine) */
+ 619:../SSC/Src/coeappl.c ****     sSyncManOutPar.u32CalcAndCopyTime = (PD_OUTPUT_CALC_AND_COPY_TIME);
+ 1355              	 .loc 2 619 0
+ 1356 0026 3B4B     	 ldr r3,.L33
+ 1357 0028 0022     	 movs r2,#0
+ 1358 002a 5A61     	 str r2,[r3,#20]
+ 620:../SSC/Src/coeappl.c **** 
+ 621:../SSC/Src/coeappl.c ****     /*subindex 8: trigger cycle time measurement*/
+ 622:../SSC/Src/coeappl.c ****     sSyncManOutPar.u16GetCycleTime = 0;
+ 1359              	 .loc 2 622 0
+ 1360 002c 394B     	 ldr r3,.L33
+ 1361 002e 0022     	 movs r2,#0
+ 1362 0030 9A83     	 strh r2,[r3,#28]
+ 623:../SSC/Src/coeappl.c **** 
+ 624:../SSC/Src/coeappl.c ****     /*subindex 9: time from start driving outputs until outputs are valid*/
+ 625:../SSC/Src/coeappl.c ****     sSyncManOutPar.u32DelayTime = (PD_OUTPUT_DELAY_TIME);
+ 1363              	 .loc 2 625 0
+ 1364 0032 384B     	 ldr r3,.L33
+ 1365 0034 0022     	 movs r2,#0
+ 1366 0036 1A62     	 str r2,[r3,#32]
+ 626:../SSC/Src/coeappl.c **** 
+ 627:../SSC/Src/coeappl.c **** /*ECATCHANGE_START(V5.12) ECAT5*/
+ 628:../SSC/Src/coeappl.c ****     /*subindex 11: reset the sm missed error counter*/
+ 629:../SSC/Src/coeappl.c ****     sSyncManOutPar.u16SmEventMissedCounter = 0;
+ 1367              	 .loc 2 629 0
+ 1368 0038 364B     	 ldr r3,.L33
+ 1369 003a 0022     	 movs r2,#0
+ 1370 003c 1A85     	 strh r2,[r3,#40]
+ 630:../SSC/Src/coeappl.c **** 
+ 631:../SSC/Src/coeappl.c ****     /*subindex 12: reset the cycle exceed error counter*/
+ 632:../SSC/Src/coeappl.c ****     sSyncManOutPar.u16CycleExceededCounter = 0;
+ 1371              	 .loc 2 632 0
+ 1372 003e 354B     	 ldr r3,.L33
+ 1373 0040 0022     	 movs r2,#0
+ 1374 0042 5A85     	 strh r2,[r3,#42]
+ 633:../SSC/Src/coeappl.c **** /*ECATCHANGE_END(V5.12) ECAT5*/
+ 634:../SSC/Src/coeappl.c **** 
+ 635:../SSC/Src/coeappl.c ****     /*subindex 32: indicates if a synchronisation error has occurred*/
+ 636:../SSC/Src/coeappl.c ****     sSyncManOutPar.u8SyncError = 0;
+ 1375              	 .loc 2 636 0
+ 1376 0044 334B     	 ldr r3,.L33
+ 1377 0046 0022     	 movs r2,#0
+ 1378 0048 83F84020 	 strb r2,[r3,#64]
+ 637:../SSC/Src/coeappl.c **** 
+ 638:../SSC/Src/coeappl.c ****     /* initialize the Sync Manager Input parameter object 0x1C33 */
+ 639:../SSC/Src/coeappl.c ****     sSyncManInPar.subindex0         = 32;
+ 1379              	 .loc 2 639 0
+ 1380 004c 334B     	 ldr r3,.L33+8
+ 1381 004e 2022     	 movs r2,#32
+ 1382 0050 1A80     	 strh r2,[r3]
+ 640:../SSC/Src/coeappl.c ****     /* default mode is ECAT Synchron Mode, if output size > 0 the inputs are updated with the SM2-e
+ 641:../SSC/Src/coeappl.c ****     sSyncManInPar.u16SyncType         = SYNCTYPE_FREERUN;
+ 1383              	 .loc 2 641 0
+ 1384 0052 324B     	 ldr r3,.L33+8
+ 1385 0054 0022     	 movs r2,#0
+ 1386 0056 5A80     	 strh r2,[r3,#2]
+ 642:../SSC/Src/coeappl.c **** 
+ 643:../SSC/Src/coeappl.c ****     
+ 644:../SSC/Src/coeappl.c ****     /* subindex 2: same as 0x1C32:02 */
+ 645:../SSC/Src/coeappl.c ****     sSyncManInPar.u32CycleTime     = sSyncManOutPar.u32CycleTime;
+ 1387              	 .loc 2 645 0
+ 1388 0058 2E4B     	 ldr r3,.L33
+ 1389 005a 5B68     	 ldr r3,[r3,#4]
+ 1390 005c 2F4A     	 ldr r2,.L33+8
+ 1391 005e 5360     	 str r3,[r2,#4]
+ 646:../SSC/Src/coeappl.c **** 
+ 647:../SSC/Src/coeappl.c ****     /* subindex 4: same as 0x1C32:04 */
+ 648:../SSC/Src/coeappl.c ****     sSyncManInPar.u16SyncTypesSupported    = sSyncManOutPar.u16SyncTypesSupported;
+ 1392              	 .loc 2 648 0
+ 1393 0060 2C4B     	 ldr r3,.L33
+ 1394 0062 9A89     	 ldrh r2,[r3,#12]
+ 1395 0064 2D4B     	 ldr r3,.L33+8
+ 1396 0066 9A81     	 strh r2,[r3,#12]
+ 649:../SSC/Src/coeappl.c **** 
+ 650:../SSC/Src/coeappl.c ****     /* subindex 5: same as 0x1C32:05 */
+ 651:../SSC/Src/coeappl.c ****     sSyncManInPar.u32MinCycleTime = MIN_PD_CYCLE_TIME;
+ 1397              	 .loc 2 651 0
+ 1398 0068 2C4B     	 ldr r3,.L33+8
+ 1399 006a 2B4A     	 ldr r2,.L33+4
+ 1400 006c 1A61     	 str r2,[r3,#16]
+ 652:../SSC/Src/coeappl.c ****     /* subindex 6: delay read inputs, calculation and copy to SM buffer*/
+ 653:../SSC/Src/coeappl.c ****     sSyncManInPar.u32CalcAndCopyTime = (PD_INPUT_CALC_AND_COPY_TIME);
+ 1401              	 .loc 2 653 0
+ 1402 006e 2B4B     	 ldr r3,.L33+8
+ 1403 0070 0022     	 movs r2,#0
+ 1404 0072 5A61     	 str r2,[r3,#20]
+ 654:../SSC/Src/coeappl.c ****     /*subindex 8: trigger cycle time measurement*/
+ 655:../SSC/Src/coeappl.c ****     sSyncManInPar.u16GetCycleTime = 0;
+ 1405              	 .loc 2 655 0
+ 1406 0074 294B     	 ldr r3,.L33+8
+ 1407 0076 0022     	 movs r2,#0
+ 1408 0078 9A83     	 strh r2,[r3,#28]
+ 656:../SSC/Src/coeappl.c ****     /*subindex 9: delay to prepare input latch*/
+ 657:../SSC/Src/coeappl.c ****     sSyncManInPar.u32DelayTime = (PD_INPUT_DELAY_TIME);
+ 1409              	 .loc 2 657 0
+ 1410 007a 284B     	 ldr r3,.L33+8
+ 1411 007c 0022     	 movs r2,#0
+ 1412 007e 1A62     	 str r2,[r3,#32]
+ 658:../SSC/Src/coeappl.c **** 
+ 659:../SSC/Src/coeappl.c **** /*ECATCHANGE_START(V5.12) ECAT5*/
+ 660:../SSC/Src/coeappl.c ****     /*subindex 11: reset the sm missed error counter*/
+ 661:../SSC/Src/coeappl.c ****     sSyncManInPar.u16SmEventMissedCounter = 0;
+ 1413              	 .loc 2 661 0
+ 1414 0080 264B     	 ldr r3,.L33+8
+ 1415 0082 0022     	 movs r2,#0
+ 1416 0084 1A85     	 strh r2,[r3,#40]
+ 662:../SSC/Src/coeappl.c **** 
+ 663:../SSC/Src/coeappl.c ****     /*subindex 12: reset the cycle exceed error counter*/
+ 664:../SSC/Src/coeappl.c ****     sSyncManInPar.u16CycleExceededCounter = 0;
+ 1417              	 .loc 2 664 0
+ 1418 0086 254B     	 ldr r3,.L33+8
+ 1419 0088 0022     	 movs r2,#0
+ 1420 008a 5A85     	 strh r2,[r3,#42]
+ 665:../SSC/Src/coeappl.c **** /*ECATCHANGE_END(V5.12) ECAT5*/
+ 666:../SSC/Src/coeappl.c **** 
+ 667:../SSC/Src/coeappl.c ****     /*subindex 32: incremented if a synchronisation error has occurred*/
+ 668:../SSC/Src/coeappl.c ****     sSyncManInPar.u8SyncError = 0;
+ 1421              	 .loc 2 668 0
+ 1422 008c 234B     	 ldr r3,.L33+8
+ 1423 008e 0022     	 movs r2,#0
+ 1424 0090 83F84020 	 strb r2,[r3,#64]
+ 669:../SSC/Src/coeappl.c **** 
+ 670:../SSC/Src/coeappl.c ****     /*Indicate no user specified Sync mode*/
+ 671:../SSC/Src/coeappl.c ****     bSyncSetByUser = FALSE;
+ 1425              	 .loc 2 671 0
+ 1426 0094 224B     	 ldr r3,.L33+12
+ 1427 0096 0022     	 movs r2,#0
+ 1428 0098 1A70     	 strb r2,[r3]
+ 1429              	.LBB3:
+ 672:../SSC/Src/coeappl.c **** 
+ 673:../SSC/Src/coeappl.c ****     {
+ 674:../SSC/Src/coeappl.c ****     UINT16 result = COE_ObjDictionaryInit();
+ 1430              	 .loc 2 674 0
+ 1431 009a FFF7FEFF 	 bl COE_ObjDictionaryInit
+ 1432 009e 0346     	 mov r3,r0
+ 1433 00a0 FB80     	 strh r3,[r7,#6]
+ 675:../SSC/Src/coeappl.c ****     if(result != 0)
+ 1434              	 .loc 2 675 0
+ 1435 00a2 FB88     	 ldrh r3,[r7,#6]
+ 1436 00a4 002B     	 cmp r3,#0
+ 1437 00a6 01D0     	 beq .L30
+ 676:../SSC/Src/coeappl.c ****     {
+ 677:../SSC/Src/coeappl.c ****         /*clear already linked objects*/
+ 678:../SSC/Src/coeappl.c ****         COE_ClearObjDictionary();
+ 1438              	 .loc 2 678 0
+ 1439 00a8 FFF7FEFF 	 bl COE_ClearObjDictionary
+ 1440              	.L30:
+ 1441              	.LBE3:
+ 679:../SSC/Src/coeappl.c ****     }
+ 680:../SSC/Src/coeappl.c ****     }
+ 681:../SSC/Src/coeappl.c **** 
+ 682:../SSC/Src/coeappl.c ****     u8PendingSdo = 0;
+ 1442              	 .loc 2 682 0
+ 1443 00ac 1D4B     	 ldr r3,.L33+16
+ 1444 00ae 0022     	 movs r2,#0
+ 1445 00b0 1A70     	 strb r2,[r3]
+ 683:../SSC/Src/coeappl.c ****     bStoreCompleteAccess = FALSE;
+ 1446              	 .loc 2 683 0
+ 1447 00b2 1D4B     	 ldr r3,.L33+20
+ 1448 00b4 0022     	 movs r2,#0
+ 1449 00b6 1A70     	 strb r2,[r3]
+ 684:../SSC/Src/coeappl.c ****     u16StoreIndex   =   0;
+ 1450              	 .loc 2 684 0
+ 1451 00b8 1C4B     	 ldr r3,.L33+24
+ 1452 00ba 0022     	 movs r2,#0
+ 1453 00bc 1A80     	 strh r2,[r3]
+ 685:../SSC/Src/coeappl.c ****     u8StoreSubindex = 0;
+ 1454              	 .loc 2 685 0
+ 1455 00be 1C4B     	 ldr r3,.L33+28
+ 1456 00c0 0022     	 movs r2,#0
+ 1457 00c2 1A70     	 strb r2,[r3]
+ 686:../SSC/Src/coeappl.c ****     u32StoreDataSize = 0;
+ 1458              	 .loc 2 686 0
+ 1459 00c4 1B4B     	 ldr r3,.L33+32
+ 1460 00c6 0022     	 movs r2,#0
+ 1461 00c8 1A60     	 str r2,[r3]
+ 687:../SSC/Src/coeappl.c ****     pStoreData = NULL;
+ 1462              	 .loc 2 687 0
+ 1463 00ca 1B4B     	 ldr r3,.L33+36
+ 1464 00cc 0022     	 movs r2,#0
+ 1465 00ce 1A60     	 str r2,[r3]
+ 688:../SSC/Src/coeappl.c ****     pSdoPendFunc    = NULL;
+ 1466              	 .loc 2 688 0
+ 1467 00d0 1A4B     	 ldr r3,.L33+40
+ 1468 00d2 0022     	 movs r2,#0
+ 1469 00d4 1A60     	 str r2,[r3]
+ 689:../SSC/Src/coeappl.c **** 
+ 690:../SSC/Src/coeappl.c ****     pSdoSegData = NULL;
+ 1470              	 .loc 2 690 0
+ 1471 00d6 1A4B     	 ldr r3,.L33+44
+ 1472 00d8 0022     	 movs r2,#0
+ 1473 00da 1A60     	 str r2,[r3]
+ 691:../SSC/Src/coeappl.c **** 
+ 692:../SSC/Src/coeappl.c **** 
+ 693:../SSC/Src/coeappl.c **** /*ECATCHANGE_START(V5.12) COE4*/
+ 694:../SSC/Src/coeappl.c ****     UINT32 EscFeature = 0;
+ 1474              	 .loc 2 694 0
+ 1475 00dc 0023     	 movs r3,#0
+ 1476 00de 3B60     	 str r3,[r7]
+ 695:../SSC/Src/coeappl.c ****     HW_EscReadDWord(EscFeature, ESC_FEATURES_OFFSET);
+ 1477              	 .loc 2 695 0
+ 1478 00e0 184B     	 ldr r3,.L33+48
+ 1479 00e2 1B68     	 ldr r3,[r3]
+ 1480 00e4 3B60     	 str r3,[r7]
+ 696:../SSC/Src/coeappl.c ****     EscFeature = SWAPDWORD(EscFeature);
+ 697:../SSC/Src/coeappl.c **** 
+ 698:../SSC/Src/coeappl.c ****     if ((EscFeature & ESC_DC_32BIT_MASK) > 0)
+ 1481              	 .loc 2 698 0
+ 1482 00e6 3B68     	 ldr r3,[r7]
+ 1483 00e8 03F00803 	 and r3,r3,#8
+ 1484 00ec 002B     	 cmp r3,#0
+ 1485 00ee 03D0     	 beq .L31
+ 699:../SSC/Src/coeappl.c ****     {
+ 700:../SSC/Src/coeappl.c ****         b32BitDc = FALSE;
+ 1486              	 .loc 2 700 0
+ 1487 00f0 154B     	 ldr r3,.L33+52
+ 1488 00f2 0022     	 movs r2,#0
+ 1489 00f4 1A70     	 strb r2,[r3]
+ 1490 00f6 06E0     	 b .L32
+ 1491              	.L31:
+ 701:../SSC/Src/coeappl.c ****     }
+ 702:../SSC/Src/coeappl.c ****     else
+ 703:../SSC/Src/coeappl.c ****     {
+ 704:../SSC/Src/coeappl.c ****         b32BitDc = TRUE;
+ 1492              	 .loc 2 704 0
+ 1493 00f8 134B     	 ldr r3,.L33+52
+ 1494 00fa 0122     	 movs r2,#1
+ 1495 00fc 1A70     	 strb r2,[r3]
+ 705:../SSC/Src/coeappl.c **** 
+ 706:../SSC/Src/coeappl.c ****         HW_EscReadDWord(u32LastDc32Value, ESC_SYSTEMTIME_OFFSET);
+ 1496              	 .loc 2 706 0
+ 1497 00fe 134B     	 ldr r3,.L33+56
+ 1498 0100 1B68     	 ldr r3,[r3]
+ 1499 0102 134A     	 ldr r2,.L33+60
+ 1500 0104 1360     	 str r3,[r2]
+ 1501              	.L32:
+ 707:../SSC/Src/coeappl.c ****     }
+ 708:../SSC/Src/coeappl.c **** 
+ 709:../SSC/Src/coeappl.c ****     u32CheckForDcOverrunCnt = CHECK_DC_OVERRUN_IN_MS;
+ 1502              	 .loc 2 709 0
+ 1503 0106 134B     	 ldr r3,.L33+64
+ 1504 0108 4FF47A62 	 mov r2,#4000
+ 1505 010c 1A60     	 str r2,[r3]
+ 710:../SSC/Src/coeappl.c **** 
+ 711:../SSC/Src/coeappl.c ****     /*ECATCHANGE_END(V5.12) COE4*/
+ 712:../SSC/Src/coeappl.c **** }
+ 1506              	 .loc 2 712 0
+ 1507 010e 0837     	 adds r7,r7,#8
+ 1508              	.LCFI26:
+ 1509              	 .cfi_def_cfa_offset 8
+ 1510 0110 BD46     	 mov sp,r7
+ 1511              	.LCFI27:
+ 1512              	 .cfi_def_cfa_register 13
+ 1513              	 
+ 1514 0112 80BD     	 pop {r7,pc}
+ 1515              	.L34:
+ 1516              	 .align 2
+ 1517              	.L33:
+ 1518 0114 00000000 	 .word sSyncManOutPar
+ 1519 0118 48E80100 	 .word 125000
+ 1520 011c 00000000 	 .word sSyncManInPar
+ 1521 0120 00000000 	 .word bSyncSetByUser
+ 1522 0124 00000000 	 .word u8PendingSdo
+ 1523 0128 00000000 	 .word bStoreCompleteAccess
+ 1524 012c 00000000 	 .word u16StoreIndex
+ 1525 0130 00000000 	 .word u8StoreSubindex
+ 1526 0134 00000000 	 .word u32StoreDataSize
+ 1527 0138 00000000 	 .word pStoreData
+ 1528 013c 00000000 	 .word pSdoPendFunc
+ 1529 0140 00000000 	 .word pSdoSegData
+ 1530 0144 08000154 	 .word 1409351688
+ 1531 0148 00000000 	 .word b32BitDc
+ 1532 014c 10090154 	 .word 1409354000
+ 1533 0150 00000000 	 .word u32LastDc32Value
+ 1534 0154 00000000 	 .word u32CheckForDcOverrunCnt
+ 1535              	 .cfi_endproc
+ 1536              	.LFE181:
+ 1538              	 .section .text.COE_AddObjectToDic,"ax",%progbits
+ 1539              	 .align 2
+ 1540              	 .global COE_AddObjectToDic
+ 1541              	 .thumb
+ 1542              	 .thumb_func
+ 1544              	COE_AddObjectToDic:
+ 1545              	.LFB182:
+ 713:../SSC/Src/coeappl.c **** 
+ 714:../SSC/Src/coeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 715:../SSC/Src/coeappl.c **** /**
+ 716:../SSC/Src/coeappl.c ****  \return    0               object successful added to object dictionary
+ 717:../SSC/Src/coeappl.c ****             ALSTATUSCODE_XX add object failed
+ 718:../SSC/Src/coeappl.c **** 
+ 719:../SSC/Src/coeappl.c ****  \brief    This function adds an object to the object dictionary
+ 720:../SSC/Src/coeappl.c ****  *////////////////////////////////////////////////////////////////////////////////////////
+ 721:../SSC/Src/coeappl.c **** UINT16 COE_AddObjectToDic(TOBJECT OBJMEM * pNewObjEntry)
+ 722:../SSC/Src/coeappl.c **** {
+ 1546              	 .loc 2 722 0
+ 1547              	 .cfi_startproc
+ 1548              	 
+ 1549              	 
+ 1550              	 
+ 1551 0000 80B4     	 push {r7}
+ 1552              	.LCFI28:
+ 1553              	 .cfi_def_cfa_offset 4
+ 1554              	 .cfi_offset 7,-4
+ 1555 0002 85B0     	 sub sp,sp,#20
+ 1556              	.LCFI29:
+ 1557              	 .cfi_def_cfa_offset 24
+ 1558 0004 00AF     	 add r7,sp,#0
+ 1559              	.LCFI30:
+ 1560              	 .cfi_def_cfa_register 7
+ 1561 0006 7860     	 str r0,[r7,#4]
+ 723:../SSC/Src/coeappl.c ****     if(pNewObjEntry != NULL)
+ 1562              	 .loc 2 723 0
+ 1563 0008 7B68     	 ldr r3,[r7,#4]
+ 1564 000a 002B     	 cmp r3,#0
+ 1565 000c 62D0     	 beq .L36
+ 724:../SSC/Src/coeappl.c ****     {
+ 725:../SSC/Src/coeappl.c ****         if(ObjDicList == NULL)
+ 1566              	 .loc 2 725 0
+ 1567 000e 354B     	 ldr r3,.L46
+ 1568 0010 1B68     	 ldr r3,[r3]
+ 1569 0012 002B     	 cmp r3,#0
+ 1570 0014 0CD1     	 bne .L37
+ 726:../SSC/Src/coeappl.c ****         {
+ 727:../SSC/Src/coeappl.c ****             /* Object dictionary is empty */
+ 728:../SSC/Src/coeappl.c ****             ObjDicList = pNewObjEntry;
+ 1571              	 .loc 2 728 0
+ 1572 0016 334A     	 ldr r2,.L46
+ 1573 0018 7B68     	 ldr r3,[r7,#4]
+ 1574 001a 1360     	 str r3,[r2]
+ 729:../SSC/Src/coeappl.c ****             ObjDicList->pNext = NULL;
+ 1575              	 .loc 2 729 0
+ 1576 001c 314B     	 ldr r3,.L46
+ 1577 001e 1B68     	 ldr r3,[r3]
+ 1578 0020 0022     	 movs r2,#0
+ 1579 0022 5A60     	 str r2,[r3,#4]
+ 730:../SSC/Src/coeappl.c ****             ObjDicList->pPrev = NULL;
+ 1580              	 .loc 2 730 0
+ 1581 0024 2F4B     	 ldr r3,.L46
+ 1582 0026 1B68     	 ldr r3,[r3]
+ 1583 0028 0022     	 movs r2,#0
+ 1584 002a 1A60     	 str r2,[r3]
+ 731:../SSC/Src/coeappl.c ****             return 0;
+ 1585              	 .loc 2 731 0
+ 1586 002c 0023     	 movs r3,#0
+ 1587 002e 52E0     	 b .L38
+ 1588              	.L37:
+ 732:../SSC/Src/coeappl.c ****         }
+ 733:../SSC/Src/coeappl.c ****         else if(ObjDicList->Index > pNewObjEntry->Index)
+ 1589              	 .loc 2 733 0
+ 1590 0030 2C4B     	 ldr r3,.L46
+ 1591 0032 1B68     	 ldr r3,[r3]
+ 1592 0034 1A89     	 ldrh r2,[r3,#8]
+ 1593 0036 7B68     	 ldr r3,[r7,#4]
+ 1594 0038 1B89     	 ldrh r3,[r3,#8]
+ 1595 003a 9A42     	 cmp r2,r3
+ 1596 003c 0FD9     	 bls .L39
+ 734:../SSC/Src/coeappl.c ****         {
+ 735:../SSC/Src/coeappl.c ****             /*insert new object dictionary head*/
+ 736:../SSC/Src/coeappl.c ****             pNewObjEntry->pPrev = NULL;
+ 1597              	 .loc 2 736 0
+ 1598 003e 7B68     	 ldr r3,[r7,#4]
+ 1599 0040 0022     	 movs r2,#0
+ 1600 0042 1A60     	 str r2,[r3]
+ 737:../SSC/Src/coeappl.c ****             pNewObjEntry->pNext = ObjDicList;
+ 1601              	 .loc 2 737 0
+ 1602 0044 274B     	 ldr r3,.L46
+ 1603 0046 1A68     	 ldr r2,[r3]
+ 1604 0048 7B68     	 ldr r3,[r7,#4]
+ 1605 004a 5A60     	 str r2,[r3,#4]
+ 738:../SSC/Src/coeappl.c ****             ObjDicList->pPrev = pNewObjEntry;
+ 1606              	 .loc 2 738 0
+ 1607 004c 254B     	 ldr r3,.L46
+ 1608 004e 1B68     	 ldr r3,[r3]
+ 1609 0050 7A68     	 ldr r2,[r7,#4]
+ 1610 0052 1A60     	 str r2,[r3]
+ 739:../SSC/Src/coeappl.c ****             ObjDicList = pNewObjEntry;
+ 1611              	 .loc 2 739 0
+ 1612 0054 234A     	 ldr r2,.L46
+ 1613 0056 7B68     	 ldr r3,[r7,#4]
+ 1614 0058 1360     	 str r3,[r2]
+ 740:../SSC/Src/coeappl.c ****             return 0;
+ 1615              	 .loc 2 740 0
+ 1616 005a 0023     	 movs r3,#0
+ 1617 005c 3BE0     	 b .L38
+ 1618              	.L39:
+ 1619              	.LBB4:
+ 741:../SSC/Src/coeappl.c ****         }
+ 742:../SSC/Src/coeappl.c ****         else
+ 743:../SSC/Src/coeappl.c ****         {
+ 744:../SSC/Src/coeappl.c ****             TOBJECT    OBJMEM * pDicEntry = ObjDicList;
+ 1620              	 .loc 2 744 0
+ 1621 005e 214B     	 ldr r3,.L46
+ 1622 0060 1B68     	 ldr r3,[r3]
+ 1623 0062 FB60     	 str r3,[r7,#12]
+ 745:../SSC/Src/coeappl.c ****             while(pDicEntry != NULL)
+ 1624              	 .loc 2 745 0
+ 1625 0064 33E0     	 b .L40
+ 1626              	.L45:
+ 746:../SSC/Src/coeappl.c ****             {
+ 747:../SSC/Src/coeappl.c ****                 if(pDicEntry->Index == pNewObjEntry->Index)
+ 1627              	 .loc 2 747 0
+ 1628 0066 FB68     	 ldr r3,[r7,#12]
+ 1629 0068 1A89     	 ldrh r2,[r3,#8]
+ 1630 006a 7B68     	 ldr r3,[r7,#4]
+ 1631 006c 1B89     	 ldrh r3,[r3,#8]
+ 1632 006e 9A42     	 cmp r2,r3
+ 1633 0070 01D1     	 bne .L41
+ 748:../SSC/Src/coeappl.c ****                 {
+ 749:../SSC/Src/coeappl.c ****                     /*object already exists in object dictionary*/
+ 750:../SSC/Src/coeappl.c ****                     return ALSTATUSCODE_UNSPECIFIEDERROR;
+ 1634              	 .loc 2 750 0
+ 1635 0072 0123     	 movs r3,#1
+ 1636 0074 2FE0     	 b .L38
+ 1637              	.L41:
+ 751:../SSC/Src/coeappl.c ****                 }
+ 752:../SSC/Src/coeappl.c ****                 else if(pDicEntry->Index > pNewObjEntry->Index)
+ 1638              	 .loc 2 752 0
+ 1639 0076 FB68     	 ldr r3,[r7,#12]
+ 1640 0078 1A89     	 ldrh r2,[r3,#8]
+ 1641 007a 7B68     	 ldr r3,[r7,#4]
+ 1642 007c 1B89     	 ldrh r3,[r3,#8]
+ 1643 007e 9A42     	 cmp r2,r3
+ 1644 0080 13D9     	 bls .L42
+ 753:../SSC/Src/coeappl.c ****                 {
+ 754:../SSC/Src/coeappl.c ****                     pNewObjEntry->pPrev = pDicEntry->pPrev;
+ 1645              	 .loc 2 754 0
+ 1646 0082 FB68     	 ldr r3,[r7,#12]
+ 1647 0084 1A68     	 ldr r2,[r3]
+ 1648 0086 7B68     	 ldr r3,[r7,#4]
+ 1649 0088 1A60     	 str r2,[r3]
+ 755:../SSC/Src/coeappl.c ****                     pNewObjEntry->pNext = pDicEntry;
+ 1650              	 .loc 2 755 0
+ 1651 008a 7B68     	 ldr r3,[r7,#4]
+ 1652 008c FA68     	 ldr r2,[r7,#12]
+ 1653 008e 5A60     	 str r2,[r3,#4]
+ 756:../SSC/Src/coeappl.c **** 
+ 757:../SSC/Src/coeappl.c ****                     if(pDicEntry->pPrev != NULL)
+ 1654              	 .loc 2 757 0
+ 1655 0090 FB68     	 ldr r3,[r7,#12]
+ 1656 0092 1B68     	 ldr r3,[r3]
+ 1657 0094 002B     	 cmp r3,#0
+ 1658 0096 03D0     	 beq .L43
+ 758:../SSC/Src/coeappl.c ****                         pDicEntry->pPrev->pNext = pNewObjEntry;
+ 1659              	 .loc 2 758 0
+ 1660 0098 FB68     	 ldr r3,[r7,#12]
+ 1661 009a 1B68     	 ldr r3,[r3]
+ 1662 009c 7A68     	 ldr r2,[r7,#4]
+ 1663 009e 5A60     	 str r2,[r3,#4]
+ 1664              	.L43:
+ 759:../SSC/Src/coeappl.c **** 
+ 760:../SSC/Src/coeappl.c ****                     pDicEntry->pPrev = pNewObjEntry;
+ 1665              	 .loc 2 760 0
+ 1666 00a0 FB68     	 ldr r3,[r7,#12]
+ 1667 00a2 7A68     	 ldr r2,[r7,#4]
+ 1668 00a4 1A60     	 str r2,[r3]
+ 761:../SSC/Src/coeappl.c **** 
+ 762:../SSC/Src/coeappl.c ****                     return 0;
+ 1669              	 .loc 2 762 0
+ 1670 00a6 0023     	 movs r3,#0
+ 1671 00a8 15E0     	 b .L38
+ 1672              	.L42:
+ 763:../SSC/Src/coeappl.c ****                 }
+ 764:../SSC/Src/coeappl.c ****                 else if(pDicEntry->pNext == NULL)
+ 1673              	 .loc 2 764 0
+ 1674 00aa FB68     	 ldr r3,[r7,#12]
+ 1675 00ac 5B68     	 ldr r3,[r3,#4]
+ 1676 00ae 002B     	 cmp r3,#0
+ 1677 00b0 0AD1     	 bne .L44
+ 765:../SSC/Src/coeappl.c ****                 {
+ 766:../SSC/Src/coeappl.c ****                     /*Last entry reached => add object to list tail*/
+ 767:../SSC/Src/coeappl.c ****                     pDicEntry->pNext = pNewObjEntry;
+ 1678              	 .loc 2 767 0
+ 1679 00b2 FB68     	 ldr r3,[r7,#12]
+ 1680 00b4 7A68     	 ldr r2,[r7,#4]
+ 1681 00b6 5A60     	 str r2,[r3,#4]
+ 768:../SSC/Src/coeappl.c ****                     pNewObjEntry->pPrev = pDicEntry;
+ 1682              	 .loc 2 768 0
+ 1683 00b8 7B68     	 ldr r3,[r7,#4]
+ 1684 00ba FA68     	 ldr r2,[r7,#12]
+ 1685 00bc 1A60     	 str r2,[r3]
+ 769:../SSC/Src/coeappl.c ****                     pNewObjEntry->pNext = NULL;
+ 1686              	 .loc 2 769 0
+ 1687 00be 7B68     	 ldr r3,[r7,#4]
+ 1688 00c0 0022     	 movs r2,#0
+ 1689 00c2 5A60     	 str r2,[r3,#4]
+ 770:../SSC/Src/coeappl.c ****                     return 0;
+ 1690              	 .loc 2 770 0
+ 1691 00c4 0023     	 movs r3,#0
+ 1692 00c6 06E0     	 b .L38
+ 1693              	.L44:
+ 771:../SSC/Src/coeappl.c ****                 }
+ 772:../SSC/Src/coeappl.c ****                 else
+ 773:../SSC/Src/coeappl.c ****                 {
+ 774:../SSC/Src/coeappl.c ****                     /*The new object index is smaller than the current index. Get next object handl
+ 775:../SSC/Src/coeappl.c ****                     pDicEntry = pDicEntry->pNext;
+ 1694              	 .loc 2 775 0
+ 1695 00c8 FB68     	 ldr r3,[r7,#12]
+ 1696 00ca 5B68     	 ldr r3,[r3,#4]
+ 1697 00cc FB60     	 str r3,[r7,#12]
+ 1698              	.L40:
+ 745:../SSC/Src/coeappl.c ****             {
+ 1699              	 .loc 2 745 0
+ 1700 00ce FB68     	 ldr r3,[r7,#12]
+ 1701 00d0 002B     	 cmp r3,#0
+ 1702 00d2 C8D1     	 bne .L45
+ 1703              	.L36:
+ 1704              	.LBE4:
+ 776:../SSC/Src/coeappl.c ****                 }
+ 777:../SSC/Src/coeappl.c ****             }
+ 778:../SSC/Src/coeappl.c ****         }
+ 779:../SSC/Src/coeappl.c ****     }
+ 780:../SSC/Src/coeappl.c ****     return ALSTATUSCODE_UNSPECIFIEDERROR;
+ 1705              	 .loc 2 780 0
+ 1706 00d4 0123     	 movs r3,#1
+ 1707              	.L38:
+ 781:../SSC/Src/coeappl.c **** }
+ 1708              	 .loc 2 781 0
+ 1709 00d6 1846     	 mov r0,r3
+ 1710 00d8 1437     	 adds r7,r7,#20
+ 1711              	.LCFI31:
+ 1712              	 .cfi_def_cfa_offset 4
+ 1713 00da BD46     	 mov sp,r7
+ 1714              	.LCFI32:
+ 1715              	 .cfi_def_cfa_register 13
+ 1716              	 
+ 1717 00dc 5DF8047B 	 ldr r7,[sp],#4
+ 1718              	.LCFI33:
+ 1719              	 .cfi_restore 7
+ 1720              	 .cfi_def_cfa_offset 0
+ 1721 00e0 7047     	 bx lr
+ 1722              	.L47:
+ 1723 00e2 00BF     	 .align 2
+ 1724              	.L46:
+ 1725 00e4 00000000 	 .word ObjDicList
+ 1726              	 .cfi_endproc
+ 1727              	.LFE182:
+ 1729              	 .section .text.COE_RemoveDicEntry,"ax",%progbits
+ 1730              	 .align 2
+ 1731              	 .global COE_RemoveDicEntry
+ 1732              	 .thumb
+ 1733              	 .thumb_func
+ 1735              	COE_RemoveDicEntry:
+ 1736              	.LFB183:
+ 782:../SSC/Src/coeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 783:../SSC/Src/coeappl.c **** /**
+ 784:../SSC/Src/coeappl.c **** 
+ 785:../SSC/Src/coeappl.c ****  \brief    This function removes an object to the object dictionary
+ 786:../SSC/Src/coeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 787:../SSC/Src/coeappl.c **** void COE_RemoveDicEntry(UINT16 index)
+ 788:../SSC/Src/coeappl.c **** {
+ 1737              	 .loc 2 788 0
+ 1738              	 .cfi_startproc
+ 1739              	 
+ 1740              	 
+ 1741              	 
+ 1742 0000 80B4     	 push {r7}
+ 1743              	.LCFI34:
+ 1744              	 .cfi_def_cfa_offset 4
+ 1745              	 .cfi_offset 7,-4
+ 1746 0002 87B0     	 sub sp,sp,#28
+ 1747              	.LCFI35:
+ 1748              	 .cfi_def_cfa_offset 32
+ 1749 0004 00AF     	 add r7,sp,#0
+ 1750              	.LCFI36:
+ 1751              	 .cfi_def_cfa_register 7
+ 1752 0006 0346     	 mov r3,r0
+ 1753 0008 FB80     	 strh r3,[r7,#6]
+ 789:../SSC/Src/coeappl.c ****     TOBJECT    OBJMEM * pDicEntry = ObjDicList;
+ 1754              	 .loc 2 789 0
+ 1755 000a 1C4B     	 ldr r3,.L56
+ 1756 000c 1B68     	 ldr r3,[r3]
+ 1757 000e 7B61     	 str r3,[r7,#20]
+ 790:../SSC/Src/coeappl.c **** 
+ 791:../SSC/Src/coeappl.c ****     while(pDicEntry != NULL)
+ 1758              	 .loc 2 791 0
+ 1759 0010 2BE0     	 b .L49
+ 1760              	.L55:
+ 792:../SSC/Src/coeappl.c ****     {
+ 793:../SSC/Src/coeappl.c ****         if(pDicEntry->Index == index)
+ 1761              	 .loc 2 793 0
+ 1762 0012 7B69     	 ldr r3,[r7,#20]
+ 1763 0014 1B89     	 ldrh r3,[r3,#8]
+ 1764 0016 FA88     	 ldrh r2,[r7,#6]
+ 1765 0018 9A42     	 cmp r2,r3
+ 1766 001a 23D1     	 bne .L50
+ 1767              	.LBB5:
+ 794:../SSC/Src/coeappl.c ****         {
+ 795:../SSC/Src/coeappl.c ****             TOBJECT OBJMEM *pPrevEntry = pDicEntry->pPrev;
+ 1768              	 .loc 2 795 0
+ 1769 001c 7B69     	 ldr r3,[r7,#20]
+ 1770 001e 1B68     	 ldr r3,[r3]
+ 1771 0020 3B61     	 str r3,[r7,#16]
+ 796:../SSC/Src/coeappl.c ****             TOBJECT OBJMEM *pNextEntry = pDicEntry->pNext;
+ 1772              	 .loc 2 796 0
+ 1773 0022 7B69     	 ldr r3,[r7,#20]
+ 1774 0024 5B68     	 ldr r3,[r3,#4]
+ 1775 0026 FB60     	 str r3,[r7,#12]
+ 797:../SSC/Src/coeappl.c **** 
+ 798:../SSC/Src/coeappl.c ****             if(pPrevEntry != NULL)
+ 1776              	 .loc 2 798 0
+ 1777 0028 3B69     	 ldr r3,[r7,#16]
+ 1778 002a 002B     	 cmp r3,#0
+ 1779 002c 02D0     	 beq .L51
+ 799:../SSC/Src/coeappl.c ****             {
+ 800:../SSC/Src/coeappl.c ****                 pPrevEntry->pNext = pNextEntry;
+ 1780              	 .loc 2 800 0
+ 1781 002e 3B69     	 ldr r3,[r7,#16]
+ 1782 0030 FA68     	 ldr r2,[r7,#12]
+ 1783 0032 5A60     	 str r2,[r3,#4]
+ 1784              	.L51:
+ 801:../SSC/Src/coeappl.c ****             }
+ 802:../SSC/Src/coeappl.c **** 
+ 803:../SSC/Src/coeappl.c ****             if(pNextEntry != NULL)
+ 1785              	 .loc 2 803 0
+ 1786 0034 FB68     	 ldr r3,[r7,#12]
+ 1787 0036 002B     	 cmp r3,#0
+ 1788 0038 02D0     	 beq .L52
+ 804:../SSC/Src/coeappl.c ****             {
+ 805:../SSC/Src/coeappl.c ****                 pNextEntry->pPrev = pPrevEntry;
+ 1789              	 .loc 2 805 0
+ 1790 003a FB68     	 ldr r3,[r7,#12]
+ 1791 003c 3A69     	 ldr r2,[r7,#16]
+ 1792 003e 1A60     	 str r2,[r3]
+ 1793              	.L52:
+ 806:../SSC/Src/coeappl.c ****             }
+ 807:../SSC/Src/coeappl.c **** 
+ 808:../SSC/Src/coeappl.c ****             pDicEntry->pPrev = NULL;
+ 1794              	 .loc 2 808 0
+ 1795 0040 7B69     	 ldr r3,[r7,#20]
+ 1796 0042 0022     	 movs r2,#0
+ 1797 0044 1A60     	 str r2,[r3]
+ 809:../SSC/Src/coeappl.c ****             pDicEntry->pNext = NULL;
+ 1798              	 .loc 2 809 0
+ 1799 0046 7B69     	 ldr r3,[r7,#20]
+ 1800 0048 0022     	 movs r2,#0
+ 1801 004a 5A60     	 str r2,[r3,#4]
+ 810:../SSC/Src/coeappl.c ****             /*Update Object dictionary pointer if list head was removed*/
+ 811:../SSC/Src/coeappl.c ****             if(pDicEntry->Index == ObjDicList->Index)
+ 1802              	 .loc 2 811 0
+ 1803 004c 7B69     	 ldr r3,[r7,#20]
+ 1804 004e 1A89     	 ldrh r2,[r3,#8]
+ 1805 0050 0A4B     	 ldr r3,.L56
+ 1806 0052 1B68     	 ldr r3,[r3]
+ 1807 0054 1B89     	 ldrh r3,[r3,#8]
+ 1808 0056 9A42     	 cmp r2,r3
+ 1809 0058 03D1     	 bne .L53
+ 812:../SSC/Src/coeappl.c ****             {
+ 813:../SSC/Src/coeappl.c ****                 ObjDicList = pNextEntry;
+ 1810              	 .loc 2 813 0
+ 1811 005a 084A     	 ldr r2,.L56
+ 1812 005c FB68     	 ldr r3,[r7,#12]
+ 1813 005e 1360     	 str r3,[r2]
+ 814:../SSC/Src/coeappl.c ****             }
+ 815:../SSC/Src/coeappl.c ****             return;
+ 1814              	 .loc 2 815 0
+ 1815 0060 06E0     	 b .L48
+ 1816              	.L53:
+ 1817 0062 05E0     	 b .L48
+ 1818              	.L50:
+ 1819              	.LBE5:
+ 816:../SSC/Src/coeappl.c ****         }
+ 817:../SSC/Src/coeappl.c **** 
+ 818:../SSC/Src/coeappl.c ****         pDicEntry = pDicEntry->pNext;
+ 1820              	 .loc 2 818 0
+ 1821 0064 7B69     	 ldr r3,[r7,#20]
+ 1822 0066 5B68     	 ldr r3,[r3,#4]
+ 1823 0068 7B61     	 str r3,[r7,#20]
+ 1824              	.L49:
+ 791:../SSC/Src/coeappl.c ****     {
+ 1825              	 .loc 2 791 0
+ 1826 006a 7B69     	 ldr r3,[r7,#20]
+ 1827 006c 002B     	 cmp r3,#0
+ 1828 006e D0D1     	 bne .L55
+ 1829              	.L48:
+ 819:../SSC/Src/coeappl.c ****     }
+ 820:../SSC/Src/coeappl.c **** }
+ 1830              	 .loc 2 820 0
+ 1831 0070 1C37     	 adds r7,r7,#28
+ 1832              	.LCFI37:
+ 1833              	 .cfi_def_cfa_offset 4
+ 1834 0072 BD46     	 mov sp,r7
+ 1835              	.LCFI38:
+ 1836              	 .cfi_def_cfa_register 13
+ 1837              	 
+ 1838 0074 5DF8047B 	 ldr r7,[sp],#4
+ 1839              	.LCFI39:
+ 1840              	 .cfi_restore 7
+ 1841              	 .cfi_def_cfa_offset 0
+ 1842 0078 7047     	 bx lr
+ 1843              	.L57:
+ 1844 007a 00BF     	 .align 2
+ 1845              	.L56:
+ 1846 007c 00000000 	 .word ObjDicList
+ 1847              	 .cfi_endproc
+ 1848              	.LFE183:
+ 1850              	 .section .text.COE_ClearObjDictionary,"ax",%progbits
+ 1851              	 .align 2
+ 1852              	 .global COE_ClearObjDictionary
+ 1853              	 .thumb
+ 1854              	 .thumb_func
+ 1856              	COE_ClearObjDictionary:
+ 1857              	.LFB184:
+ 821:../SSC/Src/coeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 822:../SSC/Src/coeappl.c **** /**
+ 823:../SSC/Src/coeappl.c **** 
+ 824:../SSC/Src/coeappl.c ****  \brief    This function clear the object dictionary
+ 825:../SSC/Src/coeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 826:../SSC/Src/coeappl.c **** void COE_ClearObjDictionary(void)
+ 827:../SSC/Src/coeappl.c **** {
+ 1858              	 .loc 2 827 0
+ 1859              	 .cfi_startproc
+ 1860              	 
+ 1861              	 
+ 1862 0000 80B5     	 push {r7,lr}
+ 1863              	.LCFI40:
+ 1864              	 .cfi_def_cfa_offset 8
+ 1865              	 .cfi_offset 7,-8
+ 1866              	 .cfi_offset 14,-4
+ 1867 0002 82B0     	 sub sp,sp,#8
+ 1868              	.LCFI41:
+ 1869              	 .cfi_def_cfa_offset 16
+ 1870 0004 00AF     	 add r7,sp,#0
+ 1871              	.LCFI42:
+ 1872              	 .cfi_def_cfa_register 7
+ 828:../SSC/Src/coeappl.c ****     TOBJECT OBJMEM * pObjEntry = (TOBJECT OBJMEM *) ObjDicList;
+ 1873              	 .loc 2 828 0
+ 1874 0006 0C4B     	 ldr r3,.L61
+ 1875 0008 1B68     	 ldr r3,[r3]
+ 1876 000a 7B60     	 str r3,[r7,#4]
+ 829:../SSC/Src/coeappl.c ****     UINT16 Index = 0;
+ 1877              	 .loc 2 829 0
+ 1878 000c 0023     	 movs r3,#0
+ 1879 000e 7B80     	 strh r3,[r7,#2]
+ 830:../SSC/Src/coeappl.c **** 
+ 831:../SSC/Src/coeappl.c ****     while(pObjEntry != NULL)
+ 1880              	 .loc 2 831 0
+ 1881 0010 09E0     	 b .L59
+ 1882              	.L60:
+ 832:../SSC/Src/coeappl.c ****     {
+ 833:../SSC/Src/coeappl.c ****         Index = pObjEntry->Index;
+ 1883              	 .loc 2 833 0
+ 1884 0012 7B68     	 ldr r3,[r7,#4]
+ 1885 0014 1B89     	 ldrh r3,[r3,#8]
+ 1886 0016 7B80     	 strh r3,[r7,#2]
+ 834:../SSC/Src/coeappl.c ****         pObjEntry = pObjEntry->pNext;
+ 1887              	 .loc 2 834 0
+ 1888 0018 7B68     	 ldr r3,[r7,#4]
+ 1889 001a 5B68     	 ldr r3,[r3,#4]
+ 1890 001c 7B60     	 str r3,[r7,#4]
+ 835:../SSC/Src/coeappl.c **** 
+ 836:../SSC/Src/coeappl.c ****         COE_RemoveDicEntry(Index);
+ 1891              	 .loc 2 836 0
+ 1892 001e 7B88     	 ldrh r3,[r7,#2]
+ 1893 0020 1846     	 mov r0,r3
+ 1894 0022 FFF7FEFF 	 bl COE_RemoveDicEntry
+ 1895              	.L59:
+ 831:../SSC/Src/coeappl.c ****     {
+ 1896              	 .loc 2 831 0
+ 1897 0026 7B68     	 ldr r3,[r7,#4]
+ 1898 0028 002B     	 cmp r3,#0
+ 1899 002a F2D1     	 bne .L60
+ 837:../SSC/Src/coeappl.c ****     }
+ 838:../SSC/Src/coeappl.c ****     ObjDicList = NULL;
+ 1900              	 .loc 2 838 0
+ 1901 002c 024B     	 ldr r3,.L61
+ 1902 002e 0022     	 movs r2,#0
+ 1903 0030 1A60     	 str r2,[r3]
+ 839:../SSC/Src/coeappl.c **** }
+ 1904              	 .loc 2 839 0
+ 1905 0032 0837     	 adds r7,r7,#8
+ 1906              	.LCFI43:
+ 1907              	 .cfi_def_cfa_offset 8
+ 1908 0034 BD46     	 mov sp,r7
+ 1909              	.LCFI44:
+ 1910              	 .cfi_def_cfa_register 13
+ 1911              	 
+ 1912 0036 80BD     	 pop {r7,pc}
+ 1913              	.L62:
+ 1914              	 .align 2
+ 1915              	.L61:
+ 1916 0038 00000000 	 .word ObjDicList
+ 1917              	 .cfi_endproc
+ 1918              	.LFE184:
+ 1920              	 .section .text.AddObjectsToObjDictionary,"ax",%progbits
+ 1921              	 .align 2
+ 1922              	 .global AddObjectsToObjDictionary
+ 1923              	 .thumb
+ 1924              	 .thumb_func
+ 1926              	AddObjectsToObjDictionary:
+ 1927              	.LFB185:
+ 840:../SSC/Src/coeappl.c **** 
+ 841:../SSC/Src/coeappl.c **** 
+ 842:../SSC/Src/coeappl.c **** UINT16 AddObjectsToObjDictionary(TOBJECT OBJMEM * pObjEntry)
+ 843:../SSC/Src/coeappl.c **** {
+ 1928              	 .loc 2 843 0
+ 1929              	 .cfi_startproc
+ 1930              	 
+ 1931              	 
+ 1932 0000 80B5     	 push {r7,lr}
+ 1933              	.LCFI45:
+ 1934              	 .cfi_def_cfa_offset 8
+ 1935              	 .cfi_offset 7,-8
+ 1936              	 .cfi_offset 14,-4
+ 1937 0002 84B0     	 sub sp,sp,#16
+ 1938              	.LCFI46:
+ 1939              	 .cfi_def_cfa_offset 24
+ 1940 0004 00AF     	 add r7,sp,#0
+ 1941              	.LCFI47:
+ 1942              	 .cfi_def_cfa_register 7
+ 1943 0006 7860     	 str r0,[r7,#4]
+ 844:../SSC/Src/coeappl.c ****     UINT16 result = 0;
+ 1944              	 .loc 2 844 0
+ 1945 0008 0023     	 movs r3,#0
+ 1946 000a FB81     	 strh r3,[r7,#14]
+ 845:../SSC/Src/coeappl.c ****     TOBJECT OBJMEM * pEntry = (TOBJECT OBJMEM *)pObjEntry;
+ 1947              	 .loc 2 845 0
+ 1948 000c 7B68     	 ldr r3,[r7,#4]
+ 1949 000e BB60     	 str r3,[r7,#8]
+ 846:../SSC/Src/coeappl.c **** 
+ 847:../SSC/Src/coeappl.c ****     while(pEntry->Index != 0xFFFF)
+ 1950              	 .loc 2 847 0
+ 1951 0010 0CE0     	 b .L64
+ 1952              	.L67:
+ 848:../SSC/Src/coeappl.c ****     {
+ 849:../SSC/Src/coeappl.c ****         result = COE_AddObjectToDic(pEntry);
+ 1953              	 .loc 2 849 0
+ 1954 0012 B868     	 ldr r0,[r7,#8]
+ 1955 0014 FFF7FEFF 	 bl COE_AddObjectToDic
+ 1956 0018 0346     	 mov r3,r0
+ 1957 001a FB81     	 strh r3,[r7,#14]
+ 850:../SSC/Src/coeappl.c **** 
+ 851:../SSC/Src/coeappl.c ****         if(result != 0)
+ 1958              	 .loc 2 851 0
+ 1959 001c FB89     	 ldrh r3,[r7,#14]
+ 1960 001e 002B     	 cmp r3,#0
+ 1961 0020 01D0     	 beq .L65
+ 852:../SSC/Src/coeappl.c ****         {
+ 853:../SSC/Src/coeappl.c ****             return result;
+ 1962              	 .loc 2 853 0
+ 1963 0022 FB89     	 ldrh r3,[r7,#14]
+ 1964 0024 09E0     	 b .L66
+ 1965              	.L65:
+ 854:../SSC/Src/coeappl.c ****         }
+ 855:../SSC/Src/coeappl.c **** 
+ 856:../SSC/Src/coeappl.c ****         pEntry++;
+ 1966              	 .loc 2 856 0
+ 1967 0026 BB68     	 ldr r3,[r7,#8]
+ 1968 0028 2833     	 adds r3,r3,#40
+ 1969 002a BB60     	 str r3,[r7,#8]
+ 1970              	.L64:
+ 847:../SSC/Src/coeappl.c ****     {
+ 1971              	 .loc 2 847 0
+ 1972 002c BB68     	 ldr r3,[r7,#8]
+ 1973 002e 1B89     	 ldrh r3,[r3,#8]
+ 1974 0030 4FF6FF72 	 movw r2,#65535
+ 1975 0034 9342     	 cmp r3,r2
+ 1976 0036 ECD1     	 bne .L67
+ 857:../SSC/Src/coeappl.c ****     }
+ 858:../SSC/Src/coeappl.c **** 
+ 859:../SSC/Src/coeappl.c ****     return result;
+ 1977              	 .loc 2 859 0
+ 1978 0038 FB89     	 ldrh r3,[r7,#14]
+ 1979              	.L66:
+ 860:../SSC/Src/coeappl.c **** 
+ 861:../SSC/Src/coeappl.c **** }
+ 1980              	 .loc 2 861 0
+ 1981 003a 1846     	 mov r0,r3
+ 1982 003c 1037     	 adds r7,r7,#16
+ 1983              	.LCFI48:
+ 1984              	 .cfi_def_cfa_offset 8
+ 1985 003e BD46     	 mov sp,r7
+ 1986              	.LCFI49:
+ 1987              	 .cfi_def_cfa_register 13
+ 1988              	 
+ 1989 0040 80BD     	 pop {r7,pc}
+ 1990              	 .cfi_endproc
+ 1991              	.LFE185:
+ 1993 0042 00BF     	 .section .text.COE_ObjDictionaryInit,"ax",%progbits
+ 1994              	 .align 2
+ 1995              	 .global COE_ObjDictionaryInit
+ 1996              	 .thumb
+ 1997              	 .thumb_func
+ 1999              	COE_ObjDictionaryInit:
+ 2000              	.LFB186:
+ 862:../SSC/Src/coeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 863:../SSC/Src/coeappl.c **** /**
+ 864:../SSC/Src/coeappl.c ****  \return    0               object dictionary created successful
+ 865:../SSC/Src/coeappl.c ****             ALSTATUSCODE_XX create object dictionary failed
+ 866:../SSC/Src/coeappl.c **** 
+ 867:../SSC/Src/coeappl.c ****  \brief    This function initialize the object dictionary
+ 868:../SSC/Src/coeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 869:../SSC/Src/coeappl.c **** UINT16 COE_ObjDictionaryInit(void)
+ 870:../SSC/Src/coeappl.c **** {
+ 2001              	 .loc 2 870 0
+ 2002              	 .cfi_startproc
+ 2003              	 
+ 2004              	 
+ 2005 0000 80B5     	 push {r7,lr}
+ 2006              	.LCFI50:
+ 2007              	 .cfi_def_cfa_offset 8
+ 2008              	 .cfi_offset 7,-8
+ 2009              	 .cfi_offset 14,-4
+ 2010 0002 82B0     	 sub sp,sp,#8
+ 2011              	.LCFI51:
+ 2012              	 .cfi_def_cfa_offset 16
+ 2013 0004 00AF     	 add r7,sp,#0
+ 2014              	.LCFI52:
+ 2015              	 .cfi_def_cfa_register 7
+ 871:../SSC/Src/coeappl.c ****     UINT16 result = 0;
+ 2016              	 .loc 2 871 0
+ 2017 0006 0023     	 movs r3,#0
+ 2018 0008 FB80     	 strh r3,[r7,#6]
+ 872:../SSC/Src/coeappl.c **** 
+ 873:../SSC/Src/coeappl.c ****     /*Reset object dictionary pointer*/
+ 874:../SSC/Src/coeappl.c ****     ObjDicList = NULL;
+ 2019              	 .loc 2 874 0
+ 2020 000a 0B4B     	 ldr r3,.L71
+ 2021 000c 0022     	 movs r2,#0
+ 2022 000e 1A60     	 str r2,[r3]
+ 875:../SSC/Src/coeappl.c **** 
+ 876:../SSC/Src/coeappl.c ****     result = AddObjectsToObjDictionary((TOBJECT OBJMEM *) GenObjDic);
+ 2023              	 .loc 2 876 0
+ 2024 0010 0A48     	 ldr r0,.L71+4
+ 2025 0012 FFF7FEFF 	 bl AddObjectsToObjDictionary
+ 2026 0016 0346     	 mov r3,r0
+ 2027 0018 FB80     	 strh r3,[r7,#6]
+ 877:../SSC/Src/coeappl.c **** 
+ 878:../SSC/Src/coeappl.c ****     if(result != 0)
+ 2028              	 .loc 2 878 0
+ 2029 001a FB88     	 ldrh r3,[r7,#6]
+ 2030 001c 002B     	 cmp r3,#0
+ 2031 001e 01D0     	 beq .L69
+ 879:../SSC/Src/coeappl.c ****     {
+ 880:../SSC/Src/coeappl.c ****         return result;
+ 2032              	 .loc 2 880 0
+ 2033 0020 FB88     	 ldrh r3,[r7,#6]
+ 2034 0022 05E0     	 b .L70
+ 2035              	.L69:
+ 881:../SSC/Src/coeappl.c ****     }
+ 882:../SSC/Src/coeappl.c ****     
+ 883:../SSC/Src/coeappl.c ****     if(ApplicationObjDic != NULL)
+ 884:../SSC/Src/coeappl.c ****     {
+ 885:../SSC/Src/coeappl.c ****         result = AddObjectsToObjDictionary((TOBJECT OBJMEM *) ApplicationObjDic);
+ 2036              	 .loc 2 885 0
+ 2037 0024 0648     	 ldr r0,.L71+8
+ 2038 0026 FFF7FEFF 	 bl AddObjectsToObjDictionary
+ 2039 002a 0346     	 mov r3,r0
+ 2040 002c FB80     	 strh r3,[r7,#6]
+ 886:../SSC/Src/coeappl.c ****     }
+ 887:../SSC/Src/coeappl.c **** 
+ 888:../SSC/Src/coeappl.c **** 
+ 889:../SSC/Src/coeappl.c **** 
+ 890:../SSC/Src/coeappl.c ****     return result;
+ 2041              	 .loc 2 890 0
+ 2042 002e FB88     	 ldrh r3,[r7,#6]
+ 2043              	.L70:
+ 891:../SSC/Src/coeappl.c **** }
+ 2044              	 .loc 2 891 0
+ 2045 0030 1846     	 mov r0,r3
+ 2046 0032 0837     	 adds r7,r7,#8
+ 2047              	.LCFI53:
+ 2048              	 .cfi_def_cfa_offset 8
+ 2049 0034 BD46     	 mov sp,r7
+ 2050              	.LCFI54:
+ 2051              	 .cfi_def_cfa_register 13
+ 2052              	 
+ 2053 0036 80BD     	 pop {r7,pc}
+ 2054              	.L72:
+ 2055              	 .align 2
+ 2056              	.L71:
+ 2057 0038 00000000 	 .word ObjDicList
+ 2058 003c 00000000 	 .word GenObjDic
+ 2059 0040 00000000 	 .word ApplicationObjDic
+ 2060              	 .cfi_endproc
+ 2061              	.LFE186:
+ 2063              	 .section .text.COE_Main,"ax",%progbits
+ 2064              	 .align 2
+ 2065              	 .global COE_Main
+ 2066              	 .thumb
+ 2067              	 .thumb_func
+ 2069              	COE_Main:
+ 2070              	.LFB187:
+ 892:../SSC/Src/coeappl.c **** 
+ 893:../SSC/Src/coeappl.c **** 
+ 894:../SSC/Src/coeappl.c **** /////////////////////////////////////////////////////////////////////////////////////////
+ 895:../SSC/Src/coeappl.c **** /**
+ 896:../SSC/Src/coeappl.c **** 
+ 897:../SSC/Src/coeappl.c ****  \brief    is called for background calculations which should not influence the
+ 898:../SSC/Src/coeappl.c ****              ECAT_Application in synchronous modes
+ 899:../SSC/Src/coeappl.c **** *////////////////////////////////////////////////////////////////////////////////////////
+ 900:../SSC/Src/coeappl.c **** 
+ 901:../SSC/Src/coeappl.c **** void COE_Main(void)
+ 902:../SSC/Src/coeappl.c **** {
+ 2071              	 .loc 2 902 0
+ 2072              	 .cfi_startproc
+ 2073              	 
+ 2074              	 
+ 2075 0000 B0B5     	 push {r4,r5,r7,lr}
+ 2076              	.LCFI55:
+ 2077              	 .cfi_def_cfa_offset 16
+ 2078              	 .cfi_offset 4,-16
+ 2079              	 .cfi_offset 5,-12
+ 2080              	 .cfi_offset 7,-8
+ 2081              	 .cfi_offset 14,-4
+ 2082 0002 84B0     	 sub sp,sp,#16
+ 2083              	.LCFI56:
+ 2084              	 .cfi_def_cfa_offset 32
+ 2085 0004 02AF     	 add r7,sp,#8
+ 2086              	.LCFI57:
+ 2087              	 .cfi_def_cfa 7,24
+ 903:../SSC/Src/coeappl.c ****      UINT8 abort = 0;
+ 2088              	 .loc 2 903 0
+ 2089 0006 0023     	 movs r3,#0
+ 2090 0008 FB71     	 strb r3,[r7,#7]
+ 904:../SSC/Src/coeappl.c ****      
+ 905:../SSC/Src/coeappl.c ****     if(pSdoPendFunc != NULL)
+ 2091              	 .loc 2 905 0
+ 2092 000a 2F4B     	 ldr r3,.L80
+ 2093 000c 1B68     	 ldr r3,[r3]
+ 2094 000e 002B     	 cmp r3,#0
+ 2095 0010 57D0     	 beq .L73
+ 906:../SSC/Src/coeappl.c ****     {
+ 907:../SSC/Src/coeappl.c ****         abort = pSdoPendFunc(u16StoreIndex,u8StoreSubindex,u32StoreDataSize,pStoreData,bStoreComple
+ 2096              	 .loc 2 907 0
+ 2097 0012 2D4B     	 ldr r3,.L80
+ 2098 0014 1C68     	 ldr r4,[r3]
+ 2099 0016 2D4B     	 ldr r3,.L80+4
+ 2100 0018 1888     	 ldrh r0,[r3]
+ 2101 001a 2D4B     	 ldr r3,.L80+8
+ 2102 001c 1978     	 ldrb r1,[r3]
+ 2103 001e 2D4B     	 ldr r3,.L80+12
+ 2104 0020 1A68     	 ldr r2,[r3]
+ 2105 0022 2D4B     	 ldr r3,.L80+16
+ 2106 0024 1D68     	 ldr r5,[r3]
+ 2107 0026 2D4B     	 ldr r3,.L80+20
+ 2108 0028 1B78     	 ldrb r3,[r3]
+ 2109 002a 0093     	 str r3,[sp]
+ 2110 002c 2B46     	 mov r3,r5
+ 2111 002e A047     	 blx r4
+ 2112 0030 0346     	 mov r3,r0
+ 2113 0032 FB71     	 strb r3,[r7,#7]
+ 908:../SSC/Src/coeappl.c **** 
+ 909:../SSC/Src/coeappl.c ****         if(abort != ABORTIDX_WORKING)
+ 2114              	 .loc 2 909 0
+ 2115 0034 FB79     	 ldrb r3,[r7,#7]
+ 2116 0036 FF2B     	 cmp r3,#255
+ 2117 0038 43D0     	 beq .L73
+ 910:../SSC/Src/coeappl.c ****         {
+ 911:../SSC/Src/coeappl.c ****             switch(u8PendingSdo)
+ 2118              	 .loc 2 911 0
+ 2119 003a 294B     	 ldr r3,.L80+24
+ 2120 003c 1B78     	 ldrb r3,[r3]
+ 2121 003e 013B     	 subs r3,r3,#1
+ 2122 0040 032B     	 cmp r3,#3
+ 2123 0042 29D8     	 bhi .L75
+ 2124 0044 01A2     	 adr r2,.L77
+ 2125 0046 52F823F0 	 ldr pc,[r2,r3,lsl#2]
+ 2126 004a 00BF     	 .p2align 2
+ 2127              	.L77:
+ 2128 004c 75000000 	 .word .L76+1
+ 2129 0050 5D000000 	 .word .L78+1
+ 2130 0054 83000000 	 .word .L79+1
+ 2131 0058 83000000 	 .word .L79+1
+ 2132              	 .p2align 1
+ 2133              	.L78:
+ 912:../SSC/Src/coeappl.c ****             {
+ 913:../SSC/Src/coeappl.c ****                 case SDO_PENDING_SEG_WRITE:
+ 914:../SSC/Src/coeappl.c ****                     if(pSdoSegData)
+ 2134              	 .loc 2 914 0
+ 2135 005c 214B     	 ldr r3,.L80+28
+ 2136 005e 1B68     	 ldr r3,[r3]
+ 2137 0060 002B     	 cmp r3,#0
+ 2138 0062 07D0     	 beq .L76
+ 915:../SSC/Src/coeappl.c ****                     {
+ 916:../SSC/Src/coeappl.c ****                         /* the allocated buffer can be released */
+ 917:../SSC/Src/coeappl.c ****                         FREEMEM( (UINT16 VARMEM *) pSdoSegData );
+ 2139              	 .loc 2 917 0
+ 2140 0064 1F4B     	 ldr r3,.L80+28
+ 2141 0066 1B68     	 ldr r3,[r3]
+ 2142 0068 1846     	 mov r0,r3
+ 2143 006a FFF7FEFF 	 bl free
+ 918:../SSC/Src/coeappl.c ****                         pSdoSegData = NULL;
+ 2144              	 .loc 2 918 0
+ 2145 006e 1D4B     	 ldr r3,.L80+28
+ 2146 0070 0022     	 movs r2,#0
+ 2147 0072 1A60     	 str r2,[r3]
+ 2148              	.L76:
+ 919:../SSC/Src/coeappl.c ****                     }
+ 920:../SSC/Src/coeappl.c ****                 case SDO_PENDING_WRITE:
+ 921:../SSC/Src/coeappl.c ****                      /*send SDO Download Response*/
+ 922:../SSC/Src/coeappl.c ****                     SDOS_SdoRes(abort, 0, NULL);
+ 2149              	 .loc 2 922 0
+ 2150 0074 FB79     	 ldrb r3,[r7,#7]
+ 2151 0076 1846     	 mov r0,r3
+ 2152 0078 0021     	 movs r1,#0
+ 2153 007a 0022     	 movs r2,#0
+ 2154 007c FFF7FEFF 	 bl SDOS_SdoRes
+ 923:../SSC/Src/coeappl.c ****                 break;
+ 2155              	 .loc 2 923 0
+ 2156 0080 0AE0     	 b .L75
+ 2157              	.L79:
+ 924:../SSC/Src/coeappl.c **** 
+ 925:../SSC/Src/coeappl.c ****                 case SDO_PENDING_SEG_READ:
+ 926:../SSC/Src/coeappl.c ****                 case SDO_PENDING_READ:
+ 927:../SSC/Src/coeappl.c ****                     /* send SDO upload response */
+ 928:../SSC/Src/coeappl.c ****                       SDOS_SdoRes(abort, u32StoreDataSize, pStoreData);
+ 2158              	 .loc 2 928 0
+ 2159 0082 144B     	 ldr r3,.L80+12
+ 2160 0084 1A68     	 ldr r2,[r3]
+ 2161 0086 144B     	 ldr r3,.L80+16
+ 2162 0088 1B68     	 ldr r3,[r3]
+ 2163 008a F979     	 ldrb r1,[r7,#7]
+ 2164 008c 0846     	 mov r0,r1
+ 2165 008e 1146     	 mov r1,r2
+ 2166 0090 1A46     	 mov r2,r3
+ 2167 0092 FFF7FEFF 	 bl SDOS_SdoRes
+ 929:../SSC/Src/coeappl.c ****                     break;
+ 2168              	 .loc 2 929 0
+ 2169 0096 00BF     	 nop
+ 2170              	.L75:
+ 930:../SSC/Src/coeappl.c **** 
+ 931:../SSC/Src/coeappl.c ****             }
+ 932:../SSC/Src/coeappl.c **** 
+ 933:../SSC/Src/coeappl.c ****             u8PendingSdo = 0;
+ 2171              	 .loc 2 933 0
+ 2172 0098 114B     	 ldr r3,.L80+24
+ 2173 009a 0022     	 movs r2,#0
+ 2174 009c 1A70     	 strb r2,[r3]
+ 934:../SSC/Src/coeappl.c ****             u16StoreIndex = 0;
+ 2175              	 .loc 2 934 0
+ 2176 009e 0B4B     	 ldr r3,.L80+4
+ 2177 00a0 0022     	 movs r2,#0
+ 2178 00a2 1A80     	 strh r2,[r3]
+ 935:../SSC/Src/coeappl.c ****             u8StoreSubindex = 0;
+ 2179              	 .loc 2 935 0
+ 2180 00a4 0A4B     	 ldr r3,.L80+8
+ 2181 00a6 0022     	 movs r2,#0
+ 2182 00a8 1A70     	 strb r2,[r3]
+ 936:../SSC/Src/coeappl.c ****             u32StoreDataSize = 0;
+ 2183              	 .loc 2 936 0
+ 2184 00aa 0A4B     	 ldr r3,.L80+12
+ 2185 00ac 0022     	 movs r2,#0
+ 2186 00ae 1A60     	 str r2,[r3]
+ 937:../SSC/Src/coeappl.c ****             pStoreData = NULL;
+ 2187              	 .loc 2 937 0
+ 2188 00b0 094B     	 ldr r3,.L80+16
+ 2189 00b2 0022     	 movs r2,#0
+ 2190 00b4 1A60     	 str r2,[r3]
+ 938:../SSC/Src/coeappl.c ****             bStoreCompleteAccess = 0;
+ 2191              	 .loc 2 938 0
+ 2192 00b6 094B     	 ldr r3,.L80+20
+ 2193 00b8 0022     	 movs r2,#0
+ 2194 00ba 1A70     	 strb r2,[r3]
+ 939:../SSC/Src/coeappl.c ****             pSdoPendFunc = NULL;
+ 2195              	 .loc 2 939 0
+ 2196 00bc 024B     	 ldr r3,.L80
+ 2197 00be 0022     	 movs r2,#0
+ 2198 00c0 1A60     	 str r2,[r3]
+ 2199              	.L73:
+ 940:../SSC/Src/coeappl.c ****         }
+ 941:../SSC/Src/coeappl.c ****     }
+ 942:../SSC/Src/coeappl.c **** }
+ 2200              	 .loc 2 942 0
+ 2201 00c2 0837     	 adds r7,r7,#8
+ 2202              	.LCFI58:
+ 2203              	 .cfi_def_cfa_offset 16
+ 2204 00c4 BD46     	 mov sp,r7
+ 2205              	.LCFI59:
+ 2206              	 .cfi_def_cfa_register 13
+ 2207              	 
+ 2208 00c6 B0BD     	 pop {r4,r5,r7,pc}
+ 2209              	.L81:
+ 2210              	 .align 2
+ 2211              	.L80:
+ 2212 00c8 00000000 	 .word pSdoPendFunc
+ 2213 00cc 00000000 	 .word u16StoreIndex
+ 2214 00d0 00000000 	 .word u8StoreSubindex
+ 2215 00d4 00000000 	 .word u32StoreDataSize
+ 2216 00d8 00000000 	 .word pStoreData
+ 2217 00dc 00000000 	 .word bStoreCompleteAccess
+ 2218 00e0 00000000 	 .word u8PendingSdo
+ 2219 00e4 00000000 	 .word pSdoSegData
+ 2220              	 .cfi_endproc
+ 2221              	.LFE187:
+ 2223              	 .text
+ 2224              	.Letext0:
+ 2225              	 .file 3 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 2226              	 .file 4 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 2227              	 .file 5 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include/XMC4800.h"
+ 2228              	 .file 6 "../SSC/Src/sdoserv.h"
+ 2229              	 .file 7 "../SSC/Src/objdef.h"
+ 2230              	 .file 8 "../SSC/Src/coeappl.h"
+ 2231              	 .file 9 "../SSC/Src/XMC_ESCObjects.h"
+ 2232              	 .file 10 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Include/core_cm4.h"
+ 2233              	 .file 11 "../SSC/Src/ecatslv.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 coeappl.c
+    {standard input}:20     .text.HW_EscRead:00000000 $t
+    {standard input}:24     .text.HW_EscRead:00000000 HW_EscRead
+    {standard input}:72     .bss.u64Timestamp:00000000 u64Timestamp
+    {standard input}:69     .bss.u64Timestamp:00000000 $d
+                            *COM*:00000004 u32LastDc32Value
+                            *COM*:00000004 u32CheckForDcOverrunCnt
+    {standard input}:81     .rodata.asEntryDesc0x1600:00000000 asEntryDesc0x1600
+    {standard input}:78     .rodata.asEntryDesc0x1600:00000000 $d
+    {standard input}:126    .rodata.aName0x1600:00000000 aName0x1600
+    {standard input}:123    .rodata.aName0x1600:00000000 $d
+    {standard input}:137    .rodata.asEntryDesc0x1A00:00000000 asEntryDesc0x1A00
+    {standard input}:134    .rodata.asEntryDesc0x1A00:00000000 $d
+    {standard input}:182    .rodata.aName0x1A00:00000000 aName0x1A00
+    {standard input}:179    .rodata.aName0x1A00:00000000 $d
+    {standard input}:193    .rodata.asEntryDesc0x1C12:00000000 asEntryDesc0x1C12
+    {standard input}:190    .rodata.asEntryDesc0x1C12:00000000 $d
+    {standard input}:205    .rodata.aName0x1C12:00000000 aName0x1C12
+    {standard input}:202    .rodata.aName0x1C12:00000000 $d
+    {standard input}:212    .rodata.asEntryDesc0x1C13:00000000 asEntryDesc0x1C13
+    {standard input}:209    .rodata.asEntryDesc0x1C13:00000000 $d
+    {standard input}:224    .rodata.aName0x1C13:00000000 aName0x1C13
+    {standard input}:221    .rodata.aName0x1C13:00000000 $d
+    {standard input}:231    .rodata.asEntryDesc0x6000:00000000 asEntryDesc0x6000
+    {standard input}:228    .rodata.asEntryDesc0x6000:00000000 $d
+    {standard input}:276    .rodata.aName0x6000:00000000 aName0x6000
+    {standard input}:273    .rodata.aName0x6000:00000000 $d
+    {standard input}:286    .rodata.asEntryDesc0x7000:00000000 asEntryDesc0x7000
+    {standard input}:283    .rodata.asEntryDesc0x7000:00000000 $d
+    {standard input}:331    .rodata.aName0x7000:00000000 aName0x7000
+    {standard input}:328    .rodata.aName0x7000:00000000 $d
+    {standard input}:342    .rodata.asEntryDesc0xF000:00000000 asEntryDesc0xF000
+    {standard input}:339    .rodata.asEntryDesc0xF000:00000000 $d
+    {standard input}:357    .rodata.aName0xF000:00000000 aName0xF000
+    {standard input}:354    .rodata.aName0xF000:00000000 $d
+    {standard input}:365    .data.ApplicationObjDic:00000000 ApplicationObjDic
+    {standard input}:362    .data.ApplicationObjDic:00000000 $d
+    {standard input}:473    .data.u32Devicetype:00000000 u32Devicetype
+    {standard input}:470    .data.u32Devicetype:00000000 $d
+    {standard input}:480    .rodata.sEntryDesc0x1000:00000000 sEntryDesc0x1000
+    {standard input}:477    .rodata.sEntryDesc0x1000:00000000 $d
+    {standard input}:489    .rodata.aName0x1000:00000000 aName0x1000
+    {standard input}:486    .rodata.aName0x1000:00000000 $d
+    {standard input}:496    .bss.u16ErrorRegister:00000000 u16ErrorRegister
+    {standard input}:493    .bss.u16ErrorRegister:00000000 $d
+    {standard input}:503    .rodata.sEntryDesc0x1001:00000000 sEntryDesc0x1001
+    {standard input}:500    .rodata.sEntryDesc0x1001:00000000 $d
+    {standard input}:512    .rodata.aName0x1001:00000000 aName0x1001
+    {standard input}:509    .rodata.aName0x1001:00000000 $d
+    {standard input}:519    .data.acDevicename:00000000 acDevicename
+    {standard input}:516    .data.acDevicename:00000000 $d
+    {standard input}:526    .rodata.sEntryDesc0x1008:00000000 sEntryDesc0x1008
+    {standard input}:523    .rodata.sEntryDesc0x1008:00000000 $d
+    {standard input}:535    .rodata.aName0x1008:00000000 aName0x1008
+    {standard input}:532    .rodata.aName0x1008:00000000 $d
+    {standard input}:542    .data.acHardwareversion:00000000 acHardwareversion
+    {standard input}:539    .data.acHardwareversion:00000000 $d
+    {standard input}:549    .rodata.sEntryDesc0x1009:00000000 sEntryDesc0x1009
+    {standard input}:546    .rodata.sEntryDesc0x1009:00000000 $d
+    {standard input}:558    .rodata.aName0x1009:00000000 aName0x1009
+    {standard input}:555    .rodata.aName0x1009:00000000 $d
+    {standard input}:565    .data.acSoftwareversion:00000000 acSoftwareversion
+    {standard input}:562    .data.acSoftwareversion:00000000 $d
+    {standard input}:572    .rodata.sEntryDesc0x100A:00000000 sEntryDesc0x100A
+    {standard input}:569    .rodata.sEntryDesc0x100A:00000000 $d
+    {standard input}:581    .rodata.aName0x100A:00000000 aName0x100A
+    {standard input}:578    .rodata.aName0x100A:00000000 $d
+    {standard input}:588    .data.sIdentity:00000000 sIdentity
+    {standard input}:585    .data.sIdentity:00000000 $d
+    {standard input}:600    .rodata.asEntryDesc0x1018:00000000 asEntryDesc0x1018
+    {standard input}:597    .rodata.asEntryDesc0x1018:00000000 $d
+    {standard input}:621    .rodata.aName0x1018:00000000 aName0x1018
+    {standard input}:618    .rodata.aName0x1018:00000000 $d
+    {standard input}:629    .rodata.asEntryDesc0x10F1:00000000 asEntryDesc0x10F1
+    {standard input}:626    .rodata.asEntryDesc0x10F1:00000000 $d
+    {standard input}:644    .rodata.aName0x10F1:00000000 aName0x10F1
+    {standard input}:641    .rodata.aName0x10F1:00000000 $d
+    {standard input}:652    .rodata.sEntryDesc0x10F8:00000000 sEntryDesc0x10F8
+    {standard input}:649    .rodata.sEntryDesc0x10F8:00000000 $d
+    {standard input}:661    .rodata.aName0x10F8:00000000 aName0x10F8
+    {standard input}:658    .rodata.aName0x10F8:00000000 $d
+    {standard input}:664    .text.Read0x10F8:00000000 $t
+    {standard input}:669    .text.Read0x10F8:00000000 Read0x10F8
+    {standard input}:759    .text.COE_SyncTimeStamp:00000000 COE_SyncTimeStamp
+    {standard input}:749    .text.Read0x10F8:00000058 $d
+    {standard input}:754    .text.COE_SyncTimeStamp:00000000 $t
+    {standard input}:848    .text.COE_SyncTimeStamp:00000088 $d
+    {standard input}:861    .data.sSyncmanagertype:00000000 sSyncmanagertype
+    {standard input}:858    .data.sSyncmanagertype:00000000 $d
+    {standard input}:870    .rodata.asEntryDesc0x1C00:00000000 asEntryDesc0x1C00
+    {standard input}:867    .rodata.asEntryDesc0x1C00:00000000 $d
+    {standard input}:882    .rodata.aName0x1C00:00000000 aName0x1C00
+    {standard input}:879    .rodata.aName0x1C00:00000000 $d
+    {standard input}:889    .rodata.asEntryDesc0x1C3x:00000000 asEntryDesc0x1C3x
+    {standard input}:886    .rodata.asEntryDesc0x1C3x:00000000 $d
+    {standard input}:994    .rodata.aName0x1C32:00000000 aName0x1C32
+    {standard input}:991    .rodata.aName0x1C32:00000000 $d
+    {standard input}:1007   .rodata.aName0x1C33:00000000 aName0x1C33
+    {standard input}:1004   .rodata.aName0x1C33:00000000 $d
+    {standard input}:1020   .bss.ObjDicList:00000000 ObjDicList
+    {standard input}:1017   .bss.ObjDicList:00000000 $d
+    {standard input}:1027   .data.GenObjDic:00000000 GenObjDic
+    {standard input}:1024   .data.GenObjDic:00000000 $d
+    {standard input}:1185   .text.COE_GetObjectDictionary:00000000 $t
+    {standard input}:1190   .text.COE_GetObjectDictionary:00000000 COE_GetObjectDictionary
+    {standard input}:1221   .text.COE_GetObjectDictionary:00000014 $d
+    {standard input}:1226   .text.COE_UpdateSyncErrorStatus:00000000 $t
+    {standard input}:1231   .text.COE_UpdateSyncErrorStatus:00000000 COE_UpdateSyncErrorStatus
+    {standard input}:1306   .text.COE_UpdateSyncErrorStatus:00000058 $d
+    {standard input}:1313   .text.COE_ObjInit:00000000 $t
+    {standard input}:1318   .text.COE_ObjInit:00000000 COE_ObjInit
+    {standard input}:1999   .text.COE_ObjDictionaryInit:00000000 COE_ObjDictionaryInit
+    {standard input}:1856   .text.COE_ClearObjDictionary:00000000 COE_ClearObjDictionary
+    {standard input}:1518   .text.COE_ObjInit:00000114 $d
+    {standard input}:1539   .text.COE_AddObjectToDic:00000000 $t
+    {standard input}:1544   .text.COE_AddObjectToDic:00000000 COE_AddObjectToDic
+    {standard input}:1725   .text.COE_AddObjectToDic:000000e4 $d
+    {standard input}:1730   .text.COE_RemoveDicEntry:00000000 $t
+    {standard input}:1735   .text.COE_RemoveDicEntry:00000000 COE_RemoveDicEntry
+    {standard input}:1846   .text.COE_RemoveDicEntry:0000007c $d
+    {standard input}:1851   .text.COE_ClearObjDictionary:00000000 $t
+    {standard input}:1916   .text.COE_ClearObjDictionary:00000038 $d
+    {standard input}:1921   .text.AddObjectsToObjDictionary:00000000 $t
+    {standard input}:1926   .text.AddObjectsToObjDictionary:00000000 AddObjectsToObjDictionary
+    {standard input}:1994   .text.COE_ObjDictionaryInit:00000000 $t
+    {standard input}:2057   .text.COE_ObjDictionaryInit:00000038 $d
+    {standard input}:2064   .text.COE_Main:00000000 $t
+    {standard input}:2069   .text.COE_Main:00000000 COE_Main
+    {standard input}:2128   .text.COE_Main:0000004c $d
+    {standard input}:2132   .text.COE_Main:0000005c $t
+    {standard input}:2212   .text.COE_Main:000000c8 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+memcpy
+OUT_GENERICProcessDataMapping0x1600
+IN_GENERICProcessDataMapping0x1A00
+sRxPDOassign
+sTxPDOassign
+IN_GENERIC0x6000
+OUT_GENERIC0x7000
+ModularDeviceProfile0xF000
+b32BitDc
+sErrorSettings
+sSyncManOutPar
+sSyncManInPar
+bSyncSetByUser
+u8PendingSdo
+bStoreCompleteAccess
+u16StoreIndex
+u8StoreSubindex
+u32StoreDataSize
+pStoreData
+pSdoPendFunc
+pSdoSegData
+free
+SDOS_SdoRes

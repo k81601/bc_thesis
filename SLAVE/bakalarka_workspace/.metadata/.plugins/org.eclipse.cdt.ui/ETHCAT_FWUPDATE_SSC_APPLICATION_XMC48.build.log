@@ -1,0 +1,15 @@
+13:09:36 **** Incremental Build of configuration Debug for project ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48 ****
+"\"C:\\Program Files\\DAVE-IDE-4.4.2-64Bit\\eclipse\\ARM-GCC-49\\bin\\make\"" --output-sync -j4 all 
+'Invoking: ARM-GCC Print Size'
+"C:/Program Files/DAVE-IDE-4.4.2-64Bit/eclipse/ARM-GCC-49/bin/arm-none-eabi-size" --format=berkeley "ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48.elf"
+   text	   data	    bss	    dec	    hex	filename
+  47154	   3440	   7352	  57946	   e25a	ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48.elf
+'Finished building: ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48.siz'
+
+'Invoking: ARM-GCC Create Flash Image'
+"C:/Program Files/DAVE-IDE-4.4.2-64Bit/eclipse/ARM-GCC-49/bin/arm-none-eabi-objcopy" -O binary "ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48.elf" firmware.bin & "../Utilities/srecord-1.63-win32/srec_cat" "@../Utilities/pad.srec" & "../Utilities/srecord-1.63-win32/srec_cat" "@../Utilities/crc.srec" & "../Utilities/srecord-1.63-win32/srec_cat" "@../Utilities/swap.srec"
+'Finished building: ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48.bin'
+
+
+13:09:42 Build Finished (took 6s.399ms)
+

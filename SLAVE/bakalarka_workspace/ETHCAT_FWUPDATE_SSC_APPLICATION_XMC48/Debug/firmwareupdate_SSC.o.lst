@@ -1,0 +1,512 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "firmwareupdate_SSC.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .bss.meta_page,"aw",%nobits
+  20              	 .align 2
+  23              	meta_page:
+  24 0000 00000000 	 .space 256
+  24      00000000 
+  24      00000000 
+  24      00000000 
+  24      00000000 
+  25              	 .section .bss.g_firmware_download_started,"aw",%nobits
+  28              	g_firmware_download_started:
+  29 0000 00       	 .space 1
+  30              	 .section .bss.g_firmware_download_finished,"aw",%nobits
+  33              	g_firmware_download_finished:
+  34 0000 00       	 .space 1
+  35              	 .section .text.FWUPDATE_StartDownload,"ax",%progbits
+  36              	 .align 2
+  37              	 .global FWUPDATE_StartDownload
+  38              	 .thumb
+  39              	 .thumb_func
+  41              	FWUPDATE_StartDownload:
+  42              	.LFB149:
+  43              	 .file 1 "../firmwareupdate_SSC.c"
+   1:../firmwareupdate_SSC.c **** /******************************************************************************
+   2:../firmwareupdate_SSC.c **** * Software License Agreement
+   3:../firmwareupdate_SSC.c **** *
+   4:../firmwareupdate_SSC.c **** * Copyright (c) 2016, Infineon Technologies AG
+   5:../firmwareupdate_SSC.c **** * All rights reserved.
+   6:../firmwareupdate_SSC.c **** *
+   7:../firmwareupdate_SSC.c **** * Redistribution and use in source and binary forms, with or without
+   8:../firmwareupdate_SSC.c **** * modification, are permitted provided that the following conditions are met:
+   9:../firmwareupdate_SSC.c **** *
+  10:../firmwareupdate_SSC.c **** * Redistributions of source code must retain the above copyright notice,
+  11:../firmwareupdate_SSC.c **** * this list of conditions and the following disclaimer.
+  12:../firmwareupdate_SSC.c **** *
+  13:../firmwareupdate_SSC.c **** * Redistributions in binary form must reproduce the above copyright notice,
+  14:../firmwareupdate_SSC.c **** * this list of conditions and the following disclaimer in the documentation
+  15:../firmwareupdate_SSC.c **** * and/or other materials provided with the distribution.
+  16:../firmwareupdate_SSC.c **** *
+  17:../firmwareupdate_SSC.c **** * Neither the name of the copyright holders nor the names of its contributors
+  18:../firmwareupdate_SSC.c **** * may be used to endorse or promote products derived from this software
+  19:../firmwareupdate_SSC.c **** * without specific prior written permission
+  20:../firmwareupdate_SSC.c **** 
+  21:../firmwareupdate_SSC.c **** * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+  22:../firmwareupdate_SSC.c **** * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+  23:../firmwareupdate_SSC.c **** * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+  24:../firmwareupdate_SSC.c **** * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+  25:../firmwareupdate_SSC.c **** * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+  26:../firmwareupdate_SSC.c **** * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+  27:../firmwareupdate_SSC.c **** * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+  28:../firmwareupdate_SSC.c **** * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+  29:../firmwareupdate_SSC.c **** * CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+  30:../firmwareupdate_SSC.c **** * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+  31:../firmwareupdate_SSC.c **** * POSSIBILITY OF SUCH DAMAGE.
+  32:../firmwareupdate_SSC.c **** *
+  33:../firmwareupdate_SSC.c **** * To improve the quality of the software, users are encouraged to share
+  34:../firmwareupdate_SSC.c **** * modifications, enhancements or bug fixes with Infineon Technologies AG
+  35:../firmwareupdate_SSC.c **** * (dave@infineon.com).
+  36:../firmwareupdate_SSC.c **** *
+  37:../firmwareupdate_SSC.c **** *****************************************************************************/
+  38:../firmwareupdate_SSC.c **** 
+  39:../firmwareupdate_SSC.c **** /****************************************************************
+  40:../firmwareupdate_SSC.c **** * HEADER FILES
+  41:../firmwareupdate_SSC.c **** ***************************************************************/
+  42:../firmwareupdate_SSC.c **** #include "flashprog.h"
+  43:../firmwareupdate_SSC.c **** #include "ecatfoe.h"
+  44:../firmwareupdate_SSC.c **** #include "foeappl.h"
+  45:../firmwareupdate_SSC.c **** 
+  46:../firmwareupdate_SSC.c **** /****************************************************************
+  47:../firmwareupdate_SSC.c **** * MACROS AND DEFINES
+  48:../firmwareupdate_SSC.c **** ***************************************************************/
+  49:../firmwareupdate_SSC.c **** #define START_BACKUP_PARTITION (void*)0x0C100000           /* Start address of backup partition in 
+  50:../firmwareupdate_SSC.c **** #define MAX_SIZE               (1024 * 1024 - 128 * 1024)  /* 1st 64KByte occupied by bootlader
+  51:../firmwareupdate_SSC.c ****                                                             * 2nd 64kByte occupied by EetherCAT EEP
+  52:../firmwareupdate_SSC.c **** #define METAINFO_OFFSET        (1024 * 1024 - 256)         /* store file size as meta-info in last 
+  53:../firmwareupdate_SSC.c **** 
+  54:../firmwareupdate_SSC.c **** /****************************************************************
+  55:../firmwareupdate_SSC.c **** * LOCAL DATA
+  56:../firmwareupdate_SSC.c **** ***************************************************************/
+  57:../firmwareupdate_SSC.c **** static uint32_t meta_page[64];
+  58:../firmwareupdate_SSC.c **** static uint8_t g_firmware_download_started=0;
+  59:../firmwareupdate_SSC.c **** static uint8_t g_firmware_download_finished=0;
+  60:../firmwareupdate_SSC.c **** 
+  61:../firmwareupdate_SSC.c **** /****************************************************************
+  62:../firmwareupdate_SSC.c **** * API PROTOTYPES
+  63:../firmwareupdate_SSC.c **** ***************************************************************/
+  64:../firmwareupdate_SSC.c **** 
+  65:../firmwareupdate_SSC.c **** void FWUPDATE_StartDownload(void)
+  66:../firmwareupdate_SSC.c **** {
+  44              	 .loc 1 66 0
+  45              	 .cfi_startproc
+  46              	 
+  47              	 
+  48 0000 80B5     	 push {r7,lr}
+  49              	.LCFI0:
+  50              	 .cfi_def_cfa_offset 8
+  51              	 .cfi_offset 7,-8
+  52              	 .cfi_offset 14,-4
+  53 0002 00AF     	 add r7,sp,#0
+  54              	.LCFI1:
+  55              	 .cfi_def_cfa_register 7
+  67:../firmwareupdate_SSC.c ****   /* Check if a download has already been started,
+  68:../firmwareupdate_SSC.c ****    * if yes, return error */
+  69:../firmwareupdate_SSC.c ****   if (g_firmware_download_started)
+  56              	 .loc 1 69 0
+  57 0004 084B     	 ldr r3,.L4
+  58 0006 1B78     	 ldrb r3,[r3]
+  59 0008 002B     	 cmp r3,#0
+  60 000a 00D0     	 beq .L2
+  70:../firmwareupdate_SSC.c ****     return ECAT_FOE_ERRCODE_EXISTS;
+  61              	 .loc 1 70 0
+  62 000c 0AE0     	 b .L1
+  63              	.L2:
+  71:../firmwareupdate_SSC.c **** 
+  72:../firmwareupdate_SSC.c ****   /* remember a firmware download has started
+  73:../firmwareupdate_SSC.c ****    * --> issue system reset when INIT-state is requested
+  74:../firmwareupdate_SSC.c ****    * to flash new binary inside bootloader */
+  75:../firmwareupdate_SSC.c ****   g_firmware_download_started = 1;
+  64              	 .loc 1 75 0
+  65 000e 064B     	 ldr r3,.L4
+  66 0010 0122     	 movs r2,#1
+  67 0012 1A70     	 strb r2,[r3]
+  76:../firmwareupdate_SSC.c **** 
+  77:../firmwareupdate_SSC.c ****   /* Initialize programming of XMC flash
+  78:../firmwareupdate_SSC.c ****    * - start address of backup partition
+  79:../firmwareupdate_SSC.c ****    * - MAX SIZE is limited by application partition
+  80:../firmwareupdate_SSC.c ****    * - Erase is already assured insid jhjhjhjhjhe bootloader executable
+  81:../firmwareupdate_SSC.c ****    * - Enable XMC flash programming check
+  82:../firmwareupdate_SSC.c ****    */
+  83:../firmwareupdate_SSC.c ****   FLASHPROG_Init(START_BACKUP_PARTITION, MAX_SIZE, FLASH_OPT_NO_ERASE, FLASH_OPT_CHECK);
+  68              	 .loc 1 83 0
+  69 0014 4FF04160 	 mov r0,#202375168
+  70 0018 4FF46021 	 mov r1,#917504
+  71 001c 6522     	 movs r2,#101
+  72 001e C823     	 movs r3,#200
+  73 0020 FFF7FEFF 	 bl FLASHPROG_Init
+  74              	.L1:
+  84:../firmwareupdate_SSC.c **** }
+  75              	 .loc 1 84 0
+  76 0024 80BD     	 pop {r7,pc}
+  77              	.L5:
+  78 0026 00BF     	 .align 2
+  79              	.L4:
+  80 0028 00000000 	 .word g_firmware_download_started
+  81              	 .cfi_endproc
+  82              	.LFE149:
+  84              	 .section .text.FWUPDATE_StateTransitionInit,"ax",%progbits
+  85              	 .align 2
+  86              	 .global FWUPDATE_StateTransitionInit
+  87              	 .thumb
+  88              	 .thumb_func
+  90              	FWUPDATE_StateTransitionInit:
+  91              	.LFB150:
+  85:../firmwareupdate_SSC.c **** 
+  86:../firmwareupdate_SSC.c **** void FWUPDATE_StateTransitionInit(void)
+  87:../firmwareupdate_SSC.c **** {
+  92              	 .loc 1 87 0
+  93              	 .cfi_startproc
+  94              	 
+  95              	 
+  96              	 
+  97 0000 80B4     	 push {r7}
+  98              	.LCFI2:
+  99              	 .cfi_def_cfa_offset 4
+ 100              	 .cfi_offset 7,-4
+ 101 0002 00AF     	 add r7,sp,#0
+ 102              	.LCFI3:
+ 103              	 .cfi_def_cfa_register 7
+  88:../firmwareupdate_SSC.c ****   /* If download started before, it is finished now
+  89:../firmwareupdate_SSC.c ****    * --> issue system reset  from process_app
+  90:../firmwareupdate_SSC.c ****    * to update firmware and/or cleanup flash
+  91:../firmwareupdate_SSC.c ****    */
+  92:../firmwareupdate_SSC.c ****   if (g_firmware_download_started==1)
+ 104              	 .loc 1 92 0
+ 105 0004 054B     	 ldr r3,.L8
+ 106 0006 1B78     	 ldrb r3,[r3]
+ 107 0008 012B     	 cmp r3,#1
+ 108 000a 02D1     	 bne .L6
+  93:../firmwareupdate_SSC.c ****     g_firmware_download_finished=1;
+ 109              	 .loc 1 93 0
+ 110 000c 044B     	 ldr r3,.L8+4
+ 111 000e 0122     	 movs r2,#1
+ 112 0010 1A70     	 strb r2,[r3]
+ 113              	.L6:
+  94:../firmwareupdate_SSC.c **** }
+ 114              	 .loc 1 94 0
+ 115 0012 BD46     	 mov sp,r7
+ 116              	.LCFI4:
+ 117              	 .cfi_def_cfa_register 13
+ 118              	 
+ 119 0014 5DF8047B 	 ldr r7,[sp],#4
+ 120              	.LCFI5:
+ 121              	 .cfi_restore 7
+ 122              	 .cfi_def_cfa_offset 0
+ 123 0018 7047     	 bx lr
+ 124              	.L9:
+ 125 001a 00BF     	 .align 2
+ 126              	.L8:
+ 127 001c 00000000 	 .word g_firmware_download_started
+ 128 0020 00000000 	 .word g_firmware_download_finished
+ 129              	 .cfi_endproc
+ 130              	.LFE150:
+ 132              	 .section .text.FWUPDATE_GetDownloadFinished,"ax",%progbits
+ 133              	 .align 2
+ 134              	 .global FWUPDATE_GetDownloadFinished
+ 135              	 .thumb
+ 136              	 .thumb_func
+ 138              	FWUPDATE_GetDownloadFinished:
+ 139              	.LFB151:
+  95:../firmwareupdate_SSC.c **** 
+  96:../firmwareupdate_SSC.c **** uint8_t FWUPDATE_GetDownloadFinished(void)
+  97:../firmwareupdate_SSC.c **** {
+ 140              	 .loc 1 97 0
+ 141              	 .cfi_startproc
+ 142              	 
+ 143              	 
+ 144              	 
+ 145 0000 80B4     	 push {r7}
+ 146              	.LCFI6:
+ 147              	 .cfi_def_cfa_offset 4
+ 148              	 .cfi_offset 7,-4
+ 149 0002 00AF     	 add r7,sp,#0
+ 150              	.LCFI7:
+ 151              	 .cfi_def_cfa_register 7
+  98:../firmwareupdate_SSC.c **** 	return g_firmware_download_finished;
+ 152              	 .loc 1 98 0
+ 153 0004 034B     	 ldr r3,.L12
+ 154 0006 1B78     	 ldrb r3,[r3]
+  99:../firmwareupdate_SSC.c **** }
+ 155              	 .loc 1 99 0
+ 156 0008 1846     	 mov r0,r3
+ 157 000a BD46     	 mov sp,r7
+ 158              	.LCFI8:
+ 159              	 .cfi_def_cfa_register 13
+ 160              	 
+ 161 000c 5DF8047B 	 ldr r7,[sp],#4
+ 162              	.LCFI9:
+ 163              	 .cfi_restore 7
+ 164              	 .cfi_def_cfa_offset 0
+ 165 0010 7047     	 bx lr
+ 166              	.L13:
+ 167 0012 00BF     	 .align 2
+ 168              	.L12:
+ 169 0014 00000000 	 .word g_firmware_download_finished
+ 170              	 .cfi_endproc
+ 171              	.LFE151:
+ 173              	 .section .text.FWUPDATE_Data,"ax",%progbits
+ 174              	 .align 2
+ 175              	 .global FWUPDATE_Data
+ 176              	 .thumb
+ 177              	 .thumb_func
+ 179              	FWUPDATE_Data:
+ 180              	.LFB152:
+ 100:../firmwareupdate_SSC.c **** 
+ 101:../firmwareupdate_SSC.c **** uint16_t FWUPDATE_Data(uint16_t *pdata, uint16_t size)
+ 102:../firmwareupdate_SSC.c **** {
+ 181              	 .loc 1 102 0
+ 182              	 .cfi_startproc
+ 183              	 
+ 184              	 
+ 185 0000 80B5     	 push {r7,lr}
+ 186              	.LCFI10:
+ 187              	 .cfi_def_cfa_offset 8
+ 188              	 .cfi_offset 7,-8
+ 189              	 .cfi_offset 14,-4
+ 190 0002 84B0     	 sub sp,sp,#16
+ 191              	.LCFI11:
+ 192              	 .cfi_def_cfa_offset 24
+ 193 0004 00AF     	 add r7,sp,#0
+ 194              	.LCFI12:
+ 195              	 .cfi_def_cfa_register 7
+ 196 0006 7860     	 str r0,[r7,#4]
+ 197 0008 0B46     	 mov r3,r1
+ 198 000a 7B80     	 strh r3,[r7,#2]
+ 103:../firmwareupdate_SSC.c ****   /* Next data of firmware file received
+ 104:../firmwareupdate_SSC.c ****    * Proceed with programming
+ 105:../firmwareupdate_SSC.c ****    */
+ 106:../firmwareupdate_SSC.c ****   switch( FLASHPROG_Data((void*)pdata, (uint32_t)size) )
+ 199              	 .loc 1 106 0
+ 200 000c 7B88     	 ldrh r3,[r7,#2]
+ 201 000e 7868     	 ldr r0,[r7,#4]
+ 202 0010 1946     	 mov r1,r3
+ 203 0012 FFF7FEFF 	 bl FLASHPROG_Data
+ 204 0016 0346     	 mov r3,r0
+ 205 0018 012B     	 cmp r3,#1
+ 206 001a 02D0     	 beq .L16
+ 207 001c 022B     	 cmp r3,#2
+ 208 001e 03D0     	 beq .L17
+ 209 0020 05E0     	 b .L26
+ 210              	.L16:
+ 107:../firmwareupdate_SSC.c ****   {
+ 108:../firmwareupdate_SSC.c ****     case FLASH_FULL_ERROR:
+ 109:../firmwareupdate_SSC.c ****     {
+ 110:../firmwareupdate_SSC.c ****       /* Maximum firmware size reached */
+ 111:../firmwareupdate_SSC.c ****       return ECAT_FOE_ERRCODE_DISKFULL;
+ 211              	 .loc 1 111 0
+ 212 0022 48F20303 	 movw r3,#32771
+ 213 0026 4AE0     	 b .L18
+ 214              	.L17:
+ 112:../firmwareupdate_SSC.c ****     }
+ 113:../firmwareupdate_SSC.c ****     case FLASH_PROG_ERROR:
+ 114:../firmwareupdate_SSC.c ****     {
+ 115:../firmwareupdate_SSC.c ****       /* XMC flash programming error occured */
+ 116:../firmwareupdate_SSC.c ****       return ECAT_FOE_ERRCODE_PROGERROR;
+ 215              	 .loc 1 116 0
+ 216 0028 48F20B03 	 movw r3,#32779
+ 217 002c 47E0     	 b .L18
+ 218              	.L26:
+ 117:../firmwareupdate_SSC.c **** 	}
+ 118:../firmwareupdate_SSC.c ****   }
+ 119:../firmwareupdate_SSC.c **** 
+ 120:../firmwareupdate_SSC.c ****   if ( size == (u16ReceiveMbxSize - MBX_HEADER_SIZE - FOE_HEADER_SIZE) )
+ 219              	 .loc 1 120 0
+ 220 002e 7A88     	 ldrh r2,[r7,#2]
+ 221 0030 254B     	 ldr r3,.L28
+ 222 0032 1B88     	 ldrh r3,[r3]
+ 223 0034 0C3B     	 subs r3,r3,#12
+ 224 0036 9A42     	 cmp r2,r3
+ 225 0038 01D1     	 bne .L19
+ 121:../firmwareupdate_SSC.c ****   {
+ 122:../firmwareupdate_SSC.c ****     /* Further data will follow */
+ 123:../firmwareupdate_SSC.c ****     return 0;
+ 226              	 .loc 1 123 0
+ 227 003a 0023     	 movs r3,#0
+ 228 003c 3FE0     	 b .L18
+ 229              	.L19:
+ 124:../firmwareupdate_SSC.c ****   }
+ 125:../firmwareupdate_SSC.c ****   else
+ 126:../firmwareupdate_SSC.c ****   {
+ 127:../firmwareupdate_SSC.c ****     /* last part of the file received */
+ 128:../firmwareupdate_SSC.c **** 	/* Finalize XMC flash programming */
+ 129:../firmwareupdate_SSC.c ****   	FLASHPROG_Close();
+ 230              	 .loc 1 129 0
+ 231 003e FFF7FEFF 	 bl FLASHPROG_Close
+ 130:../firmwareupdate_SSC.c **** 
+ 131:../firmwareupdate_SSC.c ****   	/* Check CRC32 (last 4 bytes of image) */
+ 132:../firmwareupdate_SSC.c ****    	if (FLASHPROG_CRC32_check(START_BACKUP_PARTITION, FLASHPROG_Bytes_written())==FLASH_CRC_ERROR)
+ 232              	 .loc 1 132 0
+ 233 0042 FFF7FEFF 	 bl FLASHPROG_Bytes_written
+ 234 0046 0346     	 mov r3,r0
+ 235 0048 4FF04160 	 mov r0,#202375168
+ 236 004c 1946     	 mov r1,r3
+ 237 004e FFF7FEFF 	 bl FLASHPROG_CRC32_check
+ 238 0052 0346     	 mov r3,r0
+ 239 0054 032B     	 cmp r3,#3
+ 240 0056 02D1     	 bne .L20
+ 133:../firmwareupdate_SSC.c ****    	{
+ 134:../firmwareupdate_SSC.c ****    	  return ECAT_FOE_ERRCODE_INVALID_CHECKSUM;
+ 241              	 .loc 1 134 0
+ 242 0058 48F20C03 	 movw r3,#32780
+ 243 005c 2FE0     	 b .L18
+ 244              	.L20:
+ 245              	.LBB2:
+ 135:../firmwareupdate_SSC.c ****    	}
+ 136:../firmwareupdate_SSC.c **** 
+ 137:../firmwareupdate_SSC.c ****    	/* Downloaded firmware binary is ok
+ 138:../firmwareupdate_SSC.c ****    	 * now prepare meta info page to proceed
+ 139:../firmwareupdate_SSC.c ****    	 * with flashing application partition from bootloader executable*/
+ 140:../firmwareupdate_SSC.c ****     for (uint32_t i = 0; i < XMC_FLASH_BYTES_PER_PAGE / 4; i++)
+ 246              	 .loc 1 140 0
+ 247 005e 0023     	 movs r3,#0
+ 248 0060 FB60     	 str r3,[r7,#12]
+ 249 0062 07E0     	 b .L21
+ 250              	.L22:
+ 141:../firmwareupdate_SSC.c ****    	{
+ 142:../firmwareupdate_SSC.c ****       meta_page[i] = 0;
+ 251              	 .loc 1 142 0 discriminator 3
+ 252 0064 194A     	 ldr r2,.L28+4
+ 253 0066 FB68     	 ldr r3,[r7,#12]
+ 254 0068 0021     	 movs r1,#0
+ 255 006a 42F82310 	 str r1,[r2,r3,lsl#2]
+ 140:../firmwareupdate_SSC.c ****    	{
+ 256              	 .loc 1 140 0 discriminator 3
+ 257 006e FB68     	 ldr r3,[r7,#12]
+ 258 0070 0133     	 adds r3,r3,#1
+ 259 0072 FB60     	 str r3,[r7,#12]
+ 260              	.L21:
+ 140:../firmwareupdate_SSC.c ****    	{
+ 261              	 .loc 1 140 0 is_stmt 0 discriminator 1
+ 262 0074 FB68     	 ldr r3,[r7,#12]
+ 263 0076 3F2B     	 cmp r3,#63
+ 264 0078 F4D9     	 bls .L22
+ 265              	.LBE2:
+ 143:../firmwareupdate_SSC.c ****     }
+ 144:../firmwareupdate_SSC.c ****     /* Set meta info; firmware binary size */
+ 145:../firmwareupdate_SSC.c ****     meta_page[63] = FLASHPROG_Bytes_written();
+ 266              	 .loc 1 145 0 is_stmt 1
+ 267 007a FFF7FEFF 	 bl FLASHPROG_Bytes_written
+ 268 007e 0246     	 mov r2,r0
+ 269 0080 124B     	 ldr r3,.L28+4
+ 270 0082 C3F8FC20 	 str r2,[r3,#252]
+ 146:../firmwareupdate_SSC.c ****   	/* store meta info */
+ 147:../firmwareupdate_SSC.c ****     /* Initialize flash programming with offset to meta-info page */
+ 148:../firmwareupdate_SSC.c ****    	FLASHPROG_Init(START_BACKUP_PARTITION + METAINFO_OFFSET, XMC_FLASH_BYTES_PER_PAGE, FLASH_OPT_NO
+ 271              	 .loc 1 148 0
+ 272 0086 1248     	 ldr r0,.L28+8
+ 273 0088 4FF48071 	 mov r1,#256
+ 274 008c 6522     	 movs r2,#101
+ 275 008e C823     	 movs r3,#200
+ 276 0090 FFF7FEFF 	 bl FLASHPROG_Init
+ 149:../firmwareupdate_SSC.c ****     switch( FLASHPROG_Data((void*)meta_page, (uint32_t)256) )
+ 277              	 .loc 1 149 0
+ 278 0094 0D48     	 ldr r0,.L28+4
+ 279 0096 4FF48071 	 mov r1,#256
+ 280 009a FFF7FEFF 	 bl FLASHPROG_Data
+ 281 009e 0346     	 mov r3,r0
+ 282 00a0 012B     	 cmp r3,#1
+ 283 00a2 02D0     	 beq .L24
+ 284 00a4 022B     	 cmp r3,#2
+ 285 00a6 03D0     	 beq .L25
+ 286 00a8 05E0     	 b .L27
+ 287              	.L24:
+ 150:../firmwareupdate_SSC.c ****     {
+ 151:../firmwareupdate_SSC.c ****       case FLASH_FULL_ERROR:
+ 152:../firmwareupdate_SSC.c ****       {
+ 153:../firmwareupdate_SSC.c ****         /* can never happen; however to be code complete ... */
+ 154:../firmwareupdate_SSC.c ****         return ECAT_FOE_ERRCODE_DISKFULL;
+ 288              	 .loc 1 154 0
+ 289 00aa 48F20303 	 movw r3,#32771
+ 290 00ae 06E0     	 b .L18
+ 291              	.L25:
+ 155:../firmwareupdate_SSC.c ****       }
+ 156:../firmwareupdate_SSC.c ****       case FLASH_PROG_ERROR:
+ 157:../firmwareupdate_SSC.c ****       {
+ 158:../firmwareupdate_SSC.c ****         /* XMC flash programming error occured */
+ 159:../firmwareupdate_SSC.c ****         return ECAT_FOE_ERRCODE_PROGERROR;
+ 292              	 .loc 1 159 0
+ 293 00b0 48F20B03 	 movw r3,#32779
+ 294 00b4 03E0     	 b .L18
+ 295              	.L27:
+ 160:../firmwareupdate_SSC.c ****       }
+ 161:../firmwareupdate_SSC.c ****     }
+ 162:../firmwareupdate_SSC.c ****     /* Finalize meta info programming inside XMC flash */
+ 163:../firmwareupdate_SSC.c ****     FLASHPROG_Close();
+ 296              	 .loc 1 163 0
+ 297 00b6 FFF7FEFF 	 bl FLASHPROG_Close
+ 164:../firmwareupdate_SSC.c ****     return FOE_ACKFINISHED;
+ 298              	 .loc 1 164 0
+ 299 00ba 47F6FC73 	 movw r3,#32764
+ 300              	.L18:
+ 165:../firmwareupdate_SSC.c ****   }
+ 166:../firmwareupdate_SSC.c **** }
+ 301              	 .loc 1 166 0
+ 302 00be 1846     	 mov r0,r3
+ 303 00c0 1037     	 adds r7,r7,#16
+ 304              	.LCFI13:
+ 305              	 .cfi_def_cfa_offset 8
+ 306 00c2 BD46     	 mov sp,r7
+ 307              	.LCFI14:
+ 308              	 .cfi_def_cfa_register 13
+ 309              	 
+ 310 00c4 80BD     	 pop {r7,pc}
+ 311              	.L29:
+ 312 00c6 00BF     	 .align 2
+ 313              	.L28:
+ 314 00c8 00000000 	 .word u16ReceiveMbxSize
+ 315 00cc 00000000 	 .word meta_page
+ 316 00d0 00FF1F0C 	 .word 203423488
+ 317              	 .cfi_endproc
+ 318              	.LFE152:
+ 320              	 .text
+ 321              	.Letext0:
+ 322              	 .file 2 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 323              	 .file 3 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 324              	 .file 4 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/Libraries/CMSIS/Include/core_cm4.h"
+ 325              	 .file 5 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_SSC_APPLICATION_XMC48/SSC/Src/mailbox.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 firmwareupdate_SSC.c
+    {standard input}:20     .bss.meta_page:00000000 $d
+    {standard input}:23     .bss.meta_page:00000000 meta_page
+    {standard input}:28     .bss.g_firmware_download_started:00000000 g_firmware_download_started
+    {standard input}:29     .bss.g_firmware_download_started:00000000 $d
+    {standard input}:33     .bss.g_firmware_download_finished:00000000 g_firmware_download_finished
+    {standard input}:34     .bss.g_firmware_download_finished:00000000 $d
+    {standard input}:36     .text.FWUPDATE_StartDownload:00000000 $t
+    {standard input}:41     .text.FWUPDATE_StartDownload:00000000 FWUPDATE_StartDownload
+    {standard input}:80     .text.FWUPDATE_StartDownload:00000028 $d
+    {standard input}:85     .text.FWUPDATE_StateTransitionInit:00000000 $t
+    {standard input}:90     .text.FWUPDATE_StateTransitionInit:00000000 FWUPDATE_StateTransitionInit
+    {standard input}:127    .text.FWUPDATE_StateTransitionInit:0000001c $d
+    {standard input}:133    .text.FWUPDATE_GetDownloadFinished:00000000 $t
+    {standard input}:138    .text.FWUPDATE_GetDownloadFinished:00000000 FWUPDATE_GetDownloadFinished
+    {standard input}:169    .text.FWUPDATE_GetDownloadFinished:00000014 $d
+    {standard input}:174    .text.FWUPDATE_Data:00000000 $t
+    {standard input}:179    .text.FWUPDATE_Data:00000000 FWUPDATE_Data
+    {standard input}:314    .text.FWUPDATE_Data:000000c8 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+FLASHPROG_Init
+FLASHPROG_Data
+FLASHPROG_Close
+FLASHPROG_Bytes_written
+FLASHPROG_CRC32_check
+u16ReceiveMbxSize

@@ -1,0 +1,224 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "xmc4_eru.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.XMC_ERU_Enable,"ax",%progbits
+  20              	 .align 2
+  21              	 .global XMC_ERU_Enable
+  22              	 .thumb
+  23              	 .thumb_func
+  25              	XMC_ERU_Enable:
+  26              	.LFB169:
+  27              	 .file 1 "../Libraries/XMCLib/src/xmc4_eru.c"
+   1:../Libraries/XMCLib/src/xmc4_eru.c **** /**
+   2:../Libraries/XMCLib/src/xmc4_eru.c ****  * @file xmc4_eru.c
+   3:../Libraries/XMCLib/src/xmc4_eru.c ****  * @date 2015-02-20
+   4:../Libraries/XMCLib/src/xmc4_eru.c ****  *
+   5:../Libraries/XMCLib/src/xmc4_eru.c ****  * @cond
+   6:../Libraries/XMCLib/src/xmc4_eru.c ****  **************************************************************************************************
+   7:../Libraries/XMCLib/src/xmc4_eru.c ****  * XMClib v2.1.8 - XMC Peripheral Driver Library 
+   8:../Libraries/XMCLib/src/xmc4_eru.c ****  *
+   9:../Libraries/XMCLib/src/xmc4_eru.c ****  * Copyright (c) 2015-2016, Infineon Technologies AG
+  10:../Libraries/XMCLib/src/xmc4_eru.c ****  * All rights reserved.                        
+  11:../Libraries/XMCLib/src/xmc4_eru.c ****  *                                             
+  12:../Libraries/XMCLib/src/xmc4_eru.c ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:../Libraries/XMCLib/src/xmc4_eru.c ****  * following conditions are met:   
+  14:../Libraries/XMCLib/src/xmc4_eru.c ****  *                                                                              
+  15:../Libraries/XMCLib/src/xmc4_eru.c ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:../Libraries/XMCLib/src/xmc4_eru.c ****  * disclaimer.                        
+  17:../Libraries/XMCLib/src/xmc4_eru.c ****  * 
+  18:../Libraries/XMCLib/src/xmc4_eru.c ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:../Libraries/XMCLib/src/xmc4_eru.c ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:../Libraries/XMCLib/src/xmc4_eru.c ****  * 
+  21:../Libraries/XMCLib/src/xmc4_eru.c ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:../Libraries/XMCLib/src/xmc4_eru.c ****  * products derived from this software without specific prior written permission.                  
+  23:../Libraries/XMCLib/src/xmc4_eru.c ****  *                                                                              
+  24:../Libraries/XMCLib/src/xmc4_eru.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:../Libraries/XMCLib/src/xmc4_eru.c ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:../Libraries/XMCLib/src/xmc4_eru.c ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:../Libraries/XMCLib/src/xmc4_eru.c ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:../Libraries/XMCLib/src/xmc4_eru.c ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:../Libraries/XMCLib/src/xmc4_eru.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:../Libraries/XMCLib/src/xmc4_eru.c ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:../Libraries/XMCLib/src/xmc4_eru.c ****  *                                                                              
+  32:../Libraries/XMCLib/src/xmc4_eru.c ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:../Libraries/XMCLib/src/xmc4_eru.c ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:../Libraries/XMCLib/src/xmc4_eru.c ****  **************************************************************************************************
+  35:../Libraries/XMCLib/src/xmc4_eru.c ****  *
+  36:../Libraries/XMCLib/src/xmc4_eru.c ****  * Change History
+  37:../Libraries/XMCLib/src/xmc4_eru.c ****  * --------------
+  38:../Libraries/XMCLib/src/xmc4_eru.c ****  *
+  39:../Libraries/XMCLib/src/xmc4_eru.c ****  * 2015-02-20:
+  40:../Libraries/XMCLib/src/xmc4_eru.c ****  *     - Initial <br>
+  41:../Libraries/XMCLib/src/xmc4_eru.c ****  *
+  42:../Libraries/XMCLib/src/xmc4_eru.c ****  * @endcond
+  43:../Libraries/XMCLib/src/xmc4_eru.c ****  */
+  44:../Libraries/XMCLib/src/xmc4_eru.c **** #include "xmc_eru.h"
+  45:../Libraries/XMCLib/src/xmc4_eru.c **** 
+  46:../Libraries/XMCLib/src/xmc4_eru.c **** #if UC_FAMILY == XMC4
+  47:../Libraries/XMCLib/src/xmc4_eru.c **** #include "xmc_scu.h"
+  48:../Libraries/XMCLib/src/xmc4_eru.c **** 
+  49:../Libraries/XMCLib/src/xmc4_eru.c **** /**************************************************************************************************
+  50:../Libraries/XMCLib/src/xmc4_eru.c ****  * API IMPLEMENTATION
+  51:../Libraries/XMCLib/src/xmc4_eru.c ****  **************************************************************************************************
+  52:../Libraries/XMCLib/src/xmc4_eru.c **** /* Enable the clock and De-assert the ERU module from the reset state. */
+  53:../Libraries/XMCLib/src/xmc4_eru.c **** void XMC_ERU_Enable(XMC_ERU_t *const eru)
+  54:../Libraries/XMCLib/src/xmc4_eru.c **** {
+  28              	 .loc 1 54 0
+  29              	 .cfi_startproc
+  30              	 
+  31              	 
+  32 0000 80B5     	 push {r7,lr}
+  33              	.LCFI0:
+  34              	 .cfi_def_cfa_offset 8
+  35              	 .cfi_offset 7,-8
+  36              	 .cfi_offset 14,-4
+  37 0002 82B0     	 sub sp,sp,#8
+  38              	.LCFI1:
+  39              	 .cfi_def_cfa_offset 16
+  40 0004 00AF     	 add r7,sp,#0
+  41              	.LCFI2:
+  42              	 .cfi_def_cfa_register 7
+  43 0006 7860     	 str r0,[r7,#4]
+  55:../Libraries/XMCLib/src/xmc4_eru.c **** #if defined(XMC_ERU1)
+  56:../Libraries/XMCLib/src/xmc4_eru.c ****   if (eru == XMC_ERU1)
+  44              	 .loc 1 56 0
+  45 0008 7B68     	 ldr r3,[r7,#4]
+  46 000a 074A     	 ldr r2,.L3
+  47 000c 9342     	 cmp r3,r2
+  48 000e 07D1     	 bne .L1
+  57:../Libraries/XMCLib/src/xmc4_eru.c ****   {
+  58:../Libraries/XMCLib/src/xmc4_eru.c **** #if defined(CLOCK_GATING_SUPPORTED)
+  59:../Libraries/XMCLib/src/xmc4_eru.c ****     XMC_SCU_CLOCK_UngatePeripheralClock(XMC_SCU_PERIPHERAL_CLOCK_ERU1);
+  49              	 .loc 1 59 0
+  50 0010 4FF48030 	 mov r0,#65536
+  51 0014 FFF7FEFF 	 bl XMC_SCU_CLOCK_UngatePeripheralClock
+  60:../Libraries/XMCLib/src/xmc4_eru.c **** #endif
+  61:../Libraries/XMCLib/src/xmc4_eru.c ****     XMC_SCU_RESET_DeassertPeripheralReset(XMC_SCU_PERIPHERAL_RESET_ERU1);
+  52              	 .loc 1 61 0
+  53 0018 4FF48030 	 mov r0,#65536
+  54 001c FFF7FEFF 	 bl XMC_SCU_RESET_DeassertPeripheralReset
+  55              	.L1:
+  62:../Libraries/XMCLib/src/xmc4_eru.c ****   }
+  63:../Libraries/XMCLib/src/xmc4_eru.c **** #else
+  64:../Libraries/XMCLib/src/xmc4_eru.c ****   XMC_UNUSED_ARG(eru);
+  65:../Libraries/XMCLib/src/xmc4_eru.c ****   #endif
+  66:../Libraries/XMCLib/src/xmc4_eru.c **** }
+  56              	 .loc 1 66 0
+  57 0020 0837     	 adds r7,r7,#8
+  58              	.LCFI3:
+  59              	 .cfi_def_cfa_offset 8
+  60 0022 BD46     	 mov sp,r7
+  61              	.LCFI4:
+  62              	 .cfi_def_cfa_register 13
+  63              	 
+  64 0024 80BD     	 pop {r7,pc}
+  65              	.L4:
+  66 0026 00BF     	 .align 2
+  67              	.L3:
+  68 0028 00400440 	 .word 1074020352
+  69              	 .cfi_endproc
+  70              	.LFE169:
+  72              	 .section .text.XMC_ERU_Disable,"ax",%progbits
+  73              	 .align 2
+  74              	 .global XMC_ERU_Disable
+  75              	 .thumb
+  76              	 .thumb_func
+  78              	XMC_ERU_Disable:
+  79              	.LFB170:
+  67:../Libraries/XMCLib/src/xmc4_eru.c **** 
+  68:../Libraries/XMCLib/src/xmc4_eru.c **** /* Disable the clock and Reset the ERU module. */
+  69:../Libraries/XMCLib/src/xmc4_eru.c **** void XMC_ERU_Disable(XMC_ERU_t *const eru)
+  70:../Libraries/XMCLib/src/xmc4_eru.c **** {
+  80              	 .loc 1 70 0
+  81              	 .cfi_startproc
+  82              	 
+  83              	 
+  84 0000 80B5     	 push {r7,lr}
+  85              	.LCFI5:
+  86              	 .cfi_def_cfa_offset 8
+  87              	 .cfi_offset 7,-8
+  88              	 .cfi_offset 14,-4
+  89 0002 82B0     	 sub sp,sp,#8
+  90              	.LCFI6:
+  91              	 .cfi_def_cfa_offset 16
+  92 0004 00AF     	 add r7,sp,#0
+  93              	.LCFI7:
+  94              	 .cfi_def_cfa_register 7
+  95 0006 7860     	 str r0,[r7,#4]
+  71:../Libraries/XMCLib/src/xmc4_eru.c **** #if defined(XMC_ERU1)
+  72:../Libraries/XMCLib/src/xmc4_eru.c ****   if (eru == XMC_ERU1)
+  96              	 .loc 1 72 0
+  97 0008 7B68     	 ldr r3,[r7,#4]
+  98 000a 074A     	 ldr r2,.L7
+  99 000c 9342     	 cmp r3,r2
+ 100 000e 07D1     	 bne .L5
+  73:../Libraries/XMCLib/src/xmc4_eru.c ****   {
+  74:../Libraries/XMCLib/src/xmc4_eru.c ****     XMC_SCU_RESET_AssertPeripheralReset(XMC_SCU_PERIPHERAL_RESET_ERU1);
+ 101              	 .loc 1 74 0
+ 102 0010 4FF48030 	 mov r0,#65536
+ 103 0014 FFF7FEFF 	 bl XMC_SCU_RESET_AssertPeripheralReset
+  75:../Libraries/XMCLib/src/xmc4_eru.c **** #if defined(CLOCK_GATING_SUPPORTED)
+  76:../Libraries/XMCLib/src/xmc4_eru.c ****       XMC_SCU_CLOCK_GatePeripheralClock(XMC_SCU_PERIPHERAL_CLOCK_ERU1);
+ 104              	 .loc 1 76 0
+ 105 0018 4FF48030 	 mov r0,#65536
+ 106 001c FFF7FEFF 	 bl XMC_SCU_CLOCK_GatePeripheralClock
+ 107              	.L5:
+  77:../Libraries/XMCLib/src/xmc4_eru.c ****     #endif
+  78:../Libraries/XMCLib/src/xmc4_eru.c ****   }
+  79:../Libraries/XMCLib/src/xmc4_eru.c **** #else
+  80:../Libraries/XMCLib/src/xmc4_eru.c ****   XMC_UNUSED_ARG(eru);
+  81:../Libraries/XMCLib/src/xmc4_eru.c **** #endif
+  82:../Libraries/XMCLib/src/xmc4_eru.c **** }
+ 108              	 .loc 1 82 0
+ 109 0020 0837     	 adds r7,r7,#8
+ 110              	.LCFI8:
+ 111              	 .cfi_def_cfa_offset 8
+ 112 0022 BD46     	 mov sp,r7
+ 113              	.LCFI9:
+ 114              	 .cfi_def_cfa_register 13
+ 115              	 
+ 116 0024 80BD     	 pop {r7,pc}
+ 117              	.L8:
+ 118 0026 00BF     	 .align 2
+ 119              	.L7:
+ 120 0028 00400440 	 .word 1074020352
+ 121              	 .cfi_endproc
+ 122              	.LFE170:
+ 124              	 .text
+ 125              	.Letext0:
+ 126              	 .file 2 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 127              	 .file 3 "c:\\program files\\dave-ide-4.4.2-64bit\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 128              	 .file 4 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc/xmc_eru.h"
+ 129              	 .file 5 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/XMCLib/inc/xmc4_scu.h"
+ 130              	 .file 6 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/CMSIS/Include/core_cm4.h"
+ 131              	 .file 7 "C:/src/bakalarka_workspace/ETHCAT_FWUPDATE_BOOTLOADER_XMC48/Libraries/CMSIS/Infineon/XMC4800_series/Include/system_XMC4800.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 xmc4_eru.c
+    {standard input}:20     .text.XMC_ERU_Enable:00000000 $t
+    {standard input}:25     .text.XMC_ERU_Enable:00000000 XMC_ERU_Enable
+    {standard input}:68     .text.XMC_ERU_Enable:00000028 $d
+    {standard input}:73     .text.XMC_ERU_Disable:00000000 $t
+    {standard input}:78     .text.XMC_ERU_Disable:00000000 XMC_ERU_Disable
+    {standard input}:120    .text.XMC_ERU_Disable:00000028 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+XMC_SCU_CLOCK_UngatePeripheralClock
+XMC_SCU_RESET_DeassertPeripheralReset
+XMC_SCU_RESET_AssertPeripheralReset
+XMC_SCU_CLOCK_GatePeripheralClock

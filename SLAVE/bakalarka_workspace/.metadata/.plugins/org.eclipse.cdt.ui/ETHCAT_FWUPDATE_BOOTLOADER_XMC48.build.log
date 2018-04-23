@@ -1,0 +1,11 @@
+11:44:57 **** Incremental Build of configuration Debug for project ETHCAT_FWUPDATE_BOOTLOADER_XMC48 ****
+"\"C:\\Program Files\\DAVE-IDE-4.4.2-64Bit\\eclipse\\ARM-GCC-49\\bin\\make\"" --output-sync -j4 all 
+'Invoking: ARM-GCC Print Size'
+"C:/Program Files/DAVE-IDE-4.4.2-64Bit/eclipse/ARM-GCC-49/bin/arm-none-eabi-size" --format=berkeley "ETHCAT_FWUPDATE_BOOTLOADER_XMC48.elf"
+   text	   data	    bss	    dec	    hex	filename
+   4020	     56	   2348	   6424	   1918	ETHCAT_FWUPDATE_BOOTLOADER_XMC48.elf
+'Finished building: ETHCAT_FWUPDATE_BOOTLOADER_XMC48.siz'
+
+
+11:45:00 Build Finished (took 3s.809ms)
+
