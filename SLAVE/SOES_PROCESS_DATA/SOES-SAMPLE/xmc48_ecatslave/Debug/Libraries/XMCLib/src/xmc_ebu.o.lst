@@ -1,0 +1,1514 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "xmc_ebu.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.XMC_EBU_Enable,"ax",%progbits
+  20              	 .align 2
+  21              	 .thumb
+  22              	 .thumb_func
+  24              	XMC_EBU_Enable:
+  25              	.LFB165:
+  26              	 .file 1 "C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc/xmc_ebu.h"
+   1:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+   2:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @file xmc_ebu.h
+   3:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @date 2016-03-30
+   4:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+   5:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @cond
+   6:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   *************************************************************************************************
+   7:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * XMClib v2.1.8 - XMC Peripheral Driver Library 
+   8:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+   9:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Copyright (c) 2015-2016, Infineon Technologies AG
+  10:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * All rights reserved.                        
+  11:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *                                             
+  12:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * following conditions are met:   
+  14:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *                                                                              
+  15:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * disclaimer.                        
+  17:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * 
+  18:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * 
+  21:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * products derived from this software without specific prior written permission.                  
+  23:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *                                                                              
+  24:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *                                                                              
+  32:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  **************************************************************************************************
+  35:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+  36:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Change History
+  37:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * --------------
+  38:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+  39:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * 2015-06-20:
+  40:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *     - Initial
+  41:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+  42:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * 2016-03-30:
+  43:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *     - Added ebu_data_hold_cycles_for_read_accesses to XMC_EBU_BUS_READ_CONFIG_t
+  44:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *     - Added ebu_device_addressing_mode and ebu_data_hold_cycles_for_write_accesses to XMC_EBU_BU
+  45:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *      
+  46:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @endcond 
+  47:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+  48:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+  49:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  
+  50:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #ifndef XMC_EBU_H
+  51:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #define XMC_EBU_H
+  52:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+  53:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**************************************************************************************************
+  54:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * HEADER FILES
+  55:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  **************************************************************************************************
+  56:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  
+  57:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #include <xmc_common.h>
+  58:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #if defined (EBU)
+  59:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #include <xmc_scu.h>
+  60:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+  61:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+  62:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @addtogroup XMClib XMC Peripheral Library
+  63:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @{
+  64:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+  65:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+  66:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+  67:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @addtogroup EBU
+  68:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @brief External Bus Unit (EBU) driver for the XMC4500 microcontroller
+  69:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+  70:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The External Bus Unit (EBU) controls the transactions between external memories or 
+  71:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * peripheral units, and the internal memories and peripheral units. Several external 
+  72:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * device configurations are supported; e.g. Asynchronous static memories, SDRAM 
+  73:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * and various flash memory types. It supports multiple programmable address regions. 
+  74:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+  75:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The EBU low level driver provides functions to configure and initialize the EBU
+  76:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * hardware peripheral. 
+  77:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @{
+  78:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+  79:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  
+  80:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**************************************************************************************************
+  81:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * MACROS
+  82:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** ***************************************************************************************************
+  83:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+  84:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+  85:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * A convenient symbol for the EBU peripheral base address
+  86:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+  87:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #if defined (EBU)
+  88:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** # define XMC_EBU ((XMC_EBU_t *)EBU_BASE)
+  89:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #else
+  90:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** # error 'EBU' base peripheral pointer not defined
+  91:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #endif
+  92:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+  93:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+  94:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /*
+  95:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * This macro is used in the LLD for assertion checks (XMC_ASSERT).
+  96:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+  97:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #define XMC_EBU_CHECK_MODULE_PTR(p) ((p) == XMC_EBU)
+  98:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+  99:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**************************************************************************************************
+ 100:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * ENUMS
+ 101:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** ***************************************************************************************************
+ 102:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  
+ 103:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 104:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Status return values for EBU low level driver
+ 105:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */ 
+ 106:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_STATUS
+ 107:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 108:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_STATUS_OK    = 0U, /**< Operation successful */
+ 109:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_STATUS_BUSY  = 1U, /**< Busy with a previous request */
+ 110:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_STATUS_ERROR = 3U  /**< Operation unsuccessful */
+ 111:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_STATUS_t;
+ 112:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 113:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 114:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU clock divide ratio
+ 115:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 116:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum  XMC_EBU_CLOCK_DIVIDE_RATIO
+ 117:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 118:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLOCK_DIVIDED_BY_1 = 0U, /**< Clock divided by 1 */
+ 119:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLOCK_DIVIDED_BY_2 = 1U, /**< Clock divided by 2 */
+ 120:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLOCK_DIVIDED_BY_3 = 2U, /**< Clock divided by 3 */
+ 121:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLOCK_DIVIDED_BY_4 = 3U  /**< Clock divided by 4 */
+ 122:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_CLOCK_DIVIDE_RATIO_t;
+ 123:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 124:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 125:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU DIV2 clocking mode
+ 126:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 127:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum  XMC_EBU_DIV2_CLK_MODE
+ 128:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 129:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DIV2_CLK_MODE_OFF = 0U, /**< Divider 2 clock mode OFF */
+ 130:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DIV2_CLK_MODE_ON = 1U   /**< Divider 2 clock mode ON */
+ 131:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_DIV2_CLK_MODE_t;
+ 132:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 133:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 134:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU clocking mode
+ 135:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 136:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum  XMC_EBU_CLK_MODE
+ 137:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 138:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_MODE_ASYNCHRONOUS_TO_AHB = 0U, /**< EBU is using standard clocking mode */
+ 139:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_MODE_SYNCHRONOUS_TO_CPU = 1U   /**< EBU is running at AHB bus clock divided by 2 */
+ 140:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_CLK_MODE_t;
+ 141:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 142:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 143:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU arbitration mode
+ 144:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 145:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum  XMC_EBU_ARB_MODE
+ 146:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 147:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ARB_MODE_NOT_SELECTED     = 0U, /**< No Bus arbitration mode selected */
+ 148:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ARB_MODE_ARBITER_MODE     = 1U, /**< Arbiter Mode arbitration mode selected */
+ 149:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ARB_MODE_PARTICIPANT_MODE = 2U, /**< Participant arbitration mode selected */
+ 150:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ARB_MODE_SOLE_MASTER_MODE = 3U  /**< Sole Master arbitration mode selected */
+ 151:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_ARB_MODE_t;
+ 152:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 153:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 154:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU ALE mode
+ 155:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 156:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum  XMC_EBU_ALE_MODE
+ 157:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 158:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ALE_OUTPUT_IS_INV_ADV = 0U, /**< Output is ADV */
+ 159:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ALE_OUTPUT_IS_ALE     = 1U  /**< Output is ALE */
+ 160:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_ALE_MODE_t;
+ 161:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 162:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 163:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU clock status
+ 164:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 165:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_CLK_STATUS
+ 166:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 167:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_STATUS_DISABLE_BIT = EBU_CLC_DISS_Msk,     /**< EBU Disable Status Bit */
+ 168:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_STATUS_MODE        = EBU_CLC_SYNCACK_Msk,  /**< EBU Clocking Mode Status */
+ 169:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_STATUS_DIV2_MODE   = EBU_CLC_DIV2ACK_Msk,  /**< DIV2 Clocking Mode Status */
+ 170:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_STATUS_DIV_RATIO   = EBU_CLC_EBUDIVACK_Msk /**< EBU Clock Divide Ratio Status */
+ 171:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_CLK_STATUS_t;
+ 172:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 173:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 174:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU address selection
+ 175:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 176:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_ADDRESS_SELECT
+ 177:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 178:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ADDRESS_SELECT_MEMORY_REGION_ENABLE        = EBU_ADDRSEL0_REGENAB_Msk, /**< Memory Region
+ 179:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ADDRESS_SELECT_ALTERNATE_REGION_ENABLE     = EBU_ADDRSEL0_ALTENAB_Msk, /**< Alternate Reg
+ 180:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ADDRESS_SELECT_MEMORY_REGION_WRITE_PROTECT = EBU_ADDRSEL0_WPROT_Msk    /**< Memory Region
+ 181:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_ADDRESS_SELECT_t;
+ 182:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 183:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 184:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU bus write configuration status
+ 185:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 186:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BUSWCON_SELECT
+ 187:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 188:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BUSWCON_SELECT_NAN_WORKAROUND = EBU_BUSWCON0_NAA_Msk, /**< Enable flash non-array access 
+ 189:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BUSWCON_SELECT_DEVICE_ADDRESSING_MODE = EBU_BUSWCON0_PORTW_Msk, /**< Device Addressing Mo
+ 190:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BUSWCON_SELECT_t;
+ 191:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 192:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 193:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU burst length for synchronous burst
+ 194:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 195:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BURST_LENGTH_SYNC
+ 196:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 197:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_LENGTH_SYNC_1_DATA_ACCESS   = 0U, /**< 1 data access (default after reset) */
+ 198:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_LENGTH_SYNC_2_DATA_ACCESSES = 1U, /**< 2 data access */
+ 199:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_LENGTH_SYNC_4_DATA_ACCESSES = 2U, /**< 3 data access */
+ 200:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_LENGTH_SYNC_8_DATA_ACCESSES = 3U, /**< 4 data access */
+ 201:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BURST_LENGTH_SYNC_t;
+ 202:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 203:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 204:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU burst buffer mode
+ 205:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 206:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BURST_BUFFER_SYNC_MODE
+ 207:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 208:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_BUFFER_SYNC_LENGTH_SYNC_ENABLE = 0U, /**< Burst buffer length defined by value in F
+ 209:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_BUFFER_SYNC_SINGLE_MODE        = 1U  /**< All data required for transaction (single
+ 210:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BURST_BUFFER_SYNC_MODE_t;
+ 211:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 212:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 213:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Read single stage synchronization
+ 214:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 215:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_READ_STAGES_SYNC
+ 216:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 217:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_READ_STAGES_SYNC_TWO = 0U, /**< Two stages of synchronization used (maximum margin) */
+ 218:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_READ_STAGES_SYNC_ONE = 1U  /**< One stage of synchronization used (minimum latency) */
+ 219:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_READ_STAGES_SYNC_t;
+ 220:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 221:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 222:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU burst flash clock feedback enable/disable
+ 223:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 224:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BURST_FLASH_CLOCK_FEEDBACK
+ 225:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 226:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_FLASH_CLOCK_FEEDBACK_DISABLE = 0U, /**< BFCLK feedback not used */
+ 227:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_FLASH_CLOCK_FEEDBACK_ENABLE  = 1U  /**< BFCLK feedback used */
+ 228:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BURST_FLASH_CLOCK_FEEDBACK_t;
+ 229:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 230:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 231:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU burst flash clock mode select
+ 232:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 233:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BURST_FLASH_CLOCK_MODE
+ 234:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 235:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_FLASH_CLOCK_MODE_RUN_CONTINUOSLY = 0U, /**< Burst flash clock runs continuously */
+ 236:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_FLASH_CLOCK_MODE_DISABLED_BETWEEN_ACCESSES = 1U /**< Burst flash clock disabled */
+ 237:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BURST_FLASH_CLOCK_MODE_t;
+ 238:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 239:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 240:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU flash non-array access
+ 241:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 242:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_FLASH_NON_ARRAY_ACCESS
+ 243:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 244:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FLASH_NON_ARRAY_ACCESS_DISNABLE = 0U, /**< Disable non-array access */
+ 245:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FLASH_NON_ARRAY_ACCESS_ENABLE   = 1U  /**< Enable non-array access */
+ 246:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_FLASH_NON_ARRAY_ACCESS_t;
+ 247:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 248:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 249:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU early chip select for synchronous burst
+ 250:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 251:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_EARLY_CHIP_SELECT_SYNC_BURST
+ 252:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 253:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_EARLY_CHIP_SELECT_DELAYED     = 0U, /**< Chip select delayed */
+ 254:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_EARLY_CHIP_SELECT_NOT_DELAYED = 1U  /**< Chip select not delayed */
+ 255:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_EARLY_CHIP_SELECT_SYNC_BURST_t;
+ 256:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 257:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 258:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU early burst signal enable for synchronous burst
+ 259:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 260:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BURST_SIGNAL_SYNC_BURST
+ 261:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 262:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_SIGNAL_SYNC_BURST_ADV_DELAYED     = 0U, /**< Chip select delayed */
+ 263:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_SIGNAL_SYNC_BURST_ADV_NOT_DELAYED = 1U  /**< Chip select not delayed */
+ 264:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BURST_SIGNAL_SYNC_BURST_t;
+ 265:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 266:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 267:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU burst address wrapping
+ 268:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 269:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BURST_ADDRESS_WRAPPING
+ 270:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 271:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_ADDRESS_WRAPPING_DISABLED = 0U, /**< Automatically re-aligns any non-aligned synchr
+ 272:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BURST_ADDRESS_WRAPPING_ENABLED  = 1U  /**< Starts any burst access at address specified b
+ 273:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BURST_ADDRESS_WRAPPING_t;
+ 274:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 275:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 276:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU reversed polarity at WAIT
+ 277:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 278:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_WAIT_SIGNAL_POLARITY
+ 279:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 280:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_WAIT_SIGNAL_POLARITY_PIN_ACTIVE_LOW  = 0U, /**< OFF, input at WAIT pin is active low */
+ 281:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_WAIT_SIGNAL_POLARITY_PIN_ACTIVE_HIGH = 1U  /**< Polarity reversed, input at WAIT pin is a
+ 282:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_WAIT_SIGNAL_POLARITY_t;
+ 283:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 284:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 285:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU byte control signal control
+ 286:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 287:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_BYTE_CONTROL
+ 288:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 289:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BYTE_CONTROL_FOLLOWS_CHIP_SELECT_TIMMING         = 0U, /**< Control signals follow chip s
+ 290:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BYTE_CONTROL_FOLLOWS_CONTROL_SIGNAL_TIMMING      = 1U, /**< Control signals follow contro
+ 291:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BYTE_CONTROL_FOLLOWS_WRITE_ENABLE_SIGNAL_TIMMING = 2U  /**< Control signals follow write 
+ 292:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BYTE_CONTROL_t;
+ 293:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 294:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 295:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU device addressing mode
+ 296:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 297:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_DEVICE_ADDRESSING_MODE
+ 298:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 299:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_ADDRESSING_MODE_16_BITS                  = 1U, /**< Address will only be driven on
+ 300:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_ADDRESSING_MODE_TWIN_16_BITS_MULTIPLEXED = 2U, /**< Lower 16b will be driven onto 
+ 301:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_ADDRESSING_MODE_32_BITS_MULTIPLEXED      = 3U  /**< Full address driven onto A[15:
+ 302:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_DEVICE_ADDRESSING_MODE_t;
+ 303:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 304:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 305:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU external wait control
+ 306:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 307:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_WAIT_CONTROL
+ 308:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 309:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_WAIT_CONTROL_OFF = 0U, /**< Default after reset; Wait control off */  
+ 310:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_WAIT_CONTROL_SYNC_EARLY_WAIT_ASYNC_ASYNC_INPUT_AT_WAIT = 1U,    /**< SYNC: Wait for page 
+ 311:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****                                                                                ASYNC: Asynchronous 
+ 312:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_WAIT_CONTROL_SYNC_WAIT_WITH_DATA_ASYNC_SYNC_INPUT_AT_WAIT = 2U, /**< SYNC: Wait for page 
+ 313:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****                                                                                ASYNC: Synchronous i
+ 314:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_WAIT_CONTROL_SYNC_ABORT_AND_RETRY_ACCESS = 3U                   /**< SYNC: Abort and retr
+ 315:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_WAIT_CONTROL_t;
+ 316:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 317:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 318:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU asynchronous address phase
+ 319:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 320:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_ASYNCHRONOUS_ADDRESS_PHASE
+ 321:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 322:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ASYNCHRONOUS_ADDRESS_PHASE_CLOCK_ENABLED_AT_BEGINNING_OF_ACCESS = 0U, /**< Enabled at beg
+ 323:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_ASYNCHRONOUS_ADDRESS_PHASE_CLOCK_ENABLED_AFTER_ADDRESS_PHASE    = 1U  /**< Enabled after 
+ 324:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_ASYNCHRONOUS_ADDRESS_PHASE_t;
+ 325:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 326:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 327:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU device type for region
+ 328:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 329:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_DEVICE_TYPE
+ 330:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 331:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_MUXED_ASYNCHRONOUS_TYPE   = 0U, /**< Device type muxed asynchronous */
+ 332:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_MUXED_BURST_TYPE          = 1U, /**< Device type muxed burst */
+ 333:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_NAND_FLASH                = 2U, /**< Device type NAND flash */
+ 334:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_MUXED_CELLULAR_RAM        = 3U, /**< Device type muxed cellular RAM  */
+ 335:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_DEMUXED_ASYNCHRONOUS_TYPE = 4U, /**< Device type de-muxed asynchronous */
+ 336:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_DEMUXED_BURST_TYPE        = 5U, /**< Device type de-muxed burst */
+ 337:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_DEMUXED_PAGE_MODE         = 6U, /**< Device type de-muxed page mode */
+ 338:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_DEMUXED_CELLULAR_RAM      = 7U, /**< Device type de-muxed cellular RAM  */
+ 339:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_DEVICE_TYPE_SDRAM                     = 8U  /**< Device type SDRAM  */
+ 340:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_DEVICE_TYPE_t;
+ 341:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 342:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 343:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU lock chip select
+ 344:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 345:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_LOCK_CHIP_SELECT
+ 346:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 347:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_LOCK_CHIP_SELECT_DISABLED = 0U, /**< Chip select cannot be locked */
+ 348:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_LOCK_CHIP_SELECT_ENABLED  = 1U  /**< Chip select automatically locked after a write opera
+ 349:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_LOCK_CHIP_SELECT_t;
+ 350:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 351:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 352:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU Frequency of external clock at pin BFCLKO
+ 353:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 354:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_FREQUENCY_EXT_CLK_PIN
+ 355:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 356:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FREQ_EXT_CLK_PIN_EQUAL_TO_INT_CLK   = 0U, /**< Equal to INT_CLK frequency */
+ 357:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FREQ_EXT_CLK_PIN_HALF_OF_INT_CLK    = 1U, /**< 1/2 of INT_CLK frequency */
+ 358:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FREQ_EXT_CLK_PIN_THIRD_OF_INT_CLK   = 2U, /**< 1/3 of INT_CLK frequency */
+ 359:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FREQ_EXT_CLK_PIN_QUARTER_OF_INT_CLK = 3U  /**< 1/4 of INT_CLK frequency */
+ 360:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_FREQ_EXT_CLK_PIN_t;
+ 361:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 362:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 363:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU extended data
+ 364:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 365:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_EXT_DATA
+ 366:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 367:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_EXT_DATA_OUTPUT_EVERY_1_BFCLK_CYCLES = 0U, /**< External memory outputs data every BFCLK 
+ 368:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_EXT_DATA_OUTPUT_EVERY_2_BFCLK_CYCLES = 1U, /**< External memory outputs data every two BF
+ 369:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_EXT_DATA_OUTPUT_EVERY_4_BFCLK_CYCLES = 2U, /**< External memory outputs data every four B
+ 370:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_EXT_DATA_OUTPUT_EVERY_8_BFCLK_CYCLES = 3U  /**< External memory outputs data every eight 
+ 371:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_EXT_DATA_t;
+ 372:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 373:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 374:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU SDRAM clock mode select
+ 375:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 376:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_CLK_MODE
+ 377:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 378:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_CLK_MODE_CONTINUOUSLY_RUNS         = 0U, /**< Clock continuously running */
+ 379:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_CLK_MODE_DISABLED_BETWEEN_ACCESSES = 1U  /**< Clock disabled between accesses */
+ 380:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_CLK_MODE_t;
+ 381:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 382:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 383:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU power save mode used for gated clock mode
+ 384:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 385:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_PWR_MODE
+ 386:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 387:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_PWR_MODE_PRECHARGE_BEFORE_CLK_STOP      = 0U, /**< Precharge before clock stop */
+ 388:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_PWR_MODE_AUTO_PRECHARGE_BEFORE_CLK_STOP = 1U, /**< Auto-precharge before clock stop
+ 389:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_PWR_MODE_ACTIVE_PWR_DOWN                = 2U, /**< Active power down (stop clock wi
+ 390:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_PWR_MODE_CLK_STOP_PWR_DOWN              = 3U  /**< Clock stop power down */
+ 391:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_PWR_MODE_t;
+ 392:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 393:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 394:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU disable SDRAM clock output
+ 395:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 396:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_CLK_OUTPUT
+ 397:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 398:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_CLK_OUTPUT_ENABLED  = 0U, /**< Clock output enabled */
+ 399:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_CLK_OUTPUT_DISABLED = 1U  /**< Clock output disabled */
+ 400:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_CLK_OUTPUT_t;
+ 401:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 402:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 403:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *  EBU mask for bank tag
+ 404:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 405:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_MASK_FOR_BANKM_TAG
+ 406:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 407:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_21_to_20 = 1U, /**< Mask for bank tag addresses 21 to 20 
+ 408:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_22_to_21 = 2U, /**< Mask for bank tag addresses 22 to 21 
+ 409:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_23_to_22 = 3U, /**< Mask for bank tag addresses 23 to 22 
+ 410:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_24_to_23 = 4U, /**< Mask for bank tag addresses 24 to 23 
+ 411:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_25_to_24 = 5U, /**< Mask for bank tag addresses 25 to 24 
+ 412:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_26_to_25 = 6U, /**< Mask for bank tag addresses 26 to 25 
+ 413:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_ADDRESS_26       = 7U  /**< Mask for bank tag addresses 26 */
+ 414:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_MASK_FOR_BANK_TAG_t;
+ 415:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 416:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 417:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU Mask for row tag
+ 418:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 419:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_MASK_FOR_ROW_TAG
+ 420:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 421:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_ROW_TAG_ADDRESS_26_to_9  = 1U, /**< Mask for row tag addresses 26 to 9 */
+ 422:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_ROW_TAG_ADDRESS_26_to_10 = 2U, /**< Mask for row tag addresses 26 to 10 */
+ 423:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_ROW_TAG_ADDRESS_26_to_11 = 3U, /**< Mask for row tag addresses 26 to 11 */
+ 424:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_ROW_TAG_ADDRESS_26_to_12 = 4U, /**< Mask for row tag addresses 26 to 12 */
+ 425:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_MASK_FOR_ROW_TAG_ADDRESS_26_to_13 = 5U  /**< Mask for row tag addresses 26 to 13 */
+ 426:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_MASK_FOR_ROW_TAG_t;
+ 427:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 428:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 429:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Number of address bits from bit 0 to be used for column address
+ 430:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 431:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_WIDTH_OF_COLUMN_ADDRESS
+ 432:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 433:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_WIDTH_OF_COLUMN_ADDRESS_8_to_0  = 1U, /**< Address [8:0] */
+ 434:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_WIDTH_OF_COLUMN_ADDRESS_9_to_0  = 2U, /**< Address [9:0] */
+ 435:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_WIDTH_OF_COLUMN_ADDRESS_10_to_0 = 3U  /**< Address [10:0] */
+ 436:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_WIDTH_OF_COLUMN_ADDRESS_t;
+ 437:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 438:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 439:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Number of clocks between a READ command and the availability of data
+ 440:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 441:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_CAS_LATENCY
+ 442:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 443:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_CAS_LATENCY_2_CLKS = 2U, /**< 2 clocks between a READ command and the availability 
+ 444:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_CAS_LATENCY_3_CLKS = 3U  /**< 3 clocks between a READ command and the availability 
+ 445:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_CAS_LATENCY_t;
+ 446:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 447:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 448:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Number of locations can be accessed with a single command
+ 449:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 450:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_BURST_LENGTH
+ 451:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 452:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_BURST_LENGTH_1_LOCATION  = 0U, /**< One location accessed with a single command */
+ 453:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_BURST_LENGTH_2_LOCATION  = 1U, /**< Two location accessed with a single command */
+ 454:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_BURST_LENGTH_4_LOCATION  = 2U, /**< Four location accessed with a single command */
+ 455:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_BURST_LENGTH_8_LOCATION  = 3U, /**< Eight location accessed with a single command *
+ 456:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_BURST_LENGTH_16_LOCATION = 4U  /**< Sixteen location accessed with a single command
+ 457:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_BURST_LENGTH_t;
+ 458:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 459:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 460:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU SDRAM status
+ 461:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 462:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_STATUS
+ 463:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 464:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_STATUS_RX_ERROR = EBU_SDRSTAT_SDERR_Msk, /**< Detected an error when returning read
+ 465:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_STATUS_BUSY = EBU_SDRSTAT_SDRMBUSY_Msk, /**< The status of power-up initialization 
+ 466:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_STATUS_REFRESH_ERROR = EBU_SDRSTAT_REFERR_Msk /**< Failed previous refresh req coll
+ 467:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_STATUS_t;
+ 468:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 469:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 470:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * SDRAM refresh status
+ 471:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 472:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef enum XMC_EBU_SDRAM_RFRSH_STATUS
+ 473:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 474:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_RFRSH_STATUS_SELF_REFRESH_ENTRY_STATUS = EBU_SDRMREF_SELFRENST_Msk, /**< Self refre
+ 475:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_SDRAM_RFRSH_STATUS_SELF_REFRESH_EXIT_STATUS = EBU_SDRMREF_SELFREXST_Msk   /**< Self refre
+ 476:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_RFRSH_STATUS_t;
+ 477:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 478:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 479:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**************************************************************************************************
+ 480:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * DATA STRUCTURES
+ 481:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  **************************************************************************************************
+ 482:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  
+ 483:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /* Anonymous structure/union guard start */
+ 484:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #if defined(__CC_ARM)
+ 485:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   #pragma push
+ 486:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   #pragma anon_unions
+ 487:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #elif defined (__TASKING__)
+ 488:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   #pragma warning 586
+ 489:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #endif
+ 490:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 491:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 492:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Clock configuration values of EBU  <br>
+ 493:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 494:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the clock configuration
+ 495:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * values for clock mode, div2 clock mode and clock divide ratio of EBU.
+ 496:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The XMC_EBU_Init() can be used to populate the structure with the clock
+ 497:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * configuration values of the EBU module.
+ 498:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */ 
+ 499:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_CLK_CONFIG
+ 500:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 501:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 502:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   { 
+ 503:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  uint32_t raw0;
+ 504:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  struct
+ 505:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 506:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                        : 16;
+ 507:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_clk_mode           : 1; /**< Clocking mode */
+ 508:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_div2_clk_mode      : 1; /**< DIV2 clocking mode */
+ 509:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_clock_divide_ratio : 2; /**< Clock divide ratio */
+ 510:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                        : 12;
+ 511:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****     };
+ 512:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 513:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_CLK_CONFIG_t;
+ 514:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 515:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 516:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Mode configuration values for EBU <br>
+ 517:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 518:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the mode configuration,
+ 519:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * SDRAM tristate, external clock, arbitration, timeout control and ALE mode for
+ 520:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU. The XMC_EBU_Init() can be used to populate the structure with the
+ 521:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * clock configuration values of the EBU module.
+ 522:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */ 
+ 523:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_MODE_CONFIG
+ 524:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** { 
+ 525:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 526:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 527:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  uint32_t raw0;
+ 528:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  struct
+ 529:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  {
+ 530:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                      : 2;
+ 531:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_sdram_tristate   : 1; /**< 0 - SDRAM cannot be shared; 1 - SDRAM can be shared *
+ 532:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                      : 1;
+ 533:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_extlock          : 1; /**< 0 - ext bus is not locked after the EBU gains ownersh
+ 534:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_arbsync          : 1; /**< 0 - arbitration inputs are sync; 1 - arbitration inpu
+ 535:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_arbitration_mode : 2; /**< Arbitration mode */
+ 536:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****                                          /**< Determines num of inactive cycles leading to a bus ti
+ 537:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 											                        00H: Timeout is disabled <br>
+ 538:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 											                        01H: Timeout is generated after 1 x 8 clock cycles <br>
+ 539:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 											                        FFH: Timeout is generated after 255 x 8 clock cycles */
+ 540:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t bus_timeout_control  : 8; /**< Determines num of inactive cycles leading to a bus ti
+ 541:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 											                        00H: Timeout is disabled <br>
+ 542:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 											                        01H: Timeout is generated after 1 x 8 clock cycles <br>
+ 543:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 											                        FFH: Timeout is generated after 255 x 8 clock cycles <br> */
+ 544:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                      : 15;
+ 545:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_ale_mode         : 1; /**< ALE mode */
+ 546:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  };
+ 547:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 548:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_MODE_CONFIG_t;
+ 549:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 550:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 551:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * GPIO mode configuration for the allocated EBU ports <br>
+ 552:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Configuring this structure frees the allocated EBU ports for GPIO
+ 553:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * functionality. The XMC_EBU_Init() is used to populate the structure
+ 554:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * with the GPIO mode for the allocated EBU ports.
+ 555:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */ 
+ 556:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_FREE_PINS_TO_GPIO
+ 557:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 558:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 559:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 560:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  uint32_t raw0;
+ 561:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  struct
+ 562:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  {
+ 563:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t                   : 16;
+ 564:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t address_pins_gpio : 9; /**< 0 - Address bit required for addressing memory; 1 - Addr
+ 565:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t adv_pin_gpio      : 1; /**< Adv pin to GPIO mode */
+ 566:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t                   : 6;
+ 567:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  };
+ 568:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 569:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_FREE_PINS_TO_GPIO_t;
+ 570:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 571:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 572:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Read configuration for a region of EBU <br>
+ 573:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 574:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the read and read timing
+ 575:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * configuration for a region for EBU. The XMC_EBU_ConfigureRegion() can be
+ 576:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * used to populate the structure with the read configuration values for EBU.
+ 577:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */ 
+ 578:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_BUS_READ_CONFIG
+ 579:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 580:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU read configuration parameters */
+ 581:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 582:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 583:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  uint32_t raw0;
+ 584:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  struct
+ 585:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  {
+ 586:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_burst_length_sync                         : 3; /**< Burst length for synchronous 
+ 587:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_burst_buffer_sync_mode                    : 1; /**< Burst buffer mode */
+ 588:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_read_stages_synch                         : 1; /**< Read single stage synchroniza
+ 589:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_burst_flash_clock_feedback                : 1; /**< Burst flash clock feedback en
+ 590:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_burst_flash_clock_mode                    : 1; /**< Burst flash clock mode select
+ 591:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_flash_non_array_access                    : 1; /**< flash non-array access */
+ 592:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t                                               : 8;
+ 593:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_early_chip_select_sync_burst              : 1; /**< Early chip select for sync bu
+ 594:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_burst_signal_sync                         : 1; /**< Early burst signal enable for
+ 595:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_burst_address_wrapping                    : 1; /**< Burst address wrapping */
+ 596:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_wait_signal_polarity                      : 1; /**< Reversed polarity at WAIT */
+ 597:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_byte_control                              : 2; /**< Byte control signal control *
+ 598:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_device_addressing_mode                    : 2; /**< Device addressing mode */
+ 599:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_wait_control                              : 2; /**< External wait control */
+ 600:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_asynchronous_address_phase                : 1; /**< Asynchronous address phase */
+ 601:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t                                               : 1;
+ 602:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_device_type                               : 4; /**< Device type for region */
+ 603:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  };
+ 604:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   };  
+ 605:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU read access parameters */
+ 606:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 607:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 608:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	uint32_t raw1;
+ 609:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	struct
+ 610:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	{
+ 611:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_recovery_cycles_between_different_regions : 4;
+ 612:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 613:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Recovery cycles after read accesses:           <br>
+ 614:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * 000B: No recovery phase clock cycles available <br>
+ 615:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * 001B: 1 clock cycle selected                   <br>
+ 616:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * ...                                            <br>
+ 617:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * 110B: 6 clock cycles selected                  <br>
+ 618:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * 111B: 7 clock cycles selected                  <br>
+ 619:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 620:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_recovery_cycles_after_read_accesses       : 3;
+ 621:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 622:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Programmed wait states for read accesses: <br>
+ 623:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * 00000B:  1 wait state                     <br>
+ 624:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * 00001B:  1 wait state                     <br>
+ 625:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * 00010B:  2 wait state                     <br>
+ 626:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * ...                                       <br>
+ 627:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * 11110B:  30 wait states                   <br>
+ 628:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * 11111B:  31 wait states                   <br>
+ 629:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 630:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_programmed_wait_states_for_read_accesses  : 5;
+ 631:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 632:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   *
+ 633:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   */
+ 634:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_data_hold_cycles_for_read_accesses: 4;
+ 635:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 636:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Frequency of external clock at pin BFCLKO
+ 637:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 638:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_freq_ext_clk_pin                          : 2;
+ 639:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 640:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * EBU Extended data
+ 641:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 642:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_ext_data                                  : 2;
+ 643:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 644:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Command delay cycles:            <br>
+ 645:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * 0000B: 0 clock cycle selected    <br>
+ 646:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * 0001B: 1 clock cycle selected    <br>
+ 647:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * ...                              <br>
+ 648:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * 1110B: 14 clock cycles selected  <br>
+ 649:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * 1111B: 15 clock cycles selected  <br>
+ 650:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 651:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   uint32_t command_delay_lines                          : 4;
+ 652:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   /**
+ 653:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****         * Address hold cycles:            <br>
+ 654:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	    * 0000B: 0 clock cycle selected   <br>
+ 655:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	    * 0001B: 1 clock cycle selected   <br>
+ 656:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	    * ...                             <br>
+ 657:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	    * 1110B: 14 clock cycles selected <br>
+ 658:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	    * 1111B: 15 clock cycles selected <br>
+ 659:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****         */
+ 660:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   uint32_t address_hold_cycles                          : 4;
+ 661:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	    /**
+ 662:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****          * Address Cycles:
+ 663:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	     * 0000B: 1 clock cycle selected   <br>
+ 664:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	     * 0001B: 1 clock cycle selected   <br>
+ 665:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	     * ...                             <br>
+ 666:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	     * 1110B: 14 clock cycles selected <br>
+ 667:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	     * 1111B: 15 clock cycles selected <br>
+ 668:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****          */
+ 669:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   uint32_t address_cycles                               : 4;
+ 670:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	};
+ 671:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 672:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_BUS_READ_CONFIG_t;
+ 673:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 674:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 675:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Write configuration for a region of EBU <br>
+ 676:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 677:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the write and write timing
+ 678:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * configurations for a region of EBU. The XMC_EBU_ConfigureRegion() can be used
+ 679:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * to populate the structure with the write configuration values of EBU.
+ 680:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */ 
+ 681:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_BUS_WRITE_CONFIG
+ 682:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 683:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU write configuration parameters */
+ 684:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 685:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 686:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  uint32_t raw0;
+ 687:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  struct
+ 688:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  {
+ 689:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_burst_length_sync                         : 3;  /**< Burst length for synchronous
+ 690:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_burst_buffer_sync_mode                    : 1;  /**< Burst buffer mode */
+ 691:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t                                               : 12;
+ 692:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_early_chip_select_sync_burst              : 1;  /**< Early chip select for sync b
+ 693:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_burst_signal_sync                         : 1;  /**< Early burst signal enable fo
+ 694:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t                                               : 1;
+ 695:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_wait_signal_polarity                      : 1;  /**< Reversed polarity at WAIT */
+ 696:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_byte_control                              : 2;  /**< Byte control signal control 
+ 697:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       uint32_t ebu_device_addressing_mode                    : 2; /**< Device addressing mode */
+ 698:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_wait_control                              : 2;  /**< External wait control */
+ 699:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_asynchronous_address_phase                : 1;  /**< Asynchronous address phase *
+ 700:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_lock_chip_select                          : 1;  /**< Lock chip select */
+ 701:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_device_type                               : 4;  /**< Device type for region */
+ 702:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  };
+ 703:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 704:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU write access parameters */
+ 705:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 706:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 707:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	  uint32_t raw1;
+ 708:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	  struct
+ 709:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 710:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /**
+ 711:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Recovery cycles between different regions:       <br>
+ 712:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 0000B: No recovery phase clock cycles available  <br>
+ 713:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 0001B: 1 clock cycle selected                    <br>
+ 714:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * ...                                              <br>
+ 715:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 1110B: 14 clock cycles selected                  <br>
+ 716:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 1111B: 15 clock cycles selected                  <br>
+ 717:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 718:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t ebu_recovery_cycles_between_different_regions : 4;
+ 719:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 720:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /**
+ 721:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Recovery cycles after write accesses:          <br>
+ 722:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 000B: No recovery phase clock cycles available <br>
+ 723:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 001B: 1 clock cycle selected                   <br> 
+ 724:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * ...                                            <br>
+ 725:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 110B: 6 clock cycles selected                  <br>
+ 726:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 111B: 7 clock cycles selected                  <br>
+ 727:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 728:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t ebu_recovery_cycles_after_write_accesses      : 3;
+ 729:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 730:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /**
+ 731:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Programmed wait states for write accesses: <br>
+ 732:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 00000B:  1 wait state                      <br>
+ 733:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 00001B:  1 wait state                      <br>
+ 734:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 00010B:  2 wait state                      <br>
+ 735:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * ...                                        <br>
+ 736:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 11110B:  30 wait states                    <br>
+ 737:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 11111B:  31 wait states                    <br>
+ 738:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****       */
+ 739:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t ebu_programmed_wait_states_for_write_accesses : 5;
+ 740:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 741:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /**
+ 742:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     *
+ 743:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     */
+ 744:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t ebu_data_hold_cycles_for_write_accesses : 4;
+ 745:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /**<
+ 746:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Frequency of external clock at pin BFCLKO
+ 747:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 748:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t ebu_freq_ext_clk_pin                          : 2;
+ 749:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /**
+ 750:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * EBU extended data
+ 751:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 752:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t ebu_ext_data                                  : 2;
+ 753:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /**
+ 754:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Command delay cycles:           <br>
+ 755:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 0000B: 0 clock cycle selected   <br>
+ 756:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 0001B: 1 clock cycle selected   <br>
+ 757:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * ...                             <br>
+ 758:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 1110B: 14 clock cycles selected <br>
+ 759:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 1111B: 15 clock cycles selected <br>
+ 760:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 761:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t command_delay_lines                           : 4;
+ 762:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /** Address hold cycles:           <br>
+ 763:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 0000B: 0 clock cycle selected   <br>
+ 764:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 0001B: 1 clock cycle selected   <br>
+ 765:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * ...                             <br>
+ 766:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 1110B: 14 clock cycles selected <br>
+ 767:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 1111B: 15 clock cycles selected <br>
+ 768:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 769:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t address_hold_cycles                           : 4;
+ 770:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /**
+ 771:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Address cycles:                 <br>
+ 772:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 0000B: 1 clock cycle selected   <br>
+ 773:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 0001B: 1 clock cycle selected   <br>
+ 774:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * ...                             <br>
+ 775:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 1110B: 14 clock cycles selected <br>
+ 776:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	     * 1111B: 15 clock cycles selected <br>
+ 777:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 778:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	   uint32_t address_cycles                                 : 4;
+ 779:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	  };
+ 780:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 781:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** }XMC_EBU_BUS_WRITE_CONFIG_t;
+ 782:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 783:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 784:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * SDRAM configuration structure <br>
+ 785:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 786:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure is a placeholder for setting (and obtaining) the SDRAM configuration,
+ 787:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * operation mode configuration and the right refresh parameters. The XMC_EBU_ConfigureSdram()
+ 788:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * can be used to populate the structure with the SDRAM operation mode and
+ 789:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * refresh parameters configuration.
+ 790:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+ 791:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_SDRAM_CONFIG
+ 792:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 793:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU SDRAM control parameters */
+ 794:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 795:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 796:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  uint32_t raw0;
+ 797:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  struct
+ 798:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  {
+ 799:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    /**
+ 800:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of clock cycles between row activate command and a precharge
+ 801:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * command 
+ 802:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 803:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_row_precharge_delay_counter            : 4;
+ 804:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    /** 
+ 805:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * (CRFSH) Number of refresh commands issued during powerup init sequence:
+ 806:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Perform CRFSH + 1 refresh cycles
+ 807:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 808:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_init_refresh_commands_counter          : 4;
+ 809:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    /**
+ 810:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * (CRSC) Number of NOP cycles after a mode register set command:
+ 811:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Insert CRSC + 1 NOP cycles 
+ 812:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 813:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_mode_register_set_up_time              : 2;
+ 814:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    /**
+ 815:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * (CRP) Number of NOP cycles inserted after a precharge command:
+ 816:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Insert CRP + 1 NOP cycles 
+ 817:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 818:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_row_precharge_time_counter             : 2;
+ 819:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    /**
+ 820:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of address bits from bit 0 to be used for column address
+ 821:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 822:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_sdram_width_of_column_address          : 2;
+ 823:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    /**
+ 824:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * (CRCD) Number of NOP cycles between a row address and a column
+ 825:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * address: Insert CRCD + 1 NOP cycles
+ 826:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 827:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_sdram_row_to_column_delay_counter      : 2;
+ 828:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    /**
+ 829:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Row cycle time counter: Insert (CRCE * 8) + CRC + 1 NOP cycles
+ 830:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 831:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_sdram_row_cycle_time_counter           : 3;
+ 832:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    /**
+ 833:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Mask for row tag
+ 834:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 835:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_sdram_mask_for_row_tag                 : 3;
+ 836:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    /**
+ 837:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Mask for bank tag
+ 838:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 839:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_sdram_mask_for_bank_tag                : 3;
+ 840:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    /**
+ 841:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Extension to the Row cycle time counter (CRCE)
+ 842:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 843:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_sdram_row_cycle_time_counter_extension : 3;
+ 844:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    /**
+ 845:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Disable SDRAM clock output
+ 846:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 847:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_sdram_clk_output                       : 1;
+ 848:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    /**
+ 849:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Power Save Mode used for gated clock mode
+ 850:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 851:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_sdram_pwr_mode                         : 2;
+ 852:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    /**
+ 853:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * SDRAM clock mode select
+ 854:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 855:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	    uint32_t ebu_sdram_clk_mode                         : 1;
+ 856:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 	  };
+ 857:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 858:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU SDRAM mode parameters */
+ 859:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 860:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+ 861:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	  uint32_t raw1;
+ 862:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	  struct
+ 863:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	  {
+ 864:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /**
+ 865:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of locations can be accessed with a single command
+ 866:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 867:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t ebu_sdram_burst_length                     : 3;
+ 868:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t                                            : 1;
+ 869:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /**
+ 870:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of clocks between a READ command and the availability
+ 871:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * of data
+ 872:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 873:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t ebu_sdram_casclk_mode                      : 3;
+ 874:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t                                            : 8;
+ 875:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /**
+ 876:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Cold start
+ 877:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 878:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t ebu_sdram_cold_start: 1;
+ 879:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /**
+ 880:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Value to be written to the extended mode register of a mobile
+ 881:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * SDRAM device
+ 882:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 883:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t ebu_sdram_extended_operation_mode          : 12;
+ 884:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    /**
+ 885:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Value to be written to the bank select pins of a mobile SDRAM
+ 886:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * device during an extended mode register write operation
+ 887:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 888:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	    uint32_t ebu_sdram_extended_operation_bank_select   : 4;
+ 889:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	  };
+ 890:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 891:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   /* EBU SDRAM refresh parameters */
+ 892:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   union
+ 893:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****     {
+ 894:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	uint32_t raw2;
+ 895:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	struct
+ 896:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	{
+ 897:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 898:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of refresh counter period:
+ 899:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * Refresh period is 'num_refresh_counter_period' x 64 clock cycles
+ 900:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 901:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_sdram_num_refresh_counter_period       : 6;
+ 902:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 903:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of refresh commands
+ 904:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 905:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_sdram_num_refresh_cmnds                : 3;
+ 906:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t                                            : 1;
+ 907:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 908:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * If 1, the self refresh exit command is issued to all SDRAM devices
+ 909:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * regardless of their attachment to type 0 or type 1
+ 910:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   */
+ 911:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_sdram_self_refresh_exit                : 1;
+ 912:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t                                            : 1;
+ 913:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 914:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * If "1", the self refresh entry command is issued to all SDRAM devices,
+ 915:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   * regardless regardless of their attachment to type 0 or type 1
+ 916:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   */
+ 917:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_sdram_self_refresh_entry               : 1;
+ 918:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 919:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * If 1, memory controller will automatically issue the "self refresh
+ 920:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * entry" command to all SDRAM devices when it gives up control of the
+ 921:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * external bus. It will also automatically issue "self refresh exit"
+ 922:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * when it regains control of the bus
+ 923:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	   */
+ 924:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_sdram_auto_self_refresh                : 1;
+ 925:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 926:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Extended number of refresh counter period
+ 927:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 928:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_sdram_extended_refresh_counter_period  : 2;
+ 929:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 930:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of NOP cycles inserted after a self refresh exit before a
+ 931:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * command is permitted to the SDRAM/DDRAM
+ 932:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 933:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_sdram_self_refresh_exit_delay          : 8;
+ 934:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 935:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * If 1, an auto refresh cycle will be performed; If 0, no refresh will
+ 936:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * be performed
+ 937:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 938:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_sdram_auto_refresh                     : 1;
+ 939:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  /**
+ 940:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * Number of NOPs after the SDRAM controller exits power down before an
+ 941:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        * active command is permitted
+ 942:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****        */
+ 943:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t ebu_sdram_delay_on_power_down_exit         : 3;
+ 944:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	  uint32_t : 4;
+ 945:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   	};
+ 946:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   };
+ 947:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_SDRAM_CONFIG_t;
+ 948:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 949:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /* Anonymous structure/union guard end */
+ 950:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #if defined (__CC_ARM)
+ 951:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   #pragma pop
+ 952:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #elif defined (__TASKING__)
+ 953:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   #pragma warning restore
+ 954:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #endif
+ 955:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 956:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 957:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU region initialization with read configurations <br>
+ 958:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 959:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the read and read timing
+ 960:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * configurations for a region of EBU. The XMC_EBU_ConfigureRegion() can be
+ 961:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * used to populate the structure with the read configuration values of EBU  
+ 962:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */  
+ 963:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_REGION_READ_CONFIG
+ 964:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 965:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   const uint32_t ebu_region_no;                  /**< Number of region*/
+ 966:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BUS_READ_CONFIG_t ebu_bus_read_config; /**< Read configuration and access parameters stru
+ 967:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_REGION_READ_CONFIG_t;
+ 968:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 969:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 970:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU region initialization with write configurations <br>
+ 971:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 972:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the write and write
+ 973:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * timing configurations for a region of EBU. The XMC_EBU_ConfigureRegion()
+ 974:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * can be used to populate the structure with the write configuration
+ 975:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * values of EBU.
+ 976:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */  
+ 977:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_REGION_WRITE_CONFIG
+ 978:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 979:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   const uint32_t ebu_region_no;                    /**< Number of refresh counter period */
+ 980:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_BUS_WRITE_CONFIG_t ebu_bus_write_config; /**< Write configuration and access parameters s
+ 981:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_REGION_WRITE_CONFIG_t;
+ 982:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 983:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 984:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU region initialization with read and write configurations <br>
+ 985:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+ 986:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the read, read timing,
+ 987:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * write and write timing configurations for a region of EBU. The
+ 988:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * XMC_EBU_ConfigureRegion() can be used to populate the structure with the
+ 989:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * region read and write configuration values of EBU.
+ 990:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */  
+ 991:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_REGION
+ 992:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+ 993:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_REGION_READ_CONFIG_t read_config;
+ 994:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_REGION_WRITE_CONFIG_t write_config;
+ 995:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_REGION_t;
+ 996:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+ 997:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+ 998:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * EBU global configurations <br>
+ 999:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1000:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure presents a convenient way to set/obtain the global configurations
+1001:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * of the EBU like clock, mode and GPIO mode. The XMC_EBU_Init() can be
+1002:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * used to populate the structure with the region read and write configuration
+1003:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * values of EBU.
+1004:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */  
+1005:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct XMC_EBU_CONFIG
+1006:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+1007:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_CLK_CONFIG_t ebu_clk_config;               /**< Clock configuration structure */
+1008:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_MODE_CONFIG_t ebu_mode_config;             /**< Mode configuration structure */
+1009:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_EBU_FREE_PINS_TO_GPIO_t ebu_free_pins_to_gpio; /**< Free allocated EBU ports for GPIO */
+1010:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_CONFIG_t;
+1011:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   
+1012:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+1013:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * External Bus Unit (EBU) device structure <br>
+1014:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1015:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The structure represents a collection of all hardware registers
+1016:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * used to configure the EBU peripheral on the XMC4500 microcontroller.
+1017:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The registers can be accessed with ::XMC_EBU.
+1018:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+1019:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** typedef struct
+1020:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+1021:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  CLC;
+1022:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  MODCON;
+1023:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   __I  uint32_t  ID;
+1024:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  USERCON;
+1025:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   __I  uint32_t  RESERVED0[2];
+1026:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  ADDRSEL[4];
+1027:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   struct
+1028:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   {
+1029:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	  __IO uint32_t  RDCON;
+1030:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	  __IO uint32_t  RDAPR;
+1031:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	  __IO uint32_t  WRCON;
+1032:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  	  __IO uint32_t  WRAPR;
+1033:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   } BUS[4];
+1034:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  SDRMCON;
+1035:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  SDRMOD;
+1036:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   __IO uint32_t  SDRMREF;
+1037:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   __I  uint32_t  SDRSTAT;
+1038:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** } XMC_EBU_t;
+1039:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+1040:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**************************************************************************************************
+1041:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * API PROTOTYPES
+1042:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** ***************************************************************************************************
+1043:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  
+1044:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #ifdef __cplusplus
+1045:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** extern "C" {
+1046:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** #endif
+1047:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+1048:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+1049:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param ebu Constant pointer to ::XMC_EBU_t, pointing to the EBU base address
+1050:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param config Constant pointer to a constant ::XMC_EBU_CONFIG_t structure containing the
+1051:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *               clock mode and clock configuration.
+1052:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @return XMC_EBU_STATUS_t Always returns XMC_EBU_STATUS_OK (Only register assignment statements)
+1053:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1054:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par<b>Description: </b><br>
+1055:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Initialize the EBU peripheral <br>
+1056:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1057:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par
+1058:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The function enables the EBU peripheral, configures time values for clock mode, div2
+1059:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * clock mode, mode configuration, SDRAM tristate, external clock, arbitration, timeout
+1060:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * control, ALE mode and configuration to free up the allocated EBU ports for GPIO
+1061:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * functionality (if required).
+1062:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+1063:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** XMC_EBU_STATUS_t XMC_EBU_Init(XMC_EBU_t *const ebu, const XMC_EBU_CONFIG_t *const config);
+1064:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+1065:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+1066:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param ebu Constant pointer to ::XMC_EBU_t, pointing to the EBU base address
+1067:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param config Constant pointer to a constant ::XMC_EBU_SDRAM_CONFIG_t structure containing
+1068:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *               the SDRAM configuration, operation mode configuration and right refresh
+1069:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *               parameters
+1070:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @return None
+1071:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1072:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par<b>Description: </b><br>
+1073:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Configures the SDRAM <br>
+1074:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1075:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par
+1076:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The function enables the SDRAM, sets SDRAM configuration parameters such as operation
+1077:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * mode and refresh parameters. Please see  ::XMC_EBU_SDRAM_CONFIG_t for more information.
+1078:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+1079:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** void XMC_EBU_ConfigureSdram(XMC_EBU_t *const ebu, const XMC_EBU_SDRAM_CONFIG_t *const config);
+1080:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+1081:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+1082:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param ebu Constant pointer to ::XMC_EBU_t, pointing to the EBU base address
+1083:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param region Constant pointer to a constant ::XMC_EBU_REGION_t structure containing the
+1084:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *               read, read timing, write and write timing configurations for a region of
+1085:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *               EBU
+1086:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @return None
+1087:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1088:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par<b>Description: </b><br>
+1089:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Configures the SDRAM <br>
+1090:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1091:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par
+1092:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The function configures the EBU region read, read timing, write and write timing parameter
+1093:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * configuration. It also configures the region registers for read and write accesses. Please
+1094:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * see ::XMC_EBU_REGION_t for more information.
+1095:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1096:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+1097:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** void XMC_EBU_ConfigureRegion(XMC_EBU_t *const ebu, const XMC_EBU_REGION_t *const region);
+1098:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** 
+1099:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** /**
+1100:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @param ebu Constant pointer to ::XMC_EBU_t, pointing to the EBU base address
+1101:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * @return None
+1102:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1103:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par<b>Description: </b><br>
+1104:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * Enable EBU peripheral <br>
+1105:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1106:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par
+1107:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * The function de-asserts the peripheral reset. The peripheral needs to be initialized.
+1108:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * It also enables the control of the EBU.
+1109:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  *
+1110:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * \par<b>Related APIs:</b><br>
+1111:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  * XMC_EBU_Disable(), XMC_SCU_RESET_AssertPeripheralReset()
+1112:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****  */
+1113:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** __STATIC_INLINE void XMC_EBU_Enable(XMC_EBU_t *const ebu)
+1114:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** {
+  27              	 .loc 1 1114 0
+  28              	 .cfi_startproc
+  29              	 
+  30              	 
+  31 0000 80B5     	 push {r7,lr}
+  32              	.LCFI0:
+  33              	 .cfi_def_cfa_offset 8
+  34              	 .cfi_offset 7,-8
+  35              	 .cfi_offset 14,-4
+  36 0002 82B0     	 sub sp,sp,#8
+  37              	.LCFI1:
+  38              	 .cfi_def_cfa_offset 16
+  39 0004 00AF     	 add r7,sp,#0
+  40              	.LCFI2:
+  41              	 .cfi_def_cfa_register 7
+  42 0006 7860     	 str r0,[r7,#4]
+1115:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_ASSERT("XMC_EBU_Enable: Invalid module pointer", XMC_EBU_CHECK_MODULE_PTR(ebu));
+1116:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   XMC_SCU_RESET_DeassertPeripheralReset(XMC_SCU_PERIPHERAL_RESET_EBU);
+  43              	 .loc 1 1116 0
+  44 0008 0548     	 ldr r0,.L2
+  45 000a FFF7FEFF 	 bl XMC_SCU_RESET_DeassertPeripheralReset
+1117:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h ****   ebu->CLC &= ~EBU_CLC_DISR_Msk;
+  46              	 .loc 1 1117 0
+  47 000e 7B68     	 ldr r3,[r7,#4]
+  48 0010 1B68     	 ldr r3,[r3]
+  49 0012 23F00102 	 bic r2,r3,#1
+  50 0016 7B68     	 ldr r3,[r7,#4]
+  51 0018 1A60     	 str r2,[r3]
+1118:C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc\xmc_ebu.h **** }
+  52              	 .loc 1 1118 0
+  53 001a 0837     	 adds r7,r7,#8
+  54              	.LCFI3:
+  55              	 .cfi_def_cfa_offset 8
+  56 001c BD46     	 mov sp,r7
+  57              	.LCFI4:
+  58              	 .cfi_def_cfa_register 13
+  59              	 
+  60 001e 80BD     	 pop {r7,pc}
+  61              	.L3:
+  62              	 .align 2
+  63              	.L2:
+  64 0020 04000030 	 .word 805306372
+  65              	 .cfi_endproc
+  66              	.LFE165:
+  68              	 .section .text.XMC_EBU_Init,"ax",%progbits
+  69              	 .align 2
+  70              	 .global XMC_EBU_Init
+  71              	 .thumb
+  72              	 .thumb_func
+  74              	XMC_EBU_Init:
+  75              	.LFB183:
+  76              	 .file 2 "../Libraries/XMCLib/src/xmc_ebu.c"
+   1:../Libraries/XMCLib/src/xmc_ebu.c **** /**
+   2:../Libraries/XMCLib/src/xmc_ebu.c ****  * @file xmc_ebu.c
+   3:../Libraries/XMCLib/src/xmc_ebu.c ****  * @date 2015-06-20
+   4:../Libraries/XMCLib/src/xmc_ebu.c ****  *
+   5:../Libraries/XMCLib/src/xmc_ebu.c ****  * @cond
+   6:../Libraries/XMCLib/src/xmc_ebu.c ****  **************************************************************************************************
+   7:../Libraries/XMCLib/src/xmc_ebu.c ****  * XMClib v2.1.8 - XMC Peripheral Driver Library 
+   8:../Libraries/XMCLib/src/xmc_ebu.c ****  *
+   9:../Libraries/XMCLib/src/xmc_ebu.c ****  * Copyright (c) 2015-2016, Infineon Technologies AG
+  10:../Libraries/XMCLib/src/xmc_ebu.c ****  * All rights reserved.                        
+  11:../Libraries/XMCLib/src/xmc_ebu.c ****  *                                             
+  12:../Libraries/XMCLib/src/xmc_ebu.c ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  13:../Libraries/XMCLib/src/xmc_ebu.c ****  * following conditions are met:   
+  14:../Libraries/XMCLib/src/xmc_ebu.c ****  *                                                                              
+  15:../Libraries/XMCLib/src/xmc_ebu.c ****  * Redistributions of source code must retain the above copyright notice, this list of conditions a
+  16:../Libraries/XMCLib/src/xmc_ebu.c ****  * disclaimer.                        
+  17:../Libraries/XMCLib/src/xmc_ebu.c ****  * 
+  18:../Libraries/XMCLib/src/xmc_ebu.c ****  * Redistributions in binary form must reproduce the above copyright notice, this list of condition
+  19:../Libraries/XMCLib/src/xmc_ebu.c ****  * disclaimer in the documentation and/or other materials provided with the distribution.          
+  20:../Libraries/XMCLib/src/xmc_ebu.c ****  * 
+  21:../Libraries/XMCLib/src/xmc_ebu.c ****  * Neither the name of the copyright holders nor the names of its contributors may be used to endor
+  22:../Libraries/XMCLib/src/xmc_ebu.c ****  * products derived from this software without specific prior written permission.                  
+  23:../Libraries/XMCLib/src/xmc_ebu.c ****  *                                                                              
+  24:../Libraries/XMCLib/src/xmc_ebu.c ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  25:../Libraries/XMCLib/src/xmc_ebu.c ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  26:../Libraries/XMCLib/src/xmc_ebu.c ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  27:../Libraries/XMCLib/src/xmc_ebu.c ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  28:../Libraries/XMCLib/src/xmc_ebu.c ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  29:../Libraries/XMCLib/src/xmc_ebu.c ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  30:../Libraries/XMCLib/src/xmc_ebu.c ****  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.                            
+  31:../Libraries/XMCLib/src/xmc_ebu.c ****  *                                                                              
+  32:../Libraries/XMCLib/src/xmc_ebu.c ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  33:../Libraries/XMCLib/src/xmc_ebu.c ****  * Infineon Technologies AG dave@infineon.com).                                                    
+  34:../Libraries/XMCLib/src/xmc_ebu.c ****  **************************************************************************************************
+  35:../Libraries/XMCLib/src/xmc_ebu.c ****  *
+  36:../Libraries/XMCLib/src/xmc_ebu.c ****  * Change History
+  37:../Libraries/XMCLib/src/xmc_ebu.c ****  * --------------
+  38:../Libraries/XMCLib/src/xmc_ebu.c ****  *
+  39:../Libraries/XMCLib/src/xmc_ebu.c ****  * 2015-02-20:
+  40:../Libraries/XMCLib/src/xmc_ebu.c ****  *     - Initial <br>
+  41:../Libraries/XMCLib/src/xmc_ebu.c ****  *      
+  42:../Libraries/XMCLib/src/xmc_ebu.c ****  * 2015-06-20:
+  43:../Libraries/XMCLib/src/xmc_ebu.c ****  *     - Removed GetDriverVersion API
+  44:../Libraries/XMCLib/src/xmc_ebu.c ****  * @endcond 
+  45:../Libraries/XMCLib/src/xmc_ebu.c ****  *
+  46:../Libraries/XMCLib/src/xmc_ebu.c ****  */
+  47:../Libraries/XMCLib/src/xmc_ebu.c ****  
+  48:../Libraries/XMCLib/src/xmc_ebu.c **** /**************************************************************************************************
+  49:../Libraries/XMCLib/src/xmc_ebu.c ****  * HEADER FILES
+  50:../Libraries/XMCLib/src/xmc_ebu.c ****  **************************************************************************************************
+  51:../Libraries/XMCLib/src/xmc_ebu.c ****  
+  52:../Libraries/XMCLib/src/xmc_ebu.c **** #include <xmc_ebu.h>
+  53:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  54:../Libraries/XMCLib/src/xmc_ebu.c **** #if defined(EBU)
+  55:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  56:../Libraries/XMCLib/src/xmc_ebu.c **** /**************************************************************************************************
+  57:../Libraries/XMCLib/src/xmc_ebu.c ****  * API IMPLEMENTATION
+  58:../Libraries/XMCLib/src/xmc_ebu.c ****  **************************************************************************************************
+  59:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  60:../Libraries/XMCLib/src/xmc_ebu.c **** /*
+  61:../Libraries/XMCLib/src/xmc_ebu.c ****  * Initialize the EBU peripheral
+  62:../Libraries/XMCLib/src/xmc_ebu.c ****  */
+  63:../Libraries/XMCLib/src/xmc_ebu.c **** XMC_EBU_STATUS_t XMC_EBU_Init(XMC_EBU_t *const ebu,const XMC_EBU_CONFIG_t *const config)
+  64:../Libraries/XMCLib/src/xmc_ebu.c **** {
+  77              	 .loc 2 64 0
+  78              	 .cfi_startproc
+  79              	 
+  80              	 
+  81 0000 80B5     	 push {r7,lr}
+  82              	.LCFI5:
+  83              	 .cfi_def_cfa_offset 8
+  84              	 .cfi_offset 7,-8
+  85              	 .cfi_offset 14,-4
+  86 0002 82B0     	 sub sp,sp,#8
+  87              	.LCFI6:
+  88              	 .cfi_def_cfa_offset 16
+  89 0004 00AF     	 add r7,sp,#0
+  90              	.LCFI7:
+  91              	 .cfi_def_cfa_register 7
+  92 0006 7860     	 str r0,[r7,#4]
+  93 0008 3960     	 str r1,[r7]
+  65:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_ASSERT("XMC_EBU_Init: Invalid module pointer", XMC_EBU_CHECK_MODULE_PTR(ebu));
+  66:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_ASSERT("XMC_EBU_Init:Null Pointer", (config != (XMC_EBU_CONFIG_t *)NULL));
+  67:../Libraries/XMCLib/src/xmc_ebu.c ****   
+  68:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Enable EBU */
+  69:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_EBU_Enable(ebu);
+  94              	 .loc 2 69 0
+  95 000a 7868     	 ldr r0,[r7,#4]
+  96 000c FFF7FEFF 	 bl XMC_EBU_Enable
+  70:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  71:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Clock configuration */
+  72:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->CLC  =  config->ebu_clk_config.raw0;
+  97              	 .loc 2 72 0
+  98 0010 3B68     	 ldr r3,[r7]
+  99 0012 1A68     	 ldr r2,[r3]
+ 100 0014 7B68     	 ldr r3,[r7,#4]
+ 101 0016 1A60     	 str r2,[r3]
+  73:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  74:../Libraries/XMCLib/src/xmc_ebu.c ****   /*EBU Mode Configuration */
+  75:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->MODCON =   config->ebu_mode_config.raw0;
+ 102              	 .loc 2 75 0
+ 103 0018 3B68     	 ldr r3,[r7]
+ 104 001a 5A68     	 ldr r2,[r3,#4]
+ 105 001c 7B68     	 ldr r3,[r7,#4]
+ 106 001e 5A60     	 str r2,[r3,#4]
+  76:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  77:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Address Bits available for GPIO function */
+  78:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->USERCON = config->ebu_free_pins_to_gpio.raw0;
+ 107              	 .loc 2 78 0
+ 108 0020 3B68     	 ldr r3,[r7]
+ 109 0022 9A68     	 ldr r2,[r3,#8]
+ 110 0024 7B68     	 ldr r3,[r7,#4]
+ 111 0026 DA60     	 str r2,[r3,#12]
+  79:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  80:../Libraries/XMCLib/src/xmc_ebu.c ****   return XMC_EBU_STATUS_OK;
+ 112              	 .loc 2 80 0
+ 113 0028 0023     	 movs r3,#0
+  81:../Libraries/XMCLib/src/xmc_ebu.c **** }
+ 114              	 .loc 2 81 0
+ 115 002a 1846     	 mov r0,r3
+ 116 002c 0837     	 adds r7,r7,#8
+ 117              	.LCFI8:
+ 118              	 .cfi_def_cfa_offset 8
+ 119 002e BD46     	 mov sp,r7
+ 120              	.LCFI9:
+ 121              	 .cfi_def_cfa_register 13
+ 122              	 
+ 123 0030 80BD     	 pop {r7,pc}
+ 124              	 .cfi_endproc
+ 125              	.LFE183:
+ 127 0032 00BF     	 .section .text.XMC_EBU_ConfigureSdram,"ax",%progbits
+ 128              	 .align 2
+ 129              	 .global XMC_EBU_ConfigureSdram
+ 130              	 .thumb
+ 131              	 .thumb_func
+ 133              	XMC_EBU_ConfigureSdram:
+ 134              	.LFB184:
+  82:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  83:../Libraries/XMCLib/src/xmc_ebu.c **** /*
+  84:../Libraries/XMCLib/src/xmc_ebu.c ****  * Configures the SDRAM with operating modes and refresh parameters
+  85:../Libraries/XMCLib/src/xmc_ebu.c ****  */
+  86:../Libraries/XMCLib/src/xmc_ebu.c **** void XMC_EBU_ConfigureSdram(XMC_EBU_t *const ebu,const XMC_EBU_SDRAM_CONFIG_t *const config)
+  87:../Libraries/XMCLib/src/xmc_ebu.c **** {
+ 135              	 .loc 2 87 0
+ 136              	 .cfi_startproc
+ 137              	 
+ 138              	 
+ 139              	 
+ 140 0000 80B4     	 push {r7}
+ 141              	.LCFI10:
+ 142              	 .cfi_def_cfa_offset 4
+ 143              	 .cfi_offset 7,-4
+ 144 0002 83B0     	 sub sp,sp,#12
+ 145              	.LCFI11:
+ 146              	 .cfi_def_cfa_offset 16
+ 147 0004 00AF     	 add r7,sp,#0
+ 148              	.LCFI12:
+ 149              	 .cfi_def_cfa_register 7
+ 150 0006 7860     	 str r0,[r7,#4]
+ 151 0008 3960     	 str r1,[r7]
+  88:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_ASSERT("XMC_EBU_Init: Invalid module pointer", XMC_EBU_CHECK_MODULE_PTR(ebu));
+  89:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_ASSERT("XMC_EBU_Init:Null Pointer", (config != (XMC_EBU_SDRAM_CONFIG_t *)NULL));
+  90:../Libraries/XMCLib/src/xmc_ebu.c ****   
+  91:../Libraries/XMCLib/src/xmc_ebu.c ****   /* EBU SDRAM Refresh Configuration Parameters */
+  92:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->SDRMREF = config->raw2;
+ 152              	 .loc 2 92 0
+ 153 000a 3B68     	 ldr r3,[r7]
+ 154 000c 9A68     	 ldr r2,[r3,#8]
+ 155 000e 7B68     	 ldr r3,[r7,#4]
+ 156 0010 1A67     	 str r2,[r3,#112]
+  93:../Libraries/XMCLib/src/xmc_ebu.c ****   /* EBU SDRAM General Configuration Parameters */
+  94:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->SDRMCON = config->raw0;
+ 157              	 .loc 2 94 0
+ 158 0012 3B68     	 ldr r3,[r7]
+ 159 0014 1A68     	 ldr r2,[r3]
+ 160 0016 7B68     	 ldr r3,[r7,#4]
+ 161 0018 9A66     	 str r2,[r3,#104]
+  95:../Libraries/XMCLib/src/xmc_ebu.c ****   /* EBU SDRAM Operation Mode Configuration Parameters */
+  96:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->SDRMOD = config->raw1;
+ 162              	 .loc 2 96 0
+ 163 001a 3B68     	 ldr r3,[r7]
+ 164 001c 5A68     	 ldr r2,[r3,#4]
+ 165 001e 7B68     	 ldr r3,[r7,#4]
+ 166 0020 DA66     	 str r2,[r3,#108]
+  97:../Libraries/XMCLib/src/xmc_ebu.c **** }
+ 167              	 .loc 2 97 0
+ 168 0022 0C37     	 adds r7,r7,#12
+ 169              	.LCFI13:
+ 170              	 .cfi_def_cfa_offset 4
+ 171 0024 BD46     	 mov sp,r7
+ 172              	.LCFI14:
+ 173              	 .cfi_def_cfa_register 13
+ 174              	 
+ 175 0026 5DF8047B 	 ldr r7,[sp],#4
+ 176              	.LCFI15:
+ 177              	 .cfi_restore 7
+ 178              	 .cfi_def_cfa_offset 0
+ 179 002a 7047     	 bx lr
+ 180              	 .cfi_endproc
+ 181              	.LFE184:
+ 183              	 .section .text.XMC_EBU_ConfigureRegion,"ax",%progbits
+ 184              	 .align 2
+ 185              	 .global XMC_EBU_ConfigureRegion
+ 186              	 .thumb
+ 187              	 .thumb_func
+ 189              	XMC_EBU_ConfigureRegion:
+ 190              	.LFB185:
+  98:../Libraries/XMCLib/src/xmc_ebu.c **** 
+  99:../Libraries/XMCLib/src/xmc_ebu.c **** /*
+ 100:../Libraries/XMCLib/src/xmc_ebu.c ****  * Configures the SDRAM region for read and write operation
+ 101:../Libraries/XMCLib/src/xmc_ebu.c ****  */
+ 102:../Libraries/XMCLib/src/xmc_ebu.c **** void XMC_EBU_ConfigureRegion(XMC_EBU_t *const ebu,const XMC_EBU_REGION_t *const region)
+ 103:../Libraries/XMCLib/src/xmc_ebu.c **** {
+ 191              	 .loc 2 103 0
+ 192              	 .cfi_startproc
+ 193              	 
+ 194              	 
+ 195              	 
+ 196 0000 80B4     	 push {r7}
+ 197              	.LCFI16:
+ 198              	 .cfi_def_cfa_offset 4
+ 199              	 .cfi_offset 7,-4
+ 200 0002 83B0     	 sub sp,sp,#12
+ 201              	.LCFI17:
+ 202              	 .cfi_def_cfa_offset 16
+ 203 0004 00AF     	 add r7,sp,#0
+ 204              	.LCFI18:
+ 205              	 .cfi_def_cfa_register 7
+ 206 0006 7860     	 str r0,[r7,#4]
+ 207 0008 3960     	 str r1,[r7]
+ 104:../Libraries/XMCLib/src/xmc_ebu.c ****   
+ 105:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_ASSERT("XMC_EBU_Init: Invalid module pointer", XMC_EBU_CHECK_MODULE_PTR(ebu));
+ 106:../Libraries/XMCLib/src/xmc_ebu.c ****   XMC_ASSERT("XMC_EBU_Init:Null Pointer", (region != (XMC_EBU_REGION_t *)NULL));
+ 107:../Libraries/XMCLib/src/xmc_ebu.c ****   
+ 108:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Read configuration of the region*/
+ 109:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->BUS[region->read_config.ebu_region_no].RDCON = region->read_config.ebu_bus_read_config.raw0;
+ 208              	 .loc 2 109 0
+ 209 000a 3B68     	 ldr r3,[r7]
+ 210 000c 1B68     	 ldr r3,[r3]
+ 211 000e 3A68     	 ldr r2,[r7]
+ 212 0010 5268     	 ldr r2,[r2,#4]
+ 213 0012 7968     	 ldr r1,[r7,#4]
+ 214 0014 1B01     	 lsls r3,r3,#4
+ 215 0016 0B44     	 add r3,r3,r1
+ 216 0018 2833     	 adds r3,r3,#40
+ 217 001a 1A60     	 str r2,[r3]
+ 110:../Libraries/XMCLib/src/xmc_ebu.c **** 
+ 111:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Read parameters of the region*/
+ 112:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->BUS[region->read_config.ebu_region_no].RDAPR = region->read_config.ebu_bus_read_config.raw1;
+ 218              	 .loc 2 112 0
+ 219 001c 3B68     	 ldr r3,[r7]
+ 220 001e 1B68     	 ldr r3,[r3]
+ 221 0020 3A68     	 ldr r2,[r7]
+ 222 0022 9268     	 ldr r2,[r2,#8]
+ 223 0024 7968     	 ldr r1,[r7,#4]
+ 224 0026 1B01     	 lsls r3,r3,#4
+ 225 0028 0B44     	 add r3,r3,r1
+ 226 002a 2833     	 adds r3,r3,#40
+ 227 002c 5A60     	 str r2,[r3,#4]
+ 113:../Libraries/XMCLib/src/xmc_ebu.c **** 
+ 114:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Write configuration of the region*/
+ 115:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->BUS[region->write_config.ebu_region_no].WRCON = region->write_config.ebu_bus_write_config.ra
+ 228              	 .loc 2 115 0
+ 229 002e 3B68     	 ldr r3,[r7]
+ 230 0030 DB68     	 ldr r3,[r3,#12]
+ 231 0032 3A68     	 ldr r2,[r7]
+ 232 0034 1269     	 ldr r2,[r2,#16]
+ 233 0036 7968     	 ldr r1,[r7,#4]
+ 234 0038 0333     	 adds r3,r3,#3
+ 235 003a 1B01     	 lsls r3,r3,#4
+ 236 003c 0B44     	 add r3,r3,r1
+ 237 003e 1A60     	 str r2,[r3]
+ 116:../Libraries/XMCLib/src/xmc_ebu.c **** 
+ 117:../Libraries/XMCLib/src/xmc_ebu.c ****   /* Write parameters of the region*/
+ 118:../Libraries/XMCLib/src/xmc_ebu.c ****   ebu->BUS[region->write_config.ebu_region_no].WRAPR = region->write_config.ebu_bus_write_config.ra
+ 238              	 .loc 2 118 0
+ 239 0040 3B68     	 ldr r3,[r7]
+ 240 0042 DB68     	 ldr r3,[r3,#12]
+ 241 0044 3A68     	 ldr r2,[r7]
+ 242 0046 5269     	 ldr r2,[r2,#20]
+ 243 0048 7968     	 ldr r1,[r7,#4]
+ 244 004a 0333     	 adds r3,r3,#3
+ 245 004c 1B01     	 lsls r3,r3,#4
+ 246 004e 0B44     	 add r3,r3,r1
+ 247 0050 5A60     	 str r2,[r3,#4]
+ 119:../Libraries/XMCLib/src/xmc_ebu.c **** }
+ 248              	 .loc 2 119 0
+ 249 0052 0C37     	 adds r7,r7,#12
+ 250              	.LCFI19:
+ 251              	 .cfi_def_cfa_offset 4
+ 252 0054 BD46     	 mov sp,r7
+ 253              	.LCFI20:
+ 254              	 .cfi_def_cfa_register 13
+ 255              	 
+ 256 0056 5DF8047B 	 ldr r7,[sp],#4
+ 257              	.LCFI21:
+ 258              	 .cfi_restore 7
+ 259              	 .cfi_def_cfa_offset 0
+ 260 005a 7047     	 bx lr
+ 261              	 .cfi_endproc
+ 262              	.LFE185:
+ 264              	 .text
+ 265              	.Letext0:
+ 266              	 .file 3 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 267              	 .file 4 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 268              	 .file 5 "C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/XMCLib/inc/xmc4_scu.h"
+ 269              	 .file 6 "C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Include/core_cm4.h"
+ 270              	 .file 7 "C:/Workspaces/SOES-SAMPLE/xmc48_ecatslave/Libraries/CMSIS/Infineon/XMC4800_series/Include/system_XMC4800.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 xmc_ebu.c
+    {standard input}:20     .text.XMC_EBU_Enable:00000000 $t
+    {standard input}:24     .text.XMC_EBU_Enable:00000000 XMC_EBU_Enable
+    {standard input}:64     .text.XMC_EBU_Enable:00000020 $d
+    {standard input}:69     .text.XMC_EBU_Init:00000000 $t
+    {standard input}:74     .text.XMC_EBU_Init:00000000 XMC_EBU_Init
+    {standard input}:128    .text.XMC_EBU_ConfigureSdram:00000000 $t
+    {standard input}:133    .text.XMC_EBU_ConfigureSdram:00000000 XMC_EBU_ConfigureSdram
+    {standard input}:184    .text.XMC_EBU_ConfigureRegion:00000000 $t
+    {standard input}:189    .text.XMC_EBU_ConfigureRegion:00000000 XMC_EBU_ConfigureRegion
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+XMC_SCU_RESET_DeassertPeripheralReset

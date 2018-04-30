@@ -1,0 +1,1955 @@
+!SESSION 2018-02-14 00:52:52.158 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-14 00:53:16.623
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-14 00:53:16.623
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-02-14 00:53:18.199
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-02-14 00:53:19.324
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-02-14 00:53:19.433
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-02-14 00:53:19.433
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-02-14 00:53:19.621
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-14 00:53:20.096
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-14 00:53:20.278
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-14 00:53:21.652
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-14 00:53:22.438
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-14 00:53:27.144
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-14 00:53:36.993
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY org.eclipse.cdt.core 1 0 2018-02-14 00:54:54.044
+!MESSAGE Indexed 'soes' (4 sources, 22 headers) in 1 sec: 1,065 declarations; 4,338 references; 6 unresolved inclusions; 0 syntax errors; 582 unresolved names (9.7%)
+
+!ENTRY com.dave.mbs.common 1 0 2018-02-14 00:54:54.553
+!MESSAGE Resource '/soes' is not open.
+
+!ENTRY Import 1 0 2018-02-14 00:54:54.646
+!MESSAGE USER_ACTION : Time taken for importing project: soes into workspace is : 2779 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-02-14 00:54:56.145
+!MESSAGE Resource '/xmc48_ecatslave' is not open.
+
+!ENTRY Import 1 0 2018-02-14 00:54:56.187
+!MESSAGE USER_ACTION : Time taken for importing project: xmc48_ecatslave into workspace is : 1540 msec 
+
+!ENTRY com.dave.mbs.common 1 0 2018-02-14 00:54:56.942
+!MESSAGE Resource '/xmc48_ecatslave' is not open.
+
+!ENTRY APPSTORE 1 0 2018-02-14 00:54:57.508
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 481 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-14 00:54:57.521
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 7 msec 
+
+!ENTRY org.eclipse.ui 4 4 2018-02-14 09:22:06.877
+!MESSAGE Conflicting handlers for org.eclipse.debug.ui.commands.DebugLast: {ActionDelegateHandlerProxy(null,com.dave.activeproject.ui.actions.ActiveProjDebugLastAction)} vs {ActionDelegateHandlerProxy(null,org.eclipse.debug.internal.ui.actions.DebugLastAction)}
+
+!ENTRY SOLVER 1 0 2018-02-14 09:22:20.623
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-02-14 09:22:20.935
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+
+!ENTRY org.eclipse.e4.ui.workbench.swt 4 2 2018-02-14 09:22:21.748
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.e4.ui.workbench.swt".
+!STACK 0
+org.eclipse.e4.core.di.InjectionException: org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:62)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:888)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.disposed(InjectorImpl.java:390)
+	at org.eclipse.e4.core.internal.di.Requestor.disposed(Requestor.java:143)
+	at org.eclipse.e4.core.internal.contexts.ContextObjectSupplier$ContextInjectionListener.update(ContextObjectSupplier.java:76)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:107)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.handleInvalid(TrackableComputationExt.java:70)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.dispose(EclipseContext.java:175)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.clearContext(PartRenderingEngine.java:974)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeRemoveGui(PartRenderingEngine.java:954)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$3(PartRenderingEngine.java:862)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$8.run(PartRenderingEngine.java:857)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.removeGui(PartRenderingEngine.java:841)
+	at org.eclipse.ui.internal.WorkbenchWindow.hardClose(WorkbenchWindow.java:1937)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1560)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$15(WorkbenchWindow.java:1527)
+	at org.eclipse.ui.internal.WorkbenchWindow$10.run(WorkbenchWindow.java:1592)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1589)
+	at org.eclipse.ui.internal.Workbench$14.run(Workbench.java:1155)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1137)
+	at org.eclipse.ui.internal.Workbench.access$21(Workbench.java:1079)
+	at org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1410)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1407)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1380)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1556)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$15(WorkbenchWindow.java:1527)
+	at org.eclipse.ui.internal.WorkbenchWindow$10.run(WorkbenchWindow.java:1592)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1589)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1603)
+	at org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:521)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$11.shellClosed(WBWRenderer.java:563)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:98)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4353)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1061)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1085)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1070)
+	at org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:308)
+	at org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1696)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4612)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1626)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2075)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5023)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4705)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1626)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2075)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5023)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4705)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1626)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2075)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5023)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1032)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:148)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:636)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:579)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at com.ifx.davex.product.DaveApplication.start(DaveApplication.java:140)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+Caused by: org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4441)
+	at org.eclipse.swt.SWT.error(SWT.java:4356)
+	at org.eclipse.swt.SWT.error(SWT.java:4327)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:476)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:348)
+	at org.eclipse.swt.widgets.Shell.getSize(Shell.java:1092)
+	at org.eclipse.ui.internal.quickaccess.SearchField.storeDialog(SearchField.java:580)
+	at org.eclipse.ui.internal.quickaccess.SearchField.dispose(SearchField.java:557)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
+	... 88 more
+
+!ENTRY org.eclipse.e4.ui.workbench 4 0 2018-02-14 09:22:21.748
+!MESSAGE Exception occurred while unrendering: org.eclipse.e4.ui.model.application.ui.basic.impl.TrimmedWindowImpl@217dc48e (elementId: IDEWindow, tags: [topLevel, shellMaximized], contributorURI: platform:/plugin/org.eclipse.ui.workbench) (widget: null, renderer: null, toBeRendered: true, onTop: false, visible: true, containerData: null, accessibilityPhrase: null) (label: %trimmedwindow.label.eclipseSDK, iconURI: null, tooltip: null, context: null, variables: [], x: 130, y: 130, width: 1024, height: 768)
+!STACK 0
+org.eclipse.e4.core.di.InjectionException: org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:62)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.processAnnotated(InjectorImpl.java:888)
+	at org.eclipse.e4.core.internal.di.InjectorImpl.disposed(InjectorImpl.java:390)
+	at org.eclipse.e4.core.internal.di.Requestor.disposed(Requestor.java:143)
+	at org.eclipse.e4.core.internal.contexts.ContextObjectSupplier$ContextInjectionListener.update(ContextObjectSupplier.java:76)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.update(TrackableComputationExt.java:107)
+	at org.eclipse.e4.core.internal.contexts.TrackableComputationExt.handleInvalid(TrackableComputationExt.java:70)
+	at org.eclipse.e4.core.internal.contexts.EclipseContext.dispose(EclipseContext.java:175)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.clearContext(PartRenderingEngine.java:974)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.safeRemoveGui(PartRenderingEngine.java:954)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.access$3(PartRenderingEngine.java:862)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$8.run(PartRenderingEngine.java:857)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.removeGui(PartRenderingEngine.java:841)
+	at org.eclipse.ui.internal.WorkbenchWindow.hardClose(WorkbenchWindow.java:1937)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1560)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$15(WorkbenchWindow.java:1527)
+	at org.eclipse.ui.internal.WorkbenchWindow$10.run(WorkbenchWindow.java:1592)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1589)
+	at org.eclipse.ui.internal.Workbench$14.run(Workbench.java:1155)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.ui.internal.Workbench.busyClose(Workbench.java:1137)
+	at org.eclipse.ui.internal.Workbench.access$21(Workbench.java:1079)
+	at org.eclipse.ui.internal.Workbench$19.run(Workbench.java:1410)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1407)
+	at org.eclipse.ui.internal.Workbench.close(Workbench.java:1380)
+	at org.eclipse.ui.internal.WorkbenchWindow.busyClose(WorkbenchWindow.java:1556)
+	at org.eclipse.ui.internal.WorkbenchWindow.access$15(WorkbenchWindow.java:1527)
+	at org.eclipse.ui.internal.WorkbenchWindow$10.run(WorkbenchWindow.java:1592)
+	at org.eclipse.swt.custom.BusyIndicator.showWhile(BusyIndicator.java:70)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1589)
+	at org.eclipse.ui.internal.WorkbenchWindow.close(WorkbenchWindow.java:1603)
+	at org.eclipse.ui.internal.WorkbenchWindow$6.close(WorkbenchWindow.java:521)
+	at org.eclipse.e4.ui.workbench.renderers.swt.WBWRenderer$11.shellClosed(WBWRenderer.java:563)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:98)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Display.sendEvent(Display.java:4353)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1061)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1085)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1070)
+	at org.eclipse.swt.widgets.Decorations.closeWidget(Decorations.java:308)
+	at org.eclipse.swt.widgets.Decorations.WM_CLOSE(Decorations.java:1696)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4612)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1626)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2075)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5023)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4705)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1626)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2075)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5023)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProcW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DefWindowProc(OS.java:2544)
+	at org.eclipse.swt.widgets.Shell.callWindowProc(Shell.java:498)
+	at org.eclipse.swt.widgets.Control.windowProc(Control.java:4705)
+	at org.eclipse.swt.widgets.Canvas.windowProc(Canvas.java:339)
+	at org.eclipse.swt.widgets.Decorations.windowProc(Decorations.java:1626)
+	at org.eclipse.swt.widgets.Shell.windowProc(Shell.java:2075)
+	at org.eclipse.swt.widgets.Display.windowProc(Display.java:5023)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessageW(Native Method)
+	at org.eclipse.swt.internal.win32.OS.DispatchMessage(OS.java:2549)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3759)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine$9.run(PartRenderingEngine.java:1151)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.e4.ui.internal.workbench.swt.PartRenderingEngine.run(PartRenderingEngine.java:1032)
+	at org.eclipse.e4.ui.internal.workbench.E4Workbench.createAndRunUI(E4Workbench.java:148)
+	at org.eclipse.ui.internal.Workbench$5.run(Workbench.java:636)
+	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:332)
+	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:579)
+	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:150)
+	at com.ifx.davex.product.DaveApplication.start(DaveApplication.java:140)
+	at org.eclipse.equinox.internal.app.EclipseAppHandle.run(EclipseAppHandle.java:196)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.runApplication(EclipseAppLauncher.java:134)
+	at org.eclipse.core.runtime.internal.adaptor.EclipseAppLauncher.start(EclipseAppLauncher.java:104)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:380)
+	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:235)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:648)
+	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:603)
+	at org.eclipse.equinox.launcher.Main.run(Main.java:1465)
+Caused by: org.eclipse.swt.SWTException: Widget is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4441)
+	at org.eclipse.swt.SWT.error(SWT.java:4356)
+	at org.eclipse.swt.SWT.error(SWT.java:4327)
+	at org.eclipse.swt.widgets.Widget.error(Widget.java:476)
+	at org.eclipse.swt.widgets.Widget.checkWidget(Widget.java:348)
+	at org.eclipse.swt.widgets.Shell.getSize(Shell.java:1092)
+	at org.eclipse.ui.internal.quickaccess.SearchField.storeDialog(SearchField.java:580)
+	at org.eclipse.ui.internal.quickaccess.SearchField.dispose(SearchField.java:557)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.e4.core.internal.di.MethodRequestor.execute(MethodRequestor.java:55)
+	... 88 more
+!SESSION 2018-02-14 09:49:36.970 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-14 09:49:52.245
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-14 09:49:52.245
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY SOLVER 1 0 2018-02-14 09:49:58.761
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-02-14 09:49:58.917
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-02-14 09:49:58.917
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-02-14 09:49:59.214
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-02-14 09:50:00.557
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 875 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-14 09:50:00.901
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 0 msec 
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-02-14 09:50:01.448
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-14 09:50:02.854
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-14 09:50:03.073
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-14 09:50:04.323
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-14 09:50:04.323
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-14 09:50:06.761
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-14 09:50:20.433
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY SOLVER 1 0 2018-02-14 22:11:28.633
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-02-14 22:11:28.930
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-02-18 18:47:55.720 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-18 18:48:07.172
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-18 18:48:07.172
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-02-18 18:48:09.667
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-02-18 18:48:11.333
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-02-18 18:48:11.442
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-02-18 18:48:11.442
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-02-18 18:48:11.755
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-02-18 18:48:12.333
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 578 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-18 18:48:12.364
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-18 18:48:13.123
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-18 18:48:13.317
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-18 18:48:14.752
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-18 18:48:15.546
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-18 18:48:17.263
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-18 18:48:30.891
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY SOLVER 1 0 2018-02-20 19:19:19.013
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-02-20 19:19:19.341
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-02-20 19:53:16.880 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-20 19:53:39.315
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-20 19:53:39.330
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-02-20 19:53:43.228
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-02-20 19:53:45.587
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-02-20 19:53:45.712
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-02-20 19:53:45.712
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-02-20 19:53:46.025
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-02-20 19:53:46.665
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 640 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-20 19:53:46.837
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-20 19:53:47.280
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-20 19:53:47.483
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-20 19:53:49.072
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-20 19:53:50.265
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-20 19:53:54.277
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-20 19:54:05.173
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY SOLVER 1 0 2018-02-20 20:49:51.904
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-02-20 20:49:52.154
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-02-20 22:16:45.494 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-20 22:16:57.426
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-20 22:16:57.433
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-02-20 22:17:01.453
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-02-20 22:17:04.570
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-02-20 22:17:04.745
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-02-20 22:17:04.745
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-02-20 22:17:04.941
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-02-20 22:17:05.657
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 709 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-20 22:17:05.879
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 7 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-20 22:17:06.341
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-20 22:17:06.583
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-20 22:17:08.316
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-20 22:17:08.659
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-20 22:17:11.627
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-20 22:17:25.595
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY SOLVER 1 0 2018-02-21 10:18:10.630
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-02-21 10:18:10.942
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-02-22 17:07:21.288 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-22 17:07:38.131
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-22 17:07:38.147
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-02-22 17:07:45.240
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-02-22 17:07:48.944
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-02-22 17:07:49.131
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-02-22 17:07:49.131
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-02-22 17:07:49.553
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-02-22 17:07:50.381
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 812 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-22 17:07:50.553
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-22 17:07:51.069
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-22 17:07:51.444
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-22 17:07:53.381
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-22 17:07:54.694
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-22 17:08:01.381
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-22 17:08:13.803
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY SOLVER 1 0 2018-02-22 17:40:38.032
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-02-22 17:40:38.282
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-02-22 17:40:47.249 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-22 17:41:13.263
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-22 17:41:13.278
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-02-22 17:41:17.460
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-02-22 17:41:20.068
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-02-22 17:41:20.193
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-02-22 17:41:20.193
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-02-22 17:41:20.381
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-02-22 17:41:20.912
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 531 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-22 17:41:21.037
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-22 17:41:21.381
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-22 17:41:21.626
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-22 17:41:23.336
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-22 17:41:23.898
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-22 17:41:28.430
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-22 17:41:37.572
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY org.eclipse.ui 4 4 2018-02-22 17:59:59.786
+!MESSAGE Conflicting handlers for org.eclipse.debug.ui.commands.DebugLast: {ActionDelegateHandlerProxy(null,com.dave.activeproject.ui.actions.ActiveProjDebugLastAction)} vs {ActionDelegateHandlerProxy(null,org.eclipse.debug.internal.ui.actions.DebugLastAction)}
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2018-02-22 18:04:47.269
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:692)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-22 18:04:47.269
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2018-02-22 18:05:00.051
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:692)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-22 18:05:00.051
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2018-02-22 18:06:09.612
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2018-02-22 18:06:09.612
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2018-02-22 18:06:09.612
+!MESSAGE "EtherCAT Slave Editor" will be ignored because a newer version is already installed. 
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2018-02-22 18:06:09.612
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2018-02-22 18:06:09.612
+!MESSAGE Software being installed: EtherCAT Explorer 1.0.0.201711231226 (com.rtlabs.ecat.explorer.feature.group 1.0.0.201711231226)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2018-02-22 18:06:09.612
+!MESSAGE Missing requirement: EtherCAT Explorer 1.0.0.201711231226 (com.rtlabs.ecat.explorer.feature.group 1.0.0.201711231226) requires 'org.eclipse.nebula.visualization.xygraph 0.0.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.operations 4 10053 2018-02-22 18:06:09.627
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2018-02-22 18:06:09.627
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10004 2018-02-22 18:06:09.627
+!MESSAGE "EtherCAT Slave Editor" will be ignored because a newer version is already installed. 
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 10053 2018-02-22 18:06:09.627
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2018-02-22 18:06:09.627
+!MESSAGE Software being installed: EtherCAT Explorer 1.0.0.201711231226 (com.rtlabs.ecat.explorer.feature.group 1.0.0.201711231226)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2018-02-22 18:06:09.627
+!MESSAGE Missing requirement: EtherCAT Explorer 1.0.0.201711231226 (com.rtlabs.ecat.explorer.feature.group 1.0.0.201711231226) requires 'org.eclipse.nebula.visualization.xygraph 0.0.0' but it could not be found
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2018-02-22 18:08:27.410
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:653)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-22 18:08:27.410
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2018-02-22 18:08:27.410
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:653)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-22 18:08:27.410
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2018-02-22 18:08:54.301
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:653)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-22 18:08:54.301
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2018-02-22 18:08:54.301
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:653)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.doLoad(LoadMetadataRepositoryJob.java:117)
+	at org.eclipse.equinox.p2.ui.LoadMetadataRepositoryJob.runModal(LoadMetadataRepositoryJob.java:102)
+	at org.eclipse.equinox.internal.p2.ui.sdk.PreloadingRepositoryHandler$2.runModal(PreloadingRepositoryHandler.java:83)
+	at org.eclipse.equinox.p2.operations.ProvisioningJob.run(ProvisioningJob.java:177)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-22 18:08:54.301
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY SOLVER 1 0 2018-02-22 21:01:09.873
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-02-22 21:01:10.201
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+
+!ENTRY org.eclipse.cdt.dsf 4 -1 2018-02-22 21:01:11.879
+!MESSAGE Invocation exception when calling a service event handler method
+!STACK 0
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.GeneratedMethodAccessor42.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.cdt.dsf.service.DsfSession.doDispatchEvent(DsfSession.java:519)
+	at org.eclipse.cdt.dsf.service.DsfSession.access$2(DsfSession.java:463)
+	at org.eclipse.cdt.dsf.service.DsfSession$3.run(DsfSession.java:390)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.util.concurrent.RejectedExecutionException: Display org.eclipse.swt.widgets.Display@37b52340 is disposed
+	at org.eclipse.cdt.dsf.ui.concurrent.SimpleDisplayExecutor.execute(SimpleDisplayExecutor.java:85)
+	at org.eclipse.cdt.dsf.ui.viewmodel.AbstractVMAdapter.handleEvent(AbstractVMAdapter.java:260)
+	at org.eclipse.cdt.dsf.ui.viewmodel.datamodel.AbstractDMVMAdapter.eventDispatched(AbstractDMVMAdapter.java:103)
+	... 13 more
+Caused by: org.eclipse.swt.SWTException: Device is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4441)
+	at org.eclipse.swt.SWT.error(SWT.java:4356)
+	at org.eclipse.swt.SWT.error(SWT.java:4327)
+	at org.eclipse.swt.widgets.Display.error(Display.java:1258)
+	at org.eclipse.swt.widgets.Display.asyncExec(Display.java:709)
+	at org.eclipse.cdt.dsf.ui.concurrent.SimpleDisplayExecutor.execute(SimpleDisplayExecutor.java:77)
+	... 15 more
+Root exception:
+java.util.concurrent.RejectedExecutionException: Display org.eclipse.swt.widgets.Display@37b52340 is disposed
+	at org.eclipse.cdt.dsf.ui.concurrent.SimpleDisplayExecutor.execute(SimpleDisplayExecutor.java:85)
+	at org.eclipse.cdt.dsf.ui.viewmodel.AbstractVMAdapter.handleEvent(AbstractVMAdapter.java:260)
+	at org.eclipse.cdt.dsf.ui.viewmodel.datamodel.AbstractDMVMAdapter.eventDispatched(AbstractDMVMAdapter.java:103)
+	at sun.reflect.GeneratedMethodAccessor42.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.eclipse.cdt.dsf.service.DsfSession.doDispatchEvent(DsfSession.java:519)
+	at org.eclipse.cdt.dsf.service.DsfSession.access$2(DsfSession.java:463)
+	at org.eclipse.cdt.dsf.service.DsfSession$3.run(DsfSession.java:390)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask.run(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: org.eclipse.swt.SWTException: Device is disposed
+	at org.eclipse.swt.SWT.error(SWT.java:4441)
+	at org.eclipse.swt.SWT.error(SWT.java:4356)
+	at org.eclipse.swt.SWT.error(SWT.java:4327)
+	at org.eclipse.swt.widgets.Display.error(Display.java:1258)
+	at org.eclipse.swt.widgets.Display.asyncExec(Display.java:709)
+	at org.eclipse.cdt.dsf.ui.concurrent.SimpleDisplayExecutor.execute(SimpleDisplayExecutor.java:77)
+	... 15 more
+
+!ENTRY org.eclipse.debug.core 4 2 2018-02-22 21:01:11.920
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.debug.core".
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.dsf.service.DsfServicesTracker.<init>(DsfServicesTracker.java:152)
+	at org.eclipse.cdt.dsf.debug.sourcelookup.DsfSourceLookupParticipant.<init>(DsfSourceLookupParticipant.java:62)
+	at org.eclipse.cdt.dsf.debug.sourcelookup.DsfSourceLookupDirector.initializeParticipants(DsfSourceLookupDirector.java:38)
+	at org.eclipse.debug.core.sourcelookup.AbstractSourceLookupDirector.initializeDefaults(AbstractSourceLookupDirector.java:594)
+	at org.eclipse.debug.core.sourcelookup.AbstractSourceLookupDirector.launchConfigurationChanged(AbstractSourceLookupDirector.java:359)
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.run(LaunchManager.java:229)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.notify(LaunchManager.java:209)
+	at org.eclipse.debug.internal.core.LaunchManager.launchConfigurationChanged(LaunchManager.java:2162)
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.writeNewFile(LaunchConfigurationWorkingCopy.java:384)
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.doSave0(LaunchConfigurationWorkingCopy.java:250)
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.doSave(LaunchConfigurationWorkingCopy.java:220)
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.doSave(LaunchConfigurationWorkingCopy.java:173)
+	at com.dave.activeproject.ui.actions.DebugLaunchActiveProjectAction.launchesTerminated(DebugLaunchActiveProjectAction.java:275)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(LaunchManager.java:318)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(LaunchManager.java:270)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1055)
+	at org.eclipse.debug.core.Launch.fireTerminate(Launch.java:405)
+	at org.eclipse.cdt.dsf.debug.model.DsfLaunch.access$1(DsfLaunch.java:1)
+	at org.eclipse.cdt.dsf.debug.model.DsfLaunch$2.run(DsfLaunch.java:52)
+	at org.eclipse.debug.core.DebugPlugin$AsynchRunner.run(DebugPlugin.java:1106)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$AsynchRunner.async(DebugPlugin.java:1087)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:429)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.debug.core 4 120 2018-02-22 21:01:11.920
+!MESSAGE An exception occurred during launch configuration change notification.
+!STACK 0
+java.lang.NullPointerException
+	at org.eclipse.cdt.dsf.service.DsfServicesTracker.<init>(DsfServicesTracker.java:152)
+	at org.eclipse.cdt.dsf.debug.sourcelookup.DsfSourceLookupParticipant.<init>(DsfSourceLookupParticipant.java:62)
+	at org.eclipse.cdt.dsf.debug.sourcelookup.DsfSourceLookupDirector.initializeParticipants(DsfSourceLookupDirector.java:38)
+	at org.eclipse.debug.core.sourcelookup.AbstractSourceLookupDirector.initializeDefaults(AbstractSourceLookupDirector.java:594)
+	at org.eclipse.debug.core.sourcelookup.AbstractSourceLookupDirector.launchConfigurationChanged(AbstractSourceLookupDirector.java:359)
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.run(LaunchManager.java:229)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$ConfigurationNotifier.notify(LaunchManager.java:209)
+	at org.eclipse.debug.internal.core.LaunchManager.launchConfigurationChanged(LaunchManager.java:2162)
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.writeNewFile(LaunchConfigurationWorkingCopy.java:384)
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.doSave0(LaunchConfigurationWorkingCopy.java:250)
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.doSave(LaunchConfigurationWorkingCopy.java:220)
+	at org.eclipse.debug.internal.core.LaunchConfigurationWorkingCopy.doSave(LaunchConfigurationWorkingCopy.java:173)
+	at com.dave.activeproject.ui.actions.DebugLaunchActiveProjectAction.launchesTerminated(DebugLaunchActiveProjectAction.java:275)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.run(LaunchManager.java:318)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.internal.core.LaunchManager$LaunchesNotifier.notify(LaunchManager.java:270)
+	at org.eclipse.debug.internal.core.LaunchManager.fireUpdate(LaunchManager.java:1055)
+	at org.eclipse.debug.core.Launch.fireTerminate(Launch.java:405)
+	at org.eclipse.cdt.dsf.debug.model.DsfLaunch.access$1(DsfLaunch.java:1)
+	at org.eclipse.cdt.dsf.debug.model.DsfLaunch$2.run(DsfLaunch.java:52)
+	at org.eclipse.debug.core.DebugPlugin$AsynchRunner.run(DebugPlugin.java:1106)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:42)
+	at org.eclipse.debug.core.DebugPlugin$AsynchRunner.async(DebugPlugin.java:1087)
+	at org.eclipse.debug.core.DebugPlugin$EventDispatchJob.run(DebugPlugin.java:429)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+!SESSION 2018-02-27 09:14:57.562 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-27 09:15:10.987
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-27 09:15:10.987
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-02-27 09:15:15.769
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-02-27 09:15:18.534
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-02-27 09:15:18.675
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-02-27 09:15:18.675
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-02-27 09:15:32.409
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-02-27 09:15:33.191
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 782 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-27 09:15:33.550
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 16 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-27 09:15:34.347
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-27 09:15:34.550
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-27 09:15:46.878
+!MESSAGE ConnectionException:
+:http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-27 09:15:46.878
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-27 09:15:46.878
+!MESSAGE ConnectionException:
+:http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-27 09:15:46.878
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-27 09:15:46.878
+!MESSAGE ConnectionException:
+:http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:47.378
+!MESSAGE Unknown Host: http://download.rt-labs.com/ethercat/sdk/updates/1.0/content.xml
+!STACK 0
+java.net.UnknownHostException: download.rt-labs.com
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:47.660
+!MESSAGE Unknown Host: http://download.eclipse.org/releases/luna/compositeContent.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:47.988
+!MESSAGE Unknown Host: http://download.rt-labs.com/ethercat/sdk/updates/1.0.0/content.xml
+!STACK 0
+java.net.UnknownHostException: download.rt-labs.com
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:48.331
+!MESSAGE Unknown Host: http://download.rt-labs.com/ethercat/sdk/updates/1.0.1/content.xml
+!STACK 0
+java.net.UnknownHostException: download.rt-labs.com
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:48.644
+!MESSAGE Unknown Host: http://dave.infineon.com/Luna/v4.3/MikroE/Debugger/content.xml
+!STACK 0
+java.net.UnknownHostException: dave.infineon.com
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:48.878
+!MESSAGE Unknown Host: http://download.eclipse.org/technology/nebula/releases/1.0.0/content.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:49.019
+!MESSAGE Unknown Host: http://dave.infineon.com/Luna/v4.1/Solver_emWin_update/content.xml
+!STACK 0
+java.net.UnknownHostException: dave.infineon.com
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:49.113
+!MESSAGE Unknown Host: http://dave.infineon.com/Luna/v4.3/MikroE/BMI/content.xml
+!STACK 0
+java.net.UnknownHostException: dave.infineon.com
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:49.160
+!MESSAGE Unknown Host: http://download.eclipse.org/eclipse/updates/4.4/compositeContent.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:49.300
+!MESSAGE Unknown Host: http://dave.infineon.com/Luna/v4.3/CE/content.xml
+!STACK 0
+java.net.UnknownHostException: dave.infineon.com
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:49.331
+!MESSAGE Unknown Host: http://download.eclipse.org/modeling/emf/emf/updates/releases/compositeContent.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:49.347
+!MESSAGE Unknown Host: http://dave.infineon.com/Luna/v4.1/ARM-GCC-Update/content.xml
+!STACK 0
+java.net.UnknownHostException: dave.infineon.com
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:49.363
+!MESSAGE Unknown Host: http://dave.infineon.com/Luna/v4.3/Debugger/content.xml
+!STACK 0
+java.net.UnknownHostException: dave.infineon.com
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.transport.ecf 4 1006 2018-02-27 09:15:49.441
+!MESSAGE Unknown Host: http://download.eclipse.org/tools/orbit/downloads/drops/R20150124073747/repository/content.xml
+!STACK 0
+java.net.UnknownHostException: download.eclipse.org
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at sun.net.NetworkClient.doConnect(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.openServer(Unknown Source)
+	at sun.net.www.http.HttpClient.<init>(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.http.HttpClient.New(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect0(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.plainConnect(Unknown Source)
+	at sun.net.www.protocol.http.HttpURLConnection.connect(Unknown Source)
+	at org.eclipse.ecf.provider.filetransfer.browse.URLFileSystemBrowser.runRequest(URLFileSystemBrowser.java:113)
+	at org.eclipse.ecf.provider.filetransfer.browse.AbstractFileSystemBrowser$DirectoryJob.run(AbstractFileSystemBrowser.java:69)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY SOLVER 1 0 2018-02-27 21:07:08.060
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-02-27 21:07:08.388
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-02-28 17:35:01.915 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-28 17:35:12.917
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-02-28 17:35:12.926
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-02-28 17:35:17.158
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-02-28 17:35:19.514
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-02-28 17:35:19.675
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-02-28 17:35:19.676
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-02-28 17:35:20.240
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-02-28 17:35:21.100
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 852 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-28 17:35:21.249
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 5 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-02-28 17:35:22.551
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-28 17:35:22.764
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-28 17:35:24.649
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-28 17:35:24.704
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-02-28 17:35:29.796
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-02-28 17:35:39.293
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY SOLVER 1 0 2018-03-04 13:20:55.438
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-03-04 13:20:55.865
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-03-04 16:23:16.806 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-04 16:23:27.646
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-04 16:23:27.650
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-03-04 16:23:32.466
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-03-04 16:23:43.844
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-03-04 16:23:43.959
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-03-04 16:23:43.959
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-03-04 16:23:44.396
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-03-04 16:23:44.971
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 565 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-04 16:23:45.260
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 10 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-04 16:23:45.890
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-04 16:23:46.253
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-04 16:23:48.450
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-04 16:23:48.870
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-04 16:23:51.134
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-04 16:24:08.564
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY SOLVER 1 0 2018-03-05 01:29:06.587
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-03-05 01:29:06.916
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-03-05 21:50:59.428 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-05 21:51:09.979
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-05 21:51:09.984
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-03-05 21:51:14.085
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-03-05 21:51:16.152
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-03-05 21:51:16.286
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-03-05 21:51:16.287
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-03-05 21:51:16.563
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-03-05 21:51:17.270
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 699 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-05 21:51:17.481
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 4 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-05 21:51:19.227
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-05 21:51:19.393
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-05 21:51:20.691
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-05 21:51:20.762
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-05 21:51:25.657
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-05 21:51:34.940
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY SOLVER 1 0 2018-03-05 21:55:53.236
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-03-05 21:55:53.488
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-03-08 15:47:36.924 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-08 15:47:55.906
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-08 15:47:55.913
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-03-08 15:48:00.666
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY SOLVER 1 0 2018-03-08 15:48:02.702
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-03-08 15:48:02.848
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-03-08 15:48:02.849
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-03-08 15:48:03.434
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY APPSTORE 1 0 2018-03-08 15:48:05.328
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 1881 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-08 15:48:05.375
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 7 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-08 15:48:07.462
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-08 15:48:07.936
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-08 15:48:09.657
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-08 15:48:11.428
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-08 15:48:17.683
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-08 15:48:31.284
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:27:54.100
+!MESSAGE Conflicting handlers for org.eclipse.debug.ui.commands.DebugLast: {ActionDelegateHandlerProxy(null,com.dave.activeproject.ui.actions.ActiveProjDebugLastAction)} vs {ActionDelegateHandlerProxy(null,org.eclipse.debug.internal.ui.actions.DebugLastAction)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:31:51.643
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.library.download.action: {ActionDelegateHandlerProxy(null,com.ifx.dave.appslib.update.LibraryUpdateActionDelegate)} vs {ActionDelegateHandlerProxy(null,com.ifx.dave.appslib.uninstall.LibraryUnInstallActionDelegate)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:31:51.826
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.solverlog.action: {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.ValidateProject)} vs {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.LaunchDaveSupportLinkPage)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:31:51.850
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.ce.ui.perspective.toolbar.actions.GlobalInterruptDelegate: {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.GlobalInterruptDelegate)} vs {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.AddNewAppDelegate)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:32:11.926
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.library.download.action: {ActionDelegateHandlerProxy(null,com.ifx.dave.appslib.update.LibraryUpdateActionDelegate)} vs {ActionDelegateHandlerProxy(null,com.ifx.dave.appslib.uninstall.LibraryUnInstallActionDelegate)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:32:11.976
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.solverlog.action: {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.ValidateProject)} vs {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.LaunchDaveSupportLinkPage)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:32:11.991
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.ce.ui.perspective.toolbar.actions.GlobalInterruptDelegate: {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.GlobalInterruptDelegate)} vs {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.AddNewAppDelegate)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:32:16.997
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.library.download.action: {ActionDelegateHandlerProxy(null,com.ifx.dave.appslib.update.LibraryUpdateActionDelegate)} vs {ActionDelegateHandlerProxy(null,com.ifx.dave.appslib.uninstall.LibraryUnInstallActionDelegate)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:32:17.028
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.solverlog.action: {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.ValidateProject)} vs {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.LaunchDaveSupportLinkPage)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:32:17.034
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.ce.ui.perspective.toolbar.actions.GlobalInterruptDelegate: {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.GlobalInterruptDelegate)} vs {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.AddNewAppDelegate)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:32:27.616
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.library.download.action: {ActionDelegateHandlerProxy(null,com.ifx.dave.appslib.update.LibraryUpdateActionDelegate)} vs {ActionDelegateHandlerProxy(null,com.ifx.dave.appslib.uninstall.LibraryUnInstallActionDelegate)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:32:27.651
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.solverlog.action: {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.ValidateProject)} vs {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.LaunchDaveSupportLinkPage)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:32:27.658
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.ce.ui.perspective.toolbar.actions.GlobalInterruptDelegate: {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.GlobalInterruptDelegate)} vs {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.AddNewAppDelegate)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:32:45.507
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.library.download.action: {ActionDelegateHandlerProxy(null,com.ifx.dave.appslib.update.LibraryUpdateActionDelegate)} vs {ActionDelegateHandlerProxy(null,com.ifx.dave.appslib.uninstall.LibraryUnInstallActionDelegate)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:32:45.540
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.solverlog.action: {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.ValidateProject)} vs {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.LaunchDaveSupportLinkPage)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:32:45.546
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.ce.ui.perspective.toolbar.actions.GlobalInterruptDelegate: {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.GlobalInterruptDelegate)} vs {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.AddNewAppDelegate)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:33:02.532
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.library.download.action: {ActionDelegateHandlerProxy(null,com.ifx.dave.appslib.update.LibraryUpdateActionDelegate)} vs {ActionDelegateHandlerProxy(null,com.ifx.dave.appslib.uninstall.LibraryUnInstallActionDelegate)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:33:02.561
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.solverlog.action: {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.ValidateProject)} vs {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.LaunchDaveSupportLinkPage)}
+
+!ENTRY org.eclipse.ui 4 4 2018-03-08 17:33:02.568
+!MESSAGE Conflicting handlers for AUTOGEN:::com.ifx.davex.toolbar.actionsets/com.ifx.davex.ce.ui.perspective.toolbar.actions.GlobalInterruptDelegate: {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.GlobalInterruptDelegate)} vs {ActionDelegateHandlerProxy(null,com.ifx.davex.ce.ui.perspective.toolbar.actions.AddNewAppDelegate)}
+
+!ENTRY com.dave.mbs.common 1 0 2018-03-08 17:38:10.412
+!MESSAGE Time taken for postProjectCreation: 0
+
+!ENTRY SOLVER 1 0 2018-03-08 17:38:31.813
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-03-08 17:38:32.115
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-03-08 18:14:39.753 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-08 18:14:54.583
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-08 18:14:54.583
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY SOLVER 1 0 2018-03-08 18:14:56.208
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-03-08 18:14:56.349
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-03-08 18:14:56.349
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-03-08 18:14:56.708
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-03-08 18:14:59.592
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY APPSTORE 1 0 2018-03-08 18:15:02.159
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 719 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-08 18:15:02.269
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-08 18:15:02.675
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-08 18:15:02.878
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-08 18:15:04.673
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-08 18:15:05.438
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-08 18:15:09.869
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-08 18:15:19.191
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY SOLVER 1 0 2018-03-11 15:11:26.280
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-03-11 15:11:26.655
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-03-11 20:16:12.584 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-11 20:16:24.149
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-11 20:16:24.157
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY SOLVER 1 0 2018-03-11 20:16:27.399
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-03-11 20:16:27.632
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-03-11 20:16:27.632
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-03-11 20:16:28.371
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-03-11 20:16:33.970
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY APPSTORE 1 0 2018-03-11 20:16:35.790
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 1597 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-11 20:16:35.857
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 7 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-11 20:16:39.567
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-11 20:16:40.134
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-11 20:16:41.605
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-11 20:16:41.897
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-11 20:16:48.433
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-11 20:17:01.799
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY org.eclipse.equinox.p2.core 4 0 2018-03-11 20:17:39.511
+!MESSAGE Provisioning exception
+!STACK 1
+org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://download.eclipse.org/modeling/emf/emf/updates/2.9.
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.fail(AbstractRepositoryManager.java:395)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:692)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.addChild(CompositeMetadataRepository.java:166)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepository.<init>(CompositeMetadataRepository.java:106)
+	at org.eclipse.equinox.internal.p2.metadata.repository.CompositeMetadataRepositoryFactory.load(CompositeMetadataRepositoryFactory.java:122)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.factoryLoad(MetadataRepositoryManager.java:57)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:768)
+	at org.eclipse.equinox.internal.p2.repository.helpers.AbstractRepositoryManager.loadRepository(AbstractRepositoryManager.java:668)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:96)
+	at org.eclipse.equinox.internal.p2.metadata.repository.MetadataRepositoryManager.loadRepository(MetadataRepositoryManager.java:92)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.getAvailableRepositories(UpdateChecker.java:151)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker.checkForUpdates(UpdateChecker.java:129)
+	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:73)
+!SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-11 20:17:39.513
+!MESSAGE No repository found at http://download.eclipse.org/modeling/emf/emf/updates/2.9.
+
+!ENTRY SOLVER 1 0 2018-03-14 09:19:17.569
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-03-14 09:19:17.897
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-03-20 15:59:47.094 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-20 16:00:03.165
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-20 16:00:03.171
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY SOLVER 1 0 2018-03-20 16:00:07.072
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-03-20 16:00:07.306
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-03-20 16:00:07.338
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-03-20 16:00:07.811
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-03-20 16:00:08.405
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY APPSTORE 1 0 2018-03-20 16:00:10.858
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 797 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-20 16:00:11.045
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 0 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-20 16:00:11.358
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-20 16:00:11.608
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-20 16:00:13.108
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-20 16:00:14.420
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-20 16:00:15.545
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-20 16:00:28.273
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY SOLVER 1 0 2018-03-20 21:46:39.738
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-03-20 21:46:40.066
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-03-21 09:54:46.952 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-21 09:54:58.004
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-21 09:54:58.020
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY SOLVER 1 0 2018-03-21 09:55:01.313
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-03-21 09:55:01.500
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-03-21 09:55:01.500
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-03-21 09:55:02.485
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-03-21 09:55:03.000
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY APPSTORE 1 0 2018-03-21 09:55:04.204
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 829 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-21 09:55:04.438
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 16 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-21 09:55:04.954
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-21 09:55:05.251
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-21 09:55:06.907
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-21 09:55:07.469
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-21 09:55:09.329
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-21 09:55:22.336
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY SOLVER 1 0 2018-03-21 18:54:23.158
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-03-21 18:54:23.486
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED
+!SESSION 2018-03-28 10:18:59.222 -----------------------------------------------
+eclipse.buildId=unknown
+java.version=1.8.0_66
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -application com.ifx.davex.product.daveApplication -showlocation
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -application com.ifx.davex.product.daveApplication -showlocation
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-28 10:19:48.642
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_path' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY org.eclipse.core.variables 4 120 2018-03-28 10:19:48.657
+!MESSAGE Contributed variable extension from bundle 'ilg.gnuarmeclipse.debug.gdbjtag.mikroe' overrides existing extension variable 'jlink_gdbserver' from  bundle 'ilg.gnuarmeclipse.debug.gdbjtag.jlink'
+
+!ENTRY SOLVER 1 0 2018-03-28 10:19:50.933
+!MESSAGE USER_ACTION : Default solver exe path is: C:\DAVEv4-64Bit\DAVE-4.3.2\eclipse\Solver\lib\i386_nt\eclipse.exe
+
+!ENTRY SOLVER 1 0 2018-03-28 10:19:51.073
+!MESSAGE USER_ACTION : GlobalSize= 750MB; LocalSize: 128MB
+
+!ENTRY SOLVER 1 0 2018-03-28 10:19:51.073
+!MESSAGE USER_ACTION : Creating OutOfProcessEclipse instance...
+
+!ENTRY SOLVER 1 0 2018-03-28 10:19:51.761
+!MESSAGE USER_ACTION : Solver Status: CONNECTED
+
+!ENTRY org.eclipse.egit.ui 2 0 2018-03-28 10:19:52.208
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Jakub Hadamek'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY APPSTORE 1 0 2018-03-28 10:19:53.708
+!MESSAGE USER_ACTION : Time taken for loading LibraryStore data for SoftwareId [XMC4.8.00.F144.ALL] is: 813 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-28 10:19:53.754
+!MESSAGE USER_ACTION : Time taken for disposing objects for memory cleanup: 15 msec 
+
+!ENTRY APPLICATION_MODEL 1 0 2018-03-28 10:19:54.130
+!MESSAGE Only One DAVE Application is running 
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-28 10:19:54.364
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/Examples/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-28 10:19:55.653
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/XMC_IFX/v4.1//daveSite.xml
+
+!ENTRY com.ifx.dave.LibraryManager 4 0 2018-03-28 10:19:57.095
+!MESSAGE Reading file: http://dave.infineon.com/Libraries/DAVE_Libs/Contributed/v4.1//daveSite.xml
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-28 10:19:59.520
+!MESSAGE No repository found at http://download.rt-labs.com/ethercat/sdk/updates/1.0.
+
+!ENTRY org.eclipse.equinox.p2.metadata.repository 4 1000 2018-03-28 10:20:10.767
+!MESSAGE No repository found at http://download.eclipse.org/technology/nebula/releases/1.0.0.
+
+!ENTRY SOLVER 1 0 2018-03-28 10:37:56.692
+!MESSAGE Solver exited (0)
+
+!ENTRY SOLVER 1 0 2018-03-28 10:37:56.960
+!MESSAGE USER_ACTION : Solver Status: DISCONNECTED

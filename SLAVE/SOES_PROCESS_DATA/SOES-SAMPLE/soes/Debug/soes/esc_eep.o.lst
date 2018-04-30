@@ -1,0 +1,300 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "esc_eep.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .bss.eep_buf,"aw",%nobits
+  20              	 .align 2
+  23              	eep_buf:
+  24 0000 00000000 	 .space 8
+  24      00000000 
+  25              	 .section .text.EEP_process,"ax",%progbits
+  26              	 .align 2
+  27              	 .global EEP_process
+  28              	 .thumb
+  29              	 .thumb_func
+  31              	EEP_process:
+  32              	.LFB0:
+  33              	 .file 1 "../soes/esc_eep.c"
+   1:../soes/esc_eep.c **** /*
+   2:../soes/esc_eep.c ****  * Licensed under the GNU General Public License version 2 with exceptions. See
+   3:../soes/esc_eep.c ****  * LICENSE file in the project root for full license information
+   4:../soes/esc_eep.c ****  */
+   5:../soes/esc_eep.c **** 
+   6:../soes/esc_eep.c ****  /** \file
+   7:../soes/esc_eep.c ****  * \brief
+   8:../soes/esc_eep.c ****  * ESI EEPROM emulator module.
+   9:../soes/esc_eep.c ****  */
+  10:../soes/esc_eep.c **** 
+  11:../soes/esc_eep.c **** #include "cc.h"
+  12:../soes/esc_eep.c **** #include "esc.h"
+  13:../soes/esc_eep.c **** #include "esc_eep.h"
+  14:../soes/esc_eep.c **** 
+  15:../soes/esc_eep.c **** #include <string.h>
+  16:../soes/esc_eep.c **** 
+  17:../soes/esc_eep.c **** static uint8_t eep_buf[8];
+  18:../soes/esc_eep.c **** 
+  19:../soes/esc_eep.c **** /** EPP periodic task of ESC side EEPROM emulation.
+  20:../soes/esc_eep.c ****  *
+  21:../soes/esc_eep.c ****  */
+  22:../soes/esc_eep.c **** void EEP_process (void)
+  23:../soes/esc_eep.c **** {
+  34              	 .loc 1 23 0
+  35              	 .cfi_startproc
+  36              	 
+  37              	 
+  38 0000 80B5     	 push {r7,lr}
+  39              	.LCFI0:
+  40              	 .cfi_def_cfa_offset 8
+  41              	 .cfi_offset 7,-8
+  42              	 .cfi_offset 14,-4
+  43 0002 82B0     	 sub sp,sp,#8
+  44              	.LCFI1:
+  45              	 .cfi_def_cfa_offset 16
+  46 0004 00AF     	 add r7,sp,#0
+  47              	.LCFI2:
+  48              	 .cfi_def_cfa_register 7
+  24:../soes/esc_eep.c ****    eep_stat_t stat;
+  25:../soes/esc_eep.c **** 
+  26:../soes/esc_eep.c ****    /* check for eeprom event */
+  27:../soes/esc_eep.c ****    if ((ESCvar.ALevent & ESCREG_ALEVENT_EEP) == 0) {
+  49              	 .loc 1 27 0
+  50 0006 404B     	 ldr r3,.L16
+  51 0008 B3F8D030 	 ldrh r3,[r3,#208]
+  52 000c 9BB2     	 uxth r3,r3
+  53 000e 03F02003 	 and r3,r3,#32
+  54 0012 002B     	 cmp r3,#0
+  55 0014 00D1     	 bne .L2
+  28:../soes/esc_eep.c ****      return;
+  56              	 .loc 1 28 0
+  57 0016 73E0     	 b .L1
+  58              	.L2:
+  29:../soes/esc_eep.c ****    }
+  30:../soes/esc_eep.c **** 
+  31:../soes/esc_eep.c ****    while (1) {
+  32:../soes/esc_eep.c ****       /* read eeprom status */
+  33:../soes/esc_eep.c ****       ESC_read (ESCREG_EECONTSTAT, &stat, sizeof (eep_stat_t));
+  59              	 .loc 1 33 0
+  60 0018 3B46     	 mov r3,r7
+  61 001a 40F20250 	 movw r0,#1282
+  62 001e 1946     	 mov r1,r3
+  63 0020 0622     	 movs r2,#6
+  64 0022 FFF7FEFF 	 bl ESC_read
+  34:../soes/esc_eep.c ****       stat.contstat.reg = etohs(stat.contstat.reg);
+  65              	 .loc 1 34 0
+  66 0026 3B88     	 ldrh r3,[r7]
+  67 0028 3B80     	 strh r3,[r7]
+  35:../soes/esc_eep.c ****       stat.addr = etohl(stat.addr);
+  68              	 .loc 1 35 0
+  69 002a D7F80230 	 ldr r3,[r7,#2]
+  70 002e C7F80230 	 str r3,[r7,#2]
+  36:../soes/esc_eep.c **** 
+  37:../soes/esc_eep.c ****       /* check busy flag, exit if job finished */
+  38:../soes/esc_eep.c ****       if (!stat.contstat.bits.busy) {
+  71              	 .loc 1 38 0
+  72 0032 7B78     	 ldrb r3,[r7,#1]
+  73 0034 23F07F03 	 bic r3,r3,#127
+  74 0038 DBB2     	 uxtb r3,r3
+  75 003a 002B     	 cmp r3,#0
+  76 003c 00D1     	 bne .L4
+  39:../soes/esc_eep.c ****         return;
+  77              	 .loc 1 39 0 discriminator 2
+  78 003e 5FE0     	 b .L1
+  79              	.L4:
+  40:../soes/esc_eep.c ****       }
+  41:../soes/esc_eep.c **** 
+  42:../soes/esc_eep.c ****       /* clear error bits */
+  43:../soes/esc_eep.c ****       stat.contstat.bits.csumErr = 0;
+  80              	 .loc 1 43 0
+  81 0040 7B78     	 ldrb r3,[r7,#1]
+  82 0042 6FF3C303 	 bfc r3,#3,#1
+  83 0046 7B70     	 strb r3,[r7,#1]
+  44:../soes/esc_eep.c ****       stat.contstat.bits.eeLoading = 0;
+  84              	 .loc 1 44 0
+  85 0048 7B78     	 ldrb r3,[r7,#1]
+  86 004a 6FF30413 	 bfc r3,#4,#1
+  87 004e 7B70     	 strb r3,[r7,#1]
+  45:../soes/esc_eep.c ****       stat.contstat.bits.ackErr = 0;
+  88              	 .loc 1 45 0
+  89 0050 7B78     	 ldrb r3,[r7,#1]
+  90 0052 6FF34513 	 bfc r3,#5,#1
+  91 0056 7B70     	 strb r3,[r7,#1]
+  46:../soes/esc_eep.c ****       stat.contstat.bits.wrErr = 0;
+  92              	 .loc 1 46 0
+  93 0058 7B78     	 ldrb r3,[r7,#1]
+  94 005a 6FF38613 	 bfc r3,#6,#1
+  95 005e 7B70     	 strb r3,[r7,#1]
+  47:../soes/esc_eep.c **** 
+  48:../soes/esc_eep.c ****       /* process commands */
+  49:../soes/esc_eep.c ****       switch (stat.contstat.bits.cmdReg) {
+  96              	 .loc 1 49 0
+  97 0060 7B78     	 ldrb r3,[r7,#1]
+  98 0062 C3F30203 	 ubfx r3,r3,#0,#3
+  99 0066 DBB2     	 uxtb r3,r3
+ 100 0068 032B     	 cmp r3,#3
+ 101 006a 39D8     	 bhi .L5
+ 102 006c 01A2     	 adr r2,.L7
+ 103 006e 52F823F0 	 ldr pc,[r2,r3,lsl#2]
+ 104 0072 00BF     	 .p2align 2
+ 105              	.L7:
+ 106 0074 EB000000 	 .word .L15+1
+ 107 0078 85000000 	 .word .L8+1
+ 108 007c B3000000 	 .word .L9+1
+ 109 0080 85000000 	 .word .L8+1
+ 110              	 .p2align 1
+ 111              	.L8:
+  50:../soes/esc_eep.c ****          case EEP_CMD_IDLE:
+  51:../soes/esc_eep.c ****             break;
+  52:../soes/esc_eep.c **** 
+  53:../soes/esc_eep.c ****          case EEP_CMD_READ:
+  54:../soes/esc_eep.c ****          case EEP_CMD_RELOAD:
+  55:../soes/esc_eep.c ****             /* handle read request */
+  56:../soes/esc_eep.c ****             if (EEP_read (stat.addr * sizeof(uint16_t), eep_buf, EEP_READ_SIZE) != 0) {
+ 112              	 .loc 1 56 0
+ 113 0084 D7F80230 	 ldr r3,[r7,#2]
+ 114 0088 5B00     	 lsls r3,r3,#1
+ 115 008a 1846     	 mov r0,r3
+ 116 008c 1F49     	 ldr r1,.L16+4
+ 117 008e 0822     	 movs r2,#8
+ 118 0090 FFF7FEFF 	 bl EEP_read
+ 119 0094 0346     	 mov r3,r0
+ 120 0096 002B     	 cmp r3,#0
+ 121 0098 04D0     	 beq .L11
+  57:../soes/esc_eep.c ****                stat.contstat.bits.ackErr = 1;
+ 122              	 .loc 1 57 0
+ 123 009a 7B78     	 ldrb r3,[r7,#1]
+ 124 009c 43F02003 	 orr r3,r3,#32
+ 125 00a0 7B70     	 strb r3,[r7,#1]
+  58:../soes/esc_eep.c ****             } else {
+  59:../soes/esc_eep.c ****                ESC_write (ESCREG_EEDATA, eep_buf, EEP_READ_SIZE);
+  60:../soes/esc_eep.c ****             }
+  61:../soes/esc_eep.c ****             break;
+ 126              	 .loc 1 61 0
+ 127 00a2 23E0     	 b .L10
+ 128              	.L11:
+  59:../soes/esc_eep.c ****             }
+ 129              	 .loc 1 59 0
+ 130 00a4 4FF4A160 	 mov r0,#1288
+ 131 00a8 1849     	 ldr r1,.L16+4
+ 132 00aa 0822     	 movs r2,#8
+ 133 00ac FFF7FEFF 	 bl ESC_write
+ 134              	 .loc 1 61 0
+ 135 00b0 1CE0     	 b .L10
+ 136              	.L9:
+  62:../soes/esc_eep.c **** 
+  63:../soes/esc_eep.c ****          case EEP_CMD_WRITE:
+  64:../soes/esc_eep.c ****             /* handle write request */
+  65:../soes/esc_eep.c ****             ESC_read (ESCREG_EEDATA, eep_buf, EEP_WRITE_SIZE);
+ 137              	 .loc 1 65 0
+ 138 00b2 4FF4A160 	 mov r0,#1288
+ 139 00b6 1549     	 ldr r1,.L16+4
+ 140 00b8 0222     	 movs r2,#2
+ 141 00ba FFF7FEFF 	 bl ESC_read
+  66:../soes/esc_eep.c ****             if (EEP_write (stat.addr * sizeof(uint16_t), eep_buf, EEP_WRITE_SIZE) != 0) {
+ 142              	 .loc 1 66 0
+ 143 00be D7F80230 	 ldr r3,[r7,#2]
+ 144 00c2 5B00     	 lsls r3,r3,#1
+ 145 00c4 1846     	 mov r0,r3
+ 146 00c6 1149     	 ldr r1,.L16+4
+ 147 00c8 0222     	 movs r2,#2
+ 148 00ca FFF7FEFF 	 bl EEP_write
+ 149 00ce 0346     	 mov r3,r0
+ 150 00d0 002B     	 cmp r3,#0
+ 151 00d2 04D0     	 beq .L13
+  67:../soes/esc_eep.c ****                stat.contstat.bits.ackErr = 1;
+ 152              	 .loc 1 67 0
+ 153 00d4 7B78     	 ldrb r3,[r7,#1]
+ 154 00d6 43F02003 	 orr r3,r3,#32
+ 155 00da 7B70     	 strb r3,[r7,#1]
+  68:../soes/esc_eep.c ****             }
+  69:../soes/esc_eep.c ****             break;
+ 156              	 .loc 1 69 0
+ 157 00dc 06E0     	 b .L10
+ 158              	.L13:
+ 159 00de 05E0     	 b .L10
+ 160              	.L5:
+  70:../soes/esc_eep.c **** 
+  71:../soes/esc_eep.c ****          default:
+  72:../soes/esc_eep.c ****             stat.contstat.bits.ackErr = 1;
+ 161              	 .loc 1 72 0
+ 162 00e0 7B78     	 ldrb r3,[r7,#1]
+ 163 00e2 43F02003 	 orr r3,r3,#32
+ 164 00e6 7B70     	 strb r3,[r7,#1]
+ 165 00e8 00E0     	 b .L10
+ 166              	.L15:
+  51:../soes/esc_eep.c **** 
+ 167              	 .loc 1 51 0
+ 168 00ea 00BF     	 nop
+ 169              	.L10:
+  73:../soes/esc_eep.c ****       }
+  74:../soes/esc_eep.c **** 
+  75:../soes/esc_eep.c ****       /* acknowledge command */
+  76:../soes/esc_eep.c ****       stat.contstat.reg = htoes(stat.contstat.reg);
+ 170              	 .loc 1 76 0
+ 171 00ec 3B88     	 ldrh r3,[r7]
+ 172 00ee 3B80     	 strh r3,[r7]
+  77:../soes/esc_eep.c ****       ESC_write (ESCREG_EECONTSTAT, &stat.contstat.reg, sizeof(uint16_t));
+ 173              	 .loc 1 77 0
+ 174 00f0 3B46     	 mov r3,r7
+ 175 00f2 40F20250 	 movw r0,#1282
+ 176 00f6 1946     	 mov r1,r3
+ 177 00f8 0222     	 movs r2,#2
+ 178 00fa FFF7FEFF 	 bl ESC_write
+  78:../soes/esc_eep.c ****    }
+ 179              	 .loc 1 78 0
+ 180 00fe 8BE7     	 b .L2
+ 181              	.L1:
+  79:../soes/esc_eep.c **** }
+ 182              	 .loc 1 79 0
+ 183 0100 0837     	 adds r7,r7,#8
+ 184              	.LCFI3:
+ 185              	 .cfi_def_cfa_offset 8
+ 186 0102 BD46     	 mov sp,r7
+ 187              	.LCFI4:
+ 188              	 .cfi_def_cfa_register 13
+ 189              	 
+ 190 0104 80BD     	 pop {r7,pc}
+ 191              	.L17:
+ 192 0106 00BF     	 .align 2
+ 193              	.L16:
+ 194 0108 00000000 	 .word ESCvar
+ 195 010c 00000000 	 .word eep_buf
+ 196              	 .cfi_endproc
+ 197              	.LFE0:
+ 199              	 .text
+ 200              	.Letext0:
+ 201              	 .file 2 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 202              	 .file 3 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 203              	 .file 4 "c:\\davev4-64bit\\dave-4.3.2\\eclipse\\arm-gcc-49\\lib\\gcc\\arm-none-eabi\\4.9.3\\include\\stddef.h"
+ 204              	 .file 5 "../soes/esc.h"
+ 205              	 .file 6 "../soes/esc_eep.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 esc_eep.c
+    {standard input}:20     .bss.eep_buf:00000000 $d
+    {standard input}:23     .bss.eep_buf:00000000 eep_buf
+    {standard input}:26     .text.EEP_process:00000000 $t
+    {standard input}:31     .text.EEP_process:00000000 EEP_process
+    {standard input}:106    .text.EEP_process:00000074 $d
+    {standard input}:110    .text.EEP_process:00000084 $t
+    {standard input}:194    .text.EEP_process:00000108 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+ESC_read
+EEP_read
+ESC_write
+EEP_write
+ESCvar
